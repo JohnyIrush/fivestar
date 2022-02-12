@@ -1,6 +1,11 @@
 <template>
   <div class="container-fluid py-4">
       <div class="row">
+        <div class="col-12">
+          <main_menu></main_menu>
+        </div>
+      </div>
+      <div class="row mt-4">
         <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
           <div class="card">
             <div class="card-body p-3">
@@ -251,22 +256,7 @@
             </div>
           </div>
         </div>
-        <div class="col-lg-7">
-          <div class="card z-index-2">
-            <div class="card-header pb-0">
-              <h6>Sales overview</h6>
-              <p class="text-sm">
-                <i class="fa fa-arrow-up text-success"></i>
-                <span class="font-weight-bold">4% more</span> in 2021
-              </p>
-            </div>
-            <div class="card-body p-3">
-              <div class="chart">
-                <canvas id="chart-line" class="chart-canvas" height="300"></canvas>
-              </div>
-            </div>
-          </div>
-        </div>
+        <chart></chart>
       </div>
       <div class="row my-4">
         <div class="col-lg-8 col-md-6 mb-md-0 mb-4">
@@ -621,9 +611,12 @@
     import { defineComponent } from 'vue'
 
     import Footer from '../widgets/Footer.vue'
+    import main_menu from '../widgets/menus/main-menu.vue'
+    import chart from '../plugins/chart.vue'
     export default defineComponent({
         components: {
-            Footer
+            Footer,
+            main_menu
         },
     })
 </script>
