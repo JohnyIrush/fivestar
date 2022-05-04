@@ -1,6 +1,6 @@
 <template>
   <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 " id="sidenav-main">
-    <div class="sidenav-header">
+    <div class="sidenav-header glass-header">
       <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
       <a class="navbar-brand m-0" href="https://softwarescares.sparktalks.org" target="_blank">
         <img src="/images/inteli.png" class="navbar-brand-img h-100" alt="main_logo">
@@ -11,7 +11,7 @@
     <!--START Schools Packages/Modules/ Menu -->
       <school_modules_menu></school_modules_menu>
     <!--END Schools Packages/Modules/ Menu -->
-    <div class="sidenav-footer mx-3 ">
+    <div class="sidenav-footer mx-3 glass-content">
       <div class="card card-background shadow-none card-background-mask-secondary" id="sidenavCard">
         <div class="full-background" style="background-image: url('/theme/assets/img/curved-images/white-curved.jpeg')"></div>
         <div class="card-body text-start p-3 w-100">
@@ -49,3 +49,57 @@
         },
     })
 </script>
+
+<style scoped>
+aside
+{
+
+    background: linear-gradient(purple, pink);
+    background-size: cover;
+    padding: 15px;
+}
+
+.glass-container
+{
+    /*position: relative;
+    min-height: calc(100vh - 280);
+    width: calc(100% - 100px);*/
+    background: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 15px 35px rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    justify-content: space-between;
+}
+
+.glass-header
+{
+    /*position: absolute;
+    top: -5px;
+    right: 20px;
+    left: 5px;
+    padding: 20px 0px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;*/
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-top: 1px solid rgba(255, 255, 255, 0.25);
+    border-left: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+/*Content*/
+
+.glass-content
+{
+    transform: translateX(-100);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-top: 1px solid rgba(255, 255, 255, 0.25);
+    border-left: 1px solid rgba(255, 255, 255, 0.5);
+    padding: 5px;
+}
+</style>

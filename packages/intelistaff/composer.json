@@ -1,0 +1,29 @@
+{
+    "name": "softwarescares/intelistaff",
+    "description": "Inteli System Staff module, handles all staff tasks, Designation, Staff profile and roles",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Softwarescares\\Intelistaff\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "JohhyIrush",
+            "email": "johnydanxin@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {},
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Softwarescares\\Intelistaff\\InteliStaffServiceProvider"
+            ],
+            "aliases": {
+               
+            }
+        }
+    }
+}

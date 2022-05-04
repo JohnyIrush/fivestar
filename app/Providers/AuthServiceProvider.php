@@ -2,19 +2,18 @@
 
 namespace App\Providers;
 
-use App\Models\Team;
-use App\Policies\TeamPolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+use Illuminate\Support\Facades\Gate;
 
 class AuthServiceProvider extends ServiceProvider
 {
     /**
      * The policy mappings for the application.
      *
-     * @var array
+     * @var array<class-string, class-string>
      */
     protected $policies = [
-        Team::class => TeamPolicy::class,
+        // 'App\Models\Model' => 'App\Policies\ModelPolicy',
     ];
 
     /**
@@ -24,8 +23,16 @@ class AuthServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        /*
         $this->registerPolicies();
 
-        //
+        Gate::define('managed-users', function(User $user){
+            return $user->role_id == 1;
+        });
+
+        Gate::define('managed-courses', function(User $user){
+            return $user->role_id == 3;
+        });
+        */
     }
 }

@@ -1,14 +1,14 @@
 <template>
   <div class="container-fluid py-4">
-      <div class="row">
-        <div class="col-12">
+      <div class="row mt-6">
+        <div class="col-12 glass-content">
           <main_menu></main_menu>
         </div>
       </div>
       <!--START FINANCE-->
       <div class="row mt-4">
         <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-          <div class="card">
+          <div class="card glass-content">
             <div class="card-body p-3">
               <div class="row">
                 <div class="col-8">
@@ -30,7 +30,7 @@
           </div>
         </div>
         <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-          <div class="card">
+          <div class="card glass-content">
             <div class="card-body p-3">
               <div class="row">
                 <div class="col-8">
@@ -52,7 +52,7 @@
           </div>
         </div>
         <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-          <div class="card">
+          <div class="card glass-content">
             <div class="card-body p-3">
               <div class="row">
                 <div class="col-8">
@@ -74,7 +74,7 @@
           </div>
         </div>
         <div class="col-xl-3 col-sm-6">
-          <div class="card">
+          <div class="card glass-content">
             <div class="card-body p-3">
               <div class="row">
                 <div class="col-8">
@@ -98,7 +98,7 @@
       </div>
       <!--END FINANCE-->
       <div class="row mt-4">
-        <div class="col-lg-5 mb-lg-0 mb-4">
+        <div class="col-lg-5 glass-content mb-lg-0 mb-4">
           <div class="card z-index-2">
             <div class="card-body p-3">
               <div class="bg-gradient-dark border-radius-lg py-3 pe-1 mb-3">
@@ -214,10 +214,10 @@
             </div>
           </div>
         </div>
-        <chart></chart>
+        <Chart></Chart>
       </div>
       <div class="row my-4">
-        <div class="col-lg-8 col-md-6 mb-md-0 mb-4">
+        <div class="col-lg-8 col-md-6 mb-md-0 mb-4 glass-content">
           <div class="card">
             <div class="card-header pb-0">
               <div class="row">
@@ -492,7 +492,7 @@
           </div>
         </div>
         <div class="col-lg-4 col-md-6">
-          <div class="card h-100">
+          <div class="card h-100 glass-content">
             <div class="card-header pb-0">
               <h6>Orders overview</h6>
               <p class="text-sm">
@@ -563,7 +563,7 @@
       </div>
       <div class="row mt-4">
         <div class="col-lg-7 mb-lg-0 mb-4">
-          <div class="card">
+          <div class="card glass-content">
             <div class="card-body p-3">
               <div class="row">
                 <div class="col-lg-6">
@@ -590,7 +590,7 @@
           </div>
         </div>
         <div class="col-lg-5">
-          <div class="card h-100 p-3">
+          <div class="card h-100 p-3 glass-content">
             <div class="overflow-hidden position-relative border-radius-lg bg-cover h-100" style="background-image: url('/theme/assets/img/ivancik.jpg');">
               <span class="mask bg-gradient-dark"></span>
               <div class="card-body position-relative z-index-1 d-flex flex-column h-100 p-3">
@@ -614,12 +614,12 @@
 
     import Footer from '../widgets/Footer.vue'
     import main_menu from '../widgets/menus/main-menu.vue'
-    import chart from '../plugins/chart.vue'
+    import Chart from '../plugins/chart.vue'
     export default defineComponent({
         components: {
             Footer,
             main_menu,
-            chart
+            Chart
         },
 
         mounted() {
@@ -627,3 +627,63 @@
         },
     })
 </script>
+
+<style scoped>
+main
+{
+
+    background: linear-gradient(purple, pink);
+    background-size: cover;
+    padding: 15px;
+}
+
+.glass-container
+{
+    /*position: relative;
+    min-height: calc(100vh - 280);
+    width: calc(100% - 100px);*/
+    background: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 15px 35px rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    justify-content: space-between;
+}
+
+/*
+.glass-header
+{
+    position: absolute;
+    top: -5px;
+    right: 20px;
+    left: 5px;
+    padding: 20px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-top: 1px solid rgba(255, 255, 255, 0.25);
+    border-left: 1px solid rgba(255, 255, 255, 0.5);
+}
+*/
+/*Content*/
+
+.glass-content
+{
+    transform: translateX(-100);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-top: 1px solid rgba(255, 255, 255, 0.25);
+    border-left: 1px solid rgba(255, 255, 255, 0.5);
+    padding: 5px;
+}
+
+.card, .card-header, .card-body
+{
+  background: transparent !important;
+}
+</style>

@@ -3,16 +3,70 @@
     "type": "project",
     "description": "The Laravel Framework.",
     "keywords": ["framework", "laravel"],
+    "repositories": {
+        "inteliinstaller": {
+            "type": "path",
+            "url": "packages/inteliinstaller",
+            "options": {
+                "symlink": true
+            }
+        },
+        "inteliacademic": {
+            "type": "path",
+            "url": "packages/inteliacademic",
+            "options": {
+                "symlink": true
+            }
+        },
+        "intelistaff": {
+            "type": "path",
+            "url": "packages/intelistaff",
+            "options": {
+                "symlink": true
+            }
+        },
+        "intelitimetable": {
+            "type": "path",
+            "url": "packages/intelitimetable",
+            "options": {
+                "symlink": true
+            }
+        },
+        "intelifinance": {
+            "type": "path",
+            "url": "packages/intelifinance",
+            "options": {
+                "symlink": true
+            }
+        },
+        "inteliteam": {
+            "type": "path",
+            "url": "packages/inteliteam",
+            "options": {
+                "symlink": true
+            }
+        }
+    },
     "license": "MIT",
     "require": {
         "php": "^7.3|^8.0",
+        "beyondcode/laravel-websockets": "^1.13",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
         "inertiajs/inertia-laravel": "^0.5.2",
+        "laravel/cashier": "^13.8",
         "laravel/framework": "^8.75",
         "laravel/jetstream": "^2.6",
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
+        "pusher/pusher-php-server": "^7.0",
+        "softwarescares/inteliacademic": "@dev",
+        "softwarescares/inteliinstaller": "@dev",
+        "softwarescares/intelistaff": "@dev",
+        "softwarescares/intelitimetable": "@dev",
+        "softwarescares/safaricomdaraja": "dev-main",
+        "softwarescares/intelifinance": "@dev",
+        "softwarescares/inteliteam": "@dev",
         "tightenco/ziggy": "^1.0"
     },
     "require-dev": {
@@ -33,6 +87,7 @@
     "autoload-dev": {
         "psr-4": {
             "Tests\\": "tests/"
+
         }
     },
     "scripts": {

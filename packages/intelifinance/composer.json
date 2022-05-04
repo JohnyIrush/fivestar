@@ -1,0 +1,29 @@
+{
+    "name": "softwarescares/intelifinance",
+    "description": "Inteli System Finance Manager package. Handles all payments, transactions, and subscription",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Softwarescares\\Intelifinance\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "John Irungu",
+            "email": "johnydanxin@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {},
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Softwarescares\\Intelifinance\\InteliFinanceServiceProvider"
+            ],
+            "aliases": {
+
+            }
+        }
+    }
+}

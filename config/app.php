@@ -165,13 +165,16 @@ return [
         /*
          * Package Service Providers...
          */
+        Softwarescares\Safaricomdaraja\app\Providers\DarajaServiceProvider::class,
+        Softwarescares\Safaricomdaraja\app\Providers\DarajaTransactionProvider::class,
+        Softwarescares\Safaricomdaraja\app\Providers\DarajaEventServiceProvider::class,
 
         /*
          * Application Service Providers...
          */
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
-        // App\Providers\BroadcastServiceProvider::class,
+        App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         App\Providers\FortifyServiceProvider::class,

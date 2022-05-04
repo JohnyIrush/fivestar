@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-expand-lg position-absolute top-0 z-index-3 w-100 shadow-none my-3  navbar-transparent mt-4">
+  <nav class="navbar glass-header navbar-expand-lg position-absolute top-0 z-index-3 w-100 shadow-none my-3  navbar-transparent mt-4">
     <div class="container">
       <a class="navbar-brand font-weight-bolder ms-lg-0 ms-3 text-white" :href="route('dashboard')">
         Inteli System
@@ -1205,3 +1205,24 @@
         },
     })
 </script>
+
+<style scoped>
+.glass-header
+{
+    position: absolute !important;
+    top: -5px !important;
+    right: 20px !important;
+    left: 5px !important;
+    padding: 20px 50px !important;
+    /*display: flex;
+    justify-content: space-between;
+    align-items: center;*/
+    background: rgba(255, 255, 255, 0.2) !important;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05) !important;
+    border-radius: 20px !important;
+    backdrop-filter: blur(10px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.5) !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.25) !important;
+    border-left: 1px solid rgba(255, 255, 255, 0.5) !important;
+}
+</style>

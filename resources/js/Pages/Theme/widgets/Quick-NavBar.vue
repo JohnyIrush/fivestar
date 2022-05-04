@@ -1,9 +1,9 @@
 <template>
     <div class="container position-sticky z-index-sticky top-0">
     <div class="row">
-      <div class="col-12">
+      <div class="col-12 ">
         <!-- Navbar -->
-        <nav class="navbar navbar-expand-lg top-0 z-index-3 shadow position-absolute my-3 py-2 start-0 end-0 mx-4">
+        <nav class="navbar glass-header navbar-expand-lg top-0 z-index-3 shadow position-absolute my-3 py-2 start-0 end-0 mx-4">
           <div class="container-fluid">
             <Link class="navbar-brand font-weight-bolder ms-lg-0 ms-3 " :href="route('dashboard')">
               Inteli System
@@ -67,3 +67,24 @@
         },
     })
 </script>
+
+<style scoped>
+.glass-header
+{
+    position: absolute !important;
+    top: -5px !important;
+    right: 20px !important;
+    left: 5px !important;
+    padding: 20px 50px !important;
+    /*display: flex;
+    justify-content: space-between;
+    align-items: center;*/
+    background: rgba(255, 255, 255, 0.2) !important;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05) !important;
+    border-radius: 20px !important;
+    backdrop-filter: blur(10px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.5) !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.25) !important;
+    border-left: 1px solid rgba(255, 255, 255, 0.5) !important;
+}
+</style>

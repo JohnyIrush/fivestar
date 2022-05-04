@@ -1,0 +1,29 @@
+{
+    "name": "softwarescares/intelitimetable",
+    "description": "Inteli system timetable module, handles all time, timetable and schedule tasks for school.",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Softwarescares\\Intelitimetable\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "JohhyIrush",
+            "email": "johnydanxin@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {},
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Softwarescares\\Intelitimetable\\InteliTimetableServiceProvider"
+            ],
+            "aliases": {
+               
+            }
+        }
+    }
+}

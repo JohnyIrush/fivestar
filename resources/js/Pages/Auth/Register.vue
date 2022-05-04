@@ -1,7 +1,7 @@
 <template>
     <Sign_Up_NavBar></Sign_Up_NavBar>
-        <section class="min-vh-100 mb-8">
-          <div class="page-header align-items-start min-vh-50 pt-5 pb-11 m-3 border-radius-lg" style="background-image: url('../assets/img/curved-images/curved14.jpg');">
+        <section class="min-vh-100 mb-8 main">
+          <div class="page-header glass-container align-items-start min-vh-50 pt-5 pb-11 m-3 border-radius-lg" style="background-image: url('../assets/img/curved-images/curved14.jpg');">
             <span class="mask bg-gradient-dark opacity-6"></span>
             <div class="container">
               <div class="row justify-content-center">
@@ -66,51 +66,72 @@
                   <div class="card-body">
                    <Head title="Register" />
                    <jet-validation-errors class="mb-4" />
-           
-                   <form @submit.prevent="submit">
-                       <div>
-                           <jet-label for="name" value="Name" />
-                           <jet-input id="name" type="text" class="mt-1 block w-full" v-model="form.name" required autofocus autocomplete="name" />
-                       </div>
-           
-                       <div class="mt-4">
-                           <jet-label for="email" value="Email" />
-                           <jet-input id="email" type="email" class="mt-1 block w-full" v-model="form.email" required />
-                       </div>
-           
-                       <div class="mt-4">
-                           <jet-label for="password" value="Password" />
-                           <jet-input id="password" type="password" class="mt-1 block w-full" v-model="form.password" required autocomplete="new-password" />
-                       </div>
-           
-                       <div class="mt-4">
-                           <jet-label for="password_confirmation" value="Confirm Password" />
-                           <jet-input id="password_confirmation" type="password" class="mt-1 block w-full" v-model="form.password_confirmation" required autocomplete="new-password" />
-                       </div>
-           
-                       <div class="mt-4" v-if="$page.props.jetstream.hasTermsAndPrivacyPolicyFeature">
-                           <jet-label for="terms">
-                               <div class="flex items-center">
-                                   <jet-checkbox name="terms" id="terms" v-model:checked="form.terms" />
-           
-                                   <div class="ml-2">
-                                       I agree to the <a target="_blank" :href="route('terms.show')" class="underline text-sm text-gray-600 hover:text-gray-900">Terms of Service</a> and <a target="_blank" :href="route('policy.show')" class="underline text-sm text-gray-600 hover:text-gray-900">Privacy Policy</a>
-                                   </div>
-                               </div>
-                           </jet-label>
-                       </div>
-    
-                       <div class="items-center  mt-4">
-                           <Link :href="route('login')" class="underline text-white text-center text-sm text-gray-600 hover:text-gray-900">
-                               Already registered?
-                           </Link>
-                       </div>
-                       <div class="items-center  mt-4">
-                           <button class="btn bg-gradient-dark w-100 my-4 mb-2 text-center" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                               Register
-                           </button>
-                       </div>
-                   </form>
+
+                    <section>
+                        <div class="color"></div>
+                        <div class="color"></div>
+                        <div class="color"></div>
+                        <div class="box">
+                            <div class="square" style="--i:0;"></div>
+                            <div class="square" style="--i:1;"></div>
+                            <div class="square" style="--i:2;"></div>
+                            <div class="square" style="--i:3;"></div>
+                            <div class="square" style="--i:4;"></div>
+                            <div class="form-container">
+                               <form @submit.prevent="submit">
+                                    <div>
+                                        <jet-label for="name" value="Name" />
+                                        <jet-input id="name" type="text" class="mt-1 block w-full" v-model="form.name" required autofocus autocomplete="name" />
+                                    </div>
+
+                                    <div class="mt-4">
+                                        <jet-label for="email" value="Email" />
+                                        <jet-input id="email" type="email" class="mt-1 block w-full" v-model="form.email" required />
+                                    </div>
+
+                                    <div class="mt-4">
+                                        <jet-label for="phone" value="Phone" />
+                                        <jet-input id="phone" type="tel" class="mt-1 block w-full" v-model="form.phone" required />
+                                    </div>
+
+                                    <div class="mt-4">
+                                        <jet-label for="password" value="Password" />
+                                        <jet-input id="password" type="password" class="mt-1 block w-full" v-model="form.password" required autocomplete="new-password" />
+                                    </div>
+
+                                    <div class="mt-4">
+                                        <jet-label for="password_confirmation" value="Confirm Password" />
+                                        <jet-input id="password_confirmation" type="password" class="mt-1 block w-full" v-model="form.password_confirmation" required autocomplete="new-password" />
+                                    </div>
+
+
+                                    <div class="mt-4" v-if="$page.props.jetstream.hasTermsAndPrivacyPolicyFeature">
+                                        <jet-label for="terms">
+                                            <div class="flex items-center">
+                                                <jet-checkbox name="terms" id="terms" v-model:checked="form.terms" />
+
+                                                <div class="ml-2">
+                                                    I agree to the <a target="_blank" :href="route('terms.show')" class="underline text-sm text-gray-600 hover:text-gray-900">Terms of Service</a> and <a target="_blank" :href="route('policy.show')" class="underline text-sm text-gray-600 hover:text-gray-900">Privacy Policy</a>
+                                                </div>
+                                            </div>
+                                        </jet-label>
+                                    </div>
+
+                                    <div class="items-center  mt-4">
+                                        <Link :href="route('login')" class="underline text-white text-center text-sm text-gray-600 hover:text-gray-900">
+                                            Already registered?
+                                        </Link>
+                                    </div>
+                                    <div class="items-center  mt-4">
+                                        <button class="btn bg-gradient-dark w-100 my-4 mb-2 text-center" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+                                            Register
+                                        </button>
+                                    </div>
+                               </form>
+                            </div>
+                        </div>
+                    </section>
+
                   </div>
                 </div>
               </div>
@@ -150,9 +171,10 @@
                 form: this.$inertia.form({
                     name: '',
                     email: '',
+                    phone: '',
                     password: '',
                     password_confirmation: '',
-                    terms: false,
+                    terms: false
                 })
             }
         },
@@ -166,3 +188,279 @@
         }
     })
 </script>
+
+<style scoped>
+.main
+{
+
+    background: linear-gradient(purple, pink) !important;
+    background-size: cover !important;
+    padding: 15px !important;
+}
+
+.glass-container
+{
+    /*position: relative;
+    min-height: calc(100vh - 280);
+    width: calc(100% - 100px);*/
+    background: rgba(255, 255, 255, 0.5) !important;
+    box-shadow: 0 15px 35px rgba(255, 255, 255, 0.05) !important;
+    border-radius: 20px !important;
+    justify-content: space-between !important;
+}
+
+.glass-header
+{
+    position: absolute !important;
+    top: -5px !important;
+    right: 20px !important;
+    left: 5px !important;
+    padding: 20px 50px !important;
+    /*display: flex;
+    justify-content: space-between;
+    align-items: center;*/
+    background: rgba(255, 255, 255, 0.2) !important;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05) !important;
+    border-radius: 20px !important;
+    backdrop-filter: blur(10px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.5) !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.25) !important;
+    border-left: 1px solid rgba(255, 255, 255, 0.5) !important;
+}
+
+/*Content*/
+
+.glass-content
+{
+    transform: translateX(-100) !important;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05) !important;
+    border-radius: 20px !important;
+    backdrop-filter: blur(10px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.5) !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.25) !important;
+    border-left: 1px solid rgba(255, 255, 255, 0.5) !important;
+    padding: 5px !important;
+}
+
+/*
+
+*
+{
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
+}
+
+body
+{
+    overflow: hidden;
+}
+
+section
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(to bottom, #f1f4f9, #dff1ff);
+}
+
+*/
+
+section .color
+{
+    position: absolute;
+    filter: blur(150px);
+}
+
+section .color:nth-child(1)
+{
+    top: -350px;
+    width: 600px;
+    height: 600px;
+    background: #ff359b;
+}
+
+section .color:nth-child(2)
+{
+    bottom: -150px;
+    left: 100px;
+    width: 500px;
+    height: 500px;
+    background: #fffd87;
+}
+
+section .color:nth-child(3)
+{
+    bottom: 50px;
+    right: 100px;
+    width: 300px;
+    height: 300px;
+    background: #00d2ff;
+}
+
+.box
+{
+    position: relative;
+}
+
+.box .square
+{
+    position: absolute;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.1);
+    animation: animate 10s linear infinite;
+    animation-delay: calc(-1s * var(--i));
+}
+
+@keyframes animate {
+    0%, 100%
+    {
+        transform: translateY(-40px);
+    }
+    50%
+    {
+        transform: translateY(40px);
+    }
+}
+
+.box .square:nth-child(1)
+{
+    top: -50px;
+    right: -60px;
+    width: 100px;
+    height: 100px;
+}
+
+
+.box .square:nth-child(2)
+{
+    top: 150px;
+    left: -100px;
+    width: 120px;
+    height: 120px;
+    z-index: 2;
+}
+
+.box .square:nth-child(3)
+{
+    top: 50px;
+    left: -60px;
+    width: 80px;
+    height: 80px;
+    z-index: 2;
+}
+
+.box .square:nth-child(4)
+{
+    top: -80px;
+    left: 100px;
+    width: 50px;
+    height: 50px;
+}
+
+.box .square:nth-child(5)
+{
+    top: -80px;
+    left: 140px;
+    width: 60px;
+    height: 60px;
+}
+
+
+.form-container
+{
+    position: relative;
+    /*
+    width: 400px;
+    min-height: 400px;
+    */
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.form
+{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding: 40px;
+}
+
+.form h2
+{
+    position: relative;
+    color: #fff;
+    font-size: 24px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-bottom: 40px;
+}
+
+.form h2::before
+{
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    width: 80px;
+    height: 4px;
+    background: #fff;
+}
+
+.form .inputBox input
+{
+    width: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    outline: none;
+    padding: 10px 20px;
+    border-radius: 35px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    font-size: 16px;
+    letter-spacing: 1px;
+    color: #fff;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.form .inputBox input::placeholder
+{
+    color: #fff;
+}
+
+.form .inputBox input[type="submit"]
+{
+   background: #fff;
+   color: #666;
+   max-width: 100px;
+   cursor: pointer;
+   font-weight: 600;
+}
+
+.forget
+{
+    margin-top: 5px;
+    color: #fff;
+}
+
+.forget a
+{
+    color: #fff;
+    font-weight: 600;
+}
+</style>

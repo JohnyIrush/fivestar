@@ -1,0 +1,29 @@
+{
+    "name": "softwarescares/inteliacademic",
+    "description": "Inteli system Academic module, handles all the academic tasks for school, teachers, levels, streams, subjects etc.",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Softwarescares\\Inteliacademic\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "JohhyIrush",
+            "email": "johnydanxin@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {},
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Softwarescares\\Inteliacademic\\InteliAcademicServiceProvider"
+            ],
+            "aliases": {
+
+            }
+        }
+    }
+}

@@ -1,5 +1,5 @@
 <template>
-    <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur" navbar-scroll="true">
+    <nav class="navbar glass-header navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur" navbar-scroll="true">
       <div class="container-fluid py-1 px-3">
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
@@ -20,6 +20,12 @@
               <Link :href="route('login')" class="nav-link text-body font-weight-bold px-0">
                 <i class="fa fa-user me-sm-1"></i>
                 <span class="d-sm-inline d-none">Sign In</span>
+              </Link>
+            </li>
+            <li class="nav-item d-flex align-items-center">
+              <Link :href="route('logout')" class="nav-link text-body font-weight-bold px-0">
+                <i class="fa fa-user me-sm-1"></i>
+                <span class="d-sm-inline d-none">Logout</span>
               </Link>
             </li>
             <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
@@ -125,3 +131,57 @@
         },
     })
 </script>
+
+<style scoped>
+main
+{
+
+    background: linear-gradient(purple, pink);
+    background-size: cover;
+    padding: 15px;
+}
+
+.glass-container
+{
+    /*position: relative;
+    min-height: calc(100vh - 280);
+    width: calc(100% - 100px);*/
+    background: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 15px 35px rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    justify-content: space-between;
+}
+
+.glass-header
+{
+    /*position: absolute;
+    top: -5px;
+    right: 20px;
+    left: 5px;
+    padding: 20px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;*/
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-top: 1px solid rgba(255, 255, 255, 0.25);
+    border-left: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+/*Content*/
+
+.glass-content
+{
+    transform: translateX(-100);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-top: 1px solid rgba(255, 255, 255, 0.25);
+    border-left: 1px solid rgba(255, 255, 255, 0.5);
+    padding: 5px;
+}
+</style>

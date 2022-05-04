@@ -44,79 +44,12 @@ class UIController extends Controller
     {
         return Inertia::render('Theme/windows/VR');
     }
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
+     * Revising Vuex
      */
-    public function create()
+    public function vuex()
     {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\StoreUIRequest  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(StoreUIRequest $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\UI  $uI
-     * @return \Illuminate\Http\Response
-     */
-    public function show(UI $uI)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\UI  $uI
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(UI $uI)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \App\Http\Requests\UpdateUIRequest  $request
-     * @param  \App\Models\UI  $uI
-     * @return \Illuminate\Http\Response
-     */
-    public function update(UpdateUIRequest $request, UI $uI)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\UI  $uI
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(UI $uI)
-    {
-        //
+        return Inertia::render('components/App');
     }
 }

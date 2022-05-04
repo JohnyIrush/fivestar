@@ -1,0 +1,29 @@
+{
+    "name": "softwarescares/inteliinstaller",
+    "description": "Inteli System installer, package handles all tasks of downloading, installing, updating, upgrading, purchasing, subscribing to intelisystem, installing packages, uninstalling inteli system.",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Softwarescares\\Inteliinstaller\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "JohhyIrush",
+            "email": "johnydanxin@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {},
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Softwarescares\\Inteliinstaller\\InteliInstallerServiceProvider"
+            ],
+            "aliases": {
+               
+            }
+        }
+    }
+}
