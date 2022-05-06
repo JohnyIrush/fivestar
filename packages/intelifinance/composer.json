@@ -1,6 +1,6 @@
 {
     "name": "softwarescares/intelifinance",
-    "description": "Inteli System Finance Manager package. Handles all payments, transactions, and subscription",
+    "description": "Finance Package",
     "type": "library",
     "license": "MIT",
     "autoload": {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Softwarescares\InteliFinance;
+namespace Softwarescares\Intelifinance;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -46,7 +46,7 @@ class InteliFinanceServiceProvider extends ServiceProvider
 
         $this->publishes([
             __DIR__.'/database/seeders' => public_path('../database/seeders'),
-        ],'intelifinance-seeders'); //seeders
+        ],'intelifinance-seeders');
 
         /*
         $this->publishes([

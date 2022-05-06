@@ -19,7 +19,7 @@
         <span></span>
         <div class="content text-white">
           <h5>Pay With Paypal</h5>
-          <button class="btn btn-styles">Pay <i class="fa fa-paypal fa-2x"></i></button>
+          <button class="btn btn-styles" data-bs-toggle="modal" data-bs-target="#inteli-paypal-pay">Pay <i class="fa fa-stripe fa-2x"></i> </button>
         </div>
       </div>
       <div class="box col-4">
@@ -88,8 +88,8 @@
           <button class="btn btn-styles">Pay</button>
         </div>
       </div>
-      <paypal_payment></paypal_payment>
   </div>
+  <paypal_payment></paypal_payment>
 </template>
 
 <script>

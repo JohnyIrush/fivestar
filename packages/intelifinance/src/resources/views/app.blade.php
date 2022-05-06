@@ -24,6 +24,8 @@
         <!-- CSS Files -->
         <link id="pagestyle" href="/theme/assets/css/soft-ui-dashboard.css?v=1.0.3" rel="stylesheet" />
 
+        <link href="/assets/css/icons.css" rel="stylesheet" />
+
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/brands.min.css" integrity="sha512-sVSECYdnRMezwuq5uAjKQJEcu2wybeAPjU4VJQ9pCRcCY4pIpIw4YMHIOQ0CypfwHRvdSPbH++dA3O4Hihm/LQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/fontawesome.min.css" integrity="sha512-P9vJUXK+LyvAzj8otTOKzdfF1F3UYVl13+F8Fof8/2QNb8Twd6Vb+VD52I7+87tex9UXxnzPgWA3rH96RExA7A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -36,7 +38,7 @@
     <body class="font-sans antialiased g-sidenav-show  bg-gray-100">
         @inertia
 
-     
+
      <!--   Core JS Files   -->
      <script src="/theme/assets/js/core/popper.min.js" defer></script>
      <script src="/theme/assets/js/core/bootstrap.min.js" defer></script>
@@ -47,10 +49,10 @@
      <script async defer src="https://buttons.github.io/buttons.js" defer></script>
      <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
      <script src="/theme/assets/js/soft-ui-dashboard.min.js?v=1.0.3" defer></script>
-     
+
 
      <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js" defer></script>
-     <script src="/theme/components/charts/google/barchart.js" defer></script> 
+     <script src="/theme/components/charts/google/barchart.js" defer></script>
      <script src="/theme/components/charts/google/columnchart.js" defer></script>
      <script>
           var win = navigator.platform.indexOf('Win') > -1;

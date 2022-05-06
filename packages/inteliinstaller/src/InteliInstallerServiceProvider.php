@@ -29,7 +29,7 @@ class InteliInstallerServiceProvider extends ServiceProvider
         $this->loadMigrationsFrom(__DIR__.'/database/migrations'); //-- migrations
         $this->loadFactoriesFrom(__DIR__.'/database/migrations/factories'); //-- factories
 
-    
+
         $this->publishes([
             __DIR__.'/resources/js/Pages/inteli_installer' => public_path('../resources/js/Pages/inteli_installer'),
         ], 'inteliinstaller-ui');

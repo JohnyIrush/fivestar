@@ -1,8 +1,13 @@
 {
     "name": "softwarescares/inteliteam",
-    "description": "Inteli teams is Inteli system package or module for user, teams, designers .etc manages roles, permissions, user activities etc",
+    "description": "Teams package",
     "type": "library",
     "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Softwarescares\\Inteliteam\\": "src/"
+        }
+    },
     "authors": [
         {
             "name": "John Irungu",
@@ -11,11 +16,6 @@
     ],
     "minimum-stability": "stable",
     "require": {},
-    "autoload": {
-        "psr-4": {
-            "Softwarescares\\Inteliteam\\": "src/"
-        }
-    },
     "extra": {
         "laravel": {
             "providers": [
