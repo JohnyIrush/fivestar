@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "bfd6bdabf8620175d4746374fd4360a4",
+    "content-hash": "e785dbdccbd9a6897fa6b02c2a6c5dd5",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -5238,9 +5238,17 @@
             "dist": {
                 "type": "path",
                 "url": "packages/intelifinance",
-                "reference": "a316fc8611e6baa03e97b76efd8d8ca090795c4b"
+                "reference": "f18b7389d03cdc46c2424200f93c1e681d66a503"
             },
             "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Softwarescares\\Intelifinance\\InteliFinanceServiceProvider"
+                    ],
+                    "aliases": []
+                }
+            },
             "autoload": {
                 "psr-4": {
                     "Softwarescares\\Intelifinance\\": "src/"
@@ -5341,9 +5349,17 @@
             "dist": {
                 "type": "path",
                 "url": "packages/inteliteam",
-                "reference": "a3bebe2f7f50f170679cc9195159bc01ad69d564"
+                "reference": "3042950bc497672d97e0d229413e6d72b1485565"
             },
             "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Softwarescares\\Inteliteam\\InteliTeamServiceProvider"
+                    ],
+                    "aliases": []
+                }
+            },
             "autoload": {
                 "psr-4": {
                     "Softwarescares\\Inteliteam\\": "src/"
@@ -10746,12 +10762,12 @@
     "minimum-stability": "dev",
     "stability-flags": {
         "softwarescares/inteliacademic": 20,
+        "softwarescares/intelifinance": 20,
         "softwarescares/inteliinstaller": 20,
         "softwarescares/intelistaff": 20,
+        "softwarescares/inteliteam": 20,
         "softwarescares/intelitimetable": 20,
-        "softwarescares/safaricomdaraja": 20,
-        "softwarescares/intelifinance": 20,
-        "softwarescares/inteliteam": 20
+        "softwarescares/safaricomdaraja": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,

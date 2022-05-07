@@ -61,12 +61,12 @@
         "laravel/tinker": "^2.5",
         "pusher/pusher-php-server": "^7.0",
         "softwarescares/inteliacademic": "@dev",
+        "softwarescares/intelifinance": "@dev",
         "softwarescares/inteliinstaller": "@dev",
         "softwarescares/intelistaff": "@dev",
+        "softwarescares/inteliteam": "@dev",
         "softwarescares/intelitimetable": "@dev",
         "softwarescares/safaricomdaraja": "dev-main",
-        "softwarescares/intelifinance": "@dev",
-        "softwarescares/inteliteam": "@dev",
         "tightenco/ziggy": "^1.0"
     },
     "require-dev": {
