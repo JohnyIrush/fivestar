@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use Softwarescares\Safaricomdaraja\app\Models\BusinessToCustomerTransaction;
+use Softwarescares\Intelisafaricomdaraja\app\Models\BusinessToCustomerTransaction;
 
 class BusinessToCustomerTableSeeder extends Seeder
 {
@@ -16,11 +16,11 @@ class BusinessToCustomerTableSeeder extends Seeder
     {
         BusinessToCustomerTransaction::truncate();
 
-        $result = json_decode('{    
+        $result = json_decode('{
             "Result": {
                "ResultType": 0,
                "ResultCode": 0,
-               "ResultDesc": "The service request is processed successfully.", 
+               "ResultDesc": "The service request is processed successfully.",
                "OriginatorConversationID": "10571-7910404-1",
                "ConversationID": "AG_20191219_00004e48cf7e3533f581",
                "TransactionID": "NLJ41HAY6Q",
@@ -68,13 +68,13 @@ class BusinessToCustomerTableSeeder extends Seeder
                }
             }
          }');
-     
+
 
         BusinessToCustomerTransaction::create(
 
             [
-               "ResultType" => $result->Result->ResultType,                       
-               "ResultCode" => $result->Result->ResultCode,            
+               "ResultType" => $result->Result->ResultType,
+               "ResultCode" => $result->Result->ResultCode,
                "ResultDesc" => $result->Result->ResultDesc,
                "OriginatorConversationID" =>   $result->Result->OriginatorConversationID,
                "ConversationID" => $result->Result->ConversationID,
@@ -110,8 +110,8 @@ class BusinessToCustomerTableSeeder extends Seeder
         BusinessToCustomerTransaction::create(
 
          [
-            "ResultType" => $result->Result->ResultType,                     
-            "ResultCode" => $result->Result->ResultCode,            
+            "ResultType" => $result->Result->ResultType,
+            "ResultCode" => $result->Result->ResultCode,
             "ResultDesc" => $result->Result->ResultDesc,
             "OriginatorConversationID" =>   $result->Result->OriginatorConversationID,
             "ConversationID" => $result->Result->ConversationID,

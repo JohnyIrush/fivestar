@@ -3,14 +3,14 @@
 /*** Package api routes ***/
 
 use Illuminate\Support\Facades\Route;
-use Softwarescares\Safaricomdaraja\app\Http\Controllers\DarajaProvider\BusinessToCustomerController;
-use Softwarescares\Safaricomdaraja\app\Http\Controllers\DarajaProvider\CustomerToBusinessController;
-use Softwarescares\Safaricomdaraja\app\Http\Controllers\DarajaProvider\MpesaExpressController;
+use Softwarescares\Intelisafaricomdaraja\app\Http\Controllers\DarajaProvider\BusinessToCustomerController;
+use Softwarescares\Intelisafaricomdaraja\app\Http\Controllers\DarajaProvider\CustomerToBusinessController;
+use Softwarescares\Intelisafaricomdaraja\app\Http\Controllers\DarajaProvider\MpesaExpressController;
 
 use Illuminate\Http\Request;
-use Softwarescares\Safaricomdaraja\app\Http\Controllers\DarajaController;
-use Softwarescares\Safaricomdaraja\app\Http\Controllers\DarajaProvider\AccountBalanceController;
-use Softwarescares\Safaricomdaraja\app\Http\Controllers\DarajaProvider\TransactionStatusController;
+use Softwarescares\Intelisafaricomdaraja\app\Http\Controllers\DarajaController;
+use Softwarescares\Intelisafaricomdaraja\app\Http\Controllers\DarajaProvider\AccountBalanceController;
+use Softwarescares\Intelisafaricomdaraja\app\Http\Controllers\DarajaProvider\TransactionStatusController;
 
 Route::post("mpesaexpress/result",[MpesaExpressController::class, "result"]);
 
@@ -20,9 +20,9 @@ Route::post("customertobusiness/confirmation",[CustomerToBusinessController::cla
 Route::post("businesstocustomer/result",[BusinessToCustomerController::class, "result"]);
 
 /** API Proxy to send notification
- *  incase the payment request is 
- * timed out while awaiting 
- * processing in the queue.  
+ *  incase the payment request is
+ * timed out while awaiting
+ * processing in the queue.
  */
 Route::post("businesstocustomer/queue-timeout",[BusinessToCustomerController::class, "queueTimeOutURL"]);
 

@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Policies;
+namespace Softwarescares\Intelifinance\app\Policies;
 
-use App\Models\Paypal;
-use App\Models\User;
+use Softwarescares\Intelifinance\app\Models\Paypal;
+use Softwarescares\Intelifinance\app\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class PaypalPolicy

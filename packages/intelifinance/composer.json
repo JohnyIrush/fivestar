@@ -1,6 +1,6 @@
 {
     "name": "softwarescares/intelifinance",
-    "description": "Finance Package",
+    "description": "Inteli system Finance Package, manages all Inteli finances aspects. Inteli installation, subscription and upgrade payments. Schools Finances fees",
     "type": "library",
     "license": "MIT",
     "autoload": {
@@ -19,7 +19,8 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Softwarescares\\Intelifinance\\InteliFinanceServiceProvider"
+                "Softwarescares\\Intelifinance\\InteliFinanceServiceProvider",
+                "Softwarescares\\Intelifinance\\app\\Providers\\InteliEventServiceProvider"
             ],
             "aliases": {
 

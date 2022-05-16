@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use Softwarescares\Safaricomdaraja\app\Models\CustomerToBusinessTransaction;
+use Softwarescares\Intelisafaricomdaraja\app\Models\CustomerToBusinessTransaction;
 
 class CustomerToBusinessTableSeeder extends Seeder
 {
@@ -51,7 +51,7 @@ class CustomerToBusinessTableSeeder extends Seeder
                         "MiddleName" => "",
                         "LastName" => "Doe",
                         "order_id" => 2
-    
+
                 ]
         );
     }

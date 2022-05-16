@@ -39,6 +39,14 @@
                 "symlink": true
             }
         },
+        "intelifinance": {
+            "type": "path",
+            "url": "packages/intelifinance",
+            "options": {
+                "symlink": true
+            }
+        }
+        ,
         "intelisafaricomdaraja": {
             "type": "path",
             "url": "packages/intelisafaricomdaraja",
@@ -65,6 +73,7 @@
         "softwarescares/intelistaff": "@dev",
         "softwarescares/intelitimetable": "@dev",
         "softwarescares/inteliteam": "@dev",
+        "softwarescares/intelifinance": "@dev",
         "softwarescares/intelisafaricomdaraja": "@dev",
         "tightenco/ziggy": "^1.0"
     },

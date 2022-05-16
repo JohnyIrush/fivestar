@@ -26,14 +26,14 @@ class TimeTable
     public $subject_lessons_limit;
 
 
-    public function __construct()
+    public function __construct(Time $time)
     {
         $this->timetable = [];
         $this->lessons = [];
         $this->sessions = [];
         $this->sections = [];
         $this->sessionsDurations = [];
-        $this->time = new Time();
+        $this->time = $time;
         $this->selectedVenues = [];
         $this->section_total_lessons = [];
         $this->subject_lessons_limit = [];
@@ -47,7 +47,7 @@ class TimeTable
         foreach (Day::with('daySession')->get() as $day)
         {
             $timetable[$day->day] = [];
-    
+
             foreach ($day->daySession as $session)
             {
                 $timetable[$day->day][(string)$session->id] = [];
@@ -74,7 +74,7 @@ class TimeTable
      * lessons functions generates
      * all possible lessons by each teachers
      * Creates an array of all possible Lessons
-     * A Lesson is an object that has 
+     * A Lesson is an object that has
      * (Teacher, Subject, Venue, Level, Stream)
      **/
 
@@ -91,21 +91,21 @@ class TimeTable
                         $streams = Level::find($level->id) != null? Level::find($level->id)->sections: [];
                         foreach ($streams as $stream)
                         {
-                            $venue = Subject::find($subject->id) != null? Subject::find($subject->id)->venue : 0; 
+                            $venue = Subject::find($subject->id) != null? Subject::find($subject->id)->venue : 0;
                             array_push($this->lessons,new Lesson(Teacher::find($teacher->id), $subject, $venue, Level::find($level->id), Stream::find($stream->stream_id)));
-                        } 
-                    } 
-                } 
+                        }
+                    }
+                }
             }
     }
 
     /**
-     * Allocate/Insert Lessons into 
+     * Allocate/Insert Lessons into
      * Respective Sessions Timetable
     */
     public function allocateLessons()
     {
-        
+
         $this->generateAllSessions($this->timetable, $this->section_total_lessons);
         $this->subject_lessons_limit = $this->subjectLessonLimit();
 
@@ -119,8 +119,8 @@ class TimeTable
         }
     }
 
-    /** 
-     * Generate All Timetable Sessions 
+    /**
+     * Generate All Timetable Sessions
      * We are using hashing techniques
      **/
 
@@ -139,7 +139,7 @@ class TimeTable
                 $day = $key;
                 foreach ($sessions as $key => $daysession)
                 {
-                      $session .=  $section . $day . $key; 
+                      $session .=  $section . $day . $key;
                       $sessiondata = ['session' => $session, 'day' => $day, 'daysession' => $key, 'section' => $section];
                       $this->sessions[$section][$session] = [];
                       array_push($this->sessions[$section][$session], $sessiondata);
@@ -268,44 +268,44 @@ class TimeTable
     /**-- generate unique table lesson key(level+stream id)--**/
     public function lessonKey(Lesson $lesson)
     {
-        return (string)$lesson->level->id . (string)$lesson->stream->id; 
+        return (string)$lesson->level->id . (string)$lesson->stream->id;
     }
 
     /**-- return unique teacher key--**/
     public function teacher(Lesson $lesson)
     {
-        return $lesson->teacher->id; 
+        return $lesson->teacher->id;
     }
 
     /**-- return unique venue key--**/
     public function venue(Lesson $lesson)
     {
         if($lesson->venue != null)
-           return $lesson->venue->id; 
+           return $lesson->venue->id;
     }
 
     /**-- return subject key--**/
     public function subject(Lesson $lesson)
     {
-        return $lesson->subject->id; 
+        return $lesson->subject->id;
     }
 
     /**-- return stream key--**/
     public function stream(Lesson $lesson)
     {
-        return $lesson->stream->id; 
+        return $lesson->stream->id;
     }
 
     /**-- return level key--**/
     public function level(Lesson $lesson)
     {
-        return $lesson->level->id; 
+        return $lesson->level->id;
     }
 
     /**-- return section key--**/
     public function section(Lesson $lesson)
     {
-        return (string)$lesson->level->id . (string)$lesson->stream->id; 
+        return (string)$lesson->level->id . (string)$lesson->stream->id;
     }
 
     /**-- return day session key--**/
@@ -313,7 +313,7 @@ class TimeTable
     {
         $id = $this->sessions[$this->section($lesson)][$key][0]['daysession'];
         $session = DaySession::find($id);
-        return $session; 
+        return $session;
     }
 
     /**-- return day session key--**/
@@ -321,13 +321,13 @@ class TimeTable
     {
         $id = $this->sessions[$sectionkey][$key][0]['daysession'];
         $session = DaySession::find($id);
-        return $session; 
+        return $session;
     }
 
     /**-- return unique venue key--**/
     public function setVenue(Lesson &$lesson, $selectedVenues)
     {
-           $lesson->venue = Venue::find($this->locateVenue($lesson, $selectedVenues)); 
+           $lesson->venue = Venue::find($this->locateVenue($lesson, $selectedVenues));
     }
 
     /**-- return available venue--**/
@@ -342,7 +342,7 @@ class TimeTable
         #return ($streamVenues );
         $levelVenues = Level::find($this->level($lesson))->venues != null? Level::find($this->level($lesson))->venues: [];
         #return ($streamVenues );
-        
+
         $subjectVenue = $this->findVenue($subjectVenues, $selectedVenues);
 
         if($subjectVenue != null)
@@ -351,7 +351,7 @@ class TimeTable
         $streamVenue = $this->findVenue($streamVenues, $selectedVenues);
 
         if($streamVenue != null)
-            return $streamVenue; 
+            return $streamVenue;
 
         $levelVenue = $this->findVenue($levelVenues, $selectedVenues);
 
@@ -372,7 +372,7 @@ class TimeTable
             {
                 return $venue->id;
             }
-              
+
         }
     }
 
@@ -417,7 +417,7 @@ class TimeTable
 
     public function calculateSessionDuration(DaySession $daysession)
     {
-        $duration = $this->time->minutesInterval($daysession->start, $daysession->end); 
+        $duration = $this->time->minutesInterval($daysession->start, $daysession->end);
 
         return $duration;
     }

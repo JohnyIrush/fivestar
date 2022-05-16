@@ -5,7 +5,7 @@
                  <!--PROGRESS BAR START-->
                  <progress_bar></progress_bar>
                  <!--PROGRESS BAR END-->
-         
+
                  <!--WIZARD START-->
                          <!--<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
                            <li class="nav-item" role="presentation">
@@ -29,7 +29,7 @@
                              <button class="nav-link" id="pills-installation-tab" data-bs-toggle="pill" data-bs-target="#pills-installation" type="button" role="tab" aria-controls="pills-installation" aria-selected="false">Installation</button>
                            </li>
                          </ul>-->
-                        
+
                         <div class="tab-content" id="pills-tabContent">
                          <!--WELCOME START-->
                          <div class="tab-pane fade show active" id="pills-welcome" role="tabpanel" aria-labelledby="pills-welcome-tab">
@@ -40,7 +40,7 @@
                                  </div>
                                  <div class="col-1"></div>
                              </div>
-         
+
                              <div class="row justify-content-center">
                                  <div class="col-3"></div>
                                  <div class="col-6 d-grid gap-2 mx-auto">
@@ -50,12 +50,12 @@
                              </div>
                          </div>
                          <!--WELCOME END-->
-         
+
                          <!--NAME START-->
                          <div class="tab-pane fade" id="pills-name" role="tabpanel" aria-labelledby="pills-name-tab">
                             <div class="row justify-content-center">
                                 <div class="col-3">
-        
+
                                 </div>
                                 <div class="col-6 glass-content">
                                     <div class="mb-3 mt-3">
@@ -64,10 +64,10 @@
                                     </div>
                                 </div>
                                 <div class="col-3">
-        
+
                                 </div>
                             </div>
-                
+
                             <div class="row justify-content-center">
                                 <div class="col d-grid  mx-auto">
                                   <button  @click="nameStepPrev()" class="btn  mt-3 btn-styles" >Previous</button>
@@ -81,22 +81,22 @@
                             </div>
                          </div>
                          <!--NAME END-->
-         
+
                          <!--DETAILS START-->
                          <div class="tab-pane fade" id="pills-details" role="tabpanel" aria-labelledby="pills-details-tab">
                                 <div class="row justify-content-center ">
-                                    
+
                                     <div class="col-5 glass-content">
                                         <div class="mt-4">
                                             <label for="sch_name"  >School Name</label>
                                             <input type="text" class="mt-1 block w-full sch_name" v-model="school.sch_name" autofocus autocomplete="name" >
                                         </div>
-            
+
                                         <div class="mt-4">
                                             <label for="sch_email" >School Email</label>
                                             <input id="sch_email" type="email" class="mt-1 block w-full" v-model="school.sch_email" >
                                         </div>
-            
+
                                         <div class="mt-4">
                                             <label for="sch_address" >School Address</label>
                                             <input id="sch_address" type="text" class="mt-1 block w-full" v-model="school.sch_address" >
@@ -118,7 +118,7 @@
                                             <label for="sch_phone" >School Phone</label>
                                             <input id="sch_phone" type="tel" class="mt-1 block w-full" v-model="school.sch_phone" >
                                         </div>
-            
+
                                         <div class="mt-4">
                                             <label for="sch_location" >School Location</label>
                                             <input id="sch_location" type="text" class="mt-1 block w-full" v-model="school.sch_location" >
@@ -145,9 +145,9 @@
                                             </select>
                                         </div>
                                     </div>
-                                    
+
                                 </div>
-        
+
 
                             <div class="row justify-content-center">
                                 <div class="col d-grid  mx-auto">
@@ -162,31 +162,31 @@
                             </div>
                          </div>
                          <!--DETAILS END-->
-         
+
                          <!--ADMIN START-->
                          <div class="tab-pane fade" id="pills-admin" role="tabpanel" aria-labelledby="pills-admin-tab">
                             <div class="row justify-content-center ">
                                 <div class="col-2">
-        
+
                                 </div>
                                 <div class="col-8 glass-content">
                                     <div>
                                         <label for="name"  >Name</label>
                                         <input id="name" type="text" class="mt-1 block w-full" v-model="admin.name"  autofocus autocomplete="name" >
                                     </div>
-        
+
                                     <div class="mt-4">
                                         <label for="email" >Email</label>
                                         <input id="email" type="email" class="mt-1 block w-full" v-model="admin.email"  >
                                     </div>
-        
+
                                     <div class="mt-4">
                                         <label for="phone" >Phone</label>
                                         <input id="phone" type="tel" class="mt-1 block w-full" v-model="admin.phone"  >
                                     </div>
                                 </div>
                                 <div class="col-2">
-        
+
                                 </div>
                             </div>
                             <div class="row justify-content-center">
@@ -202,18 +202,45 @@
                             </div>
                          </div>
                          <!--ADMIN END-->
-         
+
+                         <!-- Account START-->
+                         <div class="tab-pane fade" id="pills-register" role="tabpanel" aria-labelledby="pills-register-tab">
+                            <div class="row justify-content-center ">
+                                <div class="col-2">
+
+                                </div>
+                                <div class="col-8 glass-content">
+                                  <register></register>
+                                </div>
+                                <div class="col-2">
+
+                                </div>
+                            </div>
+                            <div class="row justify-content-center">
+                                <div class="col d-grid  mx-auto">
+                                  <button  @click="registerStepPrev()" class="btn  mt-3 btn-styles" >Previous</button>
+                                </div>
+                                <div class="col">
+
+                                </div>
+                                <div class="col d-grid  mx-auto">
+                                  <button  @click="registerStepNext()" class="btn  mt-3 btn-styles" > Payment <i class="fa fa-money"></i></button>
+                                </div>
+                            </div>
+                         </div>
+                         <!-- Account END-->
+
                          <!-- PAYMENT START-->
                          <div class="tab-pane fade" id="pills-payment" role="tabpanel" aria-labelledby="pills-payment-tab">
                             <div class="row justify-content-center">
                                 <div class="col-1">
-        
+
                                 </div>
                                 <div class="col-10 glass-content">
                                   <payment_methods></payment_methods>
                                 </div>
                                 <div class="col-1">
-        
+
                                 </div>
                             </div>
                             <div class="row justify-content-center">
@@ -233,18 +260,18 @@
                             </div>
                          </div>
                          <!-- PAYMENT END-->
-         
+
                          <!-- INSTALLATION START-->
                          <div class="tab-pane fade" id="pills-installation" role="tabpanel" aria-labelledby="pills-installation-tab">
                             <div class="row justify-content-center">
                                 <div class="col-1">
-        
+
                                 </div>
                                 <div class="col-10 glass-content">
                                   <installation></installation>
                                 </div>
                                 <div class="col-1">
-        
+
                                 </div>
                             </div>
                             <div class="row justify-content-around">
@@ -258,7 +285,7 @@
                                   <button   class="btn  mt-3 btn-styles" >Next</button>
                                 </div>
                             </div>
-                             
+
                          </div>
                          <!-- INSTALLATION END-->
                         </div>
@@ -279,9 +306,10 @@ import welcome_slider from "../components/Sliders/Welcome-Slider.vue"
 import payment_methods from "../components/cards/payment-methods"
 import school_details_confirmation from '../components/modals/school_details_confirmation.vue'
 import inteli_code_verify from '../components/modals/inteli-code-verify.vue'
+//import register from '../components/forms/register/Register.vue'
 
 /*Vuex Store*/
-import { store } from '../../../../store/store.js';
+//import { store } from '../../../../store/store.js';
 
 export default {
     components:
@@ -292,7 +320,8 @@ export default {
             welcome_slider,
             payment_methods,
             school_details_confirmation,
-            inteli_code_verify
+            inteli_code_verify,
+            //register
         },
     data() {
         return {
@@ -313,7 +342,7 @@ export default {
             }),
             admin: this.$inertia.form({
                 name: '',
-                email: '', 
+                email: '',
                 phone: '',
             }),
             sch:
@@ -386,7 +415,7 @@ export default {
               const currentTab = document.querySelector("#pills-name")
               const nextTab = document.querySelector("#pills-details")
               currentTab.classList.remove("show", "active");
-              nextTab.classList.add("show", "active") 
+              nextTab.classList.add("show", "active")
             }
             ,
             detailsStepNext()
@@ -394,35 +423,42 @@ export default {
               const currentTab = document.querySelector("#pills-details")
               const nextTab = document.querySelector("#pills-admin")
               currentTab.classList.remove("show", "active");
-              nextTab.classList.add("show", "active") 
+              nextTab.classList.add("show", "active")
             },
             adminStepNext()
             {
               const currentTab = document.querySelector("#pills-admin")
-              const nextTab = document.querySelector("#pills-payment")
+              const nextTab = document.querySelector("#pills-account")
               currentTab.classList.remove("show", "active");
-              nextTab.classList.add("show", "active") 
+              nextTab.classList.add("show", "active")
 
             },
+            registerStepNext()
+            {
+              const currentTab = document.querySelector("#pills-admin")
+              const nextTab = document.querySelector("#pills-payment")
+              currentTab.classList.remove("show", "active");
+              nextTab.classList.add("show", "active")
 
+            },
             paymentStepNext()
             {
               const currentTab = document.querySelector("#pills-payment")
               const nextTab = document.querySelector("#pills-installation")
               currentTab.classList.remove("show", "active");
-              nextTab.classList.add("show", "active") 
+              nextTab.classList.add("show", "active")
             },
 
             /**
              * previous Actions
             */
-            
+
             nameStepPrev()
             {
               const currentTab = document.querySelector("#pills-name")
               const nextTab = document.querySelector("#pills-welcome")
               currentTab.classList.remove("show", "active");
-              nextTab.classList.add("show", "active") 
+              nextTab.classList.add("show", "active")
             },
 
             detailsStepPrev()
@@ -430,7 +466,7 @@ export default {
               const currentTab = document.querySelector("#pills-details")
               const nextTab = document.querySelector("#pills-name")
               currentTab.classList.remove("show", "active");
-              nextTab.classList.add("show", "active") 
+              nextTab.classList.add("show", "active")
             },
 
             adminStepPrev()
@@ -438,76 +474,83 @@ export default {
               const currentTab = document.querySelector("#pills-admin")
               const nextTab = document.querySelector("#pills-details")
               currentTab.classList.remove("show", "active");
-              nextTab.classList.add("show", "active") 
+              nextTab.classList.add("show", "active")
             },
 
+            registerStepPrev()
+            {
+              const currentTab = document.querySelector("#pills-register")
+              const nextTab = document.querySelector("#pills-admin")
+              currentTab.classList.remove("show", "active");
+              nextTab.classList.add("show", "active")
+            },
 
             paymentStepPrev()
             {
               const currentTab = document.querySelector("#pills-payment")
               const nextTab = document.querySelector("#pills-admin")
               currentTab.classList.remove("show", "active");
-              nextTab.classList.add("show", "active") 
+              nextTab.classList.add("show", "active")
             },
             installationStepPrev()
             {
               const currentTab = document.querySelector("#pills-installation")
               const nextTab = document.querySelector("#pills-payment")
               currentTab.classList.remove("show", "active");
-              nextTab.classList.add("show", "active") 
+              nextTab.classList.add("show", "active")
             },
             getSchoolTypes()
             {
-    
+
                 axios.get("/school-types")
                 .then((response)=>{
                     this.sch.types = response.data
                     console.log(response.data)
                 })
                 .catch(()=>{
-    
+
                 })
-    
+
             },
             getSchoolLevels()
             {
-    
+
                 axios.get("/school-levels")
                 .then((response)=>{
                     this.sch.levels = response.data
                     console.log(response.data)
                 })
                 .catch(()=>{
-    
+
                 })
-    
+
             },
 
             getSchoolEducationSystems()
             {
-    
+
                 axios.get("/school-education-systems")
                 .then((response)=>{
                     this.sch.systems = response.data
                     console.log(response.data)
                 })
                 .catch(()=>{
-    
+
                 })
-    
+
             },
             getSchoolGender()
             {
-    
+
                 axios.get("/school-gender")
                 .then((response)=>{
                     this.sch.genders = response.data
                     console.log(response.data)
                 })
                 .catch(()=>{
-    
+
                 })
-    
+
             }
         },
     mounted()

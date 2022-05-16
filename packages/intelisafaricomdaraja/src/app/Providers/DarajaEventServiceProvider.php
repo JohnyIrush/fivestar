@@ -32,32 +32,9 @@ class DarajaEventServiceProvider extends ServiceProvider
     * @var array
     */
     protected $listen = [
-        MPesaExpressTransactionEvent::class => [
-             MPesaExpressTransactionEventListener::class,
-            ],
-        CustomerToBusinessTransactionEvent::class => [
-         CustomerToBusinessTransactionEventListener::class,
-        ],
-        BusinessToCustomerTransactionEvent::class => [
-             BusinessToCustomerTransactionEventListener::class,
-            ],
-
-        TransactionStatusNotificationEvent::class => [
-         TransactionStatusNotificationEventlistener::class,
-        ],
-        TransactionNotificationEvent::class => [
-            TransactionNotificationEventListener::class,
-        ],
-        TransactionReversalEvent::class => [
-            TransactionReversalEventListener::class,
-        ],
-
-        TransactionUpdateReversalEvent::class => [
-            TransactionUpdateReversalEventListener::class,
-        ],
-        StoreCurrentTransactionUserEvent::class => [
-            StoreCurrentTransactionUserEventListener::class,
-        ],
+        InteliPaymentSuccessEvent::class => [
+            InteliPaymentSuccessEventListener::class,
+            ]
         ];
     /**
      * Register any events for your application.

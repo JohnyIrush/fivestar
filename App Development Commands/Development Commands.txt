@@ -11,3 +11,8 @@
 - php artisan make:provider ../../packages/intelifinance/src/InteliFinanceServiceProvider
 - php artisan make:model ../../packages/intelifinance/src/Models/Paypal --all
 - php artisan make:model ../../packages/intelifinance/src/Models/InteliPayment --all
+
+- php artisan generate:event
+
+
+- php artisan make:provider ../../packages/intelifinance/src/app/Providers/InteliEventServiceProvider

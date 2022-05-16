@@ -1,6 +1,6 @@
 <?php
 
-namespace Softwarescares\Intelitimetable\database\seeders;
+namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 

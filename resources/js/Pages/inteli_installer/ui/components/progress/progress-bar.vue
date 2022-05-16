@@ -19,10 +19,14 @@
 			</li>
 			<li class="step-wizard-item">
 				<span class="progress-count">5</span>
-				<span class="progress-label">Payment</span>
+				<span class="progress-label">Account</span>
 			</li>
 			<li class="step-wizard-item">
 				<span class="progress-count">6</span>
+				<span class="progress-label">Payment</span>
+			</li>
+			<li class="step-wizard-item">
+				<span class="progress-count">7</span>
 				<span class="progress-label">Installation</span>
 			</li>
 	   </ul>
@@ -32,7 +36,7 @@
 
 <script>
 export default {
-    
+
 }
 </script>
 
@@ -117,7 +121,7 @@ export default {
     height: 2px;
     transform: translateX(-50%);
     z-index: -10;
-} 
+}
 
 .progress-count
 {
@@ -183,7 +187,7 @@ export default {
 
 .current-item ~ .step-wizard-item .progresss-label
 {
-    opacity: 0.5; 
+    opacity: 0.5;
 }
 
 .current-item .progress-count::after
@@ -206,17 +210,17 @@ export default {
 {
     .step-wizard-list
     {
-        padding: 10px 5px;
+        padding: 5.5px 2.5px;
     }
     .step-wizard-item
     {
-        min-width: 30px;
+        min-width: 15px;
         padding: 0 5px;
     }
 
     .progress-label
     {
-        font-size: 10px;
+        font-size: 7.5px;
         font-weight: 600;
         color: purple;
     }

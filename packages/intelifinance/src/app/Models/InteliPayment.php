@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\..\..\packages\intelifinance\src\Models;
+namespace Softwarescares\Intelifinance\app\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;

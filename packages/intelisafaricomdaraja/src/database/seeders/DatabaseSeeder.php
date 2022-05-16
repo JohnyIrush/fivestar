@@ -3,8 +3,8 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use Softwarescares\Safaricomdaraja\app\Models\BusinessToCustomerTransaction;
-use Softwarescares\Safaricomdaraja\app\Models\CustomerToBusinessTransaction;
+use Softwarescares\Intelisafaricomdaraja\app\Models\BusinessToCustomerTransaction;
+use Softwarescares\Intelisafaricomdaraja\app\Models\CustomerToBusinessTransaction;
 
 class DatabaseSeeder extends Seeder
 {
