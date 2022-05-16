@@ -165,9 +165,6 @@ return [
         /*
          * Package Service Providers...
          */
-        Softwarescares\Safaricomdaraja\app\Providers\DarajaServiceProvider::class,
-        Softwarescares\Safaricomdaraja\app\Providers\DarajaTransactionProvider::class,
-        Softwarescares\Safaricomdaraja\app\Providers\DarajaEventServiceProvider::class,
 
         /*
          * Application Service Providers...

@@ -32,16 +32,16 @@
                 "symlink": true
             }
         },
-        "intelifinance": {
+        "inteliteam": {
             "type": "path",
-            "url": "packages/intelifinance",
+            "url": "packages/inteliteam",
             "options": {
                 "symlink": true
             }
         },
-        "inteliteam": {
+        "intelisafaricomdaraja": {
             "type": "path",
-            "url": "packages/inteliteam",
+            "url": "packages/intelisafaricomdaraja",
             "options": {
                 "symlink": true
             }
@@ -64,9 +64,8 @@
         "softwarescares/inteliinstaller": "@dev",
         "softwarescares/intelistaff": "@dev",
         "softwarescares/intelitimetable": "@dev",
-        "softwarescares/safaricomdaraja": "dev-main",
-        "softwarescares/intelifinance": "@dev",
         "softwarescares/inteliteam": "@dev",
+        "softwarescares/intelisafaricomdaraja": "@dev",
         "tightenco/ziggy": "^1.0"
     },
     "require-dev": {

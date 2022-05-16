@@ -12,29 +12,12 @@
         </div>
         <div class="modal-footer">
          <div class="d-grid gap-2 col-6 mx-auto">
-           <button class="btn btn-primary btn-styles" type="button">Confirm</button>
+           <button  class="btn btn-primary btn-styles" data-bs-dismiss="modal">Close</button>
          </div>
         </div>
       </div>
     </div>
   </div>
-  <!--<div class="modal fade" id="inteli-paypal-pay" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Understood</button>
-      </div>
-    </div>
-  </div>
-</div>-->
 </template>
 
 <script>
@@ -45,44 +28,86 @@ export default
     {
 
     },
+    data() {
+        return {
+            paypal:
+            {
+                amount: 0
+            }
+        }
+    },
     methods:
     {
+        payPalPayment()
+        {
+            axios.post('paypal-payment', this.paypal)
+            .then((response)=>{
+                console.log(response);
+            })
+            .catch(()=>{
 
+            })
+        }
     },
     mounted()
     {
-
-
-      let paypalScript = document.createElement('script')
-      paypalScript.setAttribute('src', 'https://www.paypal.com/sdk/js?client-id=test&currency=USD')
-      document.head.appendChild(paypalScript)
-
-      paypal.Buttons({
-        // Sets up the transaction when a payment button is clicked
-        createOrder: (data, actions) => {
-          return actions.order.create({
-            purchase_units: [{
-              amount: {
-                value: '77.44' // Can also reference a variable or function
-              }
-            }]
-          });
-        },
-        // Finalize the transaction after payer approval
-        onApprove: (data, actions) => {
-          return actions.order.capture().then(function(orderData) {
-            // Successful capture! For dev/demo purposes:
-            console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
-            const transaction = orderData.purchase_units[0].payments.captures[0];
-            alert(`Transaction ${transaction.status}: ${transaction.id}\n\nSee console for all available details`);
-            // When ready to go live, remove the alert and show a success message within this page. For example:
-            // const element = document.getElementById('paypal-button-container');
-            // element.innerHTML = '<h3>Thank you for your payment!</h3>';
-            // Or go to another URL:  actions.redirect('thank_you.html');
-          });
+     paypal.Buttons({
+       style: {
+         layout: 'vertical',
+         color:  'gold',
+         shape:  'pill',
+         label:  'pay',
+       },
+    createOrder: function(data, actions) {
+      // Set up the transaction
+      return actions.order.create({
+        intent: "CAPTURE",
+        purchase_units: [{
+         reference_id: "REFID-000-1001",
+          amount: {
+            currency_code: "USD",
+            value: '13'
+          },
+        payee: {
+            email_address: "softwarescares@gmail.com"
         }
-      }).render('#paypal-button-container');
+        }],
+        application_context:
+        {
+            brand_name: "SoftwaresCares",
+            landing_page: "NO_PREFERENCE",
+            shipping_preference: "GET_FROM_FILE",
+            user_action: "PAY_NOW",
+            return_url: '',
+            cancel_url: '',
+            //stored_payment_source: ''
+        }
+      });
+        console.log("Create Order DATA " + data);
+      console.log("Create Order Actions " + actions);
+    },
+    onApprove: function(data, actions) {
+    // This function captures the funds from the transaction.
+    return actions.order.capture().then(function(details) {
+      // This function shows a transaction success message to your buyer.
+     console.log("on approve DATA " + data);
 
+      alert('Transaction completed by ' + details.payer.name.given_name);
+    });
+    },
+
+    onCancel: function (data) {
+      // Show a cancel page, or return to cart
+        console.log("Cancel data " + data);
+    },
+
+    onError: function (err) {
+      // For example, redirect to a specific error page
+      //window.location.href = "/your-error-page-here";
+      console.log("error data " + err);
+    }
+
+     }).render('#paypal-button-container');
     },
 }
 

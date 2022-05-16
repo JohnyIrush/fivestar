@@ -5,7 +5,7 @@
           <div class="content text-white">
             <h5>Lipa Na Mpesa</h5>
             <img src="/images/mpesa.png" alt="" srcset="">
-            <button class="btn btn-styles">Pay</button>
+            <button class="btn btn-styles" data-bs-toggle="modal" data-bs-target="#inteli-mpesa-pay">Pay </button>
           </div>
       </div>
       <div class="box col-4">
@@ -28,20 +28,6 @@
             <h5>Pay With Equity</h5>
             <button class="btn btn-styles">Pay</button>
           </div>
-      </div>
-      <div class="box col-4">
-          <span></span>
-          <div class="content text-white">
-            <h5>Pay With T-kash</h5>
-            <button class="btn btn-styles">Pay</button>
-          </div>
-      </div>
-      <div class="box col-4">
-        <span></span>
-        <div class="content text-white">
-          <h5>Pay With Vooma</h5>
-          <button class="btn btn-styles">Pay</button>
-        </div>
       </div>
   </div>
   <div class="container row mt-5 mobile-view">
@@ -74,32 +60,21 @@
             <button class="btn btn-styles">Pay</button>
           </div>
       </div>
-      <div class="box col">
-          <span></span>
-          <div class="content text-white">
-            <h5>Pay With T-kash</h5>
-            <button class="btn btn-styles">Pay</button>
-          </div>
-      </div>
-      <div class="box col">
-        <span></span>
-        <div class="content text-white">
-          <h5>Pay With Vooma</h5>
-          <button class="btn btn-styles">Pay</button>
-        </div>
-      </div>
   </div>
   <paypal_payment></paypal_payment>
+  <mpesa_payment></mpesa_payment>
 </template>
 
 <script>
 
 import paypal_payment from '../../../../inteli_finance/widgets/modals/paypal/payment.vue'
+import mpesa_payment from '../../../../inteli_safaricomdaraja/widgets/modals/payment/mpesa-express.vue'
 
 export default {
   components:
   {
-      paypal_payment
+      paypal_payment,
+      mpesa_payment
   },
   watch: {
   },

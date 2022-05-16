@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "bfd6bdabf8620175d4746374fd4360a4",
+    "content-hash": "2d78fee4ee30117aa1c4f701fa455078",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1634,20 +1634,20 @@
         },
         {
             "name": "laravel/cashier",
-            "version": "v13.10.0",
+            "version": "v13.10.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/cashier-stripe.git",
-                "reference": "e46f67f3fa5f3693c25f4e59e6c21f2d4b09e4e8"
+                "reference": "87dea211bf6001b7e0006f710a8c3e6a1c6f8dc4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/cashier-stripe/zipball/e46f67f3fa5f3693c25f4e59e6c21f2d4b09e4e8",
-                "reference": "e46f67f3fa5f3693c25f4e59e6c21f2d4b09e4e8",
+                "url": "https://api.github.com/repos/laravel/cashier-stripe/zipball/87dea211bf6001b7e0006f710a8c3e6a1c6f8dc4",
+                "reference": "87dea211bf6001b7e0006f710a8c3e6a1c6f8dc4",
                 "shasum": ""
             },
             "require": {
-                "dompdf/dompdf": "^0.8.6|^1.0.1",
+                "dompdf/dompdf": "^1.2.1",
                 "ext-json": "*",
                 "illuminate/console": "^8.37|^9.0",
                 "illuminate/contracts": "^8.37|^9.0",
@@ -1710,7 +1710,7 @@
                 "issues": "https://github.com/laravel/cashier/issues",
                 "source": "https://github.com/laravel/cashier"
             },
-            "time": "2022-05-03T15:47:59+00:00"
+            "time": "2022-05-05T13:37:18+00:00"
         },
         {
             "name": "laravel/fortify",
@@ -3930,16 +3930,16 @@
         },
         {
             "name": "psy/psysh",
-            "version": "v0.11.2",
+            "version": "v0.11.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bobthecow/psysh.git",
-                "reference": "7f7da640d68b9c9fec819caae7c744a213df6514"
+                "reference": "05c544b339b112226ad14803e1e5b09a61957454"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/7f7da640d68b9c9fec819caae7c744a213df6514",
-                "reference": "7f7da640d68b9c9fec819caae7c744a213df6514",
+                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/05c544b339b112226ad14803e1e5b09a61957454",
+                "reference": "05c544b339b112226ad14803e1e5b09a61957454",
                 "shasum": ""
             },
             "require": {
@@ -3954,15 +3954,13 @@
                 "symfony/console": "4.4.37 || 5.3.14 || 5.3.15 || 5.4.3 || 5.4.4 || 6.0.3 || 6.0.4"
             },
             "require-dev": {
-                "bamarni/composer-bin-plugin": "^1.2",
-                "hoa/console": "3.17.05.02"
+                "bamarni/composer-bin-plugin": "^1.2"
             },
             "suggest": {
                 "ext-pcntl": "Enabling the PCNTL extension makes PsySH a lot happier :)",
                 "ext-pdo-sqlite": "The doc command requires SQLite to work.",
                 "ext-posix": "If you have PCNTL, you'll want the POSIX extension as well.",
-                "ext-readline": "Enables support for arrow-key history navigation, and showing and manipulating command history.",
-                "hoa/console": "A pure PHP readline implementation. You'll want this if your PHP install doesn't already support readline or libedit."
+                "ext-readline": "Enables support for arrow-key history navigation, and showing and manipulating command history."
             },
             "bin": [
                 "bin/psysh"
@@ -4002,9 +4000,9 @@
             ],
             "support": {
                 "issues": "https://github.com/bobthecow/psysh/issues",
-                "source": "https://github.com/bobthecow/psysh/tree/v0.11.2"
+                "source": "https://github.com/bobthecow/psysh/tree/v0.11.4"
             },
-            "time": "2022-02-28T15:28:54+00:00"
+            "time": "2022-05-06T12:49:14+00:00"
         },
         {
             "name": "pusher/pusher-php-server",
@@ -5233,35 +5231,6 @@
             }
         },
         {
-            "name": "softwarescares/intelifinance",
-            "version": "dev-main",
-            "dist": {
-                "type": "path",
-                "url": "packages/intelifinance",
-                "reference": "a316fc8611e6baa03e97b76efd8d8ca090795c4b"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Softwarescares\\Intelifinance\\": "src/"
-                }
-            },
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "John Irungu",
-                    "email": "johnydanxin@gmail.com"
-                }
-            ],
-            "description": "Finance Package",
-            "transport-options": {
-                "symlink": true,
-                "relative": true
-            }
-        },
-        {
             "name": "softwarescares/inteliinstaller",
             "version": "dev-main",
             "dist": {
@@ -5293,6 +5262,45 @@
                 }
             ],
             "description": "Inteli System installer, package handles all tasks of downloading, installing, updating, upgrading, purchasing, subscribing to intelisystem, installing packages, uninstalling inteli system.",
+            "transport-options": {
+                "symlink": true,
+                "relative": true
+            }
+        },
+        {
+            "name": "softwarescares/intelisafaricomdaraja",
+            "version": "dev-main",
+            "dist": {
+                "type": "path",
+                "url": "packages/intelisafaricomdaraja",
+                "reference": "7cc40a801008f9f4ce3aaf44e2d2f135f3684214"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Softwarescares\\Intelisafaricomdaraja\\app\\Providers\\DarajaServiceProvider",
+                        "Softwarescares\\Intelisafaricomdaraja\\app\\Providers\\DarajaTransactionProvider",
+                        "Softwarescares\\Intelisafaricomdaraja\\app\\Providers\\DarajaEventServiceProvider"
+                    ],
+                    "aliases": []
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Softwarescares\\Intelisafaricomdaraja\\": "src/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "John Irungu",
+                    "email": "johnydanxin@gmail.com"
+                }
+            ],
+            "description": "Safaricom daraja api integration for accessing mpesa services",
             "transport-options": {
                 "symlink": true,
                 "relative": true
@@ -5341,9 +5349,17 @@
             "dist": {
                 "type": "path",
                 "url": "packages/inteliteam",
-                "reference": "a3bebe2f7f50f170679cc9195159bc01ad69d564"
+                "reference": "3042950bc497672d97e0d229413e6d72b1485565"
             },
             "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Softwarescares\\Inteliteam\\InteliTeamServiceProvider"
+                    ],
+                    "aliases": []
+                }
+            },
             "autoload": {
                 "psr-4": {
                     "Softwarescares\\Inteliteam\\": "src/"
@@ -5402,65 +5418,17 @@
             }
         },
         {
-            "name": "softwarescares/safaricomdaraja",
-            "version": "dev-main",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/JohnyIrush/softwarescares-safaricomdaraja.git",
-                "reference": "19f3ec2738df40f1b1546d87240bb4128c8edce5"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/JohnyIrush/softwarescares-safaricomdaraja/zipball/19f3ec2738df40f1b1546d87240bb4128c8edce5",
-                "reference": "19f3ec2738df40f1b1546d87240bb4128c8edce5",
-                "shasum": ""
-            },
-            "default-branch": true,
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Softwarescares\\Safaricomdaraja\\app\\Providers\\DarajaServiceProvider",
-                        "Softwarescares\\Safaricomdaraja\\app\\Providers\\DarajaTransactionProvider",
-                        "Softwarescares\\Safaricomdaraja\\app\\Providers\\DarajaEventServiceProvider"
-                    ],
-                    "aliases": []
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Softwarescares\\Safaricomdaraja\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "John Irungu",
-                    "email": "johnydanxin@gmail.com"
-                }
-            ],
-            "description": "Safaricom daraja api integration for accessing mpesa services",
-            "support": {
-                "issues": "https://github.com/JohnyIrush/softwarescares-safaricomdaraja/issues",
-                "source": "https://github.com/JohnyIrush/softwarescares-safaricomdaraja/tree/main"
-            },
-            "time": "2021-12-06T08:27:30+00:00"
-        },
-        {
             "name": "stripe/stripe-php",
-            "version": "v7.126.0",
+            "version": "v7.128.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/stripe/stripe-php.git",
-                "reference": "c36de62a89475e81d9c75ec08de19376466f67b7"
+                "reference": "c704949c49b72985c76cc61063aa26fefbd2724e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/stripe/stripe-php/zipball/c36de62a89475e81d9c75ec08de19376466f67b7",
-                "reference": "c36de62a89475e81d9c75ec08de19376466f67b7",
+                "url": "https://api.github.com/repos/stripe/stripe-php/zipball/c704949c49b72985c76cc61063aa26fefbd2724e",
+                "reference": "c704949c49b72985c76cc61063aa26fefbd2724e",
                 "shasum": ""
             },
             "require": {
@@ -5505,9 +5473,9 @@
             ],
             "support": {
                 "issues": "https://github.com/stripe/stripe-php/issues",
-                "source": "https://github.com/stripe/stripe-php/tree/v7.126.0"
+                "source": "https://github.com/stripe/stripe-php/tree/v7.128.0"
             },
-            "time": "2022-05-03T15:37:27+00:00"
+            "time": "2022-05-05T17:18:02+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -10749,9 +10717,8 @@
         "softwarescares/inteliinstaller": 20,
         "softwarescares/intelistaff": 20,
         "softwarescares/intelitimetable": 20,
-        "softwarescares/safaricomdaraja": 20,
-        "softwarescares/intelifinance": 20,
-        "softwarescares/inteliteam": 20
+        "softwarescares/inteliteam": 20,
+        "softwarescares/intelisafaricomdaraja": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,

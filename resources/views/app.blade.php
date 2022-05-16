@@ -48,12 +48,15 @@
      <!-- Github buttons -->
      <script async defer src="https://buttons.github.io/buttons.js" defer></script>
      <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
-     <script src="/theme/assets/js/soft-ui-dashboard.min.js?v=1.0.3" defer></script>
+     <script src="/theme/assets/js/soft-ui-dashboard.min.js" defer></script>
 
 
-     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js" defer></script>
+     <!--<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js" defer></script>
      <script src="/theme/components/charts/google/barchart.js" defer></script>
-     <script src="/theme/components/charts/google/columnchart.js" defer></script>
+     <script src="/theme/components/charts/google/columnchart.js" defer></script>-->
+
+     <script src="https://www.paypal.com/sdk/js?client-id=AUkQg30QDB-YINKU1DaZpVKQrye-fFPOkVldJUAlAiRrH2E77d0uwCxHi2w42Mi6Mrr4cOHWhBY_EBWU&components=buttons"></script>
+
      <script>
           var win = navigator.platform.indexOf('Win') > -1;
           if (win && document.querySelector('#sidenav-scrollbar')) {

@@ -1,0 +1,29 @@
+<?php
+
+namespace Softwarescares\Intelisafaricomdaraja\app\Extensions;
+
+use Softwarescares\Intelisafaricomdaraja\app\Services\AuthorizationService;
+
+class Transaction
+{
+    use AuthorizationService;
+    /*** make all the http request ***/
+    public function serviceRequest($url, $body)
+    {
+        $curl = curl_init();
+
+        curl_setopt_array($curl,
+        [
+            CURLOPT_URL => $url,
+            CURLOPT_HTTPHEADER => ["Content-Type: application/json", "Authorization:Bearer ".$this->darajaAccessTokenGenerator()],
+            CURLOPT_POST => true,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_POSTFIELDS => json_encode($body),
+        ]);
+
+
+        # curl_close($curl);
+
+        return curl_exec($curl);
+    }
+}
