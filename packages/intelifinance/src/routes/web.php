@@ -7,3 +7,4 @@ use Inertia\Inertia;
 use Softwarescares\Intelifinance\app\Http\Controllers\PaypalController;
 
 Route::post('paypal-payment', [PaypalController::class, 'pay']);
+

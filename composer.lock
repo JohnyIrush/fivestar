@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a695d63563edd3704bff0896ff6133a0",
+    "content-hash": "e785dbdccbd9a6897fa6b02c2a6c5dd5",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -5240,15 +5240,15 @@
             "version": "dev-main",
             "dist": {
                 "type": "path",
-                "url": "packages/intelifinance",
-                "reference": "a88cc23d068503451bf8bd96cd2d8ce1da2a8614"
+                "url": "packages/intelifinance"
             },
             "type": "library",
             "extra": {
                 "laravel": {
                     "providers": [
                         "Softwarescares\\Intelifinance\\InteliFinanceServiceProvider",
-                        "Softwarescares\\Intelifinance\\app\\Providers\\InteliEventServiceProvider"
+                        "Softwarescares\\Intelifinance\\app\\Providers\\InteliEventServiceProvider",
+                        "Softwarescares\\Intelifinance\\InteliFinanceServiceProvider"
                     ],
                     "aliases": []
                 }
@@ -10757,11 +10757,11 @@
     "minimum-stability": "dev",
     "stability-flags": {
         "softwarescares/inteliacademic": 20,
+        "softwarescares/intelifinance": 20,
         "softwarescares/inteliinstaller": 20,
         "softwarescares/intelistaff": 20,
-        "softwarescares/intelitimetable": 20,
         "softwarescares/inteliteam": 20,
-        "softwarescares/intelifinance": 20,
+        "softwarescares/intelitimetable": 20,
         "softwarescares/intelisafaricomdaraja": 20
     },
     "prefer-stable": true,

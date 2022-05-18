@@ -71,8 +71,8 @@
         "softwarescares/inteliacademic": "@dev",
         "softwarescares/inteliinstaller": "@dev",
         "softwarescares/intelistaff": "@dev",
-        "softwarescares/intelitimetable": "@dev",
         "softwarescares/inteliteam": "@dev",
+        "softwarescares/intelitimetable": "@dev",
         "softwarescares/intelifinance": "@dev",
         "softwarescares/intelisafaricomdaraja": "@dev",
         "tightenco/ziggy": "^1.0"
