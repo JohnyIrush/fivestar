@@ -1,21 +1,11 @@
 <template>
 
     <!--<Sign_Up_NavBar></Sign_Up_NavBar>-->
-        <section class="min-vh-100 mb-8 main">
-          <div class="page-header glass-container align-items-start min-vh-50 pt-5 pb-11 m-3 border-radius-lg" style="background-image: url('../assets/img/curved-images/curved14.jpg');">
-            <span class="mask bg-gradient-dark opacity-6"></span>
-            <div class="container">
-              <div class="row justify-content-center">
-                <div class="col-lg-5 text-center mx-auto">
-                  <h1 class="text-white mb-2 mt-5">Welcome to Inteli System!</h1>
-                  <p class="text-lead text-white">Time Management and Excellence.</p>
-                </div>
-              </div>
-            </div>
-          </div>
+    <!--min-vh-100 mt-lg-n10 mt-md-n11 mt-n10-->
+        <section class="mt-3 main">
           <div class="container">
-            <div class="row mt-lg-n10 mt-md-n11 mt-n10">
-              <div class="col-xl-4 col-lg-5 col-md-7 mx-auto">
+            <div class="row ">
+              <div class="col-xl-6 col-lg-7 col-md-9 mx-auto">
                 <div class="card z-index-0">
                   <div class="card-header text-center pt-4">
                     <h5>Register with</h5>
@@ -424,11 +414,11 @@ section .color:nth-child(3)
 
 .form .inputBox input
 {
-    width: 100%;
+    width: 200px !important;
     background: rgba(255, 255, 255, 0.2);
     border: none;
     outline: none;
-    padding: 10px 20px;
+    padding: 40px 50px !important;
     border-radius: 35px;
     border: 1px solid rgba(255, 255, 255, 0.5);
     border-right: 1px solid rgba(255, 255, 255, 0.2);
@@ -448,7 +438,7 @@ section .color:nth-child(3)
 {
    background: #fff;
    color: #666;
-   max-width: 100px;
+   width: 200px !important;
    cursor: pointer;
    font-weight: 600;
 }

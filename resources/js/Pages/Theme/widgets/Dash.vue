@@ -1,6 +1,6 @@
 <template>
   <!--max-height-vh-100 h-100-->
-  <main class="main-content position-relative mt-1 border-radius-lg ">
+  <main class="main-content position-relative mt-1 ">
       <NavBar></NavBar>
       <Body></Body>
       <settings></settings>
@@ -13,7 +13,7 @@
     import NavBar from '../widgets/NavBar.vue'
     import Body from '../widgets/Body.vue'
     import settings from '../plugins/settings.vue'
-    
+
 
     export default defineComponent({
         components:
@@ -31,7 +31,6 @@ main
 
     background: linear-gradient(purple, pink);
     background-size: cover;
-    padding: 15px;
 }
 
 .glass-container

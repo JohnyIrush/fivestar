@@ -29,7 +29,8 @@ class DatabaseSeeder extends Seeder
             SchoolTypesSeeder::class,
             SchoolLevelSeeder::class,
             SchoolEducationSystemSeeder::class,
-            SchoolGenderSeeder::class
+            SchoolGenderSeeder::class,
+            TaskSeeder::class
             ]
         );
     }

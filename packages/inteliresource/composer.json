@@ -1,0 +1,29 @@
+{
+    "name": "softwarescares/inteliresource",
+    "description": "Inteli system Resource Manager Package, handles File Management, Storage, Memory, Speed etc.",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Softwarescares\\Inteliresource\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "John Irungu",
+            "email": "johnydanxin@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {},
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Softwarescares\\Inteliresource\\InteliResourceServiceProvider"
+            ],
+            "aliases": {
+
+            }
+        }
+    }
+}

@@ -34,24 +34,8 @@ class InteliInstallerServiceProvider extends ServiceProvider
             __DIR__.'/resources/js/Pages/inteli_installer' => public_path('../resources/js/Pages/inteli_installer'),
         ], 'inteliinstaller-ui');
 
-        /*
-        $this->mergeConfigFrom(
-            __DIR__.'/../../config/safaricomdaraja.php', 'safaricomdaraja'
-        );
-
-        $this->publishes([
-            __DIR__.'/../../config/safaricomdaraja.php' => config_path('safaricomdaraja.php'),
-        ],'safaricomdaraja-config');
-        */
-
         $this->publishes([
             __DIR__.'/database/seeders' => public_path('../database/seeders'),
         ],'inteliinstaller-seeders');
-
-        /*
-        $this->publishes([
-            __DIR__.'/../../public' => public_path('/'),
-        ],'assets');
-        */
     }
 }

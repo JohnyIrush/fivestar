@@ -1,7 +1,7 @@
 {
     "name": "laravel/laravel",
     "type": "project",
-    "description": "The Laravel Framework.",
+    "description": "Inteli System Learning Management Software.",
     "keywords": ["framework", "laravel"],
     "repositories": {
         "inteliinstaller": {
@@ -45,11 +45,17 @@
             "options": {
                 "symlink": true
             }
-        }
-        ,
+        },
         "intelisafaricomdaraja": {
             "type": "path",
             "url": "packages/intelisafaricomdaraja",
+            "options": {
+                "symlink": true
+            }
+        },
+        "inteliresource": {
+            "type": "path",
+            "url": "packages/inteliresource",
             "options": {
                 "symlink": true
             }
@@ -69,12 +75,14 @@
         "laravel/tinker": "^2.5",
         "pusher/pusher-php-server": "^7.0",
         "softwarescares/inteliacademic": "@dev",
+        "softwarescares/intelifinance": "@dev",
         "softwarescares/inteliinstaller": "@dev",
+        "softwarescares/inteliresource": "@dev",
+        "softwarescares/intelisafaricomdaraja": "@dev",
         "softwarescares/intelistaff": "@dev",
         "softwarescares/inteliteam": "@dev",
         "softwarescares/intelitimetable": "@dev",
-        "softwarescares/intelifinance": "@dev",
-        "softwarescares/intelisafaricomdaraja": "@dev",
+        "spatie/laravel-permission": "^5.5",
         "tightenco/ziggy": "^1.0"
     },
     "require-dev": {
@@ -83,13 +91,15 @@
         "laravel/sail": "^1.0.1",
         "mockery/mockery": "^1.4.4",
         "nunomaduro/collision": "^5.10",
-        "phpunit/phpunit": "^9.5.10"
+        "phpunit/phpunit": "^9.5.10",
+        "softwarescares/inteliresource": "@dev"
     },
     "autoload": {
         "psr-4": {
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
-            "Database\\Seeders\\": "database/seeders/"
+            "Database\\Seeders\\": "database/seeders/",
+            "Softwarescares\\Inteliresource\\": "packages/inteliresource/src"
         }
     },
     "autoload-dev": {

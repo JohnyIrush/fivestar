@@ -164,7 +164,7 @@
                          <!--DETAILS END-->
 
                          <!--ADMIN START-->
-                         <div class="tab-pane fade" id="pills-admin" role="tabpanel" aria-labelledby="pills-admin-tab">
+                         <!--<div class="tab-pane fade" id="pills-admin" role="tabpanel" aria-labelledby="pills-admin-tab">
                             <div class="row justify-content-center ">
                                 <div class="col-2">
 
@@ -197,24 +197,24 @@
 
                                 </div>
                                 <div class="col d-grid  mx-auto">
-                                  <button  @click="adminStepNext()" class="btn  mt-3 btn-styles" > Payment <i class="fa fa-money"></i></button>
+                                  <button  @click="adminStepNext()" class="btn  mt-3 btn-styles" > Register <i class="fa fa-account"></i></button>
                                 </div>
                             </div>
-                         </div>
+                         </div>-->
                          <!--ADMIN END-->
 
                          <!-- Account START-->
                          <div class="tab-pane fade" id="pills-register" role="tabpanel" aria-labelledby="pills-register-tab">
                             <div class="row justify-content-center ">
-                                <div class="col-2">
+                                <!--<div class="col-2">
 
-                                </div>
-                                <div class="col-8 glass-content">
+                                </div>-->
+                                <div class="col glass-content">
                                   <register></register>
                                 </div>
-                                <div class="col-2">
+                                <!--<div class="col-2">
 
-                                </div>
+                                </div>-->
                             </div>
                             <div class="row justify-content-center">
                                 <div class="col d-grid  mx-auto">
@@ -306,7 +306,7 @@ import welcome_slider from "../components/Sliders/Welcome-Slider.vue"
 import payment_methods from "../components/cards/payment-methods"
 import school_details_confirmation from '../components/modals/school_details_confirmation.vue'
 import inteli_code_verify from '../components/modals/inteli-code-verify.vue'
-//import register from '../components/forms/register/Register.vue'
+import register from '../components/forms/register/Register.vue'
 
 /*Vuex Store*/
 //import { store } from '../../../../store/store.js';
@@ -321,7 +321,7 @@ export default {
             payment_methods,
             school_details_confirmation,
             inteli_code_verify,
-            //register
+            register
         },
     data() {
         return {
@@ -421,21 +421,23 @@ export default {
             detailsStepNext()
             {
               const currentTab = document.querySelector("#pills-details")
-              const nextTab = document.querySelector("#pills-admin")
+              const nextTab = document.querySelector("#pills-register")
               currentTab.classList.remove("show", "active");
               nextTab.classList.add("show", "active")
             },
+            /*
             adminStepNext()
             {
               const currentTab = document.querySelector("#pills-admin")
-              const nextTab = document.querySelector("#pills-account")
+              const nextTab = document.querySelector("#pills-register")
               currentTab.classList.remove("show", "active");
               nextTab.classList.add("show", "active")
 
             },
+            */
             registerStepNext()
             {
-              const currentTab = document.querySelector("#pills-admin")
+              const currentTab = document.querySelector("#pills-register")
               const nextTab = document.querySelector("#pills-payment")
               currentTab.classList.remove("show", "active");
               nextTab.classList.add("show", "active")
@@ -468,7 +470,7 @@ export default {
               currentTab.classList.remove("show", "active");
               nextTab.classList.add("show", "active")
             },
-
+            /*
             adminStepPrev()
             {
               const currentTab = document.querySelector("#pills-admin")
@@ -476,11 +478,11 @@ export default {
               currentTab.classList.remove("show", "active");
               nextTab.classList.add("show", "active")
             },
-
+            */
             registerStepPrev()
             {
               const currentTab = document.querySelector("#pills-register")
-              const nextTab = document.querySelector("#pills-admin")
+              const nextTab = document.querySelector("#pills-detils")
               currentTab.classList.remove("show", "active");
               nextTab.classList.add("show", "active")
             },
@@ -488,7 +490,7 @@ export default {
             paymentStepPrev()
             {
               const currentTab = document.querySelector("#pills-payment")
-              const nextTab = document.querySelector("#pills-admin")
+              const nextTab = document.querySelector("#pills-register")
               currentTab.classList.remove("show", "active");
               nextTab.classList.add("show", "active")
             },

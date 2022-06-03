@@ -1,0 +1,39 @@
+{
+  "name": "alga-css",
+  "version": "1.0.0-stone-8",
+  "description": "Alga CSS is a scope-first CSS toolkit for quickly mix or compose CSS references and share CSS properties between components",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "jest",
+    "lint": "eslint js"
+  },
+  "files": [
+    "src",
+    "alga"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tedirghazali/alga-css.git"
+  },
+  "keywords": [
+    "css-framework",
+    "postcss",
+    "frontend",
+    "framework",
+    "css"
+  ],
+  "author": "Tedir Ghazali",
+  "license": "SEE LICENSE IN license.txt",
+  "bugs": {
+    "url": "https://github.com/tedirghazali/alga-css/issues"
+  },
+  "homepage": "https://github.com/tedirghazali/alga-css#readme",
+  "devDependencies": {
+    "eslint": "^8.7.0",
+    "jest": "^27.4.7",
+    "postcss": "^8.4.5"
+  },
+  "dependencies": {
+    "glob": "^7.2.0"
+  }
+}

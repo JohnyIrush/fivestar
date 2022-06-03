@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid py-4">
+  <div class="container-fluid">
       <div class="row mt-6">
         <div class="col-12 glass-content">
           <main_menu></main_menu>
@@ -623,7 +623,7 @@
         },
 
         mounted() {
-          
+
         },
     })
 </script>
@@ -634,7 +634,6 @@ main
 
     background: linear-gradient(purple, pink);
     background-size: cover;
-    padding: 15px;
 }
 
 .glass-container

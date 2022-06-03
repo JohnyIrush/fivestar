@@ -1,0 +1,101 @@
+@define props {
+  menu: 10;
+}
+
+@alga picker {
+  .picker {
+    ref: width-auto;
+  }
+    
+  .pickerContent {
+    ref: display-block position-relative;
+  }
+    
+  .picker.dropdown .pickerContent {
+    ref: display-inlineBlock;
+  }
+    
+  .pickerBackdrop {
+    ref: position-fixed zIndex-5 inset-0_3em_3em_0 width-100vw height-100vh display-none;
+  }
+    
+  .picker.active .pickerBackdrop {
+    ref: display-block;
+  }
+    
+  .pickerToggler {
+    ref: padding-0.5rem;
+  }
+    
+  .select.pickerToggler {
+    ref: paddingLeft-0.75rem paddingRight-0.75rem cursor-default;
+  }
+   
+  .pickerBody, .pickerMenu {
+    ref: position-absolute zIndex-6 top-2.5rem left-0 width-240px backgroundColor-hexfff border-1px_solid_hexd9d9d9 display-none;
+  }
+    
+  .pickerBody {
+    ref: padding-0.75rem borderRadius-0.375rem;
+  }
+    
+  .pickerMenu {
+    ref: borderRadius-0.375rem;
+    
+    .pickerWrap {
+      ref: padding-0.5rem;
+      ref-borderBottom: 1px solid #d9d9d9;
+    }
+    
+    .pickerGroup {
+      ref: overflowY-auto;
+      props-maxHeight: calc(menu * 42px);
+    }
+    
+    .pickerItem {
+      ref: display-block padding-0.675rem_0.75rem borderBottom-1px_solid_hexd9d9d9 textDecoration-none color-hex283541;
+      ref: cursor-default;
+    }
+    
+    .pickerItem:last-child {
+      ref: borderBottom-0;
+    }
+    
+    .pickerItem:hover {
+      ref: backgroundColor-hexededed;;
+    }
+    
+    .pickerItem.active {
+      ref: pointerEvents-none borderColor-hex4890eb backgroundColor-hex4c9bff color-hexfff;
+    }
+  }
+  
+  .pickerMenu.pickerSizing {
+    ref: overflowY-auto;
+    props-maxHeight: calc(menu * 42px);
+  }
+  
+  .suggestion .pickerMenu,
+  .fill .pickerBody {
+    ref: width-100pct;
+  }
+  
+  .pickerEnd .pickerBody,
+  .pickerEnd .pickerMenu {
+    ref: right-0 left-auto;
+  }
+  
+  .picker.active .input.pickerToggler,
+  .picker.active .select.pickerToggler {
+    ref: borderBottomRightRadius-0 borderBottomLeftRadius-0;
+  }
+  
+  .picker.active .pickerMenu {
+    ref: borderTopRightRadius-0 borderTopLeftRadius-0;
+  }
+  
+  .picker.active .pickerBody,
+  .picker.active .pickerMenu {
+    ref: display-block;
+  }
+}

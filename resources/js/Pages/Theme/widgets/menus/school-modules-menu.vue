@@ -26,7 +26,7 @@
             <div class="icon text-white bg-gradient-info shadow border-radius-md text-center d-flex align-items-center justify-content-center">
               <i class="fas fa-user-plus"></i>
             </div>
-            <span class="nav-link-text ms-1">Admission/Enrollment</span>
+            <span class="nav-link-text ms-1">Admission</span>
           </Link>
         </li>
         <li class="nav-item">
