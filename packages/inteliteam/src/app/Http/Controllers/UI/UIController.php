@@ -20,4 +20,9 @@ class UIController extends Controller
         return Inertia::render('inteli_team/ui/windows/Task');
     }
 
+    public function permissionRoleManager()
+    {
+        return Inertia::render('inteli_team/ui/windows/Permission-Role');
+    }
+
 }

@@ -1,15 +1,15 @@
 <?php
 
-namespace SoftwaresCares\Inteliteam\app\Http\Controllers\PermissionRole;
+namespace Softwarescares\Inteliteam\app\Http\Controllers\PermissionRole;
 
-use SoftwaresCares\Inteliteam\app\Models\PermissionRole;
-use SoftwaresCares\Inteliteam\app\Http\Requests\StorePermissionRoleRequest;
-use SoftwaresCares\Inteliteam\app\Http\Requests\UpdatePermissionRoleRequest;
+use Softwarescares\Inteliteam\app\Models\PermissionRole;
+use Softwarescares\Inteliteam\app\Http\Requests\StorePermissionRoleRequest;
+use Softwarescares\Inteliteam\app\Http\Requests\UpdatePermissionRoleRequest;
 
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 
-use SoftwaresCares\Inteliteam\app\Http\Controllers\Controller;
+use Softwarescares\Inteliteam\app\Http\Controllers\Controller;
 
 class PermissionRoleController extends Controller
 {
@@ -52,7 +52,7 @@ class PermissionRoleController extends Controller
      */
     public function storeRole(StorePermissionRoleRequest $request)
     {
-        $role = Role::create(['name' => $request->role]);
+        $role = Role::create(['name' => $request->name]);
     }
 
     /**
@@ -63,7 +63,7 @@ class PermissionRoleController extends Controller
      */
     public function storePermission(StorePermissionRoleRequest $request)
     {
-        $permission = Permission::create(['name' => $request->permission]);
+        $permission = Permission::create(['name' => $request->name]);
     }
 
 
@@ -96,10 +96,30 @@ class PermissionRoleController extends Controller
      * @param  \App\Models\PermissionRole  $permissionRole
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdatePermissionRoleRequest $request, PermissionRole $permissionRole)
+    public function updateRole(UpdatePermissionRoleRequest $request, PermissionRole $permissionRole)
     {
-        //
+        $role = Role::find($request->id);
+        $role->name = $request->name;
+        //$role->guard_name = $request->guard_name;
+        $role->update();
     }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \App\Http\Requests\UpdatePermissionRoleRequest  $request
+     * @param  \App\Models\PermissionRole  $permissionRole
+     * @return \Illuminate\Http\Response
+     */
+    public function updatePermission(UpdatePermissionRoleRequest $request, PermissionRole $permissionRole)
+    {
+        $permission = Permission::find($request->id);
+        $permission->name = $request->name;
+        //$permission->guard_name = $request->guard_name;
+        $permission->update();
+    }
+
+
 
     /**
      * Remove the specified resource from storage.
@@ -107,8 +127,22 @@ class PermissionRoleController extends Controller
      * @param  \App\Models\PermissionRole  $permissionRole
      * @return \Illuminate\Http\Response
      */
-    public function destroy(PermissionRole $permissionRole)
+    public function destroyRole(PermissionRole $permissionRole, $id)
     {
-        //
+        $role = Role::find($id);
+        $role->delete();
+    }
+
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\PermissionRole  $permissionRole
+     * @return \Illuminate\Http\Response
+     */
+    public function destroyPermission(PermissionRole $permissionRole, $id)
+    {
+        $permission = Permission::find($id);
+        $permission->delete();
     }
 }

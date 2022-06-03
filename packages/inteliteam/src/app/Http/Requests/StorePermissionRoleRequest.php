@@ -1,6 +1,6 @@
 <?php
 
-namespace SoftwaresCares\Inteliteam\app\Http\Requests;
+namespace Softwarescares\Inteliteam\app\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
