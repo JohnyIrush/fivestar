@@ -1,0 +1,29 @@
+{
+    "name": "softwarescares/inteliportal",
+    "description": "Inteli system prortal package provides portal for students, teachers, parents,staff",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Softwarescares\\Inteliportal\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "John Irungu",
+            "email": "johnydanxin@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {},
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Softwarescares\\Inteliportal\\InteliPortalServiceProvider"
+            ],
+            "aliases": {
+
+            }
+        }
+    }
+}

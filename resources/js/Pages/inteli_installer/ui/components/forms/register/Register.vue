@@ -143,6 +143,8 @@
     import { /*Head,*/ Link } from '@inertiajs/inertia-vue3';
     //import Sign_Up_NavBar from '../../../../../Theme/widgets/Sign-Up-NavBar.vue'
 
+    import { store } from "../../../../../../store/store.js";
+
     export default defineComponent({
         components: {
             //Head,
@@ -172,10 +174,28 @@
 
         methods: {
             submit() {
-                this.form.post(this.route('register'), {
-                    onFinish: () => this.form.reset('password', 'password_confirmation'),
+                axios.post('/register-sch-admin', this.form)
+                .then((response)=>{
+                    store.state.school.user_id = response.data.id
+                })
+            },
+            listen()
+            {
+                Echo.channel('registration')
+                .listen('SchoolAdminRegisteredEvent', ()=>{
+                    alert('New School Admin Registered!');
                 })
             }
+        },
+        mounted()
+        {
+            //this.listen()
+           // console.log(Echo)
+                Echo.channel('registration')
+                .listen('.SchoolAdminRegisteredEvent', (e)=>{
+                    alert('STB')
+                    console.log(e)
+                })
         }
     })
 </script>
@@ -258,7 +278,7 @@ section
 }
 
 */
-
+/*
 section .color
 {
     position: absolute;
@@ -362,7 +382,7 @@ section .color:nth-child(3)
     width: 60px;
     height: 60px;
 }
-
+*/
 
 .form-container
 {

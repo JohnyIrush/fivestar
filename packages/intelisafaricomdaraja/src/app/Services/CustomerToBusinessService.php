@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
+use Softwarescares\Intelifinance\app\Events\InteliPaymentSuccessEvent;
 use Softwarescares\Intelisafaricomdaraja\app\Contracts\TransactionInterface;
 use Softwarescares\Intelisafaricomdaraja\app\Events\CustomerToBusinessTransactionEvent;
 use Softwarescares\Intelisafaricomdaraja\app\Events\TransactionNotificationEvent;
@@ -58,6 +59,10 @@ class CustomerToBusinessService extends Transaction implements TransactionInterf
                 'user' => User::find(CurrentTransactionUser::find(1)->current_transaction_user_id)
             ]));
 
+            if($event->result["Body"]["stkCallback"]["ResultCode"] == '0')
+            {
+                event(new InteliPaymentSuccessEvent());
+            }
 
             // Fire an event to Update Transaction Table
 

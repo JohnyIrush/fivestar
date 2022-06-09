@@ -1,5 +1,5 @@
 <template>
-<div class="container">  
+<div class="container">
   <!-- Modal -->
   <div class="modal fade" id="inteli-code-verify" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="inteli-code-verify" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered text-c-center text-center">
@@ -17,7 +17,7 @@
         </div>
         <div class="modal-footer">
          <div class="d-grid gap-2 col-6 mx-auto">
-           <button class="btn btn-primary btn-styles" type="button">Verify</button>
+           <button class="btn btn-primary btn-styles" type="button" data-dismiss="modal">Verify</button>
          </div>
         </div>
       </div>
@@ -39,14 +39,14 @@ export default
     methods:
     {
         /**This will be mapped using mapGetters */
-       
-        launchInteliVerifyModal() 
+
+        launchInteliVerifyModal()
         {
             //store.commit('reducePrice') // This will be committed via actions
             var modal = document.getElementById("inteli-code-verify");
             store.dispatch("launchInteliVerifyModal",modal)
         }
-        
+
     }
 }
 

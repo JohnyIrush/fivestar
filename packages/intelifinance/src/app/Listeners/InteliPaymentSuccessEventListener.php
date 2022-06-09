@@ -1,10 +1,11 @@
 <?php
 
-namespace Softwarescares\Intelisafaricomdaraja\app\Providers;
+namespace Softwarescares\Intelifinance\app\Listeners;
 
-use Softwarescares\Intelisafaricomdaraja\app\Providers\InteliPaymentSuccessEvent;
+
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
+use Softwarescares\Intelifinance\app\Events\InteliPaymentSuccessEvent;
 
 class InteliPaymentSuccessEventListener
 {

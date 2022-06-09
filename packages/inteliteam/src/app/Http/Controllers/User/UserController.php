@@ -21,7 +21,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        return response()->json(User::all(), 200);
+        return response()->json(User::with('roles', 'permissions')->get(), 200);
     }
 
     /**
@@ -89,4 +89,35 @@ class UserController extends Controller
     {
         //
     }
+
+    public function assignRole(UpdateUserManagerRequest $request, UserManager $userManager)
+    {
+        $user = User::find($request->id);
+        $user->syncRoles($request->options);
+    }
+
+
+    public function userRoles(UserManager $userManager, $id)
+    {
+        $user = User::find($id);
+        //$user->assignRole($request->options);
+        $roles = $user->getRoleNames(); // Returns a collection
+        return response()->json($roles);
+    }
+
+    public function givePermission(UpdateUserManagerRequest $request, UserManager $userManager)
+    {
+        $user = User::find($request->id);
+        $user->syncPermissions($request->options);
+    }
+
+    public function userPermissions(UserManager $userManager, $id)
+    {
+        $user = User::find($id);
+
+        $permissions = $user->getAllPermissions(); // Returns a collection
+        return response()->json($permissions);
+    }
+
+
 }

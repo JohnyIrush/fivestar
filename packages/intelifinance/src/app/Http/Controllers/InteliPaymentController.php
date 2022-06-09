@@ -1,10 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Softwarescares\Intelifinance\app\Http\Controllers;
 
-use App\Models\InteliPayment;
-use App\Http\Requests\StoreInteliPaymentRequest;
-use App\Http\Requests\UpdateInteliPaymentRequest;
+use Softwarescares\Intelifinance\app\Http\Controllers\Controller;
+use Softwarescares\Intelifinance\app\Http\Requests\StoreInteliPaymentRequest;
+use Softwarescares\Intelifinance\app\Http\Requests\UpdateInteliPaymentRequest;
+use Softwarescares\Intelifinance\app\Models\InteliPayment;
+
 
 class InteliPaymentController extends Controller
 {

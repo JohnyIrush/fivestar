@@ -1,0 +1,29 @@
+{
+    "name": "softwarescares/intelionlineclass",
+    "description": "Inteli System online Class Package.",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Softwarescares\\Intelionlineclass\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "John Irungu",
+            "email": "johnydanxin@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {},
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Softwarescares\\Intelionlineclass\\InteliOnlineClassServiceProvider"
+            ],
+            "aliases": {
+               
+            }
+        }
+    }
+}

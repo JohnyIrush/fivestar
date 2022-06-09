@@ -3,6 +3,9 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
+use Softwarescares\Inteliinstaller\app\Http\Controllers\School\SchoolController;
+use Softwarescares\Inteliinstaller\app\Http\Controllers\SchoolAdminController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -14,6 +17,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+
+Route::post('create/sch/account',[SchoolController::class, 'store'])->name('create-sch-account');
+Route::post('register-sch-admin',[SchoolAdminController::class, 'store']);

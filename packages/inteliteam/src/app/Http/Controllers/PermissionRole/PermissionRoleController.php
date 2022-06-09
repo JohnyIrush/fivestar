@@ -20,7 +20,7 @@ class PermissionRoleController extends Controller
      */
     public function roles()
     {
-        return response()->json(Role::all(), 200);
+        return response()->json(Role::with('permissions')->get(), 200);
     }
 
     /**
@@ -30,7 +30,7 @@ class PermissionRoleController extends Controller
      */
     public function permissions()
     {
-        return response()->json(Permission::all(), 200);
+        return response()->json(Permission::with('roles')->get(), 200);
     }
 
 
@@ -145,4 +145,82 @@ class PermissionRoleController extends Controller
         $permission = Permission::find($id);
         $permission->delete();
     }
+
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\PermissionRole  $permissionRole
+     * @return \Illuminate\Http\Response
+     */
+    public function givePermission(PermissionRole $permissionRole, UpdatePermissionRoleRequest $request)
+    {
+        $role = Role::find($request->id);
+        $role->syncPermissions($request->options);
+    }
+
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\PermissionRole  $permissionRole
+     * @return \Illuminate\Http\Response
+     */
+    public function assignRole(PermissionRole $permissionRole, UpdatePermissionRoleRequest $request)
+    {
+        $permission = Permission::find($request->id);
+        $permission->syncRoles($request->options);
+    }
+
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\PermissionRole  $permissionRole
+     * @return \Illuminate\Http\Response
+     */
+    public function revokePermission(PermissionRole $permissionRole, UpdatePermissionRoleRequest $request)
+    {
+        $role = Role::find($request->id);
+        $role->revokePermissionTo($request->option);
+    }
+
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\PermissionRole  $permissionRole
+     * @return \Illuminate\Http\Response
+     */
+    public function removeRole(PermissionRole $permissionRole, UpdatePermissionRoleRequest $request)
+    {
+        $permission = Permission::find($request->id);
+        $permission->removeRole($request->option);
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\PermissionRole  $permissionRole
+     * @return \Illuminate\Http\Response
+     */
+    public function rolePermissions(PermissionRole $permissionRole, $id)
+    {
+        $permissions = Role::find($id)->permissions;
+        return response()->json($permissions);
+    }
+
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\PermissionRole  $permissionRole
+     * @return \Illuminate\Http\Response
+     */
+    public function permissionRoles(PermissionRole $permissionRole, $id)
+    {
+        $roles = Permission::find($id)->roles;
+        return response()->json($roles);
+    }
+
 }

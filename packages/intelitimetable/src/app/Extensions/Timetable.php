@@ -7,7 +7,6 @@ use Softwarescares\Intelitimetable\app\Models\DaySession;
 use Softwarescares\Intelitimetable\app\Models\Venue;
 
 use Softwarescares\Inteliacademic\app\Models\Level;
-use Softwarescares\Inteliacademic\app\Models\LevelStream;
 use Softwarescares\Inteliacademic\app\Models\Stream;
 use Softwarescares\Inteliacademic\app\Models\Subject;
 use Softwarescares\Inteliacademic\app\Models\Teacher;

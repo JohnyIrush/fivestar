@@ -5,6 +5,7 @@ namespace Softwarescares\Intelisafaricomdaraja\app\Listeners;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Support\Facades\Log;
+use Softwarescares\Intelifinance\app\Events\InteliPaymentSuccessEvent;
 use Softwarescares\Intelisafaricomdaraja\app\Events\CustomerToBusinessTransactionEvent;
 use Softwarescares\Intelisafaricomdaraja\app\Models\CustomerToBusinessTransaction;
 
@@ -28,6 +29,8 @@ class CustomerToBusinessTransactionEventListener
      */
     public function handle(CustomerToBusinessTransactionEvent $event)
     {
+
+
        Log::info("CustomerToBusinessTransactionEventListener");
        Log::info(json_encode($event->result));
 

@@ -6,6 +6,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Support\Facades\Log;
 use PhpParser\Node\Stmt\TryCatch;
+use Softwarescares\Intelifinance\app\Events\InteliPaymentSuccessEvent;
 use Softwarescares\Intelisafaricomdaraja\app\Events\MPesaExpressTransactionEvent;
 use Softwarescares\Intelisafaricomdaraja\app\Models\BusinessToCustomerTransaction;
 use Softwarescares\Intelisafaricomdaraja\app\Models\MpesaExpressTransaction;
@@ -30,6 +31,11 @@ class MPesaExpressTransactionEventListener
      */
     public function handle(MPesaExpressTransactionEvent $event)
     {
+
+        if($event->result["Body"]["stkCallback"]["ResultCode"] == '0')
+        {
+            event(new InteliPaymentSuccessEvent());
+        }
 
         MpesaExpressTransaction::create(
             [

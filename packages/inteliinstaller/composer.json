@@ -19,10 +19,11 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Softwarescares\\Inteliinstaller\\InteliInstallerServiceProvider"
+                "Softwarescares\\Inteliinstaller\\InteliInstallerServiceProvider",
+                "Softwarescares\\Inteliinstaller\\app\\Providers\\InteliInstallerEventServiceProvider"
             ],
             "aliases": {
-               
+
             }
         }
     }

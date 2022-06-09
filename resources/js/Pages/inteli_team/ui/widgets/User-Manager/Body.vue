@@ -32,8 +32,9 @@
                     <tr>
                       <th class="text-uppercase text-secondary font-weight-bolder opacity-7">Name</th>
                       <th class="text-uppercase text-secondary font-weight-bolder opacity-7 ps-2">Role</th>
-                      <th class="text-center text-uppercase text-secondary font-weight-bolder opacity-7">Permissions</th>
-                      <th class="text-center text-uppercase text-secondary font-weight-bolder opacity-7">Team</th>
+                      <th class="text-uppercase text-secondary font-weight-bolder opacity-7 ps-2">Permission</th>
+                      <th class="text-uppercase text-secondary font-weight-bolder opacity-7">Team</th>
+                      <th class="text-uppercase text-secondary font-weight-bolder opacity-7">Actions</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -50,19 +51,31 @@
                       </td>
                       <td>
                         <div class="mt-2">
-                            Admin
+                            <p v-for="role in user.roles" :key="role.id">{{role.name}}</p>
                         </div>
                       </td>
-                      <td class="align-middle text-center text-sm">
-                        <span class="text-xs font-weight-bold"> Delete, Edit, Save, Upload </span>
+                      <td>
+                        <div class="mt-2">
+                            <p v-for="permission in user.permissions" :key="permission.id">{{permission.name}}</p>
+                        </div>
                       </td>
-                      <td class="align-middle">
+                      <td class="">
                         <div class="progress-wrapper w-75 mx-auto">
                           <div class="progress-info">
                             <div class="progress-percentage">
-                              <span class="text-xs font-weight-bold">Authors</span>
+                              <span class="font-weight-bold">Authors</span>
                             </div>
                           </div>
+                        </div>
+                      </td>
+                      <td>
+                        <div class="mt-2">
+                             <button class="btn btn-primary btn-sm" @click="launchAction('Edit', 'User','', 'edit-permission', user.id, 'permission-role-Modal', '')"><i class="fa fa-edit"></i>Edit</button>
+                            <button class="btn btn-danger btn-sm" @click="destroy('Delete', 'User','','delete-permission', user.id, '')"> <i class="fa fa-trash"></i> Delete</button>
+                            <button class="btn btn-warning btn-sm" @click="launchAction('Asign Role', 'Assign-User-Role','','assign-user-role', user.id,'assign-permission-role-Modal', '')"><i class="fa fa-edit"></i>Assign Role</button>
+                            <button class="btn btn-dark btn-sm" @click="launchAction('Remove Role', 'Remove-Role','','assign-user-role', user.id,'assign-permission-role-Modal', user.roles)"><i class="fa fa-edit"></i>Remove Role</button>
+                            <button class="btn btn-warning btn-sm" @click="launchAction('Give User Permission', 'Give-User-Permission',user,'give-user-permission', user.id,'assign-permission-role-Modal', user.permissions)"><i class="fa fa-edit"></i>Give Permission</button>
+                            <button class="btn btn-dark btn-sm" @click="launchAction('Revoke User Permission', 'Revoke-User-Permission',user,'give-user-permission', user.id,'assign-permission-role-Modal', user.permissions)"><i class="fa fa-edit"></i>Revoke Permission</button>
                         </div>
                       </td>
                     </tr>
@@ -74,25 +87,33 @@
         </div>
       </div>
   </div>
-  <!--<Footer></Footer>-->
+<assign_permission_role_form_modal :form="form"></assign_permission_role_form_modal>
 </template>
 
 <script>
     import axios from 'axios'
 import { defineComponent } from 'vue'
 
-    //import Footer from '../Footer.vue'
-
-    //import user_manager from "../menus/user-manager.vue";
+    import assign_permission_role_form_modal from "../../components/modals/assign-permission-role.vue";
 
     export default defineComponent({
         components: {
-            //Footer,
-            //user_manager
+            assign_permission_role_form_modal
         },
         data() {
             return {
-                users: {}
+                users: {},
+                roles: [],
+                permissions: [],
+                form: {
+                    action: '',
+                    type: '',
+                    name: '',
+                    guard_name: '',
+                    url: '',
+                    id: '',
+                    rolespermissions: {}
+                }
             }
         },
         methods: {
@@ -102,10 +123,79 @@ import { defineComponent } from 'vue'
                 .then((response)=>{
                     this.users = response.data
                 })
+            },
+            destroy(action, type, data,url, id)
+            {
+                axios.post(url + '/' + id )
+                .then((response)=>{
+
+                })
+            },
+            launchAction(action, type, data,url, id, modal, assignedOptions)
+            {
+                this.form.rolespermissions = []
+                this.form.action = action;
+                this.form.type = type;
+                this.form.name = data.name;
+                this.form.guard_name = data.guard_name;
+                this.form.url = url;
+                this.form.id = id;
+
+                if(type === "Role")
+                {
+                    this.form.rolespermissions = this.permissions
+                }
+                else if(type === "Permission")
+                {
+                    this.form.rolespermissions = this.roles
+                }
+
+                else if(type === "Revoke-Permission")
+                {
+                    this.form.rolespermissions = assignedOptions
+                }
+                else if(type === "Remove-Role")
+                {
+                    this.form.rolespermissions = assignedOptions
+                }
+                else if(type === "Assign-User-Role")
+                {
+                    this.form.rolespermissions = this.roles
+                }
+                else if(type === "Give-User-Permission")
+                {
+                    this.form.rolespermissions = this.permissions
+                }
+                else if(type === "Revoke-User-Permission")
+                {
+                    this.form.rolespermissions = assignedOptions
+                }
+
+
+                var permissionRoleModal = new bootstrap.Modal(document.getElementById(modal));
+                permissionRoleModal.show();
+            },
+            getRoles()
+            {
+                axios.get('/roles')
+                .then((response)=>{
+                   this.roles = response.data
+                   console.log(response)
+                })
+            },
+            getPermissions()
+            {
+                axios.get('/permissions')
+                .then((response)=>{
+                   this.permissions = response.data
+                   console.log(response)
+                })
             }
         },
         mounted() {
             this.getUsers()
+            this.getRoles()
+             this.getPermissions()
         },
     })
 </script>

@@ -1,6 +1,6 @@
 <?php
 
-namespace Softwarescares\Intelisafaricomdaraja\app\Providers;
+namespace Softwarescares\Intelifinance\app\Events;
 
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
@@ -31,6 +31,6 @@ class InteliPaymentSuccessEvent
      */
     public function broadcastOn()
     {
-        return new PrivateChannel('channel-name');
+        return new PrivateChannel('inteli-payment-success');
     }
 }

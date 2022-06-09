@@ -15,7 +15,7 @@ use Softwarescares\Inteliresource\app\Http\Controllers\User\Task\TaskController;
 use Softwarescares\Inteliresource\app\Http\Controllers\FileUploadController;
 use Illuminate\Support\Facades\Storage;
 
-Route::get('/', [UIController::class, 'login'])->name('/');
+
 
 Route::get('/dashboard', [UIController::class, 'dashboard'])->name('dashboard');
 

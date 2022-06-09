@@ -1,6 +1,6 @@
 <?php
 
-namespace Softwarescares\Safaricomdaraja\app\Services;
+namespace Softwarescares\Intelisafaricomdaraja\app\Services;
 
 use Carbon\Carbon;
 use Illuminate\Support\Facades\App;
@@ -12,7 +12,8 @@ use Softwarescares\Intelisafaricomdaraja\app\Events\TransactionStatusNotificatio
 use Softwarescares\Intelisafaricomdaraja\app\Extensions\Transaction;
 
 use App\Models\User;
-use Softwarescares\Safaricomdaraja\app\Models\CurrentTransactionUser;
+use Softwarescares\Intelisafaricomdaraja\app\Services\AuthorizationService;
+use Softwarescares\Intelisafaricomdaraja\app\Models\CurrentTransactionUser;
 
 class MPesaExpressService extends Transaction implements TransactionInterface
 {
@@ -28,6 +29,7 @@ class MPesaExpressService extends Transaction implements TransactionInterface
     public function transaction($request)
     {
         $url = (config('safaricomdaraja.MPESA.ENV') === "production") ? "https://api.safaricom.co.ke/mpesa/stkpush/v1/processrequest" : "https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest";
+
 
         $body = [
             'BusinessShortCode' => config("safaricomdaraja.MPESA.BUSINESSSHORTCODE"),

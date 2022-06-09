@@ -38,8 +38,8 @@ export default
         return {
             mpesa:
             {
-                amount: 1500,
-                phone: ''
+                Amount: 1500,
+                Phone: ''
             }
         }
     },
@@ -47,7 +47,7 @@ export default
     {
         lipaNaMpesa()
         {
-            axios.post('/mpesa-express')
+            axios.post('/mpesa-express', this.mpesa)
             .then((response)=>{
 
               response = (JSON.parse(response));

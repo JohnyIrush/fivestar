@@ -1,0 +1,29 @@
+{
+    "name": "softwarescares/inteliai",
+    "description": "Inteli system Artificial inteligence Package. Provides automated\u001b[\u001b[C\u001b[C\u001b[C\u001btd control, speech control, biometric services for Intelisecurity,Automatic planning and \u001b[D\u001b[D\u001b[C scheduling",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Softwarescares\\Inteliai\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "John Irungu",
+            "email": "johnydanxin@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {},
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Softwarescares\\Inteliai\\InteliAiServiceProvider"
+            ],
+            "aliases": {
+
+            }
+        }
+    }
+}

@@ -2,12 +2,19 @@
 
 namespace Softwarescares\Inteliinstaller\app\Http\Controllers;
 
-use App\Models\SchoolAdmin;
-use App\Http\Requests\StoreSchoolAdminRequest;
-use App\Http\Requests\UpdateSchoolAdminRequest;
+use App\Actions\Fortify\PasswordValidationRules;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
+use Laravel\Jetstream\Jetstream;
+use Softwarescares\Inteliinstaller\app\Events\SchoolAdminRegisteredEvent;
+use Softwarescares\Inteliinstaller\app\Http\Requests\StoreSchoolAdminRequest;
+use Softwarescares\Inteliinstaller\app\Http\Requests\UpdateSchoolAdminRequest;
+
 
 class SchoolAdminController extends Controller
 {
+    use PasswordValidationRules;
     /**
      * Display a listing of the resource.
      *
@@ -36,7 +43,29 @@ class SchoolAdminController extends Controller
      */
     public function store(StoreSchoolAdminRequest $request)
     {
-        //
+
+        $validation = Validator::make($request->all(), [
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'phone' => ['required', 'max:255', 'unique:users'],
+            'password' => $this->passwordRules(),
+            'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['required', 'accepted'] : '',
+        ])->validate();
+
+
+
+        $user = User::create([
+            'name' => $request['name'],
+            'email' => $request['email'],
+            'phone' => $request['phone'],
+            'password' => Hash::make($request['password']),
+        ]);
+
+        $user->assignRole("School Admin");
+
+        event(new SchoolAdminRegisteredEvent($user));
+
+        return $user;
     }
 
     /**
@@ -45,7 +74,7 @@ class SchoolAdminController extends Controller
      * @param  \App\Models\SchoolAdmin  $schoolAdmin
      * @return \Illuminate\Http\Response
      */
-    public function show(SchoolAdmin $schoolAdmin)
+    public function show(User $schoolAdmin)
     {
         //
     }
@@ -56,7 +85,7 @@ class SchoolAdminController extends Controller
      * @param  \App\Models\SchoolAdmin  $schoolAdmin
      * @return \Illuminate\Http\Response
      */
-    public function edit(SchoolAdmin $schoolAdmin)
+    public function edit(User $schoolAdmin)
     {
         //
     }
@@ -68,7 +97,7 @@ class SchoolAdminController extends Controller
      * @param  \App\Models\SchoolAdmin  $schoolAdmin
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateSchoolAdminRequest $request, SchoolAdmin $schoolAdmin)
+    public function update(UpdateSchoolAdminRequest $request, User $schoolAdmin)
     {
         //
     }
@@ -79,7 +108,7 @@ class SchoolAdminController extends Controller
      * @param  \App\Models\SchoolAdmin  $schoolAdmin
      * @return \Illuminate\Http\Response
      */
-    public function destroy(SchoolAdmin $schoolAdmin)
+    public function destroy(User $schoolAdmin)
     {
         //
     }

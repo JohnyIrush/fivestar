@@ -38,5 +38,21 @@ Route::post("edit-permission", [PermissionRoleController::class, "updatePermissi
 Route::post("delete-role/{id}", [PermissionRoleController::class, "destroyRole"]);
 Route::post("delete-permission/{id}", [PermissionRoleController::class, "destroyPermission"]);
 
+Route::post("give-permission", [PermissionRoleController::class, "givePermission"]);
+Route::post("assign-role", [PermissionRoleController::class, "assignRole"]);
+
+Route::post("revoke-permisssion", [PermissionRoleController::class, "revokePermission"]);
+Route::post("remove-role", [PermissionRoleController::class, "removeRole"]);
+
+Route::get("role-permissions/{id}", [PermissionRoleController::class, "rolePermissions"]);
+Route::get("permission-roles/{id}", [PermissionRoleController::class, "permissionRoles"]);
+
+Route::get("user-roles/{id}", [UserController::class, "userRoles"]);
+
+Route::post("assign-user-role", [UserController::class, "assignRole"]);
+Route::post("give-user-permission", [UserController::class, "givePermission"]);
+
+Route::get("user-permissions/{id}", [UserController::class, "userPermissions"]);
+
 
 

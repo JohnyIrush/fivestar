@@ -11,7 +11,7 @@
         <img class="img-fluid d-block w-100 welcome-image-size" src="/Illustrations/Welcome.gif" alt="" srcset="">
         <div class="row justify-content-center">
           <div class="col text-center">
-            
+
           </div>
         </div>
       </div>
@@ -19,7 +19,7 @@
         <setup_guide></setup_guide>
       </div>
       <div class="carousel-item">
-
+        <img class="img-fluid d-block w-100 welcome-image-size" src="/images/Products/Inteli System.png" alt="" srcset="">
       </div>
     </div>
   </div>
@@ -44,7 +44,7 @@ export default {
   ,
   methods: {
   },
-    
+
 }
 </script>
 

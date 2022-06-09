@@ -251,11 +251,12 @@
 
                                 </div>
                                 <div class="col d-grid  mx-auto">
-                                  <!--<button  @click="paymentStepNext()" class="btn  mt-3 btn-styles" >Install <i class="fa fa-rocket"></i></button>-->
-                                  <button type="button" class="btn btn-primary mt-3 btn-styles" data-bs-toggle="modal" data-bs-target="#inteli-code-verify">
+                                  <button  @click="paymentStepNext()" class="btn  mt-3 btn-styles" >Install <i class="fa fa-rocket"></i></button>
+
+                                  <!-- <button type="button" class="btn btn-primary mt-3 btn-styles" data-bs-toggle="modal" data-bs-target="#inteli-code-verify">
                                     Install <i class="fa fa-rocket"></i>
                                   </button>
-                                  <inteli_code_verify></inteli_code_verify>
+                                  <inteli_code_verify></inteli_code_verify>-->
                                 </div>
                             </div>
                          </div>
@@ -309,7 +310,7 @@ import inteli_code_verify from '../components/modals/inteli-code-verify.vue'
 import register from '../components/forms/register/Register.vue'
 
 /*Vuex Store*/
-//import { store } from '../../../../store/store.js';
+import { store } from '../../../../store/store.js'
 
 export default {
     components:
@@ -351,51 +352,18 @@ export default {
               levels: [],
               systems: [],
               genders: []
-            }
+            },
+            schoolname: ''
         }
     },
     watch:
         {
-          /*
-          school: function ()
-          {
-              if(this.school.sch_name == '')
-                  this.steps.one = false
-              else
-                  this.steps.one = true
 
-              if(this.school.sch_name == '' || this.school.sch_name == '' || this.school.sch_email == '' || this.school.sch_address == '' || this.school.sch_phone == '' || school.sch_location == '' || sch_logo)
-                  this.steps.two = false
-              else
-                  this.steps.two = true
-
-
-              if(this.school.inteli_code == '')
-                  this.steps.four = false
-              else
-                  this.steps.four = true
-
-          },
-            admin: function ()
-            {
-
-                if(this.admin.name == '' || this.admin.email == ''  || this.admin.phone == '')
-                    this.steps.three = false
-                else
-                    this.steps.three = true
-            },
-            installation_status: function () {
-                if(this.installation_status == false)
-                    this.steps.five = false
-                else
-                    this.steps.five = true
-            }
-            */
         },
         computed: {
           schoolTypes()
           {
-            return store.getters.types;
+            //return store.getters.types;
           },
         },
     methods:
@@ -482,7 +450,7 @@ export default {
             registerStepPrev()
             {
               const currentTab = document.querySelector("#pills-register")
-              const nextTab = document.querySelector("#pills-detils")
+              const nextTab = document.querySelector("#pills-details")
               currentTab.classList.remove("show", "active");
               nextTab.classList.add("show", "active")
             },
@@ -507,7 +475,6 @@ export default {
                 axios.get("/school-types")
                 .then((response)=>{
                     this.sch.types = response.data
-                    console.log(response.data)
                 })
                 .catch(()=>{
 
@@ -520,7 +487,6 @@ export default {
                 axios.get("/school-levels")
                 .then((response)=>{
                     this.sch.levels = response.data
-                    console.log(response.data)
                 })
                 .catch(()=>{
 
@@ -534,7 +500,6 @@ export default {
                 axios.get("/school-education-systems")
                 .then((response)=>{
                     this.sch.systems = response.data
-                    console.log(response.data)
                 })
                 .catch(()=>{
 
@@ -547,7 +512,6 @@ export default {
                 axios.get("/school-gender")
                 .then((response)=>{
                     this.sch.genders = response.data
-                    console.log(response.data)
                 })
                 .catch(()=>{
 
@@ -557,11 +521,21 @@ export default {
         },
     mounted()
     {
-        console.log("School Types");
         this.getSchoolTypes()
         this.getSchoolLevels()
         this.getSchoolEducationSystems()
         this.getSchoolGender()
+
+        store.state.school.sch_name = this.school.sch_name
+        store.state.school.sch_email = this.school.sch_email
+        store.state.school.sch_address = this.school.sch_address
+        store.state.school.sch_web = this.school.sch_web
+        store.state.school.sch_level_id = this.school.sch_level_id
+        store.state.school.sch_phone = this.school.sch_phone
+        store.state.school.sch_location = this.school.sch_location
+        store.state.school.sch_gender_id = this.school.sch_gender_id
+        store.state.school.sch_type_id = this.school.sch_type_id
+        store.state.school.sch_system_id = this.school.sch_system_id
     }
 }
 </script>

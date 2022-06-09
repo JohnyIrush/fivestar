@@ -1,0 +1,29 @@
+{
+    "name": "softwarescares/intelilibrary",
+    "description": "Inteli system Library Package/Module",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Softwarescares\\Intelilibrary\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "John Irungu",
+            "email": "johnydanxin@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {},
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Softwarescares\\Intelilibrary\\IntelilibraryServiceProvider"
+            ],
+            "aliases": {
+               
+            }
+        }
+    }
+}

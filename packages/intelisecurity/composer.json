@@ -1,0 +1,29 @@
+{
+    "name": "softwarescares/intelisecurity",
+    "description": "Inteli system package for security and defense",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Softwarescares\\Intelisecurity\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "John Irungu",
+            "email": "johnydanxin@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {},
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Softwarescares\\Intelisecurity\\InteliSecurityServiceProvider"
+            ],
+            "aliases": {
+
+            }
+        }
+    }
+}

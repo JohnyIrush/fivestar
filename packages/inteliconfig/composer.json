@@ -1,0 +1,29 @@
+{
+    "name": "softwarescares/inteliconfig",
+    "description": "Inteli system configuration package, provides all settings, configuration and setup for the system.",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Softwarescares\\Inteliconfig\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "John Irungu",
+            "email": "johnydanxin@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {},
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Softwarescares\\Intelicommunication\\InteliCommunicationServiceProvider"
+            ],
+            "aliases": {
+
+            }
+        }
+    }
+}

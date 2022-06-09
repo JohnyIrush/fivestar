@@ -25,6 +25,7 @@ class InteliInstallerServiceProvider extends ServiceProvider
     {
         $this->loadRoutesFrom(__DIR__.'/routes/web.php'); //-- web routes
         $this->loadRoutesFrom(__DIR__.'/routes/api.php'); //-- api routes
+        $this->loadRoutesFrom(__DIR__.'/routes/channels.php'); //-- api routes
         $this->loadViewsFrom(__DIR__.'/resources/views', 'inteliinstaller'); //-- Package views
         $this->loadMigrationsFrom(__DIR__.'/database/migrations'); //-- migrations
         $this->loadFactoriesFrom(__DIR__.'/database/migrations/factories'); //-- factories

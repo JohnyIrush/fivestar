@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests;
+namespace Softwarescares\Intelifinance\app\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 

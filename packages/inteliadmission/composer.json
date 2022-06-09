@@ -1,0 +1,29 @@
+{
+    "name": "softwarescares/inteliadmission",
+    "description": "Inteli system package for School Student Admission.",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Softwarescares\\Inteliadmission\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "John Irungu",
+            "email": "johnydanxin@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {},
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Softwarescares\\Inteliadmission\\InteliAdmissionServiceProvider"
+            ],
+            "aliases": {
+
+            }
+        }
+    }
+}

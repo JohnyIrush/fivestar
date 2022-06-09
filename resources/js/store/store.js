@@ -11,10 +11,22 @@ export const store = createStore({
             {name: 'Banana Skin', price: 20},
             {name: 'Skiny Star', price: 40},
             {name: 'Green Shells', price: 60},
-            {name: 'Red Shells', price: 80} 
+            {name: 'Red Shells', price: 80}
         ],
         school :{
-            types: ['1','2','3']
+            sch_name: 'Inteli School',
+            sch_email: '',
+            sch_address: '',
+            sch_web: '',
+            sch_level_id: '',
+            sch_phone: '',
+            sch_location: '',
+            sch_gender_id: '',
+            sch_type_id: '',
+            sch_system_id: '',
+            sch_logo: '',
+            inteli_code: '',
+            user_id: ''
         }
       }
     },

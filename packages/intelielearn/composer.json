@@ -1,0 +1,29 @@
+{
+    "name": "softwarescares/intelielearn",
+    "description": "Inteli System Online learning and online research materials, Provides access to relevant online learning materials etc",
+    "type": "libary",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Softwarescares\\Intelielearn\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "John Irungu",
+            "email": "johnydanxin@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {},
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Softwarescares\\Intelielearn\\IntelielearnServiceProvider"
+            ],
+            "aliases": {
+
+            }
+        }
+    }
+}

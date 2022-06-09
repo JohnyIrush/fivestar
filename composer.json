@@ -1,7 +1,7 @@
 {
     "name": "laravel/laravel",
     "type": "project",
-    "description": "Inteli System Learning Management Software.",
+    "description": "The Laravel Framework.",
     "keywords": ["framework", "laravel"],
     "repositories": {
         "inteliinstaller": {
@@ -32,13 +32,6 @@
                 "symlink": true
             }
         },
-        "inteliteam": {
-            "type": "path",
-            "url": "packages/inteliteam",
-            "options": {
-                "symlink": true
-            }
-        },
         "intelifinance": {
             "type": "path",
             "url": "packages/intelifinance",
@@ -46,16 +39,102 @@
                 "symlink": true
             }
         },
-        "intelisafaricomdaraja": {
+        "inteliteam": {
             "type": "path",
-            "url": "packages/intelisafaricomdaraja",
+            "url": "packages/inteliteam",
             "options": {
                 "symlink": true
             }
         },
+        "inteliadmission": {
+            "type": "path",
+            "url": "packages/inteliadmission",
+            "options": {
+                "symlink": true
+            }
+        },
+        "inteliai": {
+            "type": "path",
+            "url": "packages/inteliai",
+            "options": {
+                "symlink": true
+            }
+        },
+        "intelicommunication": {
+            "type": "path",
+            "url": "packages/intelicommunication",
+            "options": {
+                "symlink": true
+            }
+        },
+        "inteliconfig": {
+            "type": "path",
+            "url": "packages/inteliconfig",
+            "options": {
+                "symlink": true
+            }
+        },
+        "intelielearn": {
+            "type": "path",
+            "url": "packages/intelielearn",
+            "options": {
+                "symlink": true
+            }
+        },
+        "inteliexam": {
+            "type": "path",
+            "url": "packages/inteliexam",
+            "options": {
+                "symlink": true
+            }
+        },
+        "inteliinventory": {
+            "type": "path",
+            "url": "packages/inteliinventory",
+            "options": {
+                "symlink": true
+            }
+        },
+        "intelilibrary": {
+            "type": "path",
+            "url": "packages/intelilibrary",
+            "options": {
+                "symlink": true
+            }
+        },
+        "intelionlineclass": {
+            "type": "path",
+            "url": "packages/intelionlineclass",
+            "options": {
+                "symlink": true
+            }
+        },
+        "inteliportal": {
+            "type": "path",
+            "url": "packages/inteliportal",
+            "options": {
+                "symlink": true
+            }
+        },
+        "intelisecurity": {
+            "type": "path",
+            "url": "packages/intelisecurity",
+            "options": {
+                "symlink": true
+            }
+        }
+        ,
         "inteliresource": {
             "type": "path",
             "url": "packages/inteliresource",
+            "options": {
+                "symlink": true
+            }
+        }
+        ,
+        "intelisafaricomdaraja": {
+            "type": "path",
+            "url": "packages/intelisafaricomdaraja",
             "options": {
                 "symlink": true
             }
@@ -74,16 +153,26 @@
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
         "pusher/pusher-php-server": "^7.0",
+        "tightenco/ziggy": "^1.0",
         "softwarescares/inteliacademic": "@dev",
         "softwarescares/intelifinance": "@dev",
         "softwarescares/inteliinstaller": "@dev",
-        "softwarescares/inteliresource": "@dev",
-        "softwarescares/intelisafaricomdaraja": "@dev",
         "softwarescares/intelistaff": "@dev",
         "softwarescares/inteliteam": "@dev",
         "softwarescares/intelitimetable": "@dev",
-        "spatie/laravel-permission": "^5.5",
-        "tightenco/ziggy": "^1.0"
+        "softwarescares/inteliadmission": "@dev",
+        "softwarescares/inteliai": "@dev",
+        "softwarescares/intelicommunication": "@dev",
+        "softwarescares/inteliconfig": "@dev",
+        "softwarescares/intelielearn": "@dev",
+        "softwarescares/inteliexam": "@dev",
+        "softwarescares/inteliinventory": "@dev",
+        "softwarescares/intelilibrary": "@dev",
+        "softwarescares/intelionlineclass": "@dev",
+        "softwarescares/inteliportal": "@dev",
+        "softwarescares/intelisecurity": "@dev",
+        "softwarescares/inteliresource": "@dev",
+        "softwarescares/intelisafaricomdaraja": "@dev"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
@@ -91,15 +180,13 @@
         "laravel/sail": "^1.0.1",
         "mockery/mockery": "^1.4.4",
         "nunomaduro/collision": "^5.10",
-        "phpunit/phpunit": "^9.5.10",
-        "softwarescares/inteliresource": "@dev"
+        "phpunit/phpunit": "^9.5.10"
     },
     "autoload": {
         "psr-4": {
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
-            "Database\\Seeders\\": "database/seeders/",
-            "Softwarescares\\Inteliresource\\": "packages/inteliresource/src"
+            "Database\\Seeders\\": "database/seeders/"
         }
     },
     "autoload-dev": {

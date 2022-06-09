@@ -3,7 +3,7 @@
 namespace Softwarescares\Intelifinance\app\Policies;
 
 use Softwarescares\Intelifinance\app\Models\InteliPayment;
-use Softwarescares\Intelifinance\app\Models\User;
+use App\Models\User;
 
 use Illuminate\Auth\Access\HandlesAuthorization;
 

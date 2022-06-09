@@ -2,10 +2,13 @@
 
 namespace Softwarescares\Inteliinstaller\app\Http\Requests;
 
+use App\Actions\Fortify\PasswordValidationRules;
 use Illuminate\Foundation\Http\FormRequest;
+use Laravel\Jetstream\Jetstream;
 
 class StoreSchoolAdminRequest extends FormRequest
 {
+    use PasswordValidationRules;
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -13,7 +16,7 @@ class StoreSchoolAdminRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +27,11 @@ class StoreSchoolAdminRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            //'name' => ['required', 'string', 'max:255'],
+            //'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            //'phone' => ['required', 'max:255', 'unique:users'],
+            //'password' => $this->passwordRules(),
+            //'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['required', 'accepted'] : '',
         ];
     }
 }

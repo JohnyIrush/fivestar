@@ -1,0 +1,29 @@
+{
+    "name": "softwarescares/inteliinventory",
+    "description": "Inteli system Inventory Package, manages all school inventory, restocking, usage track, analysis etc.",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Softwarescares\\Inteliinventory\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "John Irungu",
+            "email": "johnydanxin@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {},
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Softwarescares\\Inteliinventory\\InteliInventoryServiceProvider"
+            ],
+            "aliases": {
+               
+            }
+        }
+    }
+}

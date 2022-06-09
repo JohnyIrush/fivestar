@@ -20,7 +20,7 @@
         "laravel": {
             "providers": [
                 "Softwarescares\\Intelifinance\\InteliFinanceServiceProvider",
-                "Softwarescares\\Intelifinance\\app\\Providers\\InteliEventServiceProvider"
+                "Softwarescares\\Intelifinance\\app\\Providers\\InteliFinanceEventServiceProvider"
             ],
             "aliases": {
 

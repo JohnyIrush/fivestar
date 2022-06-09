@@ -19,7 +19,7 @@
                       <h6>Role Manager</h6>
                     </div>
                     <div class="col-lg-4">
-                      <button type="button" class="btn btn-info" @click="launchAction('create', 'Role', '','create-role', '')">Create <i class="fa fa-plus"></i></button>
+                      <button type="button" class="btn btn-info" @click="launchAction('create', 'Role', '','create-role', '', 'permission-role-Modal','')">Create <i class="fa fa-plus"></i></button>
                     </div>
                     <div class="col-lg-4 col-5 my-auto text-end">
                       <div class="dropdown float-lg-end pe-4">
@@ -43,6 +43,7 @@
                         <tr>
                           <th class="text-uppercase text-secondary font-weight-bolder opacity-7">Role</th>
                           <th class="text-uppercase text-secondary font-weight-bolder opacity-7">Guard Name</th>
+                          <th class="text-uppercase text-secondary font-weight-bolder opacity-7">Permissions</th>
                           <th class="text-uppercase text-secondary font-weight-bolder opacity-7 ps-2">Actions</th>
                         </tr>
                       </thead>
@@ -54,8 +55,16 @@
                           <td>
                                 <p class="mb-0">{{role.guard_name}} </p>
                           </td>
+                          <td>
+                                <p class="mb-0" v-for="permission in role.permissions" :key="permission.id"> {{permission.name}}</p>
+                          </td>
                           <td class="text-sm">
-                            <span class="font-weight-bold"><button class="btn btn-primary btn-sm" @click="launchAction('Edit', 'Role',role,'edit-role', role.id)"><i class="fa fa-edit"></i>Edit</button>, <button class="btn btn-danger btn-sm" @click="destroy('Delete', 'Role','','delete-role', role.id)"> <i class="fa fa-trash"></i> Delete</button> </span>
+                            <span class="font-weight-bold">
+                                <button class="btn btn-primary btn-sm" @click="launchAction('Edit', 'Role',role,'edit-role', role.id, 'permission-role-Modal', '')"><i class="fa fa-edit"></i>Edit</button>
+                                ,<button class="btn btn-danger btn-sm" @click="destroy('Delete', 'Role','','delete-role', role.id,'')"> <i class="fa fa-trash"></i> Delete</button>
+                                ,<button class="btn btn-warning btn-sm" @click="launchAction('Give Permission', 'Role',role,'give-permission', role.id,'assign-permission-role-Modal', role.permissions)"><i class="fa fa-edit"></i>Give Permission</button>,
+                                ,<button class="btn btn-dark btn-sm" @click="launchAction('Revoke Permission', 'Revoke-Permission',role,'give-permission', role.id,'assign-permission-role-Modal', role.permissions)"><i class="fa fa-edit"></i>Revoke Permission</button>
+                            </span>
                           </td>
                         </tr>
                       </tbody>
@@ -72,7 +81,7 @@
                       <h6>Permissions Manager</h6>
                     </div>
                     <div class="col-lg-4">
-                      <button type="button" class="btn btn-info"  @click="launchAction('Create', 'Permission','','create-permission', '')">Create <i class="fa fa-plus"></i></button>
+                      <button type="button" class="btn btn-info"  @click="launchAction('Create', 'Permission','','create-permission', '', 'permission-role-Modal')">Create <i class="fa fa-plus"></i></button>
                     </div>
                     <div class="col-lg-4 col-5 my-auto text-end">
                       <div class="dropdown float-lg-end pe-4">
@@ -96,6 +105,7 @@
                         <tr>
                           <th class="text-uppercase text-secondary font-weight-bolder opacity-7">Permission</th>
                           <th class="text-uppercase text-secondary font-weight-bolder opacity-7">Guard Name</th>
+                          <th class="text-uppercase text-secondary font-weight-bolder opacity-7">Roles</th>
                           <th class="text-uppercase text-secondary font-weight-bolder opacity-7">Actions</th>
                         </tr>
                       </thead>
@@ -107,8 +117,16 @@
                           <td>
                                 <p class="mb-0">{{permission.guard_name}} </p>
                           </td>
+                          <td>
+                               <p class="mb-0" v-for="role in permission.roles" :key="role.id"> {{role.name}}</p>
+                          </td>
                           <td class="text-sm">
-                            <span class="font-weight-bold"> <button class="btn btn-primary btn-sm" @click="launchAction('Edit', 'Permission',permission, 'edit-permission', permission.id)"><i class="fa fa-edit"></i>Edit</button> , <button class="btn btn-danger btn-sm" @click="destroy('Delete', 'Permision','','delete-permission', permission.id)"> <i class="fa fa-trash"></i> Delete</button> </span>
+                            <span class="font-weight-bold">
+                             <button class="btn btn-primary btn-sm" @click="launchAction('Edit', 'Permission',permission, 'edit-permission', permission.id, 'permission-role-Modal', '')"><i class="fa fa-edit"></i>Edit</button>
+                            ,<button class="btn btn-danger btn-sm" @click="destroy('Delete', 'Permision','','delete-permission', permission.id, '')"> <i class="fa fa-trash"></i> Delete</button>
+                            ,<button class="btn btn-warning btn-sm" @click="launchAction('Asign Role', 'Permission',permission,'assign-role', permission.id,'assign-permission-role-Modal', '')"><i class="fa fa-edit"></i>Assign Role</button>
+                            ,<button class="btn btn-dark btn-sm" @click="launchAction('Remove Role', 'Remove-Role',permission,'assign-role', permission.id,'assign-permission-role-Modal', permission.roles)"><i class="fa fa-edit"></i>Remove Role</button>
+                            </span>
                           </td>
                         </tr>
                       </tbody>
@@ -122,16 +140,19 @@
       </div>
   </div>
   <permission_role_form_modal :form="form"></permission_role_form_modal>
+  <assign_permission_role_form_modal :form="form"></assign_permission_role_form_modal>
 </template>
 
 <script>
     import { defineComponent } from 'vue'
 
     import permission_role_form_modal from "../../../components/modals/PermissionRole.vue";
+    import assign_permission_role_form_modal from "../../../components/modals/assign-permission-role.vue";
 
     export default defineComponent({
         components: {
-            permission_role_form_modal
+            permission_role_form_modal,
+            assign_permission_role_form_modal
         },
 
         data() {
@@ -144,7 +165,8 @@
                     name: '',
                     guard_name: '',
                     url: '',
-                    id: ''
+                    id: '',
+                    rolespermissions: {}
                 }
             }
         },
@@ -157,16 +179,36 @@
 
                 })
             },
-            launchAction(action, type, data,url, id)
+            launchAction(action, type, data,url, id, modal, assignedOptions)
             {
-                this.form.action = action
-                this.form.type = type
-                this.form.name = data.name
-                this.form.guard_name = data.guard_name
-                this.form.url = url,
-                this.form.id = id
+                this.form.rolespermissions = []
+                this.form.action = action;
+                this.form.type = type;
+                this.form.name = data.name;
+                this.form.guard_name = data.guard_name;
+                this.form.url = url;
+                this.form.id = id;
 
-                var permissionRoleModal = new bootstrap.Modal(document.getElementById('permission-role-Modal'));
+                if(type === "Role")
+                {
+                    this.form.rolespermissions = this.permissions
+                }
+                else if(type === "Permission")
+                {
+                    this.form.rolespermissions = this.roles
+                }
+
+                else if(type === "Revoke-Permission")
+                {
+                    this.form.rolespermissions = assignedOptions
+                }
+                else if(type === "Remove-Role")
+                {
+                    this.form.rolespermissions = assignedOptions
+                }
+
+
+                var permissionRoleModal = new bootstrap.Modal(document.getElementById(modal));
                 permissionRoleModal.show();
             },
             getRoles()
