@@ -19,7 +19,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Softwarescares\\Intelijenga\\"
+                "Softwarescares\\Intelijenga\\JengaServiceProvider"
             ],
             "aliases": {
 

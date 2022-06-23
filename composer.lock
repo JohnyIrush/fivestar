@@ -5195,13 +5195,13 @@
             "dist": {
                 "type": "path",
                 "url": "packages/intelijenga",
-                "reference": "7391e0e870c7d1417e119f933df6199742b051e6"
+                "reference": "9fc98cefdd70c705c5a4f4ca19c3c9b5da342395"
             },
             "type": "library",
             "extra": {
                 "laravel": {
                     "providers": [
-                        "Softwarescares\\Intelijenga\\"
+                        "Softwarescares\\Intelijenga\\JengaServiceProvider"
                     ],
                     "aliases": []
                 }
