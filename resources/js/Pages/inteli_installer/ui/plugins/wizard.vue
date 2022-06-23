@@ -337,9 +337,8 @@ export default {
                 sch_gender_id: '',
                 sch_type_id: '',
                 sch_system_id: '',
-
                 sch_logo: '',
-                inteli_code: '',
+                sch_inteli_code: '',
             }),
             admin: this.$inertia.form({
                 name: '',
@@ -417,6 +416,14 @@ export default {
               const nextTab = document.querySelector("#pills-installation")
               currentTab.classList.remove("show", "active");
               nextTab.classList.add("show", "active")
+
+                axios.get("")
+                .then((response)=>{
+
+                })
+                .catch(()=>{
+
+                })
             },
 
             /**
@@ -516,7 +523,13 @@ export default {
                 .catch(()=>{
 
                 })
+            },
+            createSchool()
+            {
+                axios.post('create-sch-account', store.state.school)
+                .then(()=>{
 
+                })
             }
         },
     mounted()
@@ -536,6 +549,12 @@ export default {
         store.state.school.sch_gender_id = this.school.sch_gender_id
         store.state.school.sch_type_id = this.school.sch_type_id
         store.state.school.sch_system_id = this.school.sch_system_id
+
+            Echo.channel('inteli-payment-success')
+            .listen('.InteliPaymentSuccessEvent', (e)=>{
+                store.state.school.sch_inteli_code = e.inteli_code
+                this.createSchool();
+            })
     }
 }
 </script>

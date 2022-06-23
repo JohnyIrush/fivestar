@@ -3,7 +3,7 @@
 namespace Softwarescares\Inteliinstaller\app\Policies;
 
 use Softwarescares\Inteliinstaller\app\Models\Inteli;
-use Softwarescares\Inteliinstaller\app\Models\User;
+use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class InteliPolicy

@@ -39,5 +39,6 @@ class InteliFinanceServiceProvider extends ServiceProvider
             __DIR__.'/database/seeders' => public_path('../database/seeders'),
         ],'intelifinance-seeders');
 
+
     }
 }

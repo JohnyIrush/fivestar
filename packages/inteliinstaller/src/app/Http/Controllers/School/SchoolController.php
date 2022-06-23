@@ -51,12 +51,7 @@ class SchoolController extends Controller
         $school->school_type_id = $request->school_type_id;
         $school->school_education_system_id = $request->school_education;
         $school->user_id = $request->user_id;
-        //$school->inteli_code = $request->inteli_code; // Unique Secret Code for Inteli System Subscripion, Ownership
-        // $school->installation_status = $request->installation_status;
-        // $school->installation_date = $request->installation_date;
-        // $school->uninstallation_date = $request->uninstallation_date
-        //$company = new Company(['name' => 'Test']);
-        //$user->company()->save($company);
+        $school->inteli_code = $request->sch_inteli_code; // Unique Secret Code for Inteli System Subscripion, Ownership
         $school->save();
     }
 

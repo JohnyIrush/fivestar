@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-
+use Softwarescares\Inteliinstaller\app\Http\Controllers\InteliAppController;
 use Softwarescares\Inteliinstaller\app\Http\Controllers\School\SchoolController;
 use Softwarescares\Inteliinstaller\app\Http\Controllers\SchoolAdminController;
 
@@ -18,5 +18,7 @@ use Softwarescares\Inteliinstaller\app\Http\Controllers\SchoolAdminController;
 */
 
 
-Route::post('create/sch/account',[SchoolController::class, 'store'])->name('create-sch-account');
+Route::post('create-sch-account',[SchoolController::class, 'store'])->name('create-sch-account');
 Route::post('register-sch-admin',[SchoolAdminController::class, 'store']);
+
+Route::post('create-inteli-app',[InteliAppController::class, 'store']);

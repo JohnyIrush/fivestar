@@ -189,13 +189,10 @@
         },
         mounted()
         {
-            //this.listen()
-           // console.log(Echo)
-                Echo.channel('registration')
-                .listen('.SchoolAdminRegisteredEvent', (e)=>{
-                    alert('STB')
-                    console.log(e)
-                })
+            Echo.channel('registration')
+            .listen('.SchoolAdminRegisteredEvent', (e)=>{
+                console.log(e)
+            })
         }
     })
 </script>

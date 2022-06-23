@@ -2,6 +2,8 @@
 
 namespace Softwarescares\Inteliinstaller\app\Http\Controllers\UI;
 
+use App\Models\User;
+use App\Notifications\InteliSystemIntsallAttempt;
 use Softwarescares\Inteliinstaller\app\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -12,5 +14,12 @@ class UIController extends Controller
     public function installer()
     {
         return Inertia::render('inteli_installer/ui/themes/Installer');
+
+        $users = User::role('Admin')->get(); // Returns only users with the role 'Admin'
+
+        foreach ($users as $key => $user)
+        {
+            $user->notify(new InteliSystemIntsallAttempt("New Inteli system installation Attempt!"));
+        }
     }
 }

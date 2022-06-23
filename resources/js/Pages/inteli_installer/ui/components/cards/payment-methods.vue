@@ -8,13 +8,13 @@
             <button class="btn btn-styles" data-bs-toggle="modal" data-bs-target="#inteli-mpesa-pay">Pay </button>
           </div>
       </div>
-      <div class="box col-4">
+      <!--<div class="box col-4">
           <span></span>
           <div class="content text-white">
-            <h5>Pay With Stripe</h5>
+            <h5>Pay With Pesapal</h5>
             <button class="btn btn-styles">Pay <i class="fa fa-stripe fa-2x"></i> </button>
           </div>
-      </div>
+      </div>-->
       <div class="box col-4">
         <span></span>
         <div class="content text-white">
@@ -22,13 +22,13 @@
           <button class="btn btn-styles" data-bs-toggle="modal" data-bs-target="#inteli-paypal-pay">Pay <i class="fa fa-stripe fa-2x"></i> </button>
         </div>
       </div>
-      <div class="box col-4">
+      <!--<div class="box col-4">
           <span></span>
           <div class="content text-white">
             <h5>Pay With Equity</h5>
             <button class="btn btn-styles">Pay</button>
           </div>
-      </div>
+      </div>-->
   </div>
   <div class="container row mt-5 mobile-view">
       <div class="box col">
@@ -38,13 +38,13 @@
             <button class="btn btn-styles">Pay</button>
           </div>
       </div>
-      <div class="box col">
+      <!--<div class="box col">
           <span></span>
           <div class="content text-white">
-            <h5>Pay With Stripe</h5>
+            <h5>Pay With Pesapal</h5>
             <button class="btn btn-styles">Pay <i class="fa fa-stripe fa-2x"></i> </button>
           </div>
-      </div>
+      </div>-->
       <div class="box col">
         <span></span>
         <div class="content text-white">
@@ -52,6 +52,7 @@
           <button type="button" class="btn btn-styles" data-bs-toggle="modal" data-bs-target="#inteli-paypal-pay">Pay <i class="fa fa-paypal fa-2x"></i></button>
         </div>
       </div>
+      <!--
       <button type="button" class="btn btn-styles" data-bs-toggle="modal" data-bs-target="#inteli-paypal-pay">Pay <i class="fa fa-paypal fa-2x"></i></button>
       <div class="box col">
           <span></span>
@@ -59,7 +60,7 @@
             <h5>Pay With Equity</h5>
             <button class="btn btn-styles">Pay</button>
           </div>
-      </div>
+      </div>-->
   </div>
   <paypal_payment></paypal_payment>
   <mpesa_payment></mpesa_payment>

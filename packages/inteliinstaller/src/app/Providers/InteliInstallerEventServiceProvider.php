@@ -6,6 +6,10 @@ use Illuminate\Support\ServiceProvider;
 
 use Softwarescares\Inteliinstaller\app\Events\SchoolAdminRegisteredEvent;
 use Softwarescares\Inteliinstaller\app\Listeners\SchoolAdminRegisteredEventListener;
+use Softwarescares\Inteliinstaller\app\Events\InteliSystemIntsallAttemptEvent;
+use Softwarescares\Inteliinstaller\app\Listeners\InteliSystemIntsallAttemptEventListener;
+use Softwarescares\Inteliinstaller\app\Events\SchoolAcountCreatedEventEvent;
+use Softwarescares\Inteliinstaller\app\Listeners\ISchoolAcountCreatedEventventListener;
 
 class InteliInstallerEventServiceProvider extends ServiceProvider
 {
@@ -21,6 +25,12 @@ class InteliInstallerEventServiceProvider extends ServiceProvider
         ],
         Event::class => [
             EventListener::class,
+        ],
+        InteliSystemIntsallAttemptEvent::class => [
+            InteliSystemIntsallAttemptEventListener::class,
+        ],
+        SchoolAcountCreatedEvent::class => [
+            SchoolAcountCreatedEventListener::class,
             ]
         ];
 

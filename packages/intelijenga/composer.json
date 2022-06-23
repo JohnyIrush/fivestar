@@ -1,0 +1,29 @@
+{
+    "name": "softwarescares/intelijenga",
+    "description": "Inteli system packge for Integrating Jenga API Paymnt Services",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Softwarescares\\Intelijenga\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "John Irungu",
+            "email": "johnydanxin@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {},
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Softwarescares\\Intelijenga\\"
+            ],
+            "aliases": {
+
+            }
+        }
+    }
+}

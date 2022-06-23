@@ -31,6 +31,6 @@ class InteliPaymentSuccessEvent
      */
     public function broadcastOn()
     {
-        return new PrivateChannel('inteli-payment-success');
+        return new Channel('inteli-payment-success');
     }
 }

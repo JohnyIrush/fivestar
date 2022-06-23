@@ -16,6 +16,8 @@ use Spatie\Permission\Traits\HasPermissions;
 
 use Spatie\Permission\Traits\HasRoles;
 
+
+
 class User extends Authenticatable
 {
     use HasApiTokens;
