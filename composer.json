@@ -159,7 +159,6 @@
         "laravel/jetstream": "^2.6",
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
-        "pusher/pusher-php-server": "^7.0",
         "softwarescares/inteliacademic": "@dev",
         "softwarescares/inteliadmission": "@dev",
         "softwarescares/inteliai": "@dev",
