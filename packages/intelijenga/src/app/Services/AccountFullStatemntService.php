@@ -4,7 +4,7 @@ namespace Softwarescares\Intelijenga\app\Services;
 
 use Softwarescares\Intelijenga\app\Extensions\Transaction;
 
-class AccountMiniStatemntService extends Transaction
+class AccountFullStatemntService extends Transaction
 {
     use AuthorizationService;
 
