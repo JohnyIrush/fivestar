@@ -65,6 +65,7 @@ class SchoolAdminController extends Controller
 
         event(new SchoolAdminRegisteredEvent($user));
 
+
         return $user;
     }
 

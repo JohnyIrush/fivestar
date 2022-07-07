@@ -1,6 +1,6 @@
 <?php
 
-namespace Database\Seeders;
+namespace Softwarescares\Inteliacademic\database\seeders;
 
 use Softwarescares\Inteliacademic\app\Models\Department;
 use Illuminate\Database\Seeder;

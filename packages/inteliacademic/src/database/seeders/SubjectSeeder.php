@@ -1,6 +1,6 @@
 <?php
 
-namespace Database\Seeders;
+namespace Softwarescares\Inteliacademic\database\seeders;
 
 use Softwarescares\Inteliacademic\app\Models\Department;
 use Softwarescares\Inteliacademic\app\Models\Level;
@@ -34,21 +34,21 @@ class SubjectSeeder extends Seeder
             'subject' => 'Chemistry',
             'duration' => 40,
             'lessons' => 0,
-            
+
         ]);
 
         Subject::create([
             'subject' => 'Physics',
             'duration' => 40,
             'lessons' => 0,
-            
+
         ]);
 
         Subject::create([
             'subject' => 'Computer Studies',
             'duration' => 40,
             'lessons' => 0,
-            
+
         ]);
 
         Subject::create([
@@ -61,21 +61,21 @@ class SubjectSeeder extends Seeder
             'subject' => 'Geography',
             'duration' => 40,
             'lessons' => 0,
-            
+
         ]);
 
         Subject::create([
             'subject' => 'Psychology',
             'duration' => 40,
             'lessons' => 0,
-            
+
         ]);
 
         Subject::create([
             'subject' => 'Music',
             'duration' => 40,
             'lessons' => 0,
-    
+
         ]);
 
         for($i = 1; $i < sizeof(Subject::all());)

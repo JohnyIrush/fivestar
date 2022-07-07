@@ -22,8 +22,8 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
  window.Echo = new Echo({
      broadcaster: 'pusher',
-     key: '1420589',
-     wsHost: '127.0.0.1',
+     key: '79513281f9d36cce9bc2',
+     wsHost: window.location.hostname,
      wsPort: 6001,
      forceTLS: false,
      disableStats: true,

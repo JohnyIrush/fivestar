@@ -1,6 +1,6 @@
 <?php
 
-namespace Database\Seeders;
+namespace Softwarescares\Intelitimetable\database\seeders;
 
 use Softwarescares\Intelitimetable\app\Models\Day;
 use Softwarescares\Intelitimetable\app\Models\DaySession;
@@ -25,7 +25,7 @@ class DaySessionSeeder extends Seeder
             'start' => '7:50am',
             'end' => '9:50am',
         ]);
-    
+
         DaySession::create([
             'session' => 'Short Break',
             'type' => 'break',

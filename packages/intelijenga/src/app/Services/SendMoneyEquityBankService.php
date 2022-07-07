@@ -6,7 +6,6 @@ use Softwarescares\Intelijenga\app\Extensions\Transaction;
 
 class SendMoneyEquityBankService extends Transaction
 {
-    use AuthorizationService;
 
     public function transaction($accountNumber, $amount)
     {

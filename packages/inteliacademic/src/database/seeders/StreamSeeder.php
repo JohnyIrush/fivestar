@@ -1,6 +1,6 @@
 <?php
 
-namespace Database\Seeders;
+namespace Softwarescares\Inteliacademic\database\seeders;
 
 use Softwarescares\Inteliacademic\app\Models\Level;
 use Softwarescares\Inteliacademic\app\Models\Stream;
@@ -18,11 +18,11 @@ class StreamSeeder extends Seeder
         Stream::truncate();
 
         Stream::create([
-            'stream' => 'Purple',        
+            'stream' => 'Purple',
         ]);
 
         Stream::create([
-            'stream' => 'Pink',        
+            'stream' => 'Pink',
         ]);
 
 

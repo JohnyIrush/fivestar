@@ -15,6 +15,10 @@ use App\Models\User;
 use Softwarescares\Intelisafaricomdaraja\app\Services\AuthorizationService;
 use Softwarescares\Intelisafaricomdaraja\app\Models\CurrentTransactionUser;
 
+use Illuminate\Support\Facades\Auth;
+use Softwarescares\Inteliinstaller\app\Models\Inteli;
+use Softwarescares\Intelisafaricomdaraja\app\Events\MPesaExpressTransactionResultEvent;
+
 class MPesaExpressService extends Transaction implements TransactionInterface
 {
     use AuthorizationService;
@@ -30,17 +34,16 @@ class MPesaExpressService extends Transaction implements TransactionInterface
     {
         $url = (config('safaricomdaraja.MPESA.ENV') === "production") ? "https://api.safaricom.co.ke/mpesa/stkpush/v1/processrequest" : "https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest";
 
-
         $body = [
             'BusinessShortCode' => config("safaricomdaraja.MPESA.BUSINESSSHORTCODE"),
             'Password' => $this->darajaPasswordGenerator(),
             'Timestamp' => Carbon::rawParse('now')->format('YmdHms'),
             'TransactionType' => 'CustomerPayBillOnline',
-            'Amount' => $request["Amount"],
-            'PartyA' => $request["Phone"],
+            'Amount' => Inteli::find($request['version'])->price,//$request["Amount"],
+            'PartyA' => User::find($request['user_id'])->phone,//$request["Phone"],
             'PartyB' => config("safaricomdaraja.MPESA.BUSINESSSHORTCODE"),
-            'PhoneNumber' => $request["Phone"],
-            'CallBackURL' => config("safaricomdaraja.MPESA.APP_DOMAIN_URL") . '/mpesaexpress/result',//"https://packageengine.softwarescares.com/mpesaexpress/result",
+            'PhoneNumber' => User::find($request['user_id'])->phone,//$request["Phone"],
+            'CallBackURL' => config("safaricomdaraja.APP_DOMAIN_UR") .'/mpesaexpress/result',//"https://packageengine.softwarescares.com/mpesaexpress/result",
             'AccountReference' => config("app.name"),
             'TransactionDesc' => "Lipa Na M-PESA",
         ];
@@ -54,17 +57,38 @@ class MPesaExpressService extends Transaction implements TransactionInterface
     public function result($result, $user)
     {
              // Fire Notification
-             event(new  TransactionNotificationEvent ([
-                 'success' => [
-                    "ResultDesc" => $result["Body"]["stkCallback"]["ResultDesc"],
-                    "ResultCode" => $result["Body"]["stkCallback"]["ResultCode"]
-                 ],
-                 'user' => User::find(CurrentTransactionUser::find(1)->current_transaction_user_id)
+
+
+             //Fire Event to update mpesa transaction table
+
+             //event(new MPesaExpressTransactionResultEvent(($result)));
+             /*
+             event(new Softwarescares\Intelisafaricomdaraja\app\Events\MPesaExpressTransactionResultEvent(["Body" => ["stkCallback" => ["MerchantRequestID" => "29115-34620561-1","CheckoutRequestID" => "ws_CO_191220191020363925","ResultCode" => 0,"ResultDesc" => "The service request is processed successfully.","CallbackMetadata" => ["Item" => [[   "Name" => "Amount",   "Value" => 1.00],[   "Name" => "MpesaReceiptNumber",   "Value" => "NLJ7RT61SV"],[   "Name" => "TransactionDate",   "Value" => 20191219102115],[   "Name" => "PhoneNumber",   "Value" => 254708374149]]          ]       ]    ]]));
+
+             event(new Softwarescares\Intelisafaricomdaraja\app\Events\MPesaExpressTransactionResultEvent([
+                  "Body" => [
+                     "stkCallback" => [
+                        "MerchantRequestID" => "29115-34620561-1",
+                        "CheckoutRequestID" => "ws_CO_191220191020363925",
+                        "ResultCode" => 1032,
+                        "ResultDesc" => "Request cancelled by user."
+                     ]
+                  ]
              ]));
 
-            // Fire an event to Update Transaction Table
+             event(new Softwarescares\Intelisafaricomdaraja\app\Events\MPesaExpressTransactionResultEvent([
+                  "Body" => [
+                     "stkCallback" => [
+                        "MerchantRequestID" => "29115-34620561-1",
+                        "CheckoutRequestID" => "ws_CO_191220191020363925",
+                        "ResultCode" => 0,
+                        "ResultDesc" => "The service request is processed successfully."
+                     ]
+                  ]
+             ]));
+             */
 
-            event(new MPesaExpressTransactionEvent($result));
+
     }
 
     public function mpesaExpressQuery($CheckoutRequestID)
@@ -79,4 +103,7 @@ class MPesaExpressService extends Transaction implements TransactionInterface
 
         return json_decode($this->serviceRequest($url, $body));
     }
+
+
+
 }

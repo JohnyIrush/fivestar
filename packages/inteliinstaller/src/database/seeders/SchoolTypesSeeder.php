@@ -1,9 +1,10 @@
 <?php
 
-namespace Database\Seeders;
+namespace Softwarescares\Inteliinstaller\database\seeders;
 
 use Softwarescares\Inteliinstaller\app\Models\SchoolTypes;
 use Illuminate\Database\Seeder;
+use Illuminate\Facades\DB;
 
 class SchoolTypesSeeder extends Seeder
 {
@@ -17,19 +18,11 @@ class SchoolTypesSeeder extends Seeder
         SchoolTypes::truncate();
 
         SchoolTypes::create(
-            ['type' => 'Primary School']
+            ['type' => 'Private']
         );
 
         SchoolTypes::create(
-            ['type' => 'High School']
-        );
-
-        SchoolTypes::create(
-            ['type' => 'University']
-        );
-
-        SchoolTypes::create(
-            ['type' => 'College']
+            ['type' => 'Public']
         );
     }
 }

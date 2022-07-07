@@ -19,7 +19,7 @@
         <setup_guide></setup_guide>
       </div>
       <div class="carousel-item">
-        <img class="img-fluid d-block w-100 welcome-image-size" src="/images/Products/Inteli System.png" alt="" srcset="">
+        <img class="img-fluid d-block w-100 welcome-image-size" src="/images/Products/Ultimate.png" alt="" srcset="">
       </div>
     </div>
   </div>

@@ -1,6 +1,6 @@
 <?php
 
-namespace Database\Seeders;
+namespace Softwarescares\Intelisafaricomdaraja\database\seeders;
 
 use Illuminate\Database\Seeder;
 use Softwarescares\Intelisafaricomdaraja\app\Models\BusinessToCustomerTransaction;

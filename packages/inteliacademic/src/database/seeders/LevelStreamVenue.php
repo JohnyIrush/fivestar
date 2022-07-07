@@ -1,10 +1,10 @@
 <?php
 
-namespace Database\Seeders;
+namespace Softwarescares\Inteliacademic\database\seeders;
 
 use Softwarescares\Inteliacademic\app\Models\LevelStream;
-use Softwarescares\Inteliacademic\app\Models\Venue;
 use Illuminate\Database\Seeder;
+use Softwarescares\Intelitimetable\app\Models\Venue;
 
 class LevelStreamVenue extends Seeder
 {

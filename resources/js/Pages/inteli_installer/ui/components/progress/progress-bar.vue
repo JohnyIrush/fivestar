@@ -7,10 +7,14 @@
 		   </li>
 		   <li class="step-wizard-item current-item ">
 			   <span class="progress-count">2</span>
+			   <span class="progress-label">Product</span>
+		   </li>
+		   <li class="step-wizard-item current-item ">
+			   <span class="progress-count">3</span>
 			   <span class="progress-label">Name</span>
 		   </li>
 		   <li class="step-wizard-item">
-			<span class="progress-count">3</span>
+			<span class="progress-count">4</span>
 			<span class="progress-label">Details</span>
 		    </li>
 			<!--<li class="step-wizard-item">
@@ -18,15 +22,15 @@
 				<span class="progress-label">Admin</span>
 			</li>-->
 			<li class="step-wizard-item">
-				<span class="progress-count">4</span>
+				<span class="progress-count">5</span>
 				<span class="progress-label">Account</span>
 			</li>
 			<li class="step-wizard-item">
-				<span class="progress-count">5</span>
+				<span class="progress-count">6</span>
 				<span class="progress-label">Payment</span>
 			</li>
 			<li class="step-wizard-item">
-				<span class="progress-count">6</span>
+				<span class="progress-count">7</span>
 				<span class="progress-label">Installation</span>
 			</li>
 	   </ul>

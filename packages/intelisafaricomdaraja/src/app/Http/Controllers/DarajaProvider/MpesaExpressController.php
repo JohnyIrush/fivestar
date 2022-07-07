@@ -13,6 +13,10 @@ use Softwarescares\Intelisafaricomdaraja\app\Http\Requests\StoreMpesaExpressRequ
 use Softwarescares\Intelisafaricomdaraja\app\Models\CurrentTransactionUser;
 use Softwarescares\Intelisafaricomdaraja\app\Models\MpesaExpressTransaction;
 
+use Softwarescares\Intelisafaricomdaraja\app\Extensions\Transaction;
+
+use Softwarescares\Intelisafaricomdaraja\app\Events\MPesaExpressTransactionEvent;
+
 class MpesaExpressController extends Controller
 {
 
@@ -20,10 +24,11 @@ class MpesaExpressController extends Controller
 
     public $user;
 
-    public function __construct(TransactionInterface $transactionService)
+    public function __construct(TransactionInterface $transactionService,Transaction $trans)
     {
         $this->middleware("web");
         $this->transactionService = $transactionService;
+        $this->trans = $trans;
 
 
     }
@@ -55,10 +60,25 @@ class MpesaExpressController extends Controller
      */
     public function mpesaExpress(StoreMpesaExpressRequest $request)
     {
-        //return response()->json($request->all());
-        event(new StoreCurrentTransactionUserEvent(1)); // persists this user even after the callback from safaricom
+        #return response()->json($request->all());
+        //event(new StoreCurrentTransactionUserEvent(1)); // persists this user even after the callback from safaricom
 
-        return ($this->transactionService->transaction($request->all()));
+        event(new MPesaExpressTransactionEvent(($this->transactionService->transaction($request->all()))));
+        /*
+        event(new Softwarescares\Intelisafaricomdaraja\app\Events\MPesaExpressTransactionEvent([
+            "MerchantRequestID"=> "41159-117026555-1",
+            "CheckoutRequestID"=> "ws_CO_07072022120638746708374149",
+            "ResponseCode"=> "0",
+            "ResponseDescription"=> "Success. Request accepted for processing",
+            "CustomerMessage"=> "Success. Request accepted for processing"
+          ]));
+        event(new Softwarescares\Intelisafaricomdaraja\app\Events\MPesaExpressTransactionEvent(User::find(31)));
+        event(new Softwarescares\Intelisafaricomdaraja\app\Events\MPesaExpressTransactionEvent([
+            "requestId"=> "16813-15-1",
+            "errorCode"=> "404.001.04",
+            "errorMessage"=> "Invalid Access Token",
+          ]));
+        */
     }
 
     /**
@@ -67,12 +87,11 @@ class MpesaExpressController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function result(Request $request)
+    public function result(StoreMpesaExpressRequest $request)
     {
         Log::info("request callback: " . json_encode($request->all()));
-        Log::info("mpesa express result hit");
-        Auth::login(User::find(CurrentTransactionUser::find(1)->current_transaction_user_id));
-        $this->transactionService->result($request->all(), []);
+
+        $this->transactionService->result($request->all(), Auth::user());
     }
 
 
@@ -121,5 +140,10 @@ class MpesaExpressController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function accessToken()
+    {
+        return $this->trans->accessTokenTest();
     }
 }

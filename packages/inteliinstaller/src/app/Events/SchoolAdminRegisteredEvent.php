@@ -35,7 +35,6 @@ class SchoolAdminRegisteredEvent implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        #return new Channel('registration.'.$this->user->id);
         return new Channel('registration');
     }
 

@@ -1,0 +1,29 @@
+{
+    "name": "softwarescares/intelipaypal",
+    "description": "Paypal payment gateway package",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Softwarescares\\Intelipaypal\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "John Irungu",
+            "email": "johnydanxin@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {},
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Softwarescares\\Intelipaypal\\InteliPaypalServiceProvider"
+            ],
+            "aliases": {
+
+            }
+        }
+    }
+}

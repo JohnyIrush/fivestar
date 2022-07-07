@@ -14,7 +14,11 @@ class CreateIntelisTable extends Migration
     public function up()
     {
         Schema::create('intelis', function (Blueprint $table) {
-
+            $table->id();
+            $table->string('version');
+            $table->integer('price');
+            $table->text('image');
+            $table->timestamps();
         });
     }
 

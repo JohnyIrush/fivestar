@@ -6,7 +6,6 @@ use Softwarescares\Intelijenga\app\Extensions\Transaction;
 
 class MerchantPaymentService extends Transaction
 {
-    use AuthorizationService;
 
     public function transaction($accountNumber, $amount)
     {

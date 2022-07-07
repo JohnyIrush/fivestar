@@ -25,7 +25,7 @@ class InteliPolicy
      * Determine whether the user can view the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Inteli  $inteli
+     * @param  \App\Models\inteli  $inteli
      * @return \Illuminate\Auth\Access\Response|bool
      */
     public function view(User $user, Inteli $inteli)
@@ -48,7 +48,7 @@ class InteliPolicy
      * Determine whether the user can update the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Inteli  $inteli
+     * @param  \App\Models\inteli  $inteli
      * @return \Illuminate\Auth\Access\Response|bool
      */
     public function update(User $user, Inteli $inteli)
@@ -60,7 +60,7 @@ class InteliPolicy
      * Determine whether the user can delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Inteli  $inteli
+     * @param  \App\Models\inteli  $inteli
      * @return \Illuminate\Auth\Access\Response|bool
      */
     public function delete(User $user, Inteli $inteli)
@@ -72,7 +72,7 @@ class InteliPolicy
      * Determine whether the user can restore the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Inteli  $inteli
+     * @param  \App\Models\inteli  $inteli
      * @return \Illuminate\Auth\Access\Response|bool
      */
     public function restore(User $user, Inteli $inteli)
@@ -84,7 +84,7 @@ class InteliPolicy
      * Determine whether the user can permanently delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Inteli  $inteli
+     * @param  \App\Models\inteli  $inteli
      * @return \Illuminate\Auth\Access\Response|bool
      */
     public function forceDelete(User $user, Inteli $inteli)

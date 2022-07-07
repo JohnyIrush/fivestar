@@ -1,7 +1,6 @@
 <?php
 
-namespace Database\Seeders;
-
+namespace Softwarescares\Inteliexam\database\seeders;
 use Illuminate\Database\Seeder;
 
 class ExamSeeder extends Seeder

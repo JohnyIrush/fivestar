@@ -11,7 +11,11 @@
         <div class="modal-body">
              <div class="form-group">
                <label for="Phone">Phone Number</label>
-               <input v-model="mpesa.phone" type="text" name="Phone" class="form-control" id="Phone" placeholder="Phone">
+               <input v-model="mpesa.phone" type="text" name="Phone" class="form-control" id="Phone" placeholder="Phone" >
+             </div>
+             <div class="form-group">
+               <label for="Phone">Amount</label>
+               <input v-model="mpesa.amount" type="text" name="Amount" class="form-control" id="Amount" placeholder="Amount" >
              </div>
              <button type="submit" class="btn btn-primary">Lipa Na Mpesa</button>
         </div>
@@ -28,6 +32,7 @@
 
 <script>
 
+import { store } from '../../../../../store/store.js'
 
 export default
 {
@@ -38,8 +43,10 @@ export default
         return {
             mpesa:
             {
-                amount: 1500,
-                phone: ''
+                amount: '',
+                phone: '',
+                version: '',
+                user_id: ''
             }
         }
     },
@@ -47,107 +54,29 @@ export default
     {
         lipaNaMpesa()
         {
-            axios.post('/mpesa-express')
+            this.mpesa.version = store.state.school.version
+            this.mpesa.phone = store.state.school.admin_phone
+            this.mpesa.amount = store.state.school.amount
+            this.mpesa.user_id = store.state.school.user_id
+
+            axios.post('/mpesa-express', this.mpesa)
             .then((response)=>{
 
-              response = (JSON.parse(response));
-
-              if(response.ResponseCode == "0")
-              {
-               console.log(response);
-               //$('#pleaseWaitDialog').modal('hide');
-               this.notificationAlert("Transaction Request Status",response.CustomerMessage, "success");
-               //$('#pleaseWaitDialog').modal();
-               setTimeout(() => {
-                 //$('#pleaseWaitDialog').modal('hide');
-                 this.transactionResultNotification();
-               }, 7000);
-              }
-              else
-              {// case where transaction is not accepted for processing
-              console.log(response);
-               this.notificationAlert("Transaction Request Status",response.errorMessage, "error");
-
-              }
             })
             .catch((response)=>{
                 console.log(response);
             })
-        },
-    transactionResultNotification()
-    {
-        axios.get("/transaction/result/notification")
-        .then((response)=>{
-          //response = (JSON.parse(response));
-          console.log(response[0].data);
-
-           if(response[0].data.ResultCode == 0)
-           {
-            console.log(response[0].data.ResultDesc);
-           // alert(response[0].data.ResultDesc, "success");
-            this.notificationAlert("Transaction Process Status",response[0].data.ResultDesc, "success");
-            //$('#transaction-success-message').text(response[0].data.ResultDesc);
-            //$('#transaction-success').toast("show")
-            this.readNotification(response[0].id);
-            this.paymentSuccess("success");
-           }
-           else
-           {// case where transaction is not processed successfully
-
-           console.log(response);
-            this.notificationAlert("Transaction Process Status",response[0].data.ResultDesc, "error");
-            //$('#transaction-error-message').text(response[0].data.ResultDesc);
-            //$('#transaction-error').toast("show")
-            this.readNotification(response[0].id);
-            this.paymentSuccess("failed");
-           }
-        })
-        .catch((response)=>{
-           console.log(response);
-        })
-    },
-
-    notificationAlert(title,message, ICON)
-    {
-      swal({
-        title: title,
-        text: message, //response.data.CustomerMessage,
-        icon: ICON,
-        button: "ok",
-      });
-    },
-
-    readNotification(ID)
-    {
-        axios("transaction/result/notification/read")
-        .then((response)=>{
-
-        })
-        .catch((response)=>{
-
-        })
-
-    },
-
-    //--  This is specific for Current project should be removed from package after installing
-
-    paymentSuccess(status)
-    {
-
-        axios("/deposit/mpesa-payment")
-        .then((response)=>{
-
-        })
-        .catch((response)=>{
-
-        })
-    }
+        }
     }
     ,
     mounted()
     {
 
-    }
+    },
+    updated() {
+        this.mpesa.phone = store.state.school.admin_phone
+        this.mpesa.amount = store.state.school.amount
+    },
 
 }
 

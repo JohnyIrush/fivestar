@@ -3,10 +3,7 @@ require('./bootstrap');
 import { createApp, h } from 'vue';
 import { createInertiaApp } from '@inertiajs/inertia-vue3';
 import { InertiaProgress } from '@inertiajs/progress';
-//import { store } from './store/store.js';
 
-// import VueSweetalert2 from 'vue-sweetalert2';
-// import 'sweetalert2/dist/sweetalert2.min.css';
 
 
 

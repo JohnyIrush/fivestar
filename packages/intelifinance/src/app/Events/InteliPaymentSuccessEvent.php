@@ -10,7 +10,7 @@ use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-class InteliPaymentSuccessEvent
+class InteliPaymentSuccessEvent implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
@@ -31,6 +31,6 @@ class InteliPaymentSuccessEvent
      */
     public function broadcastOn()
     {
-        return new Channel('inteli-payment-success');
+        return new PrivateChannel('inteli-payment-success');
     }
 }

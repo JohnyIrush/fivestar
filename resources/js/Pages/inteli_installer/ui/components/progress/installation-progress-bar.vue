@@ -9,20 +9,20 @@
 			   <span class="progress-count">2</span>
 			   <span @click="preparingStage()" class="progress-label">App</span>
 		   </div>
-		   <div class="step-wizard-item">
+		   <!--<div class="step-wizard-item">
 			<span class="progress-count">3</span>
 			<span @click="Stage()" class="progress-label">Packages</span>
-		    </div>
+		    </div>-->
 			<div class="step-wizard-item">
 				<span class="progress-count">4</span>
+				<span @click="Stage()" class="progress-label">Config</span>
+			</div>
+			<div class="step-wizard-item">
+				<span class="progress-count">3</span>
 				<span @click="Stage()" class="progress-label">Storage</span>
 			</div>
 			<div class="step-wizard-item">
 				<span class="progress-count">5</span>
-				<span @click="Stage()" class="progress-label">Config</span>
-			</div>
-			<div class="step-wizard-item">
-				<span class="progress-count">6</span>
 				<span @click="Stage()" class="progress-label">Launch</span>
 			</div>
 	   </div>
@@ -226,7 +226,7 @@ export default {
     height: 2px;
     transform: translateX(-50%);
     z-index: -10;
-} 
+}
 
 .progress-count
 {
@@ -292,7 +292,7 @@ export default {
 
 .current-item ~ .step-wizard-item .progresss-label
 {
-    opacity: 0.5; 
+    opacity: 0.5;
 }
 
 .current-item .progress-count::after

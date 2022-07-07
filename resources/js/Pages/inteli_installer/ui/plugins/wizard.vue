@@ -50,7 +50,35 @@
                              </div>
                          </div>
                          <!--WELCOME END-->
+                         <!--Product START-->
+                         <div class="tab-pane fade" id="pills-product" role="tabpanel" aria-labelledby="pills-product-tab">
+                            <div class="row justify-content-center">
+                                <div class="col-1">
 
+                                </div>
+                                <div class="col-10 glass-content">
+                                    <div class="mb-3 mt-3">
+                                        <products></products>
+                                    </div>
+                                </div>
+                                <div class="col-1">
+
+                                </div>
+                            </div>
+
+                            <div class="row justify-content-center">
+                                <div class="col d-grid  mx-auto">
+                                  <button  @click="productStepPrev()" class="btn  mt-3 btn-styles" >Previous</button>
+                                </div>
+                                <div class="col">
+
+                                </div>
+                                <div class="col d-grid  mx-auto">
+                                  <button  @click="productStepNext()" class="btn  mt-3 btn-styles" >Next</button>
+                                </div>
+                            </div>
+                         </div>
+                         <!--Product END-->
                          <!--NAME START-->
                          <div class="tab-pane fade" id="pills-name" role="tabpanel" aria-labelledby="pills-name-tab">
                             <div class="row justify-content-center">
@@ -308,9 +336,13 @@ import payment_methods from "../components/cards/payment-methods"
 import school_details_confirmation from '../components/modals/school_details_confirmation.vue'
 import inteli_code_verify from '../components/modals/inteli-code-verify.vue'
 import register from '../components/forms/register/Register.vue'
+import products from "../components/cards/products.vue";
 
 /*Vuex Store*/
 import { store } from '../../../../store/store.js'
+
+/*Toast messages*/
+import {Toaster,ToasterPosition,ToasterTimer,ToasterType,} from "bs-toaster";
 
 export default {
     components:
@@ -322,7 +354,8 @@ export default {
             payment_methods,
             school_details_confirmation,
             inteli_code_verify,
-            register
+            register,
+            products
         },
     data() {
         return {
@@ -373,10 +406,18 @@ export default {
             getStartedNext()
             {
               const currentTab = document.querySelector("#pills-welcome")
-              const nextTab = document.querySelector("#pills-name")
+              const nextTab = document.querySelector("#pills-product")
               currentTab.classList.remove("show", "active");
               nextTab.classList.add("show", "active")
             },
+            productStepNext()
+            {
+              const currentTab = document.querySelector("#pills-product")
+              const nextTab = document.querySelector("#pills-name")
+              currentTab.classList.remove("show", "active");
+              nextTab.classList.add("show", "active")
+            }
+            ,
             nameStepNext()
             {
               const currentTab = document.querySelector("#pills-name")
@@ -430,10 +471,18 @@ export default {
              * previous Actions
             */
 
+            productStepPrev()
+            {
+              const currentTab = document.querySelector("#pills-product")
+              const nextTab = document.querySelector("#pills-welcome")
+              currentTab.classList.remove("show", "active");
+              nextTab.classList.add("show", "active")
+            },
+
             nameStepPrev()
             {
               const currentTab = document.querySelector("#pills-name")
-              const nextTab = document.querySelector("#pills-welcome")
+              const nextTab = document.querySelector("#pills-product")
               currentTab.classList.remove("show", "active");
               nextTab.classList.add("show", "active")
             },
@@ -476,6 +525,17 @@ export default {
               currentTab.classList.remove("show", "active");
               nextTab.classList.add("show", "active")
             },
+            getSchoolGender()
+            {
+
+                axios.get("/school-gender")
+                .then((response)=>{
+                    this.sch.genders = response.data
+                })
+                .catch(()=>{
+
+                })
+            },
             getSchoolTypes()
             {
 
@@ -513,17 +573,6 @@ export default {
                 })
 
             },
-            getSchoolGender()
-            {
-
-                axios.get("/school-gender")
-                .then((response)=>{
-                    this.sch.genders = response.data
-                })
-                .catch(()=>{
-
-                })
-            },
             createSchool()
             {
                 axios.post('create-sch-account', store.state.school)
@@ -550,11 +599,105 @@ export default {
         store.state.school.sch_type_id = this.school.sch_type_id
         store.state.school.sch_system_id = this.school.sch_system_id
 
-            Echo.channel('inteli-payment-success')
-            .listen('.InteliPaymentSuccessEvent', (e)=>{
-                store.state.school.sch_inteli_code = e.inteli_code
-                this.createSchool();
+        var toastMsg = new Toaster();
+
+        Echo.channel('registration')
+        .listen('.SchoolAdminRegisteredEvent', (e)=>{
+
+            toastMsg.create("Registration", "Successful School Admin Registration", {
+              // DEFAULT, SUCCESS, DANGER, INFO, PRIMARY, WARNING, DARK
+              type: ToasterType.SUCCESS,
+              // ELAPSED, COUNTDOWN
+              timer: ToasterTimer.COUNTDOWN,
+              // Delay hiding the toast (ms)
+              delay: 5000,
+              // Enable/disable animation
+              animation: true,
+              // Custom toast icon
+              defaultIconMarkup: '<i class="fa fa-user-secret" aria-hidden="true"></i>',
+              position: ToasterPosition.TOP
             })
+        });
+
+        Echo.channel('mpesa-express-transaction-start')
+        .listen('.MPesaExpressTransactionEvent', (e)=>{
+
+            if(e.ResponseCode && e.ResponseCode == 0)
+            {
+            toastMsg.create("Mpesa Transaction", "Mpesa Transaction " + e.CustomerMessage + " Please Check Your Phone To Complete Transaction", {
+              // DEFAULT, SUCCESS, DANGER, INFO, PRIMARY, WARNING, DARK
+              type: ToasterType.SUCCESS,
+              // ELAPSED, COUNTDOWN
+              timer: ToasterTimer.COUNTDOWN,
+              // Delay hiding the toast (ms)
+              delay: 5000,
+              // Enable/disable animation
+              animation: true,
+              // Custom toast icon
+              defaultIconMarkup: '<i class="fa fa-user-secret" aria-hidden="true"></i>',
+              position: ToasterPosition.TOP
+            })
+            }
+            else if(e.errorCode)
+            {
+            toastMsg.create("Mpesa Transaction", "Mpesa Transaction " + e.errorMessage + " Please Try Again", {
+              // DEFAULT, SUCCESS, DANGER, INFO, PRIMARY, WARNING, DARK
+              type: ToasterType.DANGER,
+              // ELAPSED, COUNTDOWN
+              timer: ToasterTimer.COUNTDOWN,
+              // Delay hiding the toast (ms)
+              delay: 5000,
+              // Enable/disable animation
+              animation: true,
+              // Custom toast icon
+              //defaultIconMarkup: '<i class="fa fa-user-secret" aria-hidden="true"></i>',
+              //position: ToasterPosition.TOP
+            })
+            }
+        })
+
+        Echo.channel('mpesa-express-transaction-result')
+        .listen('.MPesaExpressTransactionResultEvent', (e)=>{
+            if(e.ResultCode == 0)
+            {
+            toastMsg.create("Mpesa Payment", "Mpesa Payment Successful" + e.ResultDesc + " Thank You!", {
+              // DEFAULT, SUCCESS, DANGER, INFO, PRIMARY, WARNING, DARK
+              type: ToasterType.SUCCESS,
+              // ELAPSED, COUNTDOWN
+              timer: ToasterTimer.COUNTDOWN,
+              // Delay hiding the toast (ms)
+              delay: 5000,
+              // Enable/disable animation
+              animation: true,
+              // Custom toast icon
+              //defaultIconMarkup: '<i class="fa fa-user-secret" aria-hidden="true"></i>',
+              //position: ToasterPosition.TOP
+            })
+            }
+            else if (e.ResultDesc)
+            {
+            toastMsg.create("Mpesa Payment", "Mpesa Payment Not Successful. " + e.ResultDesc + " Please Try Again", {
+              // DEFAULT, SUCCESS, DANGER, INFO, PRIMARY, WARNING, DARK
+              type: ToasterType.DANGER,
+              // ELAPSED, COUNTDOWN
+              timer: ToasterTimer.COUNTDOWN,
+              // Delay hiding the toast (ms)
+              delay: 5000,
+              // Enable/disable animation
+              animation: true,
+              // Custom toast icon
+              //defaultIconMarkup: '<i class="fa fa-user-secret" aria-hidden="true"></i>',
+              //position: ToasterPosition.TOP
+            })
+            }
+        });
+
+        Echo.channel('inteli-payment-success')
+        .listen('.InteliPaymentSuccessEvent', (e)=>{
+            store.state.school.sch_inteli_code = e.inteli_code
+            this.createSchool();
+        });
+
     }
 }
 </script>

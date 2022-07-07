@@ -2,12 +2,12 @@
 
     <!--<Sign_Up_NavBar></Sign_Up_NavBar>-->
     <!--min-vh-100 mt-lg-n10 mt-md-n11 mt-n10-->
-        <section class="mt-3 main">
-          <div class="container">
+        <section class="mt-3">
+          <div class="container glass-content">
             <div class="row ">
               <div class="col-xl-6 col-lg-7 col-md-9 mx-auto">
-                <div class="card z-index-0">
-                  <div class="card-header text-center pt-4">
+                <div class="card z-index-0 glass-content">
+                  <div class="card-header text-center pt-4 glass-content">
                     <h5>Register with</h5>
                   </div>
                   <div class="row px-xl-5 px-sm-4 px-3">
@@ -68,45 +68,45 @@
                             <div class="square" style="--i:2;"></div>
                             <div class="square" style="--i:3;"></div>
                             <div class="square" style="--i:4;"></div>
-                            <div class="form-container">
+                            <div class="">
                                <form @submit.prevent="submit">
-                                    <div>
+                                 <div class="row">
+                                    <div class="col-6">
                                         <jet-label for="name" value="Name" />
-                                        <jet-input id="name" type="text" class="mt-1 block w-full" v-model="form.name" required autofocus autocomplete="name" />
+                                        <input id="name" type="text" class="mt-1 block w-full" v-model="form.name" required autofocus autocomplete="name" />
                                     </div>
 
-                                    <div class="mt-4">
+                                    <div class="col-6">
                                         <jet-label for="email" value="Email" />
-                                        <jet-input id="email" type="email" class="mt-1 block w-full" v-model="form.email" required />
+                                        <input id="email" type="email" class="mt-1 block w-full" v-model="form.email" required />
                                     </div>
 
-                                    <div class="mt-4">
+                                    <div class="mt-4 col-6">
                                         <jet-label for="phone" value="Phone" />
-                                        <jet-input id="phone" type="tel" class="mt-1 block w-full" v-model="form.phone" required />
+                                        <input id="phone" type="tel" class="mt-1 block w-full" v-model="form.phone" required />
                                     </div>
 
-                                    <div class="mt-4">
+                                    <div class="mt-4 col-6">
                                         <jet-label for="password" value="Password" />
-                                        <jet-input id="password" type="password" class="mt-1 block w-full" v-model="form.password" required autocomplete="new-password" />
+                                        <input id="password" type="password" class="mt-1 block w-full" v-model="form.password" required autocomplete="new-password" />
                                     </div>
 
-                                    <div class="mt-4">
-                                        <jet-label for="password_confirmation" value="Confirm Password" />
-                                        <jet-input id="password_confirmation" type="password" class="mt-1 block w-full" v-model="form.password_confirmation" required autocomplete="new-password" />
+                                    <div class="mt-4 col-6">
+                                        <label for="password_confirmation" value="Confirm Password" />
+                                        <input id="password_confirmation" type="password" class="mt-1 block w-full" v-model="form.password_confirmation" required autocomplete="new-password" />
                                     </div>
+                                 </div>
 
-
-                                    <!--<div class="mt-4" >
-                                        <jet-label for="terms">
-                                            <div class="flex items-center">
-                                                <jet-checkbox name="terms" id="terms" v-model:checked="form.terms" />
-
-                                                <div class="ml-2">
-                                                    I agree to the <a target="_blank" :href="route('terms.show')" class="underline text-sm text-gray-600 hover:text-gray-900">Terms of Service</a> and <a target="_blank" :href="route('policy.show')" class="underline text-sm text-gray-600 hover:text-gray-900">Privacy Policy</a>
-                                                </div>
+                                <!--<div class="mt-4 col-6" >
+                                    <jet-label for="terms">
+                                        <div class="flex items-center">
+                                            <jet-checkbox name="terms" id="terms" v-model:checked="form.terms" />
+                                            <div class="ml-2">
+                                                I agree to the <a target="_blank" :href="route('terms.show')" class="underline text-sm text-gray-600 hover:text-gray-900">Terms of Service</a> and <a target="_blank" :href="route('policy.show')" class="underline text-sm text-gray-600 hover:text-gray-900">Privacy Policy</a>
                                             </div>
-                                        </jet-label>
-                                    </div>-->
+                                        </div>
+                                    </jet-label>
+                                </div>-->
 
                                     <div class="items-center  mt-4">
                                         <Link :href="route('login')" class="underline text-white text-center text-sm text-gray-600 hover:text-gray-900">
@@ -139,11 +139,11 @@
     import JetInput from '@/Jetstream/Input.vue'
     import JetCheckbox from '@/Jetstream/Checkbox.vue'
     import JetLabel from '@/Jetstream/Label.vue'
-    //import JetValidationErrors from '@/Jetstream/ValidationErrors.vue'
+
     import { /*Head,*/ Link } from '@inertiajs/inertia-vue3';
-    //import Sign_Up_NavBar from '../../../../../Theme/widgets/Sign-Up-NavBar.vue'
 
     import { store } from "../../../../../../store/store.js";
+
 
     export default defineComponent({
         components: {
@@ -174,25 +174,16 @@
 
         methods: {
             submit() {
+                store.state.school.admin_phone = this.form.phone
                 axios.post('/register-sch-admin', this.form)
                 .then((response)=>{
                     store.state.school.user_id = response.data.id
                 })
             },
-            listen()
-            {
-                Echo.channel('registration')
-                .listen('SchoolAdminRegisteredEvent', ()=>{
-                    alert('New School Admin Registered!');
-                })
-            }
         },
         mounted()
         {
-            Echo.channel('registration')
-            .listen('.SchoolAdminRegisteredEvent', (e)=>{
-                console.log(e)
-            })
+
         }
     })
 </script>
@@ -470,5 +461,27 @@ section .color:nth-child(3)
 {
     color: #fff;
     font-weight: 600;
+}
+
+.card, .card-header, .card-body
+{
+  background: transparent !important;
+}
+
+input
+{
+    width: 100%;
+    background: white;
+    border: none;
+    outline: none;
+    padding: 10px 20px;
+    border-radius: 35px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    font-size: 16px;
+    letter-spacing: 1px;
+    color: #000;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
 }
 </style>

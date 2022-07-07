@@ -26,7 +26,11 @@ export const store = createStore({
             sch_system_id: '',
             sch_logo: '',
             sch_inteli_code: '',
-            user_id: ''
+
+            user_id: '',
+            admin_phone: '',
+            version: '',
+            amount: ''
         }
       }
     },

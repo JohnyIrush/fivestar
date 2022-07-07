@@ -1,8 +1,9 @@
 <?php
 
-namespace Database\Seeders;
+namespace Softwarescares\Inteliinstaller\database\seeders;
 
 use Illuminate\Database\Seeder;
+use Softwarescares\Inteliinstaller\app\Models\Inteli;
 
 class InteliSeeder extends Seeder
 {
@@ -13,6 +14,30 @@ class InteliSeeder extends Seeder
      */
     public function run()
     {
-        //
+        Inteli::truncate();
+
+        Inteli::create(
+            [
+                'version' => "Community Edition",
+                'price' => "1500",
+                'image' => '/images/Products/Community.png'
+            ]
+        );
+
+        Inteli::create(
+            [
+                'version' => "Ultimate Edition",
+                'price' => "2500",
+                'image' => '/images/Products/Ultimate.png'
+            ]
+        );
+
+        Inteli::create(
+            [
+                'version' => "Ultra Edition",
+                'price' => "5000",
+                'image' => '/images/Products/Elite.png'
+            ]
+        );
     }
 }

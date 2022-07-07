@@ -68,8 +68,8 @@
 
 <script>
 
-import paypal_payment from '../../../../inteli_finance/widgets/modals/paypal/payment.vue'
 import mpesa_payment from '../../../../inteli_safaricomdaraja/widgets/modals/payment/mpesa-express.vue'
+import paypal_payment from '../../../../inteli_paypal/ui/widgets/modals/payment.vue'
 
 export default {
   components:

@@ -1,6 +1,6 @@
 <?php
 
-namespace Database\Seeders;
+namespace Softwarescares\Intelitimetable\database\seeders;
 
 use Softwarescares\Intelitimetable\app\Models\Level;
 use Softwarescares\Intelitimetable\app\Models\Venue;
@@ -18,7 +18,7 @@ class VenueSeeder extends Seeder
     {
         Venue::truncate();
 
-        // purple streams 
+        // purple streams
         Venue::create([
             'venue' => 'Form One Room purple',
             'location' => (string)rand(500000,10000000),

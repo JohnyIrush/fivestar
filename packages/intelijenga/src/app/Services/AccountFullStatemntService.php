@@ -6,7 +6,6 @@ use Softwarescares\Intelijenga\app\Extensions\Transaction;
 
 class AccountFullStatemntService extends Transaction
 {
-    use AuthorizationService;
 
     public function transaction($accountNumber)
     {
@@ -22,7 +21,7 @@ class AccountFullStatemntService extends Transaction
 
        $type = 'POST';
 
-       return $this->serviceRequest($url, $body, $type);
+       return $this->transaction($url, $body, $type);
     }
 
 }

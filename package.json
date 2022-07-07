@@ -19,7 +19,7 @@
         "@vue/compiler-sfc": "^3.0.5",
         "axios": "^0.21",
         "jest": "^27.5.1",
-        "laravel-echo": "^1.11.7",
+        "laravel-echo": "^1.12.0",
         "laravel-mix": "^6.0.6",
         "lodash": "^4.17.19",
         "postcss": "^8.1.14",
@@ -35,10 +35,12 @@
         "@fortawesome/free-regular-svg-icons": "^6.1.1",
         "@fortawesome/free-solid-svg-icons": "^6.1.1",
         "@fortawesome/vue-fontawesome": "^3.0.0-5",
+        "bs-toaster": "^1.0.4",
         "chart.js": "^2.9.4",
         "tsparticles": "^1.41.6",
         "vue-plugin-load-script": "^2.1.1",
         "vue-sweetalert2": "^5.0.2",
+        "vue-toastification": "^2.0.0-rc.5",
         "vuex": "^4.0.2"
     }
 }

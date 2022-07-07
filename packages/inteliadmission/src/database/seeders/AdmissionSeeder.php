@@ -1,6 +1,6 @@
 <?php
 
-namespace Database\Seeders;
+namespace Softwarescares\Inteliadmission\database\seeders;
 
 use Illuminate\Database\Seeder;
 
@@ -13,6 +13,5 @@ class AdmissionSeeder extends Seeder
      */
     public function run()
     {
-        //
     }
 }

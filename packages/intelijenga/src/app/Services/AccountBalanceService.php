@@ -2,12 +2,10 @@
 
 namespace Softwarescares\Intelijenga\app\Services;
 
-use Carbon\Carbon;
 use Softwarescares\Intelijenga\app\Extensions\Transaction;
 
 class AccountBalanceService extends Transaction
 {
-    use AuthorizationService;
 
     public function transaction($accountNumber)
     {

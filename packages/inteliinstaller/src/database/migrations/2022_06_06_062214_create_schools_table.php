@@ -27,7 +27,7 @@ class CreateSchoolsTable extends Migration
             $table->string('school_education_system_id');
 
             $table->integer('user_id');
-
+            $table->integer('inteli_id');
             $table->integer('inteli_code');
             $table->boolean('installation_status')->default(false);
             $table->timestamp('installation_date');

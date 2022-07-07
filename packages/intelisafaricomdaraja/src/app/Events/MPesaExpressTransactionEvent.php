@@ -2,6 +2,7 @@
 
 namespace Softwarescares\Intelisafaricomdaraja\app\Events;
 
+use App\Models\User;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Broadcasting\PresenceChannel;
@@ -11,7 +12,7 @@ use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Log;
 
-class MPesaExpressTransactionEvent
+class MPesaExpressTransactionEvent implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
@@ -34,6 +35,24 @@ class MPesaExpressTransactionEvent
      */
     public function broadcastOn()
     {
-        return new PrivateChannel('channel-name');
+        return new Channel('mpesa-express-transaction-start');
     }
+
+    public function broadcastAs()
+    {
+        return 'MPesaExpressTransactionEvent';
+    }
+
+    /**
+     * Get the data to broadcast.
+     *
+     * @return array
+     */
+
+    public function broadcastWith()
+    {
+        return $this->result;
+    }
+
+
 }

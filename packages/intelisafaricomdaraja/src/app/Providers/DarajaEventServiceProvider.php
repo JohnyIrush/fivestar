@@ -34,6 +34,9 @@ class DarajaEventServiceProvider extends ServiceProvider
     protected $listen = [
         InteliPaymentSuccessEvent::class => [
             InteliPaymentSuccessEventListener::class,
+        ],
+        MPesaExpressTransactionResultEvent::class => [
+            MPesaExpressTransactionResultEventListener::class,
             ]
         ];
     /**

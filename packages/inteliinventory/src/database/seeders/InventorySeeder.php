@@ -1,6 +1,6 @@
 <?php
 
-namespace Database\Seeders;
+namespace Softwarescares\Inteliinventory\database\seeders;
 
 use Illuminate\Database\Seeder;
 

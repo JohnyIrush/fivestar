@@ -1,10 +1,10 @@
 <?php
 
-namespace Database\Seeders;
+namespace Softwarescares\Inteliresource\database\seeders;
 
-use App\Models\FileManager;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Softwarescares\Inteliresource\app\Models\FileManager;
 
 class FileManagerSeeder extends Seeder
 {

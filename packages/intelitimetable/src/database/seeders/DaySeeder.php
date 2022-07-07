@@ -1,6 +1,6 @@
 <?php
 
-namespace Database\Seeders;
+namespace Softwarescares\Intelitimetable\database\seeders;
 
 use Softwarescares\Intelitimetable\app\Models\Day;
 use Illuminate\Database\Seeder;
