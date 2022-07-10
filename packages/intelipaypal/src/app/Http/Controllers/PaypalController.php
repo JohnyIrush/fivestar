@@ -2,7 +2,7 @@
 
 namespace Softwarescares\Intelipaypal\app\Http\Controllers;
 
-
+use Softwarescares\Intelifinance\app\Events\InteliPaymentSuccessEvent;
 use Softwarescares\Intelipaypal\app\Http\Requests\StorePaypalRequest;
 use Softwarescares\Intelipaypal\app\Http\Requests\UpdatePaypalRequest;
 use Softwarescares\Intelipaypal\app\Models\Paypal;
@@ -39,7 +39,6 @@ class PaypalController extends Controller
     {
         $paypal = new Paypal();
 
-
         $paypal->payment_id = $request["payment_id"];
         $paypal->create_time = $request["create_time"];
         $paypal->payer_country_code = $request["payer_country_code"];
@@ -55,6 +54,8 @@ class PaypalController extends Controller
         $paypal->update_time = $request["update_time"];
 
         $paypal->save();
+
+        event(new InteliPaymentSuccessEvent());
     }
 
     /**

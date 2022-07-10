@@ -5,12 +5,12 @@
 		<div class="shadow"></div>
 		<!--<svg >
 			<circle cx="80" cy="80" r="60" class="color1"></circle>
-		</svg>-->	
+		</svg>-->
         <div class="circle"></div>
 		<div class="counter">
 			<span class="color1">0%</span>
 		</div>
-		<h5>Laravel</h5>
+		<h5>Migrations</h5>
 	  </div>
     </div>
     <div class="col">
@@ -19,11 +19,11 @@
 		 <!--<svg >
 		 	<circle cx="80" cy="80" r="60" class="color1"></circle>
 		 </svg>-->
-         <div class="circle"></div>	
+         <div class="circle"></div>
 		<div class="counter">
 			<span class="color1">0%</span>
 		</div>
-		<h5>Vuejs</h5>
+		<h5>seeeding</h5>
 	  </div>
     </div>
 </div>
@@ -33,7 +33,7 @@
 		<div class="shadow"></div>
 		<svg >
 			<circle cx="56" cy="56" r="32" class="color1"></circle>
-		</svg>	
+		</svg>
 		<div class="counter">
 			<span class="color1">0%</span>
 		</div>
@@ -45,7 +45,7 @@
 		<div class="shadow"></div>
 		<svg >
 			<circle cx="56" cy="56" r="32" class="color1"></circle>
-		</svg>	
+		</svg>
 		<div class="counter">
 			<span class="color1">0%</span>
 		</div>
@@ -57,7 +57,7 @@
 
 <script>
 export default {
-    
+
 }
 </script>
 
@@ -128,7 +128,7 @@ export default {
 {
  font-size: 20px;
  line-height: 28px;
- font-weight: bold;   
+ font-weight: bold;
 }
 
 h2
@@ -173,11 +173,11 @@ h2
     0%
     {
         transform: translate(-50%, -50%) rotate(0deg);
-    } 
+    }
     100%
     {
         transform: translate(-50%, -50%) rotate(360deg);
-    }  
+    }
 }
 
 
@@ -187,7 +187,7 @@ h2
 {
     height: 120px;
     width: 120px;
-}  
+}
 
 
 .box svg
@@ -206,7 +206,7 @@ h2
 {
  font-size: 12px;
  line-height: 28px;
- font-weight: bold;   
+ font-weight: bold;
 }
 
 }

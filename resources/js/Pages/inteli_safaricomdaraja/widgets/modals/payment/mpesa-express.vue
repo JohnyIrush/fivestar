@@ -21,7 +21,7 @@
         </div>
         <div class="modal-footer">
          <div class="d-grid gap-2 col-6 mx-auto">
-           <button  class="btn btn-primary btn-styles" data-bs-dismiss="modal">Close</button>
+           <button id="inteli-mpesa-pay-close"  class="btn btn-primary btn-styles" data-bs-dismiss="modal">Close</button>
          </div>
         </div>
         </form>
@@ -59,12 +59,18 @@ export default
             this.mpesa.amount = store.state.school.amount
             this.mpesa.user_id = store.state.school.user_id
 
+
+             // var modal = new bootstrap.Modal(document.getElementById('inteli-mpesa-pay'))
+
+
+
             axios.post('/mpesa-express', this.mpesa)
             .then((response)=>{
-
+                //modal.hide()
             })
             .catch((response)=>{
                 console.log(response);
+                //modal.show()
             })
         }
     }

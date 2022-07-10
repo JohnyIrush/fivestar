@@ -303,7 +303,7 @@
 
                                 </div>
                             </div>
-                            <div class="row justify-content-around">
+                            <!--<div class="row justify-content-around">
                                 <div class="col-4 d-grid  mx-auto">
                                   <button  @click="installationStepPrev()" class="btn  mt-3 btn-styles" >Previous</button>
                                 </div>
@@ -313,7 +313,7 @@
                                 <div class="col-4 d-grid  mx-auto">
                                   <button   class="btn  mt-3 btn-styles" >Next</button>
                                 </div>
-                            </div>
+                            </div>-->
 
                          </div>
                          <!-- INSTALLATION END-->
@@ -428,10 +428,13 @@ export default {
             ,
             detailsStepNext()
             {
+
+              this.updateSchStore()
               const currentTab = document.querySelector("#pills-details")
               const nextTab = document.querySelector("#pills-register")
               currentTab.classList.remove("show", "active");
               nextTab.classList.add("show", "active")
+
             },
             /*
             adminStepNext()
@@ -489,6 +492,7 @@ export default {
 
             detailsStepPrev()
             {
+
               const currentTab = document.querySelector("#pills-details")
               const nextTab = document.querySelector("#pills-name")
               currentTab.classList.remove("show", "active");
@@ -573,13 +577,33 @@ export default {
                 })
 
             },
-            createSchool()
+            createSchoolAccount()
             {
                 axios.post('create-sch-account', store.state.school)
                 .then(()=>{
 
                 })
-            }
+            },
+            updateSchStore()
+            {
+              store.state.school.sch_name = this.school.sch_name
+              store.state.school.sch_email = this.school.sch_email
+              store.state.school.sch_address = this.school.sch_address
+              store.state.school.sch_web = this.school.sch_web
+              store.state.school.sch_level_id = this.school.sch_level_id
+              store.state.school.sch_phone = this.school.sch_phone
+              store.state.school.sch_location = this.school.sch_location
+              store.state.school.sch_gender_id = this.school.sch_gender_id
+              store.state.school.sch_type_id = this.school.sch_type_id
+              store.state.school.sch_system_id = this.school.sch_system_id
+            },
+            createSystemDatabase()
+            {
+                axios.post('create-database', store.state.school)
+                .then(()=>{
+
+                })
+            },
         },
     mounted()
     {
@@ -588,16 +612,6 @@ export default {
         this.getSchoolEducationSystems()
         this.getSchoolGender()
 
-        store.state.school.sch_name = this.school.sch_name
-        store.state.school.sch_email = this.school.sch_email
-        store.state.school.sch_address = this.school.sch_address
-        store.state.school.sch_web = this.school.sch_web
-        store.state.school.sch_level_id = this.school.sch_level_id
-        store.state.school.sch_phone = this.school.sch_phone
-        store.state.school.sch_location = this.school.sch_location
-        store.state.school.sch_gender_id = this.school.sch_gender_id
-        store.state.school.sch_type_id = this.school.sch_type_id
-        store.state.school.sch_system_id = this.school.sch_system_id
 
         var toastMsg = new Toaster();
 
@@ -635,7 +649,7 @@ export default {
               animation: true,
               // Custom toast icon
               defaultIconMarkup: '<i class="fa fa-user-secret" aria-hidden="true"></i>',
-              position: ToasterPosition.TOP
+              //position: ToasterPosition.TOP
             })
             }
             else if(e.errorCode)
@@ -694,8 +708,57 @@ export default {
 
         Echo.channel('inteli-payment-success')
         .listen('.InteliPaymentSuccessEvent', (e)=>{
-            store.state.school.sch_inteli_code = e.inteli_code
-            this.createSchool();
+
+            toastMsg.create("Iteli System Payment", "Inteli payment pocessed Successfully. Welcome, You are just some few seconds to setting up everything.", {
+              // DEFAULT, SUCCESS, DANGER, INFO, PRIMARY, WARNING, DARK
+              type: ToasterType.INFO,
+              // ELAPSED, COUNTDOWN
+              timer: ToasterTimer.COUNTDOWN,
+              // Delay hiding the toast (ms)
+              delay: 6000,
+              // Enable/disable animation
+              animation: true,
+              // Custom toast icon
+              //defaultIconMarkup: '<i class="fa fa-user-secret" aria-hidden="true"></i>',
+              //position: ToasterPosition.TOP
+            })
+
+            store.state.school.sch_inteli_code = 1 //e.inteli_code
+            this.createSchoolAccount();
+        });
+
+        Echo.channel('school-account-created')
+        .listen('.SchoolAcountCreatedEvent', (e)=>{
+
+            toastMsg.create("School Account", "School Account Successfully. Time To Setup The System!", {
+              // DEFAULT, SUCCESS, DANGER, INFO, PRIMARY, WARNING, DARK
+              type: ToasterType.SUCCESS,
+              // ELAPSED, COUNTDOWN
+              timer: ToasterTimer.COUNTDOWN,
+              // Delay hiding the toast (ms)
+              delay: 6000,
+              // Enable/disable animation
+              animation: true,
+              // Custom toast icon
+              //defaultIconMarkup: '<i class="fa fa-user-secret" aria-hidden="true"></i>',
+              //position: ToasterPosition.TOP
+            })
+
+         //var mpesaModal = new bootstrap.Modal(document.getElementById('inteli-mpesa-pay'))
+         var mpesaCloseButton = document.getElementById("inteli-mpesa-pay-close");
+
+         mpesaCloseButton.click();
+         // mpesaModal.hide();
+
+         //var payPalModal = new bootstrap.Modal(document.getElementById('inteli-paypal-pay'))
+         var payPalCloseButton = document.getElementById("inteli-paypal-pay-close");
+
+         payPalCloseButton.click();
+         // payPalModal.hide();
+
+         this.paymentStepNext();
+         this.createSystemDatabase()
+
         });
 
     }

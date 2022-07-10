@@ -30,8 +30,6 @@ class CreateSchoolsTable extends Migration
             $table->integer('inteli_id');
             $table->integer('inteli_code');
             $table->boolean('installation_status')->default(false);
-            $table->timestamp('installation_date');
-            $table->timestamp('uninstallation_date');
 
             $table->timestamps();
         });

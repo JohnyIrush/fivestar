@@ -29,10 +29,6 @@ class MPesaExpressTransactionResultEventListener
      */
     public function handle(MPesaExpressTransactionResultEvent $event)
     {
-        if($event->result["Body"]["stkCallback"]["ResultCode"] == '0')
-        {
-            event(new InteliPaymentSuccessEvent());
-        }
 
         MpesaExpressTransaction::create(
             [
@@ -47,5 +43,10 @@ class MPesaExpressTransactionResultEventListener
                 'order_id' => 1
             ]
         );
+
+        if($event->result["Body"]["stkCallback"]["ResultCode"] == '0')
+        {
+            event(new InteliPaymentSuccessEvent());
+        }
     }
 }

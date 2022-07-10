@@ -1,6 +1,6 @@
 <?php
 
-namespace Softwarescares\Intelifinance\app\Events;
+namespace Softwarescares\Inteliinstaller\app\Events;
 
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
@@ -10,7 +10,7 @@ use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-class InteliPaymentSuccessEvent implements ShouldBroadcast
+class SchoolAcountCreatedEvent implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
@@ -31,11 +31,11 @@ class InteliPaymentSuccessEvent implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        return new Channel('inteli-payment-success');
+        return new Channel('school-account-created');
     }
 
     public function broadcastAs()
     {
-        return 'InteliPaymentSuccessEvent';
+        return new Channel('SchoolAcountCreatedEvent');
     }
 }

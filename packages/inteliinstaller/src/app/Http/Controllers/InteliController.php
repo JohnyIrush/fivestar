@@ -3,7 +3,13 @@
 namespace Softwarescares\Inteliinstaller\app\Http\Controllers;
 
 use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
+use PDO;
+use Softwarescares\Inteliinstaller\app\Events\DatabaseConfugurationCompletedEvent;
+use Softwarescares\Inteliinstaller\app\Events\DatabaseMigrationCompletedEvent;
+use Softwarescares\Inteliinstaller\app\Events\DatabaseSeedingCompletedEvent;
+use Softwarescares\Inteliinstaller\app\Events\SystemDatabaseCreatedEvent;
 use Softwarescares\Inteliinstaller\app\Models\Inteli;
 use Softwarescares\Inteliinstaller\app\Http\Requests\StoreInteliRequest;
 use Softwarescares\Inteliinstaller\app\Http\Requests\UpdateInteliRequest;
@@ -94,32 +100,112 @@ class InteliController extends Controller
      */
     public function createDatabase(StoreInteliRequest $request)
     {
-        #$db =  DB::raw('CREATE DATABASE '.$request->name);
-        #return $db;
-        #Artisan::call("infyom:scaffold", ['name' => $request['name'], '--fieldsFile' => 'public/Product.json']);
+        $dbname = implode(explode(" ",$request->sch_name));//trim($request->sch_name);
         $charset = config("database.connections.mysql.charset",'utf8mb4');
         $collation = config("database.connections.mysql.collation",'utf8mb4_unicode_ci');
-        $query = "CREATE DATABASE IF NOT EXISTS $request->name CHARACTER SET $charset COLLATE $collation;";
+        $query = "CREATE DATABASE IF NOT EXISTS $dbname CHARACTER SET $charset COLLATE $collation;";
 
-        return DB::statement($query);
+        DB::statement($query);
 
-
+        event(new SystemDatabaseCreatedEvent(['databasename' => $dbname]));
     }
 
     public function configureInteliDatabase(StoreInteliRequest $request)
     {
-        #$connection =
-        #array_push(config("database.connections"), $connection);
+        $dbname = $request["databasename"];
+
+        $connection =   [
+            'driver' => 'mysql',
+            'url' => env('DATABASE_URL'),
+            'host' => env('DB_HOST', '127.0.0.1'),
+            'port' => env('DB_PORT', '3306'),
+            'database' => env('', $dbname),
+            'username' => env('DB_USERNAME_INTELI', 'forge'),
+            'password' => env('DB_PASSWORD_INTELI', ''),
+            'unix_socket' => env('DB_SOCKET', ''),
+            'charset' => 'utf8mb4',
+            'collation' => 'utf8mb4_unicode_ci',
+            'prefix' => '',
+            'prefix_indexes' => true,
+            'strict' => true,
+            'engine' => null,
+            'options' => extension_loaded('pdo_mysql') ? array_filter([
+                PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
+            ]) : [],
+        ];
+
+        config("database.connections")[$dbname] = [];
+
+        config("database.connections")[$request["databasename"]] = $connection;
+
+        event(new DatabaseConfugurationCompletedEvent(['databasename' => $dbname]));
     }
 
     public function runInteliMigration(StoreInteliRequest $request)
     {
+        $dbname = $request["databasename"];
 
+        Config::set("database.connections." . $dbname, [
+            'driver' => 'mysql',
+            'url' => env('DATABASE_URL'),
+            'host' => env('DB_HOST', '127.0.0.1'),
+            'port' => env('DB_PORT', '3306'),
+            'database' => $dbname,
+            'username' => env('DB_USERNAME', 'forge'),
+            'password' => env('DB_PASSWORD', ''),
+            'unix_socket' => env('DB_SOCKET', ''),
+            'charset' => 'utf8mb4',
+            'collation' => 'utf8mb4_unicode_ci',
+            'prefix' => '',
+            'prefix_indexes' => true,
+            'strict' => true,
+            'engine' => null,
+            'options' => extension_loaded('pdo_mysql') ? array_filter([
+                PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
+            ]) : [],
+        ]);
+
+
+         Artisan::call( 'migrate', [
+             '--database' => $dbname,
+             //'--path' => 'database/migrations',
+             //'--force' => true
+         ]);
+
+         event(new DatabaseMigrationCompletedEvent(['databasename' => $dbname]));
     }
 
     public function runInteliSeeder(StoreInteliRequest $request)
     {
+        $dbname = $request["databasename"];
 
+        Config::set("database.connections." . $dbname, [
+            'driver' => 'mysql',
+            'url' => env('DATABASE_URL'),
+            'host' => env('DB_HOST', '127.0.0.1'),
+            'port' => env('DB_PORT', '3306'),
+            'database' => $dbname,
+            'username' => env('DB_USERNAME', 'forge'),
+            'password' => env('DB_PASSWORD', ''),
+            'unix_socket' => env('DB_SOCKET', ''),
+            'charset' => 'utf8mb4',
+            'collation' => 'utf8mb4_unicode_ci',
+            'prefix' => '',
+            'prefix_indexes' => true,
+            'strict' => true,
+            'engine' => null,
+            'options' => extension_loaded('pdo_mysql') ? array_filter([
+                PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
+            ]) : [],
+        ]);
+
+         Artisan::call( 'db:seed', [
+             '--database' => $dbname,
+             #'--path' => 'database/migrations',
+             #'--force' => true
+         ]);
+
+         event(new DatabaseSeedingCompletedEvent(['databasename' => $dbname]));
     }
 
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Softwarescares\Intelifinance\app\Events;
+namespace Softwarescares\Inteliinstaller\app\Events;
 
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
@@ -10,18 +10,20 @@ use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-class InteliPaymentSuccessEvent implements ShouldBroadcast
+class DatabaseMigrationCompletedEvent implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
+
+    public $database;
 
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($database)
     {
-        //
+        $this->database = $database;
     }
 
     /**
@@ -31,11 +33,16 @@ class InteliPaymentSuccessEvent implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        return new Channel('inteli-payment-success');
+        return new Channel('database-migration-completed');
+    }
+
+    public function broadcastWith()
+    {
+        return $this->database;
     }
 
     public function broadcastAs()
     {
-        return 'InteliPaymentSuccessEvent';
+        return new Channel('DatabaseMigrationCompletedEvent');
     }
 }

@@ -1,12 +1,12 @@
 <template>
    <section class="step-wizard ">
 	   <div class="step-wizard-list glass-content">
-		   <div class="step-wizard-item">
+		   <!--<div class="step-wizard-item">
 			   <span class="progress-count">1</span>
 			   <span @click="Stage()" class="progress-label">Preparing</span>
-		   </div>
+		   </div>-->
 		   <div class="step-wizard-item current-item ">
-			   <span class="progress-count">2</span>
+			   <span class="progress-count">1</span>
 			   <span @click="preparingStage()" class="progress-label">App</span>
 		   </div>
 		   <!--<div class="step-wizard-item">
@@ -14,7 +14,7 @@
 			<span @click="Stage()" class="progress-label">Packages</span>
 		    </div>-->
 			<div class="step-wizard-item">
-				<span class="progress-count">4</span>
+				<span class="progress-count">2</span>
 				<span @click="Stage()" class="progress-label">Config</span>
 			</div>
 			<div class="step-wizard-item">
@@ -22,7 +22,7 @@
 				<span @click="Stage()" class="progress-label">Storage</span>
 			</div>
 			<div class="step-wizard-item">
-				<span class="progress-count">5</span>
+				<span class="progress-count">4</span>
 				<span @click="Stage()" class="progress-label">Launch</span>
 			</div>
 	   </div>

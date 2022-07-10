@@ -27,3 +27,6 @@ Route::post('register-sch-admin',[SchoolAdminController::class, 'store']);
 
 // Installtion routes
 Route::post('create-database',[InteliController::class, 'createDatabase']);
+Route::post('configure-database',[InteliController::class, 'configureInteliDatabase']);
+Route::post('run-database-migrations',[InteliController::class, 'runInteliMigration']);
+Route::post('run-database-seeders',[InteliController::class, 'runInteliSeeder']);

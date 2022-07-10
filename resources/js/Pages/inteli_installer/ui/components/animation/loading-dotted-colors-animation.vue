@@ -25,14 +25,14 @@
 	</section>
     <div class="row">
         <div class="col text-center">
-            <h2 class="stage-heading">Creating Database</h2>
+            <h2 class="stage-heading">Creating System Database</h2>
         </div>
     </div>
 </template>
 
 <script>
 export default {
-    
+
 }
 </script>
 
@@ -55,7 +55,7 @@ section
     }
     100%
     {
-     filter: hue-rotate(360deg);   
+     filter: hue-rotate(360deg);
     }
 }
 
@@ -100,7 +100,7 @@ section .loader span::before
     }
     80%, 100%
     {
-     transform: scale(0);     
+     transform: scale(0);
     }
 }
 

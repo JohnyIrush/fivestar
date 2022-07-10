@@ -12,7 +12,7 @@
         </div>
         <div class="modal-footer">
          <div class="d-grid gap-2 col-6 mx-auto">
-           <button  class="btn btn-primary btn-styles" data-bs-dismiss="modal">Close</button>
+           <button id="inteli-paypal-pay-close"  class="btn btn-primary btn-styles" data-bs-dismiss="modal">Close</button>
          </div>
         </div>
       </div>
@@ -129,11 +129,21 @@ export default
 
     console.log(paypaldata);
 
+
+    //var modal = new bootstrap.Modal(document.getElementById('inteli-paypal-pay'))
+    var closeButton = document.getElementById("inteli-paypal-pay-close");
     axios.post('paypal', paypaldata)
     .then((response)=>{
         console.log(response);
+
+      closeButton.click();
+
+        //modal.hide();
+
     })
     .catch(()=>{
+
+       // modal.show();
 
     })
 
