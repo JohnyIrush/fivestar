@@ -2,8 +2,8 @@
 
 namespace Softwarescares\Intelistaff\database\seeders;
 
-use Softwarescares\Inteliacademic\app\Models\Department;
 use Illuminate\Database\Seeder;
+use Softwarescares\Intelistaff\app\Models\Department;
 
 class DepartmentSeeder extends Seeder
 {

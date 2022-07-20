@@ -2,6 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Softwarescares\Inteliportal\app\Http\Controllers\Guardian\GuardianController;
+use Softwarescares\Inteliportal\app\Http\Controllers\Students\StudentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,4 +16,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+Route::get("/portal/student/details", [StudentController::class, "getDetails"]);
+Route::get("/portal/guardian/details", [GuardianController::class, "getDetails"]);
 

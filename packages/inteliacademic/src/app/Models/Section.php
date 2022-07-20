@@ -4,6 +4,7 @@ namespace Softwarescares\Inteliacademic\app\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Softwarescares\Intelistaff\app\Models\Teacher;
 use Softwarescares\Intelitimetable\app\Models\Venue;
 
 class Section extends Model
@@ -19,4 +20,11 @@ class Section extends Model
     {
         return $this->hasOne(Venue::class);
     }
+
+    public function teacher()
+    {
+        return $this->belongsTo(Teacher::class);
+    }
+
+
 }

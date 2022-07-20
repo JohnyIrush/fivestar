@@ -629,12 +629,7 @@
 </script>
 
 <style scoped>
-main
-{
 
-    background: linear-gradient(purple, pink);
-    background-size: cover;
-}
 
 .glass-container
 {

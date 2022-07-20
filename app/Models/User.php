@@ -9,7 +9,13 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
-
+use Softwarescares\Intelifinance\app\Models\Account;
+use Softwarescares\Intelifinance\app\Models\Deposit;
+use Softwarescares\Intelifinance\app\Models\Payment;
+use Softwarescares\Intelifinance\app\Models\Withdraw;
+use Softwarescares\Inteliportal\app\Models\Guardian;
+use Softwarescares\Inteliportal\app\Models\Student;
+use Softwarescares\Intelistaff\app\Models\Staff;
 use SoftwaresCares\Inteliteam\app\Models\Task;
 
 use Spatie\Permission\Traits\HasPermissions;
@@ -78,5 +84,40 @@ class User extends Authenticatable
     public function task()
     {
         return $this->hasMany(Task::class);
+    }
+
+    public function staff()
+    {
+        return $this->hasOne(Staff::class);
+    }
+
+    public function student()
+    {
+        return $this->hasOne(Student::class);
+    }
+
+    public function guardian()
+    {
+        return $this->hasOne(Guardian::class);
+    }
+
+    public function account()
+    {
+        return $this->hasOne(Account::class);
+    }
+
+    public function withdrawals()
+    {
+        return $this->hasManyThrough(Withdraw::class, Account::class);
+    }
+
+    public function deposits()
+    {
+        return $this->hasManyThrough(Deposit::class, Account::class);
+    }
+
+    public function payments()
+    {
+        return $this->hasManyThrough(Payment::class, Account::class);
     }
 }

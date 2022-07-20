@@ -21,6 +21,7 @@ use Softwarescares\Inteliportal\database\seeders\InteliPortalDatabaseSeeder;
 use Softwarescares\Inteliresource\database\seeders\InteliResourceDatabaseSeeder;
 use Softwarescares\Intelisafaricomdaraja\database\seeders\InteliSafaricomdarajaDatabaseSeeder;
 use Softwarescares\Intelisecurity\database\seeders\InteliSecurityDatabaseSeeder;
+use Softwarescares\Intelistaff\database\seeders\InteliStaffDatabaseSeeder;
 use Softwarescares\Inteliteam\database\seeders\InteliTeamDatabaseSeeder;
 use Softwarescares\Intelitimetable\database\seeders\InteliTimetableDatabaseSeeder;
 
@@ -36,7 +37,10 @@ class DatabaseSeeder extends Seeder
         $this->call
         (
             [
+                InteliStaffDatabaseSeeder::class,
                 InteliAcademicDatabaseSeeder::class,
+                InteliInventoryDatabaseSeeder::class,
+                InteliPortalDatabaseSeeder::class,
                 InteliAdmissionDatabaseSeeder::class,
                 InteliAiDatabaseSeeder::class,
                 InteliCommunicationDatabaseSeeder::class,
@@ -45,10 +49,8 @@ class DatabaseSeeder extends Seeder
                 InteliExamDatabaseSeeder::class,
                 InteliFinanceDatabaseSeeder::class,
                 InteliInstallerDatabaseSeeder::class,
-                InteliInventoryDatabaseSeeder::class,
                 InteliLibraryDatabaseSeeder::class,
                 InteliOnlineclassDatabaseSeeder::class,
-                InteliPortalDatabaseSeeder::class,
                 InteliResourceDatabaseSeeder::class,
                 InteliSafaricomdarajaDatabaseSeeder::class,
                 InteliSecurityDatabaseSeeder::class,
@@ -56,7 +58,6 @@ class DatabaseSeeder extends Seeder
                 InteliTeamDatabaseSeeder::class,
                 InteliTimetableDatabaseSeeder::class,
                 InteliPaypalDatabaseSeeder::class
-
             ]
         );
     }

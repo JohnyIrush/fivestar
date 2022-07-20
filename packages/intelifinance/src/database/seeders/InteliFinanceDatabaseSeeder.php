@@ -17,6 +17,12 @@ class InteliFinanceDatabaseSeeder extends Seeder
         (
             [
                 InteliPaymentSeeder::class,
+                PaymentMethodSeeder::class,
+                ServiceSeeder::class,
+                AccountSeeder::class,
+                DepositSeeder::class,
+                PaymentSeeder::class,
+                WithdrawSeeder::class,
             ]
         );
     }

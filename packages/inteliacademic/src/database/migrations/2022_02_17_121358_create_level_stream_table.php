@@ -18,6 +18,8 @@ class CreateLevelStreamTable extends Migration
             $table->foreignId('level_id')->constrained();
             $table->foreignId('stream_id')->constrained();
             $table->foreignId('venue_id')->nullable();
+
+            $table->timestamps();
         });
     }
 

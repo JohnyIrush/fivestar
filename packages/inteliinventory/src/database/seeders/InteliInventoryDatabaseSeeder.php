@@ -16,7 +16,8 @@ class InteliInventoryDatabaseSeeder extends Seeder
         $this->call
         (
             [
-                InventorySeeder::class
+                InventorySeeder::class,
+                HostelSeeder::class
             ]
         );
     }

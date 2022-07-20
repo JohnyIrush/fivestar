@@ -2,13 +2,14 @@
 
 namespace Softwarescares\Inteliacademic\database\seeders;
 
-use Softwarescares\Inteliacademic\app\Models\Department;
 use Softwarescares\Inteliacademic\app\Models\Level;
 use Softwarescares\Inteliacademic\app\Models\Subject;
-use Softwarescares\Inteliacademic\app\Models\Teacher;
+
 use Softwarescares\Inteliacademic\app\Models\SubjectTeacher;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Softwarescares\Intelistaff\app\Models\Department;
+use Softwarescares\Intelistaff\app\Models\Teacher;
 
 class SubjectSeeder extends Seeder
 {
@@ -19,7 +20,6 @@ class SubjectSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('subject_teacher')->truncate();
         DB::table('department_subject')->truncate();
         Subject::truncate();
 
@@ -78,14 +78,6 @@ class SubjectSeeder extends Seeder
 
         ]);
 
-        for($i = 1; $i < sizeof(Subject::all());)
-        {
-            for($j = 1; $j <= sizeof(Teacher::all()); $j++)
-            {
-                Subject::find($i)->teachers()->attach(Teacher::find($j));
-                $i++;
-            }
-        }
 
         for($j = 1; $j <= sizeof(Subject::all()); $j++)
         {
@@ -96,5 +88,6 @@ class SubjectSeeder extends Seeder
         {
             Subject::find($j)->levels()->attach(Level::all());
         }
+
     }
 }

@@ -3,6 +3,10 @@
 namespace Softwarescares\Inteliportal\database\seeders;
 
 use Illuminate\Database\Seeder;
+use Softwarescares\Inteliacademic\database\seeders\ClubStudentSeeder;
+use Softwarescares\Inteliacademic\database\seeders\SportStudentSeeder;
+use Softwarescares\Inteliacademic\database\seeders\StudentSubjectSeeder;
+use Softwarescares\Intelistaff\database\seeders\StaffSeeder;
 
 class InteliPortalDatabaseSeeder extends Seeder
 {
@@ -16,7 +20,13 @@ class InteliPortalDatabaseSeeder extends Seeder
         $this->call
         (
             [
-                PortalSeeder::class
+                //GenderSeeder::class,
+                PortalSeeder::class,
+                StudentSeeder::class,
+                GuardianSeeder::class,
+                StudentSubjectSeeder::class,
+                SportStudentSeeder::class,
+                ClubStudentSeeder::class,
             ]
         );
     }

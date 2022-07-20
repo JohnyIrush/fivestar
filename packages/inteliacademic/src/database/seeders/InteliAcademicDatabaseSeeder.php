@@ -3,6 +3,7 @@
 namespace Softwarescares\Inteliacademic\database\seeders;
 
 use Illuminate\Database\Seeder;
+use Softwarescares\Intelistaff\database\seeders\StaffSeeder;
 
 class InteliAcademicDatabaseSeeder extends Seeder
 {
@@ -18,10 +19,15 @@ class InteliAcademicDatabaseSeeder extends Seeder
             [
             LevelSeeder::class,
             StreamSeeder::class,
-            TeacherSeeder::class,
-            DepartmentSeeder::class,
             SubjectSeeder::class,
+            StaffSeeder::class,
             SectionSeeder::class,
+            LevelStreamSeeder::class,
+            # StudentSubjectSeeder::class,
+            ClubSeeder::class,
+            SportSeeder::class,
+            #SportStudentSeeder::class,
+            #ClubStudentSeeder::class,
             ]
         );
     }

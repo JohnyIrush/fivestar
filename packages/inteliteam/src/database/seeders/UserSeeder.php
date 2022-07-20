@@ -29,6 +29,7 @@ class UserSeeder extends Seeder
              'email_verified_at' => now(),
              'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
              'remember_token' => Hash::make("password2123"),
+             "profile_photo_path" => "/theme/assets/img/ivana-square.jpg"
         ]);
         User::create(
             [
@@ -38,6 +39,7 @@ class UserSeeder extends Seeder
              'email_verified_at' => now(),
              'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
              'remember_token' => Hash::make("password2123"),
+             "profile_photo_path" => "/theme/assets/img/ivancik.jpg"
         ]);
         User::create(
             [
@@ -47,6 +49,7 @@ class UserSeeder extends Seeder
              'email_verified_at' => now(),
              'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
              'remember_token' => Hash::make("password2123"),
+             "profile_photo_path" => "/theme/assets/img/kal-visuals-square.jpg"
         ]);
         User::create(
             [
@@ -56,6 +59,7 @@ class UserSeeder extends Seeder
              'email_verified_at' => now(),
              'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
              'remember_token' => Hash::make("password2123"),
+             "profile_photo_path" => "/theme/assets/img/marie.jpg"
         ]);
         User::create(
             [
@@ -65,6 +69,7 @@ class UserSeeder extends Seeder
              'email_verified_at' => now(),
              'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
              'remember_token' => Hash::make("password2123"),
+             "profile_photo_path" => "/theme/assets/img/team-1.jpg"
         ]);
         User::create(
             [
@@ -74,6 +79,7 @@ class UserSeeder extends Seeder
              'email_verified_at' => now(),
              'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
              'remember_token' => Hash::make("password2123"),
+             "profile_photo_path" => "/theme/assets/img/team-2.jpg"
         ]);
         User::create(
             [
@@ -83,6 +89,7 @@ class UserSeeder extends Seeder
              'email_verified_at' => now(),
              'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
              'remember_token' => Hash::make("password2123"),
+             "profile_photo_path" => "/theme/assets/img/team-3.jpg"
         ]);
         User::create(
             [
@@ -92,6 +99,7 @@ class UserSeeder extends Seeder
              'email_verified_at' => now(),
              'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
              'remember_token' => Hash::make("password2123"),
+             "profile_photo_path" => "/theme/assets/img/team-4.jpg"
         ]);
         User::create(
             [
@@ -101,6 +109,7 @@ class UserSeeder extends Seeder
              'email_verified_at' => now(),
              'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
              'remember_token' => Hash::make("password2123"),
+             "profile_photo_path" => "/theme/assets/img/bruce-mars.jpg"
         ]);
         User::create(
             [
@@ -110,6 +119,20 @@ class UserSeeder extends Seeder
              'email_verified_at' => now(),
              'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
              'remember_token' => Hash::make("password2123"),
+             "profile_photo_path" => "/theme/assets/img/DSC_0058 copy modified.jpg"
         ]);
+
+        for ($i=0; $i <= 49; $i++) {
+            User::create(
+                [
+                 'name' => $faker->name(),
+                 'email' => $faker->unique()->safeEmail(),
+                 'phone' => $faker->phoneNumber,
+                 'email_verified_at' => now(),
+                 'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+                 'remember_token' => Hash::make("password2123"),
+                 "profile_photo_path" => "/theme/assets/img/DSC_0058 copy modified.jpg"
+            ]);
+        }
     }
 }

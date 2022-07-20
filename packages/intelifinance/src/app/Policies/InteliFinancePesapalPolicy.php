@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Policies;
+namespace Softwarescares\Intelifinance\app\Policies;
 
-use App\Models\InteliFinancePesapal;
+
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
+use Softwarescares\Intelifinance\app\Models\InteliFinancePesapal;
 
 class InteliFinancePesapalPolicy
 {

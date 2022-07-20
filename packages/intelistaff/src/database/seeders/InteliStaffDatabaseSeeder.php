@@ -3,6 +3,7 @@
 namespace Softwarescares\Intelistaff\database\seeders;
 
 use Illuminate\Database\Seeder;
+use Softwarescares\Inteliportal\database\seeders\GenderSeeder;
 
 class InteliStaffDatabaseSeeder extends Seeder
 {
@@ -17,8 +18,12 @@ class InteliStaffDatabaseSeeder extends Seeder
         $this->call
         (
             [
+                GenderSeeder::class,
+                CategorySeeder::class,
                 StaffSeeder::class,
-                DepartmentSeeder::class
+                OccupationSeeder::class,
+                DepartmentSeeder::class,
+                TeacherSeeder::class,
             ]
         );
 

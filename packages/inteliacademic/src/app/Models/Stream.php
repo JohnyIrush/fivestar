@@ -4,6 +4,7 @@ namespace Softwarescares\Inteliacademic\app\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Softwarescares\Intelistaff\app\Models\Teacher;
 use Softwarescares\Intelitimetable\app\Models\Venue;
 
 class Stream extends Model

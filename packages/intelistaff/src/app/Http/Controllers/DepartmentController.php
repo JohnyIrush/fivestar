@@ -2,9 +2,9 @@
 
 namespace Softwarescares\Intelistaff\app\Http\Controllers;
 
-use Softwarescares\Intelistaff\app\Models\Department;
 use Softwarescares\Intelistaff\app\Http\Requests\StoreDepartmentRequest;
 use Softwarescares\Intelistaff\app\Http\Requests\UpdateDepartmentRequest;
+use Softwarescares\Intelistaff\app\Models\Department;
 
 class DepartmentController extends Controller
 {
