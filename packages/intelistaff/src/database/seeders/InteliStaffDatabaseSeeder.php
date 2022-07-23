@@ -3,6 +3,7 @@
 namespace Softwarescares\Intelistaff\database\seeders;
 
 use Illuminate\Database\Seeder;
+use Softwarescares\Inteliacademic\database\seeders\SubjectSeeder;
 use Softwarescares\Inteliportal\database\seeders\GenderSeeder;
 
 class InteliStaffDatabaseSeeder extends Seeder
@@ -23,6 +24,7 @@ class InteliStaffDatabaseSeeder extends Seeder
                 StaffSeeder::class,
                 OccupationSeeder::class,
                 DepartmentSeeder::class,
+                SubjectSeeder::class,
                 TeacherSeeder::class,
             ]
         );

@@ -9,16 +9,16 @@
         <div class="row gx-4 glass-header">
           <div class="col-auto">
             <div class="avatar avatar-xl position-relative">
-              <img :src="detail.user.profile_photo_path" alt="profile_image" class="w-100 border-radius-lg shadow-sm">
+              <img :src="detail.school_logo_path" alt="profile_image" class="w-100 border-radius-lg shadow-sm">
             </div>
           </div>
           <div class="col-auto my-auto">
             <div class="h-100">
               <h5 class="mb-1">
-                {{detail.firstname }} {{detail.lastname}}
+                {{detail.school_name }}
               </h5>
-              <p class="mb-0 font-weight-bold text-sm">
-                {{detail.role }}
+              <p class="mb-0 font-weight-bold text-sm" >
+                {{detail.school_level.level }}
               </p>
             </div>
           </div>
@@ -65,10 +65,12 @@
     <div class="d-flex align-items-start">
       <div class="nav glass-content flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
         <button class="nav-link active" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="true"><i class="fa fa-user fa-2x" aria-hidden="true"></i></button>
+        <button class="nav-link mt-6" id="v-pills-accademic-tab" data-bs-toggle="pill" data-bs-target="#v-pills-accademic" type="button" role="tab" aria-controls="v-pills-accademic" aria-selected="true"><i class="fa fa-graduation-cap fa-2x" aria-hidden="true"></i></button>
         <button class="nav-link mt-6" id="v-pills-occupation-tab" data-bs-toggle="pill" data-bs-target="#v-pills-occupation" type="button" role="tab" aria-controls="v-pills-occupation" aria-selected="false"> <i class="fa fa-tasks fa-2x" aria-hidden="true"></i></button>
         <button class="nav-link mt-6" id="v-pills-cocarricular-tab" data-bs-toggle="pill" data-bs-target="#v-pills-cocarricular" type="button" role="tab" aria-controls="v-pills-cocarricular" aria-selected="false"><i class="fa fa-suitcase fa-2x" aria-hidden="true"></i></button>
         <button class="nav-link mt-6" id="v-pills-finance-tab" data-bs-toggle="pill" data-bs-target="#v-pills-finance" type="button" role="tab" aria-controls="v-pills-finance" aria-selected="false"><i class="fa fa-money fa-2x" aria-hidden="true"></i></button>
         <button class="nav-link mt-6" id="v-pills-settings-tab" data-bs-toggle="pill" data-bs-target="#v-pills-settings" type="button" role="tab" aria-controls="v-pills-settings" aria-selected="false"><i class="fa fa-cogs fa-2x" aria-hidden="true"></i></button>
+
       </div>
       <div class="tab-content glass-content" id="v-pills-tabContent">
         <!--START Profile Tab-->
@@ -80,7 +82,7 @@
                  <div class="card-header pb-0 p-3">
                    <div class="row">
                      <div class="col-md-8 d-flex align-items-center">
-                       <h6 class="mb-0">Profile Information</h6>
+                       <h6 class="mb-0">School Information</h6>
                      </div>
                      <div class="col-md-4 text-end">
                        <a href="javascript:;">
@@ -91,16 +93,17 @@
                  </div>
                  <div class="card-body p-3">
                    <p class="text-sm">
-                    {{detail.bio}}
+                    {{detail.motto}}
                    </p>
                    <hr class="horizontal gray-light my-4">
                    <div class="row">
                      <div class="col">
                       <ul class="list-group">
-                        <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">Full Name:</strong> &nbsp; {{detail.firstname }} {{detail.lastname}}</li>
-                        <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Mobile:</strong> &nbsp; {{detail.user.phone }}</li>
-                        <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Email:</strong> &nbsp; {{detail.user.email }}</li>
-                        <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Location:</strong> &nbsp; {{detail.address }}</li>
+                        <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">School Name:</strong> &nbsp; {{detail.school_name }} </li>
+                        <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Mobile:</strong> &nbsp; {{detail.school_phone }}</li>
+                        <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Email:</strong> &nbsp; {{detail.school_email }}</li>
+                        <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Address:</strong> &nbsp; {{detail.school_address }}</li>
+                        <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Location:</strong> &nbsp; {{detail.school_location }}</li>
                         <li class="list-group-item border-0 ps-0 pb-0">
                           <strong class="text-dark text-sm">Social:</strong> &nbsp;
                           <a class="btn btn-facebook btn-simple mb-0 ps-1 pe-2 py-0" href="javascript:;">
@@ -118,14 +121,18 @@
 
                      <div class="col">
                       <ul class="list-group">
-                        <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">Category:</strong> &nbsp; {{detail.category.category }} </li>
-                        <li class="list-group-item border-0 ps-0 text-sm" ><strong class="text-dark">Occupation:</strong> &nbsp; {{detail.occupation.occupation }}</li>
+                        <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark" >School Level:</strong> &nbsp; {{detail.school_level.level }} </li>
+                        <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark" >School Type:</strong> &nbsp; {{detail.school_type.type }} </li>
                       </ul>
                      </div>
                      <div class="col">
                       <ul class="list-group">
-                        <li class="list-group-item border-0 ps-0 pt-0 text-sm" v-if="details.level != null && details.stream != null"><strong class="text-dark">Class Teacher:</strong> &nbsp; {{details.level.level }}{{ details.stream.stream }}</li>
-                        <li class="list-group-item border-0 ps-0 text-sm" v-if="details.hostel != null"><strong class="text-dark">Hostel Master:</strong> &nbsp; {{details.hostel.hostel }}</li>
+                        <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark" >School Education System:</strong> &nbsp; {{detail.school_education_system.system }} </li>
+                      </ul>
+                     </div>
+                     <div class="col">
+                      <ul class="list-group">
+                        <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark" >School Gender:</strong> &nbsp; {{detail.school_gender.gender }} </li>
                       </ul>
                      </div>
                    </div>
@@ -156,7 +163,7 @@
          </div>
         </div>
         <!--START ACCADEMIC TAB-->
-        <div class="tab-pane fade" id="v-pills-occupation" role="tabpanel" aria-labelledby="v-pills-occupation-tab">
+        <div class="tab-pane fade" id="v-pills-accademic" role="tabpanel" aria-labelledby="v-pills-accademic-tab">
          <div class="container-fluid py-4">
            <div class="row">
              <div class="col-12 glass-content col-xl-9">
@@ -164,7 +171,7 @@
                  <div class="card-header pb-0 p-3">
                    <div class="row">
                      <div class="col-md-8 d-flex align-items-center">
-                       <h6 class="mb-0">Occupation Information</h6>
+                       <h6 class="mb-0">Accademic Information</h6>
                      </div>
                      <div class="col-md-4 text-end">
                        <a href="javascript:;">
@@ -175,33 +182,33 @@
                  </div>
                  <div class="card-body p-3">
                    <p class="text-sm">
-                    School Motto.
+                    {{detail.motto}}
                    </p>
                    <hr class="horizontal gray-light my-4">
                    <div class="row">
                      <div class="col-6">
                       <ul class="list-group">
-                        <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">Category:</strong> &nbsp; {{detail.category.category }} </li>
-                        <li class="list-group-item border-0 ps-0 text-sm" ><strong class="text-dark">Occupation:</strong> &nbsp; {{detail.occupation.occupation }}</li>
+                        <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark" >School Level:</strong> &nbsp; {{detail.school_level.level }} </li>
+                        <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark" >School Type:</strong> &nbsp; {{detail.school_type.type }} </li>
                       </ul>
                      </div>
                      <div class="col-6">
-                      <ul class="list-group" v-if="detail.category.id == 1">
-                        <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">Category:</strong> &nbsp; {{detail.category.category }} </li>
+                      <ul class="list-group">
+                        <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark" >School Education System:</strong> &nbsp; {{detail.school_education_system.system }} </li>
                       </ul>
                      </div>
-                    <div class="col-6" v-if="detail.category.id == 1">
+                    <div class="col-6" >
                      <h4>Subjects</h4>
-                     <div class="row" v-for="teacher in details.teacher" :key="teacher.id">
-                      <div class="col-6" v-for="subject in teacher.subjects" :key="subject.id">
+                     <div class="row" >
+                      <div class="col-6" v-for="subject in detail.subjects" :key="subject.id">
                          {{subject.subject}}
                       </div>
                      </div>
                     </div>
-                    <div class="col-6" v-if="detail.category.id == 1">
-                     <h4>Level</h4>
-                     <div class="row" v-for="teacher in details.teacher" :key="teacher.id">
-                      <div class="col-6" v-for="level in teacher.levels" :key="level.id">
+                    <div class="col-6" >
+                     <h4>Levels</h4>
+                     <div class="row" >
+                      <div class="col-6" v-for="level in details.levels" :key="level.id">
                          {{level.level}}
                       </div>
                      </div>
@@ -252,6 +259,235 @@
          </div>
         </div>
         <!--END ACCADEMIC TAB-->
+        <!--START STAFF TAB-->
+        <div class="tab-pane fade" id="v-pills-occupation" role="tabpanel" aria-labelledby="v-pills-occupation-tab">
+         <div class="container-fluid py-4">
+           <div class="row">
+             <div class="col-12 glass-content col-xl-9">
+               <div class="card h-100">
+                 <div class="card-header pb-0 p-3">
+                   <div class="row">
+                     <div class="col-md-8 d-flex align-items-center">
+                       <h6 class="mb-0">Staff Information</h6>
+                     </div>
+                     <div class="col-md-4 text-end">
+                       <a href="javascript:;">
+                         <i class="fa fa-graduation-cap text-secondary" aria-hidden="true"></i>
+                       </a>
+                     </div>
+                   </div>
+                 </div>
+                 <div class="card-body p-3">
+                   <hr class="horizontal gray-light my-4">
+                   <div class="row mt-4">
+                     <div class="col mb-4">
+                       <div class="card glass-content">
+                         <div class="card-body p-3">
+                           <div class="row">
+                             <div class="col-8">
+                               <div class="numbers">
+                                 <p class="text-sm mb-0 text-capitalize font-weight-bold">Teaching Staff</p>
+                                 <h5 class="font-weight-bolder mb-0">
+                                    {{details.teachingstaff}}
+                                 </h5>
+                               </div>
+                             </div>
+                             <div class="col-4 text-end">
+                               <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
+                                 <i class="ni ni-money-coins text-lg opacity-10" aria-hidden="true"></i>
+                               </div>
+                             </div>
+                           </div>
+                         </div>
+                       </div>
+                     </div>-
+                     <div class="col">
+                       <div class="card glass-content">
+                         <div class="card-body p-3">
+                           <div class="row">
+                             <div class="col-8">
+                               <div class="numbers">
+                                 <p class="text-sm mb-0 text-capitalize font-weight-bold">Non Teaching Staff</p>
+                                 <h5 class="font-weight-bolder mb-0">
+                                   {{details.nonteachingstaff}}
+                                 </h5>
+                               </div>
+                             </div>
+                             <div class="col-4 text-end">
+                               <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
+                                 <i class="ni ni-world text-lg opacity-10" aria-hidden="true"></i>
+                               </div>
+                             </div>
+                           </div>
+                         </div>
+                       </div>
+                     </div>
+                   </div>
+                   <div class="row">
+                   <div class="col-lg-11 col-md-6 mb-md-0 mb-4 mt-4 glass-content">
+                     <div class="card">
+                       <div class="card-header pb-0">
+                         <div class="row">
+                           <div class="col-lg-6 col-7">
+                             <h6>Teaching Staff</h6>
+                           </div>
+                           <div class="col-lg-6 col-5 my-auto text-end">
+                             <div class="dropdown float-lg-end pe-4">
+                               <a class="cursor-pointer" id="dropdownTable" data-bs-toggle="dropdown" aria-expanded="false">
+                                 <i class="fa fa-ellipsis-v text-secondary"></i>
+                               </a>
+                               <ul class="dropdown-menu px-2 py-3 ms-sm-n4 ms-n5" aria-labelledby="dropdownTable">
+                                 <li><a class="dropdown-item border-radius-md" href="javascript:;">Action</a></li>
+                                 <li><a class="dropdown-item border-radius-md" href="javascript:;">Another action</a></li>
+                                 <li><a class="dropdown-item border-radius-md" href="javascript:;">Something else here</a></li>
+                               </ul>
+                             </div>
+                           </div>
+                         </div>
+                       </div>
+                       <div class="card-body px-0 pb-2">
+                         <div class="table-responsive">
+                           <table class="table align-items-center mb-0">
+                             <thead>
+                               <tr>
+                                 <th class="text-uppercase text-secondary font-weight-bolder opacity-7">Name</th>
+                                 <th class="text-uppercase text-secondary font-weight-bolder opacity-7 ps-2">Phone</th>
+                                 <th class="text-center text-uppercase text-secondary font-weight-bolder opacity-7">Occupation</th>
+                                 <th class="text-center text-uppercase text-secondary font-weight-bolder opacity-7">Salary</th>
+                               </tr>
+                             </thead>
+                             <tbody>
+                               <tr v-for="staff in details.staffs" :key="staff.id" :v-if="staff.category_id == 1">
+                                 <td>
+                                   <div class="d-flex px-2 py-1">
+                                     <div class="d-flex flex-column justify-content-center">
+                                       <h6 class="mb-0 text-sm">{{staff.title }} {{staff.firstname }} {{staff.lastname }}</h6>
+                                     </div>
+                                   </div>
+                                 </td>
+                                 <td>
+                                  <div class="d-flex flex-column justify-content-center">
+                                    <span class="text-xs font-weight-bold"> {{staff.user.phone}}  </span>
+                                  </div>
+                                 </td>
+                                 <td class="align-middle text-center text-sm">
+                                   <span class="text-xs font-weight-bold" v-if="staff.occupation != null"> {{staff.occupation.occupation}} </span>
+                                 </td>
+                                 <td class="align-middle text-center text-sm">
+                                   <span class="text-xs font-weight-bold" v-if="staff.occupation != null"> {{staff.occupation.salary}} </span>
+                                 </td>
+                               </tr>
+                             </tbody>
+                           </table>
+                         </div>
+                       </div>
+                     </div>
+                   </div>
+                   <div class="col-lg-11 col-md-6 mb-md-0 mb-4 mt-4 glass-content">
+                     <div class="card">
+                       <div class="card-header pb-0">
+                         <div class="row">
+                           <div class="col-lg-6 col-7">
+                             <h6>Non Teaching Staff</h6>
+                           </div>
+                           <div class="col-lg-6 col-5 my-auto text-end">
+                             <div class="dropdown float-lg-end pe-4">
+                               <a class="cursor-pointer" id="dropdownTable" data-bs-toggle="dropdown" aria-expanded="false">
+                                 <i class="fa fa-ellipsis-v text-secondary"></i>
+                               </a>
+                               <ul class="dropdown-menu px-2 py-3 ms-sm-n4 ms-n5" aria-labelledby="dropdownTable">
+                                 <li><a class="dropdown-item border-radius-md" href="javascript:;">Action</a></li>
+                                 <li><a class="dropdown-item border-radius-md" href="javascript:;">Another action</a></li>
+                                 <li><a class="dropdown-item border-radius-md" href="javascript:;">Something else here</a></li>
+                               </ul>
+                             </div>
+                           </div>
+                         </div>
+                       </div>
+                       <div class="card-body px-0 pb-2">
+                         <div class="table-responsive">
+                           <table class="table align-items-center mb-0">
+                             <thead>
+                               <tr>
+                                 <th class="text-uppercase text-secondary font-weight-bolder opacity-7">Name</th>
+                                 <th class="text-uppercase text-secondary font-weight-bolder opacity-7 ps-2">Phone</th>
+                                 <th class="text-center text-uppercase text-secondary font-weight-bolder opacity-7">Occupation</th>
+                                 <th class="text-center text-uppercase text-secondary font-weight-bolder opacity-7">Salary</th>
+                               </tr>
+                             </thead>
+                             <tbody>
+                               <tr v-for="staff in details.staffs" :key="staff.id" :v-if="staff.category_id == 2">
+                                 <td>
+                                   <div class="d-flex px-2 py-1">
+                                     <div class="d-flex flex-column justify-content-center">
+                                       <h6 class="mb-0 text-sm">{{staff.title }} {{staff.firstname }} {{staff.lastname }}</h6>
+                                     </div>
+                                   </div>
+                                 </td>
+                                 <td>
+                                  <div class="d-flex flex-column justify-content-center">
+                                    <span class="text-xs font-weight-bold"> {{staff.user.phone}}  </span>
+                                  </div>
+                                 </td>
+                                 <td class="align-middle text-center text-sm">
+                                   <span class="text-xs font-weight-bold" v-if="staff.occupation != null"> {{staff.occupation.occupation}} </span>
+                                 </td>
+                                 <td class="align-middle text-center text-sm">
+                                   <span class="text-xs font-weight-bold" v-if="staff.occupation != null"> {{staff.occupation.salary}} </span>
+                                 </td>
+                               </tr>
+                             </tbody>
+                           </table>
+                         </div>
+                       </div>
+                     </div>
+                   </div>
+                   </div>
+                 </div>
+               </div>
+             </div>
+             <div class="col-12 glass-content col-xl-3">
+               <div class="card h-100">
+                 <div class="card-header pb-0 p-3">
+                   <h6 class="mb-0">More</h6>
+                 </div>
+                 <div class="card-body p-3">
+                   <ul class="list-group">
+                     <li class="list-group-item border-0 d-flex align-items-center px-0 mb-2">
+                       <div class="avatar me-3">
+                        <i class="fa fa-bookmark" aria-hidden="true"></i>
+                       </div>
+                       <div class="d-flex align-items-start flex-column justify-content-center">
+                         <h6 class="mb-0 text-sm">Timetable and Schedule</h6>
+                         <p class="mb-0 text-xs">Your work schedules</p>
+                       </div>
+                     </li>
+                     <li class="list-group-item border-0 d-flex align-items-center px-0 mb-2">
+                       <div class="avatar me-3">
+                         <i class="fa fa-table" aria-hidden="true"></i>
+                       </div>
+                       <div class="d-flex align-items-start flex-column justify-content-center">
+                         <h6 class="mb-0 text-sm">Exam Schedules</h6>
+                         <p class="mb-0 text-xs">exams</p>
+                       </div>
+                     </li>
+                     <li class="list-group-item border-0 d-flex align-items-center px-0 mb-2">
+                       <div class="avatar me-3">
+                         <i class="fa fa-line-chart" aria-hidden="true"></i>
+                       </div>
+                       <div class="d-flex align-items-start flex-column justify-content-center">
+                         <h6 class="mb-0 text-sm">Performance</h6>
+                         <p class="mb-0 text-xs">performance analysis</p>
+                       </div>
+                     </li>
+                   </ul>
+                 </div>
+               </div>
+             </div>
+           </div>
+         </div>
+        </div>
+        <!--END STAFF TAB-->
         <!--START CO-CARRICULAR TAB-->
         <div class="tab-pane fade" id="v-pills-cocarricular" role="tabpanel" aria-labelledby="v-pills-cocarricular-tab">
          <div class="container-fluid py-4">
@@ -263,7 +499,7 @@
                  </div>
                  <div class="card-body p-3">
                    <div class="row">
-                     <!--<div class="col-xl-3 col-md-6 mb-xl-0 mb-4" v-for="club in detail.clubs" :key="club.id">
+                     <div class="col-xl-3 col-md-6 mb-xl-0 mb-4" v-for="club in detail.clubs" :key="club.id">
                        <div class="card card-blog card-plain">
                          <div class="position-relative">
                            <a class="d-block shadow-xl border-radius-xl">
@@ -278,7 +514,7 @@
                            </a>
                          </div>
                        </div>
-                     </div>-->
+                     </div>
                      <div class="col-xl-3 col-md-6 mb-xl-0 mb-4">
                        <div class="card h-100 card-plain border">
                          <div class="card-body d-flex flex-column justify-content-center text-center">
@@ -294,7 +530,7 @@
                  <div class="card-header pb-0 p-3">
                    <p class="text-sm">SPORTS</p>
                  </div>
-                 <!--<div class="card-body p-3">
+                 <div class="card-body p-3">
                    <div class="row">
                      <div class="col-xl-3 col-md-6 mb-xl-0 mb-4" v-for="sport in detail.sports" :key="sport.id">
                        <div class="card card-blog card-plain">
@@ -323,7 +559,7 @@
                        </div>
                      </div>
                    </div>
-                 </div>-->
+                 </div>
                </div>
              </div>
              <div class="col-12 glass-content col-xl-3">
@@ -370,7 +606,7 @@
                  </div>
                   <!--START FINANCE-->
                   <div class="row mt-4">
-                    <div class="col-xl-6 col-sm-6 col-6 mb-xl-0 mb-4">
+                    <div class="col">
                       <div class="card glass-content">
                         <div class="card-body p-3">
                           <div class="row">
@@ -378,7 +614,7 @@
                               <div class="numbers">
                                 <p class="text-sm mb-0 text-capitalize font-weight-bold">Account Balance</p>
                                 <h5 class="font-weight-bolder mb-0">
-                                  KSHS
+                                  KSHS {{detail.account.balance}}
                                 </h5>
                               </div>
                             </div>
@@ -391,7 +627,7 @@
                         </div>
                       </div>
                     </div>-
-                    <div class="col-xl-6 col-sm-6 col-6 mb-xl-0 mb-4">
+                    <div class="col">
                       <div class="card glass-content">
                         <div class="card-body p-3">
                           <div class="row">
@@ -399,8 +635,7 @@
                               <div class="numbers">
                                 <p class="text-sm mb-0 text-capitalize font-weight-bold">FEE BALANCE</p>
                                 <h5 class="font-weight-bolder mb-0">
-                                  2,300
-
+                                  {{}}
                                 </h5>
                               </div>
                             </div>
@@ -679,7 +914,7 @@
             getProfile()
             {
 
-                axios.get("/portal/staff/details")
+                axios.get("/portal/school/details")
                 .then((response)=>{
                     this.details = response.data
                     console.log(this.details)

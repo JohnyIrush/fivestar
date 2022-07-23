@@ -4,10 +4,7 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use Softwarescares\Inteliinstaller\app\Http\Controllers\UI\UIController;
-use Softwarescares\Inteliinstaller\app\Http\Controllers\SchoolTypesController;
-use Softwarescares\Inteliinstaller\app\Http\Controllers\SchoolLevelController;
-use Softwarescares\Inteliinstaller\app\Http\Controllers\SchoolEducationSystemController;
-use Softwarescares\Inteliinstaller\app\Http\Controllers\SchoolGenderController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -22,7 +19,3 @@ use Softwarescares\Inteliinstaller\app\Http\Controllers\SchoolGenderController;
 
 Route::get('/installer',[UIController::class, 'installer'])->name('installer');
 
-Route::get('/school-types',[SchoolTypesController::class, 'index']);
-Route::get('/school-levels',[SchoolLevelController::class, 'index']);
-Route::get('/school-education-systems',[SchoolEducationSystemController::class, 'index']);
-Route::get('/school-gender',[SchoolGenderController::class, 'index']);

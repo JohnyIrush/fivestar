@@ -10,6 +10,7 @@ use Softwarescares\Inteliacademic\app\Models\Stream;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Softwarescares\Inteliacademic\app\Models\Subject;
+use Softwarescares\Inteliacademic\app\Models\SubjectTeacher;
 use Softwarescares\Intelistaff\app\Models\Department;
 use Softwarescares\Intelistaff\app\Models\Staff;
 use Softwarescares\Intelistaff\app\Models\Teacher;
@@ -26,6 +27,7 @@ class TeacherSeeder extends Seeder
         Teacher::truncate();
 
         DB::table('level_teacher')->truncate();
+        //SubjectTeacher::truncate();
 
         $staff = Staff::where('category_id', 1)->get();
 

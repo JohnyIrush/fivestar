@@ -3,11 +3,11 @@
 namespace Softwarescares\Inteliacademic\database\seeders;
 
 use Softwarescares\Inteliacademic\app\Models\Level;
-use Softwarescares\Inteliacademic\app\Models\Subject;
 
 use Softwarescares\Inteliacademic\app\Models\SubjectTeacher;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Softwarescares\Inteliacademic\app\Models\Subject;
 use Softwarescares\Intelistaff\app\Models\Department;
 use Softwarescares\Intelistaff\app\Models\Teacher;
 

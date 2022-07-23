@@ -26,5 +26,10 @@ class AccountSeeder extends Seeder
             ]);
         }
 
+        Account::create([
+            "user_id" => 60,
+            "balance" => $faker->numberBetween(1000000, 10000000),
+        ]);
+
     }
 }

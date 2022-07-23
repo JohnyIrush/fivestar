@@ -26,4 +26,10 @@ class UIController extends Controller
 
         return Inertia::render("inteli_portal/ui/windows/Staff");
     }
+
+    public function school()
+    {
+
+        return Inertia::render("inteli_portal/ui/windows/School");
+    }
 }
