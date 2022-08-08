@@ -22,6 +22,8 @@ class InteliPortalDatabaseSeeder extends Seeder
         (
             [
                 //GenderSeeder::class,
+                CitySeeder::class,
+                TownSeeder::class,
                 SchoolTypesSeeder::class,
                 SchoolEducationSystemSeeder::class,
                 SchoolGenderSeeder::class,
@@ -35,7 +37,7 @@ class InteliPortalDatabaseSeeder extends Seeder
                 ClubStudentSeeder::class,
                 SchoolSportSeeder::class,
                 ClubSchoolSeeder::class,
-                SchoolSubjectSeeder::class
+                SchoolSubjectSeeder::class,
             ]
         );
     }

@@ -2,9 +2,10 @@
 
 namespace Softwarescares\Inteliinventory\app\Http\Controllers;
 
-use App\Models\Hostel;
+
 use Softwarescares\Inteliinventory\app\Http\Requests\StoreHostelRequest;
 use Softwarescares\Inteliinventory\app\Http\Requests\UpdateHostelRequest;
+use Softwarescares\Inteliinventory\app\Models\Hostel;
 
 class HostelController extends Controller
 {
@@ -15,7 +16,7 @@ class HostelController extends Controller
      */
     public function index()
     {
-        //
+        return response()->json(Hostel::all());
     }
 
     /**

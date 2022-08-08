@@ -15,7 +15,7 @@ class SectionController extends Controller
      */
     public function index()
     {
-        //
+        return response()->json(Section::with("level","stream")->get());
     }
 
     /**

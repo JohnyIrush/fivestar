@@ -2,8 +2,8 @@
 
 namespace Softwarescares\Inteliacademic\app\Policies;
 
+use App\Models\User;
 use Softwarescares\Inteliacademic\app\Models\Stream;
-use Softwarescares\Inteliacademic\app\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class StreamPolicy

@@ -17,7 +17,8 @@ class InteliInventoryDatabaseSeeder extends Seeder
         (
             [
                 InventorySeeder::class,
-                HostelSeeder::class
+                HostelSeeder::class,
+                RoomSeeder::class
             ]
         );
     }

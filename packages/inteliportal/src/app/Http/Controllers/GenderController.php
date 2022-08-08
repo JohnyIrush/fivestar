@@ -15,7 +15,7 @@ class GenderController extends Controller
      */
     public function index()
     {
-        //
+        return response()->json(Gender::all());
     }
 
     /**

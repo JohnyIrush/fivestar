@@ -30,6 +30,9 @@ class InteliAcademicDatabaseSeeder extends Seeder
             SportSeeder::class,
             #SportStudentSeeder::class,
             #ClubStudentSeeder::class,
+            QualificationSeeder::class,
+            QualificationSubjectSeeder::class,
+            LeadersSeeder::class
             ]
         );
     }

@@ -20,6 +20,34 @@ class Student extends Model
 {
     use HasFactory;
 
+    protected $fillable =[
+                "user_id",
+                "firstname",
+                "lastname",
+                "bio",
+                "guardian_id",
+                "gender_id",
+                "address",
+                "role",
+
+                'age',
+                'dob',
+
+                 "city_id",
+                 "town_id",
+
+
+                "Admno",
+                "section_id",
+                "stream_id",
+                "level_id",
+
+                "leaders_id",
+
+                "hostel_id",
+
+                "type"
+    ];
 
     public function user()
     {

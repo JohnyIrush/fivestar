@@ -2,6 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Softwarescares\Inteliinventory\app\Http\Controllers\HostelController;
+use Softwarescares\Inteliinventory\app\Http\Controllers\RoomController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,4 +16,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('hostels', [HostelController::class,'index']);
+Route::get('rooms', [RoomController::class,'index']);
 

@@ -3,6 +3,7 @@
 namespace Softwarescares\Inteliacademic\app\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Softwarescares\Inteliacademic\app\Models\Subject;
 
 class SubjectController extends Controller
 {
@@ -13,7 +14,7 @@ class SubjectController extends Controller
      */
     public function index()
     {
-        //
+        return response()->json(Subject::all());
     }
 
     /**

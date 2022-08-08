@@ -205,10 +205,11 @@ export default {
     color: #d43f8d;
 }
 
-    .progress-label
-    {
-        color: purple;
-    }
+.progress-label
+{
+    color: white !important;
+}
+
 
 @media (max-width: 902px)
 {

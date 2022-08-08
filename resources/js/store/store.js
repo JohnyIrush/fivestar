@@ -6,13 +6,6 @@ import { createStore } from 'vuex'
 export const store = createStore({
     state () {
       return {
-        products:
-        [
-            {name: 'Banana Skin', price: 20},
-            {name: 'Skiny Star', price: 40},
-            {name: 'Green Shells', price: 60},
-            {name: 'Red Shells', price: 80}
-        ],
         school :{
             sch_name: 'Inteli School',
             sch_email: '',
@@ -31,7 +24,74 @@ export const store = createStore({
             admin_phone: '',
             version: '',
             amount: ''
-        }
+        },
+        student: {
+            firstname: '',
+            lastname: '',
+            address: '',
+            city_id: '',
+            town_id: '',
+            gender_id: '',
+            guardian_id: '',
+            birthday: '',
+            qualification: {
+                student_id: '',
+                school_name: '',
+                school_level_id: '',
+                subjects: [],
+                meangrade: '',
+                meanscore:'',
+                points: '',
+                start_year: '',
+                end_year: '',
+                duration: ''
+            },
+
+            level_id: '',
+            stream_id: '',
+            subjects: [],
+            leadership_id: '',
+            sports: [],
+            clubs: [],
+
+            hostel_id: '',
+            room_id: '',
+            guardian:{
+                firstname: '',
+                lastname: '',
+                address: '',
+                city_id: '',
+                town_id: '',
+                gender_id: '',
+            }
+        },
+        staff: {
+            firstname: '',
+            lastname: '',
+            address: '',
+            city_id: '',
+            town_id: '',
+            gender_id: '',
+
+            category_id: '',
+            occupation_id: '',
+            section_id : '',
+            hostel_id: '',
+            levels: [],
+            subjects: [],
+            department_id: ''
+        },
+        user:
+        {
+            name: '',
+            email: '',
+            phone: '',
+            password: '',
+            password_confirmation: '',
+            terms: false,
+            profile_photo_path: ''
+        },
+        registration_type: ''
       }
     },
     getters:

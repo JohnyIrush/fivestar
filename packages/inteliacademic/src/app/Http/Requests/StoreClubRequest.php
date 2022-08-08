@@ -13,7 +13,7 @@ class StoreClubRequest extends FormRequest
      */
     public function authorize()
     {
-        return trues;
+        return true;
     }
 
     /**

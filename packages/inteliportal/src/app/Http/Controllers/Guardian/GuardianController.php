@@ -44,9 +44,26 @@ class GuardianController extends Controller
      * @param  \App\Http\Requests\StoreGuardianRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreGuardianRequest $request)
+    public function store(StoreGuardianRequest $request, Guardian $guardian)
     {
-        //
+        $guardian = Guardian::create(
+            [
+             "user_id" => $request->input("user_id"),
+             "firstname" => $request->input("firstname"),
+             "lastname" => $request->input("lastname"),
+             "bio" => $request->input("bio"),
+             "gender_id" => $request->input("gender_id"),
+
+             "address" => $request->input("address"),
+             "city_id" => $request->input("city_id"),
+             "town_id" => $request->input("town_id"),
+
+             "title" => "",
+             "type" => 'guardian'
+
+        ]);
+
+        return $guardian;
     }
 
     /**

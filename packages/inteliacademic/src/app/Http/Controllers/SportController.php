@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Softwarescares\Inteliacademic\app\Http\Controllers;
 
 use Softwarescares\Inteliacademic\app\Http\Requests\StoreSportRequest;
 use Softwarescares\Inteliacademic\app\Http\Requests\UpdateSportRequest;
@@ -15,7 +15,7 @@ class SportController extends Controller
      */
     public function index()
     {
-        //
+        return response()->json(Sport::all());
     }
 
     /**

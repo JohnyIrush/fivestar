@@ -26,5 +26,13 @@ class Section extends Model
         return $this->belongsTo(Teacher::class);
     }
 
+    public function level()
+    {
+        return $this->belongsTo(Level::class);
+    }
 
+    public function stream()
+    {
+        return $this->belongsTo(Stream::class);
+    }
 }

@@ -238,7 +238,7 @@
 
                                 </div>-->
                                 <div class="col glass-content">
-                                  <register></register>
+                                  <register :registration_type="1"></register>
                                 </div>
                                 <!--<div class="col-2">
 

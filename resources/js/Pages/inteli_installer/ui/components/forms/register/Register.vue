@@ -122,7 +122,6 @@
                             </div>
                         </div>
                     </section>
-
                   </div>
                 </div>
               </div>
@@ -146,6 +145,7 @@
 
 
     export default defineComponent({
+        props: ["registration_type"],
         components: {
             //Head,
             JetAuthenticationCard,
@@ -173,12 +173,56 @@
         },
 
         methods: {
-            submit() {
-                store.state.school.admin_phone = this.form.phone
-                axios.post('/register-sch-admin', this.form)
+            registerSudent()
+            {
+                axios.post('register-student', store.state.student)
                 .then((response)=>{
-                    store.state.school.user_id = response.data.id
+                    console.log(response)
                 })
+            },
+            registerGuardian()
+            {
+                axios.post('register-guardian', store.state.student.guardian)
+                .then((response)=>{
+                    store.state.student.guardian_id = response.data.id
+                })
+            },
+            submit() {
+
+                alert(this.registration_type)
+
+                if (this.registration_type == 1)
+                {
+                  store.state.school.admin_phone = this.form.phone
+                  axios.post('register-portal', this.form)
+                  .then((response)=>{
+                      store.state.school.user_id = response.data.id
+                  })
+                }
+                else if(this.registration_type == 2)
+                {
+                  axios.post('register-portal', this.form)
+                  .then((response)=>{
+                      store.state.user.user_id = response.data.id
+                  })
+                }
+                else if(this.registration_type == 3)
+                {
+                  axios.post('register-portal', this.form)
+                  .then((response)=>{
+                     store.state.student.user_id = response.data.id
+                  })
+                }
+                else if(this.registration_type == 4)
+                {
+                  axios.post('register-portal', this.form)
+                  .then((response)=>{
+                      store.state.student.guardian.user_id = response.data.id
+                      this.registerGuardian()
+                      console.log(response.data)
+                      console.log(store.state.student.guardian)
+                  })
+                }
             },
         },
         mounted()

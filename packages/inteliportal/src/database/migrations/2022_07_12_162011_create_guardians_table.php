@@ -19,12 +19,14 @@ class CreateGuardiansTable extends Migration
 
             $table->text("firstname");
             $table->text("lastname");
-            $table->text("bio");
-            $table->integer("student_id");
+            $table->text("bio")->nullable();
             $table->integer("gender_id");
-            $table->text("address");
 
-            $table->text("title");
+            $table->text("address");
+            $table->integer("city_id");
+            $table->integer("town_id");
+
+            $table->text("title")->nullable();
 
             $table->string("type");
 

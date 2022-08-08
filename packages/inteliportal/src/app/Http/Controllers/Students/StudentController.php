@@ -4,6 +4,7 @@ namespace Softwarescares\Inteliportal\app\Http\Controllers\Students;
 
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Softwarescares\Inteliacademic\app\Http\Controllers\QualificationController;
 use Softwarescares\Inteliacademic\app\Models\Section;
 use Softwarescares\Inteliinventory\app\Models\Hostel;
 use Softwarescares\Inteliportal\app\Http\Controllers\Controller;
@@ -54,9 +55,38 @@ class StudentController extends Controller
      * @param  \App\Http\Requests\StoreStudentRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreStudentRequest $request)
+    public function store(StoreStudentRequest $request, Student $student)
     {
-        //
+
+        $student = Student::create(
+            [
+                "user_id" => $request->input("user_id"),
+                "firstname" => $request->input("firstname"),
+                "lastname" => $request->input("lastname"),
+                "bio" => $request->input("bio"),
+                "guardian_id" => $request->input("guardian_id"),
+                "gender_id" => $request->input("gender_id"),
+                "address" => $request->input("address"),
+                "leaders_id" => $request->input("leadership_id"),
+
+                //'age' => "",
+                'dob' => $request->input("birthday"),
+
+                 "city_id" => $request->input("city_id"),
+                 "town_id" => $request->input("town_id"),
+
+
+                //"Admno" => 0,
+                "section_id" => Section::where(["level_id" => $request->input("level_id"),"stream_id" => $request->input("stream_id")])->get("id")[0]->id,
+                "stream_id" => $request->input("stream_id"),
+                "level_id" => $request->input("level_id"),
+
+                "hostel_id" => $request->input("hostel_id"),
+
+                "type" => 'student'
+        ]);
+
+        return $student;
     }
 
     /**

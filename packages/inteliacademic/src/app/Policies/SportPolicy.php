@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Policies;
+namespace Softwarescares\Inteliacademic\app\Policies;
 
-use App\Models\Sport;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
+use Softwarescares\Inteliacademic\app\Models\Sport;
 
 class SportPolicy
 {

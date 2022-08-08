@@ -3,8 +3,10 @@
 namespace Softwarescares\Inteliportal\database\seeders;
 
 use Illuminate\Database\Seeder;
+use Softwarescares\Inteliportal\app\Models\City;
 use Softwarescares\Inteliportal\app\Models\Gender;
 use Softwarescares\Inteliportal\app\Models\Guardian;
+use Softwarescares\Inteliportal\app\Models\Town;
 
 class GuardianSeeder extends Seeder
 {
@@ -24,9 +26,11 @@ class GuardianSeeder extends Seeder
              "firstname" => $faker->firstname(),
              "lastname" => $faker->lastname(),
              "bio" => $faker->paragraph(),
-             "student_id" => 1,
              "gender_id" => Gender::all()->random()->id,
+
              "address" => $faker->address(),
+             "city_id" => City::all()->random()->id,
+             "town_id" => Town::all()->random()->id,
 
              "title" => $faker->title(),
              "type" => 'guardian'
@@ -39,9 +43,11 @@ class GuardianSeeder extends Seeder
                 "firstname" => $faker->firstname(),
                 "lastname" => $faker->lastname(),
                 "bio" => $faker->paragraph(),
-                "student_id" => 2,
                 "gender_id" => Gender::all()->random()->id,
+
                 "address" => $faker->address(),
+                "city_id" => City::all()->random()->id,
+                "town_id" => Town::all()->random()->id,
 
                 "title" => $faker->title(),
                 "type" => 'guardian'
@@ -53,9 +59,11 @@ class GuardianSeeder extends Seeder
                 "firstname" => $faker->firstname(),
                 "lastname" => $faker->lastname(),
                 "bio" => $faker->paragraph(),
-                "student_id" => 3,
                 "gender_id" => Gender::all()->random()->id,
+
                 "address" => $faker->address(),
+                "city_id" => City::all()->random()->id,
+                "town_id" => Town::all()->random()->id,
 
                 "title" => $faker->title(),
                 "type" => 'guardian'

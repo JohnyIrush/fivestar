@@ -19,21 +19,25 @@ class CreateStudentsTable extends Migration
 
             $table->text("firstname");
             $table->text("lastname");
-            $table->text("bio");
+            $table->text("bio")->nullable();
             $table->integer("guardian_id");
             $table->integer("gender_id");
             $table->text("address");
 
-            $table->text("role");
+            $table->integer("city_id");
+            $table->integer("town_id");
 
-            $table->integer("Admno");
+            $table->date('dob');
+            $table->integer('age')->nullable();
+
+            $table->text("leaders_id")->nullable();
+
+            $table->integer("Admno")->nullable();
             $table->integer("section_id");
             $table->integer("stream_id");
             $table->integer("level_id");
 
             $table->integer("hostel_id");
-
-            $table->text("previous_school");
 
             $table->string("type");
 

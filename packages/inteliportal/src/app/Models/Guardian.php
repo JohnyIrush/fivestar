@@ -10,7 +10,20 @@ class Guardian extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        "user_id",
+        "firstname",
+        "lastname",
+        "bio",
+        "gender_id",
 
+        "address",
+        "city_id",
+        "town_id",
+
+        "title",
+        "type"
+    ];
     public function user()
     {
         return $this->belongsTo(User::class);

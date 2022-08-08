@@ -2,7 +2,11 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Softwarescares\Intelistaff\app\Http\Controllers\CategoryController;
+use Softwarescares\Intelistaff\app\Http\Controllers\DepartmentController;
+use Softwarescares\Intelistaff\app\Http\Controllers\OccupationController;
 use Softwarescares\Intelistaff\app\Http\Controllers\StaffController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -16,5 +20,11 @@ use Softwarescares\Intelistaff\app\Http\Controllers\StaffController;
 */
 
 Route::get("/portal/staff/details", [StaffController::class, 'getDetails']);
+
+Route::get("categories", [CategoryController::class, 'index']);
+Route::get("occupations", [OccupationController::class, 'index']);
+Route::get("departments", [DepartmentController::class, 'index']);
+
+Route::post("register-staff",[StaffController::class, "store"]);
 
 
