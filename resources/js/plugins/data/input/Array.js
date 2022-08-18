@@ -9,7 +9,6 @@ export default defineComponent({
             {
                 storeArrayInput(array, input)
                 {
-                    alert("running")
                     if(array.indexOf(input) == -1)
                     {
                         array.push(input)

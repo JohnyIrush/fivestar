@@ -1,6 +1,6 @@
 <?php
 
-namespace Softwarescares\Inteliacademic\database\seeders;
+namespace Softwarescares\Inteliacademic\app\Models;
 
 use Softwarescares\Inteliacademic\app\Models\LevelStream;
 use Illuminate\Database\Seeder;

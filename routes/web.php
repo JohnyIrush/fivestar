@@ -8,6 +8,8 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
+use App\Http\Controllers\TestController;
+
 /*
  Main UI Routes
 */
@@ -37,3 +39,4 @@ Route::group(['middleware' => 'auth'])->group(function () {
 });
 */
 
+Route::get('/vuex', [TestController::class, 'vuex'])->name('vuex');

@@ -5,6 +5,7 @@ namespace Softwarescares\Intelistaff\app\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Softwarescares\Inteliacademic\app\Models\Subject;
+use Softwarescares\Inteliinventory\app\Models\Inventory;
 
 class Department extends Model
 {
@@ -18,5 +19,10 @@ class Department extends Model
     public function subjects()
     {
         return $this->belongsToMany(Subject::class);
+    }
+
+    public function inventory()
+    {
+        return $this->belongsToMany(Inventory::class);
     }
 }

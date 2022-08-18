@@ -131,8 +131,14 @@ class UserSeeder extends Seeder
                  'email_verified_at' => now(),
                  'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
                  'remember_token' => Hash::make("password2123"),
-                 "profile_photo_path" => "/theme/assets/img/DSC_0058 copy modified.jpg"
+                 "profile_photo_path" => $faker->imageUrl()
             ]);
         }
+
+
+        User::find(43)->syncRoles([8]);
+        User::find(44)->syncRoles([8]);
+        User::find(45)->syncRoles([8]);
+        User::find(50)->syncRoles([8]);
     }
 }

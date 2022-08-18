@@ -2,6 +2,7 @@
 
 namespace Softwarescares\Inteliinventory\app\Http\Controllers;
 
+use App\Models\User;
 use Softwarescares\Inteliinventory\app\Models\Inventory;
 use Softwarescares\Inteliinventory\app\Http\Requests\StoreInventoryRequest;
 use Softwarescares\Inteliinventory\app\Http\Requests\UpdateInventoryRequest;
@@ -16,6 +17,17 @@ class InventoryController extends Controller
     public function index()
     {
         //
+    }
+
+    public function managers()
+    {
+        $users = User::all()->reject(function ($user) {
+            return !$user->hasRole('WareHouse/Store Keeper');
+        })->map(function ($user) {
+            return $user;
+        });
+
+        return response()->json($users);
     }
 
     /**

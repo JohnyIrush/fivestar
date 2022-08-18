@@ -91,62 +91,51 @@ export const store = createStore({
             terms: false,
             profile_photo_path: ''
         },
-        registration_type: ''
+        registration_type: '',
+        manager: [],
+        count: 0,
+        supplier: [],
+        todos: [
+            { id: 1, text: '...', done: true },
+            { id: 2, text: 'TODO Two', done: false }
+          ]
       }
     },
     getters:
     {
-        saleProducts: state =>
-        {
-            var saleProducts = state.products.map((product)=>{
-                return {
-                    name: '**' + product.name + '**',
-                    price: product.price/2
-                }
-            })
-
-            return saleProducts;
-        },
-        getSchoolTypes : state =>
-        {
-            var types = [];
-
-            axios.get("/school-types")
-            .then((response)=>{
-                state.school.types = response.data
-                types = response.data
-            })
-            .catch(()=>{
-
-            })
-
-            return state.school.types;
-        }
+     doneTodos (state) {
+         return state.todos.filter(todo => todo.done)
+       },
+     doneTodosCount (state, getters) {
+         //return getters.doneTodos.length
+       },
+       getTodoById: (state) => (id) => {
+        return state.todos.find(todo => todo.id === id)
+      }
     },
     mutations: {
-        reducePrice: (state, payload) =>
+        getManager: (state, payload) =>
         {
-            //setTimeout(() => { // This will applied with actions
-                state.products.forEach(product =>{
-                    product.price -= payload
-                });
-           // }, 3000);
+            state.manager = payload
         },
-        launchInteliVerifyModal: (payload) =>
+        increment (state, payload) {
+          state.count++
+          state.count += payload
+        },
+        getSupplier: (state, payload) =>
         {
-            console.log("Modal");
-            console.log(payload);
-        }
+            state.supplier = payload
+        },
     },
     actions: {
-        reducePrice: (context, payload) =>{
-            setTimeout(() => {
-                context.commit("reducePrice", payload)
-            }, 2000);
+        getManager: (context, payload) =>{
+            context.commit("getManager", payload)
         },
-        launchInteliVerifyModal: (context) =>
-        {
-            context.commit("launchInteliVerifyModal", payload)
+        getSupplier: (context, payload) =>{
+            context.commit("getSupplier", payload)
+        },
+        increment: (context, payload) =>{
+            context.commit("increment", payload)
         }
     }
   })

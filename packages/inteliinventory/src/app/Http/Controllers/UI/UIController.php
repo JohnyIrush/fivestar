@@ -15,9 +15,9 @@ class UIController extends Controller
     /**
      * Staff
      */
-    public function staff()
+    public function inventory()
     {
-        return Inertia::render('');
+        return Inertia::render('inteli_inventory/ui/windows/Inventory');
     }
 
 }

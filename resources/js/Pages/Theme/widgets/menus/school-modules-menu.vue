@@ -103,9 +103,9 @@
           </Link>
         </li>
         <li class="nav-item">
-          <Link class="nav-link  " :href="route('virtual-reality')">
+          <Link class="nav-link  " :href="route('inventory')">
              <div class="icon text-white bg-gradient-info shadow border-radius-md text-center d-flex align-items-center justify-content-center">
-               <i class="fas fa-microscope"></i>
+               <i class="fas fa-boxes"></i>
              </div>
             <span class="nav-link-text ms-1">Inventory</span>
           </Link>
