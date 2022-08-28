@@ -16,7 +16,18 @@ class InteliLibraryDatabaseSeeder extends Seeder
         $this->call
         (
             [
-                LibrarySeeder::class
+                LanguageSeeder::class,
+                LibrarySeeder::class,
+                BookCategorySeeder::class,
+                BookSeeder::class,
+                AuthorSeeder::class,
+                AuthorBookSeeder::class,
+                PublisherSeeder::class,
+                BookIssueSeeder::class,
+                AuthorBookSeeder::class,
+                BookPublisherSeeder::class,
+                BindingSeeder::class,
+                DeweyDecimalSeeder::class
             ]
         );
     }

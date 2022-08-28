@@ -98,7 +98,16 @@ export const store = createStore({
         todos: [
             { id: 1, text: '...', done: true },
             { id: 2, text: 'TODO Two', done: false }
-          ]
+          ],
+        Library:{
+            analytics: [],
+        },
+        librarian: [],
+        profile: [],
+        Modal:{
+            title: '',
+            modalChildComponent: ''
+        }
       }
     },
     getters:
@@ -126,16 +135,23 @@ export const store = createStore({
         {
             state.supplier = payload
         },
+        getProfile: (state, payload) =>
+        {
+            state.profile = payload
+        },
     },
     actions: {
         getManager: (context, payload) =>{
             context.commit("getManager", payload)
+        },
+        getProfile: (context, payload) =>{
+            context.commit("getProfile", payload)
         },
         getSupplier: (context, payload) =>{
             context.commit("getSupplier", payload)
         },
         increment: (context, payload) =>{
             context.commit("increment", payload)
-        }
+        },
     }
   })

@@ -72,14 +72,6 @@ aside
 
 .glass-header
 {
-    /*position: absolute;
-    top: -5px;
-    right: 20px;
-    left: 5px;
-    padding: 20px 0px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;*/
     background: rgba(255, 255, 255, 0.2);
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
     border-radius: 20px;
@@ -95,7 +87,7 @@ aside
 {
     transform: translateX(-100);
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
-    border-radius: 20px;
+    /*border-radius: 20px;*/
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.5);
     border-top: 1px solid rgba(255, 255, 255, 0.25);

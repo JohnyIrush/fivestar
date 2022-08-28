@@ -1,23 +1,19 @@
 <?php
 
-namespace Softwarescares\Intelicommunication\app\Http\Controllers;
+namespace Softwarescares\Intelilibrary\app\Http\Controllers\UI;
 
-use Softwarescares\Intelicommunication\app\Http\Controllers\Controller;
-
-use Softwarescares\Intelicommunication\app\Models\Communication;
-use Softwarescares\Intelicommunication\app\Http\Requests\StoreCommunicationRequest;
-use Softwarescares\Intelicommunication\app\Http\Requests\UpdateCommunicationRequest;
+use Softwarescares\Intelilibrary\app\Http\Controllers\Controller;
 
 use Inertia\Inertia;
 
-class StaffController extends Controller
+class UIController extends Controller
 {
     /**
      * Staff
      */
-    public function staff()
+    public function library()
     {
-        return Inertia::render('');
+        return Inertia::render('inteli_library/ui/windows/Library');
     }
 
 }

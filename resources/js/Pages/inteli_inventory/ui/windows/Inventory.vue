@@ -1,5 +1,5 @@
 <template>
-  <!--<Sidebar></Sidebar>-->
+  <Sidebar></Sidebar>
   <main class="main-content position-relative mt-1 border-radius-lg ">
       <NavBar></NavBar>
       <Body></Body>

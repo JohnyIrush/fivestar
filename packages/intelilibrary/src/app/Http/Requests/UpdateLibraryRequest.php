@@ -13,7 +13,7 @@ class UpdateLibraryRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,8 @@ class UpdateLibraryRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'library' => 'required|string|max:255',
+            'location' => 'required|string',
         ];
     }
 }

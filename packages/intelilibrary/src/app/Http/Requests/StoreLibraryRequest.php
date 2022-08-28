@@ -13,7 +13,7 @@ class StoreLibraryRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,8 @@ class StoreLibraryRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'library' => 'required|string|max:255|unique:libraries',
+            'location' => 'required|string',
         ];
     }
 }

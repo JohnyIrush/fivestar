@@ -70,7 +70,7 @@
           </Link>
         </li>
         <li class="nav-item">
-          <Link class="nav-link  " :href="route('virtual-reality')">
+          <Link class="nav-link  " :href="route('library')">
             <div class="icon text-white bg-gradient-info shadow border-radius-md text-center d-flex align-items-center justify-content-center">
               <i class="fas fa-book-open"></i>
             </div>

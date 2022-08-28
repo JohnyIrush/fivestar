@@ -61,14 +61,14 @@ export default {
   methods: {
     getProducts()
     {
-        axios.get('/products')
+        axios.get('inteli/products')
         .then((response)=>{
             this.products = response.data
         })
     },
     getFeatures(id)
     {
-        axios.get('/products')
+        axios.get('inteli/products')
         .then((response)=>{
             this.features = response.data[id - 1].features
             this.title = response.data[id - 1].feature

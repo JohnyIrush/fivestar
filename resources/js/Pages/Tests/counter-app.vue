@@ -3,6 +3,10 @@ import { defineComponent } from 'vue';
 
 import {store} from "../../store/store.js"
 
+import {Server} from "../../plugins/data/output/Server.js"
+
+const server = new Server();
+
 export default defineComponent({
   // state
   data () {
@@ -37,7 +41,11 @@ export default defineComponent({
     store.commit('increment',5)
     console.log(store.state.count)
     }
-  }
+  },
+  mounted() {
+    
+    console.log(server.getData("analytics"))
+  },
 });
 </script>
 //createApp(Counter).mount('#app')
