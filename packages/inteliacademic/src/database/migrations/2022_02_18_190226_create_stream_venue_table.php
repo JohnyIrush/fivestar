@@ -14,8 +14,8 @@ class CreateStreamVenueTable extends Migration
     public function up()
     {
         Schema::create('stream_venue', function (Blueprint $table) {
-            $table->foreignId('venue_id')->constrained();
-            $table->foreignId('stream_id')->constrained();
+            $table->integer('venue_id');
+            $table->integer('stream_id');
         });
     }
 

@@ -15,9 +15,9 @@ class CreateLevelStreamTable extends Migration
     {
         Schema::create('level_stream', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('level_id')->constrained();
-            $table->foreignId('stream_id')->constrained();
-            $table->foreignId('venue_id')->nullable();
+            $table->integer('level_id');
+            $table->integer('stream_id');
+            $table->integer('venue_id')->nullable();
 
             $table->timestamps();
         });

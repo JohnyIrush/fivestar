@@ -32,45 +32,13 @@ class BookController extends Controller
     {
 
         return $card->card($book, Book::with("authors",
-            "publishers","bookCategory","binding","deweyDecimal","language")->get() , ["image","title","edition"], ["image" => 'image']);
-        /*
-        return $table->table($book, Book::with("authors",
-            "publishers","bookCategory","binding","deweyDecimal","language")->get(), 
-            [
-            "book_category_id" => [
-                "name" => "book_category",
-                "value" => "category",
-                "display" => "item"
-            ],
-            "authors" => [
-                "name" => "authors",
-                "value" => "author",
-                "display" => "list"
-            ],
-            "publishers" => [
-                "name" => "publishers",
-                "value" => "publisher",
-                "display" => "list"
-            ],
-            "binding_id" => [
-                "name" => "binding",
-                "value" => "binding",
-                "display" => "item"
-            ],
-            "dewey_decimal_id" => [
-                "name" => "dewey_decimal",
-                "value" => "dewey_decimal",
-                "display" => "item"
-            ],
-            "language_id" => [
-                "name" => "language",
-                "value" => "language",
-                "display" => "item"
-            ],
-        ], ["authors","publishers"],
-        [
-            "image" => "image"
-        ]);*/
+            "publishers","bookCategory","binding","deweyDecimal","language")->get() , ["image","title","edition"], ["image" => 'image'],
+                    [
+                     'store' => "library/book/store",
+                     'update' => "library/book/update",
+                     "delete" => "library/book/destroy"
+                     ]
+    );
     }
 
     /**
@@ -111,7 +79,12 @@ class BookController extends Controller
                 "value" => "id",
                 "limit" => 1,
             ]
-        ],['id','created_at', 'updated_at'], "library/book/store");
+        ],['id','created_at', 'updated_at'],
+        [
+            "store" => "library/book/store",
+            "update" => "library/book/update",
+            "delete" => "library/book/delete"
+        ]);
     }
 
 

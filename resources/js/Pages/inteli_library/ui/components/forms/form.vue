@@ -1,8 +1,7 @@
 <template>
-  <div class="container min-vh-100 main">
     <div class="row">
-      <div class="col-2"></div>
-      <div class="col-10">
+      <!--<div class="col-2"></div>-->
+      <div class="col">
         <div class="card glass-content">
          <form id="auto-form" @submit.prevent="submit">
           <div class="row">
@@ -10,56 +9,56 @@
            <!-- start text/string input-->
            <div v-if="renderInput(field.type,'text',field.field)" id="text-input" class="mb-3">
              <label :for="field.field" class="form-label">{{field.field}}</label>
-             <input id="" type="text" class="form-control" value="" :name="field.field" required autofocus :autocomplete="field.field" />
+             <input id="" type="text" class="form-control" :value="formEditData[field.field]" :name="field.field" required autofocus :autocomplete="field.field" />
            </div>
            <!-- end text/string input-->
 
            <!-- start email input-->
            <div v-else-if="renderInput(field.type,'email',field.field)" id="email-input" class="mb-3">
              <label :for="field.field" class="form-label">{{field.field}}</label>
-             <input id="" type="email" class="form-control" value="" :name="field.field" required autofocus :autocomplete="field.field" />
+             <input id="" type="email" class="form-control" :value="formEditData[field.field]" :name="field.field" required autofocus :autocomplete="field.field" />
            </div>
            <!-- end email input-->
 
            <!-- start tel/phone input-->
            <div v-else-if="renderInput(field.type,'tel',field.field)" id="tel-input" class="mb-3">
             <label :for="field.field" class="form-label">{{field.field}}</label>
-            <input id="" type="tel" class="form-control" value="" :name="field.field" required autofocus :autocomplete="field.field" />
+            <input id="" type="tel" class="form-control" :value="formEditData[field.field]" :name="field.field" required autofocus :autocomplete="field.field" />
            </div>
            <!-- end tel/phone input-->
            
            <!-- start password input-->
            <div v-else-if="renderInput(field.type,'password',field.field)" id="password-input" class="mb-3">
             <label :for="field.field" class="form-label">{{field.field}}</label>
-            <input id="" type="password" class="form-control" value="" :name="field.field" required :autocomplete="field.field" />
+            <input id="" type="password" class="form-control" :value="formEditData[field.field]" :name="field.field" required :autocomplete="field.field" />
            </div>
            <!-- end password input-->
 
            <!-- start number input-->
            <div v-else-if="renderInput(field.type,'number',field.field)" id="number-input" class="mb-3">
             <label :for="field.field" class="form-label">{{field.field}}</label>
-            <input id="" type="number" class="form-control" value="" :name="field.field" required :autocomplete="field.field" />
+            <input id="" type="number" class="form-control" :value="formEditData[field.field]" :name="field.field" required :autocomplete="field.field" />
            </div>
            <!-- end number input-->
 
            <!-- start url/link/website input-->
            <div v-else-if="renderInput(field.type,'url',field.field)" id="url-input" class="">
             <label :for="field.field" class="form-label">{{field.field}}</label>
-            <input id="" type="url" class="form-control" value="" :name="field.field" required :autocomplete="field.field" />
+            <input id="" type="url" class="form-control" :value="formEditData[field.field]" :name="field.field" required :autocomplete="field.field" />
            </div>
            <!-- end url/link/website input-->
 
            <!-- start date input-->
            <div v-else-if="renderInput(field.type,'date',field.field)" id="date-input" class="">
             <label :for="field.field" class="form-label">{{field.field}}</label>
-            <input id="date" type="date" class="form-control" value="" :name="field.field" required :autocomplete="field.field" />
+            <input id="date" type="date" class="form-control" :value="formEditData[field.field]" :name="field.field" required :autocomplete="field.field" />
            </div>
            <!-- end date input-->
 
            <!-- start textarea input-->
            <div v-else-if="renderInput(field.type,'textarea',field.field)" id="text-input" class="">
             <label :for="field.field" class="form-label">{{field.field}}</label>
-            <textarea :name="field.field" class="form-control" id="" rows="3"></textarea>
+            <textarea :name="field.field" :value="formEditData[field.field]" class="form-control" id="" rows="3"></textarea>
            </div>
            <!-- end textarea input-->
 
@@ -86,7 +85,7 @@
            <!-- start select input-->
           <div v-else-if="renderInput(field.type,'select',field.field)" id="select-input"  class="">
             <label :for="field.field">{{options[field.field]["name"]}}</label>
-            <select :name="field.field" class="form-select" :aria-label="field.field">
+            <select :value="formEditData[field.field]" :name="field.field" class="form-select" :aria-label="field.field">
              <option  v-for="option in options[field.field][field.field]" :key="option.id" :value="(option[options[field.field]['value']] != null)? option[options[field.field]['value']] : option">{{(option[options[field.field]['name']] != null)? option[options[field.field]['name']] : option}}</option>
             </select>
            </div>
@@ -97,17 +96,18 @@
          </form>
         </div>
       </div>
-      <div class="col-2"></div>
+      <!--<div class="col-2"></div>-->
     </div>
-  </div>
 </template>
 
 <script>
 import { reactive } from 'vue'
 import { Inertia } from '@inertiajs/inertia'
 
+import {store} from "../../../../../store/store.js"
+
 export default {
-  name:'form',
+  name:'mainform',
   props: {
     formPath: String
   },
@@ -121,15 +121,29 @@ export default {
      fields: [],
      options: [],
      hidden: [],
-     storepath: ''
+     crud: [],
+     formEditData: [],
+     formType: ''
    }
+ },
+ computed:{
+  formEditData()
+  {
+    return store.state.form.formEditData
+  },
+  formType()
+  {
+    return store.state.form.formType
+  }
  },
    methods:{
     submit()
     {
       this.getFormData()
 
-      axios.post(this.storepath, this.form)
+      var url = (this.formType == 'update')? this.crud.update: this.crud.store;
+
+      axios.post(url, this.form)
       .then((response)=>{
         alert("success")
       })
@@ -254,7 +268,7 @@ export default {
          this.options = response.data[1]
          this.hidden = response.data[2]
          this.formFields()
-         this.storepath = response.data[3]
+         this.crud = response.data[3]
       })
     }
    },

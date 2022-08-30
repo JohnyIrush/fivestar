@@ -31,6 +31,22 @@
 <div class="row">
  <div class="col-12 col-xl-4" v-for="data in visibleEntries" :key="data">
   <div class="card glass-content">
+  <div class="card-header">
+    <div class="row">
+      <div class="col">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="">
+          </div>
+      </div>
+      <div class="col"></div>
+      <div class="col"></div>
+      <div class="col"></div>
+      <div class="col">
+        <i class="fas fa-ellipsis-v fa-2x"></i>
+             <table_options @showModal="launchModal" :formData="data" :dataId="data.id" :deletePath="crud.delete" :triggerName="''" :icon_classes="'fas fa-ellipsis-v fa-2x'" :triggerType="'icon'"></table_options>
+      </div>
+    </div>
+  </div>
       <div class="content" v-for="column in visible" :key="column">
          <div class="imBx" v-if="hasType(column) && types[column] == 'image'" >
             <img :src="data[column]" alt="">
@@ -75,9 +91,11 @@ import { defineComponent } from 'vue'
 
 import { store } from '../../../../../store/store.js'
 
+import table_options from '../../widgets/menus/table-options.vue'
+
 export default defineComponent({
   components:{
-
+    table_options
   },
   name: 'CardData',
   props: {
@@ -113,10 +131,20 @@ export default defineComponent({
       showEntries: [15,20,25,30,35,40,50,75,100],
       pagination: 5,
       currentPage: 1,
-      visibleEntries: []
+      visibleEntries: [],
+      crud: []
    }
  },
    methods:{
+    launchModal()
+    {
+      alert("clicked")
+      var component = document.getElementById('library-form')
+      var body = document.getElementById('modal-body')
+      body.appendChild(component)
+      var modal = new bootstrap.Modal(document.getElementById('main-modal'))
+      modal.show()
+    },
     tableSearch(keyword)
     {
       this.currentPage = current
@@ -152,6 +180,7 @@ export default defineComponent({
             this.entries = response.data.entries
             this.visible = response.data.visible
             this.types = response.data.types
+            this.crud = response.data.crud
          })
      },
    },

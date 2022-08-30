@@ -227,5 +227,6 @@ git clone https://github.com/JohnyIrush/Intelisystem.git
 php artisan migrate    --database autemnonquiquiaq
              '--path' => 'database/migrations',
              '--force' => true
+php artisan key:generate
 
 npm run hot

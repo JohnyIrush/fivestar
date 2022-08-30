@@ -12,7 +12,7 @@ use DB;
 
 class Form
 {
-	public function form(Model $model, array $options, array $hidden,string $storepath)
+	public function form(Model $model, array $options, array $hidden,Array $crud)
 	{
 		$fields = [];
 		$table = $model->getTable();
@@ -27,7 +27,7 @@ class Form
           ]);
 		}
 		
-        return [$fields, $options, $hidden, $storepath];
+        return [$fields, $options, $hidden, $crud];
 	}
 }
 

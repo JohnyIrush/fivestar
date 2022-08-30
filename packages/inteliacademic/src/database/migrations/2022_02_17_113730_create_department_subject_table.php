@@ -14,8 +14,8 @@ class CreateDepartmentSubjectTable extends Migration
     public function up()
     {
         Schema::create('department_subject', function (Blueprint $table) {
-            $table->foreignId('department_id')->constrained();
-            $table->foreignId('subject_id')->constrained();
+            $table->integer('department_id');
+            $table->integer('subject_id');
         });
     }
 

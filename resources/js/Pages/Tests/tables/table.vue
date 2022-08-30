@@ -47,8 +47,6 @@ import list from "../../inteli_library/ui/components/lists/list.vue"
 
 import image from "../../inteli_library/ui/components/images/image.vue"
 
-//import 'alga-css/dist/alga.min.css'
-//import 'alga-css/dist/alga-animate.min.css'
 
 export default {
   components:{

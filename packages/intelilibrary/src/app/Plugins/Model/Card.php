@@ -20,14 +20,15 @@ class Card
     $this->table = $table;
   }
 
-  public function card(Model $model, $entries, array $visible,array $types)
+  public function card(Model $model, $entries, array $visible,array $types, array $crud)
   {
 
   	return [
   		 "columns" => array_merge($this->table->column($model)),
   		 "entries" => $entries,
   		 "visible" => $visible,
-  		 "types" => $types
+  		 "types" => $types,
+       "crud" => $crud
   	];
   }
 

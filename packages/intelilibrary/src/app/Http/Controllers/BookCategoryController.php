@@ -10,7 +10,9 @@ use Softwarescares\Intelilibrary\app\Actions\Model\Store;
 use Softwarescares\Intelilibrary\app\Actions\Model\Update;
 use Softwarescares\Intelilibrary\app\Actions\Model\Delete;
 
+use Softwarescares\Intelilibrary\app\Plugins\Model\Form;
 use Softwarescares\Intelilibrary\app\Plugins\Model\Table;
+use Softwarescares\Intelilibrary\app\Plugins\Model\Card;
 
 use Illuminate\Http\Request;
 
@@ -31,7 +33,13 @@ class BookCategoryController extends Controller
                 "display" => "list"
             ],
         ]
-            , [], ["image" => "image"]);
+            , [], ["image" => "image"],
+           [
+            'store' => "library/book/category/store",
+            'update' => "library/book/category/update",
+            "delete" => "library/book/category/destroy"
+            ]
+        );
     }
 
     /**
@@ -39,9 +47,18 @@ class BookCategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(BookCategory $bookCategory, Form $form)
     {
-        //
+        return $form->form($bookCategory, [
+           "status" => ['Inactive', "Active"]
+        ],
+            ['id','created_at', 'updated_at'], 
+            [
+            'store' => "library/book/category/store",
+            'update' => "library/book/category/update",
+            "delete" => "library/book/category/destroy"
+            ]
+           );
     }
 
     /**

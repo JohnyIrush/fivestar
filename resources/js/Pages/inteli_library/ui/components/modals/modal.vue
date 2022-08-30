@@ -1,6 +1,6 @@
 <template>
   <div class="modal fade" id="main-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="main-modal" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered text-c-center text-center">
+    <div :class="'modal-dialog modal-dialog-centered text-c-center text-center ' + modalSize">
       <div class="modal-content glass-content text-c-center text-center">
         <div class="modal-header text-c-center">
             <div class="col">
@@ -8,8 +8,9 @@
             </div>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <div class="modal-body">
-          <component :is="modalChildComponent"></component>
+        <div id="modal-body" class="modal-body">
+          <!--<component :is="modalChildComponent"></component>-->
+
         </div>
       </div>
     </div>
@@ -35,9 +36,9 @@ import { store } from '../../../../../store/store.js'
           {
             return store.state.Modal.title
           },
-          modalChildComponent()
+          modalSize()
           {
-            return store.state.Modal.modalChildComponent
+            return store.state.Modal.modalSize
           }
         },
         methods: {

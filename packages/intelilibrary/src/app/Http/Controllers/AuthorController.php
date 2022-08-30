@@ -26,7 +26,13 @@ class AuthorController extends Controller
      */
     public function index(Author $author, Card $card)
     {
-        return $card->card($author, Author::with("books")->get() , ["profile_photo_path","firstname","lastname","email","phone"], ["profile_photo_path" => 'image']);
+        return $card->card($author, Author::with("books")->get() , ["profile_photo_path","firstname","lastname","email","phone"], ["profile_photo_path" => 'image'],
+            [
+            'store' => "library/author/store",
+            'update' => "library/author/update",
+            "delete" => "library/author/destroy"
+            ]
+        );
     }
 
     /**

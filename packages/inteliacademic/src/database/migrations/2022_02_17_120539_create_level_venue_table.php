@@ -14,8 +14,8 @@ class CreateLevelVenueTable extends Migration
     public function up()
     {
         Schema::create('level_venue', function (Blueprint $table) {
-            $table->foreignId('level_id')->constrained();
-            $table->foreignId('venue_id')->constrained();
+            $table->integer('level_id');
+            $table->integer('venue_id');
         });
     }
 

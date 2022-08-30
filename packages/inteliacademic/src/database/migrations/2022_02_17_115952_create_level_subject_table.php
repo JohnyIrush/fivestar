@@ -14,8 +14,8 @@ class CreateLevelSubjectTable extends Migration
     public function up()
     {
         Schema::create('level_subject', function (Blueprint $table) {
-            $table->foreignId('level_id')->constrained();
-            $table->foreignId('subject_id')->constrained();
+            $table->integer('level_id');
+            $table->integer('subject_id');
         });
     }
 

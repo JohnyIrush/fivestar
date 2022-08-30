@@ -12,7 +12,9 @@ use Softwarescares\Intelilibrary\app\Actions\Model\Store;
 use Softwarescares\Intelilibrary\app\Actions\Model\Update;
 use Softwarescares\Intelilibrary\app\Actions\Model\Delete;
 
+use Softwarescares\Intelilibrary\app\Plugins\Model\Form;
 use Softwarescares\Intelilibrary\app\Plugins\Model\Table;
+use Softwarescares\Intelilibrary\app\Plugins\Model\Card;
 
 use Illuminate\Http\Request;
 
@@ -39,7 +41,13 @@ class BookIssueController extends Controller
                 "display" => "list"
             ]
         ]
-            , [], []);
+            , [], [],
+           [
+            'store' => "library/book/issue/store",
+            'update' => "library/book/issue/update",
+            "delete" => "library/book/issue/destroy"
+            ]
+        );
     }
 
     /**
@@ -47,12 +55,29 @@ class BookIssueController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(BookIssue $bookIssue, Form $form)
     {
-        return view('book.issueBook_add', [
-            'students' => Student::latest()->get(),
-            'books' => Book::where('status', 'Y')->get(),
-        ]);
+        return $form->form($bookIssue, [
+            "student_id" => [ 
+                "student_id" => Student::all(),
+                "name" => "firstname",
+                "value" => "id",
+                "limit" => 1,
+                 ],
+            "book_id" => [
+                "book_id" =>Book::all(),
+                "name" => "title",
+                "value" => "id",
+                "limit" => 1,
+                ],
+        ],
+            ['id','created_at', 'updated_at'], 
+            [
+            'store' => "library/book/issue/store",
+            'update' => "library/book/issue/update",
+            "delete" => "library/book/issue/destroy"
+            ]
+           ); 
     }
 
     /**

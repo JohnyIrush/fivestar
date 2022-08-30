@@ -18,14 +18,15 @@ class Table
 
   }
 
-  public function table(Model $model, $entries, array $more, array $extra, array $types)
+  public function table(Model $model, $entries, array $more, array $extra, array $types, array $crud)
   {
 
   	return [
   		 "columns" => array_merge($this->column($model),$extra),
   		 "entries" => $entries,
   		 "more" => $more,
-  		 "types" => $types
+  		 "types" => $types,
+       "crud" => $crud
   	];
   }
 

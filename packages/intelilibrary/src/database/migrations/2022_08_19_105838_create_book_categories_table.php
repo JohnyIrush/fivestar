@@ -15,8 +15,8 @@ class CreateBookCategoriesTable extends Migration
     {
         Schema::create('book_categories', function (Blueprint $table) {
             $table->id();
-            $table->text("image");
-            $table->text("category");
+            $table->string("image");
+            $table->string("category");
             $table->text("description");
             $table->boolean("status");
             $table->timestamps();

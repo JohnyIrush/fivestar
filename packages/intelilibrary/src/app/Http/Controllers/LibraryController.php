@@ -19,6 +19,7 @@ use Softwarescares\Intelilibrary\app\Actions\Model\Store;
 use Softwarescares\Intelilibrary\app\Actions\Model\Update;
 use Softwarescares\Intelilibrary\app\Actions\Model\Delete;
 
+use Softwarescares\Intelilibrary\app\Plugins\Model\Form;
 use Softwarescares\Intelilibrary\app\Plugins\Model\Table;
 use Softwarescares\Intelilibrary\app\Plugins\Model\Card;
 
@@ -34,7 +35,12 @@ class LibraryController extends Controller
 
     public function index(Library $library, Table $table)
     {
-        return $table->table($library, Library::all(), [], [], []);
+        return $table->table($library, Library::all(), [], [], [],
+            [
+            'store' => "library/store",
+            'update' => "library/update",
+            "delete" => "library/destroy"
+            ]);
     }
 
     public function librarian(User $user, Card $card)
@@ -45,7 +51,13 @@ class LibraryController extends Controller
             return $user;
         });
 
-        return $card->card($user, User::all(), ["profile_photo_path","name","phone"], ["profile_photo_path" => 'image']);
+        return $card->card($user, User::all(), ["profile_photo_path","name","phone"], ["profile_photo_path" => 'image'],
+                        [
+            'store' => "library/store",
+            'update' => "library/update",
+            "delete" => "library/destroy"
+            ]
+    );
     }
 
     /**
@@ -53,9 +65,16 @@ class LibraryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Library $library,Form $form)
     {
-        //
+        return $form->form($library, [],
+            ['id','created_at', 'updated_at'], 
+            [
+            'store' => "library/store",
+            'update' => "library/update",
+            "delete" => "library/destroy"
+            ]
+           );
     }
 
     /**

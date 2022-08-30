@@ -14,8 +14,8 @@ class CreateStreamTeacherTable extends Migration
     public function up()
     {
         Schema::create('stream_teacher', function (Blueprint $table) {
-            $table->foreignId('teacher_id')->constrained();
-            $table->foreignId('stream_id')->constrained();
+            $table->integer('teacher_id');
+            $table->integer('stream_id');
         });
     }
 

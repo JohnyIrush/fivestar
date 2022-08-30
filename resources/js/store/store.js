@@ -106,7 +106,11 @@ export const store = createStore({
         profile: [],
         Modal:{
             title: '',
-            modalChildComponent: ''
+        },
+        form:{
+            formEditData: [],
+            formType: '',
+            modalSize: ''
         }
       }
     },

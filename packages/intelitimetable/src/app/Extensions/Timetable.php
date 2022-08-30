@@ -9,7 +9,7 @@ use Softwarescares\Intelitimetable\app\Models\Venue;
 use Softwarescares\Inteliacademic\app\Models\Level;
 use Softwarescares\Inteliacademic\app\Models\Stream;
 use Softwarescares\Inteliacademic\app\Models\Subject;
-use Softwarescares\Inteliacademic\app\Models\Teacher;
+use Softwarescares\Intelistaff\app\Models\Teacher;
 use Softwarescares\Inteliacademic\app\Models\Section;
 
 class TimeTable

@@ -15,7 +15,6 @@ import { Inertia } from '@inertiajs/inertia'
 
 import data_table from "../../inteli_library/ui/components/tables/table.vue"
 
-import {$array} from "alga-js"
 
 export default {
   components:{

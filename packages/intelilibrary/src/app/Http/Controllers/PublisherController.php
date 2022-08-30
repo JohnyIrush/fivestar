@@ -24,7 +24,13 @@ class PublisherController extends Controller
      */
     public function index(Publisher $publisher, Card $card)
     {
-        return $card->card($publisher, Publisher::with("books")->get() , ["avatar","publisher","phone"], ["avatar" => 'image']);
+        return $card->card($publisher, Publisher::with("books")->get() , ["avatar","publisher","phone"], ["avatar" => 'image'],
+           [
+            'store' => "library/publisher/store",
+            'update' => "library/publisher/update",
+            "delete" => "library/publisher/destroy"
+            ]
+    );
     }
 
     /**

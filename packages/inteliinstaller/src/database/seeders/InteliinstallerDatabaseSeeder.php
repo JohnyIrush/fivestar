@@ -2,10 +2,9 @@
 
 namespace Softwarescares\Inteliinstaller\database\seeders;
 
-
 use Illuminate\Database\Seeder;
 
-class InteliInstallerDatabaseSeeder extends Seeder
+class InteliinstallerDatabaseSeeder extends Seeder
 {
     /**
      * Seed the application's database.

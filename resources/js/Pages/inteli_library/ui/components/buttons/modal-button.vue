@@ -1,5 +1,5 @@
 <template>
-    <button @click="passComponentDetails" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#main-modal"><span v-if="name">{{name}}</span><i v-if="icon_classes" :class="icon_classes"></i></button>
+    <button @click="passComponentDetails" type="button" class="btn btn-primary" ><i v-if="icon_classes" :class="icon_classes"></i><span class="ml-2" v-if="name">{{name}}</span></button>
 </template>
 
 <script>
@@ -12,7 +12,7 @@ import { store } from '../../../../../store/store.js'
             name: String,
             icon_classes: String,
             title: String,
-            modalChildComponent: String
+            modalSize: String
         },
         components: {
 
@@ -31,8 +31,10 @@ import { store } from '../../../../../store/store.js'
         methods: {
             passComponentDetails()
             {
-               store.state.Modal.modalChildComponent = this.modalChildComponent 
+                this.$emit("showmodal")
+
                store.state.Modal.title = this.title 
+               store.state.Modal.modalSize = this.modalSize 
             }
         },
         mounted() {
