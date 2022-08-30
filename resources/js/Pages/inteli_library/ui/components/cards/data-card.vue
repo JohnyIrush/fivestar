@@ -99,7 +99,6 @@ export default defineComponent({
   },
   name: 'CardData',
   props: {
-    datapath: String
   },
   setup ()
   {
@@ -120,31 +119,65 @@ export default defineComponent({
     visibleEntries()
     {
       return this.changePage(this.currentPage)
+    },
+    columns()
+    {
+      return store.state.Card.data.columns
+    },
+    entries()
+    {
+      return store.state.Card.data.entries
+
+    },
+    visible()
+    {
+      return store.state.Card.data.visible
+    },
+    types()
+    {
+      return store.state.Card.data.types
+    },
+    crud()
+    {
+      return store.state.Card.data.crud
     }
   },
   data (){
     return {
-      columns:[],
-      entries: [], 
-      visible: {},
-      types: {},
       showEntries: [15,20,25,30,35,40,50,75,100],
       pagination: 5,
       currentPage: 1,
       visibleEntries: [],
-      crud: []
    }
  },
    methods:{
-    launchModal()
-    {
-      alert("clicked")
-      var component = document.getElementById('library-form')
-      var body = document.getElementById('modal-body')
-      body.appendChild(component)
-      var modal = new bootstrap.Modal(document.getElementById('main-modal'))
-      modal.show()
-    },
+          launchModal(componentid, modalbody)
+          {
+            var modal = new bootstrap.Modal(document.getElementById('main-modal'))
+
+            var component = document.getElementById(componentid)
+            var body = document.getElementById(modalbody)
+
+            /*
+            if (body.hasChildNodes())
+            {
+              body.replaceChild(component, body.childNodes[0]);
+            }
+            else
+            {
+              body.appendChild(component)
+            }
+            */
+
+            body.appendChild(component)
+
+            /*if (store.state.Modal.open == false) {
+              modal.show()
+              store.state.Modal.open = true
+            }*/
+
+            modal.show()
+          },
     tableSearch(keyword)
     {
       this.currentPage = current
@@ -153,7 +186,7 @@ export default defineComponent({
       {
         this.visibleEntries = this.entries
       }
-      else
+      else if(this.entries.length >= 1)
       {
         this.visibleEntries = this.entries.slice((current * this.pagination) - this.pagination,(current * this.pagination))
       }
@@ -163,30 +196,24 @@ export default defineComponent({
     changePage(current)
     {
       this.currentPage = current
-      this.visibleEntries = this.entries.slice((current * this.pagination) - this.pagination,(current * this.pagination))
-      console.log(this.visibleEntries)
-      return this.visibleEntries
+      
+      if(this.pagination >= this.entries.length)
+      {
+        this.visibleEntries = this.entries
+      }
+      else if(this.entries.length >= 1)
+      {
+        this.visibleEntries = this.entries.slice((current * this.pagination) - this.pagination,(current * this.pagination))
+      }
     },
     hasType(column)
     {
       var keys = Object.keys(this.types);
       return keys.includes(column)
     },
-    getData(url)
-     {
-         axios.get(url)
-         .then((response)=>{
-            this.columns = response.data.columns
-            this.entries = response.data.entries
-            this.visible = response.data.visible
-            this.types = response.data.types
-            this.crud = response.data.crud
-         })
-     },
    },
    mounted()
    {
-    this.getData(this.datapath)
     this.changePage(this.currentPage)
    }
 });

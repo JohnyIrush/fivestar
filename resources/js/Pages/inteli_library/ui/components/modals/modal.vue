@@ -9,8 +9,9 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div id="modal-body" class="modal-body">
-          <!--<component :is="modalChildComponent"></component>-->
-
+            <data_card v-if="componentType == 'card'"></data_card>
+            <data_table v-if="componentType == 'table'"></data_table>
+            <main_form v-if="componentType == 'form'"></main_form>
         </div>
       </div>
     </div>
@@ -22,9 +23,17 @@ import { defineComponent } from 'vue'
 
 import { store } from '../../../../../store/store.js'
 
+import data_card from '../cards/data-card.vue'
+
+import data_table from "../tables/table.vue"
+
+import main_form from '../forms/form.vue'
+
     export default defineComponent({
         components: {
-
+            data_card,
+            data_table,
+            main_form
         },
         data() {
             return {
@@ -39,6 +48,10 @@ import { store } from '../../../../../store/store.js'
           modalSize()
           {
             return store.state.Modal.modalSize
+          },
+          componentType()
+          {
+            return store.state.Modal.componentType
           }
         },
         methods: {

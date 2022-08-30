@@ -118,10 +118,6 @@ export default {
   data (){
     return {
      form: [],
-     fields: [],
-     options: [],
-     hidden: [],
-     crud: [],
      formEditData: [],
      formType: ''
    }
@@ -134,11 +130,28 @@ export default {
   formType()
   {
     return store.state.form.formType
-  }
+  },
+  fields()
+  {
+    return store.state.form.fields[0]
+  },
+  options()
+  {
+    return store.state.form.fields[1]
+  },
+  hidden()
+  {
+    return store.state.form.fields[2]
+  },
+  crud()
+  {
+    return store.state.form.fields[3]
+  },
  },
    methods:{
     submit()
     {
+      this.formFields()
       this.getFormData()
 
       var url = (this.formType == 'update')? this.crud.update: this.crud.store;
@@ -274,7 +287,6 @@ export default {
    },
    mounted()
    {
-    this.getFields(this.formPath)
    }
 }
 </script>

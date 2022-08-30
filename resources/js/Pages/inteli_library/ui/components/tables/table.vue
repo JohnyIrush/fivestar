@@ -64,7 +64,7 @@
            </span>
            </td>
            <td :data-label="column">
-             <table_options @showModal="launchModal" :formData="td" :dataId="td.id" :deletePath="crud.delete" :triggerName="'Options'" :icon_classes="'fas fa-ellipsis-h'" :triggerType="'button'"></table_options>
+             <table_options @showModal="launchModal('', 'modal-body')" :formData="td" :dataId="td.id" :deletePath="crud.delete" :triggerName="'Options'" :icon_classes="'fas fa-ellipsis-h'" :triggerType="'button'"></table_options>
            </td>
          </tr>
     </tbody>
@@ -107,6 +107,8 @@
 import { reactive } from 'vue'
 import { Inertia } from '@inertiajs/inertia'
 
+import { store } from '../../../../../store/store.js'
+
 import list from "../lists/list.vue"
 
 import image from "../images/image.vue"
@@ -142,31 +144,65 @@ export default {
     visibleEntries()
     {
       return this.changePage(this.currentPage)
+    },
+    columns()
+    {
+      return store.state.Table.data.columns
+    },
+    entries()
+    {
+      return store.state.Table.data.entries
+
+    },
+    more()
+    {
+      return store.state.Table.data.more
+    },
+    types()
+    {
+      return store.state.Table.data.types
+    },
+    crud()
+    {
+      return store.state.Table.data.crud
     }
   },
   data (){
     return {
-      columns:[],
-      entries: [], 
-      more: {},
-      types: {},
       showEntries: [15,20,25,30,35,40,50,75,100],
       pagination: 10,
       currentPage: 1,
       visibleEntries: [],
-      crud: []
    }
  },
    methods:{
-    launchModal()
-    {
-      alert("clicked")
-      var component = document.getElementById('library-form')
-      var body = document.getElementById('modal-body')
-      body.appendChild(component)
-      var modal = new bootstrap.Modal(document.getElementById('main-modal'))
-      modal.show()
-    },
+          launchModal(componentid, modalbody)
+          {
+            var modal = new bootstrap.Modal(document.getElementById('main-modal'))
+
+            var component = document.getElementById(componentid)
+            var body = document.getElementById(modalbody)
+
+            /*
+            if (body.hasChildNodes())
+            {
+              body.replaceChild(component, body.childNodes[0]);
+            }
+            else
+            {
+              body.appendChild(component)
+            }
+            */
+
+            body.appendChild(component)
+
+            /*if (store.state.Modal.open == false) {
+              modal.show()
+              store.state.Modal.open = true
+            }*/
+
+            modal.show()
+          },
     tableSearch(keyword)
     {
       this.currentPage = current
@@ -177,9 +213,15 @@ export default {
     changePage(current)
     {
       this.currentPage = current
-      this.visibleEntries = this.entries.slice((current * this.pagination) - this.pagination,(current * this.pagination))
-      console.log(this.visibleEntries)
-      return this.visibleEntries
+      
+      if(this.pagination >= this.entries.length)
+      {
+        this.visibleEntries = this.entries
+      }
+      else if(this.entries.length >= 1)
+      {
+        this.visibleEntries = this.entries.slice((current * this.pagination) - this.pagination,(current * this.pagination))
+      }
     },
     hasType(column)
     {
@@ -198,23 +240,11 @@ export default {
     {
       var keys = Object.keys(this.more);
       return keys.includes(column)
-    },
-    getData(url)
-     {
-         axios.get(url)
-         .then((response)=>{
-            this.columns = response.data.columns
-            this.entries = response.data.entries
-            this.more = response.data.more
-            this.types = response.data.types
-            this.crud = response.data.crud
-         })
-     },
+    }
    },
    mounted()
    {
-    this.getData(this.datapath)
-    this.changePage(this.currentPage)
+
    }
 }
 </script>

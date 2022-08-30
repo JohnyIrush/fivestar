@@ -50,7 +50,12 @@ class BookCategoryController extends Controller
     public function create(BookCategory $bookCategory, Form $form)
     {
         return $form->form($bookCategory, [
-           "status" => ['Inactive', "Active"]
+            "status" => [
+                "status" => [["id" => 0,"status" => "InActive"],["id" => 1, "status" =>"Active"]],
+                "name" => "status",
+                "value" => "id",
+                "limit" => 1,
+            ]
         ],
             ['id','created_at', 'updated_at'], 
             [

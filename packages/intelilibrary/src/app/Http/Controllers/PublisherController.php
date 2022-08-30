@@ -10,6 +10,7 @@ use Softwarescares\Intelilibrary\app\Actions\Model\Store;
 use Softwarescares\Intelilibrary\app\Actions\Model\Update;
 use Softwarescares\Intelilibrary\app\Actions\Model\Delete;
 
+use Softwarescares\Intelilibrary\app\Plugins\Model\Form;
 use Softwarescares\Intelilibrary\app\Plugins\Model\Table;
 use Softwarescares\Intelilibrary\app\Plugins\Model\Card;
 
@@ -38,9 +39,17 @@ class PublisherController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Publisher $publisher, Form $form)
     {
-        return view('publisher.create');
+        return $form->form($publisher, [
+        ],
+            ['id','created_at', 'updated_at'], 
+            [
+            'store' => "library/publisher/store",
+            'update' => "library/publisher/update",
+            "delete" => "library/publisher/destroy"
+            ]
+           ); 
     }
 
     /**

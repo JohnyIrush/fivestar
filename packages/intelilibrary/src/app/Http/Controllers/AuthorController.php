@@ -12,7 +12,6 @@ use Softwarescares\Intelilibrary\app\Actions\Model\Delete;
 
 use Softwarescares\Intelilibrary\app\Plugins\Model\Form;
 use Softwarescares\Intelilibrary\app\Plugins\Model\Table;
-
 use Softwarescares\Intelilibrary\app\Plugins\Model\Card;
 
 use Illuminate\Http\Request;
@@ -40,9 +39,17 @@ class AuthorController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Author $author, Form $form)
     {
-        //
+        return $form->form($author, [
+        ],
+            ['id','created_at', 'updated_at'], 
+            [
+            'store' => "library/author/store",
+            'update' => "library/author/update",
+            "delete" => "library/author/destroy"
+            ]
+           ); 
     }
 
     /**

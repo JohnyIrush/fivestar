@@ -17,13 +17,13 @@ class CreateAuthorsTable extends Migration
             $table->id();
             $table->string('firstname');
             $table->string('lastname');
-            $table->text('profile_photo_path');
+            $table->string('profile_photo_path');
             $table->boolean("status");
             $table->date('dob');
-            $table->text('address');
+            $table->string('address');
             $table->string('phone');
             $table->string('email');
-            $table->text('website');
+            $table->string('website');
             $table->timestamps();
         });
     }

@@ -12,7 +12,9 @@ import { store } from '../../../../../store/store.js'
             name: String,
             icon_classes: String,
             title: String,
-            modalSize: String
+            modalSize: String,
+            componentType: String,
+            dataPath: String
         },
         components: {
 
@@ -29,12 +31,55 @@ import { store } from '../../../../../store/store.js'
           }
         },
         methods: {
+            getFormFields(url)
+            {
+              axios.get(url)
+              .then((response)=>{
+                 this.fields = response.data[0]
+                 this.options = response.data[1]
+                 this.hidden = response.data[2]
+                 this.crud = response.data[3]
+
+                 store.state.form.fields = response.data
+              })
+            },
+            passCardData(url)
+            {
+              axios.get(url)
+              .then((response)=>{
+                store.state.Card.data = response.data
+              })
+
+               console.log(store.state.Card.data.entries)
+            },
+            passTableData(url)
+            {
+              axios.get(url)
+              .then((response)=>{
+                 store.state.Table.data = response.data
+              })
+            },
             passComponentDetails()
             {
-                this.$emit("showmodal")
-
                store.state.Modal.title = this.title 
                store.state.Modal.modalSize = this.modalSize 
+               store.state.Modal.componentType = this.componentType 
+
+               if(this.componentType == 'table')
+               {
+                this.passTableData(this.dataPath)
+               }
+               else if(this.componentType == 'card')
+               {
+                this.passCardData(this.dataPath)
+               }
+               else if(this.componentType == 'form')
+               {
+                this.getFormFields(this.dataPath)
+               }
+
+               this.$emit("showmodal")
+
             }
         },
         mounted() {

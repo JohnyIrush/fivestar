@@ -72,15 +72,9 @@
 
         <!--START LIBRARIAN  PANE-->
         <div class="tab-pane fade" id="v-pills-librarian" role="tabpanel" aria-labelledby="v-pills-librarian-tab">
-           <data_card :datapath="'librarian'"></data_card>
-        </div>
-        <!--END LIBRARIAN  PANE-->
-
-        <!--START LIBRARY  PANE-->
-        <div class="tab-pane fade" id="v-pills-library" role="tabpanel" aria-labelledby="v-pills-library-tab">
            <div class="row">
              <div class="col-4">
-               <modal_button @showmodal="launchModal('library-form','modal-body')" :name="'Add'" :icon_classes="'fas fa-plus'" :title="'Add New School Library'" :modalSize="'modal-lg'"></modal_button>
+               <modal_button @showmodal="launchModal('main-modal')" :name="'Add'" :icon_classes="'fas fa-plus'" :title="'Add New Librarian'" :modalSize="'modal-lg'" :componentType="'form'" :dataPath="'user/create'"></modal_button>
              </div>
              <div class="col-8"></div>
            </div>
@@ -137,7 +131,75 @@
            <div class="row">
              <div class="col-3"></div>
              <div class="col-6">
-               <modal_button @showmodal="launchModal('library-records','modal-body')" :name="'View Library Records'" :icon_classes="'far fa-eye'" :title="'School Library Records'" :modalSize="'modal-xl'"></modal_button>
+               <modal_button @showmodal="launchModal('main-modal')" :name="'View librarians Records'" :icon_classes="'far fa-eye'" :title="'Librarian Records'" :modalSize="'modal-xl'" :componentType="'card'" :dataPath="'librarian'"></modal_button>
+             </div>
+             <div class="col-3"></div>
+           </div>
+        </div>
+        <!--END LIBRARIAN  PANE-->
+
+        <!--START LIBRARY  PANE-->
+        <div class="tab-pane fade" id="v-pills-library" role="tabpanel" aria-labelledby="v-pills-library-tab">
+           <div class="row">
+             <div class="col-4">
+               <modal_button @showmodal="launchModal('main-modal')" :name="'Add'" :icon_classes="'fas fa-plus'" :title="'Add New School Library'" :modalSize="'modal-lg'" :componentType="'form'" :dataPath="'library/create'"></modal_button>
+             </div>
+             <div class="col-8"></div>
+           </div>
+           <div class="row mt-4 mb-4">
+             <div class="col-xl-4 col-sm-6 mb-4">
+               <div class="card glass-content">
+                  <div class="numbers">
+                   <p class="card-text">{{ analytics.authors }}</p>
+                   <h5 class="card-title mb-0">Authors Listed</h5>
+                  </div>
+               </div>
+             </div>
+             <div class="col-xl-4 col-sm-6 mb-4">
+               <div class="card glass-content">
+                  <div class="numbers">
+                       <p class="card-text">{{ analytics.publishers }}</p>
+                       <h5 class="card-title mb-0">Publishers Listed</h5>
+                  </div>
+               </div>
+             </div>
+             <div class="col-xl-4 col-sm-6 mb-4">
+               <div class="card glass-content">
+                <div class="numbers">
+                     <p class="card-text">{{ analytics.categories }}</p>
+                     <h5 class="card-title mb-0">Categories Listed</h5>
+                </div>
+               </div>
+             </div>
+             <div class="col-xl-4 col-sm-6 mb-4">
+               <div class="card glass-content">
+                <div class="numbers">
+                     <p class="card-text">{{ analytics.books }}</p>
+                     <h5 class="card-title mb-0">Books Listed</h5>
+                </div>
+               </div>
+             </div>
+             <div class="col-xl-4 col-sm-6 mb-4">
+               <div class="card glass-content">
+                  <div class="numbers">
+                       <p class="card-text">{{ analytics.students }}</p>
+                       <h5 class="card-title mb-0">Register Students</h5>
+                  </div>
+               </div>
+             </div>
+             <div class="col-xl-4 col-sm-6 mb-4">
+               <div class="card glass-content">
+                <div class="numbers">
+                     <p class="card-text">{{ analytics.issued_books }}</p>
+                     <h5 class="card-title mb-0">Book Issued</h5>
+                </div>
+               </div>
+             </div>
+            </div>
+           <div class="row">
+             <div class="col-3"></div>
+             <div class="col-6">
+               <modal_button @showmodal="launchModal('main-modal')" :name="'View Library Records'" :icon_classes="'far fa-eye'" :title="'School Library Records'" :modalSize="'modal-xl'" :componentType="'table'" :dataPath="'libraries'"></modal_button>
              </div>
              <div class="col-3"></div>
            </div>            
@@ -148,7 +210,7 @@
         <div class="tab-pane fade" id="v-pills-book-issue" role="tabpanel" aria-labelledby="v-pills-book-issue-tab">
            <div class="row">
              <div class="col-4">
-               <modal_button @showmodal="launchModal('book-issue-form','modal-body')" :name="'Issue'" :icon_classes="'fas fa-plus'" :title="'Issue New Book'" :modalSize="'modal-lg'"></modal_button>
+               <modal_button @showmodal="launchModal('main-modal')" :name="'Issue'" :icon_classes="'fas fa-plus'" :title="'Issue New Book'" :modalSize="'modal-lg'" :componentType="'form'" :dataPath="'library/book/issue/create'"></modal_button>
              </div>
              <div class="col-8"></div>
            </div>
@@ -205,7 +267,7 @@
            <div class="row">
              <div class="col-3"></div>
              <div class="col-6">
-               <modal_button @showmodal="launchModal('book-issue-records','modal-body')" :name="'View Book-Issue Records'" :icon_classes="'far fa-eye'" :title="'Book-Issue Records'" :modalSize="'modal-xl'"></modal_button>
+               <modal_button @showmodal="launchModal('main-modal')" :name="'View Book-Issue Records'" :icon_classes="'far fa-eye'" :title="'Book-Issue Records'" :modalSize="'modal-xl'" :componentType="'table'" :dataPath="'book/issue'"></modal_button>
              </div>
              <div class="col-3"></div>
            </div>
@@ -216,7 +278,7 @@
         <div class="tab-pane fade" id="v-pills-book-category" role="tabpanel" aria-labelledby="v-pills-book-category-tab">
            <div class="row">
              <div class="col-4">
-               <modal_button @showmodal="launchModal('book-category-form','modal-body')" :name="'Add'" :icon_classes="'fas fa-plus'" :title="'Add New Book Category'" :modalSize="'modal-lg'"></modal_button>
+               <modal_button @showmodal="launchModal('main-modal')" :name="'Add'" :icon_classes="'fas fa-plus'" :title="'Add New Book Category'" :modalSize="'modal-lg'" :componentType="'form'" :dataPath="'library/book/category/create'"></modal_button>
              </div>
              <div class="col-8"></div>
            </div>
@@ -273,7 +335,7 @@
            <div class="row">
              <div class="col-3"></div>
              <div class="col-6">
-               <modal_button @showmodal="launchModal('book-category-records','modal-body')" :name="'View Book Category Records'" :icon_classes="'far fa-eye'" :title="'Book Category Records'" :modalSize="'modal-xl'"></modal_button>
+               <modal_button @showmodal="launchModal('main-modal')" :name="'View Book Category Records'" :icon_classes="'far fa-eye'" :title="'Book Category Records'" :modalSize="'modal-xl'" :componentType="'table'" :dataPath="'book/categories'"></modal_button>
              </div>
              <div class="col-3"></div>
            </div>
@@ -282,19 +344,205 @@
 
         <!--START AUTHOR  PANE-->
         <div class="tab-pane fade" id="v-pills-author" role="tabpanel" aria-labelledby="v-pills-author-tab">
-          <data_card :datapath="'authors'"></data_card>
+           <div class="row">
+             <div class="col-4">
+               <modal_button @showmodal="launchModal('main-modal')" :name="'Add'" :icon_classes="'fas fa-plus'" :title="'Add New Book Author'" :modalSize="'modal-lg'" :componentType="'form'" :dataPath="'library/author/create'"></modal_button>
+             </div>
+             <div class="col-8"></div>
+           </div>
+           <div class="row mt-4 mb-4">
+             <div class="col-xl-4 col-sm-6 mb-4">
+               <div class="card glass-content">
+                  <div class="numbers">
+                   <p class="card-text">{{ analytics.authors }}</p>
+                   <h5 class="card-title mb-0">Authors Listed</h5>
+                  </div>
+               </div>
+             </div>
+             <div class="col-xl-4 col-sm-6 mb-4">
+               <div class="card glass-content">
+                  <div class="numbers">
+                       <p class="card-text">{{ analytics.publishers }}</p>
+                       <h5 class="card-title mb-0">Publishers Listed</h5>
+                  </div>
+               </div>
+             </div>
+             <div class="col-xl-4 col-sm-6 mb-4">
+               <div class="card glass-content">
+                <div class="numbers">
+                     <p class="card-text">{{ analytics.categories }}</p>
+                     <h5 class="card-title mb-0">Categories Listed</h5>
+                </div>
+               </div>
+             </div>
+             <div class="col-xl-4 col-sm-6 mb-4">
+               <div class="card glass-content">
+                <div class="numbers">
+                     <p class="card-text">{{ analytics.books }}</p>
+                     <h5 class="card-title mb-0">Books Listed</h5>
+                </div>
+               </div>
+             </div>
+             <div class="col-xl-4 col-sm-6 mb-4">
+               <div class="card glass-content">
+                  <div class="numbers">
+                       <p class="card-text">{{ analytics.students }}</p>
+                       <h5 class="card-title mb-0">Register Students</h5>
+                  </div>
+               </div>
+             </div>
+             <div class="col-xl-4 col-sm-6 mb-4">
+               <div class="card glass-content">
+                <div class="numbers">
+                     <p class="card-text">{{ analytics.issued_books }}</p>
+                     <h5 class="card-title mb-0">Book Issued</h5>
+                </div>
+               </div>
+             </div>
+            </div>
+           <div class="row">
+             <div class="col-3"></div>
+             <div class="col-6">
+               <modal_button @showmodal="launchModal('main-modal')" :name="'View Book Authors Records'" :icon_classes="'far fa-eye'" :title="'Book Authors Records'" :modalSize="'modal-xl'" :componentType="'card'" :dataPath="'authors'"></modal_button>
+             </div>
+             <div class="col-3"></div>
+           </div>
         </div>
         <!--END AUTHOR  PANE-->
 
         <!--START BOOK PANE-->
         <div class="tab-pane fade" id="v-pills-book" role="tabpanel" aria-labelledby="v-pills-book-tab">
-          <data_card :datapath="'books'"></data_card>
+           <div class="row">
+             <div class="col-4">
+               <modal_button @showmodal="launchModal('main-modal')" :name="'Add'" :icon_classes="'fas fa-plus'" :title="'Add New Book'" :modalSize="'modal-lg'" :componentType="'form'" :dataPath="'library/book/create'"></modal_button>
+             </div>
+             <div class="col-8"></div>
+           </div>
+           <div class="row mt-4 mb-4">
+             <div class="col-xl-4 col-sm-6 mb-4">
+               <div class="card glass-content">
+                  <div class="numbers">
+                   <p class="card-text">{{ analytics.authors }}</p>
+                   <h5 class="card-title mb-0">Authors Listed</h5>
+                  </div>
+               </div>
+             </div>
+             <div class="col-xl-4 col-sm-6 mb-4">
+               <div class="card glass-content">
+                  <div class="numbers">
+                       <p class="card-text">{{ analytics.publishers }}</p>
+                       <h5 class="card-title mb-0">Publishers Listed</h5>
+                  </div>
+               </div>
+             </div>
+             <div class="col-xl-4 col-sm-6 mb-4">
+               <div class="card glass-content">
+                <div class="numbers">
+                     <p class="card-text">{{ analytics.categories }}</p>
+                     <h5 class="card-title mb-0">Categories Listed</h5>
+                </div>
+               </div>
+             </div>
+             <div class="col-xl-4 col-sm-6 mb-4">
+               <div class="card glass-content">
+                <div class="numbers">
+                     <p class="card-text">{{ analytics.books }}</p>
+                     <h5 class="card-title mb-0">Books Listed</h5>
+                </div>
+               </div>
+             </div>
+             <div class="col-xl-4 col-sm-6 mb-4">
+               <div class="card glass-content">
+                  <div class="numbers">
+                       <p class="card-text">{{ analytics.students }}</p>
+                       <h5 class="card-title mb-0">Register Students</h5>
+                  </div>
+               </div>
+             </div>
+             <div class="col-xl-4 col-sm-6 mb-4">
+               <div class="card glass-content">
+                <div class="numbers">
+                     <p class="card-text">{{ analytics.issued_books }}</p>
+                     <h5 class="card-title mb-0">Book Issued</h5>
+                </div>
+               </div>
+             </div>
+            </div>
+           <div class="row">
+             <div class="col-3"></div>
+             <div class="col-6">
+               <modal_button @showmodal="launchModal('main-modal')" :name="'View Book Records'" :icon_classes="'far fa-eye'" :title="'Book Records'" :modalSize="'modal-xl'" :componentType="'card'" :dataPath="'books'"></modal_button>
+             </div>
+             <div class="col-3"></div>
+           </div>
         </div>
         <!--END BOOK PANE-->
 
         <!--START PUBLISHER PANE-->
         <div class="tab-pane fade" id="v-pills-publisher" role="tabpanel" aria-labelledby="v-pills-publisher-tab">
-          <data_card :datapath="'publishers'"></data_card>
+           <div class="row">
+             <div class="col-4">
+               <modal_button @showmodal="launchModal('main-modal')" :name="'Add'" :icon_classes="'fas fa-plus'" :title="'Add New Book Publisher'" :modalSize="'modal-lg'" :componentType="'form'" :dataPath="'library/publisher/create'"></modal_button>
+             </div>
+             <div class="col-8"></div>
+           </div>
+           <div class="row mt-4 mb-4">
+             <div class="col-xl-4 col-sm-6 mb-4">
+               <div class="card glass-content">
+                  <div class="numbers">
+                   <p class="card-text">{{ analytics.authors }}</p>
+                   <h5 class="card-title mb-0">Authors Listed</h5>
+                  </div>
+               </div>
+             </div>
+             <div class="col-xl-4 col-sm-6 mb-4">
+               <div class="card glass-content">
+                  <div class="numbers">
+                       <p class="card-text">{{ analytics.publishers }}</p>
+                       <h5 class="card-title mb-0">Publishers Listed</h5>
+                  </div>
+               </div>
+             </div>
+             <div class="col-xl-4 col-sm-6 mb-4">
+               <div class="card glass-content">
+                <div class="numbers">
+                     <p class="card-text">{{ analytics.categories }}</p>
+                     <h5 class="card-title mb-0">Categories Listed</h5>
+                </div>
+               </div>
+             </div>
+             <div class="col-xl-4 col-sm-6 mb-4">
+               <div class="card glass-content">
+                <div class="numbers">
+                     <p class="card-text">{{ analytics.books }}</p>
+                     <h5 class="card-title mb-0">Books Listed</h5>
+                </div>
+               </div>
+             </div>
+             <div class="col-xl-4 col-sm-6 mb-4">
+               <div class="card glass-content">
+                  <div class="numbers">
+                       <p class="card-text">{{ analytics.students }}</p>
+                       <h5 class="card-title mb-0">Register Students</h5>
+                  </div>
+               </div>
+             </div>
+             <div class="col-xl-4 col-sm-6 mb-4">
+               <div class="card glass-content">
+                <div class="numbers">
+                     <p class="card-text">{{ analytics.issued_books }}</p>
+                     <h5 class="card-title mb-0">Book Issued</h5>
+                </div>
+               </div>
+             </div>
+            </div>
+           <div class="row">
+             <div class="col-3"></div>
+             <div class="col-6">
+               <modal_button @showmodal="launchModal('main-modal')" :name="'View Publishers Records'" :icon_classes="'far fa-eye'" :title="'Publishers Records'" :modalSize="'modal-xl'" :componentType="'card'" :dataPath="'publishers'"></modal_button>
+             </div>
+             <div class="col-3"></div>
+           </div>
         </div>
         <!--END PUBLISHER PANE-->
 
@@ -361,53 +609,30 @@
     </div>
    </div>
    <div class="col-12 col-xl-3">
-               <div class="card h-100">
-                 <div class="card-header pb-0 p-3">
-                   <h6 class="mb-0">More</h6>
-                 </div>
-                 <div class="card-body p-3">
-                   <ul class="list-group">
-                     <li class="list-group-item border-0 d-flex align-items-center px-0 mb-2">
-                       <div class="avatar me-3">
-                          <i class="fa fa-comments text-secondary" aria-hidden="true"></i>
-                       </div>
-                       <div class="d-flex align-items-start flex-column justify-content-center">
-                         <h6 class="mb-0 text-sm">Notifications</h6>
-                         <p class="mb-0 text-xs">Important Noifications</p>
-                       </div>
-                     </li>
-                   </ul>
-                 </div>
-               </div>
+    <div class="card h-100">
+      <div class="card-header pb-0 p-3">
+        <h6 class="mb-0">More</h6>
+      </div>
+      <div class="card-body p-3">
+        <ul class="list-group">
+          <li class="list-group-item border-0 d-flex align-items-center px-0 mb-2">
+            <div class="avatar me-3">
+               <i class="fa fa-comments text-secondary" aria-hidden="true"></i>
+            </div>
+            <div class="d-flex align-items-start flex-column justify-content-center">
+              <h6 class="mb-0 text-sm">Notifications</h6>
+              <p class="mb-0 text-xs">Important Noifications</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
    </div>
   </div>
  <!--</div>-->
    <Footer></Footer>
    <user_info_modal></user_info_modal>
    <main_modal></main_modal>
-   <div v-show="false">
-     <div id="library-form">
-       <main_form :formPath="'library/create'"></main_form>
-     </div>
-     <div id="library-records">
-      <data_table :datapath="'libraries'"></data_table>
-     </div>
-
-     <div id="book-issue-form">
-       <main_form :formPath="'library/book/issue/create'"></main_form>
-     </div>
-     <div id="book-issue-records">
-      <data_table :datapath="'book/issue'"></data_table>
-     </div>
-
-     <div id="book-category-form">
-       <main_form :formPath="'library/book/category/create'"></main_form>
-     </div>
-     <div id="book-category-records">
-      <data_table :datapath="'book/categories'"></data_table>
-     </div>
-   </div>
- 
 </template>
 
 <script>
@@ -449,19 +674,9 @@
         },
 
         methods: {
-          launchModal(componentid, modalbody)
+          launchModal(modal)
           {
-            var component = document.getElementById(componentid)
-            var body = document.getElementById(modalbody)
-
-            if(body.hasChildNodes())
-            {
-              body.removeChild(body.firstChild)
-            }
-            
-            body.appendChild(component)
-
-            var modal = new bootstrap.Modal(document.getElementById('main-modal'))
+            var modal = new bootstrap.Modal(document.getElementById(modal))
             modal.show()
           },
             trim(text, length, comment)

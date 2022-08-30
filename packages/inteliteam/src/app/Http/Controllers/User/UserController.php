@@ -3,12 +3,22 @@
 namespace Softwarescares\Inteliteam\app\Http\Controllers\User;
 
 use Softwarescares\Inteliteam\app\Models\UserManager;
+
+use  App\Models\User;
+
 use Softwarescares\Inteliteam\app\Http\Requests\StoreUserManagerRequest;
 use Softwarescares\Inteliteam\app\Http\Requests\UpdateUserManagerRequest;
 
 use Softwarescares\Inteliteam\app\Http\Controllers\Controller;
 use Inertia\Inertia;
-use App\Models\User;
+
+use Softwarescares\Intelilibrary\app\Actions\Model\Store;
+use Softwarescares\Intelilibrary\app\Actions\Model\Update;
+use Softwarescares\Intelilibrary\app\Actions\Model\Delete;
+
+use Softwarescares\Intelilibrary\app\Plugins\Model\Form;
+use Softwarescares\Intelilibrary\app\Plugins\Model\Table;
+use Softwarescares\Intelilibrary\app\Plugins\Model\Card;
 
 class UserController extends Controller
 {
@@ -29,9 +39,16 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(User $user,Form $form)
     {
-        //
+        return $form->form($user, [
+
+        ],['id','created_at', 'updated_at','current_team_id','remember_token', 'two_factor_recovery_codes','two_factor_secret', 'email_verified_at','profile_photo_url'],
+        [
+            "store" => "user/store",
+            "update" => "user/update",
+            "delete" => "user/delete"
+        ]);
     }
 
     /**
@@ -40,9 +57,11 @@ class UserController extends Controller
      * @param  \App\Http\Requests\StoreUserManagerRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreUserManagerRequest $request)
+    public function store(StoreUserManagerRequest $request,User $user, Store $store)
     {
-        //
+        $user = $store->store($request, $user);
+
+        return response()->json($user); 
     }
 
     /**
@@ -74,9 +93,11 @@ class UserController extends Controller
      * @param  \App\Models\UserManager  $userManager
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateUserManagerRequest $request, UserManager $userManager)
+    public function update(UpdateUserManagerRequest $request, User $user, UserManager $userManager, Update $update)
     {
-        //
+        $user = $update->update($request, $user,["id" => $request->input("id")]);
+
+        return response()->json($user);
     }
 
     /**
@@ -85,9 +106,11 @@ class UserController extends Controller
      * @param  \App\Models\UserManager  $userManager
      * @return \Illuminate\Http\Response
      */
-    public function destroy(UserManager $userManager)
+    public function destroy(UserManager $userManager, User $user, Delete $delete)
     {
-        //
+        $user = $delete->delete($request, $user,["id" => $request->input("id")]);
+
+        return response()->json($user);
     }
 
     public function assignRole(UpdateUserManagerRequest $request, UserManager $userManager)

@@ -106,11 +106,19 @@ export const store = createStore({
         profile: [],
         Modal:{
             title: '',
+            ComponentType: ''
         },
         form:{
             formEditData: [],
             formType: '',
-            modalSize: ''
+            modalSize: '',
+            fields: []
+        },
+        Card:{
+            data: []
+        },
+        Table:{
+            data: []
         }
       }
     },

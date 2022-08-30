@@ -52,6 +52,10 @@ Route::post("library/destroy", [LibraryController::class, "destroy"]);
 Route::post("library/author/store", [AuthorController::class, "store"]);
 Route::post("library/author/update", [AuthorController::class, "update"]);
 Route::post("library/author/destroy", [AuthorController::class, "destroy"]);
+     // book author create form
+     Route::get("library/author/create", [AuthorController::class, "create"]);
+     // book author delete
+     Route::get("library/author/destroy", [AuthorController::class, "destroy"]);
 
 /*Book Category*/
 Route::post("library/book/category/store", [BookCategoryController::class, "store"]);
@@ -76,6 +80,10 @@ Route::post("library/book/issue/destroy", [BookIssueController::class, "destroy"
 Route::post("library/publisher/store", [PublisherController::class, "store"]);
 Route::post("library/publisher/update", [PublisherController::class, "update"]);
 Route::post("library/publisher/destroy", [PublisherController::class, "destroy"]);
+     // book Publisher create form
+     Route::get("library/publisher/create", [PublisherController::class, "create"]);
+     // book Publisher delete
+     Route::get("library/publisher/destroy", [PublisherController::class, "destroy"]);
 
 /*Book*/
 Route::post("library/book/store", [BookController::class, "store"]);
