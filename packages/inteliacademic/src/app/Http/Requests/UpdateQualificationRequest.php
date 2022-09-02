@@ -24,7 +24,16 @@ class UpdateQualificationRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'student_id' => 'required|integer',
+            'title' => 'required|string',
+            'school_name' => 'required|string',
+            'school_level_id' => 'required|integer',
+            'meangrade' => 'required|string',
+            'meanscore' => 'required|integer',
+            'points' => 'required|integer',
+            'start_year' => 'required|date',
+            'end_year' => 'required|date',
+            'duration' => 'required|integer'
         ];
     }
 }

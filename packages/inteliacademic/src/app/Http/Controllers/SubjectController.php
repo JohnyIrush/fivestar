@@ -5,6 +5,17 @@ namespace Softwarescares\Inteliacademic\app\Http\Controllers;
 use Illuminate\Http\Request;
 use Softwarescares\Inteliacademic\app\Models\Subject;
 
+use Softwarescares\Inteliacademic\app\Http\Requests\StoreSubjectRequest;
+use Softwarescares\Inteliacademic\app\Http\Requests\UpdateSubjectRequest;
+
+use Softwarescares\Intelilibrary\app\Actions\Model\Store;
+use Softwarescares\Intelilibrary\app\Actions\Model\Update;
+use Softwarescares\Intelilibrary\app\Actions\Model\Delete;
+
+use Softwarescares\Intelilibrary\app\Plugins\Model\Form;
+use Softwarescares\Intelilibrary\app\Plugins\Model\Table;
+use Softwarescares\Intelilibrary\app\Plugins\Model\Card;
+
 class SubjectController extends Controller
 {
     /**
@@ -22,9 +33,16 @@ class SubjectController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Subject $subject, Form $form)
     {
-        //
+        return $form->form($subject, [],
+            ['id','created_at', 'updated_at'], 
+            [
+            'store' => "academic/subject/store",
+            'update' => "academic/subject/update",
+            "delete" => "academic/subject/destroy"
+            ]
+           );
     }
 
     /**
@@ -33,9 +51,11 @@ class SubjectController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreSubjectRequest $request, Subject $subject,Store $store)
     {
-        //
+        $subject = $store->store($request, $subject);
+
+        return response()->json($subject);
     }
 
     /**
@@ -67,9 +87,11 @@ class SubjectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateSubjectRequest $request, Subject $subject, Update $update)
     {
-        //
+        $subject = $update->update($request, $subject,["id" => $request->input("id")]);
+
+        return response()->json($subject);
     }
 
     /**
@@ -78,8 +100,11 @@ class SubjectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, Subject $subject, Delete $delete)
     {
-        //
+        $subject = $delete->delete($request, $subject,["id" => $request->input("id")]);
+
+        return response()->json($subject);
+
     }
 }

@@ -17,7 +17,7 @@ class CreateQualificationsTable extends Migration
             $table->id();
             $table->integer('student_id');
             $table->string('title');
-            $table->text('school_name');
+            $table->string('school_name');
             $table->integer('school_level_id');
             $table->string('meangrade');
             $table->integer('meanscore');

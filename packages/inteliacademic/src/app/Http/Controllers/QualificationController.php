@@ -5,6 +5,17 @@ namespace Softwarescares\Inteliacademic\app\Http\Controllers;
 use Softwarescares\Inteliacademic\app\Http\Requests\StoreQualificationRequest;
 use Softwarescares\Inteliacademic\app\Http\Requests\UpdateQualificationRequest;
 use Softwarescares\Inteliacademic\app\Models\Qualification;
+use Softwarescares\Inteliacademic\app\Models\Subject;
+
+use Softwarescares\Intelilibrary\app\Actions\Model\Store;
+use Softwarescares\Intelilibrary\app\Actions\Model\Update;
+use Softwarescares\Intelilibrary\app\Actions\Model\Delete;
+
+use Softwarescares\Intelilibrary\app\Plugins\Model\Form;
+use Softwarescares\Intelilibrary\app\Plugins\Model\Table;
+use Softwarescares\Intelilibrary\app\Plugins\Model\Card;
+
+use Illuminate\Http\Request;
 
 class QualificationController extends Controller
 {
@@ -15,7 +26,7 @@ class QualificationController extends Controller
      */
     public function index()
     {
-        //
+
     }
 
     /**
@@ -23,9 +34,23 @@ class QualificationController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Qualification $qualification, Form $form)
     {
-        //
+        return $form->form($qualification, [
+                [
+                "subject_id" => Subject::all(),
+                "name" => "subject",
+                "value" => "id",
+                "limit" => 10,
+                 ],
+        ],
+            ['id','created_at', 'updated_at'], 
+            [
+            'store' => "academic/qualification/store",
+            'update' => "academic/qualification/update",
+            "delete" => "academic/qualification/destroy"
+            ]
+           );
     }
 
     /**
@@ -34,22 +59,12 @@ class QualificationController extends Controller
      * @param  \App\Http\Requests\StoreQualificationRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreQualificationRequest $request, Qualification $qualification)
+    public function store(StoreQualificationRequest $request, Qualification $qualification, Store $store)
     {
-        $qualification->student_id = $request->input("student_id");
-        $qualification->title = $request->input("title");
-        $qualification->school_name = $request->input("school_name");
-        $qualification->school_level_id = $request->input("school_level_id");
-        $qualification->meangrade = $request->input("meangrade");
-        $qualification->meanscore = $request->input("meanscore");
-        $qualification->points = $request->input("points");
-        $qualification->start_year = $request->input("start_year");
-        $qualification->end_year = $request->input("end_year");
-        $qualification->duration = $request->input("duration");
+        $qualification = $store->store($request, $qualification);
+        //Qualification::find($qualification->id)->subjects()->attach($request->input("subjects"));
 
-        $qualification->subjects()->attach($request->input("subjects"));
-
-        $qualification->save();
+        return response()->json($qualification);
     }
 
     /**
@@ -81,9 +96,13 @@ class QualificationController extends Controller
      * @param  \App\Models\Qualification  $qualification
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateQualificationRequest $request, Qualification $qualification)
+    public function update(UpdateQualificationRequest $request, Qualification $qualification, Update $update)
     {
-        //
+        //$qualification->subjects()->attach($request->input("subjects"));
+
+        $qualification = $update->update($request, $qualification,["id" => $request->input("id")]);
+
+        return response()->json($qualification);
     }
 
     /**
@@ -92,8 +111,11 @@ class QualificationController extends Controller
      * @param  \App\Models\Qualification  $qualification
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Qualification $qualification)
+    public function destroy(Request $request, Qualification $qualification, Delete $delete)
     {
-        //
+        $qualification = $delete->delete($request, $qualification,["id" => $request->input("id")]);
+
+        return response()->json($qualification);
+
     }
 }

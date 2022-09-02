@@ -13,7 +13,7 @@ class UpdateClubRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,9 @@ class UpdateClubRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+           "club" => 'required|string',
+           "icon_path" => 'required|string',
+           "status" => 'required',
         ];
     }
 }

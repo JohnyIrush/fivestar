@@ -13,7 +13,7 @@ class StoreSportRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,9 @@ class StoreSportRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+           "sport" => 'required|string',
+           "icon_path" => 'required|string',
+           "status" => 'required',
         ];
     }
 }

@@ -11,6 +11,12 @@ class Section extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        "stream_id",
+        "level_id",
+        "teacher_id"
+    ];
+
     /**
      * Get the user associated with the Section
      *

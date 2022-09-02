@@ -19,21 +19,24 @@ class LevelSeeder extends Seeder
 
         Level::create([
             'level' => 'Form One',
-
+            'status' => true
         ]);
 
         Level::create([
             'level' => 'Form Two',
+            'status' => true
 
         ]);
 
         Level::create([
             'level' => 'Form Three',
+            'status' => true
 
         ]);
 
         Level::create([
             'level' => 'Form Four',
+            'status' => true
         ]);
 
     }

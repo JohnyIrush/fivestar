@@ -6,6 +6,16 @@ use Softwarescares\Inteliacademic\app\Http\Requests\StoreClubRequest;
 use Softwarescares\Inteliacademic\app\Http\Requests\UpdateClubRequest;
 use Softwarescares\Inteliacademic\app\Models\Club;
 
+use Softwarescares\Intelilibrary\app\Actions\Model\Store;
+use Softwarescares\Intelilibrary\app\Actions\Model\Update;
+use Softwarescares\Intelilibrary\app\Actions\Model\Delete;
+
+use Softwarescares\Intelilibrary\app\Plugins\Model\Form;
+use Softwarescares\Intelilibrary\app\Plugins\Model\Table;
+use Softwarescares\Intelilibrary\app\Plugins\Model\Card;
+
+use Illuminate\Http\Request;
+
 class ClubController extends Controller
 {
     /**
@@ -23,9 +33,16 @@ class ClubController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Club $club, Form $form)
     {
-        //
+        return $form->form($club, [],
+            ['id','created_at', 'updated_at'], 
+            [
+            'store' => "academic/club/store",
+            'update' => "academic/club/update",
+            "delete" => "academic/club/destroy"
+            ]
+           );
     }
 
     /**
@@ -34,9 +51,11 @@ class ClubController extends Controller
      * @param  \App\Http\Requests\StoreClubRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreClubRequest $request)
+    public function store(StoreClubRequest $request, Store $store, Club $club)
     {
-        //
+        $club = $store->store($request, $club);
+
+        return response()->json($club);
     }
 
     /**
@@ -68,9 +87,11 @@ class ClubController extends Controller
      * @param  \App\Models\Club  $club
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateClubRequest $request, Club $club)
+    public function update(UpdateClubRequest $request, Club $club, Update $update)
     {
-        //
+        $club = $update->update($request, $club,["id" => $request->input("id")]);
+
+        return response()->json($club);
     }
 
     /**
@@ -79,8 +100,11 @@ class ClubController extends Controller
      * @param  \App\Models\Club  $club
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Club $club)
+    public function destroy(Request $request, Club $club, Delete $delete)
     {
-        //
+        $club = $delete->delete($request, $club,["id" => $request->input("id")]);
+
+        return response()->json($club);
+
     }
 }

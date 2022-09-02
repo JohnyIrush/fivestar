@@ -11,6 +11,12 @@ class Stream extends Model
 {
     use HasFactory;
 
+
+    protected $fillable = [
+        "stream",
+        "status"
+    ];
+
     public function levels()
     {
         return $this->belongsToMany(Level::class);

@@ -23,7 +23,7 @@ class SportSeeder extends Seeder
             Sport::create([
                 "sport" => $faker->city(),
                 "icon_path" => $faker->imageUrl(100, 100),
-                "icon_url" => $faker->url()
+                "status" => $faker->boolean()
             ]);
         }
     }

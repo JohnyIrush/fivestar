@@ -18,7 +18,7 @@
 
 php artisan serve
 php artisan make:Controller LevelController -r
-php artisan make:model Donation --all
+php artisan make:model Attendance --all
 
 php artisan make:Controller UserManagerController -
 
@@ -226,7 +226,7 @@ git clone https://github.com/JohnyIrush/Intelisystem.git
 
 php artisan migrate    --database autemnonquiquiaq
              '--path' => 'database/migrations',
-             '--force' => true
-php artisan key:generate
+             '--force' => truephp artisan key:generate
+
 
 npm run hot

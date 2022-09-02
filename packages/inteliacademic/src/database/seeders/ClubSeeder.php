@@ -22,7 +22,7 @@ class ClubSeeder extends Seeder
             Club::create([
                 "club" => $faker->city(),
                 "icon_path" => $faker->imageUrl(100, 100),
-                "icon_url" => $faker->url()
+                "status" => $faker->boolean()
             ]);
         }
     }

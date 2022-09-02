@@ -6,6 +6,16 @@ use Softwarescares\Inteliacademic\app\Models\Stream;
 use Softwarescares\Inteliacademic\app\Http\Requests\StoreStreamRequest;
 use Softwarescares\Inteliacademic\app\Http\Requests\UpdateStreamRequest;
 
+use Softwarescares\Intelilibrary\app\Actions\Model\Store;
+use Softwarescares\Intelilibrary\app\Actions\Model\Update;
+use Softwarescares\Intelilibrary\app\Actions\Model\Delete;
+
+use Softwarescares\Intelilibrary\app\Plugins\Model\Form;
+use Softwarescares\Intelilibrary\app\Plugins\Model\Table;
+use Softwarescares\Intelilibrary\app\Plugins\Model\Card;
+
+use Illuminate\Http\Request;
+
 class StreamController extends Controller
 {
     /**
@@ -23,20 +33,29 @@ class StreamController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Stream $stream, Form $form)
     {
-        //
+        return $form->form($stream, [],
+            ['id','created_at', 'updated_at'], 
+            [
+            'store' => "academic/stream/store",
+            'update' => "academic/stream/update",
+            "delete" => "academic/stream/destroy"
+            ]
+           );
     }
-
+    
     /**
      * Store a newly created resource in storage.
      *
      * @param  \App\Http\Requests\StoreStreamRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreStreamRequest $request)
+    public function store(StoreStreamRequest $request, Stream $stream, Store $store)
     {
-        //
+        $stream = $store->store($request, $stream);
+
+        return response()->json($stream);
     }
 
     /**
@@ -68,9 +87,11 @@ class StreamController extends Controller
      * @param  \App\Models\Stream  $stream
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateStreamRequest $request, Stream $stream)
+    public function update(UpdateStreamRequest $request, Stream $stream, Update $update)
     {
-        //
+        $stream = $update->update($request, $stream,["id" => $request->input("id")]);
+
+        return response()->json($stream);
     }
 
     /**
@@ -79,8 +100,11 @@ class StreamController extends Controller
      * @param  \App\Models\Stream  $stream
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Stream $stream)
+    public function destroy(Request $request, Stream $stream, Delete $delete)
     {
-        //
+        $stream = $delete->delete($request, $stream,["id" => $request->input("id")]);
+
+        return response()->json($stream);
+
     }
 }

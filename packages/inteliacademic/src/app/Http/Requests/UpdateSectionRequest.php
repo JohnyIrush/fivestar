@@ -13,7 +13,7 @@ class UpdateSectionRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,9 @@ class UpdateSectionRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'stream_id' => 'required|integer',
+            'level_id' => 'required|integer',
+            'teacher_id' => 'required|integer',
         ];
     }
 }

@@ -20,6 +20,16 @@ class TestController extends Controller
         return Inertia::render("Tests/counter-app");
     }
 
+    public function tabv1()
+    {
+        return Inertia::render("Tests/Tab/v1/App");
+    }
+
+    public function more()
+    {
+        return Inertia::render("Tests/more/App");
+    }
+
     /**
      * Show the form for creating a new resource.
      *

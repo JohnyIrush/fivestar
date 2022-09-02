@@ -6,6 +6,16 @@ use Softwarescares\Inteliacademic\app\Http\Requests\StoreSportRequest;
 use Softwarescares\Inteliacademic\app\Http\Requests\UpdateSportRequest;
 use Softwarescares\Inteliacademic\app\Models\Sport;
 
+use Softwarescares\Intelilibrary\app\Actions\Model\Store;
+use Softwarescares\Intelilibrary\app\Actions\Model\Update;
+use Softwarescares\Intelilibrary\app\Actions\Model\Delete;
+
+use Softwarescares\Intelilibrary\app\Plugins\Model\Form;
+use Softwarescares\Intelilibrary\app\Plugins\Model\Table;
+use Softwarescares\Intelilibrary\app\Plugins\Model\Card;
+
+use Illuminate\Http\Request;
+
 class SportController extends Controller
 {
     /**
@@ -23,9 +33,16 @@ class SportController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Sport $sport, Form $form)
     {
-        //
+        return $form->form($sport, [],
+            ['id','created_at', 'updated_at'], 
+            [
+            'store' => "academic/sport/store",
+            'update' => "academic/sport/update",
+            "delete" => "academic/sport/destroy"
+            ]
+           );
     }
 
     /**
@@ -34,9 +51,11 @@ class SportController extends Controller
      * @param  \App\Http\Requests\StoreSportRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreSportRequest $request)
+    public function store(StoreSportRequest $request, Sport $sport, Store $store)
     {
-        //
+        $sport = $store->store($request, $sport);
+
+        return response()->json($sport);
     }
 
     /**
@@ -68,9 +87,11 @@ class SportController extends Controller
      * @param  \App\Models\Sport  $sport
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateSportRequest $request, Sport $sport)
+    public function update(UpdateSportRequest $request, Sport $sport, Update $update)
     {
-        //
+        $sport = $update->update($request, $sport,["id" => $request->input("id")]);
+
+        return response()->json($sport);
     }
 
     /**
@@ -79,8 +100,11 @@ class SportController extends Controller
      * @param  \App\Models\Sport  $sport
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Sport $sport)
+    public function destroy(Request $request, Sport $sport, Delete $delete)
     {
-        //
+        $sport = $delete->delete($request, $sport,["id" => $request->input("id")]);
+
+        return response()->json($sport);
+
     }
 }

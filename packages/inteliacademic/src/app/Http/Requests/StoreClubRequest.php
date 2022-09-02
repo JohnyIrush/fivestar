@@ -24,7 +24,9 @@ class StoreClubRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+           "club" => 'required|string|unique:clubs',
+           "icon_path" => 'required|string',
+           "status" => 'required',
         ];
     }
 }

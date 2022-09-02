@@ -12,6 +12,11 @@ class Level extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        "level",
+        "status"
+    ];
+
     public function teachers()
     {
         return $this->belongsToMany(Teacher::class);

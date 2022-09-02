@@ -16,8 +16,8 @@ class CreateSportsTable extends Migration
         Schema::create('sports', function (Blueprint $table) {
             $table->id();
             $table->string("sport");
-            $table->text("icon_path");
-            $table->text("icon_url");
+            $table->string("icon_path");
+            $table->boolean("status");
             $table->timestamps();
         });
     }

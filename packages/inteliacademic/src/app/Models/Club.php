@@ -10,6 +10,13 @@ class Club extends Model
 {
     use HasFactory;
 
+
+    protected $fillable = [
+        "club",
+        "icon_path",
+        "status",
+    ];
+
     public function students()
     {
         return $this->belongsToMany(Student::class);

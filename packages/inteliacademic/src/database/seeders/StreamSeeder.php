@@ -19,10 +19,12 @@ class StreamSeeder extends Seeder
 
         Stream::create([
             'stream' => 'Purple',
+            'status' => true,
         ]);
 
         Stream::create([
             'stream' => 'Pink',
+            'status' => true,
         ]);
 
 

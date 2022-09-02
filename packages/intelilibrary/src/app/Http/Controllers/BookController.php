@@ -18,7 +18,6 @@ use Illuminate\Http\Request;
 
 use Softwarescares\Intelilibrary\app\Plugins\Model\Form;
 use Softwarescares\Intelilibrary\app\Plugins\Model\Table;
-
 use Softwarescares\Intelilibrary\app\Plugins\Model\Card;
 
 class BookController extends Controller

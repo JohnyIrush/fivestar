@@ -13,7 +13,7 @@ class StoreStreamRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,8 @@ class StoreStreamRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+        "stream" => 'required|string|unique:streams',
+        "status" => 'required'
         ];
     }
 }

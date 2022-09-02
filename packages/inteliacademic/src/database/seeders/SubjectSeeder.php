@@ -27,6 +27,7 @@ class SubjectSeeder extends Seeder
             'subject' => 'Mathematics',
             'duration' => 40,
             'lessons' => 0,
+            'status' => true
         ]);
 
 
@@ -34,13 +35,14 @@ class SubjectSeeder extends Seeder
             'subject' => 'Chemistry',
             'duration' => 40,
             'lessons' => 0,
-
+            'status' => true
         ]);
 
         Subject::create([
             'subject' => 'Physics',
             'duration' => 40,
             'lessons' => 0,
+            'status' => true
 
         ]);
 
@@ -48,6 +50,7 @@ class SubjectSeeder extends Seeder
             'subject' => 'Computer Studies',
             'duration' => 40,
             'lessons' => 0,
+            'status' => true
 
         ]);
 
@@ -55,12 +58,14 @@ class SubjectSeeder extends Seeder
             'subject' => 'Biology',
             'duration' => 40,
             'lessons' => 0,
+            'status' => true
         ]);
 
         Subject::create([
             'subject' => 'Geography',
             'duration' => 40,
             'lessons' => 0,
+            'status' => true
 
         ]);
 
@@ -68,6 +73,7 @@ class SubjectSeeder extends Seeder
             'subject' => 'Psychology',
             'duration' => 40,
             'lessons' => 0,
+            'status' => true
 
         ]);
 
@@ -75,6 +81,7 @@ class SubjectSeeder extends Seeder
             'subject' => 'Music',
             'duration' => 40,
             'lessons' => 0,
+            'status' => true
 
         ]);
 

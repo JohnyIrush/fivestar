@@ -24,7 +24,8 @@ class UpdateLevelRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+        "level" => 'required|string',
+        "status" => 'required'
         ];
     }
 }
