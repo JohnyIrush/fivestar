@@ -6,6 +6,18 @@ use Softwarescares\Inteliacademic\app\Models\Attendance;
 use Softwarescares\Inteliacademic\app\Http\Requests\StoreAttendanceRequest;
 use Softwarescares\Inteliacademic\app\Http\Requests\UpdateAttendanceRequest;
 
+use Softwarescares\Intelilibrary\app\Actions\Model\Store;
+use Softwarescares\Intelilibrary\app\Actions\Model\Update;
+use Softwarescares\Intelilibrary\app\Actions\Model\Delete;
+
+use Softwarescares\Intelilibrary\app\Plugins\Model\Form;
+use Softwarescares\Intelilibrary\app\Plugins\Model\Table;
+use Softwarescares\Intelilibrary\app\Plugins\Model\Card;
+
+use Softwarescares\Inteliacademic\app\Models\Level;
+
+use Illuminate\Http\Request;
+
 class AttendanceController extends Controller
 {
     /**
@@ -23,9 +35,23 @@ class AttendanceController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Attendance $attendance, Form $form)
     {
-        //
+        return $form->form($assignment, [
+                [
+                "level_id" => Level::all(),
+                "name" => "level",
+                "value" => "id",
+                "limit" => 1,
+                 ],
+        ],
+            ['id','created_at', 'updated_at'], 
+            [
+            'store' => "academic/attendance/store",
+            'update' => "academic/attendance/update",
+            "delete" => "academic/attendance/destroy"
+            ]
+           );
     }
 
     /**
@@ -34,9 +60,11 @@ class AttendanceController extends Controller
      * @param  \App\Http\Requests\StoreAttendanceRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreAttendanceRequest $request)
+    public function store(StoreAttendanceRequest $request, Attendance $attendance, Store $store)
     {
-        //
+        $attendance = $store->store($request, $attendance);
+
+        return response()->json($attendance);
     }
 
     /**
@@ -68,9 +96,11 @@ class AttendanceController extends Controller
      * @param  \App\Models\Attendance  $attendance
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateAttendanceRequest $request, Attendance $attendance)
+    public function update(UpdateAttendanceRequest $request, Attendance $attendance, Update)
     {
-        //
+        $attendance = $update->update($request, $attendance,["id" => $request->input("id")]);
+
+        return response()->json($attendance);
     }
 
     /**
@@ -79,8 +109,10 @@ class AttendanceController extends Controller
      * @param  \App\Models\Attendance  $attendance
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Attendance $attendance)
+    public function destroy(Request $request,Attendance $attendance, Delete $delete)
     {
-        //
+        $assignment = $delete->delete($request, $assignment,["id" => $request->input("id")]);
+
+        return response()->json($assignment);
     }
 }
