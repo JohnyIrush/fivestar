@@ -30,6 +30,11 @@ class TestController extends Controller
         return Inertia::render("Tests/more/App");
     }
 
+    public function tabularCard()
+    {
+        return Inertia::render("Tests/Cards/App");
+    }
+
     /**
      * Show the form for creating a new resource.
      *
