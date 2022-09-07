@@ -19,6 +19,7 @@ class CreateVenuesTable extends Migration
             $table->text("location");
             $table->integer('section_id')->nullable();
             $table->integer('subject_id')->nullable();
+            $table->boolean('status');
             $table->timestamps();
         });
     }

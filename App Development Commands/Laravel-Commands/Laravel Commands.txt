@@ -17,10 +17,12 @@
 
 
 php artisan serve
-php artisan make:Controller LevelController -r
+php artisan make:Controller UIController
 php artisan make:model Attendance --all
 
 php artisan make:Controller UserManagerController -
+
+php artisan make:controller AcademicController --model=Academic --resource
 
 php artisan make:model Test --all
 
@@ -226,7 +228,8 @@ git clone https://github.com/JohnyIrush/Intelisystem.git
 
 php artisan migrate    --database autemnonquiquiaq
              '--path' => 'database/migrations',
-             '--force' => truephp artisan key:generate
+             '--force' => true
 
 
 npm run hot
+php artisan key:generate

@@ -3,9 +3,6 @@ import { defineComponent } from 'vue';
 
 import {store} from "../../store/store.js"
 
-import {Server} from "../../plugins/data/output/Server.js"
-
-const server = new Server();
 
 export default defineComponent({
   // state

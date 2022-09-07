@@ -640,6 +640,11 @@
 
     import Footer from '../../../Theme/widgets/Footer.vue'
 
+
+    import {Server} from "../../../../plugins/data/output/Server.js"
+
+    const server = new Server();
+
     import {store} from "../../../../store/store.js"
 
     import data_card from '../components/cards/data-card.vue'

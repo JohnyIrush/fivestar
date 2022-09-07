@@ -18,6 +18,7 @@ class CreateSectionsTable extends Migration
             $table->integer('level_id');
             $table->integer('stream_id');
             $table->integer("teacher_id");
+            $table->boolean("status");
             $table->timestamps();
         });
     }

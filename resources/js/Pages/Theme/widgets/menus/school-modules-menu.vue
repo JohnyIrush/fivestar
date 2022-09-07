@@ -78,7 +78,6 @@
           </Link>
         </li>
         <li class="nav-item">
-        <li class="nav-item">
           <Link class="nav-link  " :href="route('dashboard')">
             <div class="icon text-white bg-gradient-info shadow border-radius-md text-center d-flex align-items-center justify-content-center">
               <i class="fas fa-book-open"></i>
@@ -134,6 +133,7 @@
             <span class="nav-link-text ms-1">Teams</span>
           </Link>
         </li>
+        <li>
           <Link class="nav-link  " :href="route('virtual-reality')">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <svg width="12px" height="12px" viewBox="0 0 42 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">

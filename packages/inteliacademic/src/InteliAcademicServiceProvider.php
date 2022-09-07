@@ -31,7 +31,7 @@ class InteliAcademicServiceProvider extends ServiceProvider
 
     
         $this->publishes([
-            __DIR__.'/resources/js/Pages/Academic' => public_path('../resources/js/Pages/Academic'),
+            __DIR__.'/resources/js/Pages/inteli_academic' => public_path('../resources/js/Pages/inteli_academic'),
         ], 'inteliacademic-ui');
 
         /*

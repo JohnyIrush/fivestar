@@ -1,20 +1,20 @@
 <?php
 
-use Softwarescares\Inteliacademic\app\Http\Controllers\UI\AcademicController;
-use Softwarescares\Inteliacademic\app\Http\Controllers\UI\LevelController;
-use Softwarescares\Inteliacademic\app\Http\Controllers\UI\SubjectController;
-use Softwarescares\Inteliacademic\app\Http\Controllers\UI\TeacherController;
+use Softwarescares\Inteliacademic\app\Http\Controllers\AcademicController;
+use Softwarescares\Inteliacademic\app\Http\Controllers\LevelController;
+use Softwarescares\Inteliacademic\app\Http\Controllers\SubjectController;
+use Softwarescares\Inteliacademic\app\Http\Controllers\TeacherController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
-
+use Softwarescares\Inteliacademic\app\Http\Controllers\UI\UIController;
 
 /**
  * Academic UI Routes
  * 
 */
 
-Route::get('/academic', [AcademicController::class, 'academic'])->name('academic');
+Route::get('academic', [UIController::class, 'academic'])->name('academic');
 
 
 /**

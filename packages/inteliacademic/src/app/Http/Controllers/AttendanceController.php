@@ -96,7 +96,7 @@ class AttendanceController extends Controller
      * @param  \App\Models\Attendance  $attendance
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateAttendanceRequest $request, Attendance $attendance, Update)
+    public function update(UpdateAttendanceRequest $request, Attendance $attendance, Update $update)
     {
         $attendance = $update->update($request, $attendance,["id" => $request->input("id")]);
 

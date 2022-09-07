@@ -23,12 +23,14 @@ class SectionSeeder extends Seeder
             'level_id' =>  1,
             'stream_id' => 1,
             'teacher_id' => Teacher::all()->random()->id,
+            'status' =>  true
         ]);
 
         Section::create([
             'level_id' => 1,
             'stream_id' => 2,
             'teacher_id' => Teacher::all()->random()->id,
+            'status' =>  true
         ]);
 
         //Level 2
@@ -36,12 +38,14 @@ class SectionSeeder extends Seeder
             'level_id' => 2,
             'stream_id' => 1,
             'teacher_id' => Teacher::all()->random()->id,
+            'status' =>  true
         ]);
 
         Section::create([
             'level_id' => 2,
             'stream_id' => 2,
             'teacher_id' => Teacher::all()->random()->id,
+            'status' =>  true
 
         ]);
 
@@ -50,12 +54,14 @@ class SectionSeeder extends Seeder
             'level_id' => 3,
             'stream_id' => 1,
             'teacher_id' => Teacher::all()->random()->id,
+            'status' =>  true
         ]);
 
         Section::create([
             'level_id' => 3,
             'stream_id' => 2,
             'teacher_id' => Teacher::all()->random()->id,
+            'status' =>  true
         ]);
 
         //Level 4
@@ -63,12 +69,14 @@ class SectionSeeder extends Seeder
             'level_id' => 4,
             'stream_id' => 1,
             'teacher_id' => Teacher::all()->random()->id,
+            'status' =>  true
         ]);
 
         Section::create([
             'level_id' => 4,
             'stream_id' => 2,
             'teacher_id' => Teacher::all()->random()->id,
+            'status' =>  true
         ]);
 
     }

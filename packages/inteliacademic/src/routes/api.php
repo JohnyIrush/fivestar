@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Softwarescares\Inteliacademic\app\Http\Controllers\AcademicController;
 use Softwarescares\Inteliacademic\app\Http\Controllers\AssignmentController;
 use Softwarescares\Inteliacademic\app\Http\Controllers\ClubController;
 use Softwarescares\Inteliacademic\app\Http\Controllers\LeadersController;
@@ -22,7 +23,11 @@ use Softwarescares\Inteliacademic\app\Http\Controllers\SubjectController;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-// (new Softwarescares\Inteliacademic\app\Http\Controllers\ClubController())->index()
+
+//Dash routes
+
+Route::get("academic/statistics",[AcademicController::class, "statistics"]);
+
 
 Route::get("levels",[LevelController::class, "index"]);
 Route::get("streams",[StreamController::class, "index"]);

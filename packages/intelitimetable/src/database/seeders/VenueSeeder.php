@@ -22,25 +22,29 @@ class VenueSeeder extends Seeder
         Venue::create([
             'venue' => 'Form One Room purple',
             'location' => (string)rand(500000,10000000),
-            'section_id' => 1
+            'section_id' => 1,
+            'status' => true
         ]);
 
         Venue::create([
             'venue' => 'Form Two Room purple',
             'location' => (string)rand(500000,10000000),
-            'section_id' => 2
+            'section_id' => 2,
+            'status' => true
         ]);
 
         Venue::create([
             'venue' => 'Form Three Room purple',
             'location' => (string)rand(500000,10000000),
-            'section_id' => 3
+            'section_id' => 3,
+            'status' => true
         ]);
 
         Venue::create([
             'venue' => 'Form Four Room purple',
             'location' => (string)rand(500000,10000000),
-            'section_id' => 4
+            'section_id' => 4,
+            'status' => true
         ]);
 
 
@@ -48,25 +52,29 @@ class VenueSeeder extends Seeder
         Venue::create([
             'venue' => 'Form One Room pink',
             'location' => (string)rand(500000,10000000),
-            'section_id' => 5
+            'section_id' => 5,
+            'status' => true
         ]);
 
         Venue::create([
             'venue' => 'Form Two Room pink',
             'location' => (string)rand(500000,10000000),
-            'section_id' => 6
+            'section_id' => 6,
+            'status' => true
         ]);
 
         Venue::create([
             'venue' => 'Form Three Room pink',
             'location' => (string)rand(500000,10000000),
-            'section_id' => 7
+            'section_id' => 7,
+            'status' => true
         ]);
 
         Venue::create([
             'venue' => 'Form Four Room pink',
             'location' => (string)rand(500000,10000000),
-            'section_id' => 8
+            'section_id' => 8,
+            'status' => true
         ]);
 
         //Laboratories
@@ -74,32 +82,37 @@ class VenueSeeder extends Seeder
         Venue::create([
             'venue' => 'Chemistry Lab',
             'location' => (string)rand(500000,10000000),
-            'subject_id' => 2
+            'subject_id' => 2,
+            'status' => true
         ]);
 
         Venue::create([
             'venue' => 'Physics Lab',
             'location' => (string)rand(500000,10000000),
-            'subject_id' => 3
+            'subject_id' => 3,
+            'status' => true
         ]);
 
         Venue::create([
             'venue' => 'Biology Lab',
             'location' => (string)rand(500000,10000000),
-            'subject_id' => 5
+            'subject_id' => 5,
+            'status' => true
         ]);
 
 
         Venue::create([
             'venue' => 'Computer Lab',
             'location' => (string)rand(500000,10000000),
-            'subject_id' => 4
+            'subject_id' => 4,
+            'status' => true
         ]);
 
         Venue::create([
             'venue' => 'Music Lab',
             'location' => (string)rand(500000,10000000),
-            'subject_id' => 8
+            'subject_id' => 8,
+            'status' => true
         ]);
 
 
@@ -108,7 +121,8 @@ class VenueSeeder extends Seeder
                 Venue::create([
             'venue' => 'Multi-Purpose Hall',
             'location' => (string)rand(500000,10000000),
-            'subject_id' => 7
+            'subject_id' => 7,
+            'status' => true
         ]);
 
         /*
