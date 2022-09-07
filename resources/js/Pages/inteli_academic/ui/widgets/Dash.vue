@@ -16,7 +16,16 @@
       <div class="tab-content glass-content" id="v-pills-tabContent">
         <!--START Dashboard PANE-->
         <div class="tab-pane fade show active" id="v-pills-dashboard" role="tabpanel" aria-labelledby="v-pills-dashboard-tab">
-          <statistic-card-data :statistics="statistics" />
+          <div class="row">
+            <div class="col-12">
+              <statistic-card-data :statistics="statistics" />
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12 col-xl-4">
+              <detail-card-data  :datapath="'academic/level/detail'" />
+            </div>
+          </div>
         </div>
         <!--END Dashboard PANE-->
 
@@ -157,11 +166,16 @@ import Footer from '../../../Theme/widgets/Footer.vue'
 
 import {store} from "../../../../store/store.js"
 import StatisticCardData from '../components/cards/StatisticCardData.vue';
+import DetailCardData from '../components/cards/DetailCardData.vue';
+
+import BarChart from '../components/charts/BarChart.vue'
 
 export default defineComponent({
         components: {
             Footer,
             StatisticCardData,
+            BarChart,
+            DetailCardData
         },
         data() {
             return {

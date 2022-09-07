@@ -30,6 +30,8 @@ Route::get("academic/statistics",[AcademicController::class, "statistics"]);
 
 
 Route::get("levels",[LevelController::class, "index"]);
+Route::post("academic/level/detail",[LevelController::class, "detail"]);
+
 Route::get("streams",[StreamController::class, "index"]);
 Route::get("subjects",[SubjectController::class, "index"]);
 Route::get("sports",[SportController::class, "index"]);

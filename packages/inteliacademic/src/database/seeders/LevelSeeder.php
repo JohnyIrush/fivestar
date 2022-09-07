@@ -17,26 +17,32 @@ class LevelSeeder extends Seeder
 
         Level::truncate();
 
+        $faker = \Faker\Factory::create();
+
         Level::create([
             'level' => 'Form One',
-            'status' => true
+            'status' => true,
+            'thumbnail' => $faker->imageUrl()
         ]);
 
         Level::create([
             'level' => 'Form Two',
-            'status' => true
+            'status' => true,
+            'thumbnail' => $faker->imageUrl()
 
         ]);
 
         Level::create([
             'level' => 'Form Three',
-            'status' => true
+            'status' => true,
+            'thumbnail' => $faker->imageUrl()
 
         ]);
 
         Level::create([
             'level' => 'Form Four',
-            'status' => true
+            'status' => true,
+            'thumbnail' => $faker->imageUrl()
         ]);
 
     }

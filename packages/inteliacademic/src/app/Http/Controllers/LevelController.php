@@ -1,12 +1,16 @@
 <?php
 
-namespace Softwarescares\Inteliacademic\app\Http\Controllers\UI;
+namespace Softwarescares\Inteliacademic\app\Http\Controllers;
 
 use Softwarescares\Inteliacademic\app\Http\Controllers\Controller;
 use Softwarescares\Inteliacademic\app\Models\Level;
 use Softwarescares\Inteliacademic\app\Http\Requests\StoreLevelRequest;
 use Softwarescares\Inteliacademic\app\Http\Requests\UpdateLevelRequest;
 use Softwarescares\Inteliacademic\app\Models\Teacher;
+
+use Illuminate\Http\Request;
+
+use Softwarescares\Inteliacademic\app\plugins\Model\Detail;
 
 class LevelController extends Controller
 {
@@ -34,6 +38,15 @@ class LevelController extends Controller
             }
         } 
     }
+
+    public function detail(Request $request, Level $level, Detail $detail)
+    {
+        return $detail->detail($level, 
+                               (array)$request->input("conditions"), 
+                               "level", "", ["level"],
+                               ["level" => "image"]);
+    }
+
     /**
      * Display a listing of the resource.
      *
