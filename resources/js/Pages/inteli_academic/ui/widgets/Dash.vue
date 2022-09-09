@@ -29,11 +29,25 @@
         </div>
         <!--END Dashboard PANE-->
 
-        <!--START LIBRARIAN  PANE-->
+        <!--START ATTENDANCE  PANE-->
         <div class="tab-pane fade" id="v-pills-librarian" role="tabpanel" aria-labelledby="v-pills-librarian-tab">
-
+           <div class="row">
+             <div class="col-4">
+               <modal_button @showmodal="launchModal('main-modal')" :name="'Add'" :icon_classes="'fas fa-plus'" :title="'Add New School Library'" :modalSize="'modal-lg'" :componentType="'form'" :dataPath="'library/create'"></modal_button>
+             </div>
+             <div class="col-8"></div>
+           </div>
+           <div class="row mt-4 mb-4">
+            </div>
+           <div class="row">
+             <div class="col-3"></div>
+             <div class="col-6">
+               <modal_button @showmodal="launchModal('main-modal')" :name="'Student Attendance'" :icon_classes="'far fa-eye'" :title="'Attendance'" :modalSize="'modal-xl'" :componentType="'table'" :dataPath="'academic/attendance/index'"></modal_button>
+             </div>
+             <div class="col-3"></div>
+           </div>
         </div>
-        <!--END LIBRARIAN  PANE-->
+        <!--END ATTENDANCE  PANE-->
 
         <!--START LIBRARY  PANE-->
         <div class="tab-pane fade" id="v-pills-library" role="tabpanel" aria-labelledby="v-pills-library-tab">
@@ -156,6 +170,7 @@
   </div>
  <!--</div>-->
  <Footer></Footer>
+ <main_modal></main_modal>
 </template>
 
 <script>
@@ -170,12 +185,17 @@ import DetailCardData from '../components/cards/DetailCardData.vue';
 
 import BarChart from '../components/charts/BarChart.vue'
 
+import modal_button from '../../../inteli_library/ui/components/buttons/modal-button.vue'
+import main_modal from '../../../inteli_library/ui/components/modals/modal.vue'
+
 export default defineComponent({
         components: {
             Footer,
             StatisticCardData,
             BarChart,
-            DetailCardData
+            DetailCardData,
+            modal_button,
+            main_modal,
         },
         data() {
             return {

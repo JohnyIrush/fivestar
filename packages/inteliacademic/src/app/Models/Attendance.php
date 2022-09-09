@@ -5,6 +5,9 @@ namespace Softwarescares\Inteliacademic\app\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+use Softwarescares\Inteliportal\app\Models\Student;
+use App\Models\User;
+
 class Attendance extends Model
 {
     use HasFactory;
@@ -17,11 +20,14 @@ class Attendance extends Model
 
     public function student()
     {
-        return $this->belongsToMany(Student::class);
+        return $this->belongsTo(Student::class);
     }
 
-    public function section()
+
+   /*
+    public function user()
     {
-        return $this->belongsToMany(Section::class);
-    }
+        return $this->hasOneThrough(User::class,Student::class);
+    }*/
+
 }

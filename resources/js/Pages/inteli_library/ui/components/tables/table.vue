@@ -49,14 +49,21 @@
               <span class="text-wrap" style="width: 4rem !important;" v-if="!hasType(column)">{{td[column]}}</span>
               <span v-else-if="types[column] == 'image'">
                 <image :info="td"></image> 
+                image
+              </span>
+              <span v-else-if="types[column] == 'form'">
+                <attendance-form :StudentId="td['id']"></attendance-form>
               </span>
            </span>
            <span v-else-if="checkDisplay(column) == 'item'">
               <span class="text-wrap" style="width: 6rem !important;" v-if="!hasType()">
               {{td[this.more[column]["name"]][this.more[column]["value"]]}}
+
               </span>
               <span v-else-if="types[column] == 'image'">
-                <image :info="td"></image> 
+                <!--<image :info="td"></image>-->
+                <img :src="td[column]">
+                image
               </span>
            </span>
            <span v-else-if="checkDisplay(column) == 'list'">
@@ -78,15 +85,14 @@
      </tr>
     </tfoot>
    </table>
-  </div>
-  <div class="row">
-    <div class="col-4 align-self-start">
-      <p>Showing {{currentPage}} to {{currentPage + pagination - 1}} of {{entries.length }} Entries</p>
-    </div>
-    <div class="col-8 align-self-end">
-      <div class="row">
-        <div class="col">
-         <nav aria-label="Page navigation example">
+   <div class="row">
+     <div class="col-4 align-self-start">
+       <p>Showing {{currentPage}} to {{currentPage + pagination - 1}} of {{entries.length }} Entries</p>
+     </div>
+     <div class="col-8 align-self-end">
+       <div class="row">
+         <div class="col">
+          <nav aria-label="Page navigation example">
            <ul class="pagination justify-content-end">
              <li v-if="(currentPage - 1) > 0"  class="page-item" @click="changePage(currentPage + 1)">
                <a role="button"  class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
@@ -94,12 +100,13 @@
              <li class="page-item" v-for="page in pages" :key="page" @click="changePage(page)"><a role="button" class="page-link">{{page}}</a></li>
              <li v-if="(currentPage + 1) < pages" class="page-item" @click="changePage(currentPage + 1)">
                <a role="button"  class="page-link">Next</a>
-             </li>
-           </ul>
-         </nav>
-        </div>
-      </div>
-    </div>
+              </li>
+            </ul>
+          </nav>
+         </div>
+       </div>
+     </div>
+  </div>
   </div>
 </template>
 
@@ -115,11 +122,17 @@ import image from "../images/image.vue"
 
 import table_options from '../../widgets/menus/table-options.vue'
 
+import main_form from "../forms/form.vue"
+
+import AttendanceForm from '../../../../inteli_academic/ui/components/forms/AttendanceForm.vue'
+
 export default {
   components:{
     list,
     image,
-    table_options
+    table_options,
+    main_form,
+    AttendanceForm
   },
   name: 'TableData',
   props: {
@@ -165,6 +178,10 @@ export default {
     crud()
     {
       return store.state.Table.data.crud
+    },
+    form()
+    {
+      return store.state.Table.data.form
     }
   },
   data (){
@@ -225,6 +242,7 @@ export default {
     },
     hasType(column)
     {
+      console.log('status type',this.types['status'],'column',column)
       var keys = Object.keys(this.types);
       return keys.includes(column)
     },
@@ -245,6 +263,10 @@ export default {
    mounted()
    {
 
+   },
+   updated()
+   {
+    console.log(this.types)
    }
 }
 </script>

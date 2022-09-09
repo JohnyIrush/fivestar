@@ -1,9 +1,9 @@
 <?php
 
-namespace Softwarescares\Inteliacademic\app\Http\Controllers\UI;
+namespace Softwarescares\Inteliacademic\app\Http\Controllers;
 
 use Softwarescares\Inteliacademic\app\Http\Controllers\Controller;
-use Softwarescares\Inteliacademic\app\Models\Teacher;
+use Softwarescares\Intelistaff\app\Models\Teacher;
 use Softwarescares\Inteliacademic\app\Http\Requests\StoreTeacherRequest;
 use Softwarescares\Inteliacademic\app\Http\Requests\UpdateTeacherRequest;
 

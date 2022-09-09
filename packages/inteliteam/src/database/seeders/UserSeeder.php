@@ -122,7 +122,7 @@ class UserSeeder extends Seeder
              "profile_photo_path" => "/theme/assets/img/DSC_0058 copy modified.jpg"
         ]);
 
-        for ($i=0; $i <= 49; $i++) {
+        for ($i=0; $i <= 1500; $i++) {
             User::create(
                 [
                  'name' => $faker->name(),

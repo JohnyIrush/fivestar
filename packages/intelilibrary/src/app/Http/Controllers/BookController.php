@@ -7,6 +7,7 @@ use Softwarescares\Intelilibrary\app\Models\BookCategory;
 use Softwarescares\Intelilibrary\app\Models\DeweyDecimal;
 use Softwarescares\Intelilibrary\app\Models\Language;
 use Softwarescares\Intelilibrary\app\Models\Binding;
+use Softwarescares\Inteliportal\app\Models\Student;
 use Softwarescares\Intelilibrary\app\Http\Requests\StoreBookRequest;
 use Softwarescares\Intelilibrary\app\Http\Requests\UpdateBookRequest;
 
@@ -38,6 +39,16 @@ class BookController extends Controller
                      "delete" => "library/book/destroy"
                      ]
     );
+    }
+
+    public function test()
+    {
+        return response()->json(Student::with([
+            "section" =>[
+                "stream",
+                "level"
+            ]
+        ])->get());
     }
 
     /**

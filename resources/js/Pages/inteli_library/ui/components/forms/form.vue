@@ -109,19 +109,12 @@ import {store} from "../../../../../store/store.js"
 export default {
   name:'mainform',
   props: {
-    formPath: String
+    formPath: String,
   },
   setup ()
   {
 
   },
-  data (){
-    return {
-     form: [],
-     formEditData: [],
-     formType: ''
-   }
- },
  computed:{
   formEditData()
   {
@@ -147,6 +140,13 @@ export default {
   {
     return store.state.form.fields[3]
   },
+ },
+  data (){
+    return {
+     form: [],
+     formEditData: [],
+     formType: '',
+   }
  },
    methods:{
     submit()
@@ -275,6 +275,8 @@ export default {
     },
     getFields(url)
     {
+      if (url != '')
+      {
       axios.get(url)
       .then((response)=>{
          this.fields = response.data[0]
@@ -283,10 +285,12 @@ export default {
          this.formFields()
          this.crud = response.data[3]
       })
+      }
     }
    },
    mounted()
    {
+     //this.getFields(this.formPath)
    }
 }
 </script>

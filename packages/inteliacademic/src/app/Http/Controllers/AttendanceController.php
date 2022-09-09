@@ -25,9 +25,36 @@ class AttendanceController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+
+    public function index(Attendance $attendance, Table $table)
     {
-        //
+        return $table->table(
+            $attendance, 
+            Attendance::with(["student"])->get(),
+            [
+            "student_id" => [
+                "name" => "student",
+                "value" => "firstname",
+                "display" => "item"
+            ],
+            "lastname" => [
+                "name" => "student",
+                "value" => "lastname",
+                "display" => "item"
+            ],
+            "Admno" => [
+                "name" => "student",
+                "value" => "Admno",
+                "display" => "item"
+            ]
+        ]
+            , ["lastname", "Admno"], ["status" => "form"],
+           [
+            'store' => "academic/attendance/store",
+            'update' => "academic/attendance/update",
+            "delete" => "academic/attendance/destroy"
+            ],
+        );
     }
 
     /**
@@ -37,7 +64,7 @@ class AttendanceController extends Controller
      */
     public function create(Attendance $attendance, Form $form)
     {
-        return $form->form($assignment, [
+        return $form->form($attendance, [
                 [
                 "level_id" => Level::all(),
                 "name" => "level",
@@ -62,6 +89,8 @@ class AttendanceController extends Controller
      */
     public function store(StoreAttendanceRequest $request, Attendance $attendance, Store $store)
     {
+        #return $request->all();
+
         $attendance = $store->store($request, $attendance);
 
         return response()->json($attendance);

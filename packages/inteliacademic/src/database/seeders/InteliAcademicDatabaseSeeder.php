@@ -32,7 +32,8 @@ class InteliAcademicDatabaseSeeder extends Seeder
             #ClubStudentSeeder::class,
             QualificationSeeder::class,
             QualificationSubjectSeeder::class,
-            LeadersSeeder::class
+            LeadersSeeder::class,
+            AttendanceSeeder::class
             ]
         );
     }

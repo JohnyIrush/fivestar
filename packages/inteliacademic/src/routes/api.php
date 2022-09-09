@@ -2,8 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use Softwarescares\Inteliacademic\app\Http\Controllers\AcademicController;
 use Softwarescares\Inteliacademic\app\Http\Controllers\AssignmentController;
+use Softwarescares\Inteliacademic\app\Http\Controllers\AttendanceController;
 use Softwarescares\Inteliacademic\app\Http\Controllers\ClubController;
 use Softwarescares\Inteliacademic\app\Http\Controllers\LeadersController;
 use Softwarescares\Inteliacademic\app\Http\Controllers\StreamController;
@@ -12,6 +12,7 @@ use Softwarescares\Inteliacademic\app\Http\Controllers\QualificationController;
 use Softwarescares\Inteliacademic\app\Http\Controllers\SectionController;
 use Softwarescares\Inteliacademic\app\Http\Controllers\SportController;
 use Softwarescares\Inteliacademic\app\Http\Controllers\SubjectController;
+use Softwarescares\Inteliacademic\app\Http\Controllers\AcademicController;
 
 /*
 |--------------------------------------------------------------------------
@@ -78,6 +79,12 @@ Route::get("academic/sport/create",[SportController::class, "create"]);
 Route::post("academic/sport/store",[SportController::class, "store"]);
 Route::post("academic/sport/update",[SportController::class, "update"]);
 Route::post("academic/sport/destroy",[SportController::class, "destroy"]);
+
+Route::get("academic/attendance/index",[AttendanceController::class, "index"]);
+Route::get("academic/attendance/create",[AttendanceController::class, "create"]);
+Route::post("academic/attendance/store",[AttendanceController::class, "store"]);
+Route::post("academic/attendance/update",[AttendanceController::class, "update"]);
+Route::post("academic/attendance/destroy",[AttendanceController::class, "destroy"]);
 
 
 Route::get("academic/assignment/create",[AssignmentController::class, "create"]);

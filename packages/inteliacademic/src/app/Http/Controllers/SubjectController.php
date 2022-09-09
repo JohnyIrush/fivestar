@@ -1,6 +1,6 @@
 <?php
 
-namespace Softwarescares\Inteliacademic\app\Http\Controllers\UI;
+namespace Softwarescares\Inteliacademic\app\Http\Controllers;
 
 use Softwarescares\Inteliacademic\app\Http\Controllers\Controller;
 use Softwarescares\Inteliacademic\app\Models\Subject;
@@ -14,7 +14,7 @@ class SubjectController extends Controller
      *
      * 
      */
-    public function subjects()
+    public function index()
     {
         return Subject::with(['teachers','levels','department'])->get();
     }

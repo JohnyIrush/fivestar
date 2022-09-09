@@ -12,7 +12,9 @@ use Softwarescares\Inteliacademic\app\Models\Subject;
 use Softwarescares\Intelistaff\app\Models\Teacher;
 use Softwarescares\Inteliacademic\app\Models\Section;
 
-class TimeTable
+use Softwarescares\Intelitimetable\app\Extensions\Time;
+
+class Timetable
 {
     public $timetable;
     public $lessons;
@@ -25,14 +27,14 @@ class TimeTable
     public $subject_lessons_limit;
 
 
-    public function __construct(Time $time)
+    public function __construct()
     {
         $this->timetable = [];
         $this->lessons = [];
         $this->sessions = [];
         $this->sections = [];
         $this->sessionsDurations = [];
-        $this->time = $time;
+        $this->time = new Time();
         $this->selectedVenues = [];
         $this->section_total_lessons = [];
         $this->subject_lessons_limit = [];

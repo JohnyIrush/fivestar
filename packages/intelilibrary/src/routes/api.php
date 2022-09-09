@@ -33,6 +33,7 @@ Route::get("publishers", [PublisherController::class, "index"]);
 Route::get("book/categories", [BookCategoryController::class, "index"]);
 
 Route::get("books", [BookController::class, "index"]);
+Route::get("tests/books", [BookController::class, "test"]);
 
 Route::get("book/issue", [BookIssueController::class, "index"]);
 

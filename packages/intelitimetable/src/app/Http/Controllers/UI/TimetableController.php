@@ -2,7 +2,7 @@
 
 namespace Softwarescares\Intelitimetable\app\Http\Controllers\UI;
 
-use Softwarescares\Intelitimetable\app\Extensions\TimeTable as ExtensionsTimeTable;
+use Softwarescares\Intelitimetable\app\Extensions\Timetable as ExtensionsTimeTable;
 use Softwarescares\Intelitimetable\app\Http\Controllers\Controller;
 use Softwarescares\Intelitimetable\app\Models\Timetable;
 use Softwarescares\Intelitimetable\app\Http\Requests\StoreTimetableRequest;
@@ -84,7 +84,7 @@ class TimetableController extends Controller
 
         $timetable->generateAllSessions($timetable->timetable, $timetable->section_total_lessons);
         #return response()->json(['total' => sizeof($timetable->lessons)]);
-        #return response()->json(($timetable->lessons));
+        return response()->json(($timetable->lessons));
         #return response()->json(["id"=>$timetable->randomElement(0,$timetable->lessons)]);
         #return response()->json($timetable->lessons[$timetable->randomElement(0,$timetable->lessons)]->stream->id);
         #dd($timetable->lessons[$timetable->randomElement(0,$timetable->lessons)]);
@@ -96,7 +96,7 @@ class TimetableController extends Controller
         #return response()->json(sizeof($timetable->selectLessons(array_keys($timetable->timetable))));
         #return response()->json(($timetable->selectLessons(($timetable->timetable))));
 
-        return response()->json($timetable->subjectLessonLimit());
+        #return response()->json($timetable->subjectLessonLimit());
         
     }
 
