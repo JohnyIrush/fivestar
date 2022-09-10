@@ -1,25 +1,19 @@
 <template>
   <div class="row">
-    <div class="col-6 align-self-start">
-      <div class="row">
-        <div class="col text-end">
-            Show
-        </div>
-        <div class="col">
-          <select @change="changePage(currentPage)" v-model="pagination" class="form-control">
+    <div class="col-4 align-self-start">
+      <div class="d-flex flex-row">
+          <span>Show</span> 
+          <select @change="changePage(currentPage)" v-model="pagination" class="form-control form-control-sm">
             <option :value="10" selected>10</option>
             <option :value="showEntry" v-for="showEntry in showEntries" :key="showEntry" >{{showEntry}}</option>
           </select>
-        </div>
-        <div class="col">
-            Entries
-        </div>
+          <span>Entries</span> 
       </div>
     </div>
-    <div class="col-2">
-        
+    <div class="col-5">
+       <date-picker :pickType="'date'" @filterDate="filterDate" :dateField="'date'" /> 
     </div>
-    <div class="col-4 align-self-end">
+    <div class="col-3 align-self-end">
       <div class="row">
         <div class="col">
           <input type="text" class="form-control" placeholder="Search..." aria-label="Search">
@@ -32,7 +26,7 @@
     <thead>
      <tr>
        <th scope="col"  v-for="th in tableHeader" :key="th">
-        <span>{{th}}</span>
+        <span >{{th}}</span>
         <span>
          <i class="fas fa-filter"></i>
         </span>
@@ -44,7 +38,7 @@
     </thead>
     <tbody>
          <tr v-for="td in visibleEntries" :key="td">
-           <td :data-label="column" class="text-wrap" style="width: 6rem !important;" v-for="column in tableHeader" :key="column">
+           <td :data-label="column" class="text-wrap" style="width: 6rem !important;" v-for="column in tableHeader" :key="column" v-if="!checkHidden(column)">
            <span v-if="!hasMore(column)">
               <span class="text-wrap" style="width: 4rem !important;" v-if="!hasType(column)">{{td[column]}}</span>
               <span v-else-if="types[column] == 'image'">
@@ -90,21 +84,21 @@
        <p>Showing {{currentPage}} to {{currentPage + pagination - 1}} of {{entries.length }} Entries</p>
      </div>
      <div class="col-8 align-self-end">
-       <div class="row">
-         <div class="col">
-          <nav aria-label="Page navigation example">
-           <ul class="pagination justify-content-end">
-             <li v-if="(currentPage - 1) > 0"  class="page-item" @click="changePage(currentPage + 1)">
-               <a role="button"  class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-             </li>
-             <li class="page-item" v-for="page in pages" :key="page" @click="changePage(page)"><a role="button" class="page-link">{{page}}</a></li>
-             <li v-if="(currentPage + 1) < pages" class="page-item" @click="changePage(currentPage + 1)">
-               <a role="button"  class="page-link">Next</a>
-              </li>
-            </ul>
-          </nav>
-         </div>
-       </div>
+     </div>
+  </div>
+   <div class="row">
+     <div class="col-12">
+      <nav aria-label="Page navigation example">
+       <ul class="pagination justify-content-end">
+         <li v-if="(currentPage - 1) > 0"  class="page-item" @click="changePage(currentPage + 1)">
+           <a role="button"  class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+         </li>
+         <li class="page-item" v-for="page in pages" :key="page" @click="changePage(page)"><a role="button" class="page-link">{{page}}</a></li>
+         <li v-if="(currentPage + 1) < pages" class="page-item" @click="changePage(currentPage + 1)">
+           <a role="button"  class="page-link">Next</a>
+          </li>
+        </ul>
+      </nav>
      </div>
   </div>
   </div>
@@ -126,13 +120,16 @@ import main_form from "../forms/form.vue"
 
 import AttendanceForm from '../../../../inteli_academic/ui/components/forms/AttendanceForm.vue'
 
+import DatePicker from '../../../../inteli_academic/ui/widgets/dates/DatePicker.vue'
+
 export default {
   components:{
     list,
     image,
     table_options,
     main_form,
-    AttendanceForm
+    AttendanceForm,
+    DatePicker
   },
   name: 'TableData',
   props: {
@@ -158,9 +155,15 @@ export default {
     {
       return this.changePage(this.currentPage)
     },
+    hidden()
+    {
+      return store.state.Table.data.hidden
+    },
     columns()
     {
-      return store.state.Table.data.columns
+      return  store.state.Table.data.columns.filter((el, index, arr)=>{
+        return !this.hidden.includes(el)
+      })
     },
     entries()
     {
@@ -178,10 +181,6 @@ export default {
     crud()
     {
       return store.state.Table.data.crud
-    },
-    form()
-    {
-      return store.state.Table.data.form
     }
   },
   data (){
@@ -193,33 +192,39 @@ export default {
    }
  },
    methods:{
-          launchModal(componentid, modalbody)
-          {
-            var modal = new bootstrap.Modal(document.getElementById('main-modal'))
+    filterDate(event)
+    {
+      var from = event.from;
+      var to = event.to;
+      var field = event.field;
+      this.visibleEntries = this.visibleEntries.filter((el, index, arr)=>{
+        return el[field] == from
+      })
+      // console.log("Date Filtered")
+       console.log("Date From", event.from)
+      // console.log("Date To", event.to)
+    },
+    removeArrayElement(element, array)
+    {
+      const index = array.indexOf(element);
+      if (index > -1) { // only splice array when item is found
+        array.splice(index, 1); // 2nd parameter means remove one item only
+      }
 
-            var component = document.getElementById(componentid)
-            var body = document.getElementById(modalbody)
-
-            /*
-            if (body.hasChildNodes())
-            {
-              body.replaceChild(component, body.childNodes[0]);
-            }
-            else
-            {
-              body.appendChild(component)
-            }
-            */
-
-            body.appendChild(component)
-
-            /*if (store.state.Modal.open == false) {
-              modal.show()
-              store.state.Modal.open = true
-            }*/
-
-            modal.show()
-          },
+      return array;
+    },
+    checkHidden(column)
+    {
+      return this.hidden.includes(column)
+    },
+    launchModal(componentid, modalbody)
+    {
+      var modal = new bootstrap.Modal(document.getElementById('main-modal'))
+      var component = document.getElementById(componentid)
+      var body = document.getElementById(modalbody)
+      body.appendChild(component)
+      modal.show()
+    },
     tableSearch(keyword)
     {
       this.currentPage = current
@@ -266,7 +271,7 @@ export default {
    },
    updated()
    {
-    console.log(this.types)
+
    }
 }
 </script>

@@ -54,6 +54,7 @@ class AttendanceController extends Controller
             'update' => "academic/attendance/update",
             "delete" => "academic/attendance/destroy"
             ],
+            ["created_at", "updated_at"]
         );
     }
 

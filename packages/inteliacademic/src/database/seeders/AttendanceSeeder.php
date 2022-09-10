@@ -24,6 +24,7 @@ class AttendanceSeeder extends Seeder
         {
           Attendance::create([
               'student_id' => $student->id,
+              'date' => $faker->date(),
               'status' => $faker->boolean(),
           ]);
 

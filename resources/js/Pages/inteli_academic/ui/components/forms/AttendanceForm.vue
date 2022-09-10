@@ -12,7 +12,7 @@
 
            <!-- start radio input-->
            <div  id="radio-input"  class="input-group">
-             <div class="form-check" v-for="option in options" :key="option">
+             <div class="form-check form-check-inline" v-for="option in options" :key="option">
              <input class="form-check-input" type="radio"  :name="option" id="" :value="option.id" @change="submit">
              <label class="form-check-label" :for="option">{{option.status}}</label>
              </div>

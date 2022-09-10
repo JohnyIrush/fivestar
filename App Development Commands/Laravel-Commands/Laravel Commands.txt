@@ -233,3 +233,5 @@ php artisan migrate    --database autemnonquiquiaq
 
 npm run hot
 php artisan key:generate
+
+npm i flatpickr --save

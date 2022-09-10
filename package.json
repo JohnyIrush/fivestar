@@ -37,6 +37,7 @@
         "@fortawesome/vue-fontawesome": "^3.0.0-5",
         "apexcharts": "^3.35.5",
         "bs-toaster": "^1.0.4",
+        "flatpickr": "^4.6.13",
         "remove": "^0.1.5",
         "tsparticles": "^1.41.6",
         "vue-plugin-load-script": "^2.1.1",
