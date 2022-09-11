@@ -1,6 +1,6 @@
 <template>
   <div class="modal fade" id="main-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="main-modal" aria-hidden="true">
-    <div :class="'modal-dialog modal-dialog-centered text-c-center text-center ' + modalSize">
+    <div :class="'modal-dialog modal-dialog-centered text-c-center text-center modal-xl ' + modalSize">
       <div class="modal-content glass-content text-c-center text-center">
         <div class="modal-header text-c-center">
             <div class="col">

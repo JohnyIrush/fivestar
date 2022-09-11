@@ -27,7 +27,7 @@
      <tr>
        <th scope="col"  v-for="th in tableHeader" :key="th" aria-label="Name: activate to sort column ascending" aria-sort="descending"> 
         <div class="d-flex flex-row">
-         <span >{{th.field}}</span>
+         <span >{{th}}</span>
          <span class="ml-10">
           <i class="fas fa-sort"></i>
         </span>
@@ -40,33 +40,33 @@
     </thead>
     <tbody>
          <tr v-for="td in visibleEntries" :key="td">
-           <td :data-label="column.field" class="text-wrap" style="width: 6rem !important;" v-for="column in tableHeader" :key="column.field" v-if="!checkHidden(column)">
-           <span v-if="!hasMore(column.field)">
-              <span class="text-wrap" style="width: 4rem !important;" v-if="!hasType(column.field)">{{td[column.field]}}</span>
-              <span v-else-if="types[column.field] == 'image'">
+           <td :data-label="column" class="text-wrap" style="width: 6rem !important;" v-for="column in tableHeader" :key="column" v-if="!checkHidden(column)">
+           <span v-if="!hasMore(column)">
+              <span class="text-wrap" style="width: 4rem !important;" v-if="!hasType(column)">{{td[column]}}</span>
+              <span v-else-if="types[column] == 'image'">
                 <image :info="td"></image> 
                 image
               </span>
-              <span v-else-if="types[column.field] == 'form'">
+              <span v-else-if="types[column] == 'form'">
                 <attendance-form :StudentId="td['id']"></attendance-form>
               </span>
            </span>
-           <span v-else-if="checkDisplay(column.field) == 'item'">
+           <span v-else-if="checkDisplay(column) == 'item'">
               <span class="text-wrap" style="width: 6rem !important;" v-if="!hasType()">
-              {{td[this.more[column.field]["name"]][this.more[column.field]["value"]]}}
+              {{td[this.more[column]["name"]][this.more[column]["value"]]}}
 
               </span>
-              <span v-else-if="types[column.field] == 'image'">
+              <span v-else-if="types[column] == 'image'">
                 <!--<image :info="td"></image>-->
-                <img :src="td[column.field]">
+                <img :src="td[column]">
                 image
               </span>
            </span>
-           <span v-else-if="checkDisplay(column.field) == 'list'">
+           <span v-else-if="checkDisplay(column) == 'list'">
              {{"list"}}
            </span>
            </td>
-           <td >
+           <td :data-label="column">
              <table_options @showModal="launchModal('', 'modal-body')" :formData="td" :dataId="td.id" :deletePath="crud.delete" :triggerName="'Options'" :icon_classes="'fas fa-ellipsis-h'" :triggerType="'button'"></table_options>
            </td>
          </tr>
@@ -74,7 +74,7 @@
     <tfoot>
      <tr>
        <th  v-for="th in tableHeader" :key="th">
-        <span>{{th.field}}</span>
+        <span>{{th}}</span>
         <span>
         </span>
        </th>
@@ -164,7 +164,7 @@ export default {
     columns()
     {
        return  store.state.Table.data.columns.filter((el, index, arr)=>{
-         return !this.hidden.includes(el.field)
+         return !this.hidden.includes(el)
        })
     },
     entries()
@@ -191,24 +191,6 @@ export default {
       pagination: 10,
       currentPage: 1,
       visibleEntries: [],
-      dataTypes:[
-          {
-            'type' : 'number',
-            'names': ['int','integer','number','bigint']
-          },
-          {
-            'type' : 'string',
-            'names': ['string', 'text', 'varchar']
-          },
-          {
-            'type' : 'date',
-            'names': ['date','timestamp']
-          },
-          {
-            'type' : 'boolean',
-            'names': ['tinyint', 'bool', 'boolean']
-          },
-      ]
    }
  },
    methods:{
@@ -238,18 +220,6 @@ export default {
     checkHidden(column)
     {
       return this.hidden.includes(column)
-    },
-
-    checkDataType(fieldtype)
-    {
-
-      for (var i = 0; i < dataTypes.length; i++)
-      {
-        if (dataTypes[i].type.search(type) != -1)
-        {
-
-        }
-      }
     },
 
     /**

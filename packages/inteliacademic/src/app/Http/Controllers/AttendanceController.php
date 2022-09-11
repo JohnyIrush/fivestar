@@ -48,7 +48,17 @@ class AttendanceController extends Controller
                 "display" => "item"
             ]
         ]
-            , ["lastname", "Admno"], ["status" => "form"],
+            , 
+            [
+             [
+                "field" => "lastname",
+                "type" => "string"
+             ],
+             [
+                "field" => "Admno",
+                "type" => "integer"
+             ]
+            ], ["status" => "form"],
            [
             'store' => "academic/attendance/store",
             'update' => "academic/attendance/update",

@@ -15,8 +15,16 @@ class Form
 	public function form(Model $model, array $options, array $hidden,Array $crud)
 	{
 		$fields = [];
-		$table = $model->getTable();
+		$this->fields($model, $fields);
 		
+    return [$fields, $options, $hidden, $crud];
+	}
+
+
+	public function fields(Model $model, array &$fields)
+	{
+		
+    $table = $model->getTable();
 		$columns = DB::select('describe ' . $table);;
 
 		foreach ($columns as $field)
@@ -26,8 +34,6 @@ class Form
             'type' => $field->Type
           ]);
 		}
-		
-        return [$fields, $options, $hidden, $crud];
 	}
 }
 
