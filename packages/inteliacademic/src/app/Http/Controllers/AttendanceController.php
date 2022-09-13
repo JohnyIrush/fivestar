@@ -32,24 +32,31 @@ class AttendanceController extends Controller
             $attendance, 
             Attendance::with(["student"])->get(),
             [
-            "student_id" => [
+            "firstname" => [
                 "name" => "student",
                 "value" => "firstname",
-                "display" => "item"
+                "display" => "item",
+                "type" => "string"
             ],
             "lastname" => [
                 "name" => "student",
                 "value" => "lastname",
-                "display" => "item"
+                "display" => "item",
+                "type" => "string"
             ],
             "Admno" => [
                 "name" => "student",
                 "value" => "Admno",
-                "display" => "item"
+                "display" => "item",
+                "type" => "number"
             ]
         ]
             , 
             [
+             [
+                "field" => "firstname",
+                "type" => "string"
+             ],
              [
                 "field" => "lastname",
                 "type" => "string"
@@ -64,7 +71,7 @@ class AttendanceController extends Controller
             'update' => "academic/attendance/update",
             "delete" => "academic/attendance/destroy"
             ],
-            ["created_at", "updated_at"]
+            ["student_id","created_at", "updated_at"]
         );
     }
 

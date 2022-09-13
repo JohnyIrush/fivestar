@@ -29,8 +29,10 @@
         <div class="d-flex flex-row">
          <span >{{th.field}}</span>
          <span class="ml-10">
-          <i class="fas fa-sort"></i>
-        </span>
+          <i class="fas fa-sort-amount-up-alt" v-if="sortData.column == th.field && sortData.order == 'ascending'"></i>
+          <i :id="th.field+ '-sort-icon'" class="fas fa-sort fa-2x" @click="sortByColumn(th.field, th.type)"></i>
+          <i class="fas fa-sort-amount-down-alt" v-if="sortData.column == th.field && sortData.order == 'descending'"></i>
+         </span>
         </div>
        </th>
        <th scope="col">
@@ -65,6 +67,7 @@
            <span v-else-if="checkDisplay(column.field) == 'list'">
              {{"list"}}
            </span>
+
            </td>
            <td >
              <table_options @showModal="launchModal('', 'modal-body')" :formData="td" :dataId="td.id" :deletePath="crud.delete" :triggerName="'Options'" :icon_classes="'fas fa-ellipsis-h'" :triggerType="'button'"></table_options>
@@ -157,6 +160,14 @@ export default {
     {
       return this.changePage(this.currentPage)
     },
+    cars()
+    {
+      return [
+         {type:"Volvo", year:2016},
+         {type:"Saab", year:2001},
+         {type:"BMW", year:2010}
+       ];
+    },
     hidden()
     {
       return store.state.Table.data.hidden
@@ -194,7 +205,7 @@ export default {
       dataTypes:[
           {
             'type' : 'number',
-            'names': ['int','integer','number','bigint']
+            'names': ['bigint','int','integer','number']
           },
           {
             'type' : 'string',
@@ -208,9 +219,35 @@ export default {
             'type' : 'boolean',
             'names': ['tinyint', 'bool', 'boolean']
           },
-      ]
+      ],
+      sortData:
+      {
+        column: '',
+        order: '',
+        sorted: false
+      }
    }
  },
+ watch: {
+     sortData: {
+       handler(newValue, oldValue)
+       {
+        /*
+        const icon = document.getElementById(newValue.column + "-sort-icon");
+        if (newValue.order == 'ascending')
+        {
+          icon.classList.remove('table-icon-descending')
+          icon.classList.add('table-icon-ascending')
+        }
+        else if(newValue.order == 'descending')
+        {
+          icon.classList.remove('table-icon-ascending')
+          icon.classList.add('table-icon-descending')
+        }*/
+       },
+       deep: true
+     }
+   },
    methods:{
     /**
      * start data table field functions
@@ -218,7 +255,6 @@ export default {
      */
     hasType(column)
     {
-      console.log('status type',this.types['status'],'column',column)
       var keys = Object.keys(this.types);
       return keys.includes(column)
     },
@@ -239,17 +275,30 @@ export default {
     {
       return this.hidden.includes(column)
     },
-
-    checkDataType(fieldtype)
+    checkDataType(type)
     {
+      var dataType = '';
 
-      for (var i = 0; i < dataTypes.length; i++)
-      {
-        if (dataTypes[i].type.search(type) != -1)
-        {
+         loop1:   
+             for (var i = 0; i < this.dataTypes.length; i++)
+             {
+              // console.log("length",this.dataTypes.length)
+         loop2:
+               for (var j = 0; j < this.dataTypes[i].names.length; j++)
+               {
+                //console.log("check",this.dataTypes[i].names[j],type,this.dataTypes[i].names[j].search(type) != -1)
+                // console.log(this.dataTypes[i].type,"length",this.dataTypes[i].names.length)
+                // console.log("search",dataType, type)
+                 if (this.dataTypes[i].names[j].search(type) != -1)
+                 {
+                   dataType = this.dataTypes[i].type;
+                   // console.log("found",dataType, type)
+                   break loop1;
+                 }
+               }
+             }
 
-        }
-      }
+      return dataType;
     },
 
     /**
@@ -320,10 +369,144 @@ export default {
      * 
      */
 
-     sortByColumn(column)
+     sortByColumn(column, fieldtype)
      {
 
-     }
+      console.log(column, fieldtype, this.checkDataType(fieldtype))
+      //alert("type", fieldtype,this.checkDataType(fieldtype))
+
+      this.sortData.column = column;
+
+      if (!this.hasMore(column))
+      {
+        if (this.sortData.order == 'descending')
+        {
+          this.visibleEntries.sort(this.propComparator(column,'ascending',this.checkDataType(fieldtype)));
+          this.sortData.order  = 'ascending'
+          this.sortData.sorted = true;
+        }
+        else 
+        {
+          this.visibleEntries.sort(this.propComparator(column,'descending',this.checkDataType(fieldtype)));
+
+          this.sortData.order  = 'descending'
+          this.sortData.sorted = true;
+        }
+      }
+      else
+      {
+        if (this.sortData.order == 'descending')
+        {
+          this.visibleEntries.sort(this.deepPropComparator(column,'ascending'));
+          this.sortData.order  = 'ascending'
+          this.sortData.sorted = true;
+        }
+        else 
+        {
+          this.visibleEntries.sort(this.deepPropComparator(column,'descending'));
+          this.sortData.order  = 'descending'
+          this.sortData.sorted = true;
+        }
+      }
+     },
+
+     propComparator(prop, order, type)
+     {
+      //console.log("prop - type",prop,type)
+        if (order == 'ascending')
+        {
+         return function(a, b) {
+          if (type == 'string')
+          {
+             return ('' + a[prop]).localeCompare(b[prop]);
+          }
+          else if (type == 'number')
+          {
+             return a[prop] - b[prop];
+          }
+          else if (type == 'date')
+          {
+             return new Date(a[prop]) - new Date(b[prop]);
+          }
+          else
+          {
+            return a[prop] - b[prop];
+          }
+         }
+        }
+        else if (order == 'descending')
+        {
+         return function(a, b)
+         {
+          if (type == 'string')
+          {
+             return ('' + b[prop]).localeCompare(a[prop]);
+          }
+          else if (type == 'number')
+          {
+             return b[prop] - a[prop];
+          }
+          else if (type == 'date')
+          {
+             return new Date(b[prop]) - new Date(a[prop]);
+          }
+          else
+          {
+             return b[prop] - a[prop];
+          }
+         }
+        }
+     },
+
+     deepPropComparator(prop, order)
+     {
+        var more = this.more;
+        if (order == 'ascending')
+        {
+         return function(a, b)
+         {
+          if (more[prop].type == 'string')
+          {
+             return ('' + a[more[prop].name][prop]).localeCompare(b[more[prop].name][prop]);
+          }
+          else if (more[prop].type == 'number')
+          {
+             return a[more[prop].name][prop] - b[more[prop].name][prop];
+          }
+          else if (more[prop].type == 'date')
+          {
+             return new Date(a[more[prop].name][prop]) - new Date(b[more[prop].name][prop]);
+          }
+          else
+          {
+            return a[more[prop].name][prop] - b[more[prop].name][prop];
+          }
+         }
+        }
+        else if (order == 'descending')
+        {
+         return function(a, b)
+         {
+          if (more[prop].type == 'string')
+          {
+             return ('' + b[more[prop].name][prop]).localeCompare(a[more[prop].name][prop]);
+          }
+          else if (more[prop].type == 'number')
+          {
+             return b[more[prop].name][prop] - a[more[prop].name][prop];
+          }
+          else if (more[prop].type == 'date')
+          {
+             return new Date(b[more[prop].name][prop]) - new Date(a[more[prop].name][prop]);
+          }
+          else
+          {
+             return b[more[prop].name][prop] - a[more[prop].name][prop];
+          }
+         }
+        }
+
+     },
 
     /**
      * end data table sort functions
@@ -349,4 +532,14 @@ export default {
   width: 50px !important;
 }
 
+.table-icon-ascending::before
+{
+  /*color: red !important; */
+  border-top: 10px solid black;
+}
+.table-icon-descending::after
+{
+  /*color: blue !important; */
+  border-bottom: 10px solid black;
+}
 </style>
