@@ -119,6 +119,12 @@ export const store = createStore({
         },
         Table:{
             data: []
+        },
+        Collapse:{
+            portId: '',
+            collapseId: '',
+            componentId: '',
+            componentName: ''
         }
       }
     },

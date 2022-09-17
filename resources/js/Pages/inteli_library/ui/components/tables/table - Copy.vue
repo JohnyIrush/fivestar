@@ -122,7 +122,7 @@ import main_form from "../forms/form.vue"
 
 import AttendanceForm from '../../../../inteli_academic/ui/components/forms/AttendanceForm.vue'
 
-import DatePicker from '../../../../inteli_academic/ui/widgets/dates/DatePicker.vue'
+import DatePicker from '../../../../inteli_academic/ui/widgets/filters/DatePicker.vue'
 
 export default {
   components:{

@@ -1,5 +1,7 @@
 <template>
-  <div class="row">
+  <!-- START DATATABLE NAVBAR  -->
+  <div class="row glass-content mb-2">
+    <!-- START PAGINATION RANGE COMPONENT -->
     <div class="col-4 align-self-start">
       <div class="d-flex flex-row">
           <span class="m-2">Show</span> 
@@ -10,20 +12,68 @@
           <span class="m-2">Entries</span> 
       </div>
     </div>
+    <!-- END PAGINATION RANGE COMPONENT -->
+
+    <!--START FILTER COLLAPSE BUTTON-->
     <div class="col-5">
-       <date-picker :pickType="'date'" @filterDate="filterDate" :pickField="'date'" /> 
+      <collapse_button             
+            :collapseId="'table-filter-collapse'"
+            :buttonName="''"
+            :icon_classes="'fa fa-filter'"
+            :button_classes="'btn-light'"
+            :portId="''"
+            :componentId="''"
+            :componentName="''"
+            >
+      </collapse_button>
     </div>
-    <div class="col-3 align-self-end">
+    <!--END FILTER COLLAPSE BUTTON-->
+
+    <!-- START SEARCH BAR-->
+    <div class="col-3">
       <div class="row">
         <div class="col">
-          <input type="text" class="form-control" placeholder="Search..." aria-label="Search">
+          <search @searchFilter="searchTable"></search>
         </div>
       </div>
     </div>
+    <!--END SEARCH BAR-->
   </div>
+  <!-- END DATATABLE NAVBAR  -->
+
+  <!-- START HEADER WIDGET SECTION -->
+  <div class="row mb-2" >
+    <div class="col-3"></div>
+     <div class="col-6">
+        <!-- START TABLE FILTER WIDGET-->
+        <div id="table-filter-collapse"  class="card glass-content collapse">
+          <div class="row">
+            <div class="col-8 d-flex flex-column text-left">
+               <h4 class="mt-1 mb-2">Filter Type</h4>
+               <div class="mt-4" v-if="checkDataType(columnFilter.type) == 'date'">
+                <date-picker :pickType="'date'" @filterDate="filterDate" :pickField="columnFilter.field" />
+               </div>
+               <div class="mt-4" v-if="checkDataType(columnFilter.type) == 'number'">
+                <number-filter :minValue="1" :maxValue="entries.length" @filterNumber="filterNumber" :filterField="columnFilter.field" />
+               </div>
+            </div>
+            <div class="col-4 text-left">
+              <h4 class="mt-1 mb-2">Column Filter</h4>
+              <radio-input :inputOptions="columns" :nameKey="'field'" :valueKey="'field'" @radioInput="radioInput" :variable="'columnFilter'"  />
+            </div>
+          </div> 
+        </div>
+        <!-- END TABLE FILTER WIDGET-->
+     </div>
+    <div class="col-3"></div>
+  </div>
+  <!-- END HEADER WIDGET SECTION -->
+
+  <!--START TABLE-->
   <div class="table-responsive">
-   <table class="table table-bordered">
-    <thead>
+   <!--START DATA TABLE-->
+    <table class="table table-bordered">
+     <thead>
      <tr>
        <th scope="col"  v-for="th in tableHeader" :key="th" aria-label="Name: activate to sort column ascending" aria-sort="descending"> 
         <div class="d-flex flex-row">
@@ -39,58 +89,62 @@
          Options
        </th>
      </tr>
-    </thead>
-    <tbody>
-         <tr v-for="td in visibleEntries" :key="td">
-           <td :data-label="column.field" class="text-wrap" style="width: 6rem !important;" v-for="column in tableHeader" :key="column.field" v-if="!checkHidden(column)">
-           <span v-if="!hasMore(column.field)">
-              <span class="text-wrap" style="width: 4rem !important;" v-if="!hasType(column.field)">{{td[column.field]}}</span>
-              <span v-else-if="types[column.field] == 'image'">
-                <image :info="td"></image> 
-                image
-              </span>
-              <span v-else-if="types[column.field] == 'form'">
-                <attendance-form :StudentId="td['id']"></attendance-form>
-              </span>
-           </span>
-           <span v-else-if="checkDisplay(column.field) == 'item'">
-              <span class="text-wrap" style="width: 6rem !important;" v-if="!hasType()">
-              {{td[this.more[column.field]["name"]][this.more[column.field]["value"]]}}
+     </thead>
+     <tbody>
+     <tr v-for="td in visibleEntries" :key="td">
+       <td :data-label="column.field" class="text-wrap" style="width: 6rem !important;" v-for="column in tableHeader" :key="column.field">
+       <span v-if="!hasMore(column.field)">
+          <span class="text-wrap" style="width: 4rem !important;" v-if="!hasType(column.field)">{{td[column.field]}}</span>
+          <span v-else-if="types[column.field] == 'image'">
+            <image :info="td"></image> 
+            image
+          </span>
+          <span v-else-if="types[column.field] == 'form'">
+            <attendance-form :StudentId="td['id']"></attendance-form>
+          </span>
+       </span>
+       <span v-else-if="checkDisplay(column.field) == 'item'">
+          <span class="text-wrap" style="width: 6rem !important;" v-if="!hasType()">
+          {{td[this.more[column.field]["name"]][this.more[column.field]["value"]]}}
 
-              </span>
-              <span v-else-if="types[column.field] == 'image'">
-                <!--<image :info="td"></image>-->
-                <img :src="td[column.field]">
-                image
-              </span>
-           </span>
-           <span v-else-if="checkDisplay(column.field) == 'list'">
-             {{"list"}}
-           </span>
+          </span>
+          <span v-else-if="types[column.field] == 'image'">
+            <!--<image :info="td"></image>-->
+            <img :src="td[column.field]">
+            image
+          </span>
+       </span>
+       <span v-else-if="checkDisplay(column.field) == 'list'">
+         {{"list"}}
+       </span>
 
-           </td>
-           <td >
-             <table_options @showModal="launchModal('', 'modal-body')" :formData="td" :dataId="td.id" :deletePath="crud.delete" :triggerName="'Options'" :icon_classes="'fas fa-ellipsis-h'" :triggerType="'button'"></table_options>
-           </td>
-         </tr>
-    </tbody>
-    <tfoot>
-     <tr>
-       <th  v-for="th in tableHeader" :key="th">
-        <span>{{th.field}}</span>
-        <span>
-        </span>
-       </th>
+       </td>
+       <td >
+         <table_options @showModal="launchModal('', 'modal-body')" :formData="td" :dataId="td.id" :deletePath="crud.delete" :triggerName="'Options'" :icon_classes="'fas fa-ellipsis-h'" :triggerType="'button'"></table_options>
+       </td>
      </tr>
-    </tfoot>
-   </table>
+     </tbody>
+     <tfoot>
+      <tr>
+        <th  v-for="th in tableHeader" :key="th">
+         <span>{{th.field}}</span>
+         <span>
+         </span>
+        </th>
+      </tr>
+     </tfoot>
+    </table>
+   <!--END DATA TABLE-->
+   <!--START DATA TABLE RECORDS/PAGES COUNT-->
    <div class="row">
      <div class="col-4 align-self-start">
        <p>Showing {{currentPage}} to {{currentPage + pagination - 1}} of {{entries.length }} Entries</p>
      </div>
      <div class="col-8 align-self-end">
      </div>
-  </div>
+   </div>
+   <!--END DATA TABLE RECORDS/PAGES COUNT-->
+   <!--START DATA TABLE PAGINATION COMPONENT-->
    <div class="row">
      <div class="col-12">
       <nav aria-label="Page navigation example">
@@ -105,8 +159,11 @@
         </ul>
       </nav>
      </div>
+   </div>
+   <!--END DATA TABLE PAGINATION COMPONENT-->
   </div>
-  </div>
+  <!-- END TABLE-->
+  <!--<collapse></collapse>-->
 </template>
 
 <script>
@@ -125,7 +182,16 @@ import main_form from "../forms/form.vue"
 
 import AttendanceForm from '../../../../inteli_academic/ui/components/forms/AttendanceForm.vue'
 
-import DatePicker from '../../../../inteli_academic/ui/widgets/dates/DatePicker.vue'
+import DatePicker from '../../../../inteli_academic/ui/widgets/filters/DatePicker.vue'
+
+import Search from "../../../../inteli_academic/ui/widgets/search/Search.vue"
+
+import collapse_button from "../../../../inteli_academic/ui/components/buttons/collapse-button.vue"
+
+import Collapse from "../../../../inteli_academic/ui/components/collapse/Collapse.vue"
+import RadioInput from '../../../../inteli_academic/ui/components/inputs/RadioInput.vue'
+import NumberFilter from '../../../../inteli_academic/ui/widgets/filters/NumberFilter.vue'
+
 
 export default {
   components:{
@@ -134,7 +200,12 @@ export default {
     table_options,
     main_form,
     AttendanceForm,
-    DatePicker
+    DatePicker,
+    Search,
+    collapse_button,
+    Collapse,
+    RadioInput,
+    NumberFilter
   },
   name: 'TableData',
   props: {
@@ -159,14 +230,6 @@ export default {
     visibleEntries()
     {
       return this.changePage(this.currentPage)
-    },
-    cars()
-    {
-      return [
-         {type:"Volvo", year:2016},
-         {type:"Saab", year:2001},
-         {type:"BMW", year:2010}
-       ];
     },
     hidden()
     {
@@ -205,7 +268,7 @@ export default {
       dataTypes:[
           {
             'type' : 'number',
-            'names': ['bigint','int','integer','number']
+            'names': ['bigint','int','integer','number','bigint unsigned']
           },
           {
             'type' : 'string',
@@ -225,7 +288,9 @@ export default {
         column: '',
         order: '',
         sorted: false
-      }
+      },
+      filterActive: false,
+      columnFilter: {}
    }
  },
  watch: {
@@ -334,6 +399,11 @@ export default {
       }
     },
 
+    activateFilterBar()
+    {
+      this.filterActive = !this.filterActive
+    },
+
     /**
      * end data table plugin/widgets/components  functions
      * 
@@ -349,9 +419,70 @@ export default {
       var to = event.to;
       var field = event.field;
 
-      this.visibleEntries = this.visibleEntries.filter((el, index, arr)=>{
+      this.visibleEntries = this.entries.filter((el, index, arr)=>{
         return new Date(el[field]) >= new Date(from) && ((to != '')? new Date(el[field]) <= new Date(to) : true )
       })
+
+    },
+
+    filterNumber(event)
+    {
+      var from = event.from;
+      var to = event.to;
+      var field = event.field;
+
+      var more = this.more;
+
+      if (!this.hasMore(field))
+      {
+       this.visibleEntries = this.entries.filter((el, index, arr)=>{
+         return (el[field]) >= (from) && ((to != '')? (el[field]) <= (to) : true )
+       })
+      }
+      else
+      {
+       this.visibleEntries = this.entries.filter((el, index, arr)=>{
+         return (el[more[field].name][field]) >= (from) && ((to != '')? (el[more[field].name][field]) <= (to) : true )
+       })
+      }
+
+    },
+    searchTable(event)
+    {
+      //this.visibleEntries = this.visibleEntries.find(({ name }) => name === 'cherries')
+      var data = [
+                  {"id":"123","color":"Red","model":"Tesla"},
+                  {"id":"124","color":"Black","model":"Honda"},
+                  {"id":"125","color":"Red","model":"Audi"},
+                  {"id":"126","color":"Blue","model":"Tesla"}
+                ];
+
+      var keys = this.columns;
+      var values = ["Tesla", "Audi", "Red"];
+
+      console.log(keys, this.visibleEntries);
+
+      var result = this.visibleEntries.filter((e) => { 
+        return keys.some((a) =>{
+          return e[a.field].toString().search(event.toString())
+        })
+      })
+
+      console.log(result);
+      //console.log(event)
+    },
+    searchCheck(needle)
+    {
+         return function(currentValue, index, arr)
+         {
+            for (var i = 0; i < this.tableHeader.length; i++)
+            {
+              return currentValue[this.tableHeader[i].field] == needle;
+            }
+         }
+    },
+    deepSearchCheck()
+    {
 
     },
 
@@ -513,6 +644,12 @@ export default {
      * 
      */
 
+     radioInput(event)
+     {
+      this[event.variable] = event.option
+      console.log(event, this[event.variable])
+     }
+
    },
    mounted()
    {
@@ -526,6 +663,48 @@ export default {
 </script>
 
 <style scoped>
+
+.glass-container
+{
+   /*
+    position: relative;
+    min-height: calc(100vh - 280);
+    width: calc(100% - 100px);
+    */
+    background: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 15px 35px rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    justify-content: space-between;
+}
+
+
+.glass-content
+{
+    transform: translateX(-100);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-top: 1px solid rgba(255, 255, 255, 0.25);
+    border-left: 1px solid rgba(255, 255, 255, 0.5);
+    padding: 5px;
+}
+
+.card, .card-header, .card-body, .list-group, .list-group-item, .nav
+{
+  background: transparent !important;
+}
+
+.glass-header
+{
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-top: 1px solid rgba(255, 255, 255, 0.25);
+    border-left: 1px solid rgba(255, 255, 255, 0.5);
+}
 
 .select-sm-size
 {
@@ -542,4 +721,5 @@ export default {
   /*color: blue !important; */
   border-bottom: 10px solid black;
 }
+
 </style>
