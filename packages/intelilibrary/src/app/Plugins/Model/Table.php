@@ -21,12 +21,16 @@ class Table
     $this->form = new Form();
   }
 
-  public function table(Model $model, $entries, array $more, array $extra, array $types, array $crud, array $hidden = [])
+  public function table(Model $model, $entries, array $more, array $extra, array $types, array $crud, array $hidden = [], bool $getFields = true, array $filter)
   {
 
     $columns = [];
 
-    $this->form->fields($model, $columns);
+
+    if ($getFields)
+    {
+      $this->form->fields($model, $columns);
+    }
 
   	return [
        "hidden" => $hidden,
@@ -35,6 +39,7 @@ class Table
   		 "more" => $more,
   		 "types" => $types,
        "crud" => $crud,
+       "filter" => $filter
   	];
   }
 
@@ -44,6 +49,17 @@ class Table
 
     return $columns;
 	}
+
+  public function merged(array $models, array &$merged, array $only)
+  {   
+    foreach($models as $model)
+    {
+      $this->form->fields($model["model"], $merged, $only, $model["except"]);
+    }
+
+    return $merged;
+  }
+
 }
 
 

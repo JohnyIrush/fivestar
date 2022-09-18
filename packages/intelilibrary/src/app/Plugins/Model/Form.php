@@ -21,18 +21,21 @@ class Form
 	}
 
 
-	public function fields(Model $model, array &$fields)
+	public function fields(Model $model, array &$fields, array $only = [], array $except = [])
 	{
 		
     $table = $model->getTable();
-		$columns = DB::select('describe ' . $table);;
+		$columns = DB::select('describe ' . $table);
 
 		foreach ($columns as $field)
 		{
+			  if(empty($only) || in_array($field->Field, $only) && !in_array($field->Field, $except))
+			  {
           array_push($fields, [
             'field' => $field->Field,
             'type' => $field->Type
           ]);
+        }
 		}
 	}
 }

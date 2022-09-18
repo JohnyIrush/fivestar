@@ -45,25 +45,32 @@
   <div class="row mb-2" >
     <div class="col-3"></div>
      <div class="col-6">
-        <!-- START TABLE FILTER WIDGET-->
-        <div id="table-filter-collapse"  class="card glass-content collapse">
-          <div class="row">
-            <div class="col-8 d-flex flex-column text-left">
-               <h4 class="mt-1 mb-2">Filter Type</h4>
-               <div class="mt-4" v-if="checkDataType(columnFilter.type) == 'date'">
-                <date-picker :pickType="'date'" @filterDate="filterDate" :pickField="columnFilter.field" />
-               </div>
-               <div class="mt-4" v-if="checkDataType(columnFilter.type) == 'number'">
-                <number-filter :minValue="1" :maxValue="entries.length" @filterNumber="filterNumber" :filterField="columnFilter.field" />
-               </div>
-            </div>
-            <div class="col-4 text-left">
-              <h4 class="mt-1 mb-2">Column Filter</h4>
-              <radio-input :inputOptions="columns" :nameKey="'field'" :valueKey="'field'" @radioInput="radioInput" :variable="'columnFilter'"  />
-            </div>
-          </div> 
+       <!-- START TABLE FILTER WIDGET-->
+        <div class="row">
+         <div id="table-filter-collapse"  class="card glass-content collapse">
+           <div class="row">
+             <div class="col-8 d-flex flex-column text-left">
+                <h4 class="mt-1 mb-2">Filter Type</h4>
+                <div class="mt-4" v-if="checkDataType(columnFilter.type) == 'date'">
+                 <date-picker :pickType="'date'" @filterDate="filterDate" :pickField="columnFilter.field" />
+                </div>
+                <div class="mt-4" v-if="checkDataType(columnFilter.type) == 'number'">
+                 <number-filter :minValue="1" :maxValue="entries.length" @filterNumber="filterNumber" :filterField="columnFilter.field" />
+                </div>
+             </div>
+             <div class="col-4 text-left">
+               <h4 class="mt-1 mb-2">Column Filter</h4>
+               <radio-input :inputOptions="columns" :nameKey="'field'" :valueKey="'field'" @radioInput="radioInput" :variable="'columnFilter'"  />
+             </div>
+           </div> 
+           <div class="row">
+             <div class="col-3" v-for="options in filter" :key="option">
+               <select-input :inputOptions="options.options" :nameKey="options.name" :valueKey="options.value" @selectInput="filterByColumns" :variable="'columnFilter'" :field="options.column" />
+             </div>
+           </div>
+         </div>
         </div>
-        <!-- END TABLE FILTER WIDGET-->
+       <!-- END TABLE FILTER WIDGET-->
      </div>
     <div class="col-3"></div>
   </div>
@@ -97,7 +104,7 @@
           <span class="text-wrap" style="width: 4rem !important;" v-if="!hasType(column.field)">{{td[column.field]}}</span>
           <span v-else-if="types[column.field] == 'image'">
             <image :info="td"></image> 
-            image
+            <img :src="td[column.field]">
           </span>
           <span v-else-if="types[column.field] == 'form'">
             <attendance-form :StudentId="td['id']"></attendance-form>
@@ -111,7 +118,7 @@
           <span v-else-if="types[column.field] == 'image'">
             <!--<image :info="td"></image>-->
             <img :src="td[column.field]">
-            image
+            <img :src="td[column.field]">
           </span>
        </span>
        <span v-else-if="checkDisplay(column.field) == 'list'">
@@ -190,6 +197,7 @@ import collapse_button from "../../../../inteli_academic/ui/components/buttons/c
 
 import Collapse from "../../../../inteli_academic/ui/components/collapse/Collapse.vue"
 import RadioInput from '../../../../inteli_academic/ui/components/inputs/RadioInput.vue'
+import SelectInput from '../../../../inteli_academic/ui/components/inputs/SelectInput.vue'
 import NumberFilter from '../../../../inteli_academic/ui/widgets/filters/NumberFilter.vue'
 
 
@@ -205,7 +213,8 @@ export default {
     collapse_button,
     Collapse,
     RadioInput,
-    NumberFilter
+    NumberFilter,
+    SelectInput
   },
   name: 'TableData',
   props: {
@@ -257,6 +266,10 @@ export default {
     crud()
     {
       return store.state.Table.data.crud
+    },
+    filter()
+    {
+      return store.state.Table.data.filter
     }
   },
   data (){
@@ -446,6 +459,16 @@ export default {
        })
       }
 
+    },
+    filterByColumns(event)
+    {
+      console.log(event)
+       var option = event.option;
+       var field = event.field;
+
+       this.visibleEntries = this.visibleEntries.filter((el, index, arr)=>{
+         return el[field] == option;
+       })
     },
     searchTable(event)
     {
@@ -643,7 +666,6 @@ export default {
      * end data table sort functions
      * 
      */
-
      radioInput(event)
      {
       this[event.variable] = event.option

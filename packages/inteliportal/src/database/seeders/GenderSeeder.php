@@ -22,6 +22,7 @@ class GenderSeeder extends Seeder
         Gender::create(
             ['gender' => 'female']
         );
+        /*
 
         Gender::create(
             ['gender' => 'gender neutral']
@@ -49,6 +50,6 @@ class GenderSeeder extends Seeder
 
         Gender::create(
             ['gender' => 'third gender']
-        );
+        );*/
     }
 }
