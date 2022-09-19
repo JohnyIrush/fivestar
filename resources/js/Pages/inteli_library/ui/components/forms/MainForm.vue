@@ -101,13 +101,15 @@
 </template>
 
 <script>
+import { defineComponent } from 'vue'
+
 import { reactive } from 'vue'
 import { Inertia } from '@inertiajs/inertia'
 
 import {store} from "../../../../../store/store.js"
 
-export default {
-  name:'mainform',
+export default defineComponent({
+  name:"MainForm",
   props: {
     formPath: String,
   },
@@ -292,7 +294,7 @@ export default {
    {
      //this.getFields(this.formPath)
    }
-}
+});
 </script>
 
 <style scoped>

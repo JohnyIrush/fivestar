@@ -174,6 +174,9 @@
 </template>
 
 <script>
+
+import { defineComponent } from 'vue'
+
 import { reactive } from 'vue'
 import { Inertia } from '@inertiajs/inertia'
 
@@ -185,7 +188,7 @@ import image from "../images/image.vue"
 
 import table_options from '../../widgets/menus/table-options.vue'
 
-import main_form from "../forms/form.vue"
+import MainForm from "../forms/MainForm.vue"
 
 import AttendanceForm from '../../../../inteli_academic/ui/components/forms/AttendanceForm.vue'
 
@@ -201,12 +204,13 @@ import SelectInput from '../../../../inteli_academic/ui/components/inputs/Select
 import NumberFilter from '../../../../inteli_academic/ui/widgets/filters/NumberFilter.vue'
 
 
-export default {
+export default defineComponent({
+  name: "TableData",
   components:{
     list,
     image,
     table_options,
-    main_form,
+    MainForm,
     AttendanceForm,
     DatePicker,
     Search,
@@ -216,7 +220,6 @@ export default {
     NumberFilter,
     SelectInput
   },
-  name: 'TableData',
   props: {
     datapath: String
   },
@@ -246,9 +249,12 @@ export default {
     },
     columns()
     {
+      if(store.state.Table.data.columns)
+      {
        return  store.state.Table.data.columns.filter((el, index, arr)=>{
          return !this.hidden.includes(el.field)
        })
+      }
     },
     entries()
     {
@@ -681,7 +687,7 @@ export default {
    {
 
    }
-}
+});
 </script>
 
 <style scoped>

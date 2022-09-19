@@ -20,6 +20,8 @@ use Softwarescares\Intelilibrary\app\Plugins\Model\Card;
 
 use Illuminate\Http\Request;
 
+use DB;
+
 class SectionController extends Controller
 {
     /**
@@ -27,9 +29,44 @@ class SectionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Section $section, Table $table, Level $level, Stream $stream)
     {
-        return response()->json(Section::with("level","stream")->get());
+        $merged = [];
+
+        return $table->table(
+            $section, 
+            DB::table("sections")
+             ->join("levels","sections.level_id","=","levels.id")
+             ->join("streams","sections.stream_id","=","streams.id")
+             ->select("sections.id","sections.stream_id","sections.level_id","sections.thumbnail","levels.level","streams.stream")
+             ->get()
+            ,
+            []
+            ,
+            $table->merged(
+                [
+                  [
+                    "except" => ["id","status","thumbnail"],
+                    "model" => $level
+                  ], 
+                  [
+                    "except" => ["id","status","thumbnail"],
+                    "model" => $stream,
+                  ]],  
+                  $merged,
+                ["id","thumbnail",
+                 "level","stream","firstname",
+                "status","section_id","stream_id",
+                 "level_id"])
+           , 
+           ["thumbnail" => "image"],
+           [
+            'store' => "academic/level/store",
+            'update' => "academic/level/update",
+            "delete" => "academic/level/destroy"
+           ],
+           ["created_at","updated_at","stream_id","level_id","teacher_id"]
+        );
     }
 
     /**
@@ -40,24 +77,31 @@ class SectionController extends Controller
     public function create(Section $section, Form $form)
     {
         return $form->form($section, [
-                [
+                "stream_id" => [
                 "stream_id" => Stream::all(),
                 "name" => "stream",
                 "value" => "id",
                 "limit" => 1,
                  ],
-                [
+                "level_id" => [
                 "level_id" => Level::all(),
                 "name" => "level",
                 "value" => "id",
                 "limit" => 1,
                  ],
-                 [
-                "teacher_id" => Teacher::with('staff')->get(),
-                "name" => "id",
+                "teacher_id" =>[
+                "teacher_id" => DB::table("teachers")->join("staff", "teachers.staff_id","=","staff.id")->get(),
+                "name" => "firstname",
                 "value" => "id",
                 "limit" => 1,
                  ],
+    
+            "status" => [
+                "status" => [["id" => 0,"status" => "Inactive"],["id" => 1, "status" =>"Active"]],
+                "name" => "status",
+                "value" => "id",
+                "limit" => 1,
+            ],
         ],
             ['id','created_at', 'updated_at'], 
             [

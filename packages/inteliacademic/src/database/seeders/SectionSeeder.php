@@ -18,8 +18,11 @@ class SectionSeeder extends Seeder
 
         Section::truncate();
 
+        $faker = \Faker\Factory::create();
+
         //Level 1
         Section::create([
+            'thumbnail' =>  $faker->imageUrl(),
             'level_id' =>  1,
             'stream_id' => 1,
             'teacher_id' => Teacher::all()->random()->id,
@@ -27,6 +30,7 @@ class SectionSeeder extends Seeder
         ]);
 
         Section::create([
+            'thumbnail' =>  $faker->imageUrl(),
             'level_id' => 1,
             'stream_id' => 2,
             'teacher_id' => Teacher::all()->random()->id,
@@ -35,6 +39,7 @@ class SectionSeeder extends Seeder
 
         //Level 2
         Section::create([
+            'thumbnail' =>  $faker->imageUrl(),
             'level_id' => 2,
             'stream_id' => 1,
             'teacher_id' => Teacher::all()->random()->id,
@@ -42,6 +47,7 @@ class SectionSeeder extends Seeder
         ]);
 
         Section::create([
+            'thumbnail' =>  $faker->imageUrl(),
             'level_id' => 2,
             'stream_id' => 2,
             'teacher_id' => Teacher::all()->random()->id,
@@ -51,6 +57,7 @@ class SectionSeeder extends Seeder
 
         //Level 3
         Section::create([
+            'thumbnail' =>  $faker->imageUrl(),
             'level_id' => 3,
             'stream_id' => 1,
             'teacher_id' => Teacher::all()->random()->id,
@@ -58,6 +65,7 @@ class SectionSeeder extends Seeder
         ]);
 
         Section::create([
+            'thumbnail' =>  $faker->imageUrl(),
             'level_id' => 3,
             'stream_id' => 2,
             'teacher_id' => Teacher::all()->random()->id,
@@ -66,6 +74,7 @@ class SectionSeeder extends Seeder
 
         //Level 4
         Section::create([
+            'thumbnail' =>  $faker->imageUrl(),
             'level_id' => 4,
             'stream_id' => 1,
             'teacher_id' => Teacher::all()->random()->id,
@@ -73,6 +82,7 @@ class SectionSeeder extends Seeder
         ]);
 
         Section::create([
+            'thumbnail' =>  $faker->imageUrl(),
             'level_id' => 4,
             'stream_id' => 2,
             'teacher_id' => Teacher::all()->random()->id,

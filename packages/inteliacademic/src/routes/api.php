@@ -34,7 +34,6 @@ Route::get("levels",[LevelController::class, "index"]);
 Route::post("academic/level/detail",[LevelController::class, "detail"]);
 
 Route::get("streams",[StreamController::class, "index"]);
-Route::get("subjects",[SubjectController::class, "index"]);
 Route::get("sports",[SportController::class, "index"]);
 Route::get("clubs",[ClubController::class, "index"]);
 
@@ -43,21 +42,27 @@ Route::get("sections",[SectionController::class, "index"]);
 Route::get("leadership",[LeadersController::class, "index"]);
 
 
+
+
+Route::get("academic/subject/index",[SubjectController::class, "index"]);
 Route::get("academic/subject/create",[SubjectController::class, "create"]);
 Route::post("academic/subject/store",[SubjectController::class, "store"]);
 Route::post("academic/subject/update",[SubjectController::class, "update"]);
 Route::post("academic/subject/destroy",[SubjectController::class, "destroy"]);
 
+Route::get("academic/section/index",[SectionController::class, "index"]);
 Route::get("academic/section/create",[SectionController::class, "create"]);
 Route::post("academic/section/store",[SectionController::class, "store"]);
 Route::post("academic/section/update",[SectionController::class, "update"]);
 Route::post("academic/section/destroy",[SectionController::class, "destroy"]);
 
+Route::get("academic/level/index",[LevelController::class, "index"]);
 Route::get("academic/level/create",[LevelController::class, "create"]);
 Route::post("academic/level/store",[LevelController::class, "store"]);
 Route::post("academic/level/update",[LevelController::class, "update"]);
 Route::post("academic/level/destroy",[LevelController::class, "destroy"]);
 
+Route::get("academic/stream/index",[StreamController::class, "index"]);
 Route::get("academic/stream/create",[StreamController::class, "create"]);
 Route::post("academic/stream/store",[StreamController::class, "store"]);
 Route::post("academic/stream/update",[StreamController::class, "update"]);
@@ -70,11 +75,13 @@ Route::post("academic/qualification/update",[QualificationController::class, "up
 Route::post("academic/qualification/destroy",[QualificationController::class, "destroy"]);
 
 
+Route::get("academic/club/index",[ClubController::class, "index"]);
 Route::get("academic/club/create",[ClubController::class, "create"]);
 Route::post("academic/club/store",[ClubController::class, "store"]);
 Route::post("academic/club/update",[ClubController::class, "update"]);
 Route::post("academic/club/destroy",[ClubController::class, "destroy"]);
 
+Route::get("academic/sport/index",[SportController::class, "index"]);
 Route::get("academic/sport/create",[SportController::class, "create"]);
 Route::post("academic/sport/store",[SportController::class, "store"]);
 Route::post("academic/sport/update",[SportController::class, "update"]);

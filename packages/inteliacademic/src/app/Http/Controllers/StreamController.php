@@ -23,9 +23,24 @@ class StreamController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Stream $stream, Table $table)
     {
-        return response()->json(Stream::all());
+
+        return $table->table(
+            $stream, 
+            Stream::all()
+            ,
+            [], 
+            []
+           , 
+           ["avatar" => "image"],
+           [
+            'store' => "academic/stream/store",
+            'update' => "academic/stream/update",
+            "delete" => "academic/stream/destroy"
+           ],
+           ["created_at","updated_at"]
+        );
     }
 
     /**
@@ -35,7 +50,15 @@ class StreamController extends Controller
      */
     public function create(Stream $stream, Form $form)
     {
-        return $form->form($stream, [],
+        return $form->form($stream, 
+            [
+            "status" => [
+                "status" => [["id" => 0,"status" => "False"],["id" => 1, "status" =>"True"]],
+                "name" => "status",
+                "value" => "id",
+                "limit" => 1,
+            ],
+            ],
             ['id','created_at', 'updated_at'], 
             [
             'store' => "academic/stream/store",

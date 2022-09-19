@@ -21,7 +21,7 @@ class Table
     $this->form = new Form();
   }
 
-  public function table(Model $model, $entries, array $more, array $extra, array $types, array $crud, array $hidden = [], bool $getFields = true, array $filter)
+  public function table(Model $model, $entries, array $more, array $extra, array $types, array $crud, array $hidden = [], bool $getFields = true, array $filter = [])
   {
 
     $columns = [];

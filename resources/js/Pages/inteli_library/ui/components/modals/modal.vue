@@ -9,9 +9,7 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div id="modal-body" class="modal-body">
-            <data_card v-if="componentType == 'card'"></data_card>
-            <data_table v-if="componentType == 'table'"></data_table>
-            <main_form v-if="componentType == 'form'"></main_form>
+            <component :is="componentName" ></component>
         </div>
       </div>
     </div>
@@ -25,15 +23,21 @@ import { store } from '../../../../../store/store.js'
 
 import data_card from '../cards/data-card.vue'
 
-import data_table from "../tables/table.vue"
+import TableData from "../tables/TableData.vue"
 
-import main_form from '../forms/form.vue'
+import MainForm from '../forms/MainForm.vue'
+
+import TabularCard from '../../../../inteli_academic/ui/components/cards/TabularCard.vue'
+import MiniTabularCard from '../../../../inteli_academic/ui/components/cards/MiniTabularCard.vue'
+
 
     export default defineComponent({
         components: {
             data_card,
-            data_table,
-            main_form
+            TableData,
+            MainForm,
+            TabularCard,
+            MiniTabularCard
         },
         data() {
             return {
@@ -52,6 +56,10 @@ import main_form from '../forms/form.vue'
           componentType()
           {
             return store.state.Modal.componentType
+          },
+          componentName()
+          {
+            return store.state.Modal.componentName
           }
         },
         methods: {

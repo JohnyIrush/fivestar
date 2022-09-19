@@ -10,6 +10,14 @@ use Softwarescares\Inteliacademic\app\Models\Teacher;
 
 use Illuminate\Http\Request;
 
+use Softwarescares\Intelilibrary\app\Actions\Model\Store;
+use Softwarescares\Intelilibrary\app\Actions\Model\Update;
+use Softwarescares\Intelilibrary\app\Actions\Model\Delete;
+
+use Softwarescares\Intelilibrary\app\Plugins\Model\Form;
+use Softwarescares\Intelilibrary\app\Plugins\Model\Table;
+use Softwarescares\Intelilibrary\app\Plugins\Model\Card;
+
 use Softwarescares\Inteliacademic\app\plugins\Model\Detail;
 
 class LevelController extends Controller
@@ -52,19 +60,48 @@ class LevelController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Level $level, Table $table)
     {
-        //
+        return $table->table(
+            $level, 
+            Level::all()
+            ,
+            []
+            ,
+            []
+           , 
+           ["thumbnail" => "image"],
+           [
+            'store' => "academic/level/store",
+            'update' => "academic/level/update",
+            "delete" => "academic/level/destroy"
+           ],
+           ["created_at","updated_at"]
+        );
     }
-
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Level $level, Form $form)
     {
-        //
+        return $form->form($level,
+            [
+            "status" => [
+                "status" => [["id" => 0,"status" => "False"],["id" => 1, "status" =>"True"]],
+                "name" => "status",
+                "value" => "id",
+                "limit" => 1,
+            ]]
+            ,
+            ['id','created_at', 'updated_at'], 
+            [
+            'store' => "academic/level/store",
+            'update' => "academic/level/update",
+            "delete" => "academic/level/destroy"
+            ]
+           );
     }
 
     /**

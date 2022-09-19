@@ -7,6 +7,14 @@ use Softwarescares\Inteliacademic\app\Models\Subject;
 use Softwarescares\Inteliacademic\app\Http\Requests\StoreSubjectRequest;
 use Softwarescares\Inteliacademic\app\Http\Requests\UpdateSubjectRequest;
 
+use Softwarescares\Intelilibrary\app\Actions\Model\Store;
+use Softwarescares\Intelilibrary\app\Actions\Model\Update;
+use Softwarescares\Intelilibrary\app\Actions\Model\Delete;
+
+use Softwarescares\Intelilibrary\app\Plugins\Model\Form;
+use Softwarescares\Intelilibrary\app\Plugins\Model\Table;
+use Softwarescares\Intelilibrary\app\Plugins\Model\Card;
+
 class SubjectController extends Controller
 {
     /**
@@ -14,19 +22,48 @@ class SubjectController extends Controller
      *
      * 
      */
-    public function index()
+    public function index(Subject $subject, Table $table)
     {
-        return Subject::with(['teachers','levels','department'])->get();
-    }
 
+        return $table->table(
+            $subject, 
+            Subject::with(['teachers','levels','department'])->get()
+            ,
+            [
+            "status" => [
+                "status" => [["id" => 0,"status" => "False"],["id" => 1, "status" =>"True"]],
+                "name" => "status",
+                "value" => "id",
+                "limit" => 1,
+            ],
+            ], 
+            [
+            ]
+           , 
+           ["avatar" => "image"],
+           [
+            'store' => "academic/subject/store",
+            'update' => "academic/subject/update",
+            "delete" => "academic/subject/destroy"
+           ],
+           ["created_at","updated_at"]
+        );
+    }
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Subject $subject, Form $form)
     {
-        //
+        return $form->form($subject, [],
+            ['id','created_at', 'updated_at'], 
+            [
+            'store' => "academic/subject/store",
+            'update' => "academic/subject/update",
+            "delete" => "academic/subject/destroy"
+            ]
+           );
     }
 
     /**

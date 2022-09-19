@@ -5,12 +5,25 @@
     <div class="d-flex align-items-start">
       <div class="nav glass-content  flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
         <button class="nav-link active" id="v-pills-dashboard-tab" data-bs-toggle="pill" data-bs-target="#v-pills-dashboard" type="button" role="tab" aria-controls="v-pills-dashboard" aria-selected="true"><i class="fas fa-chess-board fa-2x"></i></button>
-        <button class="nav-link mt-6" id="v-pills-librarian-tab" data-bs-toggle="pill" data-bs-target="#v-pills-librarian" type="button" role="tab" aria-controls="v-pills-librarian" aria-selected="true"><i class="far fa-list-alt fa-2x"></i></button>
-        <button class="nav-link mt-6" id="v-pills-book-issue-tab" data-bs-toggle="pill" data-bs-target="#v-pills-book-issue" type="button" role="tab" aria-controls="v-pills-book-issue" aria-selected="false"><i class="fas fa-sitemap fa-2x"></i></button>
-        <button class="nav-link mt-6" id="v-pills-book-category-tab" data-bs-toggle="pill" data-bs-target="#v-pills-book-category" type="button" role="tab" aria-controls="v-pills-book-category" aria-selected="false"><i class="fas fa-chalkboard-teacher fa-2x"></i></button>
-        <button class="nav-link mt-6" id="v-pills-book-tab" data-bs-toggle="pill" data-bs-target="#v-pills-book" type="button" role="tab" aria-controls="v-pills-book" aria-selected="false"><i class="far fa-bookmark fa-2x"></i></button>
-        <button class="nav-link mt-6" id="v-pills-publisher-tab" data-bs-toggle="pill" data-bs-target="#v-pills-publisher" type="button" role="tab" aria-controls="v-pills-publisher" aria-selected="false"><i class="fas fa-level-up-alt fa-2x"></i></button>
-        <button class="nav-link mt-6" id="v-pills-settings-tab" data-bs-toggle="pill" data-bs-target="#v-pills-settings" type="button" role="tab" aria-controls="v-pills-settings" aria-selected="false"><i class="fas fa-stream fa-2x"></i></button>
+
+        <button class="nav-link mt-6" id="v-pills-attendance-tab" data-bs-toggle="pill" data-bs-target="#v-pills-attendance" type="button" role="tab" aria-controls="v-pills-attendance" aria-selected="true"><i class="far fa-list-alt fa-2x"></i></button>
+
+        <button class="nav-link mt-6" id="v-pills-planner-tab" data-bs-toggle="pill" data-bs-target="#v-pills-planner" type="button" role="tab" aria-controls="v-pills-planner" aria-selected="false"><i class="fas fa-sitemap fa-2x"></i></button>
+
+        <button class="nav-link mt-6" id="v-pills-assignment-tab" data-bs-toggle="pill" data-bs-target="#v-pills-assignment" type="button" role="tab" aria-controls="v-pills-assignment" aria-selected="false"><i class="fas fa-sticky-note fa-2x"></i></button>
+
+        <button class="nav-link mt-6" id="v-pills-subjects-tab" data-bs-toggle="pill" data-bs-target="#v-pills-subjects" type="button" role="tab" aria-controls="v-pills-subjects" aria-selected="false"><i class="far fa-bookmark fa-2x"></i></button>
+
+        <button class="nav-link mt-6" id="v-pills-club-tab" data-bs-toggle="pill" data-bs-target="#v-pills-club" type="button" role="tab" aria-controls="v-pills-club" aria-selected="false"><i class="fas fa-user-friends fa-2x"></i></button>
+
+        <button class="nav-link mt-6" id="v-pills-sport-tab" data-bs-toggle="pill" data-bs-target="#v-pills-sport" type="button" role="tab" aria-controls="v-pills-sport" aria-selected="false"><i class="fas fa-baseball-ball fa-2x"></i></button>
+
+        <button class="nav-link mt-6" id="v-pills-level-tab" data-bs-toggle="pill" data-bs-target="#v-pills-level" type="button" role="tab" aria-controls="v-pills-level" aria-selected="false"><i class="fas fa-level-up-alt fa-2x"></i></button>
+
+        <button class="nav-link mt-6" id="v-pills-stream-tab" data-bs-toggle="pill" data-bs-target="#v-pills-stream" type="button" role="tab" aria-controls="v-pills-stream" aria-selected="false"><i class="fas fa-stream fa-2x"></i></button>
+
+        <button class="nav-link mt-6" id="v-pills-section-tab" data-bs-toggle="pill" data-bs-target="#v-pills-section" type="button" role="tab" aria-controls="v-pills-section" aria-selected="false"><i class="fas fa-chalkboard-teacher fa-2x"></i></button>
+
         <button class="nav-link mt-6" id="v-pills-settings-tab" data-bs-toggle="pill" data-bs-target="#v-pills-settings" type="button" role="tab" aria-controls="v-pills-settings" aria-selected="false"><i class="fas fa-cogs fa-2x"></i></button>
       </div>
       <div class="tab-content glass-content" id="v-pills-tabContent">
@@ -30,60 +43,202 @@
         <!--END Dashboard PANE-->
 
         <!--START ATTENDANCE  PANE-->
-        <div class="tab-pane fade" id="v-pills-librarian" role="tabpanel" aria-labelledby="v-pills-librarian-tab">
+        <div class="tab-pane fade" id="v-pills-attendance" role="tabpanel" aria-labelledby="v-pills-attendance-tab">
            <div class="row">
-             <div class="col-4">
-               <modal_button @showmodal="launchModal('main-modal')" :name="'Add'" :icon_classes="'fas fa-plus'" :title="'Add New School Library'" :modalSize="'modal-lg'" :componentType="'form'" :dataPath="'library/create'"></modal_button>
+             <div class="col-xl-4">
+               <modal_button @showmodal="launchModal('main-modal')" :name="'Add'" :icon_classes="'fas fa-plus'" :title="'Add New Attendance'" :modalSize="'modal-lg'" :componentType="'form'" :dataPath="'academic/attendance/create'"></modal_button>
              </div>
-             <div class="col-8"></div>
-           </div>
-           <div class="row mt-4 mb-4">
-            </div>
-           <div class="row">
-             <div class="col-3"></div>
-             <div class="col-6">
+             <div class="col-xl-4">
                <modal_button @showmodal="launchModal('main-modal')" :name="'Student Attendance'" :icon_classes="'far fa-eye'" :title="'Attendance'" :modalSize="'modal-xl'" :componentType="'table'" :dataPath="'academic/attendance/index'"></modal_button>
              </div>
-             <div class="col-3"></div>
+             <div class="col-xl-4"></div>
+           </div>
+           <div class="col-12">
+             <statistic-card-data :statistics="statistics" />
+           </div>
+           <div class="row">
+            <div class="col">
+              <main_menu></main_menu>
+            </div>
            </div>
         </div>
         <!--END ATTENDANCE  PANE-->
 
-        <!--START LIBRARY  PANE-->
-        <div class="tab-pane fade" id="v-pills-library" role="tabpanel" aria-labelledby="v-pills-library-tab">
-            
+        <!--START PLANNER PANE-->
+        <div class="tab-pane fade" id="v-pills-planner" role="tabpanel" aria-labelledby="v-pills-planner-tab">
+           <div class="row">
+             <div class="col-xl-4">
+               <modal_button @showmodal="launchModal('main-modal')" :name="'Add'" :icon_classes="'fas fa-plus'" :title="'Add New Lesson Planner'" :modalSize="'modal-lg'" :componentType="'form'" :dataPath="''"></modal_button>
+             </div>
+             <div class="col-xl-4">
+               <modal_button @showmodal="launchModal('main-modal')" :name="'Lesson Plans'" :icon_classes="'far fa-eye'" :title="'Lesson Plan'" :modalSize="'modal-xl'" :componentType="'table'" :dataPath="''"></modal_button>
+             </div>
+             <div class="col-xl-4"></div>
+           </div>
+           <div class="col-12">
+             <statistic-card-data :statistics="statistics" />
+           </div>
+           <div class="row">
+            <div class="col">
+              <main_menu></main_menu>
+            </div>
+           </div>
         </div>
-        <!--END LIBRARY  PANE-->
+        <!--ENDPLANNER  PANE-->
 
-        <!--START BOOK ISSUE PANES-->
-        <div class="tab-pane fade" id="v-pills-book-issue" role="tabpanel" aria-labelledby="v-pills-book-issue-tab">
-
+        <!--START ASSIGNMENT PANES-->
+        <div class="tab-pane fade" id="v-pills-assignment" role="tabpanel" aria-labelledby="v-pills-assignment-tab">
+           <div class="row">
+             <div class="col-xl-4">
+               <modal_button @showmodal="launchModal('main-modal')" :name="'Add'" :icon_classes="'fas fa-plus'" :title="'Add New Assignment'" :modalSize="'modal-lg'" :componentType="'form'" :dataPath="'academic/assignment/create'"></modal_button>
+             </div>
+             <div class="col-xl-4">
+               <modal_button @showmodal="launchModal('main-modal')" :name="'Assignments'" :icon_classes="'far fa-eye'" :title="'Assignment'" :modalSize="'modal-xl'" :componentType="'table'" :dataPath="''"></modal_button>
+             </div>
+             <div class="col-xl-4"></div>
+           </div>
+           <div class="col-12">
+             <statistic-card-data :statistics="statistics" />
+           </div>
+           <div class="row">
+            <div class="col">
+              <main_menu></main_menu>
+            </div>
+           </div>
         </div>
-        <!--END BOOK ISSUE TAB PANES-->
+        <!--END ASSIGNMENT TAB PANES-->
 
-        <!--START BOOK CATEGORIES  PANE-->
-        <div class="tab-pane fade" id="v-pills-book-category" role="tabpanel" aria-labelledby="v-pills-book-category-tab">
-
+        <!--START SUBJECTS  PANE-->
+        <div class="tab-pane fade" id="v-pills-subjects" role="tabpanel" aria-labelledby="v-pills-subjects-tab">
+           <div class="row">
+             <div class="col-xl-4">
+               <modal_button @showmodal="launchModal('main-modal')" :name="'Add'" :icon_classes="'fas fa-plus'" :title="'Add New Subject'" :modalSize="'modal-lg'" :componentType="'form'" :componentName="'MainForm'" :dataPath="'academic/subject/create'"></modal_button>
+             </div>
+             <div class="col-xl-4">
+               <modal_button @showmodal="launchModal('main-modal')" :name="'Subjects'" :icon_classes="'far fa-eye'" :title="'Subjects'" :modalSize="'modal-xl'" :componentType="'table'" :componentName="'TableData'" :dataPath="'academic/subject/index'"></modal_button>
+             </div>
+             <div class="col-xl-4"></div>
+           </div>
+           <div class="col-12">
+             <statistic-card-data :statistics="statistics" />
+           </div>
+           <div class="row">
+            <div class="col">
+              <main_menu></main_menu>
+            </div>
+           </div>
         </div>
-        <!--END BOOK CATEGORIES  PANE-->
+        <!--END  SUBJECTS PANE-->
 
-        <!--START AUTHOR  PANE-->
-        <div class="tab-pane fade" id="v-pills-author" role="tabpanel" aria-labelledby="v-pills-author-tab">
-
+        <!--START CLUBS  PANE-->
+        <div class="tab-pane fade" id="v-pills-club" role="tabpanel" aria-labelledby="v-pills-club-tab">
+           <div class="row">
+             <div class="col-xl-4">
+               <modal_button @showmodal="launchModal('main-modal')" :name="'Add'" :icon_classes="'fas fa-plus'" :title="'Add New Club'" :modalSize="'modal-lg'" :componentType="'form'" :componentName="'MainForm'" :dataPath="'academic/club/create'"></modal_button>
+             </div>
+             <div class="col-xl-4">
+               <modal_button @showmodal="launchModal('main-modal')" :name="'Clubs'" :icon_classes="'far fa-eye'" :title="'Clubs'" :modalSize="'modal-xl'" :componentType="'table'" :componentName="'TableData'" :dataPath="'academic/club/index'"></modal_button>
+             </div>
+             <div class="col-xl-4"></div>
+           </div>
+           <div class="col-12">
+             <statistic-card-data :statistics="statistics" />
+           </div>
+           <div class="row">
+            <div class="col">
+              <main_menu></main_menu>
+            </div>
+           </div>
         </div>
-        <!--END AUTHOR  PANE-->
+        <!--END CLUBS  PANE-->
 
-        <!--START BOOK PANE-->
-        <div class="tab-pane fade" id="v-pills-book" role="tabpanel" aria-labelledby="v-pills-book-tab">
-
+        <!--START SPORT  PANE-->
+        <div class="tab-pane fade" id="v-pills-sport" role="tabpanel" aria-labelledby="v-pills-sport-tab">
+           <div class="row">
+             <div class="col-xl-4">
+               <modal_button @showmodal="launchModal('main-modal')" :name="'Add'" :icon_classes="'fas fa-plus'" :title="'Add New Sport'" :modalSize="'modal-lg'" :componentType="'form'" :componentName="'MainForm'" :dataPath="'academic/sport/create'"></modal_button>
+             </div>
+             <div class="col-xl-4">
+               <modal_button @showmodal="launchModal('main-modal')" :name="'Sports'" :icon_classes="'far fa-eye'" :title="'Sports'" :modalSize="'modal-xl'" :componentType="'table'" :componentName="'TableData'" :dataPath="'academic/sport/index'"></modal_button>
+             </div>
+             <div class="col-xl-4"></div>
+           </div>
+           <div class="col-12">
+             <statistic-card-data :statistics="statistics" />
+           </div>
+           <div class="row">
+            <div class="col">
+              <main_menu></main_menu>
+            </div>
+           </div>
         </div>
-        <!--END BOOK PANE-->
+        <!--END SPORT  PANE-->
 
-        <!--START PUBLISHER PANE-->
-        <div class="tab-pane fade" id="v-pills-publisher" role="tabpanel" aria-labelledby="v-pills-publisher-tab">
-
+        <!--START LEVEL PANE-->
+        <div class="tab-pane fade" id="v-pills-level" role="tabpanel" aria-labelledby="v-pills-level-tab">
+           <div class="row">
+             <div class="col-xl-4">
+               <modal_button @showmodal="launchModal('main-modal')" :name="'Add'" :icon_classes="'fas fa-plus'" :title="'Add New Level'" :modalSize="'modal-lg'" :componentType="'form'" :componentName="'MainForm'" :dataPath="'academic/level/create'"></modal_button>
+             </div>
+             <div class="col-xl-4">
+               <modal_button @showmodal="launchModal('main-modal')" :name="'Levels'" :icon_classes="'far fa-eye'" :title="'Levels'" :modalSize="'modal-xl'" :componentType="'table'" :componentName="'TableData'" :dataPath="'academic/level/index'"></modal_button>
+             </div>
+             <div class="col-xl-4"></div>
+           </div>
+           <div class="col-12">
+             <statistic-card-data :statistics="statistics" />
+           </div>
+           <div class="row">
+            <div class="col">
+              <main_menu></main_menu>
+            </div>
+          </div>
         </div>
-        <!--END PUBLISHER PANE-->
+        <!--END LEVEL PANE-->
+
+        <!--START STREAM PANE-->
+        <div class="tab-pane fade" id="v-pills-stream" role="tabpanel" aria-labelledby="v-pills-stream-tab">
+           <div class="row">
+             <div class="col-xl-4">
+               <modal_button @showmodal="launchModal('main-modal')" :name="'Add'" :icon_classes="'fas fa-plus'" :title="'Add New Stream'" :modalSize="'modal-lg'" :componentType="'form'" :componentName="'MainForm'" :dataPath="'academic/stream/create'"></modal_button>
+             </div>
+             <div class="col-xl-4">
+               <modal_button @showmodal="launchModal('main-modal')" :name="'Streams'" :icon_classes="'far fa-eye'" :title="'Streams'" :modalSize="'modal-xl'" :componentType="'table'" :componentName="'TableData'" :dataPath="'academic/stream/index'"></modal_button>
+             </div>
+             <div class="col-xl-4"></div>
+           </div>
+           <div class="col-12">
+             <statistic-card-data :statistics="statistics" />
+           </div>
+           <div class="row">
+            <div class="col">
+              <main_menu></main_menu>
+            </div>
+          </div>
+        </div>
+        <!--END STREAM PANE-->
+
+        <!--START SECTION PANE-->
+        <div class="tab-pane fade" id="v-pills-section" role="tabpanel" aria-labelledby="v-pills-section-tab">
+           <div class="row">
+             <div class="col-xl-4">
+               <modal_button @showmodal="launchModal('main-modal')" :name="'Add'" :icon_classes="'fas fa-plus'" :title="'Add New Section'" :modalSize="'modal-lg'" :componentType="'form'" :componentName="'MainForm'" :dataPath="'academic/section/create'"></modal_button>
+             </div>
+             <div class="col-xl-4">
+               <modal_button @showmodal="launchModal('main-modal')" :name="'Section'" :icon_classes="'far fa-eye'" :title="'Sections'" :modalSize="'modal-xl'" :componentType="'table'" :componentName="'TableData'" :dataPath="'academic/section/index'"></modal_button>
+             </div>
+             <div class="col-xl-4"></div>
+           </div>
+           <div class="col-12">
+             <statistic-card-data :statistics="statistics" />
+           </div>
+           <div class="row">
+            <div class="col">
+              <main_menu></main_menu>
+            </div>
+          </div>
+        </div>
+        <!--END SECTION PANE-->
 
         <!--START SETTINGS TAB-->
         <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
@@ -188,6 +343,8 @@ import BarChart from '../components/charts/BarChart.vue'
 import modal_button from '../../../inteli_library/ui/components/buttons/modal-button.vue'
 import main_modal from '../../../inteli_library/ui/components/modals/modal.vue'
 
+import main_menu from '../../../Theme/widgets/menus/main-menu.vue'
+
 export default defineComponent({
         components: {
             Footer,
@@ -196,6 +353,7 @@ export default defineComponent({
             DetailCardData,
             modal_button,
             main_modal,
+            main_menu
         },
         data() {
             return {

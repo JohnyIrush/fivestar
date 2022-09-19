@@ -24,9 +24,11 @@ class UpdateSectionRequest extends FormRequest
     public function rules()
     {
         return [
+            'thumbnail' => 'required|string',
             'stream_id' => 'required|integer',
             'level_id' => 'required|integer',
             'teacher_id' => 'required|integer',
+            'status' => 'required'
         ];
     }
 }

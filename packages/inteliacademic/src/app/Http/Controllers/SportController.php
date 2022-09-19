@@ -23,9 +23,25 @@ class SportController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Sport $sport, Table $table)
     {
-        return response()->json(Sport::all());
+
+        return $table->table(
+            $sport, 
+            Sport::all()
+            ,
+            [
+            ], 
+            []
+           , 
+           ["icon_path" => "image"],
+           [
+            'store' => "academic/club/store",
+            'update' => "academic/club/update",
+            "delete" => "academic/club/destroy"
+           ],
+           ["created_at","updated_at"]
+        );
     }
 
     /**
@@ -35,7 +51,15 @@ class SportController extends Controller
      */
     public function create(Sport $sport, Form $form)
     {
-        return $form->form($sport, [],
+        return $form->form($sport, 
+            [
+            "status" => [
+                "status" => [["id" => 0,"status" => "False"],["id" => 1, "status" =>"True"]],
+                "name" => "status",
+                "value" => "id",
+                "limit" => 1,
+            ],
+            ],
             ['id','created_at', 'updated_at'], 
             [
             'store' => "academic/sport/store",

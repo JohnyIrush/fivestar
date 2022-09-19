@@ -23,7 +23,10 @@ class SubjectSeeder extends Seeder
         DB::table('department_subject')->truncate();
         Subject::truncate();
 
+        $faker = \Faker\Factory::create();
+
         Subject::create([
+            'avatar' => $faker->imageUrl(),
             'subject' => 'Mathematics',
             'duration' => 40,
             'lessons' => 0,
@@ -32,6 +35,7 @@ class SubjectSeeder extends Seeder
 
 
         Subject::create([
+            'avatar' => $faker->imageUrl(),
             'subject' => 'Chemistry',
             'duration' => 40,
             'lessons' => 0,
@@ -39,6 +43,7 @@ class SubjectSeeder extends Seeder
         ]);
 
         Subject::create([
+            'avatar' => $faker->imageUrl(),
             'subject' => 'Physics',
             'duration' => 40,
             'lessons' => 0,
@@ -47,6 +52,7 @@ class SubjectSeeder extends Seeder
         ]);
 
         Subject::create([
+            'avatar' => $faker->imageUrl(),
             'subject' => 'Computer Studies',
             'duration' => 40,
             'lessons' => 0,
@@ -55,6 +61,7 @@ class SubjectSeeder extends Seeder
         ]);
 
         Subject::create([
+            'avatar' => $faker->imageUrl(),
             'subject' => 'Biology',
             'duration' => 40,
             'lessons' => 0,
@@ -62,6 +69,7 @@ class SubjectSeeder extends Seeder
         ]);
 
         Subject::create([
+            'avatar' => $faker->imageUrl(),
             'subject' => 'Geography',
             'duration' => 40,
             'lessons' => 0,
@@ -70,6 +78,7 @@ class SubjectSeeder extends Seeder
         ]);
 
         Subject::create([
+            'avatar' => $faker->imageUrl(),
             'subject' => 'Psychology',
             'duration' => 40,
             'lessons' => 0,
@@ -78,6 +87,7 @@ class SubjectSeeder extends Seeder
         ]);
 
         Subject::create([
+            'avatar' => $faker->imageUrl(),
             'subject' => 'Music',
             'duration' => 40,
             'lessons' => 0,

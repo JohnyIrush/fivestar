@@ -14,6 +14,7 @@ import { store } from '../../../../../store/store.js'
             title: String,
             modalSize: String,
             componentType: String,
+            componentName: String,
             dataPath: String
         },
         components: {
@@ -63,7 +64,8 @@ import { store } from '../../../../../store/store.js'
             {
                store.state.Modal.title = this.title 
                store.state.Modal.modalSize = this.modalSize 
-               store.state.Modal.componentType = this.componentType 
+               store.state.Modal.componentType = this.componentType
+               store.state.Modal.componentName = this.componentName 
 
                if(this.componentType == 'table')
                {

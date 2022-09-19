@@ -25,6 +25,7 @@ class StoreStreamRequest extends FormRequest
     {
         return [
         "stream" => 'required|string|unique:streams',
+        "avatar" => 'required',
         "status" => 'required'
         ];
     }

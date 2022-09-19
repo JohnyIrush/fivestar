@@ -106,7 +106,8 @@ export const store = createStore({
         profile: [],
         Modal:{
             title: '',
-            ComponentType: ''
+            ComponentType: '',
+            ComponentName: ''
         },
         form:{
             formEditData: [],
@@ -125,6 +126,12 @@ export const store = createStore({
             collapseId: '',
             componentId: '',
             componentName: ''
+        },
+        TabularCard:{
+
+        },
+        MiniTabularCard:{
+
         }
       }
     },

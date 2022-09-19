@@ -25,6 +25,7 @@ class UpdateStreamRequest extends FormRequest
     {
         return [
           "stream" => 'required|string',
+          "avatar" => 'required',
           "status" => 'required'
         ];
     }

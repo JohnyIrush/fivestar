@@ -23,9 +23,31 @@ class ClubController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Club $club, Table $table)
     {
-        return response()->json(Club::all());
+
+        return $table->table(
+            $club, 
+            Club::all()
+            ,
+            [
+            "status" => [
+                "status" => [["id" => 0,"status" => "False"],["id" => 1, "status" =>"True"]],
+                "name" => "status",
+                "value" => "id",
+                "limit" => 1,
+            ],
+            ], 
+            []
+           , 
+           ["icon_path" => "image"],
+           [
+            'store' => "academic/club/store",
+            'update' => "academic/club/update",
+            "delete" => "academic/club/destroy"
+           ],
+           ["created_at","updated_at"]
+        );
     }
 
     /**

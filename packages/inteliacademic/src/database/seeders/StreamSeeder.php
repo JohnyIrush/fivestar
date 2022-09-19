@@ -17,12 +17,16 @@ class StreamSeeder extends Seeder
     {
         Stream::truncate();
 
+        $faker = \Faker\Factory::create();
+
         Stream::create([
+            "avatar" => $faker->imageUrl(),
             'stream' => 'Purple',
             'status' => true,
         ]);
 
         Stream::create([
+            "avatar" => $faker->imageUrl(),
             'stream' => 'Pink',
             'status' => true,
         ]);

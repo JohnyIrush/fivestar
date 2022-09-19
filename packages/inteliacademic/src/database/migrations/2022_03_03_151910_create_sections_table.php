@@ -15,6 +15,7 @@ class CreateSectionsTable extends Migration
     {
         Schema::create('sections', function (Blueprint $table) {
             $table->id();
+            $table->string('thumbnail');
             $table->integer('level_id');
             $table->integer('stream_id');
             $table->integer("teacher_id");

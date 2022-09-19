@@ -14,6 +14,7 @@ class Stream extends Model
 
     protected $fillable = [
         "stream",
+        "avatar",
         "status"
     ];
 

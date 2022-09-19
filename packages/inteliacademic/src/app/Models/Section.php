@@ -12,9 +12,11 @@ class Section extends Model
     use HasFactory;
 
     protected $fillable = [
+        'thumbnail',
         "stream_id",
         "level_id",
-        "teacher_id"
+        "teacher_id",
+        "status"
     ];
 
     /**
