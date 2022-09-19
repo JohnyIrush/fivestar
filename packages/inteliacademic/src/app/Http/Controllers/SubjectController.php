@@ -15,6 +15,8 @@ use Softwarescares\Intelilibrary\app\Plugins\Model\Form;
 use Softwarescares\Intelilibrary\app\Plugins\Model\Table;
 use Softwarescares\Intelilibrary\app\Plugins\Model\Card;
 
+use Illuminate\Http\Request;
+
 class SubjectController extends Controller
 {
     /**
@@ -29,16 +31,8 @@ class SubjectController extends Controller
             $subject, 
             Subject::with(['teachers','levels','department'])->get()
             ,
-            [
-            "status" => [
-                "status" => [["id" => 0,"status" => "False"],["id" => 1, "status" =>"True"]],
-                "name" => "status",
-                "value" => "id",
-                "limit" => 1,
-            ],
-            ], 
-            [
-            ]
+            [], 
+            []
            , 
            ["avatar" => "image"],
            [
@@ -69,18 +63,20 @@ class SubjectController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreSubjectRequest  $request
+     * @param  \App\Http\Requests\StoreStreamRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreSubjectRequest $request)
+    public function store(StoreSubjectRequest $request, Subject $subject, Store $store)
     {
-        //
+        $subject = $store->store($request, $subject);
+
+        return response()->json($subject);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Subject  $subject
+     * @param  \App\Models\Stream  $stream
      * @return \Illuminate\Http\Response
      */
     public function show(Subject $subject)
@@ -91,7 +87,7 @@ class SubjectController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Subject  $subject
+     * @param  \App\Models\Stream  $stream
      * @return \Illuminate\Http\Response
      */
     public function edit(Subject $subject)
@@ -102,23 +98,28 @@ class SubjectController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateSubjectRequest  $request
-     * @param  \App\Models\Subject  $subject
+     * @param  \App\Http\Requests\UpdateStreamRequest  $request
+     * @param  \App\Models\Stream  $stream
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateSubjectRequest $request, Subject $subject)
+    public function update(UpdateSubjectRequest $request, Subject $subject, Update $update)
     {
-        //
+        $subject = $update->update($request, $subject,["id" => $request->input("id")]);
+
+        return response()->json($subject);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Subject  $subject
+     * @param  \App\Models\Stream  $stream
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Subject $subject)
+    public function destroy(Request $request, Subject $subject, Delete $delete)
     {
-        //
+        $subject = $delete->delete($request, $subject,["id" => $request->input("id")]);
+
+        return response()->json($subject);
+
     }
 }

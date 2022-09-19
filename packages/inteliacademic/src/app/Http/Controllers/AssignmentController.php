@@ -27,9 +27,23 @@ class AssignmentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Assignment $assignment, Table $table)
     {
-        //
+        return $table->table(
+            $assignment, 
+            Assignment::all()
+            ,
+            [], 
+            []
+           , 
+           ["avatar" => "image"],
+           [
+            'store' => "academic/assignment/store",
+            'update' => "academic/assignment/update",
+            "delete" => "academic/assignment/destroy"
+           ],
+           ["created_at","updated_at"]
+        );
     }
 
     /**
@@ -40,13 +54,13 @@ class AssignmentController extends Controller
     public function create(Assignment $assignment, Form $form)
     {
         return $form->form($assignment, [
-                [
+                "level_id" => [
                 "level_id" => Level::all(),
                 "name" => "level",
                 "value" => "id",
                 "limit" => 10,
                  ],
-                [
+                "subject_id" =>[
                 "subject_id" => Subject::all(),
                 "name" => "subject",
                 "value" => "id",

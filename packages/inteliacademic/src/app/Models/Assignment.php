@@ -11,6 +11,7 @@ class Assignment extends Model
 
     protected $fillable = [
             "level_id",
+            "subject_id",
             "assignment",
             "start_date",
             "end_date",

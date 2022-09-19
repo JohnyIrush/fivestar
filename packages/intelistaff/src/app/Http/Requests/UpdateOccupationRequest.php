@@ -24,7 +24,9 @@ class UpdateOccupationRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+        "occupation" => "required|string",
+        "salary" => "required|integer",
+        "icon" => "required|string"
         ];
     }
 }

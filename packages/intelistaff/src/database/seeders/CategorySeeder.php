@@ -17,11 +17,15 @@ class CategorySeeder extends Seeder
 
         Category::truncate();
 
+        $faker = \Faker\Factory::create();
+
         Category::create([
+            "icon" => $faker->imageUrl(),
             "category" => "Teaching Staff"
         ]);
 
         Category::create([
+            "icon" => $faker->imageUrl(),
             "category" => "Non-Teaching Staff"
         ]);
     }

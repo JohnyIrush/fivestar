@@ -12,6 +12,21 @@ class Staff extends Model
     use HasFactory;
 
 
+    protected $fillable = [
+            "user_id",
+            "firstname",
+            "lastname",
+            "bio",
+            "career",
+            "gender_id",
+            "address",
+            "title",
+            "type",
+            "category_id",
+            "occupation_id"
+           ];
+
+
     public function user()
     {
         return $this->belongsTo(User::class);

@@ -13,7 +13,7 @@ class StoreOccupationRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,9 @@ class StoreOccupationRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+        "occupation" => "required|string",
+        "salary" => "required|integer",
+        "icon" => "required|string"
         ];
     }
 }

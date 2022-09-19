@@ -17,18 +17,18 @@ class CreateStaffTable extends Migration
             $table->id();
             $table->integer("user_id");
 
-            $table->text("firstname");
-            $table->text("lastname");
+            $table->string("firstname");
+            $table->string("lastname");
             $table->text("bio");
-            $table->text("career");
+            $table->string("career");
             $table->integer("gender_id");
-            $table->text("address");
+            $table->string("address");
 
-            $table->text("title");
+            $table->string("title");
 
             $table->string("type");
-            $table->text("category_id");
-            $table->text("occupation_id");
+            $table->integer("category_id");
+            $table->integer("occupation_id");
 
             $table->timestamps();
         });

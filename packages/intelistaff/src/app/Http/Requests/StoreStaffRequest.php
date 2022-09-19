@@ -24,7 +24,17 @@ class StoreStaffRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            "user_id" => "required|integer",
+            "firstname" => "required|string",
+            "lastname" => "required|string",
+            "bio" => "required|string",
+            "career" => "required|string",
+            "gender_id" => "required|integer",
+            "address" => "required|string",
+            "title" => "required|string",
+            "type" => "required|string",
+            "category_id" => "required|integer",
+            "occupation_id" => "required|integer"
         ];
     }
 }

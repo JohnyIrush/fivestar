@@ -15,7 +15,7 @@ class UIController extends Controller
      */
     public function staff()
     {
-        return Inertia::render('Staff/windows/Staff');
+        return Inertia::render('inteli_staff/ui/windows/Staff');
     }
 
 }

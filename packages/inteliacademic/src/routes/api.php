@@ -93,7 +93,7 @@ Route::post("academic/attendance/store",[AttendanceController::class, "store"]);
 Route::post("academic/attendance/update",[AttendanceController::class, "update"]);
 Route::post("academic/attendance/destroy",[AttendanceController::class, "destroy"]);
 
-
+Route::get("academic/assignment/index",[AssignmentController::class, "index"]);
 Route::get("academic/assignment/create",[AssignmentController::class, "create"]);
 Route::post("academic/assignment/store",[AssignmentController::class, "store"]);
 Route::post("academic/assignment/update",[AssignmentController::class, "update"]);

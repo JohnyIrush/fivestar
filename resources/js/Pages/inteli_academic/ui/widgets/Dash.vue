@@ -46,10 +46,10 @@
         <div class="tab-pane fade" id="v-pills-attendance" role="tabpanel" aria-labelledby="v-pills-attendance-tab">
            <div class="row">
              <div class="col-xl-4">
-               <modal_button @showmodal="launchModal('main-modal')" :name="'Add'" :icon_classes="'fas fa-plus'" :title="'Add New Attendance'" :modalSize="'modal-lg'" :componentType="'form'" :dataPath="'academic/attendance/create'"></modal_button>
+               <modal_button @showmodal="launchModal('main-modal')" :name="'Add'" :icon_classes="'fas fa-plus'" :title="'Add New Attendance'" :modalSize="'modal-lg'" :componentType="'form'"  :componentName="'MainForm'" :dataPath="'academic/attendance/create'"></modal_button>
              </div>
              <div class="col-xl-4">
-               <modal_button @showmodal="launchModal('main-modal')" :name="'Student Attendance'" :icon_classes="'far fa-eye'" :title="'Attendance'" :modalSize="'modal-xl'" :componentType="'table'" :dataPath="'academic/attendance/index'"></modal_button>
+               <modal_button @showmodal="launchModal('main-modal')" :name="'Student Attendance'" :icon_classes="'far fa-eye'" :title="'Attendance'" :modalSize="'modal-xl'" :componentType="'table'" :componentName="'TableData'" :dataPath="'academic/attendance/index'"></modal_button>
              </div>
              <div class="col-xl-4"></div>
            </div>
@@ -68,10 +68,10 @@
         <div class="tab-pane fade" id="v-pills-planner" role="tabpanel" aria-labelledby="v-pills-planner-tab">
            <div class="row">
              <div class="col-xl-4">
-               <modal_button @showmodal="launchModal('main-modal')" :name="'Add'" :icon_classes="'fas fa-plus'" :title="'Add New Lesson Planner'" :modalSize="'modal-lg'" :componentType="'form'" :dataPath="''"></modal_button>
+               <modal_button @showmodal="launchModal('main-modal')" :name="'Add'" :icon_classes="'fas fa-plus'" :title="'Add New Losson Plan'" :modalSize="'modal-lg'" :componentType="'form'" :componentName="'MainForm'" :dataPath="''"></modal_button>
              </div>
              <div class="col-xl-4">
-               <modal_button @showmodal="launchModal('main-modal')" :name="'Lesson Plans'" :icon_classes="'far fa-eye'" :title="'Lesson Plan'" :modalSize="'modal-xl'" :componentType="'table'" :dataPath="''"></modal_button>
+               <modal_button @showmodal="launchModal('main-modal')" :name="'Lesson Plans'" :icon_classes="'far fa-eye'" :title="'Lesson Plans'" :modalSize="'modal-xl'" :componentType="'table'" :componentName="'TableData'" :dataPath="''"></modal_button>
              </div>
              <div class="col-xl-4"></div>
            </div>
@@ -84,16 +84,16 @@
             </div>
            </div>
         </div>
-        <!--ENDPLANNER  PANE-->
+        <!--END PLANNER  PANE-->
 
         <!--START ASSIGNMENT PANES-->
         <div class="tab-pane fade" id="v-pills-assignment" role="tabpanel" aria-labelledby="v-pills-assignment-tab">
            <div class="row">
              <div class="col-xl-4">
-               <modal_button @showmodal="launchModal('main-modal')" :name="'Add'" :icon_classes="'fas fa-plus'" :title="'Add New Assignment'" :modalSize="'modal-lg'" :componentType="'form'" :dataPath="'academic/assignment/create'"></modal_button>
+               <modal_button @showmodal="launchModal('main-modal')" :name="'Add'" :icon_classes="'fas fa-plus'" :title="'Add New Assignment'" :modalSize="'modal-lg'" :componentType="'form'" :componentName="'MainForm'" :dataPath="'academic/assignment/create'"></modal_button>
              </div>
              <div class="col-xl-4">
-               <modal_button @showmodal="launchModal('main-modal')" :name="'Assignments'" :icon_classes="'far fa-eye'" :title="'Assignment'" :modalSize="'modal-xl'" :componentType="'table'" :dataPath="''"></modal_button>
+               <modal_button @showmodal="launchModal('main-modal')" :name="'Assignments'" :icon_classes="'far fa-eye'" :title="'Assignments'" :modalSize="'modal-xl'" :componentType="'table'" :componentName="'TableData'" :dataPath="'academic/assignment/index'"></modal_button>
              </div>
              <div class="col-xl-4"></div>
            </div>

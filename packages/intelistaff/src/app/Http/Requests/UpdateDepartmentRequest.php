@@ -24,7 +24,8 @@ class UpdateDepartmentRequest extends FormRequest
     public function rules()
     {
         return [
-            //
-        ];
+          "icon" => "required|string",
+          "department" => "required|string"        
+      ];
     }
 }

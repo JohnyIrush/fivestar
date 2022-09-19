@@ -31,12 +31,6 @@ class ClubController extends Controller
             Club::all()
             ,
             [
-            "status" => [
-                "status" => [["id" => 0,"status" => "False"],["id" => 1, "status" =>"True"]],
-                "name" => "status",
-                "value" => "id",
-                "limit" => 1,
-            ],
             ], 
             []
            , 

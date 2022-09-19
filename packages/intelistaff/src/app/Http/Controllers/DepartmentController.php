@@ -6,6 +6,16 @@ use Softwarescares\Intelistaff\app\Http\Requests\StoreDepartmentRequest;
 use Softwarescares\Intelistaff\app\Http\Requests\UpdateDepartmentRequest;
 use Softwarescares\Intelistaff\app\Models\Department;
 
+use Softwarescares\Intelilibrary\app\Actions\Model\Store;
+use Softwarescares\Intelilibrary\app\Actions\Model\Update;
+use Softwarescares\Intelilibrary\app\Actions\Model\Delete;
+
+use Softwarescares\Intelilibrary\app\Plugins\Model\Form;
+use Softwarescares\Intelilibrary\app\Plugins\Model\Table;
+use Softwarescares\Intelilibrary\app\Plugins\Model\Card;
+
+use Illuminate\Http\Request;
+
 class DepartmentController extends Controller
 {
     /**
@@ -13,9 +23,24 @@ class DepartmentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Department $department, Table $table)
     {
-        return response()->json(Department::all());
+
+        return $table->table(
+            $department, 
+            Department::all()
+            ,
+            [], 
+            []
+           , 
+           ["icon" => "image"],
+           [
+            'store' => "staff/department/store",
+            'update' => "staff/department/update",
+            "delete" => "staff/department/destroy"
+           ],
+           ["created_at","updated_at"]
+        );
     }
 
     /**
@@ -23,9 +48,16 @@ class DepartmentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Department $department,Form $form)
     {
-        //
+        return $form->form($department, [],
+            ['id','created_at', 'updated_at'], 
+            [
+            'store' => "staff/department/store",
+            'update' => "staff/department/update",
+            "delete" => "staff/department/destroy"
+            ]
+           );
     }
 
     /**
@@ -34,9 +66,11 @@ class DepartmentController extends Controller
      * @param  \App\Http\Requests\StoreDepartmentRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreDepartmentRequest $request)
+    public function store(StoreDepartmentRequest $request, Department $department, Store $store)
     {
-        //
+        $department = $store->store($request, $department);
+ 
+        return response()->json($department);
     }
 
     /**
@@ -68,9 +102,11 @@ class DepartmentController extends Controller
      * @param  \App\Models\Department  $department
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateDepartmentRequest $request, Department $department)
+    public function update(UpdateDepartmentRequest $request, Department $department, Update $update)
     {
-        //
+        $department = $update->update($request, $department,["id" => $request->input("id")]);
+
+        return response()->json($department);
     }
 
     /**
@@ -79,8 +115,11 @@ class DepartmentController extends Controller
      * @param  \App\Models\Department  $department
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Department $department)
+    public function destroy(Request $request, Department $department, Delete $delete)
     {
-        //
+        $department = $delete->delete($request, $department,["id" => $request->input("id")]);
+
+        return response()->json($department);
+
     }
 }

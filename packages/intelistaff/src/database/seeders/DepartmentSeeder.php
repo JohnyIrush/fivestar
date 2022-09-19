@@ -16,23 +16,30 @@ class DepartmentSeeder extends Seeder
     {
         Department::truncate();
 
+        $faker = \Faker\Factory::create();
+
         Department::create([
+            "icon" => $faker->imageUrl(),
             'department' => 'Mathematics'
         ]);
 
         Department::create([
+            "icon" => $faker->imageUrl(),
             'department' => 'Science'
         ]);
 
         Department::create([
+            "icon" => $faker->imageUrl(),
             'department' => 'Humanities'
         ]);
 
         Department::create([
+            "icon" => $faker->imageUrl(),
             'department' => 'Psychology'
         ]);
 
         Department::create([
+            "icon" => $faker->imageUrl(),
             'department' => 'Applied'
         ]);
     }

@@ -42,6 +42,7 @@ import { store } from '../../../../../store/store.js'
                  this.crud = response.data[3]
 
                  store.state.form.fields = response.data
+                 console.log(store.state.form.fields)
               })
             },
             passCardData(url)
@@ -58,6 +59,7 @@ import { store } from '../../../../../store/store.js'
               axios.get(url)
               .then((response)=>{
                  store.state.Table.data = response.data
+                 console.log(store.state.Table.data)
               })
             },
             passComponentDetails()

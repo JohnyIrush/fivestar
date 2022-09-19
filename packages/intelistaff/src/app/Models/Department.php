@@ -11,6 +11,11 @@ class Department extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        "icon",
+        "department"
+    ];
+
     public function teachers()
     {
         return $this->hasMany(Teacher::class);

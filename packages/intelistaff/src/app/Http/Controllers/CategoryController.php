@@ -6,6 +6,17 @@ use Softwarescares\Intelistaff\app\Http\Requests\StoreCategoryRequest;
 use Softwarescares\Intelistaff\app\Http\Requests\UpdateCategoryRequest;
 use Softwarescares\Intelistaff\app\Models\Category;
 
+
+use Softwarescares\Intelilibrary\app\Actions\Model\Store;
+use Softwarescares\Intelilibrary\app\Actions\Model\Update;
+use Softwarescares\Intelilibrary\app\Actions\Model\Delete;
+
+use Softwarescares\Intelilibrary\app\Plugins\Model\Form;
+use Softwarescares\Intelilibrary\app\Plugins\Model\Table;
+use Softwarescares\Intelilibrary\app\Plugins\Model\Card;
+
+use Illuminate\Http\Request;
+
 class CategoryController extends Controller
 {
     /**
@@ -13,9 +24,24 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Category $category, Table $table)
     {
-        return response()->json(Category::all());
+
+        return $table->table(
+            $category, 
+            Category::all()
+            ,
+            [], 
+            []
+           , 
+           ["icon" => "image"],
+           [
+            'store' => "staff/category/store",
+            'update' => "staff/category/update",
+            "delete" => "staff/category/destroy"
+           ],
+           ["created_at","updated_at"]
+        );
     }
 
     /**
@@ -23,9 +49,16 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Category $category, Form $form)
     {
-        //
+        return $form->form($category, [],
+            ['id','created_at', 'updated_at'], 
+            [
+            'store' => "staff/category/store",
+            'update' => "staff/category/update",
+            "delete" => "staff/category/destroy"
+            ]
+           );
     }
 
     /**
@@ -34,9 +67,11 @@ class CategoryController extends Controller
      * @param  \App\Http\Requests\StoreCategoryRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreCategoryRequest $request)
+    public function store(StoreCategoryRequest $request, Category $category, Store $store)
     {
-        //
+        $category = $store->store($request, $category);
+
+        return response()->json($category);
     }
 
     /**
@@ -68,19 +103,24 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateCategoryRequest $request, Category $category)
+    public function update(UpdateCategoryRequest $request, Category $category, Update $update)
     {
-        //
+        $category = $update->update($request, $category,["id" => $request->input("id")]);
+
+        return response()->json($category);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Category  $category
+     * @param  \App\Models\Stream  $stream
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $category)
+    public function destroy(Request $request, Category $category, Delete $delete)
     {
-        //
+        $category = $delete->delete($request, $category,["id" => $request->input("id")]);
+
+        return response()->json($category);
+
     }
 }
