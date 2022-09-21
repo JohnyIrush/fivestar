@@ -16,47 +16,56 @@ class DaySeeder extends Seeder
     {
         Day::truncate();
 
+        $faker = \Faker\Factory::create();
+
         Day::create([
             'day' => 'Sunday',
-            'start' => '7:30am',
-            'end' => '4:00pm',
+            'start' => '07:30:00',
+            'end' => '04:00:00',
+            "status" => $faker->boolean()
         ]);
 
         Day::create([
             'day' => 'Monday',
-            'start' => '7:30am',
-            'end' => '4:00pm',
+            'start' => '07:30:00',
+            'end' => '04:00:00',
+            "status" => $faker->boolean()
         ]);
 
         Day::create([
             'day' => 'Tuesday',
-            'start' => '7:30am',
-            'end' => '4:00pm',
+            'start' => '7:30:00',
+            'end' => '4:00:00',
+            "status" => $faker->boolean()
         ]);
 
         Day::create([
             'day' => 'Wednesday',
-            'start' => '7:30am',
-            'end' => '4:00pm',
+            'start' => '07:30:00',
+            'end' => '04:00:00',
+            "status" => $faker->boolean()
         ]);
 
         Day::create([
             'day' => 'Thursday',
-            'start' => '7:30am',
-            'end' => '4:00pm',
+            'start' => '07:30:00',
+            'end' => '04:00:00',
+            "status" => $faker->boolean()
         ]);
 
         Day::create([
             'day' => 'Friday',
-            'start' => '7:30am',
-            'end' => '4:00pm',
+            'start' => '07:30:00',
+            'end' => '04:00:00',
+            "status" => $faker->boolean()
         ]);
 
 
         Day::create([
             'day' => 'Saturday',
-            'start' => '7:30am',
-            'end' => '4:00pm',
+            'start' => '07:30:00',
+            'end' => '04:00:00',
+            "status" => $faker->boolean()
         ]);
     }
 }

@@ -19,60 +19,70 @@ class DaySessionSeeder extends Seeder
         DaySession::truncate();
         DB::table('day_day_session')->truncate();
 
+        $faker = \Faker\Factory::create();
+
         DaySession::create([
             'session' => 'Morning',
             'type' => 'lesson',
-            'start' => '7:50am',
-            'end' => '9:50am',
+            'start' => '07:50:00',
+            'end' => '09:50:00',
+            'status' => $faker->boolean()
         ]);
 
         DaySession::create([
             'session' => 'Short Break',
             'type' => 'break',
-            'start' => '9:50am',
-            'end' => '10:00am',
+            'start' => '09:50:00',
+            'end' => '10:00:00',
+            'status' => $faker->boolean()
         ]);
 
         DaySession::create([
             'session' => 'Mid-Morning',
             'type' => 'lesson',
-            'start' => '10:00am',
-            'end' => '11:20am',
+            'start' => '10:00:00',
+            'end' => '11:20:00',
+            'status' => $faker->boolean()
         ]);
 
         DaySession::create([
             'session' => 'Long Break',
             'type' => 'break',
-            'start' => '11:20am',
-            'end' => '11:40am',
+            'start' => '11:20:00',
+            'end' => '11:40:00',
+            'status' => $faker->boolean()
         ]);
 
         DaySession::create([
             'session' => 'Before Lunch',
             'type' => 'lesson',
-            'start' => '11:40am',
-            'end' => '1:00pm',
+            'start' => '11:40:00',
+            'end' => '13:00:00',
+            'status' => $faker->boolean()
         ]);
 
         DaySession::create([
             'session' => 'Lunch',
             'type' => 'break',
-            'start' => '1:00pm',
-            'end' => '2:00pm',
+            'start' => '13:00:00',
+            'end' => '14:00:00',
+            'status' => $faker->boolean()
         ]);
 
         DaySession::create([
             'session' => 'Afternoon',
             'type' => 'lesson',
-            'start' => '2:00pm',
-            'end' => '4:00pm',
+            'start' => '14:00:00',
+            'end' => '16:00:00',
+            'status' => $faker->boolean()
         ]);
 
         DaySession::create([
             'session' => 'Games',
             'type' => 'break',
-            'start' => '4:00pm',
-            'end' => '5:00pm',
+            'start' => '16:00:00',
+            'end' => '17:00:00',
+            'status' => $faker->boolean()
         ]);
 
 

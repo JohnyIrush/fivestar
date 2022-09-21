@@ -16,7 +16,9 @@ class InteliExamDatabaseSeeder extends Seeder
         $this->call
         (
             [
-                ExamSeeder::class
+                ExamSeeder::class,
+                GradeSeeder::class,
+                MeritSeeder::class  
             ]
         );
     }

@@ -9,5 +9,8 @@ use Inertia\Inertia;
 
 class UIController extends Controller
 {
-
+	public function exam()
+	{
+		return Inertia::render("inteli_exam/ui/windows/Exam");
+	}
 }

@@ -55,6 +55,13 @@
            </div>
            <!-- end date input-->
 
+           <!-- start time input-->
+           <div v-else-if="renderInput(field.type,'time',field.field)" id="time-input" class="">
+            <label :for="field.field" class="form-label">{{field.field}}</label>
+            <input id="time" type="time" class="form-control" :value="formEditData[field.field]" :name="field.field" required :autocomplete="field.field" />
+           </div>
+           <!-- end time input-->
+
            <!-- start textarea input-->
            <div v-else-if="renderInput(field.type,'textarea',field.field)" id="text-input" class="">
             <label :for="field.field" class="form-label">{{field.field}}</label>
@@ -250,6 +257,10 @@ export default defineComponent({
         return true;
        }
        else if (!this.checkFieldHasOpions(fieldname) && inputtype == "date" &&  fieldtype == "date" || this.checkDataType(fieldtype,"date") || this.checkDataType(fieldtype,"timestamp"))
+       {
+        return true;
+       }
+       else if (!this.checkFieldHasOpions(fieldname) && inputtype == "time" &&  fieldtype == "time" || this.checkDataType(fieldtype,"time"))
        {
         return true;
        }

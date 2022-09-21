@@ -46,7 +46,15 @@
           </Link>
         </li>
         <li class="nav-item">
-          <Link class="nav-link  " :href="route('virtual-reality')">
+          <Link class="nav-link  " :href="route('timetable')">
+            <div class="icon text-white bg-gradient-info shadow border-radius-md text-center d-flex align-items-center justify-content-center">
+              <i class="fas fa-book-reader"></i>
+            </div>
+            <span class="nav-link-text ms-1">Timetable</span>
+          </Link>
+        </li>
+        <li class="nav-item">
+          <Link class="nav-link  " :href="route('exam')">
             <div class="icon text-white bg-gradient-info shadow border-radius-md text-center d-flex align-items-center justify-content-center">
               <i class="fas fa-book-reader"></i>
             </div>

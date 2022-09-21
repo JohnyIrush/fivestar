@@ -157,13 +157,13 @@ class AttendanceController extends Controller
     public function create(Attendance $attendance, Form $form)
     {
         return $form->form($attendance, [
-                [
-                "level_id" => Level::all(),
-                "name" => "level",
-                "value" => "id",
-                "limit" => 1,
+                "level_id" => [
+                    "level_id" => Level::all(),
+                    "name" => "level",
+                    "value" => "id",
+                    "limit" => 1,
                  ],
-        ],
+            ],
             ['id','created_at', 'updated_at'], 
             [
             'store' => "academic/attendance/store",

@@ -16,6 +16,8 @@ use Softwarescares\Intelilibrary\app\Plugins\Model\Card;
 
 use Illuminate\Http\Request;
 
+use DB;
+
 class StreamController extends Controller
 {
     /**

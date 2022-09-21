@@ -18,7 +18,7 @@
 
 php artisan serve
 php artisan make:Controller UIController
-php artisan make:model Attendance --all
+php artisan make:model Grade --all
 
 php artisan make:Controller UserManagerController -
 

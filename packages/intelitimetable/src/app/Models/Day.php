@@ -9,6 +9,13 @@ class Day extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        "day",
+        "start",
+        "end",
+        "status"
+    ];
+
     public function daySession()
     {
         return $this->belongsToMany(DaySession::class);

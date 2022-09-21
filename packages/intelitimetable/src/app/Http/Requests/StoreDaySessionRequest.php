@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests;
+namespace Softwarescares\Intelitimetable\app\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -13,7 +13,7 @@ class StoreDaySessionRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,11 @@ class StoreDaySessionRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'session' => "required|string",
+            'type' => "required|string",
+            'start' => "required",
+            'end' => "required",
+            'status' => "required",
         ];
     }
 }

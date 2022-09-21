@@ -13,7 +13,7 @@ class UpdateExamRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,12 @@ class UpdateExamRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            "cover" => "required|string",
+            "exam" => "required|string",
+            "level_id" => "required|integer", 
+            "term_id" => "required|integer",
+            "start_date" => "required|date",
+            "end_date" => "required|date",
         ];
     }
 }

@@ -15,9 +15,10 @@ class CreateDaysTable extends Migration
     {
         Schema::create('days', function (Blueprint $table) {
             $table->id();
-            $table->text('day');
-            $table->text('start');
-            $table->text('end');
+            $table->string('day');
+            $table->time('start');
+            $table->time('end');
+            $table->boolean('status');
             $table->timestamps();
         });
     }

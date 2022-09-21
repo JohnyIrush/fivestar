@@ -11,6 +11,14 @@ class Venue extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+            "venue",
+            "location",
+            'section_id',
+            'subject_id',
+            'status',
+    ];
+
     
     public function levels()
     {

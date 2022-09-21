@@ -20,6 +20,7 @@ class InteliTimetableDatabaseSeeder extends Seeder
              DaySeeder::class,
              DaySessionSeeder::class,
              TimetableSeeder::class,
+             TermSeeder::class
             ]
         );
     }

@@ -13,7 +13,7 @@ class UpdateVenueRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,11 @@ class UpdateVenueRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            "venue" => "required|string",
+            "location" => "required|string",
+            'section_id' => "required|integer",
+            'subject_id' => "required|integer",
+            'status' => "required",
         ];
     }
 }

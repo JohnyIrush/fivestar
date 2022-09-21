@@ -46,7 +46,6 @@ class DatabaseSeeder extends Seeder
                 InteliCommunicationDatabaseSeeder::class,
                 InteliConfigDatabaseSeeder::class,
                 InteliElearnDatabaseSeeder::class,
-                InteliExamDatabaseSeeder::class,
                 InteliFinanceDatabaseSeeder::class,
                 InteliInstallerDatabaseSeeder::class,
                 InteliLibraryDatabaseSeeder::class,
@@ -57,7 +56,8 @@ class DatabaseSeeder extends Seeder
                 InteliAcademicDatabaseSeeder::class,
                 InteliTeamDatabaseSeeder::class,
                 InteliTimetableDatabaseSeeder::class,
-                InteliPaypalDatabaseSeeder::class
+                InteliPaypalDatabaseSeeder::class,
+                InteliExamDatabaseSeeder::class,
             ]
         );
     }
