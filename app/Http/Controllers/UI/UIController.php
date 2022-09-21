@@ -31,10 +31,10 @@ class UIController extends Controller
     /**
      * Render the main finance
      */
-    public function finance()
+    /*public function finance()
     {
         return Inertia::render('Theme/windows/Finance');
-    }
+    }*/
 
 
     /**

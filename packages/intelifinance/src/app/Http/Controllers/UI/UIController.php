@@ -1,55 +1,21 @@
 <?php
 
-namespace App\Http\Controllers\UI;
+namespace Softwarescares\Intelifinance\app\Http\Controllers\UI;
 
-use App\Http\Controllers\Controller;
-use App\Models\UI;
-use App\Http\Requests\StoreUIRequest;
-use App\Http\Requests\UpdateUIRequest;
+use Softwarescares\Intelifinance\app\Http\Controllers\Controller;
+use Softwarescares\Intelifinance\app\Models\UI;
+use Softwarescares\Intelifinance\app\Http\Requests\StoreUIRequest;
+use Softwarescares\Intelifinance\app\Http\Requests\UpdateUIRequest;
 use Inertia\Inertia;
 
 class UIController extends Controller
 {
     /**
-     * Render the main dashboard
-     */
-    public function dashboard()
-    {
-        return Inertia::render('Theme/windows/Dashboard');
-    }
-
-
-    /**
-     * Render the main profile
-     */
-    public function profile()
-    {
-        return Inertia::render('Theme/windows/Profile');
-    }
-
-
-    /**
      * Render the main finance
      */
     public function finance()
     {
-        return Inertia::render('Theme/windows/Finance');
+        return Inertia::render('inteli_finance/ui/windows/Finance');
     }
 
-
-    /**
-     * Render the main finance
-     */
-    public function vr()
-    {
-        return Inertia::render('Theme/windows/VR');
-    }
-
-    /**
-     * Revising Vuex
-     */
-    public function vuex()
-    {
-        return Inertia::render('components/App');
-    }
 }

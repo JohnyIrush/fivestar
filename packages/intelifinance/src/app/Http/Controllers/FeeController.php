@@ -2,9 +2,12 @@
 
 namespace Softwarescares\Intelifinance\app\Http\Controllers;
 
-use Softwarescares\Intelifinance\app\Http\Requests\StoreServiceRequest;
-use Softwarescares\Intelifinance\app\Http\Requests\UpdateServiceRequest;
+use Softwarescares\Inteliacademic\app\Models\Level;
+use Softwarescares\Intelitimetable\app\Models\Term;
 use Softwarescares\Intelifinance\app\Models\Service;
+use Softwarescares\Intelifinance\app\Models\Fee;
+use Softwarescares\Intelifinance\app\Http\Requests\StoreFeeRequest;
+use Softwarescares\Intelifinance\app\Http\Requests\UpdateFeeRequest;
 
 use Softwarescares\Intelilibrary\app\Actions\Model\Store;
 use Softwarescares\Intelilibrary\app\Actions\Model\Update;
@@ -18,29 +21,29 @@ use Illuminate\Http\Request;
 
 use DB;
 
-class ServiceController extends Controller
+class FeeController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Service $service, Table $table)
+    public function index(Fee $fee, Table $table)
     {
         return $table->table(
-            $service, 
-            Service::all()
+            $fee, 
+            Fee::all()
             ,
             [], 
             []
            , 
            ["icon" => "image"],
            [
-            'store' => "finance/service/store",
-            'update' => "finance/service/update",
-            "delete" => "finance/service/destroy"
+            'store' => "finance/fee/store",
+            'update' => "finance/fee/update",
+            "delete" => "finance/fee/destroy"
            ],
-           ["created_at","updated_at"],
+           ["created_at","updated_at","term_id","level_id"],
         );
     }
 
@@ -49,22 +52,41 @@ class ServiceController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Service $service, Form $form)
+    public function create(Fee $fee, Form $form)
     {
-        return $form->form($service, [
+        return $form->form($fee, [
             "status" => [
                 "status" => [["id" => 0,"status" => "InActive"],["id" => 1, "status" =>"Active"]],
                 "name" => "status",
                 "value" => "id",
                 "limit" => 1,
                 ],
+            "service" => [
+                "service" => Service::all(),
+                "name" => "service",
+                "value" => "id",
+                "limit" => 10,
+                ],
+            "term_id" => [
+                "term_id" => Term::all(),
+                "name" => "term",
+                "value" => "id",
+                "limit" => 1,
+                ],
+            "level_id" => [
+                "level_id" => Level::all(),
+                "name" => "level",
+                "value" => "id",
+                "limit" => 1,
+                ],
             ],
             ['id','created_at', 'updated_at'], 
             [
-            'store' => "finance/service/store",
-            'update' => "finance/service/update",
-            "delete" => "finance/service/destroy"
-            ]
+            'store' => "finance/fee/store",
+            'update' => "finance/fee/update",
+            "delete" => "finance/fee/destroy"
+            ],
+            ["field" => "service","type" => "int"]
            );
     }
 
@@ -74,11 +96,11 @@ class ServiceController extends Controller
      * @param  \App\Http\Requests\StoreGradeRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreServiceRequest $request, Service $service, Store $store)
+    public function store(StoreFeeRequest $request, Fee $fee, Store $store)
     {
-        $service = $store->store($request, $service);
+        $fee = $store->store($request, $fee);
 
-        return response()->json($service);
+        return response()->json($fee);
     }
 
     /**
@@ -87,7 +109,7 @@ class ServiceController extends Controller
      * @param  \App\Models\Grade  $grade
      * @return \Illuminate\Http\Response
      */
-    public function show(Service $service)
+    public function show(Fee $fee)
     {
         //
     }
@@ -98,7 +120,7 @@ class ServiceController extends Controller
      * @param  \App\Models\Grade  $grade
      * @return \Illuminate\Http\Response
      */
-    public function edit(Service $service)
+    public function edit(Fee $fee)
     {
         //
     }
@@ -110,11 +132,11 @@ class ServiceController extends Controller
      * @param  \App\Models\Grade  $grade
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateServiceRequest $request, Service $service, Update $update)
+    public function update(UpdateFeeRequest $request, Fee $fee, Update $update)
     {
-        $service = $update->update($request, $service,["id" => $request->input("id")]);
+        $fee = $update->update($request, $fee,["id" => $request->input("id")]);
 
-        return response()->json($service);
+        return response()->json($fee);
     }
 
     /**
@@ -123,10 +145,10 @@ class ServiceController extends Controller
      * @param  \App\Models\Grade  $grade
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request,Service $service, Delete $delete)
+    public function destroy(Request $request,Fee $fee, Delete $delete)
     {
-        $service = $delete->delete($request, $service,["id" => $request->input("id")]);
+        $fee = $delete->delete($request, $fee,["id" => $request->input("id")]);
 
-        return response()->json($service);
+        return response()->json($fee);
     }
 }

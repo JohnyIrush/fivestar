@@ -1,6 +1,6 @@
 -> Database/Migrations/seeding/factory
 
-- php artisan make:model DonationType --pivot -m -seed
+- php artisan make:model FeeService --pivot -m --seed
 
 - php artisan migrate:fresh
 - php artisan db:seed
@@ -18,7 +18,7 @@
 
 php artisan serve
 php artisan make:Controller UIController
-php artisan make:model Grade --all
+php artisan make:model Fee --all
 
 php artisan make:Controller UserManagerController -
 

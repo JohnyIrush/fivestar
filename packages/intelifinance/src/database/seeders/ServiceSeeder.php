@@ -16,24 +16,46 @@ class ServiceSeeder extends Seeder
     {
         Service::truncate();
 
+        $faker = \Faker\Factory::create();
+
         Service::create([
-            "service" => "Fees/Tution"
+            "icon" => $faker->imageUrl(),
+            "service" => "Fees/Tution",
+            "price" => $faker->numberBetween(3000,60000),
+            "description" => $faker->text(),
+            "status" => $faker->boolean(),
         ]);
 
         Service::create([
-            "service" => "Books"
+            "icon" => $faker->imageUrl(),
+            "service" => "Books",
+            "price" => $faker->numberBetween(3000,60000),
+            "description" => $faker->text(),
+            "status" => $faker->boolean(),
         ]);
 
         Service::create([
-            "service" => "Remedial"
+            "icon" => $faker->imageUrl(),
+            "service" => "Remedial",
+            "price" => $faker->numberBetween(3000,60000),
+            "description" => $faker->text(),
+            "status" => $faker->boolean(),
         ]);
 
         Service::create([
-            "service" => "Exam"
+            "icon" => $faker->imageUrl(),
+            "service" => "Exam",
+            "price" => $faker->numberBetween(3000,60000),
+            "description" => $faker->text(),
+            "status" => $faker->boolean(),
         ]);
 
         Service::create([
-            "service" => "Tours/Trips"
+            "icon" => $faker->imageUrl(),
+            "service" => "Tours/Trips",
+            "price" => $faker->numberBetween(3000,60000),
+            "description" => $faker->text(),
+            "status" => $faker->boolean(),
         ]);
     }
 }

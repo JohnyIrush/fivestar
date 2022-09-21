@@ -4,7 +4,7 @@ namespace Softwarescares\Intelifinance\app\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateServiceRequest extends FormRequest
+class StoreFeeRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,10 +24,10 @@ class UpdateServiceRequest extends FormRequest
     public function rules()
     {
         return [
-            "icon" => "required|string",
-            "service" => "required|string",
-            "price" => "required|integer",
+            "fee" => "required|string",
             "description" => "required|string",
+            "level_id" => "required|integer",
+            "term_id" => "required|integer",
             "status" => "required",
         ];
     }

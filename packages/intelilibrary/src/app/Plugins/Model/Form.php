@@ -12,10 +12,11 @@ use DB;
 
 class Form
 {
-	public function form(Model $model, array $options, array $hidden,Array $crud)
+	public function form(Model $model, array $options, array $hidden,Array $crud, array $more = [])
 	{
 		$fields = [];
 		$this->fields($model, $fields);
+		array_push($fields, $more);
 		
     return [$fields, $options, $hidden, $crud];
 	}

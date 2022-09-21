@@ -34,24 +34,8 @@ class InteliAcademicServiceProvider extends ServiceProvider
             __DIR__.'/resources/js/Pages/inteli_academic' => public_path('../resources/js/Pages/inteli_academic'),
         ], 'inteliacademic-ui');
 
-        /*
-        $this->mergeConfigFrom(
-            __DIR__.'/../../config/safaricomdaraja.php', 'safaricomdaraja'
-        );
-
-        $this->publishes([
-            __DIR__.'/../../config/safaricomdaraja.php' => config_path('safaricomdaraja.php'),
-        ],'safaricomdaraja-config');
-        */
-
         $this->publishes([
             __DIR__.'/database/seeders' => public_path('../database/seeders'),
         ],'inteliacademic-seeders'); //seeders
-
-        /*
-        $this->publishes([
-            __DIR__.'/../../public' => public_path('/'),
-        ],'assets');
-        */
     }
 }

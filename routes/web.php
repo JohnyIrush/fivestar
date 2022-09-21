@@ -16,7 +16,7 @@ use App\Http\Controllers\TestController;
 
 Route::get('/dashboard', [UIController::class, 'dashboard'])->name('dashboard');
 Route::get('/profile', [UIController::class, 'profile'])->name('user-profile');
-Route::get('/finance', [UIController::class, 'finance'])->name('finance');
+//Route::get('/finance', [UIController::class, 'finance'])->name('finance');
 Route::get('/virtual-reality', [UIController::class, 'vr'])->name('virtual-reality');
 
 Route::get('/vue', [UIController::class, 'vuex'])->name('vue');
