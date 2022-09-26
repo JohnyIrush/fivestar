@@ -2,9 +2,13 @@
 
 namespace Softwarescares\Inteliadmission\app\Http\Controllers;
 
+use Softwarescares\Intelistaff\app\Models\Staff;
+use Softwarescares\Inteliportal\app\Models\Student;
 use Softwarescares\Inteliadmission\app\Models\Admission;
 use Softwarescares\Inteliadmission\app\Http\Requests\StoreAdmissionRequest;
 use Softwarescares\Inteliadmission\app\Http\Requests\UpdateAdmissionRequest;
+
+use Softwarescares\Inteliacademic\app\plugins\Model\Statistic;
 
 class AdmissionController extends Controller
 {
@@ -15,8 +19,18 @@ class AdmissionController extends Controller
      */
     public function index()
     {
-        //
+
     }
+    public function statistics(Admission $admission, Statistic $statistic, Staff $staff, Student $student)
+    {
+        return response()->json(
+            [
+             $statistic->statistic($student, [],  "Number of Students", "Total Number of Active in School", '<i class="fas fa-user-graduate"></i>'),
+
+             $statistic->statistic($staff, ["category_id" => 1],  "Number of Teachers", "Total Number of Teachers in School", '<i class="fas fa-chalkboard-teacher"></i>'),
+            ]
+        );
+    } 
 
     /**
      * Show the form for creating a new resource.

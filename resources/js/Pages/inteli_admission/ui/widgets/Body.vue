@@ -1,6 +1,6 @@
 <template>
   <div class="container-fluid py-4">
-      <Admission></Admission>
+      <Dash></Dash>
   </div>
 </template>
 
@@ -8,11 +8,11 @@
     import { defineComponent } from 'vue'
 
 
-    import Admission from './Admission'
+    import Dash from './Dash'
 
     export default defineComponent({
         components: {
-            Admission
+            Dash
         },
 
         mounted() {

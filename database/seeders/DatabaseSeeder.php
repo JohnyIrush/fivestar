@@ -25,6 +25,8 @@ use Softwarescares\Intelistaff\database\seeders\InteliStaffDatabaseSeeder;
 use Softwarescares\Inteliteam\database\seeders\InteliTeamDatabaseSeeder;
 use Softwarescares\Intelitimetable\database\seeders\InteliTimetableDatabaseSeeder;
 
+use Softwarescares\Inteligoogle\database\seeders\InteliGoogleDatabaseSeeder;
+
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -37,6 +39,7 @@ class DatabaseSeeder extends Seeder
         $this->call
         (
             [
+                InteliGoogleDatabaseSeeder::class,
                 InteliStaffDatabaseSeeder::class,
                 InteliAcademicDatabaseSeeder::class,
                 InteliInventoryDatabaseSeeder::class,

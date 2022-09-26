@@ -10,6 +10,8 @@ use Inertia\Inertia;
 
 use App\Http\Controllers\TestController;
 
+use App\Http\Controllers\SocialiteController;
+
 /*
  Main UI Routes
 */
@@ -43,3 +45,8 @@ Route::get('/vuex', [TestController::class, 'vuex'])->name('vuex');
 Route::get('/tabv1', [TestController::class, 'tabv1'])->name('tabv1');
 Route::get('/more', [TestController::class, 'more'])->name('more');
 Route::get('/tabular-card', [TestController::class, 'tabularCard'])->name('tabular-card');
+
+
+Route::get('socialite/google/redirect', [SocialiteController::class,"googleRedirect"])->name("google-redirect");
+ 
+Route::get('auth/google/callback', [SocialiteController::class,"googleCallback"])->name("google-callback");

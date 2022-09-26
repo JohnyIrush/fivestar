@@ -1,0 +1,29 @@
+{
+    "name": "softwarescares/inteligoogle",
+    "description": "Google Api Integration Pckage integration Package, Will be responsible for integrating all Google Apis: Google Forms, Google Docs, Google Drive, Google Maps, Google Calendar, Gmail etc",
+    "type": "library",
+    "license": "Apache 2.0",
+    "autoload": {
+        "psr-4": {
+            "Softwarescares\\Inteligoogle\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "John Irungu",
+            "email": "johnydanxin@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Softwarescares\\Inteligoogle\\InteliGoogleServiceProvider"
+            ],
+            "aliases": {
+               
+            }
+        }
+    }
+}

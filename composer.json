@@ -153,6 +153,13 @@
             "options": {
                 "symlink": true
             }
+        },
+        "inteligoogle": {
+            "type": "path",
+            "url": "packages/inteligoogle",
+            "options": {
+                "symlink": true
+            }
         }
     },
     "license": "MIT",
@@ -160,11 +167,13 @@
         "php": "^7.3|^8.0",
         "beyondcode/laravel-websockets": "^1.13",
         "fruitcake/laravel-cors": "^2.0",
+        "google/apiclient": "^2.12",
         "guzzlehttp/guzzle": "^7.4",
         "inertiajs/inertia-laravel": "^0.5.2",
         "laravel/framework": "^8.75",
         "laravel/jetstream": "^2.6",
         "laravel/sanctum": "^2.11",
+        "laravel/socialite": "^5.5",
         "laravel/tinker": "^2.5",
         "pusher/pusher-php-server": "^7.0",
         "softwarescares/inteliacademic": "@dev",
@@ -175,11 +184,13 @@
         "softwarescares/intelielearn": "@dev",
         "softwarescares/inteliexam": "@dev",
         "softwarescares/intelifinance": "@dev",
+        "softwarescares/inteligoogle": "@dev",
         "softwarescares/inteliinstaller": "@dev",
         "softwarescares/inteliinventory": "@dev",
         "softwarescares/intelijenga": "@dev",
         "softwarescares/intelilibrary": "@dev",
         "softwarescares/intelionlineclass": "@dev",
+        "softwarescares/intelipaypal": "@dev",
         "softwarescares/inteliportal": "@dev",
         "softwarescares/inteliresource": "@dev",
         "softwarescares/intelisafaricomdaraja": "@dev",
@@ -187,7 +198,6 @@
         "softwarescares/intelistaff": "@dev",
         "softwarescares/inteliteam": "@dev",
         "softwarescares/intelitimetable": "@dev",
-        "softwarescares/intelipaypal": "@dev",
         "spatie/laravel-permission": "^5.5",
         "tightenco/ziggy": "^1.0"
     },
@@ -213,6 +223,10 @@
         }
     },
     "scripts": {
+        "test": [
+            "Composer\\Config::disableProcessTimeout",
+            "phpunit"
+        ],
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
             "@php artisan package:discover --ansi"

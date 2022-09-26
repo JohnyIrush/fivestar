@@ -3,6 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
+use Softwarescares\Inteliadmission\app\Http\Controllers\AdmissionController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -14,4 +16,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get("admission/statistics",[AdmissionController::class, "statistics"]);
 
