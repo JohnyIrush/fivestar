@@ -17,7 +17,7 @@ class GoogleFormController extends Controller
      */
     public function index(GoogleFormService $googleFormService)
     {
-        return response()->json($googleFormService->getClient());
+        return response()->json($googleFormService->get(""));
     }
 
 
@@ -37,9 +37,9 @@ class GoogleFormController extends Controller
      * @param  \App\Http\Requests\StoreGoogleFormRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreGoogleFormRequest $request)
+    public function store(StoreGoogleFormRequest $request, GoogleFormService $googleFormService)
     {
-        //
+        return response()->json($googleFormService->create($request->input("name")));
     }
 
     /**

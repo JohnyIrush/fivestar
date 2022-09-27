@@ -22,7 +22,15 @@ class SocialiteController extends Controller
     {
         $user = Socialite::driver('google')->stateless()->user();
 
-        User::updateOrCreate(['email' => $user->email],$user);
+        User::updateOrCreate(['email' => $user->email],[
+            "name" => $user->name,
+            "email" => $user->email,
+            "provider" => "google",
+            "provider_id" => $user->id,
+            "profile_photo_path" => $user->avatar
+        ]);
+
+         return redirect()->route('dashboard');
     }
 
     /**

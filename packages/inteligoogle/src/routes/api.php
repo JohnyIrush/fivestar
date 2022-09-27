@@ -21,6 +21,10 @@ use Softwarescares\Inteligoogle\app\Http\Controllers\GoogleDocController;
 */
 
 Route::get("google/form/index",[GoogleFormController::class,"index"]);
+Route::get("google/form/create",[GoogleFormController::class,"create"]);
+Route::post("google/form/store",[GoogleFormController::class,"store"]);
+Route::post("google/form/update",[GoogleFormController::class,"update"]);
+Route::post("google/form/destroy",[GoogleFormController::class,"destroy"]);
 
 
 Route::get("google/sheet/index",[GoogleSheetController::class,"index"]);

@@ -10,6 +10,31 @@
                 <div class="card-header pb-0 text-left bg-transparent">
                   <h3 class="font-weight-bolder text-info text-gradient">Welcome back</h3>
                 </div>
+                  <div class="text-center pt-4">
+                    <h5>Signin with</h5>
+                  </div>
+                  <div class="row px-xl-5 px-sm-4 px-3">
+                    <div class="col-3 ms-auto px-1">
+                      <a class="btn btn-outline-light w-100" href="javascript:;">
+                        <i class="fab fa-github fa-2x text-primary"></i>
+                      </a>
+                    </div>
+                    <div class="col-3 px-1">
+                      <a class="btn btn-outline-light w-100" href="javascript:;">
+                        <i class="fab fa-linkedin fa-2x text-primary"></i>
+                      </a>
+                    </div>
+                    <div class="col-3 me-auto px-1">
+                      <a class="btn btn-outline-light w-100" :href="route('google-redirect')">
+                        <i class="fab fa-google fa-2x text-primary"></i>
+                      </a>
+                    </div>
+                    <div class="mt-2 position-relative text-center">
+                      <p class="text-sm font-weight-bold mb-2 text-secondary text-border d-inline z-index-2 bg-white px-3">
+                        or
+                      </p>
+                    </div>
+                  </div>
                 <Head title="Log in" />
 
                     <jet-validation-errors class="mb-4" />
@@ -18,9 +43,9 @@
                         {{ status }}
                     </div>
                     <section>
-                        <div class="color"></div>
-                        <div class="color"></div>
-                        <div class="color"></div>
+                        <div class="color" v-if="false"></div>
+                        <div class="color" v-if="false"></div>
+                        <div class="color" v-if="false"></div>
                         <div class="box">
                             <div class="square" style="--i:0;"></div>
                             <div class="square" style="--i:1;"></div>
