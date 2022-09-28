@@ -18,6 +18,18 @@ class ApplicantTypeController extends Controller
         //
     }
 
+    public function applicantTypes()
+    {
+        return response()->json(
+            [
+                "name" => "type",
+                "value" => "id",
+                "column" => "",
+                "options" => ApplicantType::all()
+            ]
+        );
+    }
+
     /**
      * Show the form for creating a new resource.
      *

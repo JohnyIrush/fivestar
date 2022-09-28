@@ -1,7 +1,7 @@
 <template>
   <main class="main-content  mt-0">
    <div class="glass-container">
-    <div class="container glass-content screen-height">
+    <div class="container glass-content">
        <div class="tab-content" id="pills-admission">
         <!--START START-->
         <div class="tab-pane fade show active" id="pills-start" role="tabpanel" aria-labelledby="pills-start-tab">

@@ -1,9 +1,9 @@
 <template>
   <!-- start select input-->
   <div  id="select-input-component"  class="">
-    <label :for="nameKey">{{nameKey}}</label>
-    <select :value="option" :name="nameKey" class="form-select" :aria-label="nameKey" @change="selectOption">
-     <option  v-for="option in inputOptions" :key="option.id" :value="option[valueKey]" >{{option[nameKey]}}</option>
+    <label :for="(nameKey != '')? nameKey : name">{{(nameKey != '')? nameKey : name}}</label>
+    <select :value="option" :name="(nameKey != '')? nameKey : name" :class="'form-select ' + size" :aria-label="nameKey" @change="selectOption">
+     <option  v-for="option in (inputOptions.length != 0)? inputOptions : options" :key="option.id" :value="(valueKey != '')? option[valueKey] : option[value]" >{{(nameKey != '')? option[nameKey] : option[name] }}</option>
     </select>
    </div>
    <!-- end select input-->
@@ -20,9 +20,11 @@ export default defineComponent({
   props: {
     inputOptions: Array,
     nameKey: String,
-    valueKeyKey: String,
+    valueKey: String,
     variable: String,
-    field: String
+    field: String,
+    datapath: String,
+    size: String
   },
   setup ()
   {
@@ -33,10 +35,29 @@ export default defineComponent({
  },
   data (){
     return {
-      option: 1
+      option: 1,
+      optionsdata: [],
+      options: Array,
+      name: String,
+      value: String,
+      variable: String,
+      field: String,
    }
  },
    methods:{
+    getData(url)
+    {
+      var responseData = [];
+
+      axios.get(url)
+        .then((response)=>{
+          this.options = response.data.options; 
+          this.name = response.data.name; 
+          this.value = response.data.value; 
+          this.field = response.data.column;
+          console.log("this",this)
+      }) 
+    },
     selectOption()
     {
       this.$emit("selectInput",
@@ -50,7 +71,7 @@ export default defineComponent({
    },
    mounted()
    {
-    console.log(this.nameKey, this.inputOptions)
+    this.getData(this.datapath)
    }
 });
 </script>

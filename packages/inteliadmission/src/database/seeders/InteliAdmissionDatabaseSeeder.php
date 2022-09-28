@@ -16,7 +16,10 @@ class InteliAdmissionDatabaseSeeder extends Seeder
         $this->call
         (
             [
-                AdmissionSeeder::class
+                ApplicantGoogleFormSeeder::class,
+                AdmissionSeeder::class,
+                ApplicantTypeSeeder::class,
+                ApplicantSeeder::class
             ]
         );
     }

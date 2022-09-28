@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 
+use Softwarescares\Inteligoogle\database\seeders\InteliGoogleDatabaseSeeder;
 use Softwarescares\Inteliacademic\database\seeders\InteliAcademicDatabaseSeeder;
 use Softwarescares\Inteliadmission\database\seeders\InteliAdmissionDatabaseSeeder;
 use Softwarescares\Inteliai\database\seeders\InteliAiDatabaseSeeder;
@@ -25,7 +26,6 @@ use Softwarescares\Intelistaff\database\seeders\InteliStaffDatabaseSeeder;
 use Softwarescares\Inteliteam\database\seeders\InteliTeamDatabaseSeeder;
 use Softwarescares\Intelitimetable\database\seeders\InteliTimetableDatabaseSeeder;
 
-use Softwarescares\Inteligoogle\database\seeders\InteliGoogleDatabaseSeeder;
 
 class DatabaseSeeder extends Seeder
 {

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateApplicantTypesTable extends Migration
+class CreateGoogleFormTemplatesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,10 @@ class CreateApplicantTypesTable extends Migration
      */
     public function up()
     {
-        Schema::create('applicant_types', function (Blueprint $table) {
+        Schema::create('google_form_templates', function (Blueprint $table) {
             $table->id();
-            $table->integer("google_form_template_id");
-            $table->string("type");
-            $table->text("description");
-            $table->boolean("status");
+            $table->string("title");
+            $table->string("form_id");
             $table->timestamps();
         });
     }
@@ -30,6 +28,6 @@ class CreateApplicantTypesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('applicant_types');
+        Schema::dropIfExists('google_form_templates');
     }
 }

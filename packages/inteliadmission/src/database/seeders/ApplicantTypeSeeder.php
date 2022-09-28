@@ -22,24 +22,15 @@ class ApplicantTypeSeeder extends Seeder
         ApplicantType::create([
             "type" => "Staff",
             "description" => $faker->paragraph(),
-            "status" => $faker->boolean()
+            "status" => $faker->boolean(),
+            "google_form_template_id" => 1
         ]);
 
         ApplicantType::create([
             "type" => "Student",
             "description" => $faker->paragraph(),
-            "status" => $faker->boolean()
+            "status" => $faker->boolean(),
+            "google_form_template_id" => 2
         ]);
-
-        /*
-        for ($i=0; $i < 20; $i++)
-        {
-            ApplicantType::create([
-                "type" => $faker->jobTitle(),
-                "description" => $faker->paragraph(),
-                "status" => $faker->boolean()
-            ]);
-        }
-        */
     }
 }

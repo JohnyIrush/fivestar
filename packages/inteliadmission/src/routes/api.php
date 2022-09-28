@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
+use Softwarescares\Inteliadmission\app\Http\Controllers\ApplicantTypeController;
 use Softwarescares\Inteliadmission\app\Http\Controllers\AdmissionController;
 
 /*
@@ -17,4 +18,6 @@ use Softwarescares\Inteliadmission\app\Http\Controllers\AdmissionController;
 */
 
 Route::get("admission/statistics",[AdmissionController::class, "statistics"]);
+
+Route::get("admission/applicant/types",[ApplicantTypeController::class, "applicantTypes"]);
 

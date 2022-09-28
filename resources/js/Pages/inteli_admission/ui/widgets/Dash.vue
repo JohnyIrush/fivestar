@@ -1,8 +1,8 @@
 <template>
  <!--<div class="container">-->
   <div class="row" >
-   <div class="col-12 col-lg-9">
-    <div class="d-flex align-items-start">
+   <div class="col-12 col-xl-9">
+    <div class="d-flex align-items-start ">
       <div class="nav glass-content  flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
         <button class="nav-link active icon text-white bg-gradient-info shadow border-radius-md" id="v-pills-dashboard-tab" data-bs-toggle="pill" data-bs-target="#v-pills-dashboard" type="button" role="tab" aria-controls="v-pills-dashboard" aria-selected="true">
           <i class="fas fa-chess-board" data-bs-toggle="tooltip" data-bs-placement="top" title="dash"></i>
@@ -49,22 +49,28 @@
         <div class="tab-pane fade show active" id="v-pills-dashboard" role="tabpanel" aria-labelledby="v-pills-dashboard-tab">
           <div class="row">
             <div class="col-12">
-              <statistic-card-data id="test1" :statistics="'admission/statistics'" />
+              <statistic-card-data id="test1" :statistics="statistics" />
             </div>
           </div>
         </div>
         <!--END Dashboard PANE-->
 
         <!--START APPLICATION  PANE-->
-        <div class="tab-pane fade" id="v-pills-application" role="tabpanel" aria-labelledby="v-pills-application-tab">
-           <div class="col-12">
-             <statistic-card-data :statistics="'admission/statistics'" />
-           </div>
-           <div class="row">
-            <div class="col">
-              <main_menu></main_menu>
+        <div class="tab-pane fade " id="v-pills-application" role="tabpanel" aria-labelledby="v-pills-application-tab">
+          <div class="row justify-content-center">
+            <div class="col-2"></div>
+            <div class="col-8">
+              <application_wizard></application_wizard>
             </div>
-           </div>
+            <div class="col-2"></div>
+          </div>
+          <div class="row justify-content-center">
+            <div class="col-2"></div>
+            <div class="col-8">
+              <tabular-card></tabular-card>
+            </div>
+            <div class="col-2"></div>
+          </div>
         </div>
         <!--END APPLICATION  PANE-->
 
@@ -80,7 +86,7 @@
              <div class="col-xl-4"></div>
            </div>
            <div class="col-12">
-             <statistic-card-data :statistics="statistics" />
+             <application_wizard></application_wizard>
            </div>
            <div class="row">
             <div class="col">
@@ -334,6 +340,9 @@ import main_modal from '../../../inteli_library/ui/components/modals/modal.vue'
 import main_menu from '../../../Theme/widgets/menus/main-menu.vue'
 
 import admission_wizard from "../plugins/wizard/admission-wizard.vue";
+import application_wizard from "../plugins/wizard/application-wizard.vue";
+
+import TabularCard from "../../../inteli_academic/ui/components/cards/TabularCard.vue"
 
 export default defineComponent({
         components: {
@@ -344,7 +353,9 @@ export default defineComponent({
             modal_button,
             main_modal,
             main_menu,
-            admission_wizard
+            admission_wizard,
+            application_wizard,
+            TabularCard
         },
         data() {
             return {
@@ -372,7 +383,7 @@ export default defineComponent({
         },
         mounted()
         {
-            this.getStatistics("academic/statistics")
+            this.getStatistics("admission/statistics")
         },
     })
 </script>

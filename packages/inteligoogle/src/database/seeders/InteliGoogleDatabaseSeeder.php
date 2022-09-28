@@ -18,7 +18,8 @@ class InteliGoogleDatabaseSeeder extends Seeder
             [
                 GoogleSeeder::class,
                 GoogleDocSeeder::class,
-                GoogleFormSeeder::class
+                GoogleFormSeeder::class,
+                GoogleFormTemplateSeeder::class
             ]
         );
     }

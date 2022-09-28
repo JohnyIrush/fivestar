@@ -2,6 +2,7 @@
 
 namespace Softwarescares\Inteliadmission\app\Http\Controllers;
 
+use Softwarescares\Inteliadmission\app\Models\Applicant;
 use Softwarescares\Intelistaff\app\Models\Staff;
 use Softwarescares\Inteliportal\app\Models\Student;
 use Softwarescares\Inteliadmission\app\Models\Admission;
@@ -21,13 +22,20 @@ class AdmissionController extends Controller
     {
 
     }
-    public function statistics(Admission $admission, Statistic $statistic, Staff $staff, Student $student)
+    public function statistics(Admission $admission, Statistic $statistic, Staff $staff, Student $student, Applicant $applicant)
     {
         return response()->json(
             [
              $statistic->statistic($student, [],  "Number of Students", "Total Number of Active in School", '<i class="fas fa-user-graduate"></i>'),
+             $statistic->statistic($applicant, ["applicant_type_id" => 2],  "Number of Student Applicants", "Total Number of Student Apllications", '<i class="fas fa-user-graduate"></i><i class="fas fa-envelope-open-text"></i>'),
 
-             $statistic->statistic($staff, ["category_id" => 1],  "Number of Teachers", "Total Number of Teachers in School", '<i class="fas fa-chalkboard-teacher"></i>'),
+             $statistic->statistic($staff, ["category_id" => 1],  "Number of Teachers", "Total Number of Teaching Staff in School", '<i class="fas fa-chalkboard-teacher"></i>'),
+
+             $statistic->statistic($applicant, ["applicant_type_id" => 1],  "Number of Staff Applicants", "Total Number of Staff Apllications", '<i class="fas fa-users"></i><i class="fas fa-envelope-open-text"></i>'),
+
+             $statistic->statistic($staff, ["category_id" => 2],  "Number of Non-Teaching Staff", "Total Number of Non-Teaching Staff in School", '<i class="fas fa-envelope-open-text"></i>'),
+
+
             ]
         );
     } 

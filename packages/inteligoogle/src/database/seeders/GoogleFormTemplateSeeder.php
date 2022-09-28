@@ -4,9 +4,9 @@ namespace Softwarescares\Inteligoogle\database\seeders;
 
 use Illuminate\Database\Seeder;
 
-use Softwarescares\Inteligoogle\app\Models\GoogleForm;
+use Softwarescares\Inteligoogle\app\Models\GoogleFormTemplate;
 
-class GoogleFormSeeder extends Seeder
+class GoogleFormTemplateSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,13 +15,13 @@ class GoogleFormSeeder extends Seeder
      */
     public function run()
     {
-        GoogleForm::truncate();
+        GoogleFormTemplate::truncate();
 
         $faker = \Faker\Factory::create();
 
-        for ($i=0; $i < 300; $i++)
+        for ($i=0; $i < 30; $i++)
         { 
-          GoogleForm::create([
+          GoogleFormTemplate::create([
               "title" => $faker->company(),
               "form_id" => $faker->word()
           ]);
