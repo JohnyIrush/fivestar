@@ -2,9 +2,24 @@
 
 namespace Softwarescares\Intelicommunication\app\Http\Controllers;
 
+use Softwarescares\Inteliadmission\app\Models\Status;
 use Softwarescares\Intelicommunication\app\Models\Communication;
 use Softwarescares\Intelicommunication\app\Http\Requests\StoreCommunicationRequest;
 use Softwarescares\Intelicommunication\app\Http\Requests\UpdateCommunicationRequest;
+
+use Softwaresscares\Intelilibrary\app\Actions\Model\Store;
+use Softwarescares\Intelilibrary\app\Actions\Model\Update;
+use Softwarescares\Intelilibrary\app\Actions\Model\Delete;
+
+use Softwarescares\Intelilibrary\app\Plugins\Model\Form;
+use Softwarescares\Intelilibrary\app\Plugins\Model\Table;
+use Softwarescares\Intelilibrary\app\Plugins\Model\Card;
+
+use Illuminate\Http\Request;
+
+use DB;
+
+use Softwarescares\Intelicommunication\app\Http\Controllers\Controller;
 
 class CommunicationController extends Controller
 {
@@ -23,9 +38,23 @@ class CommunicationController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Communication $communication, Form $form)
     {
-        //
+       return $form->form($communication,[
+            "status_id" => [
+                "status" => Status::all(),
+                "name" => "status",
+                "value" => "id",
+                "limit" => 1,
+            ]],
+            ['id','created_at', 'updated_at',"user_id"], 
+            [
+            'store' => "communication/store",
+            'update' => "communication/update",
+            "delete" => "communication/destroy"
+            ],
+            [["type" => "hidden","field" => "user_id"]]
+           );
     }
 
     /**

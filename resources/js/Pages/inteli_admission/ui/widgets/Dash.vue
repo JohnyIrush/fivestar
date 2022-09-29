@@ -49,7 +49,7 @@
         <div class="tab-pane fade show active" id="v-pills-dashboard" role="tabpanel" aria-labelledby="v-pills-dashboard-tab">
           <div class="row">
             <div class="col-12">
-              <statistic-card-data id="test1" :statistics="statistics" />
+              <statistic-card-data :dataPath="'admission/statistics'" />
             </div>
           </div>
         </div>
@@ -57,19 +57,21 @@
 
         <!--START APPLICATION  PANE-->
         <div class="tab-pane fade " id="v-pills-application" role="tabpanel" aria-labelledby="v-pills-application-tab">
-          <div class="row justify-content-center">
+          <div class="row justify-content-center" v-if="false">
             <div class="col-2"></div>
             <div class="col-8">
               <application_wizard></application_wizard>
             </div>
             <div class="col-2"></div>
           </div>
-          <div class="row justify-content-center">
-            <div class="col-2"></div>
-            <div class="col-8">
-              <tabular-card></tabular-card>
+          <div class="row justify-content-center" v-if="true">
+            <div class="col-12">
+               <statistic-card-data :dataPath="'admission/applicant/statistics'" />
             </div>
-            <div class="col-2"></div>
+            <div class="col-12">
+              <tabular-card :dataPath="'admission/applicant/index'">
+              </tabular-card>
+            </div>
           </div>
         </div>
         <!--END APPLICATION  PANE-->
@@ -113,9 +115,6 @@
              </div>
              <div class="col-xl-4"></div>
            </div>
-           <div class="col-12">
-             <statistic-card-data :statistics="statistics" />
-           </div>
            <div class="row">
             <div class="col">
               <main_menu></main_menu>
@@ -134,9 +133,6 @@
                <modal_button @showmodal="launchModal('main-modal')" :name="'Clubs'" :icon_classes="'far fa-eye'" :title="'Clubs'" :modalSize="'modal-xl'" :componentType="'table'" :componentName="'TableData'" :dataPath="'academic/club/index'"></modal_button>
              </div>
              <div class="col-xl-4"></div>
-           </div>
-           <div class="col-12">
-             <statistic-card-data :statistics="statistics" />
            </div>
            <div class="row">
             <div class="col">
@@ -157,9 +153,6 @@
              </div>
              <div class="col-xl-4"></div>
            </div>
-           <div class="col-12">
-             <statistic-card-data :statistics="statistics" />
-           </div>
            <div class="row">
             <div class="col">
               <main_menu></main_menu>
@@ -178,9 +171,6 @@
                <modal_button @showmodal="launchModal('main-modal')" :name="'Levels'" :icon_classes="'far fa-eye'" :title="'Levels'" :modalSize="'modal-xl'" :componentType="'table'" :componentName="'TableData'" :dataPath="'academic/level/index'"></modal_button>
              </div>
              <div class="col-xl-4"></div>
-           </div>
-           <div class="col-12">
-             <statistic-card-data :statistics="statistics" />
            </div>
            <div class="row">
             <div class="col">
@@ -201,9 +191,6 @@
              </div>
              <div class="col-xl-4"></div>
            </div>
-           <div class="col-12">
-             <statistic-card-data :statistics="statistics" />
-           </div>
            <div class="row">
             <div class="col">
               <main_menu></main_menu>
@@ -222,9 +209,6 @@
                <modal_button @showmodal="launchModal('main-modal')" :name="'Section'" :icon_classes="'far fa-eye'" :title="'Sections'" :modalSize="'modal-xl'" :componentType="'table'" :componentName="'TableData'" :dataPath="'academic/section/index'"></modal_button>
              </div>
              <div class="col-xl-4"></div>
-           </div>
-           <div class="col-12">
-             <statistic-card-data :statistics="statistics" />
            </div>
            <div class="row">
             <div class="col">
@@ -343,6 +327,7 @@ import admission_wizard from "../plugins/wizard/admission-wizard.vue";
 import application_wizard from "../plugins/wizard/application-wizard.vue";
 
 import TabularCard from "../../../inteli_academic/ui/components/cards/TabularCard.vue"
+import MainForm from '../../../inteli_library/ui/components/forms/MainForm.vue'
 
 export default defineComponent({
         components: {
@@ -355,11 +340,14 @@ export default defineComponent({
             main_menu,
             admission_wizard,
             application_wizard,
-            TabularCard
+            TabularCard,
+            MainForm
         },
         data() {
             return {
                 statistics: [],
+                datapaths: ['admission/applicant/response/create','communication/create'],
+                formFields: []
             }
         },
 
@@ -373,17 +361,25 @@ export default defineComponent({
             {
                 return text.substr(0,length) + comment;
             },
-            getStatistics(url)
+            getFields()
             {
-                axios.get(url)
-                .then((response)=>{
-                   this.statistics = response.data
-                })
-            },
+              for (var i = 0; i < this.datapaths.length; i++)
+              {
+               if (this.datapaths[0] != '')
+               {
+                 axios.get(this.datapaths[0])
+                 .then((response)=>{
+                    this.formFields.push(response.data)
+                    console.log("Form Data", response.data)
+                    console.log()
+                 })
+                 }
+               }
+            }
         },
         mounted()
         {
-            this.getStatistics("admission/statistics")
+            
         },
     })
 </script>

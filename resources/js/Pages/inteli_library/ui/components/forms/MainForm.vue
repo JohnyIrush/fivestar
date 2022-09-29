@@ -1,7 +1,10 @@
 <template>
     <div class="row">
       <!--<div class="col-2"></div>-->
-      <div class="col">
+      <div class="col-12">
+        <CommunicationOption v-if="showCommunicationMenu" :dataPath="'communication/method/options/index'"></CommunicationOption>
+      </div>
+      <div class="col-12">
         <div class="card glass-content">
          <form id="auto-form" @submit.prevent="submit">
           <div class="row">
@@ -12,6 +15,12 @@
              <input id="" type="text" class="form-control" :value="formEditData[field.field]" :name="field.field" required autofocus :autocomplete="field.field" />
            </div>
            <!-- end text/string input-->
+
+           <!-- start email input-->
+           <div v-else-if="renderInput(field.type,'hidden',field.field)" id="email-input" class="mb-3">
+             <input id="" type="hidden" class="form-control" :value="formEditData[field.field]" :name="field.field" required autofocus :autocomplete="field.field" />
+           </div>
+           <!-- end email input-->
 
            <!-- start email input-->
            <div v-else-if="renderInput(field.type,'email',field.field)" id="email-input" class="mb-3">
@@ -69,6 +78,13 @@
            </div>
            <!-- end textarea input-->
 
+           <!-- start large textarea input-->
+           <div v-else-if="renderInput(field.type,'textarea',field.field)" id="text-input" class="">
+            <label :for="field.field" class="form-label">{{field.field}}</label>
+            <textarea :name="field.field" :value="formEditData[field.field]" class="form-control" id="" rows="6"></textarea>
+           </div>
+           <!-- end large textarea input-->
+
            <!-- start radio input-->
            <div v-else-if="renderInput(field.type,'radio',field.field)" id="radio-input"  class="input-group">
             <label :for="field.field">{{field.field}}</label>
@@ -115,16 +131,27 @@ import { Inertia } from '@inertiajs/inertia'
 
 import {store} from "../../../../../store/store.js"
 
+import CommunicationOption from "../../../../inteli_communication/ui/widgets/menus/CommunicationOption.vue"
+
 export default defineComponent({
   name:"MainForm",
   props: {
     formPath: String,
+    formFields: Array,
+    showCommunicationMenu: Boolean
+  },
+  components:{
+    CommunicationOption
   },
   setup ()
   {
 
   },
  computed:{
+  formFieldsData()
+  {
+    return this.formFields
+  },
   formEditData()
   {
     return store.state.form.formEditData
@@ -135,19 +162,39 @@ export default defineComponent({
   },
   fields()
   {
-    return store.state.form.fields[0]
+    if (store.state.form.fields.length > 0)
+      return store.state.form.fields[0]
+    else if(this.formFieldEntries.length > 0)
+      return this.formFieldEntries[0]
+    else if (this.formFieldsData.length > 0)
+      return this.formFieldsData[0]
   },
   options()
   {
-    return store.state.form.fields[1]
+    if (store.state.form.fields.length > 0)
+      return store.state.form.fields[1]
+    else if(this.formFieldEntries.length > 0)
+      return this.formFieldEntries[1]
+    else if (this.formFieldsData.length > 0)
+      return this.formFieldsData[1]
   },
   hidden()
   {
-    return store.state.form.fields[2]
+    if (store.state.form.fields.length > 0)
+      return store.state.form.fields[2]
+    else if(this.formFieldEntries.length > 0)
+      return this.formFieldEntries[2]
+    else if (this.formFieldsData.length > 0)
+      return this.formFieldsData[2]
   },
   crud()
   {
-    return store.state.form.fields[3]
+    if (store.state.form.fields.length > 0)
+      return store.state.form.fields[3]
+    else if(this.formFieldEntries.length > 0)
+      return this.formFieldEntries[3]
+    else if (this.formFieldsData.length > 0)
+      return this.formFieldsData[3]
   },
  },
   data (){
@@ -155,6 +202,7 @@ export default defineComponent({
      form: [],
      formEditData: [],
      formType: '',
+     formFieldEntries: []
    }
  },
    methods:{
@@ -218,7 +266,8 @@ export default defineComponent({
     },
     checkDataType(fieldtype,type)
     {
-      return fieldtype.search(type) != -1;
+      if((fieldtype))
+        return fieldtype.search(type) != -1;
     },
     renderInput(fieldtype, inputtype, fieldname)
     {
@@ -264,10 +313,19 @@ export default defineComponent({
        {
         return true;
        }
+       else if (!this.checkFieldHasOpions(fieldname) && inputtype == "time" &&  fieldtype == "hidden")
+       {
+        return true;
+       }
        else if (!this.checkFieldHasOpions(fieldname) && inputtype == "textarea" &&  fieldtype == "text")
        {
         return true;
        }
+       else if (!this.checkFieldHasOpions(fieldname) && inputtype == "textarea" &&  fieldtype == "longtext")
+       {
+        return true;
+       }
+       
        else if (this.checkFieldHasOpions(fieldname) && inputtype == "radio" && this.options[fieldname]["limit"] == 1 &&  (this.checkDataType(fieldtype,"tinyint") || this.checkDataType(fieldtype,"boolean") || this.checkDataType(fieldtype,"bool")))
        {
         return true;
@@ -286,24 +344,12 @@ export default defineComponent({
        }
       }
     },
-    getFields(url)
-    {
-      if (url != '')
-      {
-      axios.get(url)
-      .then((response)=>{
-         this.fields = response.data[0]
-         this.options = response.data[1]
-         this.hidden = response.data[2]
-         this.formFields()
-         this.crud = response.data[3]
-      })
-      }
-    }
    },
    mounted()
    {
-     //this.getFields(this.formPath)
+   },
+   updated()
+   {
    }
 });
 </script>

@@ -33,7 +33,9 @@ import { store } from '../../../../../store/store.js'
 
 export default defineComponent({
   name: 'StatisticCardData',
-  props: ["statistics"],
+  props: {
+    dataPath:String
+  },
   components:{
     
   },
@@ -45,15 +47,21 @@ export default defineComponent({
   },
   data (){
     return {
-
+      statistics: []
    }
  },
    methods:{
-
+      getStatistics(url)
+      {
+          axios.get(url)
+          .then((response)=>{
+             this.statistics = response.data
+          })
+      },
    },
    mounted()
    {
-
+    this.getStatistics(this.dataPath)
    }
 });
 </script>

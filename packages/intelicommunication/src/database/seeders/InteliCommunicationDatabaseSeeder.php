@@ -16,7 +16,8 @@ class InteliCommunicationDatabaseSeeder extends Seeder
         $this->call
         (
             [
-                CommunicationSeeder::class
+                CommunicationSeeder::class,
+                CommunicationMethodSeeder::class
             ]
         );
     }

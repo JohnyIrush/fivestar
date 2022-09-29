@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateApplicantsTable extends Migration
+class CreateCommunicationMethodsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateApplicantsTable extends Migration
      */
     public function up()
     {
-        Schema::create('applicants', function (Blueprint $table) {
+        Schema::create('communication_methods', function (Blueprint $table) {
             $table->id();
-            $table->integer("applicant_type_id");
-            $table->integer("user_id");
+            $table->string("method");
             $table->integer("status_id");
+            $table->string("icon");
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ class CreateApplicantsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('applicants');
+        Schema::dropIfExists('communication_methods');
     }
 }

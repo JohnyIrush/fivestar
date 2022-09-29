@@ -40,7 +40,6 @@ class AttendanceController extends Controller
 
         return $table->table(
             $attendance, 
-            //Attendance::with(["student"])->get()
             DB::table("attendances")
                      ->join('students', 'attendances.student_id','=', "students.id")
                      ->join('users', "students.user_id", '=', 'users.id')
@@ -50,26 +49,7 @@ class AttendanceController extends Controller
                      ->select("attendances.id","users.profile_photo_path","students.Admno","levels.level","streams.stream","students.firstname","students.lastname","attendances.date","attendances.status", "students.section_id","students.stream_id","students.level_id", "students.gender_id", "students.hostel_id")
                      ->get()
             ,
-            [
-            /*"firstname" => [
-                "name" => "student",
-                "value" => "firstname",
-                "display" => "item",
-                "type" => "string"
-            ],
-            "lastname" => [
-                "name" => "student",
-                "value" => "lastname",
-                "display" => "item",
-                "type" => "string"
-            ],
-            "Admno" => [
-                "name" => "student",
-                "value" => "Admno",
-                "display" => "item",
-                "type" => "number"
-            ]*/
-           ], 
+            [], 
             $table->merged(
                 [
                   [
@@ -99,18 +79,6 @@ class AttendanceController extends Controller
                  "lastname","date","status",
                  "section_id","stream_id",
                  "level_id","gender_id", "hostel_id"])
-            /*[
-               "field" => "firstname",
-               "type" => "string"
-            ],
-            [
-               "field" => "lastname",
-               "type" => "string"
-            ],
-            [
-               "field" => "Admno",
-               "type" => "integer"
-            ]*/
            , 
            ["status" => "form","profile_photo_path" => "image"],
            [

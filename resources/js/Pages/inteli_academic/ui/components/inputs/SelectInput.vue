@@ -55,7 +55,6 @@ export default defineComponent({
           this.name = response.data.name; 
           this.value = response.data.value; 
           this.field = response.data.column;
-          console.log("this",this)
       }) 
     },
     selectOption()

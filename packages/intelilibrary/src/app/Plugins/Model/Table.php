@@ -21,7 +21,7 @@ class Table
     $this->form = new Form();
   }
 
-  public function table(Model $model, $entries, array $more, array $extra, array $types, array $crud, array $hidden = [], bool $getFields = true, array $filter = [])
+  public function table(Model $model, $entries, array $more, array $extra, array $types, array $crud, array $hidden = [], bool $getFields = true, array $filter = [], $formFields = [])
   {
 
     $columns = [];
@@ -39,7 +39,8 @@ class Table
   		 "more" => $more,
   		 "types" => $types,
        "crud" => $crud,
-       "filter" => $filter
+       "filter" => $filter,
+       "formFields" => $formFields
   	];
   }
 
@@ -50,7 +51,12 @@ class Table
     return $columns;
 	}
 
-  public function merged(array $models, array &$merged, array $only)
+  /**
+   * $models - array of joined table models,
+   * $merged - processed fields to be returned
+   * $only - names of fields that should only be returned - depricated
+   * */
+  public function merged(array $models, array &$merged, array $only = [])
   {   
     foreach($models as $model)
     {

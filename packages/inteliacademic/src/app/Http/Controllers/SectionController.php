@@ -95,7 +95,6 @@ class SectionController extends Controller
                 "value" => "id",
                 "limit" => 1,
                  ],
-    
             "status" => [
                 "status" => [["id" => 0,"status" => "Inactive"],["id" => 1, "status" =>"Active"]],
                 "name" => "status",

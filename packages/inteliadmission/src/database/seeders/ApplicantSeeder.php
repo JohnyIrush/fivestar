@@ -31,7 +31,7 @@ class ApplicantSeeder extends Seeder
           $applicant = Applicant::create([
               "applicant_type_id" => ApplicantType::all()->random()->id,
               "user_id" => $faker->numberBetween(1,1000),
-              "status" => $faker->boolean()
+              "status_id" => $faker->numberBetween(1,5)
           ]);
 
           $applicant->googleForms()->attach(GoogleForm::find($i));

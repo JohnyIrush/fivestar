@@ -32,7 +32,7 @@ class MeritSeeder extends Seeder
               Merit::create([
               "student_id" => $student["id"], 
               "subject_id" => $subject["id"],
-              "exam_id" => Exam::where("level_id", "1")->get()[0]->id,
+              "exam_id" => $faker->numberBetween(1,8),//Exam::where("level_id", 3)->get()[0]->id,
               "marks" => $faker->numberBetween(0,100),  
               ]);
             }

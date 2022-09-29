@@ -1,10 +1,12 @@
 <template>
   <!-- start checkbox input-->
   <div id="check-input" class="input-group mb-3">
-   <label :for="name">{{name}}</label>
-   <div  class="form-check" v-for="option in options" :key="option.id" >
+   <div  class="form-check ml-2" v-for="option in options" :key="option.id" >
      <input class="form-check-input" type="checkbox"  :value="option[value]" :name="name" id="">
-     <label class="form-check-label" :for="name">{{option[name]}}</label>
+     <label class="form-check-label" :for="name">
+      <span>{{option[name]}}</span>
+      <span v-html="option.icon"></span>
+     </label>
    </div>
   </div>
   <!-- end checkbox input-->
@@ -12,14 +14,20 @@
 
 <script>
 
+  import { defineComponent } from 'vue'
+
 import {store} from "../../../../../store/store.js"
 
 export default defineComponent({
   name:'CheckBox',
   props: {
-    options: Array,
-    name: String,
-    value: String
+    inputOptions: Array,
+    nameKey: String,
+    valueKey: String,
+    variable: String,
+    field: String,
+    datapath: String,
+    size: String
   },
   setup ()
   {
@@ -30,15 +38,28 @@ export default defineComponent({
  },
   data (){
     return {
-
+      options: [],
+      name: '',
+      value: '',
+      variable: '',
+      field: '',
    }
  },
    methods:{
-
+    getData(url)
+    {
+      axios.get(url)
+        .then((response)=>{
+          this.options = response.data.options; 
+          this.name = response.data.name; 
+          this.value = response.data.value; 
+          this.field = response.data.column;
+      }) 
+    },
    },
    mounted()
    {
-     //this.getFields(this.formPath)
+     this.getData(this.datapath)
    }
 });
 </script>
