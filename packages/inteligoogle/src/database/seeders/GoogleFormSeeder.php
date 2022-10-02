@@ -19,7 +19,7 @@ class GoogleFormSeeder extends Seeder
 
         $faker = \Faker\Factory::create();
 
-        for ($i=0; $i < 300; $i++)
+        for ($i=0; $i < 600; $i++)
         { 
           GoogleForm::create([
               "title" => $faker->company(),

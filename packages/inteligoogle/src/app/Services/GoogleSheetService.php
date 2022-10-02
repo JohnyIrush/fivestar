@@ -14,15 +14,24 @@ class GoogleSheetService
 	public function getClient()
 	 {
 	 	$client = new Client();
-	 	//$client->setApplicationName("Google Sheets Demo");
+	 	$client->setApplicationName("Google Sheets Demo");
 
 	 	//$client->setRedirectUri("http://127.0.0.1:8000/google/sheet/index");
 
-	 	//$client->setScopes(Sheets::SPREADSHEETS);
-	 	//$client->setAuthConfig("inteli-googlesheet-config.json");
-	 	//$client->setAccessType("offline");
+	 	$client->setScopes(Sheets::SPREADSHEETS);
+	 	$client->setAuthConfig("inteli-googlesheet-config.json");
+	 	$client->setAccessType("offline");
 
 	 	return $client;
 
 	 } 
+
+	 public function readSheet()
+	 {
+	 	$client = $this->getClient();
+	 	$service = new Sheets($client);
+	 	$doc = $service->spreadsheets_values->get("1z2zIWGP6rrOVwZemcCYOvSGLykfc8TaFbt92pihDapE","A:Z");
+
+	 	return $doc;
+	 }
 }

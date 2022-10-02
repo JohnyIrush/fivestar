@@ -1,0 +1,29 @@
+{
+    "name": "softwarescares/inteliform",
+    "description": "inteli form builder",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Softwarescares\\Inteliform\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "John Irungu",
+            "email": "johnydanxin@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {},
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Softwarescares\\Inteliform\\InteliFormServiceProvider"
+            ],
+            "aliases": {
+               
+            }
+        }
+    }
+}

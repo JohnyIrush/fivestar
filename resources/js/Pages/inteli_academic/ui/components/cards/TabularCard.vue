@@ -116,7 +116,7 @@
                      <span class="mr-4"><i class="fas fa-share"></i> Share</span>
                      <span class="mr-4"><i class="fas fa-folder"></i></span>
                      <span class="mr-4"><i class="fas fa-trash-alt "></i></span>
-                     <button class="mr-4"><i class="fas fa-caret-down" data-bs-toggle="collapse" :data-bs-target="'#' + fieldData.id + '-card-more'" aria-expanded="false" :aria-controls="fieldData.id +'card-more'"></i></button>
+                     <button class="mr-4"><i class="fas fa-caret-down" data-bs-toggle="collapse" :data-bs-target="'#' + fieldData.id + '-card-more'" aria-expanded="false" :aria-controls="fieldData.id +'-card-more'"></i></button>
                  </div>
                 </div>
             </div>

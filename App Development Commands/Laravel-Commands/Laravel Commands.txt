@@ -1,6 +1,6 @@
 -> Database/Migrations/seeding/factory
 
-- php artisan make:model ApplicantGoogleForm --pivot -m --seed
+- php artisan make:model GoogleFormLeave --pivot -m --seed
 
 - php artisan migrate:fresh
 - php artisan db:seed
@@ -18,13 +18,13 @@
 
 php artisan serve
 php artisan make:Controller UIController
-php artisan make:model CommunicationMethod --all
+php artisan make:model FormSetting --all
 
 php artisan make:Controller UserManagerController -
 
 php artisan make:controller AcademicController --model=Academic --resource
 
-php artisan make:model Applicant --all
+php artisan make:model Video --all
 
 php artisan make:seed ClubStudentSeeder
 

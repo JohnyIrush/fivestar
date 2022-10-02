@@ -8,8 +8,11 @@ use Softwarescares\Inteligoogle\app\Http\Requests\UpdateGoogleFormRequest;
 
 use Softwarescares\Inteligoogle\app\Services\GoogleFormService;
 
+use Inertia\Inertia;
+
 class GoogleFormController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *

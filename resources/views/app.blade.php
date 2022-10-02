@@ -79,5 +79,6 @@
             Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
           }
      </script>
+     <script src="https://apis.google.com/js/api.js"></script>
     </body>
 </html>

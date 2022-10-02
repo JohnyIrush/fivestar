@@ -20,7 +20,13 @@ class InteliAdmissionDatabaseSeeder extends Seeder
                 ApplicantGoogleFormSeeder::class,
                 AdmissionSeeder::class,
                 ApplicantTypeSeeder::class,
-                ApplicantSeeder::class
+                ApplicantSeeder::class,
+                InterviewGoogleFormSeeder::class,
+                InterviewTypeSeeder::class,
+                InterviewSeeder::class,
+                GoogleFormLeaveSeeder::class,
+                LeaveTypeSeeder::class,
+                LeaveSeeder::class
             ]
         );
     }

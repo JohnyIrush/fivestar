@@ -12,4 +12,9 @@ class UIController extends Controller
     {
         return Inertia::render('inteli_google/ui/windows/Google');
     }
+
+    public function form()
+    {
+        return Inertia::render("inteli_admission/ui/plugins/google/form");
+    }
 }

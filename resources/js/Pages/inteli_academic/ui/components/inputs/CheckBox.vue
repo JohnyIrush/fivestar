@@ -1,6 +1,6 @@
 <template>
   <!-- start checkbox input-->
-  <div id="check-input" class="input-group mb-3">
+  <div id="check-input" class="input-group mb-3 ml-2">
    <div  class="form-check ml-2" v-for="option in options" :key="option.id" >
      <input class="form-check-input" type="checkbox"  :value="option[value]" :name="name" id="">
      <label class="form-check-label" :for="name">

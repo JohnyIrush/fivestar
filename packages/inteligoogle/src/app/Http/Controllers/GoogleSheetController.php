@@ -19,7 +19,7 @@ class GoogleSheetController extends Controller
      */
     public function index(GoogleSheetService $googlesheetservice)
     {
-        return response()->json($googlesheetservice->getClient());
+        return response()->json($googlesheetservice->readSheet());
     }
 
     /**

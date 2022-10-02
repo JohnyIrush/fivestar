@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use Softwarescares\Intelipaypal\app\Http\Controllers\PaypalController;
+//use Softwarescares\Intelipaypal\app\Http\Controllers\PaypalController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,6 +16,6 @@ use Softwarescares\Intelipaypal\app\Http\Controllers\PaypalController;
 */
 
 
-Route::post('/paypal', [PaypalController::class ,'store']);
+//Route::post('/paypal', [PaypalController::class ,'store']);
 
 

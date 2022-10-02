@@ -24,7 +24,7 @@
           <span class="fs-8" data-bs-toggle="tooltip" data-bs-placement="top" title="admision">admission</span>
         </button>
 
-        <button class="nav-link mt-6 icon text-white bg-gradient-info shadow border-radius-md" id="v-pills-ban-tab" data-bs-toggle="pill" data-bs-target="#v-pills-ban" type="button" role="tab" aria-controls="v-pills-ban" aria-selected="false">
+        <button class="nav-link mt-6 icon text-white bg-gradient-info shadow border-radius-md" id="v-pills-leave-tab" data-bs-toggle="pill" data-bs-target="#v-pills-leave" type="button" role="tab" aria-controls="v-pills-leave" aria-selected="false">
           <i class="fas fa-house-leave" data-bs-toggle="tooltip" data-bs-placement="top" title="leave"></i>
           <span class="fs-8" data-bs-toggle="tooltip" data-bs-placement="top" title="leave">leave</span>
         </button>
@@ -57,14 +57,14 @@
 
         <!--START APPLICATION  PANE-->
         <div class="tab-pane fade " id="v-pills-application" role="tabpanel" aria-labelledby="v-pills-application-tab">
-          <div class="row justify-content-center" v-if="false">
+          <div class="row justify-content-center" v-if="true">
             <div class="col-2"></div>
             <div class="col-8">
               <application_wizard></application_wizard>
             </div>
             <div class="col-2"></div>
           </div>
-          <div class="row justify-content-center" v-if="true">
+          <div class="row justify-content-center" v-if="false">
             <div class="col-12">
                <statistic-card-data :dataPath="'admission/applicant/statistics'" />
             </div>
@@ -78,21 +78,20 @@
 
         <!--START INTERVIEW PANES-->
         <div class="tab-pane fade" id="v-pills-interview" role="tabpanel" aria-labelledby="v-pills-interview-tab">
-           <div class="row">
-             <div class="col-xl-4">
-               <modal_button @showmodal="launchModal('main-modal')" :name="'Add'" :icon_classes="'fas fa-plus'" :title="'Add New Assignment'" :modalSize="'modal-lg'" :componentType="'form'" :componentName="'MainForm'" :dataPath="'academic/assignment/create'"></modal_button>
-             </div>
-             <div class="col-xl-4">
-               <modal_button @showmodal="launchModal('main-modal')" :name="'Assignments'" :icon_classes="'far fa-eye'" :title="'Assignments'" :modalSize="'modal-xl'" :componentType="'table'" :componentName="'TableData'" :dataPath="'academic/assignment/index'"></modal_button>
-             </div>
-             <div class="col-xl-4"></div>
+           <div class="row justify-content-center">
+            <div class="col-2"></div>
+            <div class="col-8">
+              <interview />
+            </div>
+            <div class="col-2"></div>
            </div>
-           <div class="col-12">
-             <application_wizard></application_wizard>
-           </div>
-           <div class="row">
-            <div class="col">
-              <main_menu></main_menu>
+          <div class="row justify-content-center">
+             <div class="col-12">
+               <statistic-card-data :dataPath="'admission/interview/statistics'" />
+             </div>
+            <div class="col-12">
+              <tabular-card :dataPath="'admission/interview/index'">
+              </tabular-card>
             </div>
            </div>
         </div>
@@ -100,59 +99,43 @@
 
         <!--START ADMISSION PANE-->
         <div class="tab-pane fade" id="v-pills-planner" role="tabpanel" aria-labelledby="v-pills-planner-tab">
-         <admission_wizard></admission_wizard>
+         <!---<admission_wizard></admission_wizard>-->
         </div>
         <!--END ADMISSION  PANE-->
 
-        <!--START SUBJECTS  PANE-->
-        <div class="tab-pane fade" id="v-pills-subjects" role="tabpanel" aria-labelledby="v-pills-subjects-tab">
-           <div class="row">
-             <div class="col-xl-4">
-               <modal_button @showmodal="launchModal('main-modal')" :name="'Add'" :icon_classes="'fas fa-plus'" :title="'Add New Subject'" :modalSize="'modal-lg'" :componentType="'form'" :componentName="'MainForm'" :dataPath="'academic/subject/create'"></modal_button>
-             </div>
-             <div class="col-xl-4">
-               <modal_button @showmodal="launchModal('main-modal')" :name="'Subjects'" :icon_classes="'far fa-eye'" :title="'Subjects'" :modalSize="'modal-xl'" :componentType="'table'" :componentName="'TableData'" :dataPath="'academic/subject/index'"></modal_button>
-             </div>
-             <div class="col-xl-4"></div>
+        <!--START LEAVE  PANE-->
+        <div class="tab-pane fade" id="v-pills-leave" role="tabpanel" aria-labelledby="v-pills-leave-tab">
+           <div class="row justify-content-center">
+            <div class="col-2"></div>
+            <div class="col-8">
+              <leave />
+            </div>
+            <div class="col-2"></div>
            </div>
-           <div class="row">
-            <div class="col">
-              <main_menu></main_menu>
+          <div class="row justify-content-center">
+             <div class="col-12">
+               <statistic-card-data :dataPath="'admission/leave/statistics'" />
+             </div>
+            <div class="col-12">
+              <tabular-card :dataPath="'admission/leave/index'">
+              </tabular-card>
             </div>
            </div>
         </div>
-        <!--END  SUBJECTS PANE-->
+        <!--END  LEAVE PANE-->
 
-        <!--START CLUBS  PANE-->
+        <!--START EXPELL  PANE-->
         <div class="tab-pane fade" id="v-pills-club" role="tabpanel" aria-labelledby="v-pills-club-tab">
            <div class="row">
-             <div class="col-xl-4">
-               <modal_button @showmodal="launchModal('main-modal')" :name="'Add'" :icon_classes="'fas fa-plus'" :title="'Add New Club'" :modalSize="'modal-lg'" :componentType="'form'" :componentName="'MainForm'" :dataPath="'academic/club/create'"></modal_button>
-             </div>
-             <div class="col-xl-4">
-               <modal_button @showmodal="launchModal('main-modal')" :name="'Clubs'" :icon_classes="'far fa-eye'" :title="'Clubs'" :modalSize="'modal-xl'" :componentType="'table'" :componentName="'TableData'" :dataPath="'academic/club/index'"></modal_button>
-             </div>
-             <div class="col-xl-4"></div>
-           </div>
-           <div class="row">
             <div class="col">
               <main_menu></main_menu>
             </div>
            </div>
         </div>
-        <!--END CLUBS  PANE-->
+        <!--END EXPELL  PANE-->
 
         <!--START SPORT  PANE-->
         <div class="tab-pane fade" id="v-pills-sport" role="tabpanel" aria-labelledby="v-pills-sport-tab">
-           <div class="row">
-             <div class="col-xl-4">
-               <modal_button @showmodal="launchModal('main-modal')" :name="'Add'" :icon_classes="'fas fa-plus'" :title="'Add New Sport'" :modalSize="'modal-lg'" :componentType="'form'" :componentName="'MainForm'" :dataPath="'academic/sport/create'"></modal_button>
-             </div>
-             <div class="col-xl-4">
-               <modal_button @showmodal="launchModal('main-modal')" :name="'Sports'" :icon_classes="'far fa-eye'" :title="'Sports'" :modalSize="'modal-xl'" :componentType="'table'" :componentName="'TableData'" :dataPath="'academic/sport/index'"></modal_button>
-             </div>
-             <div class="col-xl-4"></div>
-           </div>
            <div class="row">
             <div class="col">
               <main_menu></main_menu>
@@ -164,15 +147,6 @@
         <!--START LEVEL PANE-->
         <div class="tab-pane fade" id="v-pills-level" role="tabpanel" aria-labelledby="v-pills-level-tab">
            <div class="row">
-             <div class="col-xl-4">
-               <modal_button @showmodal="launchModal('main-modal')" :name="'Add'" :icon_classes="'fas fa-plus'" :title="'Add New Level'" :modalSize="'modal-lg'" :componentType="'form'" :componentName="'MainForm'" :dataPath="'academic/level/create'"></modal_button>
-             </div>
-             <div class="col-xl-4">
-               <modal_button @showmodal="launchModal('main-modal')" :name="'Levels'" :icon_classes="'far fa-eye'" :title="'Levels'" :modalSize="'modal-xl'" :componentType="'table'" :componentName="'TableData'" :dataPath="'academic/level/index'"></modal_button>
-             </div>
-             <div class="col-xl-4"></div>
-           </div>
-           <div class="row">
             <div class="col">
               <main_menu></main_menu>
             </div>
@@ -183,15 +157,6 @@
         <!--START STREAM PANE-->
         <div class="tab-pane fade" id="v-pills-stream" role="tabpanel" aria-labelledby="v-pills-stream-tab">
            <div class="row">
-             <div class="col-xl-4">
-               <modal_button @showmodal="launchModal('main-modal')" :name="'Add'" :icon_classes="'fas fa-plus'" :title="'Add New Stream'" :modalSize="'modal-lg'" :componentType="'form'" :componentName="'MainForm'" :dataPath="'academic/stream/create'"></modal_button>
-             </div>
-             <div class="col-xl-4">
-               <modal_button @showmodal="launchModal('main-modal')" :name="'Streams'" :icon_classes="'far fa-eye'" :title="'Streams'" :modalSize="'modal-xl'" :componentType="'table'" :componentName="'TableData'" :dataPath="'academic/stream/index'"></modal_button>
-             </div>
-             <div class="col-xl-4"></div>
-           </div>
-           <div class="row">
             <div class="col">
               <main_menu></main_menu>
             </div>
@@ -201,15 +166,6 @@
 
         <!--START SECTION PANE-->
         <div class="tab-pane fade" id="v-pills-section" role="tabpanel" aria-labelledby="v-pills-section-tab">
-           <div class="row">
-             <div class="col-xl-4">
-               <modal_button @showmodal="launchModal('main-modal')" :name="'Add'" :icon_classes="'fas fa-plus'" :title="'Add New Section'" :modalSize="'modal-lg'" :componentType="'form'" :componentName="'MainForm'" :dataPath="'academic/section/create'"></modal_button>
-             </div>
-             <div class="col-xl-4">
-               <modal_button @showmodal="launchModal('main-modal')" :name="'Section'" :icon_classes="'far fa-eye'" :title="'Sections'" :modalSize="'modal-xl'" :componentType="'table'" :componentName="'TableData'" :dataPath="'academic/section/index'"></modal_button>
-             </div>
-             <div class="col-xl-4"></div>
-           </div>
            <div class="row">
             <div class="col">
               <main_menu></main_menu>
@@ -329,6 +285,10 @@ import application_wizard from "../plugins/wizard/application-wizard.vue";
 import TabularCard from "../../../inteli_academic/ui/components/cards/TabularCard.vue"
 import MainForm from '../../../inteli_library/ui/components/forms/MainForm.vue'
 
+import Interview from './Interview.vue'
+
+import Leave from './Leave.vue'
+
 export default defineComponent({
         components: {
             Footer,
@@ -341,7 +301,9 @@ export default defineComponent({
             admission_wizard,
             application_wizard,
             TabularCard,
-            MainForm
+            MainForm,
+            Interview,
+            Leave
         },
         data() {
             return {
