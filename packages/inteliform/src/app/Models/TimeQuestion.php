@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class TimeQuestion extends Model
 {
     use HasFactory;
+
+    public function question()
+    {
+        $this->belongsTo(Question::class); 
+    }
 }

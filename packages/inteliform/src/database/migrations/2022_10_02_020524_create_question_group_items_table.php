@@ -15,6 +15,7 @@ class CreateQuestionGroupItemsTable extends Migration
     {
         Schema::create('question_group_items', function (Blueprint $table) {
             $table->id();
+            $table->integer("image_id");
             $table->timestamps();
         });
     }

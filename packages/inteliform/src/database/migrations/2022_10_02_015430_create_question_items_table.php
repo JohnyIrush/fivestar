@@ -15,6 +15,7 @@ class CreateQuestionItemsTable extends Migration
     {
         Schema::create('question_items', function (Blueprint $table) {
             $table->id();
+            $table->integer("item_id");
             $table->timestamps();
         });
     }

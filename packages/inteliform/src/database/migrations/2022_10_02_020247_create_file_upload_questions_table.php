@@ -15,6 +15,10 @@ class CreateFileUploadQuestionsTable extends Migration
     {
         Schema::create('file_upload_questions', function (Blueprint $table) {
             $table->id();
+            $table->integer("question_id");
+            $table->string("folderId");
+            $table->integer("maxFiles");
+            $table->integer("maxFileSize");
             $table->timestamps();
         });
     }

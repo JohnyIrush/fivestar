@@ -15,6 +15,9 @@ class CreateDateQuestionsTable extends Migration
     {
         Schema::create('date_questions', function (Blueprint $table) {
             $table->id();
+            $table->integer("question_id");
+            $table->boolean("includeTime");
+            $table->boolean("includeYear");
             $table->timestamps();
         });
     }

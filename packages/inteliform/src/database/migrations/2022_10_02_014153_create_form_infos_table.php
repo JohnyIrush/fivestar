@@ -15,6 +15,10 @@ class CreateFormInfosTable extends Migration
     {
         Schema::create('form_infos', function (Blueprint $table) {
             $table->id();
+            $table->integer("form_id");
+            $table->string("title");
+            $table->string("documentTitle");
+            $table->text("description");
             $table->timestamps();
         });
     }

@@ -8,4 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class QuestionGroupItem extends Model
 {
     use HasFactory;
+
+    public function image()
+    {
+        return $this->belongsTo(Image::class);
+    }
+
+    public function questions()
+    {
+        return $this->hasMany(Question::class);
+    }
 }

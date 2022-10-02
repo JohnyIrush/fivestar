@@ -15,6 +15,8 @@ class CreateQuizSettingsTable extends Migration
     {
         Schema::create('quiz_settings', function (Blueprint $table) {
             $table->id();
+            $table->integer("form_setting_id");
+            $table->boolean("isQuiz");
             $table->timestamps();
         });
     }

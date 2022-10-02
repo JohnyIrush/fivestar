@@ -15,6 +15,7 @@ class CreateChoiceTypesTable extends Migration
     {
         Schema::create('choice_types', function (Blueprint $table) {
             $table->id();
+            $table->string("type");
             $table->timestamps();
         });
     }

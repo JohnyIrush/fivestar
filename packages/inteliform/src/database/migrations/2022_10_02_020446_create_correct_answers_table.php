@@ -15,6 +15,8 @@ class CreateCorrectAnswersTable extends Migration
     {
         Schema::create('correct_answers', function (Blueprint $table) {
             $table->id();
+            $table->integer("grading_id");
+            $table->text("answer");
             $table->timestamps();
         });
     }
