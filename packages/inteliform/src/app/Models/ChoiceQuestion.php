@@ -18,4 +18,14 @@ class ChoiceQuestion extends Model
     {
         return $this->hasOne(ChoiceType::class);
     }
+
+    public function grid()
+    {
+        return $this->belongsTo(Grid::class);
+    }
+
+    public function options()
+    {
+        return $this->hasMany(Option::class);
+    }
 }

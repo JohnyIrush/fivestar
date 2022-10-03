@@ -13,4 +13,11 @@ class Option extends Model
     {
         return $this->belongsTo(Image::class);
     }
+
+    public function choiceQuestion()
+    {
+        return $this->belongsTo(ChoiceQuestion::class);
+    }
+
+    
 }

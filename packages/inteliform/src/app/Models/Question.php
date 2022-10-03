@@ -19,14 +19,29 @@ class Question extends Model
         return $this->hasOne(Grading::class);
     }
 
-    public function questionChoice()
+    public function choiceQuestion()
     {
-        return $this->hasOne(QuestionChoice::class);
+        return $this->hasOne(ChoiceQuestion::class);
+    }
+
+    public function scaleQuestion()
+    {
+        return $this->hasOne(ScaleQuestion::class);
     }
 
     public function dateQuestion()
     {
         return $this->hasOne(DateQuestion::class);
+    }
+
+    public function timeQuestion()
+    {
+        return $this->hasOne(TimeQuestion::class);
+    }
+
+    public function fileUploadQuestion()
+    {
+        return $this->hasOne(FileUploadQuestion::class);
     }
 
     public function questionGroupItem()

@@ -2,11 +2,11 @@
 
 namespace App\Policies;
 
-use App\Models\MediaProperties;
+use App\Models\MediaProperty;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class MediaPropertiesPolicy
+class MediaPropertyPolicy
 {
     use HandlesAuthorization;
 
@@ -25,10 +25,10 @@ class MediaPropertiesPolicy
      * Determine whether the user can view the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\MediaProperties  $mediaProperties
+     * @param  \App\Models\MediaProperty  $mediaProperty
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, MediaProperties $mediaProperties)
+    public function view(User $user, MediaProperty $mediaProperty)
     {
         //
     }
@@ -48,10 +48,10 @@ class MediaPropertiesPolicy
      * Determine whether the user can update the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\MediaProperties  $mediaProperties
+     * @param  \App\Models\MediaProperty  $mediaProperty
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, MediaProperties $mediaProperties)
+    public function update(User $user, MediaProperty $mediaProperty)
     {
         //
     }
@@ -60,10 +60,10 @@ class MediaPropertiesPolicy
      * Determine whether the user can delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\MediaProperties  $mediaProperties
+     * @param  \App\Models\MediaProperty  $mediaProperty
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, MediaProperties $mediaProperties)
+    public function delete(User $user, MediaProperty $mediaProperty)
     {
         //
     }
@@ -72,10 +72,10 @@ class MediaPropertiesPolicy
      * Determine whether the user can restore the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\MediaProperties  $mediaProperties
+     * @param  \App\Models\MediaProperty  $mediaProperty
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user, MediaProperties $mediaProperties)
+    public function restore(User $user, MediaProperty $mediaProperty)
     {
         //
     }
@@ -84,10 +84,10 @@ class MediaPropertiesPolicy
      * Determine whether the user can permanently delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\MediaProperties  $mediaProperties
+     * @param  \App\Models\MediaProperty  $mediaProperty
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(User $user, MediaProperties $mediaProperties)
+    public function forceDelete(User $user, MediaProperty $mediaProperty)
     {
         //
     }

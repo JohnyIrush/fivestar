@@ -5,12 +5,12 @@ namespace Softwarescares\Inteliform\app\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class FileUploadQuestion extends Model
+class AlignmentType extends Model
 {
     use HasFactory;
 
-    public function question()
+    public function alignments()
     {
-        $this->belongsTo(Question::class); 
+        return $this->belongsToMany(Alignment::class);
     }
 }

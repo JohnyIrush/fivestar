@@ -2,11 +2,11 @@
 
 namespace Softwarescares\Inteliform\app\Http\Controllers;
 
-use Softwarescares\Inteliform\app\Models\MediaProperties;
-use Softwarescares\Inteliform\app\Http\Requests\StoreMediaPropertiesRequest;
-use Softwarescares\Inteliform\app\Http\Requests\UpdateMediaPropertiesRequest;
+use Softwarescares\Inteliform\app\Models\AlignmentType;
+use Softwarescares\Inteliform\app\Http\Requests\StoreAlignmentTypeRequest;
+use Softwarescares\Inteliform\app\Http\Requests\UpdateAlignmentTypeRequest;
 
-class MediaPropertiesController extends Controller
+class AlignmentTypeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -31,10 +31,10 @@ class MediaPropertiesController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreMediaPropertiesRequest  $request
+     * @param  \App\Http\Requests\StoreAlignmentTypeRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreMediaPropertiesRequest $request)
+    public function store(StoreAlignmentTypeRequest $request)
     {
         //
     }
@@ -42,10 +42,10 @@ class MediaPropertiesController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\MediaProperties  $mediaProperties
+     * @param  \App\Models\AlignmentType  $alignmentType
      * @return \Illuminate\Http\Response
      */
-    public function show(MediaProperties $mediaProperties)
+    public function show(AlignmentType $alignmentType)
     {
         //
     }
@@ -53,10 +53,10 @@ class MediaPropertiesController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\MediaProperties  $mediaProperties
+     * @param  \App\Models\AlignmentType  $alignmentType
      * @return \Illuminate\Http\Response
      */
-    public function edit(MediaProperties $mediaProperties)
+    public function edit(AlignmentType $alignmentType)
     {
         //
     }
@@ -64,11 +64,11 @@ class MediaPropertiesController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateMediaPropertiesRequest  $request
-     * @param  \App\Models\MediaProperties  $mediaProperties
+     * @param  \App\Http\Requests\UpdateAlignmentTypeRequest  $request
+     * @param  \App\Models\AlignmentType  $alignmentType
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateMediaPropertiesRequest $request, MediaProperties $mediaProperties)
+    public function update(UpdateAlignmentTypeRequest $request, AlignmentType $alignmentType)
     {
         //
     }
@@ -76,10 +76,10 @@ class MediaPropertiesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\MediaProperties  $mediaProperties
+     * @param  \App\Models\AlignmentType  $alignmentType
      * @return \Illuminate\Http\Response
      */
-    public function destroy(MediaProperties $mediaProperties)
+    public function destroy(AlignmentType $alignmentType)
     {
         //
     }

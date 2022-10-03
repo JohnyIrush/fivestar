@@ -16,6 +16,11 @@ class QuestionItem extends Model
 
     public function question()
     {
-        return $this->belongsTo(Question::class);
+        return $this->hasOne(Question::class);
+    }
+
+    public function image()
+    {
+        return $this->belongsTo(Image::class);
     }
 }

@@ -4,7 +4,7 @@ namespace Softwarescares\Inteliform\app\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateMediaPropertiesRequest extends FormRequest
+class UpdateMediaPropertyRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.

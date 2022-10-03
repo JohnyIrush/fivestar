@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateGridsTable extends Migration
+class CreateAlignmentTypesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class CreateGridsTable extends Migration
      */
     public function up()
     {
-        Schema::create('grids', function (Blueprint $table) {
+        Schema::create('alignment_types', function (Blueprint $table) {
             $table->id();
-            $table->integer("question_group_item_id");
-            $table->boolean("shuffleQuestions");
+            $table->string("alignment");
             $table->timestamps();
         });
     }
@@ -28,6 +27,6 @@ class CreateGridsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('grids');
+        Schema::dropIfExists('alignment_types');
     }
 }

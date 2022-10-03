@@ -18,6 +18,7 @@ class CreateImagesTable extends Migration
             $table->string("contentUri");
             $table->string("altText");
             $table->string("sourceUri");
+            $table->integer("media_property_id");
             $table->timestamps();
         });
     }

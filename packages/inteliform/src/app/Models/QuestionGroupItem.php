@@ -18,4 +18,9 @@ class QuestionGroupItem extends Model
     {
         return $this->hasMany(Question::class);
     }
+
+    public function grid()
+    {
+        return $this->hasOne(Grid::class);
+    }
 }

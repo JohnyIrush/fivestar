@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateGridsTable extends Migration
+class CreateScaleQuestionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,13 @@ class CreateGridsTable extends Migration
      */
     public function up()
     {
-        Schema::create('grids', function (Blueprint $table) {
+        Schema::create('scale_questions', function (Blueprint $table) {
             $table->id();
-            $table->integer("question_group_item_id");
-            $table->boolean("shuffleQuestions");
+            $table->integer("question_id");
+            $table->integer("low");
+            $table->integer("high");
+            $table->string("lowLabel");
+            $table->string("highLabel"); 
             $table->timestamps();
         });
     }
@@ -28,6 +31,6 @@ class CreateGridsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('grids');
+        Schema::dropIfExists('scale_questions');
     }
 }

@@ -18,6 +18,7 @@ class CreateOptionsTable extends Migration
             $table->string("value");
             $table->boolean("isOther")
             $table->integer("image_id");
+            $table->integer("choice_question_id");
             $table->timestamps();
         });
     }

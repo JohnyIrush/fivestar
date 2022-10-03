@@ -18,4 +18,14 @@ class Item extends Model
     {
         return $this->hasOne(QuestionItem::class);
     }
+
+    public function imageItem()
+    {
+        return $this->hasOne(ImageItem::class);
+    }
+
+    public function videoItem()
+    {
+        return $this->hasOne(VideoItem::class);
+    }
 }

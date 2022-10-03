@@ -15,6 +15,7 @@ class CreateChoiceQuestionsTable extends Migration
     {
         Schema::create('choice_questions', function (Blueprint $table) {
             $table->id();
+            $table->string("choice_question_id")->nullable();
             $table->string("choice_type_id");
             $table->integer("question_id");
             $table->boolean("shuffle");

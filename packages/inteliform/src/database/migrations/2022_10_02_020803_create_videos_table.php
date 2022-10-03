@@ -15,6 +15,8 @@ class CreateVideosTable extends Migration
     {
         Schema::create('videos', function (Blueprint $table) {
             $table->id();
+            $table->string("youtubeUri");
+            $table->integer("media_property_id");
             $table->timestamps();
         });
     }

@@ -19,6 +19,7 @@ class CreateItemsTable extends Migration
             $table->string("itemId");
             $table->string("title");
             $table->text("description");
+            $table->text("textItem");
             $table->timestamps();
         });
     }

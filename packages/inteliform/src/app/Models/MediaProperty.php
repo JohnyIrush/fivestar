@@ -5,17 +5,17 @@ namespace Softwarescares\Inteliform\app\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Video extends Model
+class MediaProperty extends Model
 {
     use HasFactory;
 
-    public function videoItem()
+    public function video()
     {
-        return $this->belongsTo(VideoItem::class);
+        return $this->hasOne(Video::class);
     }
 
-    public function mediaProperty()
+    public function alignment()
     {
-       return $this->belongsTo(MediaProperty::class); 
+        return $this->hasOne(Alignment::class);
     }
 }

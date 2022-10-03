@@ -15,6 +15,8 @@ class CreateAlignmentsTable extends Migration
     {
         Schema::create('alignments', function (Blueprint $table) {
             $table->id();
+            $table->integer("media_property_id");
+            $table->integer("alignment_type_id");
             $table->timestamps();
         });
     }

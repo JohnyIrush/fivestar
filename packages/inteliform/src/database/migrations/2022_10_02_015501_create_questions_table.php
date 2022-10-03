@@ -15,8 +15,8 @@ class CreateQuestionsTable extends Migration
     {
         Schema::create('questions', function (Blueprint $table) {
             $table->id();
-            $table->integer("question_item_id");
-            $table->integer("question_group_item_id");
+            $table->integer("question_item_id")->nullable();
+            $table->integer("question_group_item_id")->nullable();
             $table->text("question");
             $table->string("questionId");
             $table->string("required");

@@ -15,6 +15,7 @@ class CreateMediaPropertiesTable extends Migration
     {
         Schema::create('media_properties', function (Blueprint $table) {
             $table->id();
+            $table->integer("width");
             $table->timestamps();
         });
     }
