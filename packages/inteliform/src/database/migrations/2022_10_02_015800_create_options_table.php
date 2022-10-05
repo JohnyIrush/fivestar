@@ -16,7 +16,7 @@ class CreateOptionsTable extends Migration
         Schema::create('options', function (Blueprint $table) {
             $table->id();
             $table->string("value");
-            $table->boolean("isOther")
+            $table->boolean("isOther");
             $table->integer("image_id");
             $table->integer("choice_question_id");
             $table->timestamps();

@@ -1,5 +1,5 @@
 <template>
-    <button @click="passComponentDetails" type="button" class="btn btn-primary" ><i v-if="icon_classes" :class="icon_classes"></i><span class="ml-2" v-if="name">{{name}}</span></button>
+    <button @click="passComponentDetails" type="button" class="" ><i v-if="icon_classes" :class="icon_classes"></i><span class="ml-2" v-if="name">{{name}}</span></button>
 </template>
 
 <script>
@@ -12,10 +12,20 @@ import { store } from '../../../../../store/store.js'
             name: String,
             icon_classes: String,
             title: String,
-            modalSize: String,
             componentType: String,
             componentName: String,
-            dataPath: String
+            dataPath: String,
+            //Modal
+            modalSize: String,
+            modalWidth: String,
+            modalClasses: String,
+            modalDialogClasses: String,
+            modalContentClasses: String,
+            backDrop: Boolean,
+            //List Data
+            listData: Array,
+            fieldName: String,
+            iconName: String,
         },
         components: {
 
@@ -64,10 +74,21 @@ import { store } from '../../../../../store/store.js'
             },
             passComponentDetails()
             {
-               store.state.Modal.title = this.title 
-               store.state.Modal.modalSize = this.modalSize 
+               //modal
                store.state.Modal.componentType = this.componentType
                store.state.Modal.componentName = this.componentName 
+               store.state.Modal.modalClasses = this.modalClasses
+               store.state.Modal.modalDialogClasses = this.modalDialogClasses 
+               store.state.Modal.modalContentClasses = this.modalContentClasses 
+               store.state.Modal.title = this.title 
+               store.state.Modal.modalSize = this.modalSize
+               store.state.Modal.modalWidth = this.modalWidth
+               store.state.Modal.backDrop = this.backDrop
+
+               //list
+               store.state.List.data = this.listData
+               store.state.List.fieldName = this.fieldName 
+               store.state.List.iconName = this.iconName 
 
                if(this.componentType == 'table')
                {

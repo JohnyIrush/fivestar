@@ -1,15 +1,15 @@
 <template>
-  <div class="modal fade" id="main-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="main-modal" aria-hidden="true">
-    <div :class="'modal-dialog modal-dialog-centered text-c-center text-center modal-xl ' + modalSize">
-      <div class="modal-content glass-content text-c-center text-center">
-        <div class="modal-header text-c-center">
+  <div :class="'modal ' + modalClasses" id="main-modal" :data-bs-backdrop="backDrop? 'static' : false" data-bs-keyboard="true" tabindex="-1" aria-labelledby="main-modal" aria-hidden="true">
+    <div :class="'modal-dialog ' + modalSize + ' ' + modalWidth + ' ' + modalDialogClasses">
+      <div :class="'modal-content glass-content ' + ' ' + modalContentClasses">
+        <div class="modal-header">
             <div class="col">
                 <h3 class="modal-title" id="">{{title}}</h3>
             </div>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div id="modal-body" class="modal-body">
-            <component :is="componentName" ></component>
+            <component @selectedListItem="selectedListItem" :is="componentName" ></component>
         </div>
       </div>
     </div>
@@ -30,6 +30,7 @@ import MainForm from '../forms/MainForm.vue'
 import TabularCard from '../../../../inteli_academic/ui/components/cards/TabularCard.vue'
 import MiniTabularCard from '../../../../inteli_academic/ui/components/cards/MiniTabularCard.vue'
 
+import DataList from '../../../../inteli_form/ui/components/list/DataList.vue'
 
     export default defineComponent({
         components: {
@@ -37,7 +38,8 @@ import MiniTabularCard from '../../../../inteli_academic/ui/components/cards/Min
             TableData,
             MainForm,
             TabularCard,
-            MiniTabularCard
+            MiniTabularCard,
+            DataList,
         },
         data() {
             return {
@@ -53,6 +55,26 @@ import MiniTabularCard from '../../../../inteli_academic/ui/components/cards/Min
           {
             return store.state.Modal.modalSize
           },
+          modalWidth()
+          {
+            return store.state.Modal.modalWidth
+          },
+          modalClasses()
+          {
+            return store.state.Modal.modalClasses
+          },
+          modalDialogClasses()
+          {
+            return store.state.Modal.modalDialogClasses
+          },
+          modalContentClasses()
+          {
+            return store.state.Modal.modalContentClasses
+          },
+          backDrop()
+          {
+            return store.state.Modal.backDrop
+          },
           componentType()
           {
             return store.state.Modal.componentType
@@ -63,7 +85,11 @@ import MiniTabularCard from '../../../../inteli_academic/ui/components/cards/Min
           }
         },
         methods: {
-
+            selectedListItem(event)
+            {
+                console.log("Modal",event)
+                this.$emit("selectedListItem", event)
+            }
         },
         mounted() {
 

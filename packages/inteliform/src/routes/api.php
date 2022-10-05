@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
+//use Softwarescares\Inteliform\app\Http\Controllers\FormInfoController;
 use Softwarescares\Inteliform\app\Http\Controllers\FormController;
 
 
@@ -22,5 +23,12 @@ Route::get("form/create",[FormController::class,"create"]);
 Route::post("form/store",[FormController::class,"store"]);
 Route::post("form/update",[FormController::class,"update"]);
 Route::post("form/destroy",[FormController::class,"destroy"]);
+
+//form info is abandoned
+// Route::get("form/info/index",[FormInfoController::class,"index"]);
+// Route::get("form/info/create",[FormInfoController::class,"create"]);
+// Route::post("form/info/store",[FormInfoController::class,"store"]);
+// Route::post("form/info/update",[FormInfoController::class,"update"]);
+// Route::post("form/info/destroy",[FormInfoController::class,"destroy"]);
 
 

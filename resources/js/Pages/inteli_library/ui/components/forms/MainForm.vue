@@ -8,73 +8,73 @@
         <div class="card glass-content">
          <form id="auto-form" @submit.prevent="submit">
           <div class="row">
-           <div class="col-6" v-for="field in fields" :key="field.field">
+           <div class="mt-2 mb-2" v-for="field in fields" :key="field.field">
            <!-- start text/string input-->
-           <div v-if="renderInput(field.type,'text',field.field)" id="text-input" class="mb-3">
+           <div  v-if="renderInput(field.type,'text',field.field)" id="text-input" class="mb-3 form-field-container">
              <label :for="field.field" class="form-label">{{field.field}}</label>
-             <input id="" type="text" class="form-control" :value="formEditData[field.field]" :name="field.field" required autofocus :autocomplete="field.field" />
+             <input id="" type="text" class="form-control form-input-style" :value="formEditData[field.field]" :name="field.field" required autofocus :autocomplete="field.field" />
            </div>
            <!-- end text/string input-->
 
            <!-- start email input-->
            <div v-else-if="renderInput(field.type,'hidden',field.field)" id="email-input" class="mb-3">
-             <input id="" type="hidden" class="form-control" :value="formEditData[field.field]" :name="field.field" required autofocus :autocomplete="field.field" />
+             <input id="" type="hidden" class="form-control form-input-style" :value="formEditData[field.field]" :name="field.field" required autofocus :autocomplete="field.field" />
            </div>
            <!-- end email input-->
 
            <!-- start email input-->
            <div v-else-if="renderInput(field.type,'email',field.field)" id="email-input" class="mb-3">
              <label :for="field.field" class="form-label">{{field.field}}</label>
-             <input id="" type="email" class="form-control" :value="formEditData[field.field]" :name="field.field" required autofocus :autocomplete="field.field" />
+             <input id="" type="email" class="form-control form-input-style" :value="formEditData[field.field]" :name="field.field" required autofocus :autocomplete="field.field" />
            </div>
            <!-- end email input-->
 
            <!-- start tel/phone input-->
            <div v-else-if="renderInput(field.type,'tel',field.field)" id="tel-input" class="mb-3">
             <label :for="field.field" class="form-label">{{field.field}}</label>
-            <input id="" type="tel" class="form-control" :value="formEditData[field.field]" :name="field.field" required autofocus :autocomplete="field.field" />
+            <input id="" type="tel" class="form-control form-input-style" :value="formEditData[field.field]" :name="field.field" required autofocus :autocomplete="field.field" />
            </div>
            <!-- end tel/phone input-->
            
            <!-- start password input-->
            <div v-else-if="renderInput(field.type,'password',field.field)" id="password-input" class="mb-3">
             <label :for="field.field" class="form-label">{{field.field}}</label>
-            <input id="" type="password" class="form-control" :value="formEditData[field.field]" :name="field.field" required :autocomplete="field.field" />
+            <input id="" type="password" class="form-control form-input-style" :value="formEditData[field.field]" :name="field.field" required :autocomplete="field.field" />
            </div>
            <!-- end password input-->
 
            <!-- start number input-->
            <div v-else-if="renderInput(field.type,'number',field.field)" id="number-input" class="mb-3">
             <label :for="field.field" class="form-label">{{field.field}}</label>
-            <input id="" type="number" class="form-control" :value="formEditData[field.field]" :name="field.field" required :autocomplete="field.field" />
+            <input id="" type="number" class="form-control form-input-style" :value="formEditData[field.field]" :name="field.field" required :autocomplete="field.field" />
            </div>
            <!-- end number input-->
 
            <!-- start url/link/website input-->
            <div v-else-if="renderInput(field.type,'url',field.field)" id="url-input" class="">
             <label :for="field.field" class="form-label">{{field.field}}</label>
-            <input id="" type="url" class="form-control" :value="formEditData[field.field]" :name="field.field" required :autocomplete="field.field" />
+            <input id="" type="url" class="form-control form-input-style" :value="formEditData[field.field]" :name="field.field" required :autocomplete="field.field" />
            </div>
            <!-- end url/link/website input-->
 
            <!-- start date input-->
            <div v-else-if="renderInput(field.type,'date',field.field)" id="date-input" class="">
             <label :for="field.field" class="form-label">{{field.field}}</label>
-            <input id="date" type="date" class="form-control" :value="formEditData[field.field]" :name="field.field" required :autocomplete="field.field" />
+            <input id="date" type="date" class="form-control form-input-style" :value="formEditData[field.field]" :name="field.field" required :autocomplete="field.field" />
            </div>
            <!-- end date input-->
 
            <!-- start time input-->
            <div v-else-if="renderInput(field.type,'time',field.field)" id="time-input" class="">
             <label :for="field.field" class="form-label">{{field.field}}</label>
-            <input id="time" type="time" class="form-control" :value="formEditData[field.field]" :name="field.field" required :autocomplete="field.field" />
+            <input id="time" type="time" class="form-control form-input-style" :value="formEditData[field.field]" :name="field.field" required :autocomplete="field.field" />
            </div>
            <!-- end time input-->
 
            <!-- start textarea input-->
-           <div v-else-if="renderInput(field.type,'textarea',field.field)" id="text-input" class="">
+           <div  v-else-if="renderInput(field.type,'textarea',field.field)" id="text-input" class="form-field-container">
             <label :for="field.field" class="form-label">{{field.field}}</label>
-            <textarea :name="field.field" :value="formEditData[field.field]" class="form-control" id="" rows="3"></textarea>
+            <textarea :name="field.field" :value="formEditData[field.field]" class="form-control form-input-style" id="" rows="3"></textarea>
            </div>
            <!-- end textarea input-->
 
@@ -115,7 +115,7 @@
            <!-- end select input-->
            </div>
           </div>
-          <button type="submit" class="btn sbtn-primary">Submit</button>
+          <button type="submit" class="btn sbtn-primary" v-if="showSubmitButton">Submit</button>
          </form>
         </div>
       </div>
@@ -138,7 +138,12 @@ export default defineComponent({
   props: {
     formPath: String,
     formFields: Array,
-    showCommunicationMenu: Boolean
+    showCommunicationMenu: Boolean,
+    showSubmitButton:{
+      type: Boolean,
+      default: true
+    },
+    formBuilderFields: Array,
   },
   components:{
     CommunicationOption
@@ -148,6 +153,10 @@ export default defineComponent({
 
   },
  computed:{
+  formBuilderFieldsData()
+  {
+    return this.formBuilderFields
+  },
   formFieldsData()
   {
     return this.formFields
@@ -166,8 +175,10 @@ export default defineComponent({
       return store.state.form.fields[0]
     else if(this.formFieldEntries.length > 0)
       return this.formFieldEntries[0]
-    else if (this.formFieldsData.length > 0)
-      return this.formFieldsData[0]
+    //else if (this.formFieldsData.length > 0)
+    //  return this.formFieldsData[0]
+    //else if(this.formBuilderFields.length > 0)
+    //  return this.formBuilderFields
   },
   options()
   {
@@ -175,8 +186,9 @@ export default defineComponent({
       return store.state.form.fields[1]
     else if(this.formFieldEntries.length > 0)
       return this.formFieldEntries[1]
-    else if (this.formFieldsData.length > 0)
-      return this.formFieldsData[1]
+    //else if (this.formFieldsData.length > 0)
+    //  return this.formFieldsData[1]
+    //else if(this.formBuilderFieldsData.length > 0)
   },
   hidden()
   {
@@ -184,8 +196,9 @@ export default defineComponent({
       return store.state.form.fields[2]
     else if(this.formFieldEntries.length > 0)
       return this.formFieldEntries[2]
-    else if (this.formFieldsData.length > 0)
-      return this.formFieldsData[2]
+    //else if (this.formFieldsData.length > 0)
+    //  return this.formFieldsData[2]
+    //else if(this.formBuilderFieldsData.length > 0)
   },
   crud()
   {
@@ -193,8 +206,9 @@ export default defineComponent({
       return store.state.form.fields[3]
     else if(this.formFieldEntries.length > 0)
       return this.formFieldEntries[3]
-    else if (this.formFieldsData.length > 0)
-      return this.formFieldsData[3]
+    //else if (this.formFieldsData.length > 0)
+    //  return this.formFieldsData[3]
+    //else if(this.formBuilderFieldsData.length > 0)
   },
  },
   data (){
@@ -344,6 +358,17 @@ export default defineComponent({
        }
       }
     },
+    getFormFields(url)
+    {
+      axios.get(url)
+      .then((response)=>{
+        store.state.form.fields = response.data
+      })
+    }
+   },
+   created()
+   {
+    this.getFormFields(this.formPath)
    },
    mounted()
    {
@@ -404,4 +429,36 @@ export default defineComponent({
 {
   background: transparent !important;
 }
+
+.form-field-container
+{
+  border-bottom: 2px solid #adadad !important;
+  margin: 30px 0 !important;
+  width: 100% !important;
+
+}
+
+/*
+.form-input-style
+{
+  width: 100% !important !important;
+  padding: 0 5px !important;
+  height: 40px !important;
+  font-size: 16px !important;
+  border: none !important;
+  background: none !important;
+  outline: none !important;
+}
+*/
+
+.form-input-style
+{
+    background: transparent;
+    border: none;
+}
+
+.form-input-style:focus {
+  border-bottom: 5px solid purple !important;
+}
+
 </style>

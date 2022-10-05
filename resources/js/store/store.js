@@ -107,7 +107,13 @@ export const store = createStore({
         Modal:{
             title: '',
             ComponentType: '',
-            ComponentName: ''
+            ComponentName: '',
+            modalSize: '',
+            modalWidth: '',
+            modalClasses: '',
+            modalDialogClasses: '',
+            modalContentClasses: '',
+            backDrop: false
         },
         form:{
             formEditData: [],
@@ -132,7 +138,12 @@ export const store = createStore({
         },
         MiniTabularCard:{
 
-        }
+        },
+        List:{
+            data: [],
+            fieldName: '',
+            iconName: ''
+        },
       }
     },
     getters:

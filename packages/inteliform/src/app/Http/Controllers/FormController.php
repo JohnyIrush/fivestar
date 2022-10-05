@@ -2,9 +2,21 @@
 
 namespace Softwarescares\Inteliform\app\Http\Controllers;
 
-use Softwarescares\Inteliform\app\Models\Form;
+use Softwarescares\Inteliform\app\Models\Form as FormModel;
 use Softwarescares\Inteliform\app\Http\Requests\StoreFormRequest;
 use Softwarescares\Inteliform\app\Http\Requests\UpdateFormRequest;
+
+use Softwarescares\Intelilibrary\app\Actions\Model\Store;
+use Softwarescares\Intelilibrary\app\Actions\Model\Update;
+use Softwarescares\Intelilibrary\app\Actions\Model\Delete;
+
+use Softwarescares\Intelilibrary\app\Plugins\Model\Form;
+use Softwarescares\Intelilibrary\app\Plugins\Model\Table;
+use Softwarescares\Intelilibrary\app\Plugins\Model\Card;
+
+use Illuminate\Http\Request;
+
+use DB;
 
 class FormController extends Controller
 {
@@ -23,9 +35,16 @@ class FormController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(FormModel $formModel, Form $form)
     {
-        //
+        return $form->form($formModel, [],
+            ['id','created_at', 'updated_at'], 
+            [
+            'store' => "form/store",
+            'update' => "form/update",
+            "delete" => "form/destroy"
+            ]
+           );
     }
 
     /**
@@ -45,7 +64,7 @@ class FormController extends Controller
      * @param  \App\Models\Form  $form
      * @return \Illuminate\Http\Response
      */
-    public function show(Form $form)
+    public function show(FormModel $formModel)
     {
         //
     }
@@ -56,7 +75,7 @@ class FormController extends Controller
      * @param  \App\Models\Form  $form
      * @return \Illuminate\Http\Response
      */
-    public function edit(Form $form)
+    public function edit(FormModel $formModel)
     {
         //
     }
@@ -68,7 +87,7 @@ class FormController extends Controller
      * @param  \App\Models\Form  $form
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateFormRequest $request, Form $form)
+    public function update(UpdateFormRequest $request, FormModel $formModel)
     {
         //
     }
@@ -79,7 +98,7 @@ class FormController extends Controller
      * @param  \App\Models\Form  $form
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Form $form)
+    public function destroy(FormModel $formModel)
     {
         //
     }

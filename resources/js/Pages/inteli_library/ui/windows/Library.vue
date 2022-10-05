@@ -1,6 +1,6 @@
 <template>
   <Sidebar></Sidebar>
-  <main class="main-content position-relative">
+  <main class="main-content">
       <NavBar></NavBar>
       <Body></Body>
       <settings></settings>
