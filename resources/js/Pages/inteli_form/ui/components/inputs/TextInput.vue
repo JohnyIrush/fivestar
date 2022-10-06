@@ -1,138 +1,261 @@
+<template>
+  <!-- start text/string input-->
+   <!--START INPUT SETTINGS|OPTIONS|PROPERTIES -->
+     <div class="row mt-3 mb-3" v-if="fieldSettings">
+      <div class="col-3 mt-2 mb-2">
+       <div class="input-group ">
+        <span 
+          class="input-group-text" 
+          id="title-basic-addon">
+          Title
+        </span>
+        <input 
+          v-model="field.title"
+          type="text" 
+          class="form-control form-input-transparent" 
+          aria-label="" 
+          aria-describedby="title-basic-addon">
+       </div>
+      </div>
+      <div class="col-3 mt-2 mb-2">
+       <div class="input-group ">
+        <span 
+          class="input-group-text" 
+          id="placeholder-basic-addon">
+          Placeholder
+        </span>
+        <input 
+          v-model="field.placeholder"
+          type="text" 
+          class="form-control form-input-transparent" 
+          aria-label="" 
+          aria-describedby="placeholder-basic-addon">
+        </div>
+       </div>
+      <div class="col-3 mt-2 mb-2">
+      <div class="input-group ">
+        <span 
+          class="input-group-text" 
+          id="placeholder-basic-addon">
+          Default
+        </span>
+        <input 
+          v-model="field.default"
+          type="text" 
+          class="form-control form-input-transparent" 
+          aria-label="" 
+          aria-describedby="placeholder-basic-addon">
+       </div>
+      </div>
+      <div class="col-3 mt-2 mb-2">
+      <div class="input-group ">
+        <span 
+          class="input-group-text" 
+          id="minlength-basic-addon">
+          minlength
+        </span>
+        <input 
+          v-model="field.settings.minlength"
+          type="number" 
+          class="form-control form-input-transparent" 
+          aria-label="" 
+          aria-describedby="minlenght-basic-addon">
+       </div>
+      </div>
+      <div class="col-3 mt-2 mb-2">
+      <div class="input-group ">
+        <span 
+          class="input-group-text" 
+          id="maxlength-basic-addon">
+          maxlength
+        </span>
+        <input 
+          v-model="field.settings.maxlength"
+          type="number" 
+          class="form-control form-input-transparent" 
+          aria-label="" 
+          aria-describedby="maxlenght-basic-addon">
+       </div>
+      </div>
+      <div class="col-3 mt-2 mb-2">
+      <div class="form-check form-switch">
+        <label 
+        class="form-check-label" 
+        for="text-input-reuired-setting-check"
+        >
+        required
+        </label>
+        <input 
+         v-model="field.settings.required"
+         class="form-check-input" 
+         type="checkbox" 
+         id="text-input-required-setting-check">
+       </div>
+      </div>
+      <div class="col-3 mt-2 mb-2">
+      <div class="form-check form-switch">
+        <label 
+        class="form-check-label" 
+        for="text-input-reuired-setting-check"
+        >
+        autocomplete
+        </label>
+        <input 
+         v-model="field.settings.autocomplete"
+         class="form-check-input" 
+         type="checkbox" 
+         id="text-input-autocomplete-setting-check">
+       </div>
+      </div>
+      <div class="col-3 mt-2 mb-2">
+      <div class="form-check form-switch">
+        <label 
+        class="form-check-label" 
+        for="text-input-disabled-setting-check"
+        >
+        disabled
+        </label>
+        <input 
+         v-model="field.settings.disabled"
+         class="form-check-input" 
+         type="checkbox" 
+         id="text-input-autocomplete-setting-check">
+       </div>
+      </div>
+
+     </div>
+   <!--START INPUT SETTINGS|OPTIONS|PROPERTIES -->
+   <!--START INPUT -->
+    <div  
+       :id="field.title + '-text-input-container'"  
+       :class="' ' + formFieldContainerClasses">
+       <label 
+          :for="field.title" 
+          :class="'form-label' + formFieldLabelClasses">
+          {{field.title}}
+       </label>
+      <input 
+         :id="field.title + '-text-input'" 
+         type="text" 
+         :class="'form-control ' + formFieldClasses" 
+         v-model="field.default" 
+         :name="field.title"  
+         :placeholder="field.placeholder"
+         :autocomplete="field.settings.autocomplete" 
+         :minlength="field.settings.minlength"
+         :maxlength="field.settings.maxlength"
+         autofocus
+         />
+     <div 
+     :id="field.title + 'Help'" 
+     class="form-text">
+       {{field.description}}
+     </div>
+    </div>
+   <!--END INPUT -->
+  <!-- end text/string input-->
+</template>
+
 <script>
-    import { defineComponent } from 'vue';
-    import { Head, Link } from '@inertiajs/inertia-vue3';
-
-    import useEventsBus from '../../plugins/eventBus.js';
-
-    const {emiter,bus,fire,listen} = useEventsBus()
-
-    //import useHelper from '../../plugins/Helper.js';
-
-    //const {isEmpty, isObject} = useHelper()
-
-    import { provide } from 'vue'
+    import { defineComponent } from 'vue'
 
     export default defineComponent({
-    	name: "TextInput",
-    	props:{
-    		group:{
-    			type: String,
-    			required: true
-    		},
-    		name:{
-    			type: String,
-    			required: true
-    		},
-    		id:{
-    			type: String,
-    			required: false
-    		},
-    		value: {
-    			default: ''
-    		},
-    		currentValue: {
-    			default: '',
-    		},
-    		placeholder:{
-    			type: String,
-    			required: false
-    		},
-    		focus:{
-    			type: Boolean,
-    			default: false
-    		},
-    		maxLength:{
-    			type: String,
-    			required: false
-    		},
-    		autocomplete:{
-    			type: String,
-    			required: false
-    		},
-            validation:{
-                type: [Array, Object],
-                default: () => []
-            }
-    	},
-        data()
-        {
+        name: "TextInput",
+        props:{
+          formFieldLabelClasses: String,
+          formFieldClasses: String,
+          formFieldContainerClasses: String,
+          fieldData: Object,
+          fieldSettings: {
+            type: Boolean,
+            default: false
+          }
+        },
+        components: {
+
+        },
+        data() {
             return {
-            	identity: this.id ? this.id : this.name,
-                displayValidation: false
+                   field: {
+                     type: 'text',
+                     title: 'field title',
+                     default: '',
+                     placeholder: 'field',
+                     image: '',
+                     settings:{
+                       autocomplete : 'off',
+                       required : false, 
+                       disabled :  false,
+                       minlength :  3,
+                       maxlength :  20,
+                       component : 'TextInput'
+                     }
+                 }
             }
         },
-        computed:{
-        	inputListeners()
-        	{
-        		return Object.assign({}, this.$listeners,{
-        			input: event =>{
-        				this.emit(event.target.value)
-        			}
-        		})
-        	}
+
+        methods: {
+
+        },
+        created()
+        {
+
         },
         mounted()
         {
-        	this.emit(this.currentValue)
+
         },
-        methods:{
-        	emit(value)
-        	{
-        		this.$emit('input', value)
-        	},
-            initialize()
+        watch: {
+          field: {
+            handler(newValue, oldValue) {
+
+            const input = document.getElementById(oldValue.title + '-text-input');
+
+            console.log("field", newValue)
+            if (newValue.settings.disabled)
             {
-                
-                if (this.isEmpty(this.validation))
-                {
-                    return;
-                }
-
-                let rules = this.validation;
-
-                if (!Array.isArray(this.validation)) {
-                    this.displayValidation = true
-                    rules = Object.keys(this.validation);
-                }
-
-                fire('initialize-'+ this.group,{
-                    field: this.name,
-                    rules: rules
-                })
-            },
-            isEmpty(value)
-            {
-                if (this.isObject(value)) {
-                    return Object.keys(value).length === 0;
-                }
-
-                return(
-                    value === undefined ||
-                    value === null ||
-                    value.length === 0
-                );
-            },
-            isObject(value)
-            {
-                return value instanceof Object && !Array.isArray(value);
-            },
-
-            },
-            setup(props) {
-              provide(/* key */ 'textInputValue', /* value */ props.value)
+              input.disabled = newValue.settings.disabled
             }
-            });
+            else
+            {
+              input.removeAttribute("disabled")
+            }
+
+            if (newValue.settings.required)
+            {
+              input.required = newValue.settings.required
+            }else{
+              input.removeAttribute("required")
+            }
+            },
+            deep: true
+          }
+        }
+    })
 </script>
 
-<template>
-	<input 
-	    type="text" 
-        :id="identity"
-	    :name="name"
-	    :value="value"
-	    :maxLength="maxLength"
-	    :placeholder="placeholder"
-	    :autocomplete="autocomplete"
-	    v-on="inputListeners"
-	    >
-</template>
+
+<style scoped>
+
+.form-field-container
+{
+  border-bottom: 2px solid #adadad !important;
+  width: 100% !important;
+
+}
+
+.form-input-style
+{
+    background: transparent !important;
+    border: none !important;
+}
+
+.form-input-transparent
+{
+    background: transparent !important;
+}
+
+.form-input-style:focus {
+  border-bottom: 5px solid purple !important;
+}
+</style>

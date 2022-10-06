@@ -8,96 +8,91 @@
         <div class="card glass-content">
          <form id="auto-form" @submit.prevent="submit">
           <div class="row">
-           <div class="mt-2 mb-2" v-for="field in fields" :key="field.field">
+           <div :class="' ' + formFieldContainerClasses" v-for="field in fields" :key="field.field">
            <!-- start text/string input-->
            <div  v-if="renderInput(field.type,'text',field.field)" id="text-input" class="mb-3 form-field-container">
-             <label :for="field.field" class="form-label">{{field.field}}</label>
+             <label :for="field.field" :class="'form-label' + formFieldLabelClasses">{{field.field}}</label>
              <input id="" type="text" class="form-control form-input-style" :value="formEditData[field.field]" :name="field.field" required autofocus :autocomplete="field.field" />
            </div>
            <!-- end text/string input-->
 
-           <!-- start email input-->
-           <div v-else-if="renderInput(field.type,'hidden',field.field)" id="email-input" class="mb-3">
-             <input id="" type="hidden" class="form-control form-input-style" :value="formEditData[field.field]" :name="field.field" required autofocus :autocomplete="field.field" />
-           </div>
-           <!-- end email input-->
 
            <!-- start email input-->
-           <div v-else-if="renderInput(field.type,'email',field.field)" id="email-input" class="mb-3">
-             <label :for="field.field" class="form-label">{{field.field}}</label>
+           <div v-else-if="renderInput(field.type,'email',field.field)" id="email-input" :class="' ' + formFieldContainerClasses">
+             <label :for="field.field" :class="'form-label' + formFieldLabelClasses">{{field.field}}</label>
              <input id="" type="email" class="form-control form-input-style" :value="formEditData[field.field]" :name="field.field" required autofocus :autocomplete="field.field" />
            </div>
            <!-- end email input-->
 
            <!-- start tel/phone input-->
-           <div v-else-if="renderInput(field.type,'tel',field.field)" id="tel-input" class="mb-3">
-            <label :for="field.field" class="form-label">{{field.field}}</label>
+           <div v-else-if="renderInput(field.type,'tel',field.field)" id="tel-input" :class="' ' + formFieldContainerClasses">
+            <label :for="field.field" :class="'form-label' + formFieldLabelClasses">{{field.field}}</label>
             <input id="" type="tel" class="form-control form-input-style" :value="formEditData[field.field]" :name="field.field" required autofocus :autocomplete="field.field" />
            </div>
            <!-- end tel/phone input-->
            
            <!-- start password input-->
-           <div v-else-if="renderInput(field.type,'password',field.field)" id="password-input" class="mb-3">
-            <label :for="field.field" class="form-label">{{field.field}}</label>
+           <div v-else-if="renderInput(field.type,'password',field.field)" id="password-input" :class="' ' + formFieldContainerClasses">
+            <label :for="field.field" :class="'form-label' + formFieldLabelClasses">{{field.field}}</label>
             <input id="" type="password" class="form-control form-input-style" :value="formEditData[field.field]" :name="field.field" required :autocomplete="field.field" />
            </div>
            <!-- end password input-->
 
            <!-- start number input-->
-           <div v-else-if="renderInput(field.type,'number',field.field)" id="number-input" class="mb-3">
-            <label :for="field.field" class="form-label">{{field.field}}</label>
+           <div v-else-if="renderInput(field.type,'number',field.field)" id="number-input" :class="' ' + formFieldContainerClasses">
+            <label :for="field.field" :class="'form-label' + formFieldLabelClasses">{{field.field}}</label>
             <input id="" type="number" class="form-control form-input-style" :value="formEditData[field.field]" :name="field.field" required :autocomplete="field.field" />
            </div>
            <!-- end number input-->
 
            <!-- start url/link/website input-->
-           <div v-else-if="renderInput(field.type,'url',field.field)" id="url-input" class="">
-            <label :for="field.field" class="form-label">{{field.field}}</label>
+           <div v-else-if="renderInput(field.type,'url',field.field)" id="url-input" :class="' ' + formFieldContainerClasses">
+            <label :for="field.field" :class="'form-label' + formFieldLabelClasses">{{field.field}}</label>
             <input id="" type="url" class="form-control form-input-style" :value="formEditData[field.field]" :name="field.field" required :autocomplete="field.field" />
            </div>
            <!-- end url/link/website input-->
 
            <!-- start date input-->
-           <div v-else-if="renderInput(field.type,'date',field.field)" id="date-input" class="">
-            <label :for="field.field" class="form-label">{{field.field}}</label>
+           <div v-else-if="renderInput(field.type,'date',field.field)" id="date-input" :class="' ' + formFieldContainerClasses">
+            <label :for="field.field" :class="'form-label'+ formFieldLabelClasses">{{field.field}}</label>
             <input id="date" type="date" class="form-control form-input-style" :value="formEditData[field.field]" :name="field.field" required :autocomplete="field.field" />
            </div>
            <!-- end date input-->
 
            <!-- start time input-->
-           <div v-else-if="renderInput(field.type,'time',field.field)" id="time-input" class="">
-            <label :for="field.field" class="form-label">{{field.field}}</label>
+           <div v-else-if="renderInput(field.type,'time',field.field)" id="time-input" :class="' ' + formFieldContainerClasses">
+            <label :for="field.field" :class="'form-label' + formFieldLabelClasses">{{field.field}}</label>
             <input id="time" type="time" class="form-control form-input-style" :value="formEditData[field.field]" :name="field.field" required :autocomplete="field.field" />
            </div>
            <!-- end time input-->
 
            <!-- start textarea input-->
-           <div  v-else-if="renderInput(field.type,'textarea',field.field)" id="text-input" class="form-field-container">
-            <label :for="field.field" class="form-label">{{field.field}}</label>
+           <div  v-else-if="renderInput(field.type,'textarea',field.field)" id="text-input" :class="'form-field-container ' + formFieldContainerClasses">
+            <label :for="field.field" :class="'form-label' + formFieldLabelClasses">{{field.field}}</label>
             <textarea :name="field.field" :value="formEditData[field.field]" class="form-control form-input-style" id="" rows="3"></textarea>
            </div>
            <!-- end textarea input-->
 
            <!-- start large textarea input-->
-           <div v-else-if="renderInput(field.type,'textarea',field.field)" id="text-input" class="">
-            <label :for="field.field" class="form-label">{{field.field}}</label>
+           <div v-else-if="renderInput(field.type,'textarea',field.field)" id="text-input" :class="' ' + formFieldContainerClasses">
+            <label :for="field.field" :class="'form-label' + formFieldLabelClasses">{{field.field}}</label>
             <textarea :name="field.field" :value="formEditData[field.field]" class="form-control" id="" rows="6"></textarea>
            </div>
            <!-- end large textarea input-->
 
            <!-- start radio input-->
-           <div v-else-if="renderInput(field.type,'radio',field.field)" id="radio-input"  class="input-group">
-            <label :for="field.field">{{field.field}}</label>
+           <div v-else-if="renderInput(field.type,'radio',field.field)" id="radio-input"   :class="'input-group ' + formFieldContainerClasses">
+            <label :for="field.field" :class="'form-label '+ formFieldLabelClasses">{{field.field}}</label>
              <div class="form-check" v-for="option in options[field.field][field.field]" :key="index">
              <input class="form-check-input" type="radio" :value="(option[options[field.field]['value']] != null)? option[options[field.field]['value']] : option" :name="field.field" id="">
-             <label class="form-check-label" :for="option">{{(option[options[field.field]['name']] != null)? option[options[field.field]['name']] : option}}</label>
+             <label :class="'form-check-label '" :for="option">{{(option[options[field.field]['name']] != null)? option[options[field.field]['name']] : option}}</label>
              </div>
            </div>
            <!-- end radio input-->
 
            <!-- start checkbox input-->
-           <div v-else-if="renderInput(field.type,'checkbox',field.field)" id="check-input" class="input-group mb-3">
-            <label :for="field.field">{{options[field.field]["name"]}}</label>
+           <div v-else-if="renderInput(field.type,'checkbox',field.field)" id="check-input" :class="'input-group ' + formFieldContainerClasses">
+            <label :for="field.field" :class="'form-label '+ formFieldLabelClasses">{{options[field.field]["name"]}}</label>
             <div  class="form-check" v-for="option in options[field.field][field.field]" :key="option.id" >
               <input class="form-check-input" type="checkbox"  :value="(option[options[field.field]['value']] != null)? option[options[field.field]['value']] : option" :name="field.field" id="">
               <label class="form-check-label" :for="field.field">{{(option[options[field.field]['name']] != null)? option[options[field.field]['name']] : option}}</label>
@@ -106,8 +101,8 @@
            <!-- end checkbox input-->
 
            <!-- start select input-->
-          <div v-else-if="renderInput(field.type,'select',field.field)" id="select-input"  class="">
-            <label :for="field.field">{{options[field.field]["name"]}}</label>
+          <div v-else-if="renderInput(field.type,'select',field.field)" id="select-input"  :class="' ' + formFieldContainerClasses">
+            <label :for="field.field" :class="'form-label '+ formFieldLabelClasses">{{options[field.field]["name"]}}</label>
             <select :value="formEditData[field.field]" :name="field.field" class="form-select" :aria-label="field.field">
              <option  v-for="option in options[field.field][field.field]" :key="option.id" :value="(option[options[field.field]['value']] != null)? option[options[field.field]['value']] : option">{{(option[options[field.field]['name']] != null)? option[options[field.field]['name']] : option}}</option>
             </select>
@@ -144,6 +139,8 @@ export default defineComponent({
       default: true
     },
     formBuilderFields: Array,
+    formFieldLabelClasses: String,
+    formFieldContainerClasses: String
   },
   components:{
     CommunicationOption
@@ -362,7 +359,7 @@ export default defineComponent({
     {
       axios.get(url)
       .then((response)=>{
-        store.state.form.fields = response.data
+        this.formFieldEntries = response.data
       })
     }
    },

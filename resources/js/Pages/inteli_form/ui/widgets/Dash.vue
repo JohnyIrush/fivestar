@@ -15,74 +15,185 @@
     </ul>
     <div class="tab-content glass-content" id="formBuilderTabContent">
       <div class="tab-pane fade show active" id="questions" role="tabpanel" aria-labelledby="questions-tab">
-       <div class="card text-center glass-content mt-2 mb-2">
-         <div class="card-body">
-           <main-form 
-           :formPath="'form/create'"
-           :showSubmitButton="false"
-           ></main-form>
-         </div>
-       </div>
        <div class="card text-center glass-content">
-         <div class="card-header">
-          <div class="row">
-           <div class="col-8 align-self-start">
-            <div class="input-group flex-nowrap form-input-type-wrapper">
-              <input type="text" class="form-control form-input-style" placeholder="Question" aria-label="Type" aria-describedby="addon-wrapping">
-            </div>
+        <div class="row">
+         <div class="col-12 col-lg-11 col-xl-11">
+
+          <!-- FORM TITLE AND DESCRIPTION -->
+           <div class="card glass-content mt-2 mb-2">
+             <div class="card-body">
+               <text-input
+                :formFieldClasses="' form-input-style'"
+                :formFieldLabelClasses="'fs-1 fw-bold text-capitalize display-6 text-left'"
+                :formFieldContainerClasses="'form-field-container'"
+                :field="{
+                  title: 'title',
+                  default: 'Form Title',
+                  placeholder: 'title',
+                  settings:{
+                    autocomplete : 'on',
+                    required : 'true', 
+                    disabled :  'false',
+                    minlength :  '4',
+                    maxlength :  '50',
+                  }
+                }"
+               > 
+               </text-input>
+               <text-area-input
+                :formFieldClasses="' form-input-style'"
+                :formFieldLabelClasses="'fs-1 fw-bold text-capitalize display-6 text-left'"
+                :formFieldContainerClasses="'form-field-container'"
+                :field="{
+                  title: 'Description',
+                  default: 'Form Description',
+                  placeholder: 'title',
+                  settings:{
+                    row: '5',
+                    cols: '6',
+                    autocomplete : 'on',
+                    required : 'true', 
+                    disabled :  'false',
+                    minlength :  '30',
+                    maxlength :  '200',
+                  }
+                }"
+               > 
+               </text-area-input>
+             </div>
            </div>
-           <div class="col-4 align-self-end">
-            <div class="input-group flex-nowrap form-input-type-wrapper">
-              <span class="input-group-text" id="addon-wrapping" v-html="selectedType.icon"></span>
-              <input type="text" class="form-control form-input-type-input" placeholder="Type" aria-label="Type" aria-describedby="addon-wrapping" readonly v-model="selectedType.field">
-              <span class="input-group-text" id="addon-wrapping">
-                <modal_button 
-                @showmodal="launchModal('main-modal')" 
-                :name="''" 
-                :icon_classes="'fas fa-caret-square-down fa-2x'" 
-                :title="''" :modalSize="'modal-sm'" 
-                :modalWidth="'w-25'"  
-                :componentType="''" 
-                :componentName="'DataList'" 
-                :dataPath="''" 
-                :listData="inputTypes"
-                :fieldName="'field'"
-                :fieldIcon="'icon'"
-                :modalClasses="''"
-                :modalDialogClasses="'modal-dialog-scrollable '"
-                :modalContentClasses="'modal-height'"
-                :backDrop="false"
-                ></modal_button>
-              </span>
-            </div>
-           </div>
-          </div>
-         </div>
-         <div class="card-body ">
-            <main-form 
-           :formBuilderFields="selectedType"
-           :showSubmitButton="false"
-           ></main-form>
-         </div>
-         <div class="card-footer border-2 border-dark">
-          <div class="row align-items-end">
-            <div class="col">
-             
-            </div>
-            <div class="col">
-              
-            </div>
-            <div class="col d-flex flex-row mr-3">
-              <i class="fas fa-clone fa-2x mr-3"></i>
-              <i class="fas fa-trash-alt fa-2x mr-3"></i>
-              <div class="form-check form-switch mr-3">
-                <label class="form-check-label" for="form-input-required">Required</label>
-                <input class="form-check-input" type="checkbox" id="form-input-required">
+          <!-- FORM TITLE AND DESCRIPTION -->
+
+           <div class="card glass-content mt-2 mb-2" v-for="field in form.fields" :key="field">
+            <div class="card-header">
+             <div class="row">
+              <div class="col-8 align-self-start">
               </div>
-              <i class="fas fa-ellipsis-v fa-2x mr-3"></i>
+              <div class="col-4 align-self-end">
+               <div class="input-group flex-nowrap form-input-type-wrapper">
+                 <span class="input-group-text" id="addon-wrapping" v-html="selectedType.icon"></span>
+                 <input type="text" class="form-control form-input-type-input" placeholder="Type" aria-label="Type" aria-describedby="addon-wrapping" readonly v-model="selectedType.field">
+                 <span class="input-group-text" id="addon-wrapping">
+                   <modal_button 
+                   @showmodal="launchModal('main-modal')" 
+                   :name="''" 
+                   :icon_classes="'fas fa-caret-square-down fa-2x'" 
+                   :title="''" :modalSize="'modal-sm'" 
+                   :modalWidth="'w-25'"  
+                   :componentType="''" 
+                   :componentName="'DataList'" 
+                   :dataPath="''" 
+                   :listData="inputTypes"
+                   :fieldName="'field'"
+                   :fieldIcon="'icon'"
+                   :modalClasses="''"
+                   :modalDialogClasses="'modal-dialog-scrollable '"
+                   :modalContentClasses="'modal-height'"
+                   :backDrop="false"
+                   ></modal_button>
+                 </span>
+               </div>
+              </div>
+             </div>
             </div>
+            <div class="card-body ">
+              <component 
+               :is="selectedType.settings.component"
+               :formFieldClasses="' form-input-style'"
+               :formFieldLabelClasses="'fs-1 fw-bold text-capitalize display-6 text-left'"
+               :formFieldContainerClasses="'form-field-container'"
+               :fieldSettings="true"
+              >
+              </component>
+            </div>
+            <div class="card-footer border-2 border-dark">
+             <div class="row align-items-end">
+               <div class="col">
+                
+               </div>
+               <div class="col">
+                 
+               </div>
+               <div class="col d-flex flex-row mr-3">
+                 <i class="fas fa-clone fa-2x mr-3"></i>
+                 <i class="fas fa-trash-alt fa-2x mr-3"></i>
+                 <div class="form-check form-switch mr-3">
+                   <label class="form-check-label" for="form-input-required">Required</label>
+                   <input class="form-check-input" type="checkbox" id="form-input-required">
+                 </div>
+                 <i class="fas fa-ellipsis-v fa-2x mr-3"></i>
+               </div>
+             </div>
+            </div>
+           </div> 
           </div>
-         </div>
+          <div class="col-12 col-lg-1 col-xl-1">
+           <div id="form-builder-menu" class="glass-content">
+            <ul class="nav flex-column">
+             <li class="nav-item">
+               <a 
+               class="nav-link active" 
+               aria-current="page"
+               data-bs-toggle="tooltip" 
+               data-bs-placement="right" 
+               title="Add Field">
+               <i class="fas fa-plus-circle fa-2x"></i>
+              </a>
+             </li>
+             <li class="nav-item">
+               <a 
+               class="nav-link" 
+               aria-current="page"
+               data-bs-toggle="tooltip" 
+               data-bs-placement="right" 
+               title="Import Fields">
+               <i class="fas fa-file-import fa-2x"></i>
+              </a>
+             </li>
+             <li class="nav-item">
+               <a 
+               class="nav-link" 
+               aria-current="page"
+               data-bs-toggle="tooltip" 
+               data-bs-placement="right" 
+               title="Add Title And Description">
+               <i class="fas fa-heading fa-2x"></i>
+              </a>
+             </li>
+             <li class="nav-item">
+               <a 
+               class="nav-link" 
+               aria-current="page"
+               data-bs-toggle="tooltip" 
+               data-bs-placement="right" 
+               title="Add Image">
+               <i class="fas fa-images fa-2x"></i>
+              </a>
+             </li>
+             <li class="nav-item">
+               <a 
+               class="nav-link" 
+               aria-current="page"
+               data-bs-toggle="tooltip" 
+               data-bs-placement="right" 
+               title="Add Video">
+               <i class="fas fa-video fa-2x"></i>
+              </a>
+             </li>
+             <li class="nav-item">
+               <a 
+               class="nav-link" 
+               aria-current="page"
+               data-bs-toggle="tooltip" 
+               data-bs-placement="right" 
+               title="Add Section">
+               <i class="fas fa-puzzle-piece fa-2x"></i>            
+               </a>
+             </li>
+            </ul>
+           </div>
+          </div>
+        </div>
        </div>
       </div>
       <div class="tab-pane fade" id="response" role="tabpanel" aria-labelledby="response-tab">...</div>
@@ -92,15 +203,15 @@
              <div class="col-12 col-xl-9 glass-content">
                <div class="card h-100">
                  <div class="card-header pb-0 p-3">
-                   <h6 class="mb-0">Platform Settings</h6>
+                   <h6 class="mb-0">Form Settings</h6>
                  </div>
                  <div class="card-body p-3">
-                   <h6 class="text-uppercase text-body text-xs font-weight-bolder">Account</h6>
+                   <h6 class="text-uppercase text-body text-xs font-weight-bolder">Builder Settings</h6>
                    <ul class="list-group">
                      <li class="list-group-item border-0 px-0">
                        <div class="form-check form-switch ps-0">
                          <input class="form-check-input ms-auto" type="checkbox" id="flexSwitchCheckDefault" checked>
-                         <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0" for="flexSwitchCheckDefault">Email me when someone follows me</label>
+                         <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0" for="flexSwitchCheckDefault">Make this a quiz</label>
                        </div>
                      </li>
                      <li class="list-group-item border-0 px-0">
@@ -184,101 +295,198 @@
 
     import modal from '../../../inteli_library/ui/components/modals/modal.vue'
 
+    import TextInput from '../components/inputs/TextInput.vue'
+    import TextAreaInput from '../components/inputs/TextAreaInput.vue'
+
     export default defineComponent({
         components: {
             Footer,
             MainForm,
             modal_button,
-            modal
+            modal,
+            TextInput,
+            TextAreaInput
         },
         data() {
             return {
                 selectedType: {
-                    field: "Text",
-                    type: "text",
-                    icon: '<i class="fas fa-paragraph fa-2x"></i>'
-                    },
+                     field: "Text",
+                     type: "text",
+                     icon: '<i class="fas fa-paragraph fa-2x"></i>',
+                     settings: {
+                        component: 'TextInput',
+                     }
+                },
                 analytics: [],
                 inputTypes: [
                     {
-                    field: "Text",
-                    type: "text",
-                    icon: '<i class="fas fa-paragraph fa-2x"></i>'
+                     field: "Text",
+                     type: "text",
+                     icon: '<i class="fas fa-paragraph fa-2x"></i>',
+                     settings: {
+                        component: 'TextInput',
+                     }
                     },
                     {
-                    field: "Phone",
-                    type: "tel",
-                    icon: '<i class="fas fa-phone fa-2x"></i>'
+                     field: "paragraph",
+                     type: "textarea",
+                     icon: '<i class="fas fa-water"></i>',
+                     settings: {
+                      component: 'TextAreaInput',
+                     }
                     },
                     {
-                    field: "Password",
-                    type: "password",
-                    icon: '<i class="fas fa-lock fa-2x"></i>'
+                     field: "Phone",
+                     type: "tel",
+                     icon: '<i class="fas fa-phone fa-2x"></i>',
+                     component: '',
+                     settings: {
+
+                     }
+                    },
+                     {
+                     field: "Password",
+                     type: "password",
+                     icon: '<i class="fas fa-lock fa-2x"></i>',
+                     component: '',
+                     settings: {
+
+                     }
                     },
                     {
-                    field: "Radio",
-                    type: "radio",
-                    icon: '<i class="fas fa-dot-circle fa-2x"></i>'
+                     field: "Radio",
+                     type: "radio",
+                     icon: '<i class="fas fa-dot-circle fa-2x"></i>',
+                     component: '',
+                     settings: {
+
+                     }
+                    },
+                     {
+                     field: "Checkbox",
+                     type: "checkbox",
+                     icon: '<i class="fas fa-check-square fa-2x"></i>',
+                     component: '',
+                     settings: {
+
+                     }
                     },
                     {
-                    field: "Checkbox",
-                    type: "checkbox",
-                    icon: '<i class="fas fa-check-square fa-2x"></i>'
+                     field: "Color",
+                     type: "color",
+                     icon: '<i class="fas fa-palette fa-2x"></i>',
+                     component: '',
+                     settings: {
+
+                     }
+                    },
+                     {
+                     type: "date",
+                     icon: '<i class="fas fa-calendar-week fa-2x"></i>',
+                     component: '',
+                     settings: {
+
+                     }
+                    },
+                     {
+                     type: "time",
+                     icon: '<i class="fas fa-clock fa-2x"></i>',
+                     component: '',
+                     settings: {
+
+                     }
                     },
                     {
-                    field: "Color",
-                    type: "color",
-                    icon: '<i class="fas fa-palette fa-2x"></i>'
+                     field: "Email",
+                     type: "email",
+                     icon: '<i class="fas fa-inbox fa-2x"></i>',
+                     component: '',
+                     settings: {
+
+                     }
                     },
                     {
-                    field: "Date",
-                    type: "date",
-                    icon: '<i class="fas fa-calendar-week fa-2x"></i>'
+                     field: "File Upload",
+                     type: "file",
+                     icon: '<i class="fas fa-upload fa-2x"></i>',
+                     component: '',
+                     settings: {
+
+                     }
+                    },
+                   {
+                     field: "Number",
+                     type: "number",
+                     icon: '<i class="fas fa-sort-numeric-up-alt fa-2x"></i>',
+                     component: '',
+                     settings: {
+
+                     }
                     },
                     {
-                    field: "Time",
-                    type: "time",
-                    icon: '<i class="fas fa-clock fa-2x"></i>'
+                     field: "Range",
+                     type: "range",
+                     icon: '<i class="fas fa-weight fa-2x"></i>',
+                     component: '',
+                     settings: {
+
+                     }
                     },
                     {
-                    field: "Email",
-                    type: "email",
-                    icon: '<i class="fas fa-inbox fa-2x"></i>'
+                     field: "Search",
+                     type: "search",
+                     icon: '<i class="fas fa-search fa-2x"></i>',
+                     component: '',
+                     settings: {
+
+                     }
                     },
                     {
-                    field: "File Upload",
-                    type: "file",
-                    icon: '<i class="fas fa-upload fa-2x"></i>'
+                     field: "Url",
+                     type: "url",
+                     icon: '<i class="fas fa-link fa-2x"></i>',
+                     component: '',
+                     settings: {
+
+                     }
                     },
-                    {
-                    field: "Number",
-                    type: "number",
-                    icon: '<i class="fas fa-sort-numeric-up-alt fa-2x"></i>'
-                    },
-                    {
-                    field: "Range",
-                    type: "range",
-                    icon: '<i class="fas fa-weight fa-2x"></i>'
-                    },
-                    {
-                    field: "Search",
-                    type: "search",
-                    icon: '<i class="fas fa-search fa-2x"></i>'
-                    },
-                    {
-                    field: "Url",
-                    type: "url",
-                    icon: '<i class="fas fa-link fa-2x"></i>'
-                    },
-                ]
+                ],
+                form:
+                {
+                  title: '',
+                  description: '',
+                  cover: '',
+                  fields:[
+                  {
+                   field1: {
+                   type: '',
+                   title: 'Description',
+                   default: 'Form Description',
+                   placeholder: 'title',
+                   image: '',
+                   settings:{
+                     row: '5',
+                     cols: '6',
+                     autocomplete : 'on',
+                     required : 'true', 
+                     disabled :  'false',
+                     minlength :  '30',
+                     maxlength :  '200',
+                     component : ''
+                   }}
+                  }]
+                }
             }
         },
 
         methods: {
+          addField()
+          {
+
+          },
           selectedListItem(event)
           {
               console.log("Form Builder",event)
-              store.state.form.fields = event
               this.selectInputType(event)
           },
           selectInputType(type)
@@ -311,44 +519,6 @@
         mounted()
         {
             this.getAnalytics("analytics")
-
-            var count = 1
-            setTimeout(demo, 500)
-            setTimeout(demo, 700)
-            setTimeout(demo, 900)
-            setTimeout(reset, 2000)
-
-            setTimeout(demo, 2500)
-            setTimeout(demo, 2750)
-            setTimeout(demo, 3050)
-
-
-            var mousein = false
-            function demo() {
-               if(mousein) return
-               document.getElementById('demo' + count++)
-               .classList.toggle('hover')
-   
-            }
-
-            function demo2() {
-               if(mousein) return
-               document.getElementById('demo2')
-                  .classList.toggle('hover')
-            }
-
-            function reset() {
-               count = 1
-               var hovers = document.querySelectorAll('.hover')
-               for(var i = 0; i < hovers.length; i++ ) {
-                  hovers[i].classList.remove('hover')
-               }
-            }
-
-            document.addEventListener('mouseover', function() {
-               mousein = true
-               reset()
-            })
         },
         created()
         {
@@ -384,7 +554,6 @@
     border: 1px solid rgba(255, 255, 255, 0.5);
     border-top: 1px solid rgba(255, 255, 255, 0.25);
     border-left: 1px solid rgba(255, 255, 255, 0.5);
-    padding: 5px;
 }
 
 .card, .card-header, .card-body, .list-group, .list-group-item, .nav
