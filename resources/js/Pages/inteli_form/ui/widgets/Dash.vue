@@ -16,9 +16,11 @@
     <div class="tab-content glass-content" id="formBuilderTabContent">
       <div class="tab-pane fade show active" id="questions" role="tabpanel" aria-labelledby="questions-tab">
        <div class="card text-center glass-content">
-        <div class="row">
+        <div 
+          @click="toggleEditMode('form-header')" 
+          @mouseover="toggleEditMode('form-header')" 
+          class="row" >
          <div class="col-12 col-lg-11 col-xl-11">
-
           <!-- FORM TITLE AND DESCRIPTION -->
            <div class="card glass-content mt-2 mb-2">
              <div class="card-body">
@@ -63,16 +65,91 @@
              </div>
            </div>
           <!-- FORM TITLE AND DESCRIPTION -->
-
-           <div class="card glass-content mt-2 mb-2" v-for="field in form.fields" :key="field">
-            <div class="card-header">
+         </div>
+         <div class="col-12 col-lg-1 col-xl-1">
+           <div 
+             id="form-builder-menu" 
+             class="glass-content" 
+             v-if="editMode.index == 'form-header'">
+            <ul class="nav flex-column">
+             <li class="nav-item">
+               <a 
+               role="button"
+               class="nav-link active" 
+               aria-current="page"
+               data-bs-toggle="tooltip" 
+               data-bs-placement="right" 
+               title="Add Field"
+               @click="addField('form-header')"
+               >
+               <i class="fas fa-plus-circle fa-2x"></i>
+              </a>
+             </li>
+             <li class="nav-item">
+               <a 
+               class="nav-link" 
+               aria-current="page"
+               data-bs-toggle="tooltip" 
+               data-bs-placement="right" 
+               title="Import Fields">
+               <i class="fas fa-file-import fa-2x"></i>
+              </a>
+             </li>
+             <li class="nav-item">
+               <a 
+               class="nav-link" 
+               aria-current="page"
+               data-bs-toggle="tooltip" 
+               data-bs-placement="right" 
+               title="Add Title And Description">
+               <i class="fas fa-heading fa-2x"></i>
+              </a>
+             </li>
+             <li class="nav-item">
+               <a 
+               class="nav-link" 
+               aria-current="page"
+               data-bs-toggle="tooltip" 
+               data-bs-placement="right" 
+               title="Add Image">
+               <i class="fas fa-images fa-2x"></i>
+              </a>
+             </li>
+             <li class="nav-item">
+               <a 
+               class="nav-link" 
+               aria-current="page"
+               data-bs-toggle="tooltip" 
+               data-bs-placement="right" 
+               title="Add Video">
+               <i class="fas fa-video fa-2x"></i>
+              </a>
+             </li>
+             <li class="nav-item">
+               <a 
+               class="nav-link" 
+               aria-current="page"
+               data-bs-toggle="tooltip" 
+               data-bs-placement="right" 
+               title="Add Section">
+               <i class="fas fa-puzzle-piece fa-2x"></i>            
+               </a>
+             </li>
+            </ul>
+           </div>
+         </div>
+         </div>
+        <div class="row" v-for="(field, index) in form.fields" :key="index" @click="toggleEditMode(index)" @mouseover="toggleEditMode(index)" >
+         <div class="col-12 col-lg-11 col-xl-11">
+           <div class="card glass-content mt-2 mb-2">
+            <div class="card-header" v-if="editMode.index == index">
              <div class="row">
               <div class="col-8 align-self-start">
               </div>
               <div class="col-4 align-self-end">
                <div class="input-group flex-nowrap form-input-type-wrapper">
-                 <span class="input-group-text" id="addon-wrapping" v-html="selectedType.icon"></span>
-                 <input type="text" class="form-control form-input-type-input" placeholder="Type" aria-label="Type" aria-describedby="addon-wrapping" readonly v-model="selectedType.field">
+                 <span class="input-group-text" id="addon-wrapping" v-html="field.settings.icon"></span>
+                 <input type="text" class="form-control form-input-type-input" placeholder="Type" aria-label="Type" aria-describedby="addon-wrapping" readonly v-model="field.settings.field">
                  <span class="input-group-text" id="addon-wrapping">
                    <modal_button 
                    @showmodal="launchModal('main-modal')" 
@@ -90,6 +167,7 @@
                    :modalDialogClasses="'modal-dialog-scrollable '"
                    :modalContentClasses="'modal-height'"
                    :backDrop="false"
+                   @click="setTypeUpdateIndex(index)"
                    ></modal_button>
                  </span>
                </div>
@@ -98,15 +176,26 @@
             </div>
             <div class="card-body ">
               <component 
-               :is="selectedType.settings.component"
+               :is="field.settings.component"
                :formFieldClasses="' form-input-style'"
                :formFieldLabelClasses="'fs-1 fw-bold text-capitalize display-6 text-left'"
                :formFieldContainerClasses="'form-field-container'"
-               :fieldSettings="true"
+               :fieldData="field"
+               :fieldSettings="(editMode.index == index)"
+               @TextInputInput="updateField($event,index)"
+               @TextAreaInputInput="updateField($event,index)"
+               @TelInputInput="updateField($event,index)"
+               @PasswordInputInput="updateField($event,index)"
+               @EmailInputInput="updateField($event,index)"
+               @UrlInputInput="updateField($event,index)"
+               @SearchInputInput="updateField($event,index)"
+               @NumberInputInput="updateField($event,index)"
+               @DateInputInput="updateField($event,index)"
+               @TimeInputInput="updateField($event,index)"
               >
               </component>
             </div>
-            <div class="card-footer border-2 border-dark">
+            <div v-if="editMode.index == index" class="card-footer border-2 border-dark">
              <div class="row align-items-end">
                <div class="col">
                 
@@ -115,8 +204,11 @@
                  
                </div>
                <div class="col d-flex flex-row mr-3">
-                 <i class="fas fa-clone fa-2x mr-3"></i>
-                 <i class="fas fa-trash-alt fa-2x mr-3"></i>
+                 <i class="fas fa-clone fa-2x mr-3" @click="dublicateField(index)"></i>
+                 <i 
+                   class="fas fa-trash-alt fa-2x mr-3" 
+                   @click="removeField(index)">
+                 </i>
                  <div class="form-check form-switch mr-3">
                    <label class="form-check-label" for="form-input-required">Required</label>
                    <input class="form-check-input" type="checkbox" id="form-input-required">
@@ -128,15 +220,18 @@
            </div> 
           </div>
           <div class="col-12 col-lg-1 col-xl-1">
-           <div id="form-builder-menu" class="glass-content">
+           <div v-if="editMode.index == index" :id=" index + '-form-builder-menu'" class="glass-content">
             <ul class="nav flex-column">
              <li class="nav-item">
                <a 
+               role="button"
                class="nav-link active" 
                aria-current="page"
                data-bs-toggle="tooltip" 
                data-bs-placement="right" 
-               title="Add Field">
+               title="Add Field"
+               @click="addField(index)"
+               >
                <i class="fas fa-plus-circle fa-2x"></i>
               </a>
              </li>
@@ -297,6 +392,15 @@
 
     import TextInput from '../components/inputs/TextInput.vue'
     import TextAreaInput from '../components/inputs/TextAreaInput.vue'
+    import TelInput from '../components/inputs/TelInput.vue'
+    import PasswordInput from '../components/inputs/PasswordInput.vue'
+    import EmailInput from '../components/inputs/EmailInput.vue'
+    import UrlInput from '../components/inputs/UrlInput.vue'
+    import SearchInput from '../components/inputs/SearchInput.vue'
+    import NumberInput from '../components/inputs/NumberInput.vue'
+    import DateInput from '../components/inputs/DateInput.vue'
+    import TimeInput from '../components/inputs/TimeInput.vue'
+    import RangeInput from '../components/inputs/RangeInput.vue'
 
     export default defineComponent({
         components: {
@@ -305,7 +409,15 @@
             modal_button,
             modal,
             TextInput,
-            TextAreaInput
+            TextAreaInput,
+            PasswordInput,
+            EmailInput,
+            UrlInput,
+            SearchInput,
+            NumberInput,
+            DateInput,
+            TimeInput,
+            RangeInput
         },
         data() {
             return {
@@ -313,9 +425,7 @@
                      field: "Text",
                      type: "text",
                      icon: '<i class="fas fa-paragraph fa-2x"></i>',
-                     settings: {
-                        component: 'TextInput',
-                     }
+                     component: 'TextInput',
                 },
                 analytics: [],
                 inputTypes: [
@@ -323,132 +433,91 @@
                      field: "Text",
                      type: "text",
                      icon: '<i class="fas fa-paragraph fa-2x"></i>',
-                     settings: {
-                        component: 'TextInput',
-                     }
+                     component: 'TextInput',
                     },
                     {
                      field: "paragraph",
                      type: "textarea",
                      icon: '<i class="fas fa-water"></i>',
-                     settings: {
-                      component: 'TextAreaInput',
-                     }
+                     component: 'TextAreaInput',
                     },
                     {
                      field: "Phone",
                      type: "tel",
                      icon: '<i class="fas fa-phone fa-2x"></i>',
-                     component: '',
-                     settings: {
-
-                     }
+                     component: 'TelInput',
                     },
-                     {
+                    {
                      field: "Password",
                      type: "password",
                      icon: '<i class="fas fa-lock fa-2x"></i>',
-                     component: '',
-                     settings: {
-
-                     }
+                     component: 'PasswordInput',
                     },
                     {
                      field: "Radio",
                      type: "radio",
                      icon: '<i class="fas fa-dot-circle fa-2x"></i>',
-                     component: '',
-                     settings: {
-
-                     }
+                     component: 'RadioInput',
                     },
                      {
                      field: "Checkbox",
                      type: "checkbox",
                      icon: '<i class="fas fa-check-square fa-2x"></i>',
-                     component: '',
-                     settings: {
-
-                     }
+                     component: 'CheckboxInput',
                     },
                     {
                      field: "Color",
                      type: "color",
                      icon: '<i class="fas fa-palette fa-2x"></i>',
-                     component: '',
-                     settings: {
-
-                     }
+                     component: 'ColorInput',
                     },
                      {
+                     field: "Date",
                      type: "date",
                      icon: '<i class="fas fa-calendar-week fa-2x"></i>',
-                     component: '',
-                     settings: {
-
-                     }
+                     component: 'DateInput',
                     },
                      {
+                     field: "Time",
                      type: "time",
                      icon: '<i class="fas fa-clock fa-2x"></i>',
-                     component: '',
-                     settings: {
-
-                     }
+                     component: 'TimeInput',
                     },
                     {
                      field: "Email",
                      type: "email",
                      icon: '<i class="fas fa-inbox fa-2x"></i>',
-                     component: '',
-                     settings: {
-
-                     }
+                     component: 'EmailInput',
                     },
                     {
                      field: "File Upload",
                      type: "file",
                      icon: '<i class="fas fa-upload fa-2x"></i>',
-                     component: '',
-                     settings: {
-
-                     }
+                     component: 'FileInput',
                     },
                    {
                      field: "Number",
                      type: "number",
                      icon: '<i class="fas fa-sort-numeric-up-alt fa-2x"></i>',
-                     component: '',
-                     settings: {
-
-                     }
+                     component: 'NumberInput',
                     },
                     {
                      field: "Range",
                      type: "range",
                      icon: '<i class="fas fa-weight fa-2x"></i>',
-                     component: '',
-                     settings: {
-
-                     }
+                     component: 'RangeInput',
                     },
                     {
                      field: "Search",
                      type: "search",
                      icon: '<i class="fas fa-search fa-2x"></i>',
-                     component: '',
-                     settings: {
-
-                     }
+                     component: 'SearchInput',
                     },
                     {
                      field: "Url",
                      type: "url",
                      icon: '<i class="fas fa-link fa-2x"></i>',
-                     component: '',
-                     settings: {
-
-                     }
+                     component: 'UrlInput',
                     },
                 ],
                 form:
@@ -456,42 +525,177 @@
                   title: '',
                   description: '',
                   cover: '',
-                  fields:[
-                  {
-                   field1: {
-                   type: '',
-                   title: 'Description',
-                   default: 'Form Description',
-                   placeholder: 'title',
-                   image: '',
-                   settings:{
-                     row: '5',
-                     cols: '6',
-                     autocomplete : 'on',
-                     required : 'true', 
-                     disabled :  'false',
-                     minlength :  '30',
-                     maxlength :  '200',
-                     component : ''
-                   }}
-                  }]
+                  fields:{
+                    /*
+                  field1 : {
+                     title: 'field title',
+                     default: '',
+                     placeholder: 'field',
+                     image: '',
+                     settings:{
+                       type: 'text',
+                       autocomplete : 'off',
+                       required : false, 
+                       disabled :  false,
+                       minlength :  3,
+                       maxlength :  20,
+                       component : 'TextInput'
+                     }
+                  },
+                  field2 : {
+                     settings:{
+                       field: "Text",
+                       type: "text",
+                       icon: '<i class="fas fa-paragraph fa-2x"></i>',
+                       component: 'TextInput',
+                     }
+                  },*/
+                }
+                },
+                updateTypeIndex: "",
+                editMode: {
+                  index: 'form-header',
                 }
             }
         },
 
         methods: {
-          addField()
-          {
+            cleanMergeObject(objOne, objTwo )
+            {
+              return { ...objOne, ...objTwo };
+            },
+            replaceObject(newObj, obj)
+            {
+             let final = Object.entries(obj).reduce((op, [key,value]) => {
+               let newKey = newObj[key]
+               op[newKey || key ] = value
+               return op
+             },{})
 
+             return final;
+            },
+            updateField(event, index)
+            {
+              var field = this.cleanMergeObject(event, this.form.
+                                 fields[index])
+
+              var fieldSettings = this
+                                  .cleanMergeObject(event.settings, this.form.
+                                 fields[index].settings)
+
+              field.settings = fieldSettings;
+
+              this.form.fields[index] = field
+
+              console.log(field, "field updated")
+
+            },
+            mergeObject(objOne, objTwo)
+            {
+               var result = Object.keys(objOne).reduce((a, k) => {
+                 a[k] = objTwo[k] === undefined || objOne[k] === objTwo[k] ? objOne[k] : [objOne[k], objTwo[k]];
+                 return a;
+               }, { ...objOne, ...objTwo });
+
+               return result;
+            },
+            isEmpty(obj) {
+              for(var prop in obj) {
+                if(Object.prototype.hasOwnProperty.call(obj, prop)) {
+                  return false;
+                }
+              }
+            
+              return JSON.stringify(obj) === JSON.stringify({});
+            },
+            dublicateField(index)
+            {
+              console.log(this.form.fields[index])
+              this.addField(index, this.form.fields[index])
+              console.log(this.form.fields)
+            },
+            addToObject(obj, key, value, index) 
+            {
+            // Create a temp object and index variable
+            var temp = {};
+            var i = 0;
+            // Loop through the original object
+            for (var prop in obj) {
+              if (obj.hasOwnProperty(prop)) {
+                // If the indexes match, add the new item
+                if (i === index && key && value) {
+                  temp[key] = value;
+                }
+                // Add the current item in the loop to the temp obj
+                temp[prop] = obj[prop];
+                // Increase the count
+                i++;
+              }
+            }
+
+            // If no index, add to the end
+            if (!index && key && value) {
+              temp[key] = value;
+            }
+
+            return temp;
+
+          },
+          toggleEditMode(index)
+          {
+            this.editMode.index = index
+          },
+          removeField(index)
+          {
+            delete this.form.fields[index]
+          },
+          setTypeUpdateIndex(index)
+          {
+            this.updateTypeIndex = index
+          },
+          updateFieldType(index)
+          {
+            console.log("type",this.selectedType, "field",this.form.fields[index])
+            this.form.fields[index].settings = this.selectedType
+          },
+          addField(index, value = {}, key = "")
+          {
+            var keys = Object.keys(this.form.fields)
+
+            var fieldName = !(key.length === 0)? 
+                            key: 
+                            "untitled field " + 
+                             (keys.length + 1);
+
+            var field = !(this.isEmpty(value))? value: {settings: this.selectedType};
+
+            if(keys.length == 0)
+            {
+             this.form.fields[fieldName] =  field;
+            } 
+            else
+            {
+             var position = (keys.indexOf(index) !== -1)? keys.indexOf(index) + 1 : 0;
+
+             if (position >= keys.length)
+             {
+              this.form.fields = this.addToObject(this.form.fields, fieldName, field)
+             }
+             else
+             {
+              this.form.fields = this.addToObject(this.form.fields, fieldName, field, position)
+             }
+            }
           },
           selectedListItem(event)
           {
-              console.log("Form Builder",event)
               this.selectInputType(event)
           },
           selectInputType(type)
           {
             this.selectedType = type;
+            this.updateFieldType(this.updateTypeIndex)
+
           },
           inputTypeDropdown()
           {

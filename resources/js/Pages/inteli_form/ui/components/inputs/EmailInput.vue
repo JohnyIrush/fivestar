@@ -1,8 +1,7 @@
 <template>
-
   <!-- start text/string input-->
    <!--START INPUT SETTINGS|OPTIONS|PROPERTIES -->
-     <div class="row mt-3 mb-3" v-if="fieldSettings">
+     <div class="row mt-3 mb-3" v-if="showfieldSettings">
       <div class="col-3 mt-2 mb-2">
        <div class="input-group ">
         <span 
@@ -34,6 +33,21 @@
         </div>
        </div>
       <div class="col-3 mt-2 mb-2">
+       <div class="input-group ">
+        <span 
+          class="input-group-text" 
+          id="name-basic-addon">
+          Name
+        </span>
+        <input 
+          v-model="fieldDetails.name"
+          type="text" 
+          class="form-control form-input-transparent" 
+          aria-label="" 
+          aria-describedby="name-basic-addon">
+        </div>
+       </div>
+      <div class="col-3 mt-2 mb-2">
       <div class="input-group ">
         <span 
           class="input-group-text" 
@@ -52,36 +66,6 @@
       <div class="input-group ">
         <span 
           class="input-group-text" 
-          id="cols-basic-addon">
-          cols
-        </span>
-        <input 
-          v-model="fieldDetails.settings.cols"
-          type="number" 
-          class="form-control form-input-transparent" 
-          aria-label="" 
-          aria-describedby="cols-basic-addon">
-       </div>
-      </div>
-      <div class="col-3 mt-2 mb-2">
-      <div class="input-group ">
-        <span 
-          class="input-group-text" 
-          id="rows-basic-addon">
-          rows
-        </span>
-        <input 
-          v-model="fieldDetails.settings.rows"
-          type="number" 
-          class="form-control form-input-transparent" 
-          aria-label="" 
-          aria-describedby="rows-basic-addon">
-       </div>
-      </div>
-      <div class="col-3 mt-2 mb-2">
-      <div class="input-group ">
-        <span 
-          class="input-group-text" 
           id="minlength-basic-addon">
           minlength
         </span>
@@ -91,6 +75,21 @@
           class="form-control form-input-transparent" 
           aria-label="" 
           aria-describedby="minlenght-basic-addon">
+       </div>
+      </div>
+      <div class="col-3 mt-2 mb-2">
+      <div class="input-group ">
+        <span 
+          class="input-group-text" 
+          id="pattern-basic-addon">
+          pattern
+        </span>
+        <input 
+          v-model="fieldDetails.settings.pattern"
+          type="text" 
+          class="form-control form-input-transparent" 
+          aria-label="" 
+          aria-describedby="pattern-basic-addon">
        </div>
       </div>
       <div class="col-3 mt-2 mb-2">
@@ -153,34 +152,67 @@
          id="text-input-autocomplete-setting-check">
        </div>
       </div>
-
+      <div class="col-3 mt-2 mb-2">
+      <div class="form-check form-switch">
+        <label 
+        class="form-check-label" 
+        for="text-input-autocorrect-setting-check"
+        >
+        autocorrect
+        </label>
+        <input 
+         v-model="fieldDetails.settings.autocorrect"
+         class="form-check-input" 
+         type="checkbox" 
+         id="text-input-autocorrect-setting-check">
+       </div>
+      </div>
+      <div class="col-3 mt-2 mb-2">
+      <div class="input-group ">
+        <span 
+          class="input-group-text" 
+          id="description-basic-addon">
+          description
+        </span>
+        <input 
+          v-model="fieldDetails.description"
+          type="text" 
+          class="form-control form-input-transparent" 
+          aria-label="" 
+          aria-describedby="description-basic-addon">
+       </div>
+      </div>
      </div>
    <!--START INPUT SETTINGS|OPTIONS|PROPERTIES -->
    <!--START INPUT -->
-  <div  
-     :id="fieldDetails.field + '-text-input-container'"  
-     :class="' ' + formFieldContainerClasses">
-     <label 
-        :for="fieldDetails.title" 
-        :class="'form-label' + formFieldLabelClasses">
-        {{fieldDetails.title}}
-     </label>
-    <textarea
-       :id="fieldDetails.title + '-text-input'" 
-       type="text" 
-       :class="'form-control ' + formFieldClasses" 
-       v-model="fieldDetails.default" 
-       :name="fieldDetails.title"  
-       :placeholder="fieldDetails.placeholder"
-       :autocomplete="fieldDetails.settings.autocomplete" 
-       :minlength="fieldDetails.settings.minlength"
-       :maxlength="fieldDetails.settings.maxlength"
-       :rows="fieldDetails.settings.rows" 
-       :cols="fieldDetails.settings.cols"
-       autofocus
-       >
-    </textarea> 
-  </div>
+    <div  
+       :id="fieldDetails.title + '-text-input-container'"  
+       :class="' ' + formFieldContainerClasses">
+       <label 
+          :for="fieldDetails.title" 
+          :class="'form-label' + formFieldLabelClasses">
+          {{fieldDetails.title}}
+       </label>
+      <input 
+         :id="fieldDetails.title + '-text-input'" 
+         type="email" 
+         :class="'form-control ' + formFieldClasses" 
+         v-model="fieldDetails.default" 
+         :name="fieldDetails.name || fieldDetails.title"  
+         :placeholder="fieldDetails.placeholder"
+         :autocomplete="fieldDetails.settings.autocomplete" 
+         :minlength="fieldDetails.settings.minlength"
+         :maxlength="fieldDetails.settings.maxlength"
+         :pattern="fieldDetails.settings.pattern"
+         autofocus
+         />
+     <div 
+     :id="fieldDetails.title + 'Help'" 
+     class="form-text">
+       {{fieldDetails.description}}
+     </div>
+    </div>
+   <!--END INPUT -->
   <!-- end text/string input-->
 </template>
 
@@ -188,7 +220,7 @@
     import { defineComponent } from 'vue'
 
     export default defineComponent({
-        name: "TextAreaInput",
+        name: "EmailInput",
         props:{
           formFieldLabelClasses: String,
           formFieldClasses: String,
@@ -198,9 +230,6 @@
             type: Boolean,
             default: false
           }
-        },
-        components: {
-
         },
         computed:
         {
@@ -213,23 +242,28 @@
             return this.fieldData || this.field
           }
         },
+        components: {
+
+        },
         data() {
             return {
                    field: {
-                     title: 'field title',
+                     title: 'email field title',
+                     name: 'email',
                      default: '',
                      placeholder: 'field',
                      image: '',
+                     description: '',
                      settings:{
-                       type: 'textarea',
-                       cols: 4,
-                       rows: 6,
-                       autocomplete : 'off',
+                       type: 'email',
+                       autocorrect: true,
+                       autocomplete : false,
                        required : false, 
                        disabled :  false,
                        minlength :  3,
                        maxlength :  20,
-                       component : 'TextAreaInput'
+                       component : 'emailInput',
+                       pattern: ""
                      }
                  }
             }
@@ -250,10 +284,10 @@
           field: {
             handler(newValue, oldValue) {
 
-              this.$emit("TextAreaInputInput", newValue)
-              //console.log(this)
+              this.$emit("EmailInputInput", newValue)
+              console.log(this)
 
-            const input = document.getElementById(oldValue.title + '-textarea-input');
+            const input = document.getElementById(oldValue.title + '-text-input');
 
             //console.log("field", newValue)
             if (newValue.settings.disabled)
@@ -292,6 +326,11 @@
 {
     background: transparent !important;
     border: none !important;
+}
+
+.form-input-transparent
+{
+    background: transparent !important;
 }
 
 .form-input-style:focus {

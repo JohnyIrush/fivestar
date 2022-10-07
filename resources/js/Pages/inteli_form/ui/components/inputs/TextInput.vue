@@ -1,7 +1,7 @@
 <template>
   <!-- start text/string input-->
    <!--START INPUT SETTINGS|OPTIONS|PROPERTIES -->
-     <div class="row mt-3 mb-3" v-if="fieldSettings">
+     <div class="row mt-3 mb-3" v-if="showfieldSettings">
       <div class="col-3 mt-2 mb-2">
        <div class="input-group ">
         <span 
@@ -10,7 +10,7 @@
           Title
         </span>
         <input 
-          v-model="field.title"
+          v-model="fieldDetails.title"
           type="text" 
           class="form-control form-input-transparent" 
           aria-label="" 
@@ -25,7 +25,7 @@
           Placeholder
         </span>
         <input 
-          v-model="field.placeholder"
+          v-model="fieldDetails.placeholder"
           type="text" 
           class="form-control form-input-transparent" 
           aria-label="" 
@@ -40,7 +40,7 @@
           Default
         </span>
         <input 
-          v-model="field.default"
+          v-model="fieldDetails.default"
           type="text" 
           class="form-control form-input-transparent" 
           aria-label="" 
@@ -55,7 +55,7 @@
           minlength
         </span>
         <input 
-          v-model="field.settings.minlength"
+          v-model="fieldDetails.settings.minlength"
           type="number" 
           class="form-control form-input-transparent" 
           aria-label="" 
@@ -70,7 +70,7 @@
           maxlength
         </span>
         <input 
-          v-model="field.settings.maxlength"
+          v-model="fieldDetails.settings.maxlength"
           type="number" 
           class="form-control form-input-transparent" 
           aria-label="" 
@@ -86,7 +86,7 @@
         required
         </label>
         <input 
-         v-model="field.settings.required"
+         v-model="fieldDetails.settings.required"
          class="form-check-input" 
          type="checkbox" 
          id="text-input-required-setting-check">
@@ -101,7 +101,7 @@
         autocomplete
         </label>
         <input 
-         v-model="field.settings.autocomplete"
+         v-model="fieldDetails.settings.autocomplete"
          class="form-check-input" 
          type="checkbox" 
          id="text-input-autocomplete-setting-check">
@@ -116,7 +116,7 @@
         disabled
         </label>
         <input 
-         v-model="field.settings.disabled"
+         v-model="fieldDetails.settings.disabled"
          class="form-check-input" 
          type="checkbox" 
          id="text-input-autocomplete-setting-check">
@@ -127,29 +127,29 @@
    <!--START INPUT SETTINGS|OPTIONS|PROPERTIES -->
    <!--START INPUT -->
     <div  
-       :id="field.title + '-text-input-container'"  
+       :id="fieldDetails.title + '-text-input-container'"  
        :class="' ' + formFieldContainerClasses">
        <label 
-          :for="field.title" 
+          :for="fieldDetails.title" 
           :class="'form-label' + formFieldLabelClasses">
-          {{field.title}}
+          {{fieldDetails.title}}
        </label>
       <input 
-         :id="field.title + '-text-input'" 
+         :id="fieldDetails.title + '-text-input'" 
          type="text" 
          :class="'form-control ' + formFieldClasses" 
-         v-model="field.default" 
-         :name="field.title"  
-         :placeholder="field.placeholder"
-         :autocomplete="field.settings.autocomplete" 
-         :minlength="field.settings.minlength"
-         :maxlength="field.settings.maxlength"
+         v-model="fieldDetails.default" 
+         :name="fieldDetails.title"  
+         :placeholder="fieldDetails.placeholder"
+         :autocomplete="fieldDetails.settings.autocomplete" 
+         :minlength="fieldDetails.settings.minlength"
+         :maxlength="fieldDetails.settings.maxlength"
          autofocus
          />
      <div 
-     :id="field.title + 'Help'" 
+     :id="fieldDetails.title + 'Help'" 
      class="form-text">
-       {{field.description}}
+       {{fieldDetails.description}}
      </div>
     </div>
    <!--END INPUT -->
@@ -171,18 +171,29 @@
             default: false
           }
         },
+        computed:
+        {
+          showfieldSettings()
+          {
+            return this.fieldSettings
+          },
+          fieldDetails()
+          {
+            return this.fieldData || this.field
+          }
+        },
         components: {
 
         },
         data() {
             return {
                    field: {
-                     type: 'text',
                      title: 'field title',
                      default: '',
                      placeholder: 'field',
                      image: '',
                      settings:{
+                       type: 'text',
                        autocomplete : 'off',
                        required : false, 
                        disabled :  false,
@@ -209,23 +220,26 @@
           field: {
             handler(newValue, oldValue) {
 
+              this.$emit("TextInputInput", newValue)
+              console.log(this)
+
             const input = document.getElementById(oldValue.title + '-text-input');
 
-            console.log("field", newValue)
+            //console.log("field", newValue)
             if (newValue.settings.disabled)
             {
-              input.disabled = newValue.settings.disabled
+              //input.disabled = newValue.settings.disabled
             }
             else
             {
-              input.removeAttribute("disabled")
+              //input.removeAttribute("disabled")
             }
 
             if (newValue.settings.required)
             {
               input.required = newValue.settings.required
             }else{
-              input.removeAttribute("required")
+              //input.removeAttribute("required")
             }
             },
             deep: true
