@@ -2,7 +2,7 @@
  <ul class="nav flex-column">
   <li class="nav-item" v-for="item in list" :key="item" >
     <a role="button" class="nav-link" aria-current="page" @click="selectedListItem(item)">
-     <span  v-html="item.icon"></span> <span class="ml-2 fs-5">{{item[fieldName]}}</span>
+     <span  v-html="item.settings.icon"></span> <span class="ml-2 fs-5">{{item.settings[fieldName]}}</span>
     </a>
   </li>
 </ul>
