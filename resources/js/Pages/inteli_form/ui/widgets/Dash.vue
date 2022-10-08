@@ -139,13 +139,23 @@
            </div>
          </div>
          </div>
-        <div 
+        <div  
           class="row" 
           v-for="(field, index) in form.fields" 
           :key="index" 
           @click="toggleEditMode(index)" 
-          @mouseover="toggleEditMode(index)" 
+          @dragover.prevent="dragOver($event, index)"
+          @drop.prevent="drop($event, index)"
+          :id="index"
           >
+         <div 
+           class="col-12 col-lg-11 col-xl-11 mt-2 mb-2"
+           :draggable="draggable"
+           @dragstart="dragStart($event, index)"
+           @dragover.stop
+           >
+          <i class="fas fa-grip-horizontal fa-3x"></i>
+         </div>
          <div class="col-12 col-lg-11 col-xl-11">
            <div class="card glass-content mt-2 mb-2">
             <div class="card-header" v-if="editMode.index == index">
@@ -207,6 +217,8 @@
                @TimeInputInput="updateField($event,index)"
                @RadioInputInput="updateField($event,index)"
                @CheckboxInputInput="updateField($event,index)"
+               @FileInputInput="updateField($event,index)"
+               @ColorInputInput="updateField($event,index)"
               >
               </component>
             </div>
@@ -421,6 +433,8 @@
     import RangeInput from '../components/inputs/RangeInput.vue'
     import RadioInput from '../components/inputs/RadioInput.vue'
     import CheckboxInput from '../components/inputs/CheckboxInput.vue'
+    import FileInput from '../components/inputs/FileInput.vue'
+    import ColorInput from '../components/inputs/ColorInput.vue'
 
     export default defineComponent({
         components: {
@@ -439,7 +453,9 @@
             TimeInput,
             RangeInput,
             RadioInput,
-            CheckboxInput
+            CheckboxInput,
+            FileInput,
+            ColorInput
         },
         data() {
             return {
@@ -589,10 +605,8 @@
                      }
                     },
                     {
-                     title: 'field title',
-                     name: '',
-                     default: '',
-                     placeholder: 'field',
+                     title: 'color field title',
+                     name: 'color',
                      image: '',
                      description: '',
                      settings:{
@@ -603,7 +617,7 @@
                        type: "color",
                        icon: '<i class="fas fa-palette fa-2x"></i>',
                        component: 'ColorInput',
-                       }
+                     }
                     },
                      {
                      title: 'field title',
@@ -665,16 +679,16 @@
 
                     },
                     {
-                     title: 'field title',
-                     name: 'number',
-                     default: '',
-                     placeholder: 'field',
+                     title: 'file field title',
+                     name: 'file',
                      image: '',
                      description: '',
                      settings:{
                        type: 'file',
                        required : false, 
                        disabled :  false,
+                       multiple: false,
+                       accept: "",
                        field: "File Upload",
                        type: "file",
                        icon: '<i class="fas fa-upload fa-2x"></i>',
@@ -772,41 +786,55 @@
                   title: '',
                   description: '',
                   cover: '',
-                  fields:{
-                    /*
-                  field1 : {
-                     title: 'field title',
-                     default: '',
-                     placeholder: 'field',
-                     image: '',
-                     settings:{
-                       type: 'text',
-                       autocomplete : 'off',
-                       required : false, 
-                       disabled :  false,
-                       minlength :  3,
-                       maxlength :  20,
-                       component : 'TextInput'
-                     }
-                  },
-                  field2 : {
-                     settings:{
-                       field: "Text",
-                       type: "text",
-                       icon: '<i class="fas fa-paragraph fa-2x"></i>',
-                       component: 'TextInput',
-                     }
-                  },*/
-                }
+                  fields:{}
                 },
                 updateTypeIndex: "",
                 editMode: {
                   index: 'form-header',
+                },
+                DragDrop:{
+                  targetindex: "",
+                  cardindex: "",
+                  dragoverindex: ""
                 }
             }
         },
 
         methods: {
+           dragOver(event, index)
+           {
+
+            this.DragDrop.dragoverindex = index
+
+            var keys = Object.keys(this.form.fields)
+
+            this.addToObject(this.form.fields, 
+                             this.DragDrop.cardindex, 
+                             this.form.fields[this.DragDrop.cardindex], 
+                             keys.indexOf(this.DragDrop.dragoverindex))
+
+            console.log("dragged over", index)
+           },
+           dragStart(event, index)
+           {
+            this.DragDrop.cardindex = index
+            console.log("dragged", index)
+           },
+            drop(event, index)
+            {
+              this.DragDrop.targetindex = index
+
+              this.DragDrop.dragoverindex = index
+
+              var keys = Object.keys(this.form.fields)
+
+              this.addToObject(this.form.fields, 
+                             this.DragDrop.cardindex, 
+                             this.form.fields[this.DragDrop.cardindex], 
+                             keys.indexOf(this.DragDrop.targetindex))
+              
+              console.log('dropped', index)
+            },
             cleanMergeObject(objOne, objTwo )
             {
               return { ...objOne, ...objTwo };
