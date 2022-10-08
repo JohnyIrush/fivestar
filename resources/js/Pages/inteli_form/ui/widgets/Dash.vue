@@ -139,23 +139,31 @@
            </div>
          </div>
          </div>
-        <div  
-          class="row" 
-          v-for="(field, index) in form.fields" 
+        <draggable 
+          class="dragArea list-group w-full" 
+          :list="form.fields" 
+          @change="log"
+        >
+        <!--<template #item="{field}">-->
+          <!--          v-for="(field, index) in form.fields" 
           :key="index" 
           @click="toggleEditMode(index)" 
           @dragover.prevent="dragOver($event, index)"
-          @drop.prevent="drop($event, index)"
-          :id="index"
+          @drop.prevent="drop($event, index)"-->
+        <div  
+          class="row" 
+           v-for="(field, index) in form.fields" 
+          :key="index" 
+          @click="toggleEditMode(index)" 
           >
-         <div 
+         <!--<div 
            class="col-12 col-lg-11 col-xl-11 mt-2 mb-2"
            :draggable="draggable"
            @dragstart="dragStart($event, index)"
            @dragover.stop
            >
           <i class="fas fa-grip-horizontal fa-3x"></i>
-         </div>
+         </div>-->
          <div class="col-12 col-lg-11 col-xl-11">
            <div class="card glass-content mt-2 mb-2">
             <div class="card-header" v-if="editMode.index == index">
@@ -319,6 +327,8 @@
            </div>
           </div>
         </div>
+        <!--</template>-->
+        </draggable>
        </div>
       </div>
       <div class="tab-pane fade" id="response" role="tabpanel" aria-labelledby="response-tab">...</div>
@@ -436,8 +446,11 @@
     import FileInput from '../components/inputs/FileInput.vue'
     import ColorInput from '../components/inputs/ColorInput.vue'
 
+    import { VueDraggableNext } from 'vue-draggable-next'
+
     export default defineComponent({
         components: {
+            draggable: VueDraggableNext,
             Footer,
             MainForm,
             modal_button,
@@ -461,19 +474,7 @@
             return {
                 selectedType: {
                      title: 'field title',
-                     default: '',
-                     placeholder: 'field',
-                     image: '',
                      settings:{
-                       type: 'text',
-                       autocomplete : 'off',
-                       required : false, 
-                       disabled :  false,
-                       minlength :  3,
-                       maxlength :  20,
-                       field: "Text",
-                       type: "text",
-                       icon: '<i class="fas fa-paragraph fa-2x"></i>',
                        component: 'TextInput',
                      }
                 },
@@ -804,11 +805,11 @@
            dragOver(event, index)
            {
 
-            this.DragDrop.dragoverindex = index
+           this.DragDrop.dragoverindex = index
 
-            var keys = Object.keys(this.form.fields)
+           var keys = Object.keys(this.form.fields)
 
-            this.addToObject(this.form.fields, 
+           this.form.fields = this.addToObject(this.form.fields, 
                              this.DragDrop.cardindex, 
                              this.form.fields[this.DragDrop.cardindex], 
                              keys.indexOf(this.DragDrop.dragoverindex))
@@ -817,18 +818,18 @@
            },
            dragStart(event, index)
            {
-            this.DragDrop.cardindex = index
-            console.log("dragged", index)
+           this.DragDrop.cardindex = index
+           console.log("dragged", index)
            },
             drop(event, index)
             {
-              this.DragDrop.targetindex = index
+             this.DragDrop.targetindex = index
 
-              this.DragDrop.dragoverindex = index
+             this.DragDrop.dragoverindex = index
 
-              var keys = Object.keys(this.form.fields)
+             var keys = Object.keys(this.form.fields)
 
-              this.addToObject(this.form.fields, 
+             this.form.fields = this.addToObject(this.form.fields, 
                              this.DragDrop.cardindex, 
                              this.form.fields[this.DragDrop.cardindex], 
                              keys.indexOf(this.DragDrop.targetindex))
@@ -885,9 +886,17 @@
             },
             dublicateField(index)
             {
-              console.log(this.form.fields[index])
-              this.addField(index, this.form.fields[index])
-              console.log(this.form.fields)
+              //console.log(this.form.fields[index])
+              this.addField(index, 
+                                  {
+                                  title: this.form.fields[index].title,
+                                  name: this.form.fields[index].name,
+                                  default: '',
+                                  image: this.form.fields[index].image,
+                                  settings: this.form.fields[index].settings
+                                }
+                )
+              //console.log(this.form.fields)
             },
             addToObject(obj, key, value, index) 
             {
@@ -930,7 +939,7 @@
           },
           updateFieldType(index)
           {
-            console.log("type",this.selectedType, "field",this.form.fields[index])
+            //console.log("type",this.selectedType, "field",this.form.fields[index])
             this.form.fields[index].settings = this.selectedType.settings
           },
           addField(index, value = {}, key = "")
@@ -939,10 +948,20 @@
 
             var fieldName = !(key.length === 0)? 
                             key: 
-                            "untitled field " + 
+                            "field" + 
                              (keys.length + 1);
 
-            var field = !(this.isEmpty(value))? value: this.selectedType;
+            var field = !(this.isEmpty(value))? value: 
+                                                {
+                                                title: fieldName,
+                                                name: fieldName,
+                                                default: '',
+                                                placeholder: fieldName,
+                                                image: '',
+                                                settings: this.selectedType.settings
+                                                 /*{component: this.selectedType.settings.component,
+                                                 type: this.selectedType.settings.type
+                                                }*/};
 
             if(keys.length == 0)
             {
@@ -961,6 +980,8 @@
               this.form.fields = this.addToObject(this.form.fields, fieldName, field, position)
              }
             }
+
+            console.log("fields",this.form.fields)
           },
           selectedListItem(event)
           {

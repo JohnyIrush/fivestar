@@ -75,6 +75,11 @@
           {{fieldDetails.title}}
        </label>
      <div>  
+       <draggable 
+          class="dragArea list-group w-full" 
+          :list="fieldDetails.options" 
+          @change="log"
+        >
       <div 
         class="form-check d-flex flex-row mr-3" 
         v-for="(option, index) in fieldDetails.options" 
@@ -101,6 +106,7 @@
         @click="removeOption(index)"
         ></i>
       </div>
+      </draggable>
       <div  class="form-check">
         <input class="form-check-input" type="checkbox"  id="new-option-checkbox" disabled>
         <label 
@@ -124,6 +130,8 @@
 
 <script>
     import { defineComponent } from 'vue'
+
+    import { VueDraggableNext } from 'vue-draggable-next'
 
     export default defineComponent({
         name: "CheckBoxInput",
@@ -149,7 +157,7 @@
           }
         },
         components: {
-
+          draggable: VueDraggableNext,
         },
         data() {
             return {
