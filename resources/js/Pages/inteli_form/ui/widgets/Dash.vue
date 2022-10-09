@@ -1,10 +1,12 @@
 <template>
- <!--<div class="container">-->
+ <!--START INTELI FORM BUILDER-->
   <div class="row" >
+  <!--START INTELI FORM BUILDER BODY-->
    <div class="col-12 col-lg-9">
+    <!-- START INTELI FORM BUILDER BODY MAIN MENU-->
     <ul class="nav nav-tabs glass-content" id="formBuilderTab" role="tablist">
       <li class="nav-item" role="presentation">
-        <button class="nav-link active" id="questions-tab" data-bs-toggle="tab" data-bs-target="#questions" type="button" role="tab" aria-controls="questions" aria-selected="true"><i class="fas fa-question-circle"></i>Questions</button>
+        <button class="nav-link active" id="questions-tab" data-bs-toggle="tab" data-bs-target="#questions" type="button" role="tab" aria-controls="questions" aria-selected="true"><i class="fas fa-question-circle"></i>Builder</button>
       </li>
       <li class="nav-item" role="presentation">
         <button class="nav-link" id="response-tab" data-bs-toggle="tab" data-bs-target="#response" type="button" role="tab" aria-controls="response" aria-selected="false"><i class="fas fa-reply"></i>Response</button>
@@ -13,13 +15,18 @@
         <button class="nav-link" id="settings-tab" data-bs-toggle="tab" data-bs-target="#settings" type="button" role="tab" aria-controls="settings" aria-selected="false"><i class="fas fa-cogs"></i>Settings</button>
       </li>
     </ul>
+    <!-- END INTELI FORM BUILDER BODY MAIN MENU-->
+    <!-- START INTELI FORM BUILDER BODY MAIN MENU-->
     <div class="tab-content glass-content" id="formBuilderTabContent">
+      <!-- START INTELI FORM BUILDER-->
       <div class="tab-pane fade show active" id="questions" role="tabpanel" aria-labelledby="questions-tab">
        <div class="card text-center glass-content">
+        <!-- START FORM BUILDER HEADER-->
         <div 
-          @click="toggleEditMode('form-header')" 
-          @mouseover="toggleEditMode('form-header')" 
-          class="row" >
+          @click="toggleEditMode('form-header','')" 
+          @mouseover="toggleEditMode('form-header', '')" 
+          class="row" 
+          >
          <div class="col-12 col-lg-11 col-xl-11">
           <!-- FORM TITLE AND DESCRIPTION -->
            <div class="card glass-content mt-2 mb-2">
@@ -28,10 +35,10 @@
                 :formFieldClasses="' form-input-style'"
                 :formFieldLabelClasses="'fs-1 fw-bold text-capitalize display-6 text-left'"
                 :formFieldContainerClasses="'form-field-container'"
-                :field="{
-                  title: 'title',
+                :fieldData="{
+                  title: 'Form title',
                   default: 'Form Title',
-                  placeholder: 'title',
+                  placeholder: 'form title',
                   settings:{
                     autocomplete : 'on',
                     required : 'true', 
@@ -46,10 +53,10 @@
                 :formFieldClasses="' form-input-style'"
                 :formFieldLabelClasses="'fs-1 fw-bold text-capitalize display-6 text-left'"
                 :formFieldContainerClasses="'form-field-container'"
-                :field="{
-                  title: 'Description',
+                :fieldData="{
+                  title: 'Form Description',
                   default: 'Form Description',
-                  placeholder: 'title',
+                  placeholder: 'form description',
                   settings:{
                     row: '5',
                     cols: '6',
@@ -66,11 +73,12 @@
            </div>
           <!-- FORM TITLE AND DESCRIPTION -->
          </div>
+         <!-- START FORM BUILDER MENU SIDEBAR-->
          <div class="col-12 col-lg-1 col-xl-1">
            <div 
              id="form-builder-menu" 
              class="glass-content" 
-             v-if="editMode.index == 'form-header'">
+             v-if="editMode.fieldindex == 'form-header'">
             <ul class="nav flex-column">
              <li class="nav-item">
                <a 
@@ -80,10 +88,22 @@
                data-bs-toggle="tooltip" 
                data-bs-placement="right" 
                title="Add Field"
-               @click="addField('form-header')"
+               @click="addField('form-header',{},'','section1')"
                >
                <i class="fas fa-plus-circle fa-2x"></i>
               </a>
+             </li>
+             <li class="nav-item">
+               <a 
+               class="nav-link" 
+               aria-current="page"
+               data-bs-toggle="tooltip" 
+               data-bs-placement="right" 
+               title="Add Section"
+               @click="addSection('form-header')"
+               >
+               <i class="fas fa-puzzle-piece fa-2x"></i>            
+               </a>
              </li>
              <li class="nav-item">
                <a 
@@ -125,213 +145,386 @@
                <i class="fas fa-video fa-2x"></i>
               </a>
              </li>
-             <li class="nav-item">
-               <a 
-               class="nav-link" 
-               aria-current="page"
-               data-bs-toggle="tooltip" 
-               data-bs-placement="right" 
-               title="Add Section">
-               <i class="fas fa-puzzle-piece fa-2x"></i>            
-               </a>
-             </li>
             </ul>
            </div>
          </div>
-         </div>
+         <!-- END FORM BUILDER MENU SIDEBAR-->
+        </div>
+        <!-- END FORM BUILDER HEADER-->
+        <!-- START FORM BUILDER BODY-->
         <draggable 
           class="dragArea list-group w-full" 
-          :list="form.fields" 
+          :list="form.sections" 
           @change="log"
         >
-        <!--<template #item="{field}">-->
-          <!--          v-for="(field, index) in form.fields" 
-          :key="index" 
-          @click="toggleEditMode(index)" 
-          @dragover.prevent="dragOver($event, index)"
-          @drop.prevent="drop($event, index)"-->
-        <div  
-          class="row" 
-           v-for="(field, index) in form.fields" 
-          :key="index" 
-          @click="toggleEditMode(index)" 
-          >
-         <!--<div 
-           class="col-12 col-lg-11 col-xl-11 mt-2 mb-2"
-           :draggable="draggable"
-           @dragstart="dragStart($event, index)"
-           @dragover.stop
-           >
-          <i class="fas fa-grip-horizontal fa-3x"></i>
-         </div>-->
-         <div class="col-12 col-lg-11 col-xl-11">
-           <div class="card glass-content mt-2 mb-2">
-            <div class="card-header" v-if="editMode.index == index">
-             <div class="row">
-              <div class="col-8 align-self-start">
-              </div>
-              <div class="col-4 align-self-end">
-               <div class="input-group flex-nowrap form-input-type-wrapper">
-                 <span class="input-group-text" id="addon-wrapping" v-html="field.settings.icon"></span>
-                 <input 
-                    type="text" 
-                    class="form-control form-input-type-input" 
-                    placeholder="Type" aria-label="Type" 
-                    aria-describedby="addon-wrapping" 
-                    readonly 
-                    v-model="field.settings.field"
-                    >
-                 <span class="input-group-text" id="addon-wrapping">
-                   <modal_button 
-                   @showmodal="launchModal('main-modal')" 
-                   :name="''" 
-                   :icon_classes="'fas fa-caret-square-down fa-2x'" 
-                   :title="''" :modalSize="'modal-sm'" 
-                   :modalWidth="'w-25'"  
-                   :componentType="''" 
-                   :componentName="'DataList'" 
-                   :dataPath="''" 
-                   :listData="inputTypes"
-                   :fieldName="'field'"
-                   :fieldIcon="'icon'"
-                   :modalClasses="''"
-                   :modalDialogClasses="'modal-dialog-scrollable '"
-                   :modalContentClasses="'modal-height'"
-                   :backDrop="false"
-                   @click="setTypeUpdateIndex(index)"
-                   ></modal_button>
-                 </span>
-               </div>
-              </div>
-             </div>
-            </div>
-            <div class="card-body ">
-              <component 
-               :is="field.settings.component"
-               :formFieldClasses="' form-input-style'"
-               :formFieldLabelClasses="'fs-1 fw-bold text-capitalize display-6 text-left'"
-               :formFieldContainerClasses="'form-field-container'"
-               :fieldData="field"
-               :fieldSettings="(editMode.index == index)"
-               @TextInputInput="updateField($event,index)"
-               @TextAreaInputInput="updateField($event,index)"
-               @TelInputInput="updateField($event,index)"
-               @PasswordInputInput="updateField($event,index)"
-               @EmailInputInput="updateField($event,index)"
-               @UrlInputInput="updateField($event,index)"
-               @SearchInputInput="updateField($event,index)"
-               @NumberInputInput="updateField($event,index)"
-               @DateInputInput="updateField($event,index)"
-               @TimeInputInput="updateField($event,index)"
-               @RadioInputInput="updateField($event,index)"
-               @CheckboxInputInput="updateField($event,index)"
-               @FileInputInput="updateField($event,index)"
-               @ColorInputInput="updateField($event,index)"
-              >
-              </component>
-            </div>
-            <div v-if="editMode.index == index" class="card-footer border-2 border-dark">
-             <div class="row align-items-end">
-               <div class="col">
-                
-               </div>
-               <div class="col">
-                 
-               </div>
-               <div class="col d-flex flex-row mr-3">
-                 <i class="fas fa-clone fa-2x mr-3" @click="dublicateField(index)"></i>
-                 <i 
-                   class="fas fa-trash-alt fa-2x mr-3" 
-                   @click="removeField(index)">
-                 </i>
-                 <div class="form-check form-switch mr-3">
-                   <label class="form-check-label" for="form-input-required">Required</label>
-                   <input class="form-check-input" type="checkbox" id="form-input-required">
+        <div 
+          class="row"
+          v-for="(section, sectionindex) in form.sections" 
+          :key="sectionindex" 
+          >   
+           <div class="col-12 card">
+            <div class="card-header" >
+           <div class="col-12">
+            <div class="row">
+              <!-- START FORM SECTION TITLE AND DESCRIPTION -->
+              <div class="col-12 col-lg-11 col-xl-11">
+               <div class="card glass-content mt-2 mb-2">
+                 <div class="card-body">
+                   <text-input
+                    :formFieldClasses="' form-input-style'"
+                    :formFieldLabelClasses="'fs-1 fw-bold text-capitalize display-6 text-left'"
+                    :formFieldContainerClasses="'form-field-container'"
+                    :fieldData="{
+                      title: sectionindex + ' Title',
+                      default: sectionindex + ' Title',
+                      placeholder: sectionindex + ' title',
+                      settings:{
+                        autocomplete : 'on',
+                        required : 'true', 
+                        disabled :  'false',
+                        minlength :  '4',
+                        maxlength :  '50',
+                      }
+                    }"
+                   > 
+                   </text-input>
+                   <text-area-input
+                    :formFieldClasses="' form-input-style'"
+                    :formFieldLabelClasses="'fs-1 fw-bold text-capitalize display-6 text-left'"
+                    :formFieldContainerClasses="'form-field-container'"
+                    :fieldData="{
+                      title: sectionindex + ' Description',
+                      default: sectionindex + ' Description',
+                      placeholder: sectionindex + ' description',
+                      settings:{
+                        row: '5',
+                        cols: '6',
+                        autocomplete : 'on',
+                        required : 'true', 
+                        disabled :  'false',
+                        minlength :  '30',
+                        maxlength :  '200',
+                      }
+                    }"
+                   > 
+                   </text-area-input>
                  </div>
-                 <i class="fas fa-ellipsis-v fa-2x mr-3"></i>
                </div>
+              </div>
+              <!-- END FORM SECTION TITLE AND DESCRIPTION -->
+              <!--START SECTION FORM BUILDER OPTIONS -->
+             <div class="col-12 col-lg-1 col-xl-1">
+              <div 
+                id="form-builder-section-menu" 
+                class="glass-content"                  >
+               <ul class="nav flex-column">
+                <li class="nav-item">
+                  <a 
+                  role="button"
+                  class="nav-link active" 
+                  aria-current="page"
+                  data-bs-toggle="tooltip" 
+                  data-bs-placement="right" 
+                  title="Add Field"
+                  @click="addField('', {}, '', sectionindex)"
+                  >
+                  <i class="fas fa-plus-circle fa-2x"></i>
+                 </a>
+                </li>
+                <li class="nav-item">
+                  <a 
+                  class="nav-link" 
+                  aria-current="page"
+                  data-bs-toggle="tooltip" 
+                  data-bs-placement="right" 
+                  title="Import Fields">
+                  <i class="fas fa-file-import fa-2x"></i>
+                 </a>
+                </li>
+                <li class="nav-item">
+                  <a 
+                  class="nav-link" 
+                  aria-current="page"
+                  data-bs-toggle="tooltip" 
+                  data-bs-placement="right" 
+                  title="Add Section"
+                  @click="addSection(sectionindex)"
+                  >
+                  <i class="fas fa-puzzle-piece fa-2x"></i>            
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a 
+                  class="nav-link" 
+                  aria-current="page"
+                  data-bs-toggle="tooltip" 
+                  data-bs-placement="right" 
+                  title="Add Title And Description">
+                  <i class="fas fa-heading fa-2x"></i>
+                 </a>
+                </li>
+                <li class="nav-item">
+                  <a 
+                  class="nav-link" 
+                  aria-current="page"
+                  data-bs-toggle="tooltip" 
+                  data-bs-placement="right" 
+                  title="Add Image">
+                  <i class="fas fa-images fa-2x"></i>
+                 </a>
+                </li>
+                <li class="nav-item">
+                  <a 
+                  class="nav-link" 
+                  aria-current="page"
+                  data-bs-toggle="tooltip" 
+                  data-bs-placement="right" 
+                  title="Add Video">
+                  <i class="fas fa-video fa-2x"></i>
+                 </a>
+                </li>
+               </ul>
+              </div>
              </div>
+             <!-- END SECTION FORM BUILDER OPTIONS -->
             </div>
-           </div> 
-          </div>
-          <div class="col-12 col-lg-1 col-xl-1">
-           <div 
-            v-if="editMode.index == index" 
-            id=" index + '-form-builder-menu'" 
-            class="glass-content">
-            <ul class="nav flex-column">
-             <li class="nav-item">
-               <a 
-               role="button"
-               class="nav-link active" 
-               aria-current="page"
-               data-bs-toggle="tooltip" 
-               data-bs-placement="right" 
-               title="Add Field"
-               @click="addField(index)"
-               >
-               <i class="fas fa-plus-circle fa-2x"></i>
-              </a>
-             </li>
-             <li class="nav-item">
-               <a 
-               class="nav-link" 
-               aria-current="page"
-               data-bs-toggle="tooltip" 
-               data-bs-placement="right" 
-               title="Import Fields">
-               <i class="fas fa-file-import fa-2x"></i>
-              </a>
-             </li>
-             <li class="nav-item">
-               <a 
-               class="nav-link" 
-               aria-current="page"
-               data-bs-toggle="tooltip" 
-               data-bs-placement="right" 
-               title="Add Title And Description">
-               <i class="fas fa-heading fa-2x"></i>
-              </a>
-             </li>
-             <li class="nav-item">
-               <a 
-               class="nav-link" 
-               aria-current="page"
-               data-bs-toggle="tooltip" 
-               data-bs-placement="right" 
-               title="Add Image">
-               <i class="fas fa-images fa-2x"></i>
-              </a>
-             </li>
-             <li class="nav-item">
-               <a 
-               class="nav-link" 
-               aria-current="page"
-               data-bs-toggle="tooltip" 
-               data-bs-placement="right" 
-               title="Add Video">
-               <i class="fas fa-video fa-2x"></i>
-              </a>
-             </li>
-             <li class="nav-item">
-               <a 
-               class="nav-link" 
-               aria-current="page"
-               data-bs-toggle="tooltip" 
-               data-bs-placement="right" 
-               title="Add Section">
-               <i class="fas fa-puzzle-piece fa-2x"></i>            
-               </a>
-             </li>
-            </ul>
            </div>
+            </div>
+            <div class="card-body">
+              <draggable 
+               class="dragArea list-group w-full" 
+               :list="form.sections[sectionindex].fields" 
+               @change="log">
+               <div  
+                 class="row" 
+                 v-for="(field, index) in form.sections[sectionindex].fields" 
+                 :key="index" 
+                 @click="toggleEditMode(index,sectionindex)" 
+                 >
+                   <div class="col-12 col-lg-11 col-xl-11">
+               <div class="card glass-content mt-2 mb-2">
+                <div 
+                  class="card-header" 
+                   v-if="(editMode.fieldindex == index) && (editMode.sectionindex == sectionindex)" 
+                  >
+                 <div class="row">
+                  <div class="col-8 align-self-start">
+                  </div>
+                  <div class="col-4 align-self-end">
+                   <div class="input-group flex-nowrap form-input-type-wrapper">
+                     <span class="input-group-text" id="addon-wrapping" v-html="field.settings.icon"></span>
+                     <input 
+                        type="text" 
+                        class="form-control form-input-type-input" 
+                        placeholder="Type" aria-label="Type" 
+                        aria-describedby="addon-wrapping" 
+                        readonly 
+                        v-model="field.settings.field"
+                        >
+                     <span class="input-group-text" id="addon-wrapping">
+                       <modal_button 
+                       @showmodal="launchModal('main-modal')" 
+                       :name="''" 
+                       :icon_classes="'fas fa-caret-square-down fa-2x'" 
+                       :title="''" :modalSize="'modal-sm'" 
+                       :modalWidth="'w-25'"  
+                       :componentType="''" 
+                       :componentName="'DataList'" 
+                       :dataPath="''" 
+                       :listData="inputTypes"
+                       :fieldName="'field'"
+                       :fieldIcon="'icon'"
+                       :modalClasses="''"
+                       :modalDialogClasses="'modal-dialog-scrollable '"
+                       :modalContentClasses="'modal-height'"
+                       :backDrop="false"
+                       @click="setTypeUpdateIndex(index,sectionindex)"
+                       ></modal_button>
+                     </span>
+                   </div>
+                  </div>
+                 </div>
+                </div>
+                <div class="card-body ">
+                  <component 
+                   :is="field.settings.component"
+                   :formFieldClasses="' form-input-style'"
+                   :formFieldLabelClasses="'fs-1 fw-bold text-capitalize display-6 text-left'"
+                   :formFieldContainerClasses="'form-field-container'"
+                   :fieldData="field"
+                   :fieldSettings="((editMode.fieldindex == index) 
+                                    && 
+                                    (editMode.sectionindex == sectionindex))"
+                   @TextInputInput="updateField($event,index, sectionindex)"
+                   @TextAreaInputInput="updateField($event,index, sectionindex)"
+                   @TelInputInput="updateField($event,index)"
+                   @PasswordInputInput="updateField($event,index, sectionindex)"
+                   @EmailInputInput="updateField($event,index, sectionindex)"
+                   @UrlInputInput="updateField($event,index)"
+                   @SearchInputInput="updateField($event,index, sectionindex)"
+                   @NumberInputInput="updateField($event,index, sectionindex)"
+                   @DateInputInput="updateField($event,index, sectionindex)"
+                   @TimeInputInput="updateField($event,index)"
+                   @RadioInputInput="updateField($event,index, sectionindex)"
+                   @CheckboxInputInput="updateField($event,index, sectionindex)"
+                   @FileInputInput="updateField($event,index, sectionindex)"
+                   @ColorInputInput="updateField($event,index, sectionindex)"
+                  >
+                  </component>
+                </div>
+                <div 
+                   v-if="editMode.fieldindex == index 
+                   && 
+                   editMode.sectionindex == sectionindex" 
+                   class="card-footer border-2 border-dark">
+                 <div class="row align-items-end">
+                   <div class="col">
+                    
+                   </div>
+                   <div class="col">
+                     
+                   </div>
+                   <div class="col d-flex flex-row mr-3">
+                     <i 
+                      class="fas fa-clone fa-2x mr-3" 
+                      @click="dublicateField(index, sectionindex)"
+                      >
+                      </i>
+                     <i 
+                       class="fas fa-trash-alt fa-2x mr-3" 
+                       @click="removeField(index, sectionindex)">
+                     </i>
+                     <div class="form-check form-switch mr-3">
+                       <label class="form-check-label" for="form-input-required">Required</label>
+                       <input class="form-check-input" type="checkbox" id="form-input-required">
+                     </div>
+                     <i class="fas fa-ellipsis-v fa-2x mr-3"></i>
+                   </div>
+                 </div>
+                </div>
+               </div> 
+                   </div>
+                   <!-- START FORM SECTION FIELD FORM BUILDER OPTIONS -->
+                   <div class="col-12 col-lg-1 col-xl-1">
+               <div 
+                v-if="(editMode.fieldindex == index) && (editMode.sectionindex == sectionindex)" 
+                id=" index + '-form-builder-menu'" 
+                class="glass-content">
+                <ul class="nav flex-column">
+                 <li class="nav-item">
+                   <a 
+                   role="button"
+                   class="nav-link active" 
+                   aria-current="page"
+                   data-bs-toggle="tooltip" 
+                   data-bs-placement="right" 
+                   title="Add Field"
+                   @click="addField(index, {}, '', sectionindex)"
+                   >
+                   <i class="fas fa-plus-circle fa-2x"></i>
+                  </a>
+                 </li>
+                <li class="nav-item">
+                  <a 
+                  class="nav-link" 
+                  aria-current="page"
+                  data-bs-toggle="tooltip" 
+                  data-bs-placement="right" 
+                  title="Add Section"
+                  @click="addSection(sectionindex)"
+                  >
+                  <i class="fas fa-puzzle-piece fa-2x"></i>            
+                  </a>
+                </li>
+                 <li class="nav-item">
+                   <a 
+                   class="nav-link" 
+                   aria-current="page"
+                   data-bs-toggle="tooltip" 
+                   data-bs-placement="right" 
+                   title="Import Fields">
+                   <i class="fas fa-file-import fa-2x"></i>
+                  </a>
+                 </li>
+                 <li class="nav-item">
+                   <a 
+                   class="nav-link" 
+                   aria-current="page"
+                   data-bs-toggle="tooltip" 
+                   data-bs-placement="right" 
+                   title="Add Title And Description">
+                   <i class="fas fa-heading fa-2x"></i>
+                  </a>
+                 </li>
+                 <li class="nav-item">
+                   <a 
+                   class="nav-link" 
+                   aria-current="page"
+                   data-bs-toggle="tooltip" 
+                   data-bs-placement="right" 
+                   title="Add Image">
+                   <i class="fas fa-images fa-2x"></i>
+                  </a>
+                 </li>
+                 <li class="nav-item">
+                   <a 
+                   class="nav-link" 
+                   aria-current="page"
+                   data-bs-toggle="tooltip" 
+                   data-bs-placement="right" 
+                   title="Add Video">
+                   <i class="fas fa-video fa-2x"></i>
+                  </a>
+                 </li>
+                </ul>
+               </div>
+                   </div>
+                   <!-- END FORM SECTION FIELD FORM BUILDER OPTIONS -->
+               </div>
+             </draggable>
+            </div>
+            <div>
+                <div 
+                   class="card-footer border-2 border-dark">
+                 <div class="row align-items-end">
+                   <div class="col">
+                    
+                   </div>
+                   <div class="col">
+                     
+                   </div>
+                   <div class="col d-flex flex-row mr-3">
+                     <i 
+                      class="fas fa-clone fa-2x mr-3" 
+                      @click="dublicateSection(sectionindex)"
+                      >
+                      </i>
+                     <i 
+                       class="fas fa-trash-alt fa-2x mr-3" 
+                       @click="removeSection(sectionindex)">
+                     </i>
+                     <div class="form-check form-switch mr-3">
+                       <label class="form-check-label" for="form-input-required">Required</label>
+                       <input class="form-check-input" type="checkbox" id="form-input-required">
+                     </div>
+                     <i class="fas fa-ellipsis-v fa-2x mr-3"></i>
+                   </div>
+                 </div>
+                </div>
+            </div>
+            </div>
           </div>
-        </div>
-        <!--</template>-->
         </draggable>
+        <!-- END FORM BUILDER BODY-->
        </div>
       </div>
+      <!-- END INTELI FORM BUILDER-->
+
+      <!-- START INTELI FORM VALUES/RESPONSES-->
       <div class="tab-pane fade" id="response" role="tabpanel" aria-labelledby="response-tab">...</div>
+      <!-- END INTELI FORM VALUES/RESPONSES-->
+
+      <!-- START INTELI FORM SETTINGS-->
       <div class="tab-pane fade" id="settings" role="tabpanel" aria-labelledby="settings-tab">
          <div class="container-fluid py-4">
            <div class="row">
@@ -389,8 +582,11 @@
            </div>
          </div>
       </div>
+      <!-- END INTELI FORM SETTINGS-->
     </div>
    </div>
+  <!-- END INTELI FORM BUILDER BODY-->
+  <!--START INTELI FORM BUILDER SIDEBAR-->
    <div class="col-12 col-xl-3">
     <div class="card h-100">
       <div class="card-header pb-0 p-3">
@@ -411,8 +607,9 @@
       </div>
     </div>
    </div>
+  <!-- END INTELI FORM BUILDER SIDEBAR-->
   </div>
- <!--</div>-->
+ <!-- END INTELI FORM BUILDER-->
  <Footer></Footer>
  <modal @selectedListItem="selectedListItem"></modal>
 </template>
@@ -787,11 +984,21 @@
                   title: '',
                   description: '',
                   cover: '',
+                  sections:{
+                    section1:
+                    {
+                      title: "",
+                      description: "",
+                      cover: '',
+                      fields:{}
+                    }
+                  },
                   fields:{}
                 },
                 updateTypeIndex: "",
                 editMode: {
-                  index: 'form-header',
+                  fieldindex: 'form-header',
+                  sectionindex: '',
                 },
                 DragDrop:{
                   targetindex: "",
@@ -850,18 +1057,16 @@
 
              return final;
             },
-            updateField(event, index)
+            updateField(event, index, sectionindex)
             {
-              var field = this.cleanMergeObject(event, this.form.
-                                 fields[index])
+              var field = this.cleanMergeObject(event, this.form.sections[sectionindex].fields[index])
 
               var fieldSettings = this
-                                  .cleanMergeObject(event.settings, this.form.
-                                 fields[index].settings)
+                                  .cleanMergeObject(event.settings, this.form.sections[sectionindex].fields[index].settings)
 
               field.settings = fieldSettings;
 
-              this.form.fields[index] = field
+              this.form.sections[sectionindex].fields[index] = field
 
               console.log(field, "field updated")
 
@@ -884,17 +1089,32 @@
             
               return JSON.stringify(obj) === JSON.stringify({});
             },
-            dublicateField(index)
+            dublicateSection(sectionindex)
+            {
+              //console.log(this.form.fields[index])
+              this.addSection(sectionindex, 
+                                {
+                                  title: this.form.sections[sectionindex].title,
+                                  description: this.form.sections[sectionindex].description,
+                                  cover: this.form.sections[sectionindex].cover,
+                                  fields: this.form.sections[sectionindex].fields
+                                },'',
+                                sectionindex
+                )
+              //console.log(this.form.fields)
+            },
+            dublicateField(index, sectionindex)
             {
               //console.log(this.form.fields[index])
               this.addField(index, 
                                   {
-                                  title: this.form.fields[index].title,
-                                  name: this.form.fields[index].name,
+                                  title: this.form.sections[sectionindex].fields[index].title,
+                                  name: this.form.sections[sectionindex].fields[index].name,
                                   default: '',
-                                  image: this.form.fields[index].image,
-                                  settings: this.form.fields[index].settings
-                                }
+                                  image: this.form.sections[sectionindex].fields[index].image,
+                                  settings: this.form.sections[sectionindex].fields[index].settings
+                                },'',
+                                sectionindex
                 )
               //console.log(this.form.fields)
             },
@@ -925,13 +1145,19 @@
             return temp;
 
           },
-          toggleEditMode(index)
+          toggleEditMode(index, sectionindex)
           {
-            this.editMode.index = index
+            console.log(this.editMode)
+            this.editMode.fieldindex = index
+            this.editMode.sectionindex = sectionindex
           },
-          removeField(index)
+          removeSection(sectionindex)
           {
-            delete this.form.fields[index]
+            delete this.form.sections[sectionindex]
+          },
+          removeField(index, sectionindex)
+          {
+            delete this.form.sections[sectionindex].fields[index]
           },
           setTypeUpdateIndex(index)
           {
@@ -942,14 +1168,49 @@
             //console.log("type",this.selectedType, "field",this.form.fields[index])
             this.form.fields[index].settings = this.selectedType.settings
           },
-          addField(index, value = {}, key = "")
+          addSection(index, value = {}, key = "")
           {
-            var keys = Object.keys(this.form.fields)
+            var keys = Object.keys(this.form.sections)
+
+            var sectionName = !(key.length === 0)? 
+                            key: 
+                            "section" + 
+                             (keys.length + 1);
+
+            var section = !(this.isEmpty(value))? value: 
+                                                {
+                                                  fields:{
+
+                                                  }
+                                                };
+
+            if(keys.length == 0)
+            {
+             this.form.sections[sectionName] =  section;
+            } 
+            else
+            {
+             var position = (keys.indexOf(index) !== -1)? keys.indexOf(index) + 1 : 0;
+
+             if (position >= keys.length)
+             {
+              this.form.sections = this.addToObject(this.form.sections, sectionName, section)
+             }
+             else
+             {
+              this.form.sections = this.addToObject(this.form.sections, sectionName, section, position)
+             }
+            }
+
+            console.log("sections",this.form.sections)
+          },
+          addField(index, value = {}, key = "", sectionindex =  "")
+          {
+            var keys = Object.keys(this.form.sections[sectionindex].fields)
 
             var fieldName = !(key.length === 0)? 
-                            key: 
-                            "field" + 
-                             (keys.length + 1);
+                            key:"field" + 
+                            (keys.length + 1);
 
             var field = !(this.isEmpty(value))? value: 
                                                 {
@@ -958,14 +1219,11 @@
                                                 default: '',
                                                 placeholder: fieldName,
                                                 image: '',
-                                                settings: this.selectedType.settings
-                                                 /*{component: this.selectedType.settings.component,
-                                                 type: this.selectedType.settings.type
-                                                }*/};
+                                                settings: this.selectedType.settings};
 
             if(keys.length == 0)
             {
-             this.form.fields[fieldName] =  field;
+             this.form.sections[sectionindex].fields[fieldName] =  field;
             } 
             else
             {
@@ -973,15 +1231,15 @@
 
              if (position >= keys.length)
              {
-              this.form.fields = this.addToObject(this.form.fields, fieldName, field)
+              this.form.sections[sectionindex].fields = this.addToObject(this.form.sections[sectionindex].fields, fieldName, field)
              }
              else
              {
-              this.form.fields = this.addToObject(this.form.fields, fieldName, field, position)
+              this.form.sections[sectionindex].fields = this.addToObject(this.form.sections[sectionindex].fields, fieldName, field, position)
              }
             }
 
-            console.log("fields",this.form.fields)
+            console.log("fields",this.form.sections)
           },
           selectedListItem(event)
           {
