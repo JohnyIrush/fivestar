@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Policies;
+namespace Softwarescares\Inteliform\app\Policies;
 
-use App\Models\Option;
+use Softwarescares\Inteliform\app\Models\Option;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 

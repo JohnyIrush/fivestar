@@ -8,4 +8,25 @@ use Illuminate\Database\Eloquent\Model;
 class FormTemplate extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'title',
+        'cover',
+        'description'
+    ];
+
+    public function forms()
+    {
+        return $this->hasMany(Form::class);
+    }
+
+    public function formSetting()
+    {
+        return $this->belongsTo(FormSetting::class);
+    }
+
+    public function formSections()
+    {
+        return $this->hasMany(FormSection::class);
+    }
 }

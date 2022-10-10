@@ -11,7 +11,7 @@
           Title
         </span>
         <input 
-          v-model="fieldDetails.title"
+          v-model="field.title"
           type="text" 
           class="form-control form-input-transparent" 
           aria-label="" 
@@ -26,7 +26,7 @@
           Placeholder
         </span>
         <input 
-          v-model="fieldDetails.placeholder"
+          v-model="field.placeholder"
           type="text" 
           class="form-control form-input-transparent" 
           aria-label="" 
@@ -41,7 +41,7 @@
           Default
         </span>
         <input 
-          v-model="fieldDetails.default"
+          v-model="field.value"
           type="text" 
           class="form-control form-input-transparent" 
           aria-label="" 
@@ -56,7 +56,7 @@
           cols
         </span>
         <input 
-          v-model="fieldDetails.settings.cols"
+          v-model="field.settings.cols"
           type="number" 
           class="form-control form-input-transparent" 
           aria-label="" 
@@ -71,7 +71,7 @@
           rows
         </span>
         <input 
-          v-model="fieldDetails.settings.rows"
+          v-model="field.settings.rows"
           type="number" 
           class="form-control form-input-transparent" 
           aria-label="" 
@@ -86,7 +86,7 @@
           minlength
         </span>
         <input 
-          v-model="fieldDetails.settings.minlength"
+          v-model="field.settings.minlength"
           type="number" 
           class="form-control form-input-transparent" 
           aria-label="" 
@@ -101,7 +101,7 @@
           maxlength
         </span>
         <input 
-          v-model="fieldDetails.settings.maxlength"
+          v-model="field.settings.maxlength"
           type="number" 
           class="form-control form-input-transparent" 
           aria-label="" 
@@ -117,7 +117,7 @@
         required
         </label>
         <input 
-         v-model="fieldDetails.settings.required"
+         v-model="field.settings.required"
          class="form-check-input" 
          type="checkbox" 
          id="text-input-required-setting-check">
@@ -132,7 +132,7 @@
         autocomplete
         </label>
         <input 
-         v-model="fieldDetails.settings.autocomplete"
+         v-model="field.settings.autocomplete"
          class="form-check-input" 
          type="checkbox" 
          id="text-input-autocomplete-setting-check">
@@ -147,36 +147,50 @@
         disabled
         </label>
         <input 
-         v-model="fieldDetails.settings.disabled"
+         v-model="field.settings.disabled"
          class="form-check-input" 
          type="checkbox" 
          id="text-input-autocomplete-setting-check">
        </div>
       </div>
-
+      <div class="col-3 mt-2 mb-2">
+      <div class="input-group ">
+        <span 
+          class="input-group-text" 
+          id="description-basic-addon">
+          description
+        </span>
+        <input 
+          v-model="field.description"
+          type="text" 
+          class="form-control form-input-transparent" 
+          aria-label="" 
+          aria-describedby="description-basic-addon">
+       </div>
+      </div>
      </div>
    <!--START INPUT SETTINGS|OPTIONS|PROPERTIES -->
    <!--START INPUT -->
   <div  
-     :id="fieldDetails.field + '-text-input-container'"  
+     :id="field.field + '-text-input-container'"  
      :class="' ' + formFieldContainerClasses">
      <label 
-        :for="fieldDetails.title" 
+        :for="field.title" 
         :class="'form-label' + formFieldLabelClasses">
-        {{fieldDetails.title}}
+        {{field.title}}
      </label>
     <textarea
-       :id="fieldDetails.title + '-text-input'" 
+       :id="field.title + '-text-input'" 
        type="text" 
        :class="'form-control ' + formFieldClasses" 
-       v-model="fieldDetails.default" 
-       :name="fieldDetails.title"  
-       :placeholder="fieldDetails.placeholder"
-       :autocomplete="fieldDetails.settings.autocomplete" 
-       :minlength="fieldDetails.settings.minlength"
-       :maxlength="fieldDetails.settings.maxlength"
-       :rows="fieldDetails.settings.rows" 
-       :cols="fieldDetails.settings.cols"
+       v-model="field.value" 
+       :name="field.title"  
+       :placeholder="field.placeholder"
+       :autocomplete="field.settings.autocomplete" 
+       :minlength="field.settings.minlength"
+       :maxlength="field.settings.maxlength"
+       :rows="field.settings.rows" 
+       :cols="field.settings.cols"
        autofocus
        >
     </textarea> 
@@ -217,7 +231,7 @@
             return {
                    field: {
                      title: 'field title',
-                     default: '',
+                     value: '',
                      placeholder: 'field',
                      image: '',
                      settings:{
@@ -249,7 +263,7 @@
         watch: {
           field: {
             handler(newValue, oldValue) {
-
+              //this.fieldData = newValue
               this.$emit("TextAreaInputInput", newValue)
               //console.log(this)
 

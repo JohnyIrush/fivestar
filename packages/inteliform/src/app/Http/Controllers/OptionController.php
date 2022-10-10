@@ -6,6 +6,18 @@ use Softwarescares\Inteliform\app\Models\Option;
 use Softwarescares\Inteliform\app\Http\Requests\StoreOptionRequest;
 use Softwarescares\Inteliform\app\Http\Requests\UpdateOptionRequest;
 
+use Softwarescares\Intelilibrary\app\Actions\Model\Store;
+use Softwarescares\Intelilibrary\app\Actions\Model\Update;
+use Softwarescares\Intelilibrary\app\Actions\Model\Delete;
+
+use Softwarescares\Intelilibrary\app\Plugins\Model\Form;
+use Softwarescares\Intelilibrary\app\Plugins\Model\Table;
+use Softwarescares\Intelilibrary\app\Plugins\Model\Card;
+
+use Illuminate\Http\Request;
+
+use DB;
+
 class OptionController extends Controller
 {
     /**
@@ -34,9 +46,11 @@ class OptionController extends Controller
      * @param  \App\Http\Requests\StoreOptionRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreOptionRequest $request)
+    public function store(StoreOptionRequest $request, Store $store, Option $option)
     {
-        //
+        $option = $store->store($request, $option);
+
+        return response()->json($option);
     }
 
     /**
@@ -68,9 +82,11 @@ class OptionController extends Controller
      * @param  \App\Models\Option  $option
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateOptionRequest $request, Option $option)
+    public function update(UpdateOptionRequest $request, Option $option, Update $update)
     {
-        //
+        $option = $update->update($request, $option,["id" => $request->input("id")]);
+
+        return response()->json($option);
     }
 
     /**
@@ -79,8 +95,11 @@ class OptionController extends Controller
      * @param  \App\Models\Option  $option
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Option $option)
+    public function destroy(Request $request, Option $option, Delete $delete)
     {
-        //
+        $option = $delete->delete($request, $option,["id" => $request->input("id")]);
+
+        return response()->json($option);
+
     }
 }

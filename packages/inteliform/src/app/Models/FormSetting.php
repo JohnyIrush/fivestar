@@ -9,13 +9,15 @@ class FormSetting extends Model
 {
     use HasFactory;
 
-    public function form()
+    public function formTemplate()
     {
-        return $this->belongsTo(Form::class);
+        return $this->hasOne(FormTemplate::class);
     }
 
+   /* v1 -google
     public function quizSetting()
     {
         return $this->hasOne(QuizSetting::class);
     }
+   */  
 }

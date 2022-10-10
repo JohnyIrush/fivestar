@@ -10,7 +10,7 @@
           Title
         </span>
         <input 
-          v-model="fieldDetails.title"
+          v-model="field.title"
           type="text" 
           class="form-control form-input-transparent" 
           aria-label="" 
@@ -25,7 +25,7 @@
           Placeholder
         </span>
         <input 
-          v-model="fieldDetails.placeholder"
+          v-model="field.placeholder"
           type="text" 
           class="form-control form-input-transparent" 
           aria-label="" 
@@ -40,7 +40,7 @@
           Name
         </span>
         <input 
-          v-model="fieldDetails.name"
+          v-model="field.name"
           type="text" 
           class="form-control form-input-transparent" 
           aria-label="" 
@@ -55,7 +55,7 @@
           Default
         </span>
         <input 
-          v-model="fieldDetails.default"
+          v-model="field.default"
           type="text" 
           class="form-control form-input-transparent" 
           aria-label="" 
@@ -70,7 +70,7 @@
           min
         </span>
         <input 
-          v-model="fieldDetails.settings.min"
+          v-model="field.settings.min"
           type="text" 
           class="form-control form-input-transparent" 
           aria-label="" 
@@ -85,7 +85,7 @@
           max
         </span>
         <input 
-          v-model="fieldDetails.settings.max"
+          v-model="field.settings.max"
           type="text" 
           class="form-control form-input-transparent" 
           aria-label="" 
@@ -101,7 +101,7 @@
         required
         </label>
         <input 
-         v-model="fieldDetails.settings.required"
+         v-model="field.settings.required"
          class="form-check-input" 
          type="checkbox" 
          id="text-input-required-setting-check">
@@ -116,7 +116,7 @@
         disabled
         </label>
         <input 
-         v-model="fieldDetails.settings.disabled"
+         v-model="field.settings.disabled"
          class="form-check-input" 
          type="checkbox" 
          id="text-input-autocomplete-setting-check">
@@ -130,7 +130,7 @@
           description
         </span>
         <input 
-          v-model="fieldDetails.description"
+          v-model="field.description"
           type="text" 
           class="form-control form-input-transparent" 
           aria-label="" 
@@ -141,28 +141,28 @@
    <!--START INPUT SETTINGS|OPTIONS|PROPERTIES -->
    <!--START INPUT -->
     <div  
-       :id="fieldDetails.title + '-text-input-container'"  
+       :id="field.title + '-text-input-container'"  
        :class="' ' + formFieldContainerClasses">
        <label 
-          :for="fieldDetails.title" 
+          :for="field.title" 
           :class="'form-label' + formFieldLabelClasses">
-          {{fieldDetails.title}}
+          {{field.title}}
        </label>
       <input 
-         :id="fieldDetails.title + '-text-input'" 
+         :id="field.title + '-text-input'" 
          type="time" 
          :class="'form-control ' + formFieldClasses" 
-         v-model="fieldDetails.default" 
-         :name="fieldDetails.name || fieldDetails.title"  
-         :min="fieldDetails.settings.min"
-         :max="fieldDetails.settings.max"
-         :placeholder="fieldDetails.placeholder"
+         v-model="field.default" 
+         :name="field.name || field.title"  
+         :min="field.settings.min"
+         :max="field.settings.max"
+         :placeholder="field.placeholder"
          autofocus
          />
      <div 
-     :id="fieldDetails.title + 'Help'" 
+     :id="field.title + 'Help'" 
      class="form-text">
-       {{fieldDetails.description}}
+       {{field.description}}
      </div>
     </div>
    <!--END INPUT -->
@@ -211,11 +211,13 @@
                      description: '',
                      settings:{
                        type: 'time',
-                       min: "",
-                       max: "",
                        required : false, 
                        disabled :  false,
-                       component : 'TimeInput',
+                       min: "",
+                       max: "",
+                       field: "Time",
+                       icon: '<i class="fas fa-clock fa-2x"></i>',
+                       component: 'TimeInput',
                      }
                  }
             }
@@ -235,6 +237,8 @@
         watch: {
           field: {
             handler(newValue, oldValue) {
+
+              //this.fieldData = newValue
 
               this.$emit("TimeInputInput", newValue)
               console.log(this)

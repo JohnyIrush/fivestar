@@ -10,7 +10,7 @@
           Title
         </span>
         <input 
-          v-model="fieldDetails.title"
+          v-model="field.title"
           type="text" 
           class="form-control form-input-transparent" 
           aria-label="" 
@@ -25,7 +25,7 @@
           Placeholder
         </span>
         <input 
-          v-model="fieldDetails.placeholder"
+          v-model="field.placeholder"
           type="text" 
           class="form-control form-input-transparent" 
           aria-label="" 
@@ -40,7 +40,7 @@
           Name
         </span>
         <input 
-          v-model="fieldDetails.name"
+          v-model="field.name"
           type="text" 
           class="form-control form-input-transparent" 
           aria-label="" 
@@ -55,7 +55,7 @@
           Default
         </span>
         <input 
-          v-model="fieldDetails.default"
+          v-model="field.default"
           type="text" 
           class="form-control form-input-transparent" 
           aria-label="" 
@@ -70,7 +70,7 @@
           minlength
         </span>
         <input 
-          v-model="fieldDetails.settings.minlength"
+          v-model="field.settings.minlength"
           type="number" 
           class="form-control form-input-transparent" 
           aria-label="" 
@@ -85,7 +85,7 @@
           pattern
         </span>
         <input 
-          v-model="fieldDetails.settings.pattern"
+          v-model="field.settings.pattern"
           type="text" 
           class="form-control form-input-transparent" 
           aria-label="" 
@@ -100,7 +100,7 @@
           maxlength
         </span>
         <input 
-          v-model="fieldDetails.settings.maxlength"
+          v-model="field.settings.maxlength"
           type="number" 
           class="form-control form-input-transparent" 
           aria-label="" 
@@ -116,7 +116,7 @@
         required
         </label>
         <input 
-         v-model="fieldDetails.settings.required"
+         v-model="field.settings.required"
          class="form-check-input" 
          type="checkbox" 
          id="text-input-required-setting-check">
@@ -131,7 +131,7 @@
         autocomplete
         </label>
         <input 
-         v-model="fieldDetails.settings.autocomplete"
+         v-model="field.settings.autocomplete"
          class="form-check-input" 
          type="checkbox" 
          id="text-input-autocomplete-setting-check">
@@ -146,7 +146,7 @@
         disabled
         </label>
         <input 
-         v-model="fieldDetails.settings.disabled"
+         v-model="field.settings.disabled"
          class="form-check-input" 
          type="checkbox" 
          id="text-input-autocomplete-setting-check">
@@ -161,41 +161,55 @@
         autocorrect
         </label>
         <input 
-         v-model="fieldDetails.settings.autocorrect"
+         v-model="field.settings.autocorrect"
          class="form-check-input" 
          type="checkbox" 
          id="text-input-autocorrect-setting-check">
        </div>
       </div>
-
+      <div class="col-3 mt-2 mb-2">
+      <div class="input-group ">
+        <span 
+          class="input-group-text" 
+          id="description-basic-addon">
+          description
+        </span>
+        <input 
+          v-model="field.description"
+          type="text" 
+          class="form-control form-input-transparent" 
+          aria-label="" 
+          aria-describedby="description-basic-addon">
+       </div>
+      </div>
      </div>
    <!--START INPUT SETTINGS|OPTIONS|PROPERTIES -->
    <!--START INPUT -->
     <div  
-       :id="fieldDetails.title + '-text-input-container'"  
+       :id="field.title + '-text-input-container'"  
        :class="' ' + formFieldContainerClasses">
        <label 
-          :for="fieldDetails.title" 
+          :for="field.title" 
           :class="'form-label' + formFieldLabelClasses">
-          {{fieldDetails.title}}
+          {{field.title}}
        </label>
       <input 
-         :id="fieldDetails.title + '-text-input'" 
+         :id="field.title + '-text-input'" 
          type="tel" 
          :class="'form-control ' + formFieldClasses" 
-         v-model="fieldDetails.default" 
-         :name="fieldDetails.name || fieldDetails.title"  
-         :placeholder="fieldDetails.placeholder"
-         :autocomplete="fieldDetails.settings.autocomplete" 
-         :minlength="fieldDetails.settings.minlength"
-         :maxlength="fieldDetails.settings.maxlength"
-         :pattern="fieldDetails.settings.pattern"
+         v-model="field.default" 
+         :name="field.name || field.title"  
+         :placeholder="field.placeholder"
+         :autocomplete="field.settings.autocomplete" 
+         :minlength="field.settings.minlength"
+         :maxlength="field.settings.maxlength"
+         :pattern="field.settings.pattern"
          autofocus
          />
      <div 
-     :id="fieldDetails.title + 'Help'" 
+     :id="field.title + 'Help'" 
      class="form-text">
-       {{fieldDetails.description}}
+       {{field.description}}
      </div>
     </div>
    <!--END INPUT -->
@@ -268,6 +282,8 @@
         watch: {
           field: {
             handler(newValue, oldValue) {
+
+              //this.fieldData = newValue
 
               this.$emit("TelInputInput", newValue)
               console.log(this)

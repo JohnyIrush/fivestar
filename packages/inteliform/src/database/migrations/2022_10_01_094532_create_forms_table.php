@@ -15,9 +15,8 @@ class CreateFormsTable extends Migration
     {
         Schema::create('forms', function (Blueprint $table) {
             $table->id();
-            $table->string("title");
+            // v1 - google
             //$table->string("documentTitle");
-            $table->text("description");
             //$table->string("formId");
             //$table->string("revisionId");
             //$table->string("responderUri");

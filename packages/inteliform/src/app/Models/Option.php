@@ -9,15 +9,15 @@ class Option extends Model
 {
     use HasFactory;
 
-    public function image()
-    {
-        return $this->belongsTo(Image::class);
-    }
+    protected $fillable = [
+        'field_id',
+        'key',
+        'value',
+        'image'
+    ];
 
-    public function choiceQuestion()
+    public function field()
     {
-        return $this->belongsTo(ChoiceQuestion::class);
+        $this->belongsTo(Field::class);
     }
-
-    
 }

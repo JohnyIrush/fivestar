@@ -24,7 +24,7 @@ php artisan make:Controller UserManagerController -
 
 php artisan make:controller AcademicController --model=Academic --resource
 
-php artisan make:model Video --all
+php artisan make:model Field --all
 
 php artisan make:seed ClubStudentSeeder
 

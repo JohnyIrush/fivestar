@@ -36,17 +36,25 @@
                 :formFieldLabelClasses="'fs-1 fw-bold text-capitalize display-6 text-left'"
                 :formFieldContainerClasses="'form-field-container'"
                 :fieldData="{
-                  title: 'Form title',
-                  default: 'Form Title',
-                  placeholder: 'form title',
-                  settings:{
-                    autocomplete : 'on',
-                    required : 'true', 
-                    disabled :  'false',
-                    minlength :  '4',
-                    maxlength :  '50',
-                  }
+                     title: 'Form Title',
+                     image: '',
+                     value: '',
+                     description: 'name of the form',
+                     name: '',
+                     settings:{
+                       type: 'text',
+                       placeholder: 'field',
+                       autocomplete : 'off',
+                       required : false, 
+                       disabled :  false,
+                       minlength :  3,
+                       maxlength :  20,
+                       field: 'Text',
+                       icon: '',
+                       component: 'TextInput',
+                     }
                 }"
+                @TextInputInput="updateForm($event,'title')"
                > 
                </text-input>
                <text-area-input
@@ -54,19 +62,23 @@
                 :formFieldLabelClasses="'fs-1 fw-bold text-capitalize display-6 text-left'"
                 :formFieldContainerClasses="'form-field-container'"
                 :fieldData="{
-                  title: 'Form Description',
-                  default: 'Form Description',
-                  placeholder: 'form description',
-                  settings:{
-                    row: '5',
-                    cols: '6',
-                    autocomplete : 'on',
-                    required : 'true', 
-                    disabled :  'false',
-                    minlength :  '30',
-                    maxlength :  '200',
-                  }
+                     title: 'field title',
+                     value: '',
+                     placeholder: 'field',
+                     image: '',
+                     settings:{
+                       type: 'textarea',
+                       cols: 4,
+                       rows: 6,
+                       autocomplete : 'off',
+                       required : false, 
+                       disabled :  false,
+                       minlength :  3,
+                       maxlength :  20,
+                       component : 'TextAreaInput'
+                     }
                 }"
+                @TextAreaInputInput="updateForm($event, 'description')"
                > 
                </text-area-input>
              </div>
@@ -174,6 +186,7 @@
                     :formFieldClasses="' form-input-style'"
                     :formFieldLabelClasses="'fs-1 fw-bold text-capitalize display-6 text-left'"
                     :formFieldContainerClasses="'form-field-container'"
+                    v-model="form.sections[sectionindex].title"
                     :fieldData="{
                       title: sectionindex + ' Title',
                       default: sectionindex + ' Title',
@@ -192,6 +205,7 @@
                     :formFieldClasses="' form-input-style'"
                     :formFieldLabelClasses="'fs-1 fw-bold text-capitalize display-6 text-left'"
                     :formFieldContainerClasses="'form-field-container'"
+                    v-model="form.sections[sectionindex].description"
                     :fieldData="{
                       title: sectionindex + ' Description',
                       default: sectionindex + ' Description',
@@ -679,95 +693,96 @@
                 inputTypes: [
                     {
                      title: 'field title',
-                     default: '',
-                     placeholder: 'field',
                      image: '',
+                     value: '',
+                     description: '',
+                     name: "",
                      settings:{
                        type: 'text',
+                       default: '',
+                       placeholder: 'field',
                        autocomplete : 'off',
                        required : false, 
                        disabled :  false,
                        minlength :  3,
                        maxlength :  20,
                        field: "Text",
-                       type: "text",
                        icon: '<i class="fas fa-paragraph fa-2x"></i>',
                        component: 'TextInput',
                      }
                     },
                     {
                      title: 'field title',
-                     default: '',
-                     placeholder: 'field',
                      image: '',
+                     value: '',
+                     description: '',
+                     name: "",
                      settings:{
-                       type: 'textarea',
+                       type: "textarea",
+                       default: '',
+                       placeholder: 'field',
+                       autocomplete : 'off',
+                       required : false, 
+                       disabled :  false,
                        cols: 4,
                        rows: 6,
+                       minlength :  3,
+                       maxlength :  20,
+                       field: "paragraph",
+                       icon: '<i class="fas fa-water"></i>',
+                       component : 'TextAreaInput',
+                     }
+                    },
+                    {
+                     title: 'field title',
+                     image: '',
+                     value: '',
+                     description: '',
+                     name: "",
+                     settings:{
+                       type: 'tel',
+                       default: '',
+                       placeholder: 'field',
                        autocomplete : 'off',
                        required : false, 
                        disabled :  false,
                        minlength :  3,
                        maxlength :  20,
-                       component : 'TextAreaInput',
-                       field: "paragraph",
-                       type: "textarea",
-                       icon: '<i class="fas fa-water"></i>',
-                     }
-                    },
-                    {
-                     title: 'tel field title',
-                     name: 'tel',
-                     default: '',
-                     placeholder: 'field',
-                     image: '',
-                     settings:{
-                       type: 'tel',
-                       autocorrect: true,
-                       autocomplete : false,
-                       required : false, 
-                       disabled :  false,
-                       minlength :  3,
-                       maxlength :  20,
-                       component : 'TextInput',
-                       pattern: "",
-                       field: "Phone",
-                       type: "tel",
+                       pattern : '',
+                       field: "Text",
                        icon: '<i class="fas fa-phone fa-2x"></i>',
+                       component: 'TelInput',
                      }
                     },
                     {
-                     title: 'tel field title',
-                     name: 'password',
-                     default: '',
-                     placeholder: 'field',
+                     title: 'field title',
                      image: '',
+                     value: '',
                      description: '',
+                     name: "",
                      settings:{
                        type: 'password',
-                       inputmode: '',
-                       autocorrect: true,
-                       autocomplete : false,
+                       default: '',
+                       placeholder: 'field',
+                       autocomplete : 'off',
                        required : false, 
                        disabled :  false,
                        minlength :  3,
                        maxlength :  20,
                        field: "Password",
-                       type: "password",
                        icon: '<i class="fas fa-lock fa-2x"></i>',
                        component: 'PasswordInput',
-                       pattern: ""
-                       }
+                     }
                     },
                     {
-                     title: 'radio field title',
-                     name: '',
+                     title: 'field title',
                      image: '',
+                     value: '',
                      description: '',
+                     name: "",
                      settings:{
                        type: 'radio',
-                       required : false, 
-                       disabled :  false,
+                       default: '',
                        field: "Radio",
                        type: "radio",
                        icon: '<i class="fas fa-dot-circle fa-2x"></i>',
@@ -781,14 +796,14 @@
                      }
                     },
                      {
-                     title: 'checkbox field title',
-                     name: '',
+                     title: 'checkbox field', 
                      image: '',
+                     value: '',
                      description: '',
+                     name: "",
                      settings:{
                        type: 'checkbox',
-                       required : false, 
-                       disabled :  false,
+                       default: '',
                        field: "Checkbox",
                        type: "checkbox",
                        icon: '<i class="fas fa-check-square fa-2x"></i>',
@@ -797,8 +812,7 @@
                      options:{
                       option1: {
                         name: "option 1",
-                        value: "",
-                        image: ""
+                        value: ""
                       }
                      }
                     },
@@ -806,6 +820,7 @@
                      title: 'color field title',
                      name: 'color',
                      image: '',
+                     value: '',
                      description: '',
                      settings:{
                        type: 'color',
@@ -818,68 +833,64 @@
                      }
                     },
                      {
-                     title: 'field title',
-                     name: 'date',
-                     default: '',
-                     placeholder: 'field',
+                     title: 'color field title',
+                     name: 'color',
                      image: '',
+                     value: '',
                      description: '',
                      settings:{
                        type: 'date',
                        required : false, 
                        disabled :  false,
                        field: "Date",
-                       type: "date",
                        icon: '<i class="fas fa-calendar-week fa-2x"></i>',
                        component: 'DateInput',
                      }
                     },
                      {
-                     title: 'field title',
-                     name: 'time',
-                     default: '',
-                     placeholder: 'field',
+                     title: 'color field title',
+                     name: 'color',
                      image: '',
+                     value: '',
                      description: '',
                      settings:{
                        type: 'time',
-                       min: "",
-                       max: "",
                        required : false, 
                        disabled :  false,
+                       min: "",
+                       max: "",
                        field: "Time",
-                       type: "time",
                        icon: '<i class="fas fa-clock fa-2x"></i>',
                        component: 'TimeInput',
                      }
                     },
                     {
                      title: 'email field title',
-                     name: 'email',
-                     default: '',
-                     placeholder: 'field',
+                     name: '',
                      image: '',
+                     value: '',
                      description: '',
                      settings:{
                        type: 'email',
-                       autocorrect: true,
-                       autocomplete : false,
+                       default: '',
+                       placeholder: 'field',
+                       autocomplete : 'off',
                        required : false, 
                        disabled :  false,
                        minlength :  3,
                        maxlength :  20,
+                       size: '',
                        field: "Email",
-                       type: "email",
                        icon: '<i class="fas fa-inbox fa-2x"></i>',
                        component: 'EmailInput',
-                       pattern: ""
                      }
 
                     },
                     {
-                     title: 'file field title',
-                     name: 'file',
+                     title: 'email field title',
+                     name: '',
                      image: '',
+                     value: '',
                      description: '',
                      settings:{
                        type: 'file',
@@ -894,11 +905,10 @@
                      }
                     },
                    {
-                     title: 'field title',
-                     name: 'number',
-                     default: '',
-                     placeholder: 'field',
+                     title: 'number field title',
+                     name: '',
                      image: '',
+                     value: '',
                      description: '',
                      settings:{
                        type: 'number',
@@ -909,18 +919,15 @@
                        minlength :  3,
                        maxlength :  20,
                        pattern: "",
-                       field: "Number",
-                       type: "number",
                        icon: '<i class="fas fa-sort-numeric-up-alt fa-2x"></i>',
                        component: 'NumberInput',
                      }
                     },
                     {
                      title: 'field title',
-                     name: 'range',
-                     default: '',
-                     placeholder: 'field',
+                     name: '',
                      image: '',
+                     value: '',
                      description: '',
                      settings:{
                        type: 'range',
@@ -937,11 +944,11 @@
                      }
                     },
                     {
-                     title: 'tel field title',
-                     name: 'tel',
-                     default: '',
-                     placeholder: 'field',
+                     title: 'field title',
+                     name: '',
                      image: '',
+                     value: '',
+                     description: '',
                      settings:{
                        type: 'tel',
                        autocorrect: true,
@@ -958,10 +965,9 @@
                     },
                     {
                      title: 'field title',
-                     name: 'url',
-                     default: '',
-                     placeholder: 'field',
+                     name: '',
                      image: '',
+                     value: '',
                      description: '',
                      settings:{
                        type: 'url',
@@ -971,11 +977,11 @@
                        disabled :  false,
                        minlength :  3,
                        maxlength :  20,
+                       pattern: "",
                        field: "Url",
                        type: "url",
                        icon: '<i class="fas fa-link fa-2x"></i>',
                        component: 'UrlInput',
-                       pattern: ""
                      }
                     },
                 ],
@@ -990,10 +996,11 @@
                       title: "",
                       description: "",
                       cover: '',
-                      fields:{}
+                      fields:{
+
+                      }
                     }
                   },
-                  fields:{}
                 },
                 updateTypeIndex: "",
                 editMode: {
@@ -1009,6 +1016,10 @@
         },
 
         methods: {
+          updateForm(event, property)
+          {
+            this.form[property] = event.value
+          },
            dragOver(event, index)
            {
 
@@ -1147,7 +1158,6 @@
           },
           toggleEditMode(index, sectionindex)
           {
-            console.log(this.editMode)
             this.editMode.fieldindex = index
             this.editMode.sectionindex = sectionindex
           },
@@ -1281,6 +1291,15 @@
         created()
         {
           store.state.form.fields = this.selectedType
+        },
+        watch: {
+          form: {
+            handler(newValue, oldValue)
+            {
+              console.log(newValue)
+            },
+            deep: true
+          }
         }
     })
 </script>

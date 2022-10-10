@@ -4,8 +4,6 @@ namespace Softwarescares\Inteliform\database\deeders;
 
 use Illuminate\Database\Seeder;
 
-
-
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -18,6 +16,7 @@ class DatabaseSeeder extends Seeder
         $this->call
         (
             [
+                FormTemplateSeeder::class,
                 FormSeeder::class
             ]
         );

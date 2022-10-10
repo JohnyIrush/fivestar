@@ -10,7 +10,7 @@
           Title
         </span>
         <input 
-          v-model="fieldDetails.title"
+          v-model="field.title"
           type="text" 
           class="form-control form-input-transparent" 
           aria-label="" 
@@ -25,7 +25,7 @@
           Name
         </span>
         <input 
-          v-model="fieldDetails.name"
+          v-model="field.name"
           type="text" 
           class="form-control form-input-transparent" 
           aria-label="" 
@@ -41,7 +41,7 @@
         required
         </label>
         <input 
-         v-model="fieldDetails.settings.required"
+         v-model="field.settings.required"
          class="form-check-input" 
          type="checkbox" 
          id="text-input-required-setting-check">
@@ -56,7 +56,7 @@
         disabled
         </label>
         <input 
-         v-model="fieldDetails.settings.disabled"
+         v-model="field.settings.disabled"
          class="form-check-input" 
          type="checkbox" 
          id="text-input-autocomplete-setting-check">
@@ -67,22 +67,22 @@
    <!--START INPUT SETTINGS|OPTIONS|PROPERTIES -->
    <!--START INPUT -->
     <div  
-       :id="fieldDetails.title + '-text-input-container'"  
+       :id="field.title + '-text-input-container'"  
        :class="' ' + formFieldContainerClasses">
        <label 
-          :for="fieldDetails.title" 
+          :for="field.title" 
           :class="'form-label' + formFieldLabelClasses">
-          {{fieldDetails.title}}
+          {{field.title}}
        </label>
      <div>  
        <draggable 
           class="dragArea list-group w-full" 
-          :list="fieldDetails.options" 
+          :list="field.options" 
           @change="log"
         >
       <div 
         class="form-check d-flex flex-row mr-3" 
-        v-for="(option, index) in fieldDetails.options" 
+        v-for="(option, index) in field.options" 
         :key="index"
         @click="toggleEditMode(index)" 
         >
@@ -94,10 +94,10 @@
         disabled
         >
         <!--<input 
-         :id="fieldDetails.title + '-text-input'" 
+         :id="field.title + '-text-input'" 
          type="text" 
          :class="'form-control radio-edit-input-style'" 
-         v-model="fieldDetails.options[index].name" 
+         v-model="field.options[index].name" 
          v-if="editMode.index == index" 
          />-->
         <label 
@@ -126,9 +126,9 @@
       </div>
      </div>
      <div 
-     :id="fieldDetails.title + 'Help'" 
+     :id="field.title + 'Help'" 
      class="form-text">
-       {{fieldDetails.description}}
+       {{field.description}}
      </div>
     </div>
    <!--END INPUT -->
@@ -266,10 +266,10 @@
              }
             }
 
-            this.fieldDetails.options = this.field.options;
+            this.field.options = this.field.options;
             console.log(this.field.options)
 
-            //console.log(this.fieldDetails)
+            //console.log(this.field)
           },
         },
         created()
@@ -286,6 +286,8 @@
 
               this.$emit("RadioInputInput", newValue)
               console.log(this)
+
+              //this.fieldData = newValue
 
             const input = document.getElementById(oldValue.title + '-text-input');
 
