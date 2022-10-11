@@ -140,6 +140,7 @@
           formFieldClasses: String,
           formFieldContainerClasses: String,
           fieldData: Object,
+          optionId: Number,
           fieldSettings: {
             type: Boolean,
             default: false
@@ -161,7 +162,7 @@
         },
         data() {
             return {
-                   field: {
+                   field: this.fieldData/*{
                      title: 'checkbox field', 
                      image: '',
                      value: '',
@@ -195,10 +196,11 @@
                      options:{
 
                      }
-                 },
+                 }*/,
                  editMode: {
                   index: ""
-                 }
+                 },
+                 optionid: this.optionId,
             }
         },
 
@@ -245,10 +247,14 @@
           },
           removeOption(index)
           {
+            this.$emit('DeleteFieldOption', {id: this.field.options[index].id})
             delete this.field.options[index]
           },
           addOption(index, value = {}, key = "")
           {
+
+            this.optionid += 1;
+
             var keys = Object.keys(this.field.options)
 
             var optionName = !(key.length === 0)? 
@@ -256,7 +262,7 @@
                             "option" + 
                              (keys.length + 1);
 
-            var option = !(this.isEmpty(value))? value: {id: '',name: optionName};
+            var option = !(this.isEmpty(value))? value: {id: this.optionid,name: optionName, value: ''};
 
             if(keys.length == 0)
             {

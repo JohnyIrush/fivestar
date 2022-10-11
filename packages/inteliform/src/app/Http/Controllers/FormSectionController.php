@@ -98,6 +98,8 @@ class FormSectionController extends Controller
      */
     public function destroy(Request $request, FormSection $formSection, Delete $delete)
     {
+        $formSection::find($request->input("id"))->fields()->delete();
+
         $formSection = $delete->delete($request, $formSection,["id" => $request->input("id")]);
 
         return response()->json($formSection);

@@ -2,7 +2,7 @@
 
 namespace Softwarescares\Inteliform\app\Http\Controllers;
 
-use Softwarescares\Inteliform\app\Models\FieldOption;
+use Softwarescares\Inteliform\app\Models\Option;
 use Softwarescares\Inteliform\app\Models\FieldSetting;
 use Softwarescares\Inteliform\app\Models\Field;
 use Softwarescares\Inteliform\app\Models\FormSection;
@@ -17,6 +17,8 @@ use Softwarescares\Intelilibrary\app\Actions\Model\Delete;
 use Softwarescares\Intelilibrary\app\Plugins\Model\Form;
 use Softwarescares\Intelilibrary\app\Plugins\Model\Table;
 use Softwarescares\Intelilibrary\app\Plugins\Model\Card;
+
+use Softwarescares\Inteliform\app\plugins\Model\Record;
 
 use Illuminate\Http\Request;
 
@@ -64,9 +66,22 @@ class FormTemplateController extends Controller
         return response()->json($formTemplate);
     }
 
+    public function formBuilderLastId(Record $record, FormTemplate $formTemplate, FormSection $formSection, Field $field, FieldSetting $fieldSetting, Option $option)
+    {
+        return response()->json([
+            'form' => ($formTemplate::count() > 1)? $record->lastRecord($formTemplate)->id: 0,
+            'section' => ($formSection::count() > 1)? $record->lastRecord($formSection)->id: 0,
+            'field' => ($field::count() > 1)? $record->lastRecord($field)->id: 0,
+            'setting' => ($fieldSetting::count() > 1)? $record->lastRecord($fieldSetting)->id: 0,
+            'option' => ($option::count() > 1)? $record->lastRecord($option)->id: 0,
+        ]);
+    }
+
+
     public function storeForm(StoreFormTemplateRequest $request)
-    {   
-        //return response()->json($request->id);
+    {  
+        //return response()->json($request);
+
         $formTemplate = [
             "id" => '',
             "title" => '',
@@ -101,30 +116,30 @@ class FormTemplateController extends Controller
 
                 foreach ($request->sections as $sectionkey => $section)
                 {
+                  //return response()->json($formdetails);
                   $formSection = FormSection::updateOrCreate(
                       ['id' => $section['id']],
                       [
-                      'form_template_id' => 1,//$formdetails->id,
+                      'form_template_id' => $formdetails->id,
                       "title" => $section['title'],
                       "cover" => $section['cover'],
                       "description" => $section['description'],
                       ]
                       );
 
-                  $formTemplate['sections'][0][$sectionkey] = [
+                  $formTemplate['sections'][$sectionkey] = [
                        'id' => $formSection->id,
                        'title' => $formSection->title,
                        'description' => $formSection->description,
                        'cover' => $formSection->cover,
                        "fields" => [
-
                        ]
                   ];
 
 
                   foreach ($section['fields'] as $fieldkey => $field)
                   {
-                    $sectionField = FormSection::updateOrCreate(
+                    $sectionField = Field::updateOrCreate(
                         ['id' => $field['id']],
                          ['form_section_id' => $formSection['id'],
                          'title' => $field['title'],
@@ -134,7 +149,7 @@ class FormTemplateController extends Controller
                          'name' => $field['name'],]
                     );
 
-                    $formTemplate['sections'][0][$sectionkey]['fields'][$fieldkey] = [
+                    $formTemplate['sections'][$sectionkey]['fields'][$fieldkey] = [
                          'id' => $sectionField->id,
                          'title' => $sectionField->title,
                          'image' => $sectionField->image,
@@ -160,36 +175,38 @@ class FormTemplateController extends Controller
                            ]
                       );
 
-                      $formTemplate['sections'][0][$sectionkey]['fields'][0][$fieldkey]['settings'][0][$settingkey] = [
+                      $formTemplate['sections'][$sectionkey]['fields'][$fieldkey]['settings'][$settingkey] = [
                                        'id' => $fieldSetting->id,
                                        $fieldSetting->key => $fieldSetting->value
                                     ];
                     }
 
-                    foreach ($field['options'] as $optionkey => $option)
+                    if (array_key_exists('options', $field))
                     {
-                      $fieldOption = FieldSetting::updateOrCreate(
-                          ['id' => $option['id']],
-                          [
-                          'field_id' => $sectionField['id'],
-                          'key' => $optionkey,
-                          'value' =>  $option[$optionkey]
-                          ]
-                      );
+                        foreach ($field['options'] as $optionkey => $option)
+                        {
+                          $fieldOption = Option::updateOrCreate(
+                              ['id' => $option['id']],
+                              [
+                              'field_id' => $sectionField['id'],
+                              'key' => $option['name'],
+                              'value' =>  $option['value']
+                              ]
+                          );
 
-
-                      $formTemplate['sections'][0][$sectionkey]['fields'][0][$fieldkey]['options'][0][$optionkey] = [
-                                       [
-                                       'id' => $fieldOption->id,
-                                       $fieldOption->key => $fieldOption->value
-                                       ]
-                                    ];
+                          $formTemplate['sections'][$sectionkey]['fields'][$fieldkey]['options'][$optionkey] = 
+                                           [
+                                           'id' => $fieldOption->id,
+                                           'name' => $fieldOption->key, 
+                                           'value' => $fieldOption->value
+                                        ];
+                        }
                     }
 
                   }
                 }  
 
-        return response()->json($formTemplate);
+        return json_encode($formTemplate);
     }
 
     /**
@@ -238,6 +255,8 @@ class FormTemplateController extends Controller
 
     public function destroy(Request $request, FormTemplate $formTemplate, Delete $delete)
     {
+        $formTemplate::find($request->input("id"))->formSections()->delete();
+        
         $formTemplate = $delete->delete($request, $formTemplate,["id" => $request->input("id")]);
 
         return response()->json($formTemplate);

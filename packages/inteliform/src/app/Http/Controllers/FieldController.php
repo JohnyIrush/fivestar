@@ -14,6 +14,8 @@ use Softwarescares\Intelilibrary\app\Plugins\Model\Form;
 use Softwarescares\Intelilibrary\app\Plugins\Model\Table;
 use Softwarescares\Intelilibrary\app\Plugins\Model\Card;
 
+use Softwarescares\Inteliform\app\plugins\Model\Record;
+
 use Illuminate\Http\Request;
 
 use DB;
@@ -75,6 +77,11 @@ class FieldController extends Controller
         //
     }
 
+    public function lastRecord(Field $field, Record $record)
+    {
+        return $record->lastRecord($field);
+    }
+
     /**
      * Update the specified resource in storage.
      *
@@ -97,6 +104,9 @@ class FieldController extends Controller
      */
     public function destroy(Request $request, Field $field, Delete $delete)
     {
+        $field::find($request->input("id"))->options()->delete();
+        $field::find($request->input("id"))->fieldSettings()->delete();
+
         $field = $delete->delete($request, $field,["id" => $request->input("id")]);
 
         return response()->json($field);

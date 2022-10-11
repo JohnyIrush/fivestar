@@ -186,7 +186,7 @@
         },
         data() {
             return {
-                   field: {
+                   field: this.fieldData/*{
                      title: 'field title',
                      name: '',
                      image: '',
@@ -230,7 +230,7 @@
                         component: 'TimeInput'
                        },
                      }
-                 }
+                 }*/
             }
         },
 

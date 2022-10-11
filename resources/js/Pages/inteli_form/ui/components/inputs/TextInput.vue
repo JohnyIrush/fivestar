@@ -179,7 +179,7 @@
           formFieldLabelClasses: String,
           formFieldClasses: String,
           formFieldContainerClasses: String,
-          field: Object,
+          fieldData: Object,
           fieldSettings: {
             type: Boolean,
             default: false
@@ -201,7 +201,7 @@
         },
         data() {
             return {
-                   field: {
+                   field: this.fieldData/*{
                      title: 'field title',
                      image: '',
                      value: '',
@@ -253,7 +253,7 @@
                         component: 'TextInput'
                        },
                      }
-                 }
+                 }*/
             }
         },
 
@@ -271,10 +271,11 @@
         watch: {
           field: {
             handler(newValue, oldValue) {
-              this.fieldData = newValue
+
               this.$emit("TextInputInput", newValue)
               console.log(this)
 
+              /*
             const input = document.getElementById(oldValue.title + '-text-input');
 
             //console.log("field", newValue)
@@ -293,6 +294,7 @@
             }else{
               //input.removeAttribute("required")
             }
+            */
             },
             deep: true
           }

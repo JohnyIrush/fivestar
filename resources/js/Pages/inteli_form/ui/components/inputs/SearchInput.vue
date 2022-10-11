@@ -232,7 +232,7 @@
         },
         data() {
             return {
-                   field: {
+                   field: this.fieldData/*{
                      id: '',
                      title: 'field title',
                      name: '',
@@ -293,7 +293,7 @@
                         component: 'SearchInput'
                        },
                      }
-                 }
+                 }*/
             }
         },
 

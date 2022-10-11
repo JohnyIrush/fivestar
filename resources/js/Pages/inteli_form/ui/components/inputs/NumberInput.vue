@@ -231,7 +231,7 @@
         },
         data() {
             return {
-                   field: {
+                   field: this.fieldData/*{
                      title: 'number field title',
                      name: '',
                      image: '',
@@ -287,7 +287,7 @@
                         component: 'NumberInput'
                        },
                      }
-                 }
+                 }*/
             }
         },
 

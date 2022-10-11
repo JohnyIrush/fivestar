@@ -229,7 +229,7 @@
         },
         data() {
             return {
-                   field: {
+                   field: this.fieldData/*{
                      title: 'field title',
                      image: '',
                      value: '',
@@ -289,7 +289,7 @@
                         component: 'TextAreaInput'
                        },
                      }
-            }
+            }*/
           }
         },
 
@@ -325,7 +325,7 @@
 
             //if (newValue.settings.required)
             //{
-              input.required = newValue.settings.required
+              //input.required = newValue.settings.required
             //}else{
               //input.removeAttribute("required")
             //}

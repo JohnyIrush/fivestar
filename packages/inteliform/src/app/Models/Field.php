@@ -25,7 +25,7 @@ class Field extends Model
 
     public function fieldSettings()
     {
-        return $this->belongsTo(FieldSetting::class);
+        return $this->hasMany(FieldSetting::class);
     }
 
     public function options()

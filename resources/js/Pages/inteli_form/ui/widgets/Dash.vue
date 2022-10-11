@@ -1,6 +1,23 @@
 <template>
  <!--START INTELI FORM BUILDER-->
   <div class="row" >
+   <div class="col-12">
+
+    <div class="glass-header">
+      <div class="row">
+        <div class="col-6">
+          
+        </div>
+        <div class="col-6">
+          <i class="fas fa-palette fa-2x mr-3"></i>
+          <i class="fas fa-eye fa-2x mr-3"></i>
+          <i class="fas fa-undo fa-2x mr-3"></i>
+          <i class="fas fa-redo fa-2x mr-3"></i>
+          <i class="fas fa-share fa-2x"></i>
+        </div>
+      </div>
+    </div>
+   </div>
   <!--START INTELI FORM BUILDER BODY-->
    <div class="col-12 col-lg-9">
     <!-- START INTELI FORM BUILDER BODY MAIN MENU-->
@@ -36,10 +53,10 @@
                 :formFieldLabelClasses="'fs-1 fw-bold text-capitalize display-6 text-left'"
                 :formFieldContainerClasses="'form-field-container'"
                 :fieldData="{
-                     title: 'field title',
+                     title: 'form title',
                      image: '',
                      value: '',
-                     description: '',
+                     description: 'form title, describes purpose of form',
                      name: '',
                      settings:{
                        type: {
@@ -96,10 +113,10 @@
                 :formFieldLabelClasses="'fs-1 fw-bold text-capitalize display-6 text-left'"
                 :formFieldContainerClasses="'form-field-container'"
                 :fieldData="{
-                     title: 'field title',
+                     title: 'form description',
                      image: '',
                      value: '',
-                     description: '',
+                     description: 'explain the more about this form',
                      name: '',
                      settings:{
                        type: {
@@ -532,6 +549,7 @@
                    :formFieldLabelClasses="'fs-1 fw-bold text-capitalize display-6 text-left'"
                    :formFieldContainerClasses="'form-field-container'"
                    :fieldData="field"
+                   :optionid="optionid"
                    :fieldSettings="((editMode.fieldindex == index) 
                                     && 
                                     (editMode.sectionindex == sectionindex))"
@@ -549,6 +567,7 @@
                    @CheckboxInputInput="updateField($event,index, sectionindex)"
                    @FileInputInput="updateField($event,index, sectionindex)"
                    @ColorInputInput="updateField($event,index, sectionindex)"
+                   @DeleteFieldOption="deleteFieldOption"
                   >
                   </component>
                 </div>
@@ -825,8 +844,12 @@
 
     import { VueDraggableNext } from 'vue-draggable-next'
 
+    import VueLodash from 'vue-lodash'
+    import lodash from 'lodash'
+
     export default defineComponent({
         components: {
+            VueLodash: { name: 'custom' , lodash: lodash },
             draggable: VueDraggableNext,
             Footer,
             MainForm,
@@ -851,22 +874,62 @@
         data() {
             return {
                 selectedType: {
+                      id: '',
                      title: 'field title',
+                     image: '',
+                     value: '',
+                     description: 'text field description',
+                     name: "",
                      settings:{
-                      field: {
+                       type: {
                         id: '',
-                        field: 'Text'
-                      },
-                      component: {
+                        type: 'text',
+                       },
+                       default: {
                         id: '',
-                       component: 'TextInput',
-                      },
-                      icon:{
+                        default: ''
+                       },
+                       placeholder: {
+                        id: '',
+                        placeholder: 'field'
+                       },
+                       autocomplete : {
+                        id: '',
+                        autocomplete : 'off'
+                       },
+                       required : {
+                        id: '',
+                        required : false
+                       }, 
+                       disabled :  {
+                        id: '',
+                        disabled :  false
+                       },
+                       minlength : {
+                        id: '',
+                        minlength :  3
+                       },
+                       maxlength :  {
+                        id: '',
+                        maxlength :  20
+                       },
+                       field: {
+                        id: '',
+                        field: "Text"
+                       },
+                       icon: {
                         id: '',
                         icon: '<i class="fas fa-paragraph fa-2x"></i>'
-                      }
+                       },
+                       component: {
+                        id: '',
+                        component: 'TextInput'
+                       },
+                     },
+                     options: {
+
                      }
-                },
+                    },
                 analytics: [],
                 inputTypes: [
                     {
@@ -874,7 +937,7 @@
                      title: 'field title',
                      image: '',
                      value: '',
-                     description: '',
+                     description: 'text field description',
                      name: "",
                      settings:{
                        type: {
@@ -1067,6 +1130,10 @@
                         id: '',
                         autocomplete : 'off'
                        },
+                       inputmode: {
+                        id: '',
+                        inputmode: false
+                       },
                        required : {
                         id: '',
                         required : false
@@ -1146,7 +1213,16 @@
                         type: 'checkbox'
                        },
                        default: {
+                        id: '',
                         default: ''
+                       },
+                       disabled: {
+                        id: '',
+                        disabled: ''
+                       },
+                       required: {
+                        id: '',
+                        required: ''
                        },
                        field: {
                         id: '',
@@ -1166,10 +1242,7 @@
                        },
                      },
                      options:{
-                      option1: {
-                        name: "option 1",
-                        value: ""
-                      }
+
                      }
                     },
                     {
@@ -1255,6 +1328,10 @@
                        type: {
                         id: '',
                         type: 'time'
+                       },
+                       default : {
+                        id: '',
+                        default : false
                        },
                        required : {
                         id: '',
@@ -1650,11 +1727,26 @@
                   targetindex: "",
                   cardindex: "",
                   dragoverindex: ""
-                }
+                },
+                initialresourceId: {}
             }
         },
 
         methods: {
+          deleteFieldOption(event)
+          {
+            this.postRequest('form/field/option/destroy', {id: event.id})
+          },
+          postRequest(url, data = {}, variable = '')
+          {
+           axios.post(url, data)
+           .then((response)=>{
+            if (variable.length !== 0)
+            {
+              this[variable] = response.data
+            }
+           })
+          },
           updateForm(event, property)
           {
             this.form[property] = event.value
@@ -1716,9 +1808,16 @@
 
               field.settings = fieldSettings;
 
-              this.form.sections[sectionindex].fields[index] = field
+              if (Object.keys(event).includes("options"))
+              {
+               field["options"] = event.options;
+              }else
+              {
+                field["options"] = {}
+              }
 
-              console.log(field, "field updated")
+              this.form.sections[sectionindex].fields[index] = field
+              console.log(event, "field updated")
 
             },
             mergeObject(objOne, objTwo)
@@ -1744,7 +1843,7 @@
               //console.log(this.form.fields[index])
               this.addSection(sectionindex, 
                                 {
-                                  id: '',
+                                  id: this.sectionid,
                                   title: this.form.sections[sectionindex].title,
                                   description: this.form.sections[sectionindex].description,
                                   cover: this.form.sections[sectionindex].cover,
@@ -1756,19 +1855,20 @@
             },
             dublicateField(index, sectionindex)
             {
-              //console.log(this.form.fields[index])
+              this.fieldid = this.fieldid + 1; // increment form field id
+
               this.addField(index, 
                                   {
-                                    id: '',
+                                  id: '',
                                   title: this.form.sections[sectionindex][fields][index].title,
                                   name: this.form.sections[sectionindex][fields][index].name,
-                                  default: '',
+                                  value: '',
+                                  description: '',
                                   image: this.form.sections[sectionindex][fields][index].image,
                                   settings: this.form.sections[sectionindex][fields][index].settings
                                 },'',
                                 sectionindex
                 )
-              //console.log(this.form.fields)
             },
             addToObject(obj, key, value, index) 
             {
@@ -1804,11 +1904,15 @@
           },
           removeSection(sectionindex)
           {
-            delete this.form.sections[sectionindex]
+            delete this.form.sections[sectionindex];
+
+            this.postRequest('form/section/destroy', {id: this.form.sections[sectionindex].id});
           },
           removeField(index, sectionindex)
           {
             delete this.form.sections[sectionindex].fields[index]
+
+            this.postRequest('form/field/destroy', {id: this.form.sections[sectionindex].fields[index].id});
           },
           setTypeUpdateIndex(index, sectionindex)
           {
@@ -1822,6 +1926,18 @@
           },
           addSection(index, value = {}, key = "")
           {
+            var section_id = this.sectionid;
+
+            if (this.isEmpty(value)) // check section being duplicated(sectin id is increamented)
+            {
+                section_id += 1;// increment form section id
+                console.log("sections id",section_id)
+            }
+
+            this.sectionid = section_id;
+
+            console.log("sections id",this.sectionid)
+
             var keys = Object.keys(this.form.sections)
 
             var sectionName = !(key.length === 0)? 
@@ -1831,7 +1947,7 @@
 
             var section = !(this.isEmpty(value))? value: 
                                                 {
-                                                  id: '',
+                                                  id: section_id,
                                                   title: '',
                                                   description: '',
                                                   cover: '',
@@ -1862,6 +1978,15 @@
           },
           addField(index, value = {}, key = "", sectionindex =  "")
           {
+            var field_id = this.fieldid;
+
+            if (this.isEmpty(value)) // check if field being duplicated(field id is increamented)
+            {
+                field_id = field_id + 1;// increment form field id
+            }
+            
+            this.fieldid = field_id;
+
             if(!Object.keys(this.form.sections).includes(sectionindex))
             {
               this.addSection(sectionindex)
@@ -1875,11 +2000,11 @@
 
             var field = !(this.isEmpty(value))? value: 
                                                 {
-                                                  id: '',
+                                                id: field_id,
                                                 title: fieldName,
                                                 name: fieldName,
-                                                default: '',
-                                                placeholder: fieldName,
+                                                value: '',
+                                                description: '',
                                                 image: '',
                                                 settings: this.selectedType.settings};
 
@@ -1935,26 +2060,74 @@
                    this.analytics= response.data
                 })
             },
+            updateFormData(data)
+            {
+              this.form = data
+            }
         },
         mounted()
         {
             this.getAnalytics("analytics")
+          axios.get('form/template/builder/last/id')
+          .then((response)=>{
+            console.log(response.data)
+               this.initialresourceId = response.data
+          })
+
+          this.form.id = this.formid
+
         },
         created()
         {
           store.state.form.fields = this.selectedType
+
+          /*
+          setInterval(()=>{
+              axios.post('form/builder/store', this.form)
+              .then((response)=>{
+
+                  this.form = response.data
+
+                console.log("form",this.form,  "response", response.data)
+              })
+          }, 5000);
+          */
         },
         watch: {
           form: {
             handler(newValue, oldValue)
             {
-              axios.post('form/builder/store',newValue)
+              axios.post('form/builder/store', newValue)
               .then((response)=>{
-                console.log(response)
-                this.form = response.data
+
+                console.log("form",this.form,  "response", response.data)
+
               })
             },
             deep: true
+          }
+        },
+
+        computed:{
+          formid()
+          {
+            return this.initialresourceId.form
+          },
+          sectionid()
+          {
+            return this.initialresourceId.section         
+          },
+          fieldid()
+          {
+            return this.initialresourceId.field         
+          },
+          optionid()
+          {
+            return this.initialresourceId.option         
+          },
+          settingid()
+          {
+            return this.initialresourceId.setting         
           }
         }
     })

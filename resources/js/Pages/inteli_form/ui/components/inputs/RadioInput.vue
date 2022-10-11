@@ -147,6 +147,7 @@
           formFieldClasses: String,
           formFieldContainerClasses: String,
           fieldData: Object,
+          optionId: Number,
           fieldSettings: {
             type: Boolean,
             default: false
@@ -168,7 +169,7 @@
         },
         data() {
             return {
-                    field: {
+                    field: this.fieldData/*{
                      title: 'field title',
                      image: '',
                      value: '',
@@ -211,10 +212,11 @@
                      options:{
                       
                      }
-                   },
+                   }*/,
                   editMode: {
                   index: ""
-                 }
+                 },
+                 optionid: this.optionId,
           }
         },
         methods: {
@@ -260,10 +262,13 @@
           },
           removeOption(index)
           {
+            this.$emit('DeleteFieldOption', {id: this.field.options[index].id})
             delete this.field.options[index]
           },
           addOption(index, value = {}, key = "")
           {
+            this.optionid += 1;
+
             var keys = Object.keys(this.field.options)
 
             var optionName = !(key.length === 0)? 
@@ -271,7 +276,7 @@
                             "option" + 
                              (keys.length + 1);
 
-            var option = !(this.isEmpty(value))? value: {id:'', name: optionName};
+            var option = !(this.isEmpty(value))? value: {id:this.optionid, name: optionName};
 
             if(keys.length == 0)
             {

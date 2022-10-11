@@ -135,7 +135,7 @@
         },
         data() {
             return {
-                   field: {
+                   field: this.fieldData/*{
                      title: 'color field title',
                      name: 'color',
                      image: '',
@@ -171,7 +171,7 @@
                         component: 'ColorInput'
                        },
                      }
-                 }
+                 }*/
             }
         },
 

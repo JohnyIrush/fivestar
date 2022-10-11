@@ -140,7 +140,7 @@
         },
         data() {
             return {
-                   field: {
+                   field: this.fieldData/*{
                      title: 'field title',
                      name: '',
                      image: '',
@@ -171,7 +171,7 @@
                         id: '',
                         component: 'DateInput'
                        },
-                     }                 }
+                     }}*/
             }
         },
 

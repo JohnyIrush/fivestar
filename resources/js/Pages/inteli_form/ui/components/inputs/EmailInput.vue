@@ -231,7 +231,7 @@
         },
         data() {
             return {
-                   field: {
+                   field: this.fieldData/*{
                      title: 'email field title',
                      name: '',
                      image: '',
@@ -290,9 +290,7 @@
                         id: '',
                         component: 'EmailInput'
                        },
-                     }
-
-            }
+                     }}*/
           }
         },
         methods: {
