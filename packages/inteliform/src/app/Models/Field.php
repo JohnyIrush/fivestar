@@ -10,6 +10,7 @@ class Field extends Model
     use HasFactory;
 
     protected $fillable = [
+        'form_section_id',
         'title',
         'image',
         'description',

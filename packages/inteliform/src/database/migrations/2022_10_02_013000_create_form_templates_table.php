@@ -15,9 +15,9 @@ class CreateFormTemplatesTable extends Migration
     {
         Schema::create('form_templates', function (Blueprint $table) {
             $table->id();
-            $table->string("title");
-            $table->string("cover");
-            $table->text("description");
+            $table->string("title")->nullable();
+            $table->string("cover")->nullable();
+            $table->text("description")->nullable();
             $table->timestamps();
         });
     }

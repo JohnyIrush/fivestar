@@ -21,21 +21,6 @@
        <div class="input-group ">
         <span 
           class="input-group-text" 
-          id="placeholder-basic-addon">
-          Placeholder
-        </span>
-        <input 
-          v-model="field.placeholder"
-          type="text" 
-          class="form-control form-input-transparent" 
-          aria-label="" 
-          aria-describedby="placeholder-basic-addon">
-        </div>
-       </div>
-      <div class="col-3 mt-2 mb-2">
-       <div class="input-group ">
-        <span 
-          class="input-group-text" 
           id="name-basic-addon">
           Name
         </span>
@@ -48,36 +33,6 @@
         </div>
        </div>
       <div class="col-3 mt-2 mb-2">
-      <div class="input-group ">
-        <span 
-          class="input-group-text" 
-          id="placeholder-basic-addon">
-          Default
-        </span>
-        <input 
-          v-model="field.default"
-          type="text" 
-          class="form-control form-input-transparent" 
-          aria-label="" 
-          aria-describedby="placeholder-basic-addon">
-       </div>
-      </div>
-      <div class="col-3 mt-2 mb-2">
-      <div class="input-group ">
-        <span 
-          class="input-group-text" 
-          id="minlength-basic-addon">
-          minlength
-        </span>
-        <input 
-          v-model="field.settings.minlength"
-          type="number" 
-          class="form-control form-input-transparent" 
-          aria-label="" 
-          aria-describedby="minlenght-basic-addon">
-       </div>
-      </div>
-      <div class="col-3 mt-2 mb-2">
       <div class="form-check form-switch">
         <label 
         class="form-check-label" 
@@ -86,7 +41,7 @@
         required
         </label>
         <input 
-         v-model="field.settings.required"
+         v-model="field.settings.required.required"
          class="form-check-input" 
          type="checkbox" 
          id="text-input-required-setting-check">
@@ -101,7 +56,7 @@
         disabled
         </label>
         <input 
-         v-model="field.settings.disabled"
+         v-model="field.settings.disabled.disabled"
          class="form-check-input" 
          type="checkbox" 
          id="text-input-autocomplete-setting-check">
@@ -186,19 +141,37 @@
         data() {
             return {
                    field: {
-                     title: 'color field title',
-                     name: 'color',
+                     title: 'field title',
+                     name: '',
                      image: '',
+                     value: '',
                      description: '',
                      settings:{
-                       type: 'date',
-                       required : false, 
-                       disabled :  false,
-                       field: "Date",
-                       icon: '<i class="fas fa-calendar-week fa-2x"></i>',
-                       component: 'DateInput',
-                     }
-                 }
+                       type: {
+                        id: '',
+                        type: 'date'
+                       },
+                       required : {
+                        id: '',
+                        required : false
+                       }, 
+                       disabled :  {
+                        id: '',
+                        disabled :  false
+                       },
+                       field: {
+                        id: '',
+                        field: "Date"
+                       },
+                       icon: {
+                        id: '',
+                        icon: '<i class="fas fa-calendar-week fa-2x"></i>'
+                       },
+                       component: {
+                        id: '',
+                        component: 'DateInput'
+                       },
+                     }                 }
             }
         },
 
@@ -225,7 +198,7 @@
             const input = document.getElementById(oldValue.title + '-text-input');
 
             //console.log("field", newValue)
-            if (newValue.settings.disabled)
+            /*if (newValue.settings.disabled)
             {
               //input.disabled = newValue.settings.disabled
             }
@@ -239,7 +212,7 @@
               input.required = newValue.settings.required
             }else{
               //input.removeAttribute("required")
-            }
+            }*/
             },
             deep: true
           }

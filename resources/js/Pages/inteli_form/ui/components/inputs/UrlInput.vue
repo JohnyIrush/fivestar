@@ -25,7 +25,7 @@
           Placeholder
         </span>
         <input 
-          v-model="field.placeholder"
+          v-model="field.settings.placeholder.placeholder"
           type="text" 
           class="form-control form-input-transparent" 
           aria-label="" 
@@ -55,7 +55,7 @@
           Default
         </span>
         <input 
-          v-model="field.default"
+          v-model="field.settings.default.default"
           type="text" 
           class="form-control form-input-transparent" 
           aria-label="" 
@@ -70,7 +70,7 @@
           minlength
         </span>
         <input 
-          v-model="field.settings.minlength"
+          v-model="field.settings.minlength.minlength"
           type="number" 
           class="form-control form-input-transparent" 
           aria-label="" 
@@ -85,7 +85,7 @@
           pattern
         </span>
         <input 
-          v-model="field.settings.pattern"
+          v-model="field.settings.pattern.pattern"
           type="text" 
           class="form-control form-input-transparent" 
           aria-label="" 
@@ -100,7 +100,7 @@
           maxlength
         </span>
         <input 
-          v-model="field.settings.maxlength"
+          v-model="field.settings.maxlength.maxlength"
           type="number" 
           class="form-control form-input-transparent" 
           aria-label="" 
@@ -116,7 +116,7 @@
         required
         </label>
         <input 
-         v-model="field.settings.required"
+         v-model="field.settings.required.required"
          class="form-check-input" 
          type="checkbox" 
          id="text-input-required-setting-check">
@@ -131,7 +131,7 @@
         autocomplete
         </label>
         <input 
-         v-model="field.settings.autocomplete"
+         v-model="field.settings.autocomplete.autocomplete"
          class="form-check-input" 
          type="checkbox" 
          id="text-input-autocomplete-setting-check">
@@ -146,7 +146,7 @@
         disabled
         </label>
         <input 
-         v-model="field.settings.disabled"
+         v-model="field.settings.disabled.disabled"
          class="form-check-input" 
          type="checkbox" 
          id="text-input-autocomplete-setting-check">
@@ -161,7 +161,7 @@
         autocorrect
         </label>
         <input 
-         v-model="field.settings.autocorrect"
+         v-model="field.settings.autocorrect.autocorrect"
          class="form-check-input" 
          type="checkbox" 
          id="text-input-autocorrect-setting-check">
@@ -197,14 +197,13 @@
          :id="field.title + '-text-input'" 
          type="url" 
          :class="'form-control ' + formFieldClasses" 
-         v-model="field.default" 
+         v-model="field.value" 
          :name="field.name || field.title"  
          :placeholder="field.placeholder"
-         :autocomplete="field.settings.autocomplete" 
-         :minlength="field.settings.minlength"
-         :maxlength="field.settings.maxlength"
-         :pattern="field.settings.pattern"
-         :inputmode="field.settings.inputmode"
+         :autocomplete="field.settings.autocomplete.autocomplete" 
+         :minlength="field.settings.minlength.minlength"
+         :maxlength="field.settings.maxlength.maxlength"
+         :pattern="field.settings.pattern.pattern"
          autofocus
          />
      <div 
@@ -230,7 +229,8 @@
           fieldSettings: {
             type: Boolean,
             default: false
-          }
+          },
+          fieldId: ''
         },
         computed:
         {
@@ -250,25 +250,71 @@
             return {
                    field: {
                      title: 'field title',
-                     name: 'url',
-                     default: '',
-                     placeholder: 'field',
+                     name: '',
                      image: '',
+                     value: '',
                      description: '',
                      settings:{
-                       type: 'url',
-                       autocorrect: true,
-                       autocomplete : false,
-                       required : false, 
-                       disabled :  false,
-                       minlength :  3,
-                       maxlength :  20,
-                       component : 'UrlInput',
-                       pattern: ""
+                       type: {
+                        id: '',
+                        type: 'url'
+                       },
+                       placeholder: {
+                        id: '',
+                        placeholder: true
+                       },
+                       default: {
+                        id: '',
+                        default: true
+                       },
+                       autocorrect: {
+                        id: '',
+                        autocorrect: true
+                       },
+                       autocomplete : {
+                        id: '',
+                        autocomplete : false
+                       },
+                       required : {
+                        id: '',
+                        required : false
+                       }, 
+                       disabled :  {
+                        id: '',
+                        disabled :  false
+                       },
+                       minlength :  {
+                        id: '',
+                        minlength :  3
+                       },
+                       maxlength : {
+                        id: '',
+                        maxlength :  20
+                       },
+                       pattern: {
+                        id: '',
+                        pattern: ""
+                       },
+                       field: {
+                        id: '',
+                        field: "Url"
+                       },
+                       type: {
+                        id: '',
+                        type: "url"
+                       },
+                       icon: {
+                        id: '',
+                        icon: '<i class="fas fa-link fa-2x"></i>'
+                       },
+                       component: {
+                        id: '',
+                        component: 'UrlInput'
+                       },
                      }
-                 }
             }
-        },
+        }
+      },
 
         methods: {
 
@@ -285,6 +331,7 @@
           field: {
             handler(newValue, oldValue) {
 
+              newValue.id = this.fieldId
               //this.fieldData = newValue
 
               this.$emit("UrlInputInput", newValue)

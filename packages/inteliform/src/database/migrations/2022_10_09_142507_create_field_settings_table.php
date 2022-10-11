@@ -16,8 +16,8 @@ class CreateFieldSettingsTable extends Migration
         Schema::create('field_settings', function (Blueprint $table) {
             $table->id();
             $table->integer("field_id");
-            $table->string("key");
-            $table->string("value");
+            $table->string("key")->nullable();
+            $table->string("value")->nullable();
             $table->timestamps();
         });
     }

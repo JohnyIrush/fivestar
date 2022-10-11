@@ -21,21 +21,6 @@
        <div class="input-group ">
         <span 
           class="input-group-text" 
-          id="placeholder-basic-addon">
-          Placeholder
-        </span>
-        <input 
-          v-model="field.placeholder"
-          type="text" 
-          class="form-control form-input-transparent" 
-          aria-label="" 
-          aria-describedby="placeholder-basic-addon">
-        </div>
-       </div>
-      <div class="col-3 mt-2 mb-2">
-       <div class="input-group ">
-        <span 
-          class="input-group-text" 
           id="name-basic-addon">
           Name
         </span>
@@ -55,7 +40,7 @@
           Default
         </span>
         <input 
-          v-model="field.default"
+          v-model="field.settings.default.default"
           type="text" 
           class="form-control form-input-transparent" 
           aria-label="" 
@@ -70,7 +55,7 @@
           min
         </span>
         <input 
-          v-model="field.settings.min"
+          v-model="field.settings.min.min"
           type="text" 
           class="form-control form-input-transparent" 
           aria-label="" 
@@ -85,7 +70,7 @@
           max
         </span>
         <input 
-          v-model="field.settings.max"
+          v-model="field.settings.max.max"
           type="text" 
           class="form-control form-input-transparent" 
           aria-label="" 
@@ -101,7 +86,7 @@
         required
         </label>
         <input 
-         v-model="field.settings.required"
+         v-model="field.settings.required.required"
          class="form-check-input" 
          type="checkbox" 
          id="text-input-required-setting-check">
@@ -116,7 +101,7 @@
         disabled
         </label>
         <input 
-         v-model="field.settings.disabled"
+         v-model="field.settings.disabled.disabled"
          class="form-check-input" 
          type="checkbox" 
          id="text-input-autocomplete-setting-check">
@@ -154,9 +139,8 @@
          :class="'form-control ' + formFieldClasses" 
          v-model="field.default" 
          :name="field.name || field.title"  
-         :min="field.settings.min"
-         :max="field.settings.max"
-         :placeholder="field.placeholder"
+         :min="field.settings.min.min"
+         :max="field.settings.max.max"
          autofocus
          />
      <div 
@@ -204,20 +188,47 @@
             return {
                    field: {
                      title: 'field title',
-                     name: 'time',
-                     default: '',
-                     placeholder: 'field',
+                     name: '',
                      image: '',
+                     value: '',
                      description: '',
                      settings:{
-                       type: 'time',
-                       required : false, 
-                       disabled :  false,
-                       min: "",
-                       max: "",
-                       field: "Time",
-                       icon: '<i class="fas fa-clock fa-2x"></i>',
-                       component: 'TimeInput',
+                       type: {
+                        id: '',
+                        type: 'time'
+                       },
+                       required : {
+                        id: '',
+                        required : false
+                       }, 
+                       disabled :  {
+                        id: '',
+                        disabled :  false
+                       },
+                       min: {
+                        id: '',
+                        min :  ''
+                       },
+                       max: {
+                        id: '',
+                        max: ""
+                       },
+                       field: {
+                        id: '',
+                        field: "Time"
+                       },
+                       icon: {
+                        id: '',
+                        icon: '<i class="fas fa-clock fa-2x"></i>'
+                       },
+                       default: {
+                        id: '',
+                        default: ''
+                       },
+                       component: {
+                        id: '',
+                        component: 'TimeInput'
+                       },
                      }
                  }
             }

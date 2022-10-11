@@ -41,7 +41,7 @@
         required
         </label>
         <input 
-         v-model="field.settings.required"
+         v-model="field.settings.required.required"
          class="form-check-input" 
          type="checkbox" 
          id="text-input-required-setting-check">
@@ -56,7 +56,7 @@
         disabled
         </label>
         <input 
-         v-model="field.settings.disabled"
+         v-model="field.settings.disabled.disabled"
          class="form-check-input" 
          type="checkbox" 
          id="text-input-autocomplete-setting-check">
@@ -168,18 +168,32 @@
                      description: '',
                      name: "",
                      settings:{
-                       type: 'checkbox',
-                       default: '',
-                       field: "Checkbox",
-                       type: "checkbox",
-                       icon: '<i class="fas fa-check-square fa-2x"></i>',
-                       component: 'CheckboxInput',
+                       type: {
+                        id: '',
+                        type: 'checkbox'
+                       },
+                       default: {
+                        default: ''
+                       },
+                       field: {
+                        id: '',
+                        field: "Checkbox"
+                       },
+                       type: {
+                        id: '',
+                        type: "checkbox"
+                       },
+                       icon: {
+                        id: '',
+                        icon: '<i class="fas fa-check-square fa-2x"></i>'
+                       },
+                       component: {
+                        id: '',
+                        component: 'CheckboxInput',
+                       },
                      },
                      options:{
-                      option1: {
-                        name: "option 1",
-                        value: ""
-                      }
+
                      }
                  },
                  editMode: {
@@ -242,7 +256,7 @@
                             "option" + 
                              (keys.length + 1);
 
-            var option = !(this.isEmpty(value))? value: {name: optionName};
+            var option = !(this.isEmpty(value))? value: {id: '',name: optionName};
 
             if(keys.length == 0)
             {
@@ -287,7 +301,7 @@
             const input = document.getElementById(oldValue.title + '-text-input');
 
             //console.log("field", newValue)
-            if (newValue.settings.disabled)
+            /*if (newValue.settings.disabled)
             {
               //input.disabled = newValue.settings.disabled
             }
@@ -301,7 +315,7 @@
               input.required = newValue.settings.required
             }else{
               //input.removeAttribute("required")
-            }
+            }*/
             },
             deep: true
           }

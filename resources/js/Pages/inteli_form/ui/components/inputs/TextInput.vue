@@ -25,7 +25,7 @@
           Placeholder
         </span>
         <input 
-          v-model="field.placeholder"
+          v-model="field.settings.placeholder.placeholder"
           type="text" 
           class="form-control form-input-transparent" 
           aria-label="" 
@@ -55,7 +55,7 @@
           minlength
         </span>
         <input 
-          v-model="field.settings.minlength"
+          v-model="field.settings.minlength.minlength"
           type="number" 
           class="form-control form-input-transparent" 
           aria-label="" 
@@ -70,7 +70,7 @@
           maxlength
         </span>
         <input 
-          v-model="field.settings.maxlength"
+          v-model="field.settings.maxlength.maxlength"
           type="number" 
           class="form-control form-input-transparent" 
           aria-label="" 
@@ -86,7 +86,7 @@
         required
         </label>
         <input 
-         v-model="field.settings.required"
+         v-model="field.settings.required.required"
          class="form-check-input" 
          type="checkbox" 
          id="text-input-required-setting-check">
@@ -101,7 +101,7 @@
         autocomplete
         </label>
         <input 
-         v-model="field.settings.autocomplete"
+         v-model="field.settings.autocomplete.autocomplete"
          class="form-check-input" 
          type="checkbox" 
          id="text-input-autocomplete-setting-check">
@@ -116,7 +116,7 @@
         disabled
         </label>
         <input 
-         v-model="field.settings.disabled"
+         v-model="field.settings.disabled.disabled"
          class="form-check-input" 
          type="checkbox" 
          id="text-input-autocomplete-setting-check">
@@ -154,10 +154,10 @@
          :class="'form-control ' + formFieldClasses" 
          v-model="field.value" 
          :name="field.title"  
-         :placeholder="field.placeholder"
-         :autocomplete="field.settings.autocomplete" 
-         :minlength="field.settings.minlength"
-         :maxlength="field.settings.maxlength"
+         :placeholder="field.settings.placeholder.placeholder"
+         :autocomplete="field.settings.autocomplete.autocomplete" 
+         :minlength="field.settings.minlength.minlength"
+         :maxlength="field.settings.maxlength.maxlength"
          autofocus
          />
      <div 
@@ -206,18 +206,52 @@
                      image: '',
                      value: '',
                      description: '',
+                     name: "",
                      settings:{
-                       type: 'text',
-                       default: '',
-                       placeholder: 'field',
-                       autocomplete : 'off',
-                       required : false, 
-                       disabled :  false,
-                       minlength :  3,
-                       maxlength :  20,
-                       field: "Text",
-                       icon: '<i class="fas fa-paragraph fa-2x"></i>',
-                       component: 'TextInput',
+                       type: {
+                        id: '',
+                        type: 'text',
+                       },
+                       default: {
+                        id: '',
+                        default: ''
+                       },
+                       placeholder: {
+                        id: '',
+                        placeholder: 'field'
+                       },
+                       autocomplete : {
+                        id: '',
+                        autocomplete : 'off'
+                       },
+                       required : {
+                        id: '',
+                        required : false
+                       }, 
+                       disabled :  {
+                        id: '',
+                        disabled :  false
+                       },
+                       minlength : {
+                        id: '',
+                        minlength :  3
+                       },
+                       maxlength :  {
+                        id: '',
+                        maxlength :  20
+                       },
+                       field: {
+                        id: '',
+                        field: "Text"
+                       },
+                       icon: {
+                        id: '',
+                        icon: ''
+                       },
+                       component: {
+                        id: '',
+                        component: 'TextInput'
+                       },
                      }
                  }
             }

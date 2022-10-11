@@ -25,7 +25,7 @@
           Placeholder
         </span>
         <input 
-          v-model="field.placeholder"
+          v-model="field.settings.placeholder.placeholder"
           type="text" 
           class="form-control form-input-transparent" 
           aria-label="" 
@@ -55,7 +55,7 @@
           Default
         </span>
         <input 
-          v-model="field.default"
+          v-model="field.settings.default.default"
           type="text" 
           class="form-control form-input-transparent" 
           aria-label="" 
@@ -70,7 +70,7 @@
           minlength
         </span>
         <input 
-          v-model="field.settings.minlength"
+          v-model="field.settings.minlength.minlength"
           type="number" 
           class="form-control form-input-transparent" 
           aria-label="" 
@@ -79,7 +79,7 @@
       </div>
       <div class="col-3 mt-2 mb-2">
         <select 
-          v-model="field.settings.inputmode" 
+          v-model="field.settings.inputmode.inputmode" 
           class="form-select" 
           aria-label="Default select example">
           <option selected>Input Type</option>
@@ -98,26 +98,11 @@
       <div class="input-group ">
         <span 
           class="input-group-text" 
-          id="pattern-basic-addon">
-          pattern
-        </span>
-        <input 
-          v-model="field.settings.pattern"
-          type="text" 
-          class="form-control form-input-transparent" 
-          aria-label="" 
-          aria-describedby="pattern-basic-addon">
-       </div>
-      </div>
-      <div class="col-3 mt-2 mb-2">
-      <div class="input-group ">
-        <span 
-          class="input-group-text" 
           id="maxlength-basic-addon">
           maxlength
         </span>
         <input 
-          v-model="field.settings.maxlength"
+          v-model="field.settings.maxlength.maxlength"
           type="number" 
           class="form-control form-input-transparent" 
           aria-label="" 
@@ -133,25 +118,10 @@
         required
         </label>
         <input 
-         v-model="field.settings.required"
+         v-model="field.settings.required.required"
          class="form-check-input" 
          type="checkbox" 
          id="text-input-required-setting-check">
-       </div>
-      </div>
-      <div class="col-3 mt-2 mb-2">
-      <div class="form-check form-switch">
-        <label 
-        class="form-check-label" 
-        for="text-input-reuired-setting-check"
-        >
-        autocomplete
-        </label>
-        <input 
-         v-model="field.settings.autocomplete"
-         class="form-check-input" 
-         type="checkbox" 
-         id="text-input-autocomplete-setting-check">
        </div>
       </div>
       <div class="col-3 mt-2 mb-2">
@@ -163,25 +133,10 @@
         disabled
         </label>
         <input 
-         v-model="field.settings.disabled"
+         v-model="field.settings.disabled.disabled"
          class="form-check-input" 
          type="checkbox" 
-         id="text-input-autocomplete-setting-check">
-       </div>
-      </div>
-      <div class="col-3 mt-2 mb-2">
-      <div class="form-check form-switch">
-        <label 
-        class="form-check-label" 
-        for="text-input-autocorrect-setting-check"
-        >
-        autocorrect
-        </label>
-        <input 
-         v-model="field.settings.autocorrect"
-         class="form-check-input" 
-         type="checkbox" 
-         id="text-input-autocorrect-setting-check">
+         id="text-input-disabled-setting-check">
        </div>
       </div>
       <div class="col-3 mt-2 mb-2">
@@ -216,12 +171,10 @@
          :class="'form-control ' + formFieldClasses" 
          v-model="field.default" 
          :name="field.name || field.title"  
-         :placeholder="field.placeholder"
-         :autocomplete="field.settings.autocomplete" 
-         :minlength="field.settings.minlength"
-         :maxlength="field.settings.maxlength"
-         :pattern="field.settings.pattern"
-         :inputmode="field.settings.inputmode"
+         :placeholder="field.settings.placeholder.placeholder"
+         :minlength="field.settings.minlength.minlength"
+         :maxlength="field.settings.maxlength.maxlength"
+         :inputmode="field.settings.inputmode.inputmode"
          autofocus
          />
      <div 
@@ -272,17 +225,50 @@
                      description: '',
                      name: "",
                      settings:{
-                       type: 'password',
-                       default: '',
-                       placeholder: 'field',
-                       autocomplete : 'off',
-                       required : false, 
-                       disabled :  false,
-                       minlength :  3,
-                       maxlength :  20,
-                       field: "Password",
-                       icon: '<i class="fas fa-lock fa-2x"></i>',
-                       component: 'PasswordInput',
+                       type: {
+                        id: '',
+                        type: 'password',
+                       },
+                       inputmode: {
+                        id: '',
+                        inputmode: ''
+                       },
+                       default: {
+                        id: '',
+                        default: ''
+                       },
+                       placeholder: {
+                        id: '',
+                        placeholder: 'field'
+                       },
+                       required : {
+                        id: '',
+                        required : false
+                       }, 
+                       disabled :  {
+                        id: '',
+                        disabled :  false
+                       },
+                       minlength : {
+                        id: '',
+                        minlength :  3
+                       },
+                       maxlength :  {
+                        id: '',
+                        maxlength :  20
+                       },
+                       field: {
+                        id: '',
+                        field: "Password",
+                       },
+                       icon: {
+                        id: '',
+                        icon: '<i class="fas fa-lock fa-2x"></i>',
+                       },
+                       component: {
+                        id: '',
+                        component: 'PasswordInput',
+                       },
                      }
                  }
             }
@@ -311,7 +297,7 @@
             const input = document.getElementById(oldValue.title + '-text-input');
 
             //console.log("field", newValue)
-            if (newValue.settings.disabled)
+            /*if (newValue.settings.disabled)
             {
               //input.disabled = newValue.settings.disabled
             }
@@ -326,6 +312,7 @@
             }else{
               //input.removeAttribute("required")
             }
+            */
             },
             deep: true
           }

@@ -41,7 +41,7 @@
         required
         </label>
         <input 
-         v-model="field.settings.required"
+         v-model="field.settings.required.required"
          class="form-check-input" 
          type="checkbox" 
          id="text-input-required-setting-check">
@@ -56,7 +56,7 @@
         disabled
         </label>
         <input 
-         v-model="field.settings.disabled"
+         v-model="field.settings.disabled.disabled"
          class="form-check-input" 
          type="checkbox" 
          id="text-input-autocomplete-setting-check">
@@ -168,30 +168,55 @@
         },
         data() {
             return {
-                   field: {
-                     title: 'radio field title',
-                     name: '',
+                    field: {
+                     title: 'field title',
                      image: '',
+                     value: '',
+                     description: '',
+                     name: "",
                      settings:{
-                       type: 'radio',
-                       required : false, 
-                       disabled :  false,
-                       component : 'RadioInput',
+                       type: {
+                        id: '',
+                        type: 'radio'
+                       },
+                       default: {
+                        id: '',
+                        default: ''
+                       },
+                       disabled :  {
+                        id: '',
+                        disabled :  false
+                       },
+                       required : {
+                        id: '',
+                        required : false
+                       },
+                       field: {
+                        id: '',
+                        field: "Radio"
+                       },
+                       type: {
+                        id: '',
+                        type: "radio"
+                       },
+                       icon: {
+                        id: '',
+                        icon: '<i class="fas fa-dot-circle fa-2x"></i>'
+                       },
+                       component: {
+                        id: '',
+                        component: 'RadioInput'
+                       },
                      },
                      options:{
-                      option1: {
-                        name: "option 1",
-                        image: "",
-                        value: ""
-                      }
+                      
                      }
-                 },
-                 editMode: {
+                   },
+                  editMode: {
                   index: ""
                  }
-            }
+          }
         },
-
         methods: {
             isEmpty(obj) {
               for(var prop in obj) {
@@ -246,7 +271,7 @@
                             "option" + 
                              (keys.length + 1);
 
-            var option = !(this.isEmpty(value))? value: {name: optionName};
+            var option = !(this.isEmpty(value))? value: {id:'', name: optionName};
 
             if(keys.length == 0)
             {
@@ -291,6 +316,7 @@
 
             const input = document.getElementById(oldValue.title + '-text-input');
 
+            /*
             //console.log("field", newValue)
             if (newValue.settings.disabled)
             {
@@ -307,6 +333,7 @@
             }else{
               //input.removeAttribute("required")
             }
+            */
             },
             deep: true
           }

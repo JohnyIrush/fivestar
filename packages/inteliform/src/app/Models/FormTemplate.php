@@ -12,7 +12,8 @@ class FormTemplate extends Model
     protected $fillable = [
         'title',
         'cover',
-        'description'
+        'description',
+        
     ];
 
     public function forms()

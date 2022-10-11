@@ -15,11 +15,12 @@ class CreateFieldsTable extends Migration
     {
         Schema::create('fields', function (Blueprint $table) {
             $table->id();
-            $table->string("title");
-            $table->string("image");
-            $table->string("value");
-            $table->string("name");
-            $table->text("description");
+            $table->integer("form_section_id");
+            $table->string("title")->nullable();
+            $table->string("image")->nullable();
+            $table->string("value")->nullable();
+            $table->string("name")->nullable();
+            $table->text("description")->nullable();
             $table->timestamps();
         });
     }

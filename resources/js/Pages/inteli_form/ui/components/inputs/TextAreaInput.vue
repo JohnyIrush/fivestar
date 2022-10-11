@@ -26,7 +26,7 @@
           Placeholder
         </span>
         <input 
-          v-model="field.placeholder"
+          v-model="field.settings.placeholder.placeholder"
           type="text" 
           class="form-control form-input-transparent" 
           aria-label="" 
@@ -56,7 +56,7 @@
           cols
         </span>
         <input 
-          v-model="field.settings.cols"
+          v-model="field.settings.cols.cols"
           type="number" 
           class="form-control form-input-transparent" 
           aria-label="" 
@@ -71,7 +71,7 @@
           rows
         </span>
         <input 
-          v-model="field.settings.rows"
+          v-model="field.settings.rows.rows"
           type="number" 
           class="form-control form-input-transparent" 
           aria-label="" 
@@ -86,7 +86,7 @@
           minlength
         </span>
         <input 
-          v-model="field.settings.minlength"
+          v-model="field.settings.minlength.minlength"
           type="number" 
           class="form-control form-input-transparent" 
           aria-label="" 
@@ -101,7 +101,7 @@
           maxlength
         </span>
         <input 
-          v-model="field.settings.maxlength"
+          v-model="field.settings.maxlength.maxlength"
           type="number" 
           class="form-control form-input-transparent" 
           aria-label="" 
@@ -117,7 +117,7 @@
         required
         </label>
         <input 
-         v-model="field.settings.required"
+         v-model="field.settings.required.required"
          class="form-check-input" 
          type="checkbox" 
          id="text-input-required-setting-check">
@@ -132,7 +132,7 @@
         autocomplete
         </label>
         <input 
-         v-model="field.settings.autocomplete"
+         v-model="field.settings.autocomplete.autocomplete"
          class="form-check-input" 
          type="checkbox" 
          id="text-input-autocomplete-setting-check">
@@ -147,7 +147,7 @@
         disabled
         </label>
         <input 
-         v-model="field.settings.disabled"
+         v-model="field.settings.disabled.disabled"
          class="form-check-input" 
          type="checkbox" 
          id="text-input-autocomplete-setting-check">
@@ -185,12 +185,12 @@
        :class="'form-control ' + formFieldClasses" 
        v-model="field.value" 
        :name="field.title"  
-       :placeholder="field.placeholder"
-       :autocomplete="field.settings.autocomplete" 
-       :minlength="field.settings.minlength"
-       :maxlength="field.settings.maxlength"
-       :rows="field.settings.rows" 
-       :cols="field.settings.cols"
+       :placeholder="field.settings.placeholder.placeholder"
+       :autocomplete="field.settings.minlength.autocomplete" 
+       :minlength="field.settings.minlength.minlength"
+       :maxlength="field.settings.maxlength.maxlength"
+       :rows="field.settings.rows.rows" 
+       :cols="field.settings.cols.cols"
        autofocus
        >
     </textarea> 
@@ -231,22 +231,66 @@
             return {
                    field: {
                      title: 'field title',
-                     value: '',
-                     placeholder: 'field',
                      image: '',
+                     value: '',
+                     description: '',
+                     name: '',
                      settings:{
-                       type: 'textarea',
-                       cols: 4,
-                       rows: 6,
-                       autocomplete : 'off',
-                       required : false, 
-                       disabled :  false,
-                       minlength :  3,
-                       maxlength :  20,
-                       component : 'TextAreaInput'
+                       type: {
+                        id: '',
+                        type: 'textarea',
+                       },
+                       cols: {
+                        id: '',
+                        cols: 4,
+                       },
+                       rows: {
+                        id: '',
+                        rows: 6
+                       },
+                       default: {
+                        id: '',
+                        default: ''
+                       },
+                       placeholder: {
+                        id: '',
+                        placeholder: 'field'
+                       },
+                       autocomplete : {
+                        id: '',
+                        autocomplete : 'off'
+                       },
+                       required : {
+                        id: '',
+                        required : false
+                       }, 
+                       disabled :  {
+                        id: '',
+                        disabled :  false
+                       },
+                       minlength : {
+                        id: '',
+                        minlength :  3
+                       },
+                       maxlength :  {
+                        id: '',
+                        maxlength :  20
+                       },
+                       field: {
+                        id: '',
+                        field: 'Paragraph'
+                       },
+                       icon: {
+                        id: '',
+                        icon: ''
+                       },
+                       component: {
+                        id: '',
+                        component: 'TextAreaInput'
+                       },
                      }
-                 }
             }
+          }
         },
 
         methods: {
@@ -270,21 +314,21 @@
             const input = document.getElementById(oldValue.title + '-textarea-input');
 
             //console.log("field", newValue)
-            if (newValue.settings.disabled)
-            {
+            //if (newValue.settings.disabled)
+            //{
               //input.disabled = newValue.settings.disabled
-            }
-            else
-            {
+            //}
+            //else
+            //{
               //input.removeAttribute("disabled")
-            }
+            //}
 
-            if (newValue.settings.required)
-            {
+            //if (newValue.settings.required)
+            //{
               input.required = newValue.settings.required
-            }else{
+            //}else{
               //input.removeAttribute("required")
-            }
+            //}
             },
             deep: true
           }

@@ -41,7 +41,7 @@
         required
         </label>
         <input 
-         v-model="field.settings.required"
+         v-model="field.settings.required.required"
          class="form-check-input" 
          type="checkbox" 
          id="text-input-required-setting-check">
@@ -56,7 +56,7 @@
         disabled
         </label>
         <input 
-         v-model="field.settings.disabled"
+         v-model="field.settings.disabled.disabled"
          class="form-check-input" 
          type="checkbox" 
          id="text-input-autocomplete-setting-check">
@@ -139,14 +139,37 @@
                      title: 'color field title',
                      name: 'color',
                      image: '',
+                     value: '',
                      description: '',
                      settings:{
-                       type: 'date',
-                       required : false, 
-                       disabled :  false,
-                       field: "Date",
-                       icon: '<i class="fas fa-calendar-week fa-2x"></i>',
-                       component: 'DateInput',
+                       type: {
+                        id: '',
+                        type: 'color'
+                       },
+                       required : {
+                        id: '',
+                        required : false
+                       }, 
+                       disabled :  {
+                        id: '',
+                        disabled :  false
+                       },
+                       field: {
+                        id: '',
+                        field: "Color"
+                       },
+                       type: {
+                        id: '',
+                        type: "color"
+                       },
+                       icon: {
+                        id: '',
+                        icons: '<i class="fas fa-palette fa-2x"></i>',
+                       },
+                       component: {
+                        id: '',
+                        component: 'ColorInput'
+                       },
                      }
                  }
             }
@@ -173,7 +196,7 @@
             const input = document.getElementById(oldValue.title + '-text-input');
 
             //console.log("field", newValue)
-            if (newValue.settings.disabled)
+            /*if (newValue.settings.disabled)
             {
               //input.disabled = newValue.settings.disabled
             }
@@ -187,7 +210,7 @@
               input.required = newValue.settings.required
             }else{
               //input.removeAttribute("required")
-            }
+            }*/
             },
             deep: true
           }

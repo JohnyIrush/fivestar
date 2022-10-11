@@ -21,21 +21,6 @@
        <div class="input-group ">
         <span 
           class="input-group-text" 
-          id="placeholder-basic-addon">
-          Placeholder
-        </span>
-        <input 
-          v-model="field.placeholder"
-          type="text" 
-          class="form-control form-input-transparent" 
-          aria-label="" 
-          aria-describedby="placeholder-basic-addon">
-        </div>
-       </div>
-      <div class="col-3 mt-2 mb-2">
-       <div class="input-group ">
-        <span 
-          class="input-group-text" 
           id="name-basic-addon">
           Name
         </span>
@@ -51,15 +36,15 @@
       <div class="input-group ">
         <span 
           class="input-group-text" 
-          id="placeholder-basic-addon">
+          id="default-basic-addon">
           Default
         </span>
         <input 
-          v-model="field.default"
+          v-model="field.settings.default.default"
           type="text" 
           class="form-control form-input-transparent" 
           aria-label="" 
-          aria-describedby="placeholder-basic-addon">
+          aria-describedby="default-basic-addon">
        </div>
       </div>
       <div class="col-3 mt-2 mb-2">
@@ -70,7 +55,7 @@
           min
         </span>
         <input 
-          v-model="field.settings.min"
+          v-model="field.settings.min.min"
           type="number" 
           class="form-control form-input-transparent" 
           aria-label="" 
@@ -81,26 +66,11 @@
       <div class="input-group ">
         <span 
           class="input-group-text" 
-          id="pattern-basic-addon">
-          pattern
-        </span>
-        <input 
-          v-model="field.settings.pattern"
-          type="text" 
-          class="form-control form-input-transparent" 
-          aria-label="" 
-          aria-describedby="pattern-basic-addon">
-       </div>
-      </div>
-      <div class="col-3 mt-2 mb-2">
-      <div class="input-group ">
-        <span 
-          class="input-group-text" 
           id="max-basic-addon">
           max
         </span>
         <input 
-          v-model="field.settings.max"
+          v-model="field.settings.max.max"
           type="number" 
           class="form-control form-input-transparent" 
           aria-label="" 
@@ -116,25 +86,10 @@
         required
         </label>
         <input 
-         v-model="field.settings.required"
+         v-model="field.settings.required.required"
          class="form-check-input" 
          type="checkbox" 
          id="text-input-required-setting-check">
-       </div>
-      </div>
-      <div class="col-3 mt-2 mb-2">
-      <div class="form-check form-switch">
-        <label 
-        class="form-check-label" 
-        for="text-input-reuired-setting-check"
-        >
-        autocomplete
-        </label>
-        <input 
-         v-model="field.settings.autocomplete"
-         class="form-check-input" 
-         type="checkbox" 
-         id="text-input-autocomplete-setting-check">
        </div>
       </div>
       <div class="col-3 mt-2 mb-2">
@@ -146,25 +101,10 @@
         disabled
         </label>
         <input 
-         v-model="field.settings.disabled"
+         v-model="field.settings.disabled.disabled"
          class="form-check-input" 
          type="checkbox" 
          id="text-input-autocomplete-setting-check">
-       </div>
-      </div>
-      <div class="col-3 mt-2 mb-2">
-      <div class="form-check form-switch">
-        <label 
-        class="form-check-label" 
-        for="text-input-autocorrect-setting-check"
-        >
-        autocorrect
-        </label>
-        <input 
-         v-model="field.settings.autocorrect"
-         class="form-check-input" 
-         type="checkbox" 
-         id="text-input-autocorrect-setting-check">
        </div>
       </div>
       <div class="col-3 mt-2 mb-2">
@@ -197,12 +137,10 @@
          :id="field.title + '-text-input'" 
          type="range" 
          :class="'form-control ' + formFieldClasses" 
-         v-model="field.default" 
+         v-model="field.value" 
          :name="field.name || field.title"  
-         :placeholder="field.placeholder"
-         :autocomplete="field.settings.autocomplete" 
-         :min="field.settings.min"
-         :max="field.settings.max"
+         :min="field.settings.min.min"
+         :max="field.settings.max.max"
          autofocus
          />
      <div 
@@ -248,20 +186,51 @@
             return {
                    field: {
                      title: 'field title',
-                     name: 'range',
-                     default: '',
-                     placeholder: 'field',
+                     name: '',
                      image: '',
+                     value: '',
                      description: '',
                      settings:{
-                       type: 'range',
-                       autocorrect: true,
-                       autocomplete : false,
-                       required : false, 
-                       disabled :  false,
-                       min :  3,
-                       max :  20,
-                       component : 'RangeInput',
+                       type: {
+                        id: '',
+                        type: 'range'
+                       },
+                       required : {
+                        id: '',
+                        required : false
+                       }, 
+                       default :  {
+                        id: '',
+                        default :  false
+                       },
+                       disabled :  {
+                        id: '',
+                        disabled :  false
+                       },
+                       min :  {
+                        id: '',
+                        min :  20
+                       },
+                       max :  {
+                        id: '',
+                        max :  20
+                       },
+                       field: {
+                        id: '',
+                        field: "Range"
+                       },
+                       type: {
+                        id: '',
+                        type: "range"
+                       },
+                       icon: {
+                        id: '',
+                        icon: '<i class="fas fa-weight fa-2x"></i>'
+                       },
+                       component: {
+                        id: '',
+                        component: 'RangeInput',
+                       }
                      }
                  }
             }
@@ -288,7 +257,8 @@
               console.log(this)
 
             const input = document.getElementById(oldValue.title + '-text-input');
-
+            
+            /*
             //console.log("field", newValue)
             if (newValue.settings.disabled)
             {
@@ -305,6 +275,7 @@
             }else{
               //input.removeAttribute("required")
             }
+            */
             },
             deep: true
           }

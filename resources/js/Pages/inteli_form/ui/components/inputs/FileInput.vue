@@ -40,7 +40,7 @@
           maximum number of files
         </span>
         <input 
-          v-model="field.maxNoOfFiles"
+          v-model="field.settings.maxNoOfFiles.maxNoOfFiles"
           type="number" 
           class="form-control form-input-transparent" 
           aria-label="" 
@@ -55,7 +55,7 @@
           maximum size of file
         </span>
         <input 
-          v-model="field.maxFileSize"
+          v-model="field.settings.maxFileSize.maxFileSize"
           type="number" 
           class="form-control form-input-transparent" 
           aria-label="" 
@@ -76,7 +76,7 @@
         required
         </label>
         <input 
-         v-model="field.settings.required"
+         v-model="field.settings.required.required"
          class="form-check-input" 
          type="checkbox" 
          id="text-input-required-setting-check">
@@ -91,7 +91,7 @@
         disabled
         </label>
         <input 
-         v-model="field.settings.disabled"
+         v-model="field.settings.disabled.disabled"
          class="form-check-input" 
          type="checkbox" 
          id="text-input-autocomplete-setting-check">
@@ -106,7 +106,7 @@
         multiple
         </label>
         <input 
-         v-model="field.settings.multiple"
+         v-model="field.settings.multiple.multiple"
          class="form-check-input" 
          type="checkbox" 
          id="text-input-multiple-setting-check">
@@ -143,8 +143,8 @@
          type="file" 
          :class="'form-control ' + formFieldClasses" 
          :name="field.name || field.title"  
-         :multiple="field.settings.multiple"
-         :accept="field.settings.accept"
+         :multiple="field.settings.multiple.multiple"
+         :accept="field.settings.accept.accept"
          />
      <div 
      :id="field.title + 'Help'" 
@@ -188,19 +188,56 @@
         data() {
             return {
                    field: {
-                     title: 'email field title',
+                     title: 'field title',
                      name: '',
                      image: '',
+                     value: '',
                      description: '',
                      settings:{
-                       type: 'file',
-                       required : false, 
-                       disabled :  false,
-                       multiple: false,
-                       accept: "",
-                       maxNoOfFiles: 10,
-                       maxFileSize: 20,
-                       component : 'FileInput',
+                       type: {
+                        id: '',
+                        type: 'file'
+                       },
+                       required : {
+                        id: '',
+                        required : false
+                       }, 
+                       disabled :  {
+                        id: '',
+                        disabled :  false
+                       },
+                       multiple: {
+                        id: '',
+                        multiple: false
+                       },
+                       accept: {
+                        id: '',
+                        accept: ""
+                       },
+                       maxNoOfFiles:{
+                        id: '',
+                        maxNoOfFiles: ''
+                       },
+                       maxFileSize:{
+                        id: '',
+                        maxFileSize: ''
+                       },
+                       field: {
+                        id: '',
+                        field: "File Upload"
+                       },
+                       type: {
+                        id: '',
+                        type: "file"
+                       },
+                       icon: {
+                        id: '',
+                        icon: '<i class="fas fa-upload fa-2x"></i>'
+                       },
+                       component: {
+                        id: '',
+                        component: 'FileInput'
+                       },
                      }
                  }
             }
@@ -228,7 +265,7 @@
             const input = document.getElementById(oldValue.title + '-text-input');
 
             //console.log("field", newValue)
-            if (newValue.settings.disabled)
+            /*if (newValue.settings.disabled)
             {
               //input.disabled = newValue.settings.disabled
             }
@@ -243,6 +280,7 @@
             }else{
               //input.removeAttribute("required")
             }
+            */
             },
             deep: true
           }

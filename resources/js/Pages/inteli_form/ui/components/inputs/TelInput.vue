@@ -25,26 +25,11 @@
           Placeholder
         </span>
         <input 
-          v-model="field.placeholder"
+          v-model="field.settings.placeholder"
           type="text" 
           class="form-control form-input-transparent" 
           aria-label="" 
           aria-describedby="placeholder-basic-addon">
-        </div>
-       </div>
-      <div class="col-3 mt-2 mb-2">
-       <div class="input-group ">
-        <span 
-          class="input-group-text" 
-          id="name-basic-addon">
-          Name
-        </span>
-        <input 
-          v-model="field.name"
-          type="text" 
-          class="form-control form-input-transparent" 
-          aria-label="" 
-          aria-describedby="name-basic-addon">
         </div>
        </div>
       <div class="col-3 mt-2 mb-2">
@@ -55,7 +40,7 @@
           Default
         </span>
         <input 
-          v-model="field.default"
+          v-model="field.value"
           type="text" 
           class="form-control form-input-transparent" 
           aria-label="" 
@@ -70,7 +55,7 @@
           minlength
         </span>
         <input 
-          v-model="field.settings.minlength"
+          v-model="field.settings.minlength.minlength"
           type="number" 
           class="form-control form-input-transparent" 
           aria-label="" 
@@ -85,8 +70,8 @@
           pattern
         </span>
         <input 
-          v-model="field.settings.pattern"
-          type="text" 
+          v-model="field.settings.pattern.pattern"
+          type="number" 
           class="form-control form-input-transparent" 
           aria-label="" 
           aria-describedby="pattern-basic-addon">
@@ -100,7 +85,7 @@
           maxlength
         </span>
         <input 
-          v-model="field.settings.maxlength"
+          v-model="field.settings.maxlength.maxlength"
           type="number" 
           class="form-control form-input-transparent" 
           aria-label="" 
@@ -116,7 +101,7 @@
         required
         </label>
         <input 
-         v-model="field.settings.required"
+         v-model="field.settings.required.required"
          class="form-check-input" 
          type="checkbox" 
          id="text-input-required-setting-check">
@@ -131,7 +116,7 @@
         autocomplete
         </label>
         <input 
-         v-model="field.settings.autocomplete"
+         v-model="field.settings.autocomplete.autocomplete"
          class="form-check-input" 
          type="checkbox" 
          id="text-input-autocomplete-setting-check">
@@ -146,25 +131,10 @@
         disabled
         </label>
         <input 
-         v-model="field.settings.disabled"
+         v-model="field.settings.disabled.disabled"
          class="form-check-input" 
          type="checkbox" 
          id="text-input-autocomplete-setting-check">
-       </div>
-      </div>
-      <div class="col-3 mt-2 mb-2">
-      <div class="form-check form-switch">
-        <label 
-        class="form-check-label" 
-        for="text-input-autocorrect-setting-check"
-        >
-        autocorrect
-        </label>
-        <input 
-         v-model="field.settings.autocorrect"
-         class="form-check-input" 
-         type="checkbox" 
-         id="text-input-autocorrect-setting-check">
        </div>
       </div>
       <div class="col-3 mt-2 mb-2">
@@ -197,13 +167,13 @@
          :id="field.title + '-text-input'" 
          type="tel" 
          :class="'form-control ' + formFieldClasses" 
-         v-model="field.default" 
-         :name="field.name || field.title"  
-         :placeholder="field.placeholder"
-         :autocomplete="field.settings.autocomplete" 
-         :minlength="field.settings.minlength"
-         :maxlength="field.settings.maxlength"
-         :pattern="field.settings.pattern"
+         v-model="field.value" 
+         :name="field.title"  
+         :placeholder="field.settings.placeholder.placeholder"
+         :autocomplete="field.settings.autocomplete.autocomplete" 
+         :minlength="field.settings.minlength.minlength"
+         :maxlength="field.settings.maxlength.maxlength"
+         :pattern="field.settings.pattern.pattern"
          autofocus
          />
      <div 
@@ -225,7 +195,7 @@
           formFieldLabelClasses: String,
           formFieldClasses: String,
           formFieldContainerClasses: String,
-          fieldData: Object,
+          field: Object,
           fieldSettings: {
             type: Boolean,
             default: false
@@ -248,21 +218,60 @@
         data() {
             return {
                    field: {
-                     title: 'tel field title',
-                     name: 'tel',
-                     default: '',
-                     placeholder: 'field',
+                     title: 'field title',
                      image: '',
+                     value: '',
+                     description: '',
+                     name: "",
                      settings:{
-                       type: 'tel',
-                       autocorrect: true,
-                       autocomplete : false,
-                       required : false, 
-                       disabled :  false,
-                       minlength :  3,
-                       maxlength :  20,
-                       component : 'TextInput',
-                       pattern: ""
+                       type: {
+                        id: '',
+                        type: 'text',
+                       },
+                       default: {
+                        id: '',
+                        default: ''
+                       },
+                       placeholder: {
+                        id: '',
+                        placeholder: 'field'
+                       },
+                       autocomplete : {
+                        id: '',
+                        autocomplete : 'off'
+                       },
+                       required : {
+                        id: '',
+                        required : false
+                       }, 
+                       pattern:{
+                        id: '',
+                        pattern: ''
+                       },
+                       disabled :  {
+                        id: '',
+                        disabled :  false
+                       },
+                       minlength : {
+                        id: '',
+                        minlength :  3
+                       },
+                       maxlength :  {
+                        id: '',
+                        maxlength :  20
+                       },
+                       field: {
+                        id: '',
+                        field: "Text"
+                       },
+                       icon: {
+                        id: '',
+                        icon: ''
+                       },
+                       component: {
+                        id: '',
+                        component: 'TextInput'
+                       },
                      }
                  }
             }
@@ -277,15 +286,13 @@
         },
         mounted()
         {
-
+          
         },
         watch: {
           field: {
             handler(newValue, oldValue) {
-
-              //this.fieldData = newValue
-
-              this.$emit("TelInputInput", newValue)
+              this.fieldData = newValue
+              this.$emit("TextInputInput", newValue)
               console.log(this)
 
             const input = document.getElementById(oldValue.title + '-text-input');

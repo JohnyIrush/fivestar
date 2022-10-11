@@ -10,6 +10,7 @@ class FormSection extends Model
     use HasFactory;
 
     protected $fillable = [
+        'form_template_id',
         'title',
         'cover',
         'description'

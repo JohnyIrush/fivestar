@@ -39,6 +39,7 @@ Route::post("form/destroy",[FormController::class,"destroy"]);
 Route::get("form/template/index",[FormTemplateController::class,"index"]);
 Route::get("form/template/create",[FormTemplateController::class,"create"]);
 Route::post("form/template/store",[FormTemplateController::class,"store"]);
+Route::post("form/builder/store",[FormTemplateController::class,"storeForm"]);
 Route::post("form/template/update",[FormTemplateController::class,"update"]);
 Route::delete("form/template/destroy",[FormTemplateController::class,"destroy"]);
 

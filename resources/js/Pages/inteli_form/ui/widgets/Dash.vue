@@ -36,22 +36,56 @@
                 :formFieldLabelClasses="'fs-1 fw-bold text-capitalize display-6 text-left'"
                 :formFieldContainerClasses="'form-field-container'"
                 :fieldData="{
-                     title: 'Form Title',
+                     title: 'field title',
                      image: '',
                      value: '',
-                     description: 'name of the form',
+                     description: '',
                      name: '',
                      settings:{
-                       type: 'text',
-                       placeholder: 'field',
-                       autocomplete : 'off',
-                       required : false, 
-                       disabled :  false,
-                       minlength :  3,
-                       maxlength :  20,
-                       field: 'Text',
-                       icon: '',
-                       component: 'TextInput',
+                       type: {
+                        id: '',
+                        type: 'text',
+                       },
+                       default: {
+                        id: '',
+                        default: ''
+                       },
+                       placeholder: {
+                        id: '',
+                        placeholder: 'field'
+                       },
+                       autocomplete : {
+                        id: '',
+                        autocomplete : 'off'
+                       },
+                       required : {
+                        id: '',
+                        required : false
+                       }, 
+                       disabled :  {
+                        id: '',
+                        disabled :  false
+                       },
+                       minlength : {
+                        id: '',
+                        minlength :  3
+                       },
+                       maxlength :  {
+                        id: '',
+                        maxlength :  20
+                       },
+                       field: {
+                        id: '',
+                        field: 'Text'
+                       },
+                       icon: {
+                        id: '',
+                        icon: ''
+                       },
+                       component: {
+                        id: '',
+                        component: 'TextInput'
+                       },
                      }
                 }"
                 @TextInputInput="updateForm($event,'title')"
@@ -63,19 +97,63 @@
                 :formFieldContainerClasses="'form-field-container'"
                 :fieldData="{
                      title: 'field title',
-                     value: '',
-                     placeholder: 'field',
                      image: '',
+                     value: '',
+                     description: '',
+                     name: '',
                      settings:{
-                       type: 'textarea',
-                       cols: 4,
-                       rows: 6,
-                       autocomplete : 'off',
-                       required : false, 
-                       disabled :  false,
-                       minlength :  3,
-                       maxlength :  20,
-                       component : 'TextAreaInput'
+                       type: {
+                        id: '',
+                        type: 'text',
+                       },
+                       cols: {
+                        id: '',
+                        cols: 4,
+                       },
+                       rows: {
+                        id: '',
+                        rows: 6
+                       },
+                       default: {
+                        id: '',
+                        default: ''
+                       },
+                       placeholder: {
+                        id: '',
+                        placeholder: 'field'
+                       },
+                       autocomplete : {
+                        id: '',
+                        autocomplete : 'off'
+                       },
+                       required : {
+                        id: '',
+                        required : false
+                       }, 
+                       disabled :  {
+                        id: '',
+                        disabled :  false
+                       },
+                       minlength : {
+                        id: '',
+                        minlength :  3
+                       },
+                       maxlength :  {
+                        id: '',
+                        maxlength :  20
+                       },
+                       field: {
+                        id: '',
+                        field: 'Text'
+                       },
+                       icon: {
+                        id: '',
+                        icon: ''
+                       },
+                       component: {
+                        id: '',
+                        component: 'TextInput'
+                       },
                      }
                 }"
                 @TextAreaInputInput="updateForm($event, 'description')"
@@ -188,16 +266,57 @@
                     :formFieldContainerClasses="'form-field-container'"
                     v-model="form.sections[sectionindex].title"
                     :fieldData="{
-                      title: sectionindex + ' Title',
-                      default: sectionindex + ' Title',
-                      placeholder: sectionindex + ' title',
-                      settings:{
-                        autocomplete : 'on',
-                        required : 'true', 
-                        disabled :  'false',
-                        minlength :  '4',
-                        maxlength :  '50',
-                      }
+                     title: 'field title',
+                     image: '',
+                     value: '',
+                     description: '',
+                     name: '',
+                     settings:{
+                       type: {
+                        id: '',
+                        type: 'text',
+                       },
+                       default: {
+                        id: '',
+                        default: ''
+                       },
+                       placeholder: {
+                        id: '',
+                        placeholder: 'field'
+                       },
+                       autocomplete : {
+                        id: '',
+                        autocomplete : 'off'
+                       },
+                       required : {
+                        id: '',
+                        required : false
+                       }, 
+                       disabled :  {
+                        id: '',
+                        disabled :  false
+                       },
+                       minlength : {
+                        id: '',
+                        minlength :  3
+                       },
+                       maxlength :  {
+                        id: '',
+                        maxlength :  20
+                       },
+                       field: {
+                        id: '',
+                        field: 'Text'
+                       },
+                       icon: {
+                        id: '',
+                        icon: ''
+                       },
+                       component: {
+                        id: '',
+                        component: 'TextInput'
+                       },
+                     }
                     }"
                    > 
                    </text-input>
@@ -207,18 +326,65 @@
                     :formFieldContainerClasses="'form-field-container'"
                     v-model="form.sections[sectionindex].description"
                     :fieldData="{
-                      title: sectionindex + ' Description',
-                      default: sectionindex + ' Description',
-                      placeholder: sectionindex + ' description',
-                      settings:{
-                        row: '5',
-                        cols: '6',
-                        autocomplete : 'on',
-                        required : 'true', 
-                        disabled :  'false',
-                        minlength :  '30',
-                        maxlength :  '200',
-                      }
+                     title: 'field title',
+                     image: '',
+                     value: '',
+                     description: '',
+                     name: '',
+                     settings:{
+                       type: {
+                        id: '',
+                        type: 'text',
+                       },
+                       cols: {
+                        id: '',
+                        cols: 4,
+                       },
+                       rows: {
+                        id: '',
+                        rows: 6
+                       },
+                       default: {
+                        id: '',
+                        default: ''
+                       },
+                       placeholder: {
+                        id: '',
+                        placeholder: 'field'
+                       },
+                       autocomplete : {
+                        id: '',
+                        autocomplete : 'off'
+                       },
+                       required : {
+                        id: '',
+                        required : false
+                       }, 
+                       disabled :  {
+                        id: '',
+                        disabled :  false
+                       },
+                       minlength : {
+                        id: '',
+                        minlength :  3
+                       },
+                       maxlength :  {
+                        id: '',
+                        maxlength :  20
+                       },
+                       field: {
+                        id: '',
+                        field: 'Text'
+                       },
+                       icon: {
+                        id: '',
+                        icon: ''
+                       },
+                       component: {
+                        id: '',
+                        component: 'TextAreaInput'
+                       },
+                     }
                     }"
                    > 
                    </text-area-input>
@@ -326,14 +492,14 @@
                   </div>
                   <div class="col-4 align-self-end">
                    <div class="input-group flex-nowrap form-input-type-wrapper">
-                     <span class="input-group-text" id="addon-wrapping" v-html="field.settings.icon"></span>
+                     <span class="input-group-text" id="addon-wrapping" v-html="field.settings.icon.icon"></span>
                      <input 
                         type="text" 
                         class="form-control form-input-type-input" 
                         placeholder="Type" aria-label="Type" 
                         aria-describedby="addon-wrapping" 
                         readonly 
-                        v-model="field.settings.field"
+                        v-model="field.settings.field.field"
                         >
                      <span class="input-group-text" id="addon-wrapping">
                        <modal_button 
@@ -361,7 +527,7 @@
                 </div>
                 <div class="card-body ">
                   <component 
-                   :is="field.settings.component"
+                   :is="field.settings.component.component"
                    :formFieldClasses="' form-input-style'"
                    :formFieldLabelClasses="'fs-1 fw-bold text-capitalize display-6 text-left'"
                    :formFieldContainerClasses="'form-field-container'"
@@ -668,6 +834,7 @@
             modal,
             TextInput,
             TextAreaInput,
+            TelInput,
             PasswordInput,
             EmailInput,
             UrlInput,
@@ -686,29 +853,248 @@
                 selectedType: {
                      title: 'field title',
                      settings:{
+                      field: {
+                        id: '',
+                        field: 'Text'
+                      },
+                      component: {
+                        id: '',
                        component: 'TextInput',
+                      },
+                      icon:{
+                        id: '',
+                        icon: '<i class="fas fa-paragraph fa-2x"></i>'
+                      }
                      }
                 },
                 analytics: [],
                 inputTypes: [
                     {
+                      id: '',
                      title: 'field title',
                      image: '',
                      value: '',
                      description: '',
                      name: "",
                      settings:{
-                       type: 'text',
-                       default: '',
-                       placeholder: 'field',
-                       autocomplete : 'off',
-                       required : false, 
-                       disabled :  false,
-                       minlength :  3,
-                       maxlength :  20,
-                       field: "Text",
-                       icon: '<i class="fas fa-paragraph fa-2x"></i>',
-                       component: 'TextInput',
+                       type: {
+                        id: '',
+                        type: 'text',
+                       },
+                       default: {
+                        id: '',
+                        default: ''
+                       },
+                       placeholder: {
+                        id: '',
+                        placeholder: 'field'
+                       },
+                       autocomplete : {
+                        id: '',
+                        autocomplete : 'off'
+                       },
+                       required : {
+                        id: '',
+                        required : false
+                       }, 
+                       disabled :  {
+                        id: '',
+                        disabled :  false
+                       },
+                       minlength : {
+                        id: '',
+                        minlength :  3
+                       },
+                       maxlength :  {
+                        id: '',
+                        maxlength :  20
+                       },
+                       field: {
+                        id: '',
+                        field: "Text"
+                       },
+                       icon: {
+                        id: '',
+                        icon: '<i class="fas fa-paragraph fa-2x"></i>'
+                       },
+                       component: {
+                        id: '',
+                        component: 'TextInput'
+                       },
+                     }
+                    },
+                    {
+                      id: '',
+                     title: 'field title',
+                     image: '',
+                     value: '',
+                     description: '',
+                     name: '',
+                     settings:{
+                       type: {
+                        id: '',
+                        type: 'textarea',
+                       },
+                       cols: {
+                        id: '',
+                        cols: 4,
+                       },
+                       rows: {
+                        id: '',
+                        rows: 6
+                       },
+                       default: {
+                        id: '',
+                        default: ''
+                       },
+                       placeholder: {
+                        id: '',
+                        placeholder: 'field'
+                       },
+                       autocomplete : {
+                        id: '',
+                        autocomplete : 'off'
+                       },
+                       required : {
+                        id: '',
+                        required : false
+                       }, 
+                       disabled :  {
+                        id: '',
+                        disabled :  false
+                       },
+                       minlength : {
+                        id: '',
+                        minlength :  3
+                       },
+                       maxlength :  {
+                        id: '',
+                        maxlength :  20
+                       },
+                       field: {
+                        id: '',
+                        field: 'Paragraph'
+                       },
+                       icon: {
+                        id: '',
+                        icon: ''
+                       },
+                       component: {
+                        id: '',
+                        component: 'TextAreaInput'
+                       },
+                     }
+                    },
+                    {
+                      id: '',
+                     title: 'field title',
+                     image: '',
+                     value: '',
+                     description: '',
+                     name: '',
+                     settings:{
+                       type: {
+                        id: '',
+                        type: 'tel',
+                       },
+                       default: {
+                        id: '',
+                        default: ''
+                       },
+                       placeholder: {
+                        id: '',
+                        placeholder: 'field'
+                       },
+                       autocomplete : {
+                        id: '',
+                        autocomplete : 'off'
+                       },
+                       required : {
+                        id: '',
+                        required : false
+                       }, 
+                       disabled :  {
+                        id: '',
+                        disabled :  false
+                       },
+                       minlength : {
+                        id: '',
+                        minlength :  3
+                       },
+                       maxlength :  {
+                        id: '',
+                        maxlength :  20
+                       },
+                       pattern : {
+                        id: '',
+                        pattern : '',
+                       },
+                       field: {
+                        id: '',
+                        field: "Phone"
+                       },
+                       icon: {
+                        id: '',
+                        icon: '<i class="fas fa-phone fa-2x"></i>',
+                       },
+                       component: {
+                        id: '',
+                        component: 'TelInput',
+                       },
+                     }
+                    },
+                    {
+                      id: '',
+                     title: 'field title',
+                     image: '',
+                     value: '',
+                     description: '',
+                     name: "",
+                     settings:{
+                       type: {
+                        id: '',
+                        type: 'password',
+                       },
+                       default: {
+                        id: '',
+                        default: ''
+                       },
+                       placeholder: {
+                        id: '',
+                        placeholder: 'field'
+                       },
+                       autocomplete : {
+                        id: '',
+                        autocomplete : 'off'
+                       },
+                       required : {
+                        id: '',
+                        required : false
+                       }, 
+                       disabled :  {
+                        id: '',
+                        disabled :  false
+                       },
+                       minlength : {
+                        id: '',
+                        minlength :  3
+                       },
+                       maxlength :  {
+                        id: '',
+                        maxlength :  20
+                       },
+                       field: {
+                        id: '',
+                        field: "Password",
+                       },
+                       icon: {
+                        id: '',
+                        icon: '<i class="fas fa-lock fa-2x"></i>',
+                       },
+                       component: {
+                        id: '',
+                        component: 'PasswordInput',
+                       },
                      }
                     },
                     {
@@ -718,96 +1104,66 @@
                      description: '',
                      name: "",
                      settings:{
-                       type: "textarea",
-                       default: '',
-                       placeholder: 'field',
-                       autocomplete : 'off',
-                       required : false, 
-                       disabled :  false,
-                       cols: 4,
-                       rows: 6,
-                       minlength :  3,
-                       maxlength :  20,
-                       field: "paragraph",
-                       icon: '<i class="fas fa-water"></i>',
-                       component : 'TextAreaInput',
-                     }
-                    },
-                    {
-                     title: 'field title',
-                     image: '',
-                     value: '',
-                     description: '',
-                     name: "",
-                     settings:{
-                       type: 'tel',
-                       default: '',
-                       placeholder: 'field',
-                       autocomplete : 'off',
-                       required : false, 
-                       disabled :  false,
-                       minlength :  3,
-                       maxlength :  20,
-                       pattern : '',
-                       field: "Text",
-                       icon: '<i class="fas fa-phone fa-2x"></i>',
-                       component: 'TelInput',
-                     }
-                    },
-                    {
-                     title: 'field title',
-                     image: '',
-                     value: '',
-                     description: '',
-                     name: "",
-                     settings:{
-                       type: 'password',
-                       default: '',
-                       placeholder: 'field',
-                       autocomplete : 'off',
-                       required : false, 
-                       disabled :  false,
-                       minlength :  3,
-                       maxlength :  20,
-                       field: "Password",
-                       icon: '<i class="fas fa-lock fa-2x"></i>',
-                       component: 'PasswordInput',
-                     }
-                    },
-                    {
-                     title: 'field title',
-                     image: '',
-                     value: '',
-                     description: '',
-                     name: "",
-                     settings:{
-                       type: 'radio',
-                       default: '',
-                       field: "Radio",
-                       type: "radio",
-                       icon: '<i class="fas fa-dot-circle fa-2x"></i>',
-                       component: 'RadioInput',
+                       type: {
+                        id: '',
+                        type: 'radio'
+                       },
+                       default: {
+                        id: '',
+                        default: ''
+                       },
+                       field: {
+                        id: '',
+                        field: "Radio"
+                       },
+                       type: {
+                        id: '',
+                        type: "radio"
+                       },
+                       icon: {
+                        id: '',
+                        icon: '<i class="fas fa-dot-circle fa-2x"></i>'
+                       },
+                       component: {
+                        id: '',
+                        component: 'RadioInput'
+                       },
                      },
                      options:{
-                      option1: {
-                        name: "option 1",
-                        value: ""
-                      }
+
                      }
                     },
                      {
+                      id: '',
                      title: 'checkbox field', 
                      image: '',
                      value: '',
                      description: '',
                      name: "",
                      settings:{
-                       type: 'checkbox',
-                       default: '',
-                       field: "Checkbox",
-                       type: "checkbox",
-                       icon: '<i class="fas fa-check-square fa-2x"></i>',
-                       component: 'CheckboxInput',
+                       type: {
+                        id: '',
+                        type: 'checkbox'
+                       },
+                       default: {
+                        default: ''
+                       },
+                       field: {
+                        id: '',
+                        field: "Checkbox"
+                       },
+                       type: {
+                        id: '',
+                        type: "checkbox"
+                       },
+                       icon: {
+                        id: '',
+                        icon: '<i class="fas fa-check-square fa-2x"></i>'
+                       },
+                       component: {
+                        id: '',
+                        component: 'CheckboxInput',
+                       },
                      },
                      options:{
                       option1: {
@@ -817,192 +1173,475 @@
                      }
                     },
                     {
+                      id: '',
                      title: 'color field title',
                      name: 'color',
                      image: '',
                      value: '',
                      description: '',
                      settings:{
-                       type: 'color',
-                       required : false, 
-                       disabled :  false,
-                       field: "Color",
-                       type: "color",
-                       icon: '<i class="fas fa-palette fa-2x"></i>',
-                       component: 'ColorInput',
+                       type: {
+                        id: '',
+                        type: 'color'
+                       },
+                       required : {
+                        id: '',
+                        required : false
+                       }, 
+                       disabled :  {
+                        id: '',
+                        disabled :  false
+                       },
+                       field: {
+                        id: '',
+                        field: "Color"
+                       },
+                       type: {
+                        id: '',
+                        type: "color"
+                       },
+                       icon: {
+                        id: '',
+                        icons: '<i class="fas fa-palette fa-2x"></i>',
+                      },
+                       component: {
+                        id: '',
+                        component: 'ColorInput'
+                       },
                      }
                     },
                      {
-                     title: 'color field title',
-                     name: 'color',
+                      id: '',
+                     title: 'field title',
+                     name: '',
                      image: '',
                      value: '',
                      description: '',
                      settings:{
-                       type: 'date',
-                       required : false, 
-                       disabled :  false,
-                       field: "Date",
-                       icon: '<i class="fas fa-calendar-week fa-2x"></i>',
-                       component: 'DateInput',
+                       type: {
+                        id: '',
+                        type: 'date'
+                       },
+                       required : {
+                        id: '',
+                        required : false
+                       }, 
+                       disabled :  {
+                        id: '',
+                        disabled :  false
+                       },
+                       field: {
+                        id: '',
+                        field: "Date"
+                       },
+                       icon: {
+                        id: '',
+                        icon: '<i class="fas fa-calendar-week fa-2x"></i>'
+                       },
+                       component: {
+                        id: '',
+                        component: 'DateInput'
+                       },
                      }
                     },
                      {
-                     title: 'color field title',
-                     name: 'color',
+                      id: '',
+                     title: 'field title',
+                     name: '',
                      image: '',
                      value: '',
                      description: '',
                      settings:{
-                       type: 'time',
-                       required : false, 
-                       disabled :  false,
-                       min: "",
-                       max: "",
-                       field: "Time",
-                       icon: '<i class="fas fa-clock fa-2x"></i>',
-                       component: 'TimeInput',
+                       type: {
+                        id: '',
+                        type: 'time'
+                       },
+                       required : {
+                        id: '',
+                        required : false
+                       }, 
+                       disabled :  {
+                        id: '',
+                        disabled :  false
+                       },
+                       min: {
+                        id: '',
+                        min :  ''
+                       },
+                       max: {
+                        id: '',
+                        max: ""
+                       },
+                       field: {
+                        id: '',
+                        field: "Time"
+                       },
+                       icon: {
+                        id: '',
+                        icon: '<i class="fas fa-clock fa-2x"></i>'
+                       },
+                       component: {
+                        id: '',
+                        component: 'TimeInput'
+                       },
                      }
                     },
                     {
+                      id: '',
                      title: 'email field title',
                      name: '',
                      image: '',
                      value: '',
                      description: '',
                      settings:{
-                       type: 'email',
-                       default: '',
-                       placeholder: 'field',
-                       autocomplete : 'off',
-                       required : false, 
-                       disabled :  false,
-                       minlength :  3,
-                       maxlength :  20,
-                       size: '',
-                       field: "Email",
-                       icon: '<i class="fas fa-inbox fa-2x"></i>',
-                       component: 'EmailInput',
+                       type: {
+                        id: '',
+                        type: 'email'
+                       },
+                       default: {
+                        id: '',
+                        default: ''
+                       },
+                       placeholder: {
+                        id: '',
+                        placeholder: 'field'
+                       },
+                       autocomplete : {
+                        id: '',
+                        autocomplete : 'off'
+                       },
+                       required : {
+                        id: '',
+                        required : false
+                       }, 
+                       disabled :  {
+                        id: '',
+                        disabled :  false
+                       },
+                       minlength :  {
+                        id: '',
+                        minlength :  3
+                       },
+                       maxlength :  {
+                        id: '',
+                        maxlength :  20,
+                       },
+                       size: {
+                        id: '',
+                        size: ''
+                       },
+                       field: {
+                        id: '',
+                        field: "Email"
+                       },
+                       icon: {
+                        id: '',
+                        icon: '<i class="fas fa-inbox fa-2x"></i>'
+                       },
+                       component: {
+                        id: '',
+                        component: 'EmailInput'
+                       },
                      }
 
                     },
                     {
-                     title: 'email field title',
+                      id: '',
+                     title: 'field title',
                      name: '',
                      image: '',
                      value: '',
                      description: '',
                      settings:{
-                       type: 'file',
-                       required : false, 
-                       disabled :  false,
-                       multiple: false,
-                       accept: "",
-                       field: "File Upload",
-                       type: "file",
-                       icon: '<i class="fas fa-upload fa-2x"></i>',
-                       component: 'FileInput',
+                       type: {
+                        id: '',
+                        type: 'file'
+                       },
+                       required : {
+                        id: '',
+                        required : false
+                       }, 
+                       disabled :  {
+                        id: '',
+                        disabled :  false
+                       },
+                       multiple: {
+                        id: '',
+                        multiple: false
+                       },
+                       accept: {
+                        id: '',
+                        accept: ""
+                       },
+                       maxNoOfFiles:{
+                        id: '',
+                        maxNoOfFiles: ''
+                       },
+                       maxFileSize:{
+                        id: '',
+                        maxFileSize: ''
+                       },
+                       field: {
+                        id: '',
+                        field: "File Upload"
+                       },
+                       type: {
+                        id: '',
+                        type: "file"
+                       },
+                       icon: {
+                        id: '',
+                        icon: '<i class="fas fa-upload fa-2x"></i>'
+                       },
+                       component: {
+                        id: '',
+                        component: 'FileInput'
+                       },
                      }
                     },
                    {
+                    id: '',
                      title: 'number field title',
                      name: '',
                      image: '',
                      value: '',
                      description: '',
                      settings:{
-                       type: 'number',
-                       autocorrect: true,
-                       autocomplete : false,
-                       required : false, 
-                       disabled :  false,
-                       minlength :  3,
-                       maxlength :  20,
-                       pattern: "",
-                       icon: '<i class="fas fa-sort-numeric-up-alt fa-2x"></i>',
-                       component: 'NumberInput',
+                       type: {
+                        id: '',
+                        type: 'number'
+                       },
+                       autocorrect: {
+                        id: '',
+                        autocorrect: true
+                       },
+                       autocomplete : {
+                        id: '',
+                        autocomplete : false
+                       },
+                       placeholder: {
+                        id: '',
+                        placeholder: 'field'
+                       },
+                       required : {
+                        id: '',
+                        required : false
+                       }, 
+                       disabled :  {
+                        id: '',
+                        disabled :  false
+                       },
+                       minlength :  {
+                        id: '',
+                        minlength :  3
+                       },
+                       maxlength :  {
+                        id: '',
+                        maxlength :  20
+                       },
+                       field: {
+                        id: '',
+                        field: "Number"
+                       },
+                       icon: {
+                        id: '',
+                        icon: '<i class="fas fa-sort-numeric-up-alt fa-2x"></i>'
+                       },
+                       component: {
+                        id: '',
+                        component: 'NumberInput'
+                       },
                      }
                     },
                     {
+                      id: '',
                      title: 'field title',
                      name: '',
                      image: '',
                      value: '',
                      description: '',
                      settings:{
-                       type: 'range',
-                       autocorrect: true,
-                       autocomplete : false,
-                       required : false, 
-                       disabled :  false,
-                       min :  3,
-                       max :  20,
-                       field: "Range",
-                       type: "range",
-                       icon: '<i class="fas fa-weight fa-2x"></i>',
-                       component: 'RangeInput',
+                       type: {
+                        id: '',
+                        type: 'range'
+                       },
+                       autocorrect: {
+                        id: '',
+                        autocorrect: true
+                       },
+                       autocomplete : {
+                        id: '',
+                        autocomplete : false
+                       },
+                       required : {
+                        id: '',
+                        required : false
+                       }, 
+                       disabled :  {
+                        id: '',
+                        disabled :  false
+                       },
+                       min :  {
+                        id: '',
+                        min :  20
+                       },
+                       max :  {
+                        id: '',
+                        max :  20
+                       },
+                       field: {
+                        id: '',
+                        field: "Range"
+                       },
+                       type: {
+                        id: '',
+                        type: "range"
+                       },
+                       icon: {
+                        id: '',
+                        icon: '<i class="fas fa-weight fa-2x"></i>'
+                       },
+                       component: {
+                        id: '',
+                        component: 'RangeInput',
+                       }
                      }
                     },
                     {
+                      id: '',
                      title: 'field title',
                      name: '',
                      image: '',
                      value: '',
                      description: '',
                      settings:{
-                       type: 'tel',
-                       autocorrect: true,
-                       autocomplete : false,
-                       required : false, 
-                       disabled :  false,
-                       minlength :  3,
-                       maxlength :  20,
-                       field: "Search",
-                       type: "search",
-                       icon: '<i class="fas fa-search fa-2x"></i>',
-                       component: 'SearchInput',
+                       type: {
+                        id: '',
+                        type: 'tel'
+                       },
+                       placeholder: {
+                        id: '',
+                        placeholder: true
+                       },
+                       default: {
+                        id: '',
+                        default: true
+                       },
+                       autocorrect: {
+                        id: '',
+                        autocorrect: true
+                       },
+                       autocomplete : {
+                        id: '',
+                        autocomplete : false
+                       },
+                       required : {
+                        id: '',
+                        required : false
+                       }, 
+                       disabled :  {
+                        id: '',
+                        disabled :  false
+                       },
+                       minlength : {
+                        id: '',
+                        minlength :  3
+                       },
+                       maxlength :  {
+                        id: '',
+                        maxlength :  20
+                       },
+                       field: {
+                        id: '',
+                        field: "Search"
+                       },
+                       type: {
+                        id: '',
+                        type: "search",
+                       },
+                       icon: {
+                        id: '',
+                        icon: '<i class="fas fa-search fa-2x"></i>'
+                       },
+                       component: {
+                        id: '',
+                        component: 'SearchInput'
+                       },
                      }
                     },
                     {
+                      id: '',
                      title: 'field title',
                      name: '',
                      image: '',
                      value: '',
                      description: '',
                      settings:{
-                       type: 'url',
-                       autocorrect: true,
-                       autocomplete : false,
-                       required : false, 
-                       disabled :  false,
-                       minlength :  3,
-                       maxlength :  20,
-                       pattern: "",
-                       field: "Url",
-                       type: "url",
-                       icon: '<i class="fas fa-link fa-2x"></i>',
-                       component: 'UrlInput',
+                       type: {
+                        id: '',
+                        type: 'url'
+                       },
+                       autocorrect: {
+                        id: '',
+                        autocorrect: true
+                       },
+                       autocomplete : {
+                        id: '',
+                        autocomplete : false
+                       },
+                       required : {
+                        id: '',
+                        required : false
+                       }, 
+                       disabled :  {
+                        id: '',
+                        disabled :  false
+                       },
+                       minlength :  {
+                        id: '',
+                        minlength :  3
+                       },
+                       maxlength : {
+                        id: '',
+                        maxlength :  20
+                       },
+                       pattern: {
+                        id: '',
+                        pattern: ""
+                       },
+                       field: {
+                        id: '',
+                        field: "Url"
+                       },
+                       type: {
+                        id: '',
+                        type: "url"
+                       },
+                       icon: {
+                        id: '',
+                        icon: '<i class="fas fa-link fa-2x"></i>'
+                       },
+                       component: {
+                        id: '',
+                        component: 'UrlInput'
+                       },
                      }
                     },
                 ],
                 form:
                 {
+                  id: '',
                   title: '',
                   description: '',
                   cover: '',
                   sections:{
-                    section1:
-                    {
-                      title: "",
-                      description: "",
-                      cover: '',
-                      fields:{
 
-                      }
-                    }
                   },
                 },
-                updateTypeIndex: "",
+                updateTypeIndex: {
+                  index: '',
+                  sectionindex: '',
+                },
                 editMode: {
                   fieldindex: 'form-header',
                   sectionindex: '',
@@ -1105,10 +1744,11 @@
               //console.log(this.form.fields[index])
               this.addSection(sectionindex, 
                                 {
+                                  id: '',
                                   title: this.form.sections[sectionindex].title,
                                   description: this.form.sections[sectionindex].description,
                                   cover: this.form.sections[sectionindex].cover,
-                                  fields: this.form.sections[sectionindex].fields
+                                  fields: this.form.sections[sectionindex][fields]
                                 },'',
                                 sectionindex
                 )
@@ -1119,11 +1759,12 @@
               //console.log(this.form.fields[index])
               this.addField(index, 
                                   {
-                                  title: this.form.sections[sectionindex].fields[index].title,
-                                  name: this.form.sections[sectionindex].fields[index].name,
+                                    id: '',
+                                  title: this.form.sections[sectionindex][fields][index].title,
+                                  name: this.form.sections[sectionindex][fields][index].name,
                                   default: '',
-                                  image: this.form.sections[sectionindex].fields[index].image,
-                                  settings: this.form.sections[sectionindex].fields[index].settings
+                                  image: this.form.sections[sectionindex][fields][index].image,
+                                  settings: this.form.sections[sectionindex][fields][index].settings
                                 },'',
                                 sectionindex
                 )
@@ -1169,14 +1810,15 @@
           {
             delete this.form.sections[sectionindex].fields[index]
           },
-          setTypeUpdateIndex(index)
+          setTypeUpdateIndex(index, sectionindex)
           {
-            this.updateTypeIndex = index
+            this.updateTypeIndex.index = index
+            this.updateTypeIndex.sectionindex = sectionindex
           },
-          updateFieldType(index)
+          updateFieldType(index, sectionindex)
           {
             //console.log("type",this.selectedType, "field",this.form.fields[index])
-            this.form.fields[index].settings = this.selectedType.settings
+            this.form.sections[sectionindex].fields[index].settings = this.selectedType.settings
           },
           addSection(index, value = {}, key = "")
           {
@@ -1189,6 +1831,10 @@
 
             var section = !(this.isEmpty(value))? value: 
                                                 {
+                                                  id: '',
+                                                  title: '',
+                                                  description: '',
+                                                  cover: '',
                                                   fields:{
 
                                                   }
@@ -1216,7 +1862,12 @@
           },
           addField(index, value = {}, key = "", sectionindex =  "")
           {
-            var keys = Object.keys(this.form.sections[sectionindex].fields)
+            if(!Object.keys(this.form.sections).includes(sectionindex))
+            {
+              this.addSection(sectionindex)
+            }
+
+            var keys = Object.keys(this.form.sections[sectionindex]['fields'])
 
             var fieldName = !(key.length === 0)? 
                             key:"field" + 
@@ -1224,6 +1875,7 @@
 
             var field = !(this.isEmpty(value))? value: 
                                                 {
+                                                  id: '',
                                                 title: fieldName,
                                                 name: fieldName,
                                                 default: '',
@@ -1233,7 +1885,7 @@
 
             if(keys.length == 0)
             {
-             this.form.sections[sectionindex].fields[fieldName] =  field;
+             this.form.sections[sectionindex]['fields'][fieldName] =  field;
             } 
             else
             {
@@ -1241,11 +1893,11 @@
 
              if (position >= keys.length)
              {
-              this.form.sections[sectionindex].fields = this.addToObject(this.form.sections[sectionindex].fields, fieldName, field)
+              this.form.sections[sectionindex]['fields'] = this.addToObject(this.form.sections[sectionindex]['fields'], fieldName, field)
              }
              else
              {
-              this.form.sections[sectionindex].fields = this.addToObject(this.form.sections[sectionindex].fields, fieldName, field, position)
+              this.form.sections[sectionindex]['fields'] = this.addToObject(this.form.sections[sectionindex]['fields'], fieldName, field, position)
              }
             }
 
@@ -1258,7 +1910,7 @@
           selectInputType(type)
           {
             this.selectedType = type;
-            this.updateFieldType(this.updateTypeIndex)
+            this.updateFieldType(this.updateTypeIndex.index,this.updateTypeIndex.sectionindex)
 
           },
           inputTypeDropdown()
@@ -1296,7 +1948,11 @@
           form: {
             handler(newValue, oldValue)
             {
-              console.log(newValue)
+              axios.post('form/builder/store',newValue)
+              .then((response)=>{
+                console.log(response)
+                this.form = response.data
+              })
             },
             deep: true
           }

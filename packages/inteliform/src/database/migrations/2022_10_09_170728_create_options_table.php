@@ -16,9 +16,9 @@ class CreateOptionsTable extends Migration
         Schema::create('options', function (Blueprint $table) {
             $table->id();
             $table->integer("field_id");
-            $table->string("key");
-            $table->string("value");
-            $table->string("image");
+            $table->string("key")->nullable();
+            $table->string("value")->nullable();
+            $table->string("image")->nullable();
             $table->timestamps();
         });
     }

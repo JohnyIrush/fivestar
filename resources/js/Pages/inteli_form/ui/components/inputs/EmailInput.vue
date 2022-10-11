@@ -25,7 +25,7 @@
           Placeholder
         </span>
         <input 
-          v-model="field.placeholder"
+          v-model="field.settings.placeholder.placeholder"
           type="text" 
           class="form-control form-input-transparent" 
           aria-label="" 
@@ -55,7 +55,7 @@
           Default
         </span>
         <input 
-          v-model="field.default"
+          v-model="field.settings.default.default"
           type="text" 
           class="form-control form-input-transparent" 
           aria-label="" 
@@ -70,7 +70,7 @@
           minlength
         </span>
         <input 
-          v-model="field.settings.minlength"
+          v-model="field.settings.minlength.minlength"
           type="number" 
           class="form-control form-input-transparent" 
           aria-label="" 
@@ -81,26 +81,11 @@
       <div class="input-group ">
         <span 
           class="input-group-text" 
-          id="pattern-basic-addon">
-          pattern
-        </span>
-        <input 
-          v-model="field.settings.pattern"
-          type="text" 
-          class="form-control form-input-transparent" 
-          aria-label="" 
-          aria-describedby="pattern-basic-addon">
-       </div>
-      </div>
-      <div class="col-3 mt-2 mb-2">
-      <div class="input-group ">
-        <span 
-          class="input-group-text" 
           id="maxlength-basic-addon">
           maxlength
         </span>
         <input 
-          v-model="field.settings.maxlength"
+          v-model="field.settings.maxlength.maxlength"
           type="number" 
           class="form-control form-input-transparent" 
           aria-label="" 
@@ -116,7 +101,7 @@
         required
         </label>
         <input 
-         v-model="field.settings.required"
+         v-model="field.settings.required.required"
          class="form-check-input" 
          type="checkbox" 
          id="text-input-required-setting-check">
@@ -131,7 +116,7 @@
         autocomplete
         </label>
         <input 
-         v-model="field.settings.autocomplete"
+         v-model="field.settings.autocomplete.autocomplete"
          class="form-check-input" 
          type="checkbox" 
          id="text-input-autocomplete-setting-check">
@@ -146,7 +131,7 @@
         disabled
         </label>
         <input 
-         v-model="field.settings.disabled"
+         v-model="field.settings.disabled.disabled"
          class="form-check-input" 
          type="checkbox" 
          id="text-input-autocomplete-setting-check">
@@ -161,7 +146,7 @@
         autocorrect
         </label>
         <input 
-         v-model="field.settings.autocorrect"
+         v-model="field.settings.autocorrect.autocorrect"
          class="form-check-input" 
          type="checkbox" 
          id="text-input-autocorrect-setting-check">
@@ -199,11 +184,10 @@
          :class="'form-control ' + formFieldClasses" 
          v-model="field.default" 
          :name="field.name || field.title"  
-         :placeholder="field.placeholder"
-         :autocomplete="field.settings.autocomplete" 
-         :minlength="field.settings.minlength"
-         :maxlength="field.settings.maxlength"
-         :pattern="field.settings.pattern"
+         :placeholder="field.settings.placeholder.placeholder"
+         :autocomplete="field.settings.autocomplete.autocomplete" 
+         :minlength="field.settings.minlength.minlength"
+         :maxlength="field.settings.maxlength.maxlength"
          autofocus
          />
      <div 
@@ -251,22 +235,66 @@
                      title: 'email field title',
                      name: '',
                      image: '',
+                     value: '',
                      description: '',
                      settings:{
-                       type: 'file',
-                       required : false, 
-                       disabled :  false,
-                       multiple: false,
-                       accept: "",
-                       field: "File Upload",
-                       type: "file",
-                       icon: '<i class="fas fa-upload fa-2x"></i>',
-                       component: 'FileInput',
+                       type: {
+                        id: '',
+                        type: 'email'
+                       },
+                       default: {
+                        id: '',
+                        default: ''
+                       },
+                       placeholder: {
+                        id: '',
+                        placeholder: 'field'
+                       },
+                       autocomplete : {
+                        id: '',
+                        autocomplete : 'off'
+                       },
+                       autocorrect : {
+                        id: '',
+                        autocorrect : 'off'
+                       },
+                       required : {
+                        id: '',
+                        required : false
+                       }, 
+                       disabled :  {
+                        id: '',
+                        disabled :  false
+                       },
+                       minlength :  {
+                        id: '',
+                        minlength :  3
+                       },
+                       maxlength :  {
+                        id: '',
+                        maxlength :  20,
+                       },
+                       size: {
+                        id: '',
+                        size: ''
+                       },
+                       field: {
+                        id: '',
+                        field: "Email"
+                       },
+                       icon: {
+                        id: '',
+                        icon: '<i class="fas fa-inbox fa-2x"></i>'
+                       },
+                       component: {
+                        id: '',
+                        component: 'EmailInput'
+                       },
                      }
-                 }
-            }
-        },
 
+            }
+          }
+        },
         methods: {
 
         },
@@ -289,7 +317,7 @@
             const input = document.getElementById(oldValue.title + '-text-input');
 
             //console.log("field", newValue)
-            if (newValue.settings.disabled)
+            /*if (newValue.settings.disabled)
             {
               //input.disabled = newValue.settings.disabled
             }
@@ -303,7 +331,7 @@
               input.required = newValue.settings.required
             }else{
               //input.removeAttribute("required")
-            }
+            }*/
             },
             deep: true
           }
