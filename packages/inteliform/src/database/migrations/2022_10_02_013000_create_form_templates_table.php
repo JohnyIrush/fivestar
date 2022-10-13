@@ -18,6 +18,7 @@ class CreateFormTemplatesTable extends Migration
             $table->string("title")->nullable();
             $table->string("cover")->nullable();
             $table->text("description")->nullable();
+            $table->longText("sections")->nullable();
             $table->timestamps();
         });
     }

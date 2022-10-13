@@ -15,12 +15,12 @@ class CreateFormsTable extends Migration
     {
         Schema::create('forms', function (Blueprint $table) {
             $table->id();
-            // v1 - google
-            //$table->string("documentTitle");
-            //$table->string("formId");
-            //$table->string("revisionId");
-            //$table->string("responderUri");
-            //$table->string("linkedSheetId");
+            $table->integer("form_template_id");
+            $table->integer("user_id");
+            $table->string("title")->nullable();
+            $table->string("cover")->nullable();
+            $table->text("description")->nullable();
+            $table->longText("sections")->nullable();
             $table->timestamps();
         });
     }

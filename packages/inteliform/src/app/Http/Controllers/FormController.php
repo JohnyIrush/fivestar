@@ -55,7 +55,30 @@ class FormController extends Controller
      */
     public function store(StoreFormRequest $request)
     {
-        //
+        $formTemplate = [];
+        //return response()->json($request->input("sections"));
+    
+        $form = FormModel::updateOrCreate(
+            ['id' => $request->id],
+            [
+            "title" => $request->title,
+            "user_id" => 1,//$request->user_id,
+            "form_template_id" => 1, //$request->form_template_id
+            "cover" => $request->cover,
+            "description" => $request->description,
+            "sections" => json_encode($request->input("sections"))
+           ]
+        );
+
+        $formTemplate['id'] = $form->id;
+        $formTemplate['title'] = $form->title;
+        $formTemplate['form_template_id'] = $form->form_template_id;
+        $formTemplate['description'] = $form->description;
+        $formTemplate['cover'] = $form->cover;
+        $formTemplate['sections'] = $form->sections;
+
+
+        return json_encode($formTemplate);
     }
 
     /**

@@ -13,6 +13,7 @@ class FormTemplate extends Model
         'title',
         'cover',
         'description',
+        'sections'
         
     ];
 

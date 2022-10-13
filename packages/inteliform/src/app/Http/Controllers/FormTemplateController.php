@@ -35,7 +35,7 @@ class FormTemplateController extends Controller
      */
     public function index()
     {
-        //
+        return response()->json(FormTemplate::all());
     }
 
     /**
@@ -69,11 +69,13 @@ class FormTemplateController extends Controller
     public function formBuilderLastId(Record $record, FormTemplate $formTemplate, FormSection $formSection, Field $field, FieldSetting $fieldSetting, Option $option)
     {
         return response()->json([
-            'form' => ($formTemplate::count() > 1)? $record->lastRecord($formTemplate)->id: 0,
-            'section' => ($formSection::count() > 1)? $record->lastRecord($formSection)->id: 0,
-            'field' => ($field::count() > 1)? $record->lastRecord($field)->id: 0,
-            'setting' => ($fieldSetting::count() > 1)? $record->lastRecord($fieldSetting)->id: 0,
-            'option' => ($option::count() > 1)? $record->lastRecord($option)->id: 0,
+            'form' => ($formTemplate::count() >= 1)? $record->lastRecord($formTemplate)->id: 0,
+            /*
+            'section' => ($formSection::count() >= 1)? $record->lastRecord($formSection)->id: 0,
+            'field' => ($field::count() >= 1)? $record->lastRecord($field)->id: 0,
+            'setting' => ($fieldSetting::count() >= 1)? $record->lastRecord($fieldSetting)->id: 0,
+            'option' => ($option::count() >= 1)? $record->lastRecord($option)->id: 0,
+            */
         ]);
     }
 
@@ -82,21 +84,33 @@ class FormTemplateController extends Controller
     {  
         //return response()->json($request);
 
+        $formdetails = FormTemplate::updateOrCreate(
+            ['id' => $request->id],
+            [
+            "title" => $request->title,
+            "cover" => $request->cover,
+            "description" => $request->description,
+            "sections" => json_encode($request->input("sections"))
+           ]
+        );
+
+        /*
+        $formdetails = FormTemplate::updateOrCreate(
+            ['id' => $request->id],
+            [
+            "title" => $request->title,
+            "cover" => $request->cover,
+            "description" => $request->description,
+             "sections" => $request->sections
+           ]
+        );
+
         $formTemplate = [
             "id" => '',
             "title" => '',
             "description" => '',
             "cover" => '',
             "sections" => [
-                /*
-                "fields" => [
-                    "settings" => [
-
-                    ],
-                    "options" => [
-
-                    ]
-                    */
                 ]
            ];
 
@@ -106,6 +120,7 @@ class FormTemplateController extends Controller
                     "title" => $request->title,
                     "cover" => $request->cover,
                     "description" => $request->description,
+                     "sections" => $request->sections
                    ]
                 ); 
                 //return response()->json($formdetails);
@@ -204,9 +219,10 @@ class FormTemplateController extends Controller
                     }
 
                   }
-                }  
+                }*/  
 
-        return json_encode($formTemplate);
+        //return json_encode($formTemplate);
+        return json_encode($formdetails);
     }
 
     /**

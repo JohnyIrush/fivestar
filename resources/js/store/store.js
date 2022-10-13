@@ -6,6 +6,16 @@ import { createStore } from 'vuex'
 export const store = createStore({
     state () {
       return {
+        Application:{
+            inteliform:{
+                Template: {
+                    
+                },
+                Builder: {
+
+                },
+            }
+        },
         school :{
             sch_name: 'Inteli School',
             sch_email: '',

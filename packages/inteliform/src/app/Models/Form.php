@@ -9,6 +9,15 @@ class Form extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'title',
+        "user_id",
+        "form_template_id",
+        'cover',
+        'description',
+        'sections'
+    ];
+
  /* Google Forms Api structure not usefull
     public function formInfo()
     {
