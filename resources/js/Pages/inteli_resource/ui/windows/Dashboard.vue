@@ -18,5 +18,10 @@
 </script>
 
 <style scoped>
+main
+{
+    background: linear-gradient(purple, pink) !important;
+    background-size: cover !important;
+}
 
 </style>

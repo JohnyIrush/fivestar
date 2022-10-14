@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateFormTemplatesTable extends Migration
+class CreateScreenShotsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,8 @@ class CreateFormTemplatesTable extends Migration
      */
     public function up()
     {
-        Schema::create('form_templates', function (Blueprint $table) {
+        Schema::create('screen_shots', function (Blueprint $table) {
             $table->id();
-            $table->string("title")->nullable();
-            $table->string("cover")->nullable();
-            $table->text("description")->nullable();
-            $table->longText("sections")->nullable();
-            $table->longText("image")->nullable();
             $table->timestamps();
         });
     }
@@ -31,6 +26,6 @@ class CreateFormTemplatesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('form_templates');
+        Schema::dropIfExists('screen_shots');
     }
 }

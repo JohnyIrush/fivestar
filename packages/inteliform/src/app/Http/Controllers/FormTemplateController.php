@@ -84,15 +84,25 @@ class FormTemplateController extends Controller
     {  
         //return response()->json($request);
 
+        $formTemplate = [];
+
         $formdetails = FormTemplate::updateOrCreate(
             ['id' => $request->id],
             [
             "title" => $request->title,
             "cover" => $request->cover,
             "description" => $request->description,
-            "sections" => json_encode($request->input("sections"))
+            "sections" => json_encode($request->input("sections")),
+            "image" => $request->image,
            ]
         );
+
+        $formTemplate['id'] = $formdetails->id;
+        $formTemplate['title'] = $formdetails->title;
+        $formTemplate['image'] = $formdetails->image;
+        $formTemplate['description'] = $formdetails->description;
+        $formTemplate['cover'] = $request->input("sections");
+        $formTemplate['sections'] = $formdetails->sections;
 
         /*
         $formdetails = FormTemplate::updateOrCreate(
@@ -221,8 +231,7 @@ class FormTemplateController extends Controller
                   }
                 }*/  
 
-        //return json_encode($formTemplate);
-        return json_encode($formdetails);
+        return json_encode($formTemplate);
     }
 
     /**

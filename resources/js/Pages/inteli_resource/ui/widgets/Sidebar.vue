@@ -49,9 +49,13 @@
 </script>
 
 <style scoped>
-.sec-bg-color
+
+aside
 {
-    background-color: rgb(149, 149, 245) !important;
+
+    background: linear-gradient(purple, pink);
+    background-size: cover;
+    padding: 15px;
 }
 
 hr {
@@ -59,6 +63,50 @@ hr {
     height: 3px !important;
     color: black !important; /* old IE */
     background-color: black !important; /* Modern Browsers */
+}
+
+aside
+{
+
+    background: linear-gradient(purple, pink);
+    background-size: cover;
+    padding: 15px;
+}
+
+.glass-container
+{
+    /*position: relative;
+    min-height: calc(100vh - 280);
+    width: calc(100% - 100px);*/
+    background: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 15px 35px rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    justify-content: space-between;
+}
+
+.glass-header
+{
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-top: 1px solid rgba(255, 255, 255, 0.25);
+    border-left: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+/*Content*/
+
+.glass-content
+{
+    transform: translateX(-100);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
+    /*border-radius: 20px;*/
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-top: 1px solid rgba(255, 255, 255, 0.25);
+    border-left: 1px solid rgba(255, 255, 255, 0.5);
+    padding: 5px;
 }
 
 </style>

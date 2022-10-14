@@ -43,6 +43,14 @@
           </Link>
         </li>
         <li class="nav-item">
+          <Link class="nav-link  "  :href="route('screen-shot')">
+            <div class="icon text-white bg-gradient-info shadow border-radius-md text-center d-flex align-items-center justify-content-center">
+              <i class="fas fa-camera fa-2x"></i>
+            </div>
+            <span class="nav-link-text ms-1">Screen Shot</span>
+          </Link>
+        </li>
+        <li class="nav-item">
           <Link class="nav-link " :href="route('settings')">
             <div class="icon text-white bg-gradient-info shadow border-radius-md text-center d-flex align-items-center justify-content-center">
               <i class="fa fa-cogs fa-2x" aria-hidden="true"></i>

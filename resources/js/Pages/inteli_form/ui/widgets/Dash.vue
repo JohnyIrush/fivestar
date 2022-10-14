@@ -32,7 +32,8 @@
                 <div class="glass-content">
                   <div class="row">
                     <div class="col-3" v-for="form in formTemplates" :key="form.id">
-                      <builder :Mode="false" :formData="form"></builder>
+                      <img :src="form.image">
+                      <p>{{form.title}}</p>
                     </div>
                   </div>
                 </div>
@@ -166,7 +167,8 @@
         },
         data() {
             return {
-              formTemplates: {}
+              formTemplates: {},
+              Deltadata: {deltaname:'deltaname'}
             }
 
         },

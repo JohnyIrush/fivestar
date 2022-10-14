@@ -39,7 +39,7 @@
             <div class="card-body" v-if="Mode">
               <div class="row">
                 <div class="d-flex flex-column">
-                  <p class="display-1"> {{(isEmpty(formData)? formData.title : form.title)}} {{JSON.stringify(formData)}} </p>
+                  <p class="display-1"> {{(isEmpty(formData)? formData.title : form.title)}} </p>
                   <p class="">{{(isEmpty(formData)? formData.description : form.description)}}</p>
                 </div>
               </div>
@@ -728,6 +728,125 @@
         </draggable>
         <!-- END FORM BUILDER BODY-->
        </div>
+       <!--START FORM BUILDER SCREENSHOT-->
+       <div  id="form-builder-screenshot" class="card text-center glass-content" style="position: absolute !important; top: -10000px !important;">
+        <!-- START FORM BUILDER HEADER-->
+        <div 
+          class="row" 
+          >
+         <div class="col-12 col-lg-11 col-xl-11">
+          <!-- FORM TITLE AND DESCRIPTION -->
+           <div class="card glass-content mt-2 mb-2">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-12">
+                  <img src="/images/form/inteliform.jpg" class="w-100 form-cover-image" alt="">
+                </div>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="row">
+                <div class="d-flex flex-column">
+                  <p class="display-1"> {{form.title}} </p>
+                  <p class="">{{form.description}}</p>
+                </div>
+              </div>
+            </div>
+           </div>
+          <!-- FORM TITLE AND DESCRIPTION -->
+         </div>
+        </div>
+        <!-- END FORM BUILDER HEADER-->
+        <!-- START FORM BUILDER BODY-->
+        <draggable 
+          class="dragArea list-group w-full" 
+          :list="form.sections" 
+          @change="log"
+        >
+        <div 
+          class="row"
+          v-for="(section, sectionindex) in form.sections" 
+          :key="sectionindex" 
+          >   
+           <div class="col-12 card">
+            <div class="card-header" >
+           <div class="col-12">
+            <div class="row">
+              <!-- START FORM SECTION TITLE AND DESCRIPTION -->
+              <div class="col-12 col-lg-11 col-xl-11">
+               <div class="card glass-content mt-2 mb-2">
+                 <div class="card-body" v-if="!Mode">
+                   <div class="row">
+                     <div class="d-flex flex-column">
+                       <p class="display-1"> {{section.title}} </p>
+                       <p class="">{{section.desription}}</p>
+                     </div>
+                   </div>
+                </div>
+               </div>
+              </div>
+              <!-- END FORM SECTION TITLE AND DESCRIPTION -->
+            </div>
+           </div>
+            </div>
+            <div class="card-body">
+              <draggable 
+               class="dragArea list-group w-full" 
+               :list="form.sections[sectionindex].fields" 
+               @change="log">
+          <div class="row">
+           <div
+             class="col-6"
+             v-for="(field, index) in form.sections[sectionindex].fields" 
+             :key="index" 
+             @click="toggleEditMode(index,sectionindex)" 
+           >
+            <div class="row">
+              <div class="col-12">
+               <div class="card glass-content mt-2 mb-2">
+                <div class="card-body ">
+                  <component 
+                   :is="field.settings.component.component"
+                   :formFieldClasses="' form-input-style'"
+                   :formFieldLabelClasses="'fs-1 fw-bold text-capitalize display-6 text-left'"
+                   :formFieldContainerClasses="'form-field-container'"
+                   :fieldData="field"
+                   :optionid="optionid"
+                   :fieldSettings="((editMode.fieldindex == index) 
+                                    && 
+                                    (editMode.sectionindex == sectionindex) && Mode)"
+                   @TextInputInput="updateField($event,index, sectionindex)"
+                   @TextAreaInputInput="updateField($event,index, sectionindex)"
+                   @TelInputInput="updateField($event,index)"
+                   @PasswordInputInput="updateField($event,index, sectionindex)"
+                   @EmailInputInput="updateField($event,index, sectionindex)"
+                   @UrlInputInput="updateField($event,index)"
+                   @SearchInputInput="updateField($event,index, sectionindex)"
+                   @NumberInputInput="updateField($event,index, sectionindex)"
+                   @DateInputInput="updateField($event,index, sectionindex)"
+                   @TimeInputInput="updateField($event,index)"
+                   @RadioInputInput="updateField($event,index, sectionindex)"
+                   @CheckboxInputInput="updateField($event,index, sectionindex)"
+                   @FileInputInput="updateField($event,index, sectionindex)"
+                   @ColorInputInput="updateField($event,index, sectionindex)"
+                   @DeleteFieldOption="deleteFieldOption"
+                  >
+                  </component>
+                </div>
+                </div> 
+              </div>
+            </div>
+           </div> 
+          </div>
+
+             </draggable>
+            </div>
+            </div>
+          </div>
+        </draggable>
+        <!-- END FORM BUILDER BODY-->
+       </div>
+       <!--END FORM BUILDER SCREENSHOT-->
       </div>
       <!-- END INTELI FORM BUILDER-->
 
@@ -797,6 +916,7 @@
     </div>
    </div>
   <!-- END INTELI FORM BUILDER BODY-->
+  <img :src="formScreenShot">
 </template>
 
 <script>
@@ -840,7 +960,8 @@
            required: true,
            default: true
          },
-         formData: Object
+         formData: Array,
+         Delta: Object
        },
         components: {
             VueLodash: { name: 'custom' , lodash: lodash },
@@ -1715,6 +1836,7 @@
                   title: '',
                   description: '',
                   cover: '',
+                  image: '',
                   sections:{
 
                   },
@@ -1733,11 +1855,20 @@
                   dragoverindex: ""
                 },
                 initialresourceId: {},
-                formResource: {}
+                formResource: {},
+                formScreenShot: ''
             }
         },
 
         methods: {
+          screenShot(elementid = '', elemntclass = '', variable = '')
+          {
+            var self = this
+            html2canvas(document.getElementById(elementid)).then(function(canvas){
+            self[variable] = canvas.toDataURL()
+            console.log("screenShot", self[variable])
+          })
+         },
           getRequest(url, variable = '')
           {
            axios.get(url)
@@ -1835,6 +1966,9 @@
               }
 
               this.form.sections[sectionindex].fields[index] = field
+
+              this.screenShot('form-builder-screenshot', '', 'formScreenShot')
+              this.form.image = this.formScreenShot 
 
             },
             mergeObject(objOne, objTwo)
@@ -1977,6 +2111,9 @@
              {
               this.form.sections = this.addToObject(this.form.sections, sectionName, section, position)
              }
+
+            this.screenShot('form-builder-screenshot', '', 'formScreenShot')
+            this.form.image = this.formScreenShot 
             }
           },
           addField(index, value = {}, key = "", sectionindex =  "")
@@ -2020,6 +2157,9 @@
              {
               this.form.sections[sectionindex]['fields'] = this.addToObject(this.form.sections[sectionindex]['fields'], fieldName, field, position)
              }
+
+            this.screenShot('form-builder-screenshot', '', 'formScreenShot')
+            this.form.image = this.formScreenShot 
             }
           },
           selectedListItem(event)
@@ -2061,12 +2201,6 @@
         },
         mounted()
         {
-            this.getAnalytics("analytics")
-
-          axios.get('form/template/builder/last/id')
-          .then((response)=>{
-               this.initialresourceId = response.data
-          })
           this.getRequest('form/template/builder/last/id', 'initialresourceId')
         },
         created()
@@ -2080,7 +2214,6 @@
               if (this.Mode)
               {
                 this.postRequest('form/builder/store', newValue, 'formResource')
-                //console.log("form",this.form,  "response", this.formResource, "initialresourceId", this.initialresourceId)
               }
               else
               {
@@ -2092,16 +2225,16 @@
           formData: {
             handler(newValue, oldValue)
             {
-              console.log(newValue)
+
             },
             deep: true
-          }
+          },
         },
 
         computed:{
           formid()
           {
-            return this.initialresourceId.form
+            return this.initialresourceId.form + 1
           },
         }
     })

@@ -13,7 +13,8 @@ class FormTemplate extends Model
         'title',
         'cover',
         'description',
-        'sections'
+        'sections',
+        "image"
         
     ];
 
@@ -31,4 +32,15 @@ class FormTemplate extends Model
     {
         return $this->hasMany(FormSection::class);
     }
+
+
+public function getImageAttribute($value)
+{
+    return base64_decode($value);
+}
+
+public function setImageAttribute($value)
+{
+    $this->attributes['image'] = base64_encode($value);
+}
 }

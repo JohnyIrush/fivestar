@@ -1,7 +1,7 @@
 <template>
   <!--max-height-vh-100 h-100-->
   <main class="main-content position-relative mt-1 border-radius-lg ">
-      <NavBar></NavBar>
+      <!--<NavBar></NavBar>-->
       <Body></Body>
       <settings></settings>
   </main>
@@ -10,7 +10,7 @@
 <script>
     import { defineComponent } from 'vue'
 
-    import NavBar from '../widgets/NavBar.vue'
+   // import NavBar from '../widgets/NavBar.vue'
     import Body from '../widgets/Body.vue'
     import settings from '../plugins/settings.vue'
     
@@ -18,7 +18,7 @@
     export default defineComponent({
         components:
         {
-         NavBar,
+         //NavBar,
          Body,
          settings
         },
@@ -26,5 +26,11 @@
 </script>
 
 <style scoped>
+main
+{
+
+    background: linear-gradient(purple, pink) !important;
+    background-size: cover !important;
+}
 
 </style>

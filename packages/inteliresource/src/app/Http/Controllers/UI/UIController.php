@@ -45,7 +45,10 @@ class UIController extends Controller
         return Inertia::render('inteli_resource/ui/windows/Gallery');
     }
 
-
+    public function screenShot()
+    {
+        return Inertia::render('inteli_resource/ui/windows/ScreenShot');
+    }
     /**
      * Render the main finance
      */

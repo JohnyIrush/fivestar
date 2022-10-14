@@ -25,6 +25,7 @@ Route::get('/file-manager', [UIController::class, 'fileManager'])->name('file-ma
 
 Route::get('/gallery', [GalleryController::class, 'gallery'])->name('gallery');
 
+Route::get('resource/screenshot', [UIController::class, 'screenShot'])->name("screen-shot");
 
 Route::get('/settings', [SettingsController::class, 'settings'])->name('settings');
 

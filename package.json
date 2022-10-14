@@ -39,6 +39,7 @@
         "bs-toaster": "^1.0.4",
         "flatpickr": "^4.6.13",
         "googleapis": "^108.0.0",
+        "html2canvas": "^1.4.1",
         "mitt": "^3.0.0",
         "remove": "^0.1.5",
         "tsparticles": "^1.41.6",
