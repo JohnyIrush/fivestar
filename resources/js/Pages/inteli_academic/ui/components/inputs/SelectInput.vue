@@ -1,9 +1,25 @@
 <template>
   <!-- start select input-->
-  <div  id="select-input-component"  class="">
-    <label :for="(nameKey != '')? nameKey : name">{{(nameKey != '')? nameKey : name}}</label>
-    <select :value="option" :name="(nameKey != '')? nameKey : name" :class="'form-select ' + size" :aria-label="nameKey" @change="selectOption">
-     <option  v-for="option in (inputOptions.length != 0)? inputOptions : options" :key="option.id" :value="(valueKey != '')? option[valueKey] : option[value]" >{{(nameKey != '')? option[nameKey] : option[name] }}</option>
+  <div  
+     id="select-input-component"  
+     :class="inputContainerClasses">
+    <label 
+         :class="inputLabelClasses"
+         :for="(nameKey != '')? nameKey : name">
+          {{(nameKey != '')? nameKey : name}}
+    </label>
+    <select 
+          :value="option" :name="(nameKey != '')? nameKey : name" 
+          :class="'form-select ' + size" 
+          :aria-label="nameKey" 
+          @change="selectOption"
+          :id="(nameKey != '')? nameKey : name">
+          <option  
+                 v-for="option in (inputOptions.length != 0)? inputOptions : options" 
+                 :key="option.id" 
+                 :value="(valueKey != '')? option[valueKey] : option[value]" >
+                 {{(nameKey != '')? option[nameKey] : option[name] }}
+          </option>
     </select>
    </div>
    <!-- end select input-->
@@ -24,7 +40,8 @@ export default defineComponent({
     variable: String,
     field: String,
     datapath: String,
-    size: String
+    size: String,
+    inputLabelClasses: String
   },
   setup ()
   {
@@ -42,6 +59,10 @@ export default defineComponent({
       value: String,
       variable: String,
       field: String,
+      inputContainerClasses:{
+        type: String,
+        default: 'input-group'
+      }
    }
  },
    methods:{

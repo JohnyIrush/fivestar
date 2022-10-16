@@ -43,6 +43,7 @@ Route::post("form/builder/store",[FormTemplateController::class,"storeForm"]);
 Route::post("form/template/update",[FormTemplateController::class,"update"]);
 Route::delete("form/template/destroy",[FormTemplateController::class,"destroy"]);
 Route::get("form/template/builder/last/id",[FormTemplateController::class,"formBuilderLastId"]);
+Route::get("form/template/list",[FormTemplateController::class,"formTemplateList"]);
 
 Route::get("form/section/index",[FormSectionController::class,"index"]);
 Route::get("form/section/create",[FormSectionController::class,"create"]);

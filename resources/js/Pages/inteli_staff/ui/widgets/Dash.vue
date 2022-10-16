@@ -40,10 +40,10 @@
         <div class="tab-pane fade" id="v-pills-staff-category" role="tabpanel" aria-labelledby="v-pills-staff-category-tab">
            <div class="row">
              <div class="col-xl-4">
-               <modal_button @showmodal="launchModal('main-modal')" :name="'Add'" :icon_classes="'fas fa-plus'" :title="'Add New Category'" :modalSize="'modal-lg'" :componentType="'form'" :componentName="'MainForm'" :dataPath="'staff/category/create'"></modal_button>
+               <modal-button @showmodal="launchModal('main-modal')" :name="'Add'" :icon_classes="'fas fa-plus'" :title="'Add New Category'" :modalSize="'modal-lg'" :componentType="'form'" :componentName="'MainForm'" :dataPath="'staff/category/create'"></modal-button>
              </div>
              <div class="col-xl-4">
-               <modal_button @showmodal="launchModal('main-modal')" :name="'Staff Category'" :icon_classes="'far fa-eye'" :title="'Category'" :modalSize="'modal-xl'" :componentType="'table'" :componentName="'TableData'" :dataPath="'staff/category/index'"></modal_button>
+               <modal-button @showmodal="launchModal('main-modal')" :name="'Staff Category'" :icon_classes="'far fa-eye'" :title="'Category'" :modalSize="'modal-xl'" :componentType="'table'" :componentName="'TableData'" :dataPath="'staff/category/index'"></modal-button>
              </div>
              <div class="col-xl-4"></div>
            </div>
@@ -62,10 +62,10 @@
         <div class="tab-pane fade" id="v-pills-department" role="tabpanel" aria-labelledby="v-pills-department-tab">
            <div class="row">
              <div class="col-xl-4">
-               <modal_button @showmodal="launchModal('main-modal')" :name="'Add'" :icon_classes="'fas fa-plus'" :title="'Add New Department'" :modalSize="'modal-lg'" :componentType="'form'" :componentName="'MainForm'" :dataPath="'staff/department/create'"></modal_button>
+               <modal-button @showmodal="launchModal('main-modal')" :name="'Add'" :icon_classes="'fas fa-plus'" :title="'Add New Department'" :modalSize="'modal-lg'" :componentType="'form'" :componentName="'MainForm'" :dataPath="'staff/department/create'"></modal-button>
              </div>
              <div class="col-xl-4">
-               <modal_button @showmodal="launchModal('main-modal')" :name="'Departments'" :icon_classes="'far fa-eye'" :title="'Department'" :modalSize="'modal-xl'" :componentType="'table'" :componentName="'TableData'" :dataPath="'staff/department/index'"></modal_button>
+               <modal-button @showmodal="launchModal('main-modal')" :name="'Departments'" :icon_classes="'far fa-eye'" :title="'Department'" :modalSize="'modal-xl'" :componentType="'table'" :componentName="'TableData'" :dataPath="'staff/department/index'"></modal-button>
              </div>
              <div class="col-xl-4"></div>
            </div>
@@ -84,10 +84,10 @@
         <div class="tab-pane fade" id="v-pills-occupation" role="tabpanel" aria-labelledby="v-pills-occupation-tab">
            <div class="row">
              <div class="col-xl-4">
-               <modal_button @showmodal="launchModal('main-modal')" :name="'Add'" :icon_classes="'fas fa-plus'" :title="'Add New Occupation'" :modalSize="'modal-lg'" :componentType="'form'" :componentName="'MainForm'" :dataPath="'staff/occupation/create'"></modal_button>
+               <modal-button @showmodal="launchModal('main-modal')" :name="'Add'" :icon_classes="'fas fa-plus'" :title="'Add New Occupation'" :modalSize="'modal-lg'" :componentType="'form'" :componentName="'MainForm'" :dataPath="'staff/occupation/create'"></modal-button>
              </div>
              <div class="col-xl-4">
-               <modal_button @showmodal="launchModal('main-modal')" :name="'Occupation'" :icon_classes="'far fa-eye'" :title="'Occupation'" :modalSize="'modal-xl'" :componentType="'table'" :componentName="'TableData'" :dataPath="'staff/occupation/index'"></modal_button>
+               <modal-button @showmodal="launchModal('main-modal')" :name="'Occupation'" :icon_classes="'far fa-eye'" :title="'Occupation'" :modalSize="'modal-xl'" :componentType="'table'" :componentName="'TableData'" :dataPath="'staff/occupation/index'"></modal-button>
              </div>
              <div class="col-xl-4"></div>
            </div>
@@ -106,10 +106,10 @@
         <div class="tab-pane fade" id="v-pills-staff" role="tabpanel" aria-labelledby="v-pills-staff-tab">
            <div class="row">
              <div class="col-xl-4">
-               <modal_button @showmodal="launchModal('main-modal')" :name="'Add'" :icon_classes="'fas fa-plus'" :title="'Add New Staff'" :modalSize="'modal-lg'" :componentType="'form'" :componentName="'MainForm'" :dataPath="'staff/create'"></modal_button>
+               <modal-button @showmodal="launchModal('main-modal')" :name="'Add'" :icon_classes="'fas fa-plus'" :title="'Add New Staff'" :modalSize="'modal-lg'" :componentType="'form'" :componentName="'MainForm'" :dataPath="'staff/create'"></modal-button>
              </div>
              <div class="col-xl-4">
-               <modal_button @showmodal="launchModal('main-modal')" :name="'Staff'" :icon_classes="'far fa-eye'" :title="'Staff'" :modalSize="'modal-xl'" :componentType="'table'" :componentName="'TableData'" :dataPath="'staff/index'"></modal_button>
+               <modal-button @showmodal="launchModal('main-modal')" :name="'Staff'" :icon_classes="'far fa-eye'" :title="'Staff'" :modalSize="'modal-xl'" :componentType="'table'" :componentName="'TableData'" :dataPath="'staff/index'"></modal-button>
              </div>
              <div class="col-xl-4"></div>
            </div>
@@ -224,7 +224,7 @@ import DetailCardData from '../../../inteli_academic/ui/components/cards/DetailC
 
 import BarChart from '../../../inteli_academic/ui/components/charts/BarChart.vue'
 
-import modal_button from '../../../inteli_library/ui/components/buttons/modal-button.vue'
+import ModalButton from '../../../inteli_library/ui/components/buttons/ModalButton.vue'
 import main_modal from '../../../inteli_library/ui/components/modals/modal.vue'
 
 import main_menu from '../../../Theme/widgets/menus/main-menu.vue'
@@ -235,7 +235,7 @@ export default defineComponent({
             StatisticCardData,
             BarChart,
             DetailCardData,
-            modal_button,
+            ModalButton,
             main_modal,
             main_menu
         },

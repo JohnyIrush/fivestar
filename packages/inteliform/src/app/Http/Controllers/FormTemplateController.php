@@ -38,6 +38,18 @@ class FormTemplateController extends Controller
         return response()->json(FormTemplate::all());
     }
 
+    public function formTemplateList()
+    {
+        return response()->json(
+            [
+                "name" => "title",
+                "value" => "id",
+                "column" => "",
+                "options" => FormTemplate::all()
+            ]
+        );
+    }
+
     /**
      * Show the form for creating a new resource.
      *

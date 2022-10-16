@@ -7,6 +7,13 @@ export const store = createStore({
     state () {
       return {
         Application:{
+            inteliadmission:{
+                applying: {
+                    form:{
+                        id: ''
+                    }
+                }
+            },
             inteliform:{
                 Template: {
                     
@@ -154,6 +161,9 @@ export const store = createStore({
             fieldName: '',
             iconName: ''
         },
+        SettingSelect:{
+            options: {}
+        }
       }
     },
     getters:

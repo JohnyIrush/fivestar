@@ -195,6 +195,11 @@
        >
     </textarea> 
   </div>
+     <div 
+     :id="field.title + 'Help'" 
+     class="form-text">
+       {{field.description}}
+     </div>
   <!-- end text/string input-->
 </template>
 

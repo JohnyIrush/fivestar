@@ -206,12 +206,12 @@
          :pattern="field.settings.pattern.pattern"
          autofocus
          />
+    </div>
      <div 
      :id="field.title + 'Help'" 
      class="form-text">
        {{field.description}}
      </div>
-    </div>
    <!--END INPUT -->
   <!-- end text/string input-->
 </template>

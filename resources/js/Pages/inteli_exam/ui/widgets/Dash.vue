@@ -35,10 +35,10 @@
         <div class="tab-pane fade" id="v-pills-exam" role="tabpanel" aria-labelledby="v-pills-exam-tab">
            <div class="row">
              <div class="col-xl-4">
-               <modal_button @showmodal="launchModal('main-modal')" :name="'Add'" :icon_classes="'fas fa-plus'" :title="'Add New Exam'" :modalSize="'modal-lg'" :componentType="'form'" :componentName="'MainForm'" :dataPath="'exam/create'"></modal_button>
+               <modal-button @showmodal="launchModal('main-modal')" :name="'Add'" :icon_classes="'fas fa-plus'" :title="'Add New Exam'" :modalSize="'modal-lg'" :componentType="'form'" :componentName="'MainForm'" :dataPath="'exam/create'"></modal-button>
              </div>
              <div class="col-xl-4">
-               <modal_button @showmodal="launchModal('main-modal')" :name="'Exams'" :icon_classes="'far fa-eye'" :title="'Exams'" :modalSize="'modal-xl'" :componentType="'table'" :componentName="'TableData'" :dataPath="'exam/index'"></modal_button>
+               <modal-button @showmodal="launchModal('main-modal')" :name="'Exams'" :icon_classes="'far fa-eye'" :title="'Exams'" :modalSize="'modal-xl'" :componentType="'table'" :componentName="'TableData'" :dataPath="'exam/index'"></modal-button>
              </div>
              <div class="col-xl-4"></div>
            </div>
@@ -57,10 +57,10 @@
         <div class="tab-pane fade" id="v-pills-grade" role="tabpanel" aria-labelledby="v-pills-grade-tab">
            <div class="row">
              <div class="col-xl-4">
-               <modal_button @showmodal="launchModal('main-modal')" :name="'Add'" :icon_classes="'fas fa-plus'" :title="'Add New Grade'" :modalSize="'modal-lg'" :componentType="'form'" :componentName="'MainForm'" :dataPath="'exam/grade/create'"></modal_button>
+               <modal-button @showmodal="launchModal('main-modal')" :name="'Add'" :icon_classes="'fas fa-plus'" :title="'Add New Grade'" :modalSize="'modal-lg'" :componentType="'form'" :componentName="'MainForm'" :dataPath="'exam/grade/create'"></modal-button>
              </div>
              <div class="col-xl-4">
-               <modal_button @showmodal="launchModal('main-modal')" :name="'Grades'" :icon_classes="'far fa-eye'" :title="'Grades'" :modalSize="'modal-xl'" :componentType="'table'" :componentName="'TableData'" :dataPath="'exam/grade/index'"></modal_button>
+               <modal-button @showmodal="launchModal('main-modal')" :name="'Grades'" :icon_classes="'far fa-eye'" :title="'Grades'" :modalSize="'modal-xl'" :componentType="'table'" :componentName="'TableData'" :dataPath="'exam/grade/index'"></modal-button>
              </div>
              <div class="col-xl-4"></div>
            </div>
@@ -79,10 +79,10 @@
         <div class="tab-pane fade" id="v-pills-merit" role="tabpanel" aria-labelledby="v-pills-merit-tab">
            <div class="row">
              <div class="col-xl-4">
-               <modal_button @showmodal="launchModal('main-modal')" :name="'Add'" :icon_classes="'fas fa-plus'" :title="'Add New Merit'" :modalSize="'modal-lg'" :componentType="'form'" :componentName="'MainForm'" :dataPath="'exam/merit/create'"></modal_button>
+               <modal-button @showmodal="launchModal('main-modal')" :name="'Add'" :icon_classes="'fas fa-plus'" :title="'Add New Merit'" :modalSize="'modal-lg'" :componentType="'form'" :componentName="'MainForm'" :dataPath="'exam/merit/create'"></modal-button>
              </div>
              <div class="col-xl-4">
-               <modal_button @showmodal="launchModal('main-modal')" :name="'Merits'" :icon_classes="'far fa-eye'" :title="'Merits'" :modalSize="'modal-xl'" :componentType="'table'" :componentName="'TableData'" :dataPath="'exam/merit/index'"></modal_button>
+               <modal-button @showmodal="launchModal('main-modal')" :name="'Merits'" :icon_classes="'far fa-eye'" :title="'Merits'" :modalSize="'modal-xl'" :componentType="'table'" :componentName="'TableData'" :dataPath="'exam/merit/index'"></modal-button>
              </div>
              <div class="col-xl-4"></div>
            </div> 
@@ -197,7 +197,7 @@ import DetailCardData from '../../../inteli_academic/ui/components/cards/DetailC
 
 import BarChart from '../../../inteli_academic/ui/components/charts/BarChart.vue'
 
-import modal_button from '../../../inteli_library/ui/components/buttons/modal-button.vue'
+import ModalButton from '../../../inteli_library/ui/components/buttons/ModalButton.vue'
 import main_modal from '../../../inteli_library/ui/components/modals/modal.vue'
 
 import main_menu from '../../../Theme/widgets/menus/main-menu.vue'
@@ -208,7 +208,7 @@ export default defineComponent({
             StatisticCardData,
             BarChart,
             DetailCardData,
-            modal_button,
+            ModalButton,
             main_modal,
             main_menu
         },

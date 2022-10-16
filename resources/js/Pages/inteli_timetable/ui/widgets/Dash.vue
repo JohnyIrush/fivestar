@@ -221,7 +221,7 @@ import DetailCardData from '../../../inteli_academic/ui/components/cards/DetailC
 
 import BarChart from '../../../inteli_academic/ui/components/charts/BarChart.vue'
 
-import modal_button from '../../../inteli_library/ui/components/buttons/modal-button.vue'
+import ModalButton from '../../../inteli_library/ui/components/buttons/ModalButton.vue'
 import main_modal from '../../../inteli_library/ui/components/modals/modal.vue'
 
 import main_menu from '../../../Theme/widgets/menus/main-menu.vue'
@@ -232,7 +232,7 @@ export default defineComponent({
             StatisticCardData,
             BarChart,
             DetailCardData,
-            modal_button,
+            ModalButton,
             main_modal,
             main_menu
         },

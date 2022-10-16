@@ -34,13 +34,18 @@ class FormTemplate extends Model
     }
 
 
-public function getImageAttribute($value)
-{
-    return base64_decode($value);
-}
+    public function getImageAttribute($value)
+    {
+        return base64_decode($value);
+    }
 
-public function setImageAttribute($value)
-{
-    $this->attributes['image'] = base64_encode($value);
-}
+    public function setImageAttribute($value)
+    {
+        $this->attributes['image'] = base64_encode($value);
+    }
+
+    public function getSectionsAttribute($value)
+    {
+        return json_decode($value);
+    }
 }

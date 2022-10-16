@@ -352,10 +352,10 @@
         <div class="tab-pane fade" id="v-pills-services" role="tabpanel" aria-labelledby="v-pills-services-tab">
            <div class="row">
              <div class="col-xl-4">
-               <modal_button @showmodal="launchModal('main-modal')" :name="'Add'" :icon_classes="'fas fa-plus'" :title="'Add New Service'" :modalSize="'modal-lg'" :componentType="'form'" :componentName="'MainForm'" :dataPath="'finance/service/create'"></modal_button>
+               <modal-button @showmodal="launchModal('main-modal')" :name="'Add'" :icon_classes="'fas fa-plus'" :title="'Add New Service'" :modalSize="'modal-lg'" :componentType="'form'" :componentName="'MainForm'" :dataPath="'finance/service/create'"></modal-button>
              </div>
              <div class="col-xl-4">
-               <modal_button @showmodal="launchModal('main-modal')" :name="'Services'" :icon_classes="'far fa-eye'" :title="'Services'" :modalSize="'modal-xl'" :componentType="'table'" :componentName="'TableData'" :dataPath="'finance/service/index'"></modal_button>
+               <modal-button @showmodal="launchModal('main-modal')" :name="'Services'" :icon_classes="'far fa-eye'" :title="'Services'" :modalSize="'modal-xl'" :componentType="'table'" :componentName="'TableData'" :dataPath="'finance/service/index'"></modal-button>
              </div>
              <div class="col-xl-4"></div>
            </div>
@@ -374,10 +374,10 @@
         <div class="tab-pane fade" id="v-pills-fees" role="tabpanel" aria-labelledby="v-pills-fees-tab">
            <div class="row">
              <div class="col-xl-4">
-               <modal_button @showmodal="launchModal('main-modal')" :name="'Add'" :icon_classes="'fas fa-plus'" :title="'Add New FEE'" :modalSize="'modal-lg'" :componentType="'form'" :componentName="'MainForm'" :dataPath="'finance/fee/create'"></modal_button>
+               <modal-button @showmodal="launchModal('main-modal')" :name="'Add'" :icon_classes="'fas fa-plus'" :title="'Add New FEE'" :modalSize="'modal-lg'" :componentType="'form'" :componentName="'MainForm'" :dataPath="'finance/fee/create'"></modal-button>
              </div>
              <div class="col-xl-4">
-               <modal_button @showmodal="launchModal('main-modal')" :name="'Fees'" :icon_classes="'far fa-eye'" :title="'FEES'" :modalSize="'modal-xl'" :componentType="'table'" :componentName="'TableData'" :dataPath="'finance/fee/index'"></modal_button>
+               <modal-button @showmodal="launchModal('main-modal')" :name="'Fees'" :icon_classes="'far fa-eye'" :title="'FEES'" :modalSize="'modal-xl'" :componentType="'table'" :componentName="'TableData'" :dataPath="'finance/fee/index'"></modal-button>
              </div>
              <div class="col-xl-4"></div>
            </div> 
@@ -492,7 +492,7 @@ import DetailCardData from '../../../inteli_academic/ui/components/cards/DetailC
 
 import BarChart from '../../../inteli_academic/ui/components/charts/BarChart.vue'
 
-import modal_button from '../../../inteli_library/ui/components/buttons/modal-button.vue'
+import ModalButton from '../../../inteli_library/ui/components/buttons/ModalButton.vue'
 import main_modal from '../../../inteli_library/ui/components/modals/modal.vue'
 
 import main_menu from '../../../Theme/widgets/menus/main-menu.vue'
@@ -503,7 +503,7 @@ export default defineComponent({
             StatisticCardData,
             BarChart,
             DetailCardData,
-            modal_button,
+            ModalButton,
             main_modal,
             main_menu
         },

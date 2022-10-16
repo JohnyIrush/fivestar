@@ -9,7 +9,12 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div id="modal-body" class="modal-body">
-            <component @selectedListItem="selectedListItem" :is="componentName" ></component>
+            <component
+                      :is="componentName"
+                      @selectedListItem="selectedListItem"
+                      :SettingOptions="settingSelectOptions"
+                       >
+            </component>
         </div>
       </div>
     </div>
@@ -31,6 +36,8 @@ import TabularCard from '../../../../inteli_academic/ui/components/cards/Tabular
 import MiniTabularCard from '../../../../inteli_academic/ui/components/cards/MiniTabularCard.vue'
 
 import DataList from '../../../../inteli_form/ui/components/list/DataList.vue'
+import SearchSelectInput from '../../../../inteli_form/ui/components/inputs/SearchSelectInput.vue'
+import SettingSelect from '../../../../inteli_admission/ui/widgets/menus/SettingSelect.vue'
 
     export default defineComponent({
         components: {
@@ -40,6 +47,8 @@ import DataList from '../../../../inteli_form/ui/components/list/DataList.vue'
             TabularCard,
             MiniTabularCard,
             DataList,
+            SearchSelectInput,
+            SettingSelect
         },
         data() {
             return {
@@ -82,6 +91,10 @@ import DataList from '../../../../inteli_form/ui/components/list/DataList.vue'
           componentName()
           {
             return store.state.Modal.componentName
+          },
+          settingSelectOptions()
+          {
+            return store.state.SettingSelect.options
           }
         },
         methods: {

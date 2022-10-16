@@ -74,7 +74,7 @@
         <div class="tab-pane fade" id="v-pills-librarian" role="tabpanel" aria-labelledby="v-pills-librarian-tab">
            <div class="row">
              <div class="col-4">
-               <modal_button @showmodal="launchModal('main-modal')" :name="'Add'" :icon_classes="'fas fa-plus'" :title="'Add New Librarian'" :modalSize="'modal-lg'" :componentType="'form'" :componentName="'MainForm'" :dataPath="'user/create'"></modal_button>
+               <modal-button @showmodal="launchModal('main-modal')" :name="'Add'" :icon_classes="'fas fa-plus'" :title="'Add New Librarian'" :modalSize="'modal-lg'" :componentType="'form'" :componentName="'MainForm'" :dataPath="'user/create'"></modal-button>
              </div>
              <div class="col-8"></div>
            </div>
@@ -131,7 +131,7 @@
            <div class="row">
              <div class="col-3"></div>
              <div class="col-6">
-               <modal_button @showmodal="launchModal('main-modal')" :name="'View librarians Records'" :icon_classes="'far fa-eye'" :title="'Librarian Records'" :modalSize="'modal-xl'" :componentType="'card'" componentName="'TableData'" :dataPath="'librarian'"></modal_button>
+               <modal-button @showmodal="launchModal('main-modal')" :name="'View librarians Records'" :icon_classes="'far fa-eye'" :title="'Librarian Records'" :modalSize="'modal-xl'" :componentType="'card'" componentName="'TableData'" :dataPath="'librarian'"></modal-button>
              </div>
              <div class="col-3"></div>
            </div>
@@ -142,7 +142,7 @@
         <div class="tab-pane fade" id="v-pills-library" role="tabpanel" aria-labelledby="v-pills-library-tab">
            <div class="row">
              <div class="col-4">
-               <modal_button @showmodal="launchModal('main-modal')" :name="'Add'" :icon_classes="'fas fa-plus'" :title="'Add New School Library'" :modalSize="'modal-lg'" :componentType="'form'" :componentName="'MainForm'" :dataPath="'library/create'"></modal_button>
+               <modal-button @showmodal="launchModal('main-modal')" :name="'Add'" :icon_classes="'fas fa-plus'" :title="'Add New School Library'" :modalSize="'modal-lg'" :componentType="'form'" :componentName="'MainForm'" :dataPath="'library/create'"></modal-button>
              </div>
              <div class="col-8"></div>
            </div>
@@ -199,7 +199,7 @@
            <div class="row">
              <div class="col-3"></div>
              <div class="col-6">
-               <modal_button @showmodal="launchModal('main-modal')" :name="'View Library Records'" :icon_classes="'far fa-eye'" :title="'School Library Records'" :modalSize="'modal-xl'" :componentType="'table'" componentName="'TableData'" :dataPath="'libraries'"></modal_button>
+               <modal-button @showmodal="launchModal('main-modal')" :name="'View Library Records'" :icon_classes="'far fa-eye'" :title="'School Library Records'" :modalSize="'modal-xl'" :componentType="'table'" componentName="'TableData'" :dataPath="'libraries'"></modal-button>
              </div>
              <div class="col-3"></div>
            </div>            
@@ -210,7 +210,7 @@
         <div class="tab-pane fade" id="v-pills-book-issue" role="tabpanel" aria-labelledby="v-pills-book-issue-tab">
            <div class="row">
              <div class="col-4">
-               <modal_button @showmodal="launchModal('main-modal')" :name="'Issue'" :icon_classes="'fas fa-plus'" :title="'Issue New Book'" :modalSize="'modal-lg'" :componentType="'form'" :componentName="'MainForm'" :dataPath="'library/book/issue/create'"></modal_button>
+               <modal-button @showmodal="launchModal('main-modal')" :name="'Issue'" :icon_classes="'fas fa-plus'" :title="'Issue New Book'" :modalSize="'modal-lg'" :componentType="'form'" :componentName="'MainForm'" :dataPath="'library/book/issue/create'"></modal-button>
              </div>
              <div class="col-8"></div>
            </div>
@@ -267,7 +267,7 @@
            <div class="row">
              <div class="col-3"></div>
              <div class="col-6">
-               <modal_button @showmodal="launchModal('main-modal')" :name="'View Book-Issue Records'" :icon_classes="'far fa-eye'" :title="'Book-Issue Records'" :modalSize="'modal-xl'" :componentType="'table'" componentName="'TableData'" :dataPath="'book/issue'"></modal_button>
+               <modal-button @showmodal="launchModal('main-modal')" :name="'View Book-Issue Records'" :icon_classes="'far fa-eye'" :title="'Book-Issue Records'" :modalSize="'modal-xl'" :componentType="'table'" componentName="'TableData'" :dataPath="'book/issue'"></modal-button>
              </div>
              <div class="col-3"></div>
            </div>
@@ -278,7 +278,7 @@
         <div class="tab-pane fade" id="v-pills-book-category" role="tabpanel" aria-labelledby="v-pills-book-category-tab">
            <div class="row">
              <div class="col-4">
-               <modal_button @showmodal="launchModal('main-modal')" :name="'Add'" :icon_classes="'fas fa-plus'" :title="'Add New Book Category'" :modalSize="'modal-lg'" :componentType="'form'" :componentName="'MainForm'" :dataPath="'library/book/category/create'"></modal_button>
+               <modal-button @showmodal="launchModal('main-modal')" :name="'Add'" :icon_classes="'fas fa-plus'" :title="'Add New Book Category'" :modalSize="'modal-lg'" :componentType="'form'" :componentName="'MainForm'" :dataPath="'library/book/category/create'"></modal-button>
              </div>
              <div class="col-8"></div>
            </div>
@@ -335,7 +335,7 @@
            <div class="row">
              <div class="col-3"></div>
              <div class="col-6">
-               <modal_button @showmodal="launchModal('main-modal')" :name="'View Book Category Records'" :icon_classes="'far fa-eye'" :title="'Book Category Records'" :modalSize="'modal-xl'" :componentType="'table'" componentName="'TableData'" :dataPath="'book/categories'"></modal_button>
+               <modal-button @showmodal="launchModal('main-modal')" :name="'View Book Category Records'" :icon_classes="'far fa-eye'" :title="'Book Category Records'" :modalSize="'modal-xl'" :componentType="'table'" componentName="'TableData'" :dataPath="'book/categories'"></modal-button>
              </div>
              <div class="col-3"></div>
            </div>
@@ -346,7 +346,7 @@
         <div class="tab-pane fade" id="v-pills-author" role="tabpanel" aria-labelledby="v-pills-author-tab">
            <div class="row">
              <div class="col-4">
-               <modal_button @showmodal="launchModal('main-modal')" :name="'Add'" :icon_classes="'fas fa-plus'" :title="'Add New Book Author'" :modalSize="'modal-lg'" :componentType="'form'" :componentName="'MainForm'" :dataPath="'library/author/create'"></modal_button>
+               <modal-button @showmodal="launchModal('main-modal')" :name="'Add'" :icon_classes="'fas fa-plus'" :title="'Add New Book Author'" :modalSize="'modal-lg'" :componentType="'form'" :componentName="'MainForm'" :dataPath="'library/author/create'"></modal-button>
              </div>
              <div class="col-8"></div>
            </div>
@@ -403,7 +403,7 @@
            <div class="row">
              <div class="col-3"></div>
              <div class="col-6">
-               <modal_button @showmodal="launchModal('main-modal')" :name="'View Book Authors Records'" :icon_classes="'far fa-eye'" :title="'Book Authors Records'" :modalSize="'modal-xl'" :componentType="'card'" componentName="'TableData'" :dataPath="'authors'"></modal_button>
+               <modal-button @showmodal="launchModal('main-modal')" :name="'View Book Authors Records'" :icon_classes="'far fa-eye'" :title="'Book Authors Records'" :modalSize="'modal-xl'" :componentType="'card'" componentName="'TableData'" :dataPath="'authors'"></modal-button>
              </div>
              <div class="col-3"></div>
            </div>
@@ -414,7 +414,7 @@
         <div class="tab-pane fade" id="v-pills-book" role="tabpanel" aria-labelledby="v-pills-book-tab">
            <div class="row">
              <div class="col-4">
-               <modal_button @showmodal="launchModal('main-modal')" :name="'Add'" :icon_classes="'fas fa-plus'" :title="'Add New Book'" :modalSize="'modal-lg'" :componentType="'form'" :componentName="'MainForm'" :dataPath="'library/book/create'"></modal_button>
+               <modal-button @showmodal="launchModal('main-modal')" :name="'Add'" :icon_classes="'fas fa-plus'" :title="'Add New Book'" :modalSize="'modal-lg'" :componentType="'form'" :componentName="'MainForm'" :dataPath="'library/book/create'"></modal-button>
              </div>
              <div class="col-8"></div>
            </div>
@@ -471,7 +471,7 @@
            <div class="row">
              <div class="col-3"></div>
              <div class="col-6">
-               <modal_button @showmodal="launchModal('main-modal')" :name="'View Book Records'" :icon_classes="'far fa-eye'" :title="'Book Records'" :modalSize="'modal-xl'" :componentType="'card'" componentName="'TableData'" :dataPath="'books'"></modal_button>
+               <modal-button @showmodal="launchModal('main-modal')" :name="'View Book Records'" :icon_classes="'far fa-eye'" :title="'Book Records'" :modalSize="'modal-xl'" :componentType="'card'" componentName="'TableData'" :dataPath="'books'"></modal-button>
              </div>
              <div class="col-3"></div>
            </div>
@@ -482,7 +482,7 @@
         <div class="tab-pane fade" id="v-pills-publisher" role="tabpanel" aria-labelledby="v-pills-publisher-tab">
            <div class="row">
              <div class="col-4">
-               <modal_button @showmodal="launchModal('main-modal')" :name="'Add'" :icon_classes="'fas fa-plus'" :title="'Add New Book Publisher'" :modalSize="'modal-lg'" :componentType="'form'" :componentName="'MainForm'" :dataPath="'library/publisher/create'"></modal_button>
+               <modal-button @showmodal="launchModal('main-modal')" :name="'Add'" :icon_classes="'fas fa-plus'" :title="'Add New Book Publisher'" :modalSize="'modal-lg'" :componentType="'form'" :componentName="'MainForm'" :dataPath="'library/publisher/create'"></modal-button>
              </div>
              <div class="col-8"></div>
            </div>
@@ -539,7 +539,7 @@
            <div class="row">
              <div class="col-3"></div>
              <div class="col-6">
-               <modal_button @showmodal="launchModal('main-modal')" :name="'View Publishers Records'" :icon_classes="'far fa-eye'" :title="'Publishers Records'" :modalSize="'modal-xl'" :componentType="'card'" componentName="'TableData'" :dataPath="'publishers'"></modal_button>
+               <modal-button @showmodal="launchModal('main-modal')" :name="'View Publishers Records'" :icon_classes="'far fa-eye'" :title="'Publishers Records'" :modalSize="'modal-xl'" :componentType="'card'" componentName="'TableData'" :dataPath="'publishers'"></modal-button>
              </div>
              <div class="col-3"></div>
            </div>
@@ -647,7 +647,7 @@
 
     import TableData  from "../components/tables/TableData.vue"
 
-    import modal_button from '../components/buttons/modal-button.vue'
+    import ModalButton from '../components/buttons/ModalButton.vue'
     import main_modal from '../components/modals/modal.vue'
     import MainForm from '../components/forms/MainForm.vue'
 
@@ -659,7 +659,7 @@
             user_info_modal,
             TableData,
             main_modal,
-            modal_button,
+            ModalButton,
             MainForm
         },
         data() {

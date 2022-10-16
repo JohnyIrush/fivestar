@@ -94,12 +94,12 @@
          :class="'form-control ' + formFieldClasses" 
          :name="field.name || field.title"  
          />
+    </div>
      <div 
      :id="field.title + 'Help'" 
      class="form-text">
        {{field.description}}
      </div>
-    </div>
    <!--END INPUT -->
   <!-- end text/string input-->
 </template>

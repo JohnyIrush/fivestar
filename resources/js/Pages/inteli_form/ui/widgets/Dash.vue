@@ -58,7 +58,24 @@
            </div>
           </div>
          </div>
-         <builder :Mode="true"></builder>
+         <form-builder 
+           :Mode="true"
+           :formDetails="
+                {
+                  id: '',
+                  user_id: '',
+                  title: '',
+                  description: '',
+                  cover: '',
+                  image: '',
+                  sections:{
+
+                  },
+              }"
+            :SelectedInputType="selectedListItemData"
+           >
+             
+           </form-builder>
         </div>
         <!--END FORM BUILDER PANE-->
 
@@ -146,6 +163,10 @@
    </div>-->
   </div>
  <Footer></Footer>
+    <modal 
+         @selectedListItem="selectedListItem"
+   >
+   </modal>
 </template>
 
 <script>
@@ -155,12 +176,15 @@
 
     import {store} from "../../../../store/store.js"
 
-    import Builder from './Builder.vue'
+    import FormBuilder from './FormBuilder.vue'
+
+    import modal from '../../../inteli_library/ui/components/modals/modal.vue'
 
     export default defineComponent({
         components: {
           Footer,
-          Builder
+          FormBuilder,
+          modal
         },
         computed:{
 
@@ -168,11 +192,19 @@
         data() {
             return {
               formTemplates: {},
-              Deltadata: {deltaname:'deltaname'}
+              Deltadata: {deltaname:'deltaname'},
+              selectedListItemData: {}
             }
 
         },
         methods: {
+            selectedListItem(event)
+            {
+              alert("selected")
+              this.selectedListItemData = event
+                console.log("Modal",event)
+                //this.$emit("selectedListItem", event)
+            },
           getRequest(url, variable = '')
           {
            axios.get(url)

@@ -2,7 +2,118 @@
   <div class="container-fluid">
       <div class="row mt-6">
         <div class="col-12 glass-content">
-          <main_menu></main_menu>
+          <menu-window
+            :menuTitle="'Inteli Menu'"
+            :menuDetails="[
+                {
+                  component: 'Link',
+                  icon_classes: 'fas fa-rocket',
+                  title: 'Installation',
+                  link: 'installer',
+                },
+                {
+                  component: 'Link',
+                  icon_classes: 'fas fa-user-plus',
+                  title: 'Dashboard',
+                  link: 'dashboard',
+                },
+                {
+                  component: 'Link',
+                  icon_classes: 'fas fa-user-plus',
+                  title: 'Admission',
+                  link: 'admission',
+                },
+                {
+                  component: 'Link',
+                  icon_classes: 'fas fa-graduation-cap',
+                  title: 'Academics',
+                  link: 'academic',
+                },
+                {
+                  component: 'Link',
+                  icon_classes: 'fas fa-user-plus',
+                  title: 'Timetable',
+                  link: 'timetable',
+                },
+                {
+                  component: 'Link',
+                  icon_classes: 'fas fa-clock',
+                  title: 'Timetable',
+                  link: 'timetable',
+                },
+                {
+                  component: 'Link',
+                  icon_classes: 'fas fa-clock',
+                  title: 'Examinations',
+                  link: 'exam',
+                },
+                {
+                  component: 'Link',
+                  icon_classes: 'fas fa-chalkboard-teacher',
+                  title: 'Staff',
+                  link: 'staff',
+                },
+                {
+                  component: 'Link',
+                  icon_classes: 'fas fa-book-open',
+                  title: 'Library',
+                  link: 'library',
+                },
+                {
+                  component: 'Link',
+                  icon_classes: 'fas fa-globe',
+                  title: 'Online Classes',
+                  link: 'virtual-reality',
+                },
+                {
+                  component: 'Link',
+                  icon_classes: 'fas fa-file-powerpoint',
+                  title: 'E-Learning',
+                  link: 'virtual-reality',
+                },
+                {
+                  component: 'Link',
+                  icon_classes: 'fas fa-microscope',
+                  title: 'Research Center',
+                  link: 'virtual-reality',
+                },
+                {
+                  component: 'Link',
+                  icon_classes: 'fas fa-coins',
+                  title: 'Finance',
+                  link: 'finance',
+                },
+                {
+                  component: 'Link',
+                  icon_classes: 'fas fa-blender-phone',
+                  title: 'Communication',
+                  link: 'finance',
+                },
+                {
+                  component: 'Link',
+                  icon_classes: 'fas fa-user-graduate',
+                  title: 'Careers',
+                  link: 'finance',
+                },
+                {
+                  component: 'Link',
+                  icon_classes: 'fas fa-users',
+                  title: 'Teams',
+                  link: 'finance',
+                },
+                {
+                  component: 'Link',
+                  icon_classes: 'fas fa-table',
+                  title: 'Form',
+                  link: 'form',
+                }
+            ]"
+            :menu_item_size="'col-2'"
+            :menu_item_icon_size="''"
+            :menu_item_title_classes="'text-white'"
+            :menu_window_background_image="'/theme/assets/img/curved-images/curved0.jpg'"
+          >
+          </menu-window>
         </div>
       </div>
       <!--START FINANCE-->
@@ -614,11 +725,12 @@
 
     import Footer from '../widgets/Footer.vue'
     import main_menu from '../widgets/menus/main-menu.vue'
+    import MenuWindow from '../widgets/menus/MenuWindow.vue'
     import Chart from '../plugins/chart.vue'
     export default defineComponent({
         components: {
             Footer,
-            main_menu,
+            MenuWindow,
             Chart
         },
 

@@ -146,12 +146,12 @@
          :multiple="field.settings.multiple.multiple"
          :accept="field.settings.accept.accept"
          />
+    </div>
      <div 
      :id="field.title + 'Help'" 
      class="form-text">
        {{field.description}}
      </div>
-    </div>
    <!--END INPUT -->
   <!-- end text/string input-->
 </template>
