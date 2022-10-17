@@ -25,22 +25,24 @@
         <div class="tab-pane fade" id="pills-interview-form" role="tabpanel" aria-labelledby="pills-interview-form-tab">
            <div class="row">
                <div class="col-12 glass-content">
-                 <form>
-                   <div class="mb-3">
-                     <label for="exampleInputEmail1" class="form-label">Email address</label>
-                     <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                     <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-                   </div>
-                   <div class="mb-3">
-                     <label for="exampleInputPassword1" class="form-label">Password</label>
-                     <input type="password" class="form-control" id="exampleInputPassword1">
-                   </div>
-                   <div class="mb-3 form-check">
-                     <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                     <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                   </div>
-                   <button type="submit" class="btn btn-primary">Submit</button>
-                 </form>
+                 <wizard 
+                   :orientation="'horizontal'" 
+                   :WizardTitle="'Test'"
+                   :WizardDetails="{
+                           id: form.id,
+                           user_id: '',
+                           title: form.title,
+                           description: form.description,
+                           cover: form.cover,
+                           image: form.image,
+                           sections: form['sections'],
+                         }"
+                   :PaneComponentName="'FormBuilder'"
+                   :PaneComponentDisplayType="'single'"
+                   :paneKeyName="'sections'"
+                   :paneTitleName="'title'"
+                 >
+                 </wizard>
                </div>
            </div>
            <div class="row justify-content-center">
@@ -59,8 +61,7 @@
         <!-- PROGRESS WIZARD START-->
         <div class="tab-pane fade" id="pills-interview-progress" role="tabpanel" aria-labelledby="pills-interview-progress-tab">
            <div class="row justify-content-center">
-               <div class="col-2"></div>
-               <div class="col-10 glass-content">
+               <div class="col-12 glass-content">
                 <div class="card">
                   <div class="card-body">
                     <p class="card-text font-weight-bold display-4">Your Interview is awaiting processing, you will receive an email and sms with feedback all the best</p>
@@ -71,8 +72,7 @@
                   </div>
                 </div>
                </div>
-               <div class="col-2"></div>
-           </div>
+            </div>
            <div class="row justify-content-center">
                <div class="col-2"></div>
                <div class="col-10">
@@ -109,12 +109,17 @@ import spinner from "../../components/spinners/spinner.vue"
 
 import SelectInput from "../../../../inteli_academic/ui/components/inputs/SelectInput.vue"
 
+
+import Wizard from "../../../../inteli_form/ui/widgets/forms/Wizard.vue"
+
 export default defineComponent({
   name: "InterviewWizard",
     components:
         {
             spinner,
-            SelectInput
+            SelectInput,
+            SelectInput,
+            Wizard
         },
     data() {
         return {
@@ -126,7 +131,10 @@ export default defineComponent({
 
         },
         computed: {
-
+          form()
+          {
+            return store.getters.getSetting({package: 'inteliadmission', widget: 'interview', component: "form", value: "details"})
+          }
         },
     methods:
         {
@@ -182,6 +190,10 @@ export default defineComponent({
 .card, .card-header, .card-body, .list-group, .list-group-item, .nav
 {
   background: transparent !important;
+}
+
+.tab-content {
+  width: 100% !important; 
 }
 </style>
 

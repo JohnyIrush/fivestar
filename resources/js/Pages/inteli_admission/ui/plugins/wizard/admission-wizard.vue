@@ -33,13 +33,49 @@
 
         <!--STAFF WIZARD START-->
         <div class="tab-pane fade" id="pills-staff" role="tabpanel" aria-labelledby="pills-staff-tab">
-          <staff_admission_wizard></staff_admission_wizard>
+          <!--<staff_admission_wizard></staff_admission_wizard>-->
+                 <wizard 
+                   :orientation="'horizontal'" 
+                   :WizardTitle="'Test'"
+                   :WizardDetails="{
+                           id: form.id,
+                           user_id: '',
+                           title: form.title,
+                           description: form.description,
+                           cover: form.cover,
+                           image: form.image,
+                           sections: form['sections'],
+                         }"
+                   :PaneComponentName="'FormBuilder'"
+                   :PaneComponentDisplayType="'single'"
+                   :paneKeyName="'sections'"
+                   :paneTitleName="'title'"
+                 >
+                 </wizard>
         </div>
         <!--STAFF WIZARD END-->
 
         <!-- STUDENT WIZARD START-->
         <div class="tab-pane fade" id="pills-student" role="tabpanel" aria-labelledby="pills-student-tab">
-            <student_admission_wizard></student_admission_wizard>
+            <!--<student_admission_wizard></student_admission_wizard>-->
+                 <wizard 
+                   :orientation="'horizontal'" 
+                   :WizardTitle="'Test'"
+                   :WizardDetails="{
+                           id: studentForm.id,
+                           user_id: '',
+                           title: studentForm.title,
+                           description: studentForm.description,
+                           cover: studentForm.cover,
+                           image: studentForm.image,
+                           sections: studentForm['sections'],
+                         }"
+                   :PaneComponentName="'FormBuilder'"
+                   :PaneComponentDisplayType="'single'"
+                   :paneKeyName="'sections'"
+                   :paneTitleName="'title'"
+                 >
+                 </wizard>
         </div>
         <!-- STUDENT WIZARD END-->
        </div>
@@ -63,6 +99,8 @@ import { store } from '../../../../../store/store.js'
 /*Toast messages*/
 import {Toaster,ToasterPosition,ToasterTimer,ToasterType,} from "bs-toaster";
 
+import Wizard from "../../../../inteli_form/ui/widgets/forms/Wizard.vue"
+
 import { defineComponent } from 'vue'
 
 export default defineComponent({
@@ -70,7 +108,8 @@ export default defineComponent({
         {
             admission_start_carousel,
             student_admission_wizard,
-            staff_admission_wizard
+            staff_admission_wizard,
+            Wizard
         },
     data() {
         return {
@@ -82,7 +121,14 @@ export default defineComponent({
 
         },
         computed: {
-
+          studentForm()
+          {
+            return store.getters.getSetting({package: 'inteliadmission', widget: 'interview', component: "form", value: "details"})
+          },
+          staffForm()
+          {
+            return store.getters.getSetting({package: 'inteliadmission', widget: 'interview', component: "form", value: "details"})
+          }
         },
     methods:
         {

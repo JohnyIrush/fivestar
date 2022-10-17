@@ -1,0 +1,85 @@
+body {
+	margin:  0;
+}
+.page-content {
+	width: 100% !important;
+    height: 100% !important;
+	margin:  0 auto;
+    display: flex;
+	display: -webkit-flex;
+	justify-content: center;
+	-o-justify-content: center;
+	-ms-justify-content: center;
+	-moz-justify-content: center;
+	-webkit-justify-content: center;
+	align-items: center;
+	-o-align-items: center;
+	-ms-align-items: center;
+	-moz-align-items: center;
+	-webkit-align-items: center;
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: cover;
+	-o-background-size: cover;
+	-ms-background-size: cover;
+	-moz-background-size: cover;
+	-webkit-background-size: cover;
+    margin-bottom: 0;
+}
+.wizard-v2-content   {
+	/*width: 993px;*/
+	box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
+	-o-box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
+	-ms-box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
+	-moz-box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
+	-webkit-box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
+	border-radius: 10px;
+	-o-border-radius: 10px;
+	-ms-border-radius: 10px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	margin-bottom: 5% 0;
+    margin-top: 5% 0;
+	font-family: 'Muli', sans-serif;
+	position: relative;
+	display: flex;
+	display: -webkit-flex;
+}
+.wizard-v2-content {
+    /*width: 66.61%;*/
+	border-top-left-radius: 10px;
+	border-bottom-left-radius: 10px;
+	background-size: cover;
+	-o-background-size: cover;
+	-ms-background-size: cover;
+	-moz-background-size: cover;
+	-webkit-background-size: cover;
+}
+
+
+/*Inteli installer styles */
+
+/*Background Colors */
+.main-bg-color
+{
+    background-image: linear-gradient(to right, #fb040f, #ff0047, #ff0078, #eb00aa, #bd08d8) !important;
+}
+
+.tertiary-bg-color
+{
+    background-color: purple !important;
+}
+
+.tertiary-bg-first-color
+{
+    background-image: linear-gradient(to right, #fb040f, #ff0047, #ff0078, #eb00aa, #bd08d8) !important;
+}
+
+/*Sizes*/
+
+.sch-logo-size
+{
+    /*height: 100px !important;
+    width: 100px !important;*/
+}
+

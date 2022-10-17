@@ -1,6 +1,236 @@
 <template>
     <div class="collapse glass-content navbar-collapse m-2  w-auto  max-height-vh-100 h-100" id="sidenav-collapse-main">
-      <ul class="navbar-nav">
+      <navigation-bar
+            :vNavClasses="'navbar-nav'"
+            :menuItems="[
+                {
+                  component: 'Link',
+                  icon_classes: 'fas fa-rocket',
+                  title: 'Installation',
+                  link: 'installer',
+                  prop_container_classes: 'icon text-white bg-gradient-info shadow border-radius-md text-center d-flex align-items-center justify-content-center',
+                  propVisible: true,
+                  text_classes: 'nav-link-text ms-1',
+                  component_classes: ''
+                },
+                {
+                  component: 'Link',
+                  icon_classes: 'fas fa-robot',
+                  title: 'Inteli',
+                  link: 'inteli',
+                  prop_container_classes: 'icon text-white bg-gradient-info shadow border-radius-md text-center d-flex align-items-center justify-content-center',
+                  propVisible: true,
+                  text_classes: 'nav-link-text ms-1',
+                  component_classes: ''
+                },
+                {
+                  component: 'Link',
+                  icon_classes: 'fas fa-user-plus',
+                  title: 'Dashboard',
+                  link: 'dashboard',
+                  prop_container_classes: 'icon text-white bg-gradient-info shadow border-radius-md text-center d-flex align-items-center justify-content-center',
+                  propVisible: true,
+                  text_classes: 'nav-link-text ms-1',
+                  component_classes: ''
+                },
+                {
+                  component: 'Link',
+                  icon_classes: 'fas fa-user-plus',
+                  title: 'Admission',
+                  link: 'admission',
+                  prop_container_classes: 'icon text-white bg-gradient-info shadow border-radius-md text-center d-flex align-items-center justify-content-center',
+                  propVisible: true,
+                  text_classes: 'nav-link-text ms-1',
+                  component_classes: ''
+                },
+                {
+                  component: 'Link',
+                  icon_classes: 'fas fa-graduation-cap',
+                  title: 'Academics',
+                  link: 'academic',
+                  prop_container_classes: 'icon text-white bg-gradient-info shadow border-radius-md text-center d-flex align-items-center justify-content-center',
+                  propVisible: true,
+                  text_classes: 'nav-link-text ms-1',
+                  component_classes: ''
+                },
+                {
+                  component: 'Link',
+                  icon_classes: 'fas fa-user-plus',
+                  title: 'Timetable',
+                  link: 'timetable',
+                  prop_container_classes: 'icon text-white bg-gradient-info shadow border-radius-md text-center d-flex align-items-center justify-content-center',
+                  propVisible: true,
+                  text_classes: 'nav-link-text ms-1',
+                  component_classes: ''
+                },
+                {
+                  component: 'Link',
+                  icon_classes: 'fas fa-clock',
+                  title: 'Timetable',
+                  link: 'timetable',
+                  prop_container_classes: 'icon text-white bg-gradient-info shadow border-radius-md text-center d-flex align-items-center justify-content-center',
+                  propVisible: true,
+                  text_classes: 'nav-link-text ms-1',
+                  component_classes: ''
+                },
+                {
+                  component: 'Link',
+                  icon_classes: 'fas fa-clock',
+                  title: 'Examinations',
+                  link: 'exam',
+                  prop_container_classes: 'icon text-white bg-gradient-info shadow border-radius-md text-center d-flex align-items-center justify-content-center',
+                  propVisible: true,
+                  text_classes: 'nav-link-text ms-1',
+                  component_classes: ''
+                },
+                {
+                  component: 'Link',
+                  icon_classes: 'fas fa-chalkboard-teacher',
+                  title: 'Staff',
+                  link: 'staff',
+                  prop_container_classes: 'icon text-white bg-gradient-info shadow border-radius-md text-center d-flex align-items-center justify-content-center',
+                  propVisible: true,
+                  text_classes: 'nav-link-text ms-1',
+                  component_classes: ''
+                },
+                {
+                  component: 'Link',
+                  icon_classes: 'fas fa-book-open',
+                  title: 'Library',
+                  link: 'library',
+                  prop_container_classes: 'icon text-white bg-gradient-info shadow border-radius-md text-center d-flex align-items-center justify-content-center',
+                  propVisible: true,
+                  text_classes: 'nav-link-text ms-1',
+                  component_classes: ''
+                },
+                {
+                  component: 'Link',
+                  icon_classes: 'fas fa-globe',
+                  title: 'Online Classes',
+                  link: 'virtual-reality',
+                  prop_container_classes: 'icon text-white bg-gradient-info shadow border-radius-md text-center d-flex align-items-center justify-content-center',
+                  propVisible: true,
+                  text_classes: 'nav-link-text ms-1',
+                  component_classes: ''
+                },
+                {
+                  component: 'Link',
+                  icon_classes: 'fas fa-file-powerpoint',
+                  title: 'E-Learning',
+                  link: 'virtual-reality',
+                  prop_container_classes: 'icon text-white bg-gradient-info shadow border-radius-md text-center d-flex align-items-center justify-content-center',
+                  propVisible: true,
+                  text_classes: 'nav-link-text ms-1',
+                  component_classes: ''
+                },
+                {
+                  component: 'Link',
+                  icon_classes: 'fas fa-microscope',
+                  title: 'Research Center',
+                  link: 'virtual-reality',
+                  prop_container_classes: 'icon text-white bg-gradient-info shadow border-radius-md text-center d-flex align-items-center justify-content-center',
+                  propVisible: true,
+                  text_classes: 'nav-link-text ms-1',
+                  component_classes: ''
+                },
+                {
+                  component: 'Link',
+                  icon_classes: 'fas fa-coins',
+                  title: 'Finance',
+                  link: 'finance',
+                  prop_container_classes: 'icon text-white bg-gradient-info shadow border-radius-md text-center d-flex align-items-center justify-content-center',
+                  propVisible: true,
+                  text_classes: 'nav-link-text ms-1',
+                  component_classes: ''
+                },
+                {
+                  component: 'Link',
+                  icon_classes: 'fas fa-blender-phone',
+                  title: 'Communication',
+                  link: 'finance',
+                  prop_container_classes: 'icon text-white bg-gradient-info shadow border-radius-md text-center d-flex align-items-center justify-content-center',
+                  propVisible: true,
+                  text_classes: 'nav-link-text ms-1',
+                  component_classes: ''
+                },
+                {
+                  component: 'Link',
+                  icon_classes: 'fas fa-user-graduate',
+                  title: 'Careers',
+                  link: 'finance',
+                  prop_container_classes: 'icon text-white bg-gradient-info shadow border-radius-md text-center d-flex align-items-center justify-content-center',
+                  propVisible: true,
+                  text_classes: 'nav-link-text ms-1',
+                  component_classes: ''
+                },
+                {
+                  component: 'Link',
+                  icon_classes: 'fas fa-users',
+                  title: 'Teams',
+                  link: 'finance',
+                  prop_container_classes: 'icon text-white bg-gradient-info shadow border-radius-md text-center d-flex align-items-center justify-content-center',
+                  propVisible: true,
+                  text_classes: 'nav-link-text ms-1',
+                  component_classes: ''
+                },
+                {
+                  component: 'Link',
+                  icon_classes: 'fas fa-table',
+                  title: 'Form',
+                  link: 'form',
+                  prop_container_classes: 'icon text-white bg-gradient-info shadow border-radius-md text-center d-flex align-items-center justify-content-center',
+                  propVisible: true,
+                  text_classes: 'nav-link-text ms-1',
+                  component_classes: ''
+                },
+                {
+                  component: 'h5',
+                  icon_classes: '',
+                  title: 'Portal',
+                  link: '',
+                  prop_container_classes: '',
+                  propVisible: true,
+                  text_classes: 'nav-link-text ms-1',
+                  component_classes: 'ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6',
+                  nav_link_classes: 'mt-3'
+                },
+                {
+                  component: 'Link',
+                  icon_classes: 'fas fa-user-graduate',
+                  title: 'Student',
+                  link: 'portal-student',
+                  prop_container_classes: 'icon text-white bg-gradient-info shadow border-radius-md text-center d-flex align-items-center justify-content-center',
+                  propVisible: true,
+                  text_classes: 'nav-link-text ms-1',
+                  component_classes: '',
+                  nav_link_classes: ''
+                },
+                {
+                  component: 'Link',
+                  icon_classes: 'fas fa-user',
+                  title: 'Guardian',
+                  link: 'portal-guardian',
+                  prop_container_classes: 'icon text-white bg-gradient-info shadow border-radius-md text-center d-flex align-items-center justify-content-center',
+                  propVisible: true,
+                  text_classes: 'nav-link-text ms-1',
+                  component_classes: '',
+                  nav_link_classes: ''
+                },
+                {
+                  component: 'Link',
+                  icon_classes: 'fas fa-school',
+                  title: 'School',
+                  link: 'portal-school',
+                  prop_container_classes: 'icon text-white bg-gradient-info shadow border-radius-md text-center d-flex align-items-center justify-content-center',
+                  propVisible: true,
+                  text_classes: 'nav-link-text ms-1',
+                  component_classes: '',
+                  nav_link_classes: ''
+                },
+            ]"
+      >
+      </navigation-bar>
+      <!--<ul class="navbar-nav">
         <li class="nav-item">
           <Link class="nav-link" :href="route('installer')">
             <div class="icon text-white bg-gradient-info shadow border-radius-md text-center d-flex align-items-center justify-content-center">
@@ -144,7 +374,6 @@
         <li class="nav-item mt-3">
           <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Portal</h6>
         </li>
-
         <li class="nav-item">
                <Link class="nav-link  dropdown-item" :href="route('portal-student')">
                  <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -246,7 +475,7 @@
             <span class="nav-link-text ms-1">Sign Up</span>
           </Link>
         </li>
-      </ul>
+      </ul>-->
     </div>
 </template>
 
@@ -255,9 +484,12 @@
 
     import { Head, Link } from '@inertiajs/inertia-vue3';
 
+    import NavigationBar from "../../../inteli/ui/components/navs/NavigationBar.vue"
+
     export default defineComponent({
         components: {
-            Link
+            Link,
+            NavigationBar
         },
     })
 </script>

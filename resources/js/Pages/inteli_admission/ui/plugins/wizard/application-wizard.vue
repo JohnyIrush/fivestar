@@ -37,211 +37,14 @@
                  <wizard 
                    :orientation="'horizontal'" 
                    :WizardTitle="'Test'"
-                   :WizardDetails="
-                         {
-                           id: '',
+                   :WizardDetails="{
+                           id: form.id,
                            user_id: '',
-                           title: 'Student Application',
-                           description: 'Student Application Description',
-                           cover: '',
-                           image: '',
-                           sections:{
-                            section1: {
-                               id: '',
-                               user_id: '',
-                               title: 'Personal Details',
-                               description: 'Student Personal Details',
-                               cover: '',
-                               image: '',
-                               fields:{
-                                field1:{
-                                  id: '',
-                                  title: 'field title',
-                                  image: '',
-                                  value: '',
-                                  description: 'text field description',
-                                  name: '',
-                                  settings:{
-                                       type: {
-                                        id: '',
-                                        type: 'text',
-                                       },
-                                       default: {
-                                        id: '',
-                                        default: ''
-                                       },
-                                       placeholder: {
-                                        id: '',
-                                        placeholder: 'field'
-                                       },
-                                       autocomplete : {
-                                        id: '',
-                                        autocomplete : 'off'
-                                       },
-                                       required : {
-                                        id: '',
-                                        required : false
-                                       }, 
-                                       disabled :  {
-                                        id: '',
-                                        disabled :  false
-                                       },
-                                       minlength : {
-                                        id: '',
-                                        minlength :  3
-                                       },
-                                       maxlength :  {
-                                        id: '',
-                                        maxlength :  20
-                                       },
-                                       field: {
-                                        id: '',
-                                        field: 'Text'
-                                      },
-                                      icon: {
-                                       id: '',
-                                       icon: ''
-                                      },
-                                      component: {
-                                       id: '',
-                                       component: 'TextInput'
-                                      },
-                                    },
-                                    options: {}
-                                }
-                               }
-                            },
-                            section2: {
-                               id: '',
-                               user_id: '',
-                               title: 'Medical Details',
-                               description: 'Student Medical Details',
-                               cover: '',
-                               image: '',
-                               fields:{
-                                field1:{
-                                  id: '',
-                                  title: 'field title',
-                                  image: '',
-                                  value: '',
-                                  description: 'text field description',
-                                  name: '',
-                                  settings:{
-                                       type: {
-                                        id: '',
-                                        type: 'text',
-                                       },
-                                       default: {
-                                        id: '',
-                                        default: ''
-                                       },
-                                       placeholder: {
-                                        id: '',
-                                        placeholder: 'field'
-                                       },
-                                       autocomplete : {
-                                        id: '',
-                                        autocomplete : 'off'
-                                       },
-                                       required : {
-                                        id: '',
-                                        required : false
-                                       }, 
-                                       disabled :  {
-                                        id: '',
-                                        disabled :  false
-                                       },
-                                       minlength : {
-                                        id: '',
-                                        minlength :  3
-                                       },
-                                       maxlength :  {
-                                        id: '',
-                                        maxlength :  20
-                                       },
-                                       field: {
-                                        id: '',
-                                        field: 'Text'
-                                      },
-                                      icon: {
-                                       id: '',
-                                       icon: ''
-                                      },
-                                      component: {
-                                       id: '',
-                                       component: 'TextInput'
-                                      },
-                                    },
-                                    options: {}
-                                }
-                               }
-                            },
-                            section3: {
-                               id: '',
-                               user_id: '',
-                               title: 'Account Details',
-                               description: 'Student Account Details',
-                               cover: '',
-                               image: '',
-                               fields:{
-                                field1:{
-                                  id: '',
-                                  title: 'field title',
-                                  image: '',
-                                  value: '',
-                                  description: 'text field description',
-                                  name: '',
-                                  settings:{
-                                       type: {
-                                        id: '',
-                                        type: 'text',
-                                       },
-                                       default: {
-                                        id: '',
-                                        default: ''
-                                       },
-                                       placeholder: {
-                                        id: '',
-                                        placeholder: 'field'
-                                       },
-                                       autocomplete : {
-                                        id: '',
-                                        autocomplete : 'off'
-                                       },
-                                       required : {
-                                        id: '',
-                                        required : false
-                                       }, 
-                                       disabled :  {
-                                        id: '',
-                                        disabled :  false
-                                       },
-                                       minlength : {
-                                        id: '',
-                                        minlength :  3
-                                       },
-                                       maxlength :  {
-                                        id: '',
-                                        maxlength :  20
-                                       },
-                                       field: {
-                                        id: '',
-                                        field: 'Text'
-                                      },
-                                      icon: {
-                                       id: '',
-                                       icon: ''
-                                      },
-                                      component: {
-                                       id: '',
-                                       component: 'TextInput'
-                                      },
-                                    },
-                                    options: {}
-                                }
-                               }
-                            }
-                           },
+                           title: form.title,
+                           description: form.description,
+                           cover: form.cover,
+                           image: form.image,
+                           sections: form['sections'],
                          }"
                    :PaneComponentName="'FormBuilder'"
                    :PaneComponentDisplayType="'single'"
@@ -335,7 +138,10 @@ export default defineComponent({
          }
         },
         computed: {
-
+          form()
+          {
+            return store.getters.getSetting({package: 'inteliadmission', widget: 'application', component: "form", value: "details"})
+          }
         },
         data() {
             return {

@@ -603,7 +603,7 @@
                         v-model="field.settings.field.field"
                         >
                      <span class="input-group-text" id="addon-wrapping">
-                       <modal_button 
+                       <modal-button 
                        @showmodal="launchModal('main-modal')" 
                        :name="''" 
                        :icon_classes="'fas fa-caret-square-down fa-2x'" 
@@ -620,7 +620,7 @@
                        :modalContentClasses="'modal-height'"
                        :backDrop="false"
                        @click="setTypeUpdateIndex(index,sectionindex)"
-                       ></modal_button>
+                       ></modal-button>
                      </span>
                    </div>
                   </div>
@@ -840,7 +840,7 @@
            required: true,
            default: true
          },
-         formDetails: Array,
+         formDetails: Object,
          Delta: Object,
          SelectedInputType: {
           type: Object,

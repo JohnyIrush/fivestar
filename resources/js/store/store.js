@@ -3,14 +3,54 @@ import axios from 'axios'
 import { createApp } from 'vue'
 import { createStore } from 'vuex'
 
+import SecureLS from 'secure-ls'
+
+const ls = new SecureLS({isCompression: false});
+
+import createPersistedState from "vuex-persistedstate";
+//import * as Cookies from "js-cookie";
+
+import Cookies from 'vue-cookies'
+
 export const store = createStore({
     state () {
       return {
         Application:{
             inteliadmission:{
-                applying: {
+                application: {
                     form:{
-                        id: ''
+                        id: '',
+                        details: {}
+                    }
+                },
+                interview: {
+                    form:{
+                        id: '',
+                        details: {}
+                    }
+                },
+                admission: {
+                    form:{
+                        id: '',
+                        details: {}
+                    }
+                },
+                leave: {
+                    form:{
+                        id: '',
+                        details: {}
+                    }
+                },
+                expell: {
+                    form:{
+                        id: '',
+                        details: {}
+                    }
+                },
+                ban: {
+                    form:{
+                        id: '',
+                        details: {}
                     }
                 }
             },
@@ -166,9 +206,20 @@ export const store = createStore({
         }
       }
     },
+    plugins: [
+      createPersistedState({
+        storage: {
+          getItem: (key) => ls.get(key),
+          // Please see https://github.com/js-cookie/js-cookie#json, on how to handle JSON.
+          setItem: (key, value) =>
+            ls.set(key, value,/* { expires: 3, secure: true }*/),
+          removeItem: (key) => ls.remove(key),
+        },
+      }),
+    ],
     getters:
     {
-     doneTodos (state) {
+     doneTodos (state){
          return state.todos.filter(todo => todo.done)
        },
      doneTodosCount (state, getters) {
@@ -176,6 +227,9 @@ export const store = createStore({
        },
        getTodoById: (state) => (id) => {
         return state.todos.find(todo => todo.id === id)
+      },
+       getSetting: (state) => (path) => {
+        return state.Application[path.package][path.widget][path.component][path.value]
       }
     },
     mutations: {
@@ -195,6 +249,12 @@ export const store = createStore({
         {
             state.profile = payload
         },
+        updateSetting: (state, payload) =>
+        {
+            console.log("converted",JSON.parse(JSON.stringify(payload.option)), "unconverted",payload.option)
+            state.Application[payload.settings.package][payload.settings.widget][payload.settings.component][payload.settings.value] = JSON.parse(JSON.stringify(payload.option))
+            console.log("state", state, "payload", payload)
+        }
     },
     actions: {
         getManager: (context, payload) =>{

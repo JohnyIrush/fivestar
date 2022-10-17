@@ -16,37 +16,78 @@
             :menu_item_icon_size="''"
             :menu_item_title_classes="'text-white'"
             :menu_window_background_image="'/theme/assets/img/curved-images/curved0.jpg'"
-            
             :settingSelectOptions="[
                {
                 name: 'Application Form',
                 datapath: 'form/template/list',
                 component: 'SelectInput',
+                settings :
+                {
+                 package: 'inteliadmission',
+                 widget: 'application',
+                 component: 'form',
+                 value: 'details'
+               }
                },
                {
                 name: 'Interview Form',
                 datapath: 'form/template/list',
                 component: 'SelectInput',
+                settings :
+                {
+                 package: 'inteliadmission',
+                 widget: 'interview',
+                 component: 'form',
+                 value: 'details'
+               }
                },
                {
                 name: 'Admission Form',
                 datapath: 'form/template/list',
                 component: 'SelectInput',
+                settings :
+                {
+                 package: 'inteliadmission',
+                 widget: 'admission',
+                 component: 'form',
+                 value: 'details'
+               }
                },
                {
                 name: 'Leave Form',
                 datapath: 'form/template/list',
                 component: 'SelectInput',
+                settings :
+                {
+                 package: 'inteliadmission',
+                 widget: 'leave',
+                 component: 'form',
+                 value: 'details'
+               }
                },
                {
                 name: 'Expell Form',
                 datapath: 'form/template/list',
                 component: 'SelectInput',
+                settings :
+                {
+                 package: 'inteliadmission',
+                 widget: 'expell',
+                 component: 'form',
+                 value: 'details'
+               }
                },
                {
                 name: 'Ban Form',
                 datapath: 'form/template/list',
                 component: 'SelectInput',
+                settings :
+                {
+                 package: 'inteliadmission',
+                 widget: 'ban',
+                 component: 'form',
+                 value: 'id'
+                }
                }
             ]"
 
@@ -121,8 +162,8 @@
                <statistic-card-data :dataPath="'admission/applicant/statistics'" />
             </div>
             <div class="col-12">
-              <tabular-card :dataPath="'admission/applicant/index'">
-              </tabular-card>
+              <!--<tabular-card :dataPath="'admission/applicant/index'">
+              </tabular-card>-->
             </div>
           </div>
         </div>
@@ -131,19 +172,17 @@
         <!--START INTERVIEW PANES-->
         <div class="tab-pane fade" id="v-pills-interview" role="tabpanel" aria-labelledby="v-pills-interview-tab">
            <div class="row justify-content-center">
-            <div class="col-2"></div>
-            <div class="col-8">
+            <div class="col-12">
               <interview />
             </div>
-            <div class="col-2"></div>
            </div>
           <div class="row justify-content-center">
              <div class="col-12">
                <statistic-card-data :dataPath="'admission/interview/statistics'" />
              </div>
             <div class="col-12">
-              <tabular-card :dataPath="'admission/interview/index'">
-              </tabular-card>
+              <!--<tabular-card :dataPath="'admission/interview/index'">
+              </tabular-card>-->
             </div>
            </div>
         </div>
@@ -158,19 +197,17 @@
         <!--START LEAVE  PANE-->
         <div class="tab-pane fade" id="v-pills-leave" role="tabpanel" aria-labelledby="v-pills-leave-tab">
            <div class="row justify-content-center">
-            <div class="col-2"></div>
-            <div class="col-8">
+            <div class="col-12">
               <leave />
             </div>
-            <div class="col-2"></div>
            </div>
           <div class="row justify-content-center">
              <div class="col-12">
                <statistic-card-data :dataPath="'admission/leave/statistics'" />
              </div>
             <div class="col-12">
-              <tabular-card :dataPath="'admission/leave/index'">
-              </tabular-card>
+              <!--<tabular-card :dataPath="'admission/leave/index'">
+              </tabular-card>-->
             </div>
            </div>
         </div>

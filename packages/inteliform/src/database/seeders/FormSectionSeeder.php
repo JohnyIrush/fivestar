@@ -1,6 +1,6 @@
 <?php
 
-namespace Softwarescares\Inteliform\database\deeders;
+namespace Softwarescares\Inteliform\database\seeders;
 
 use Illuminate\Database\Seeder;
 
@@ -13,6 +13,8 @@ class FormSectionSeeder extends Seeder
      */
     public function run()
     {
-        //
+
     }
+
 }
+   

@@ -1,0 +1,29 @@
+{
+    "name": "softwarescares/inteli",
+    "description": "Inteli System Main Package, Global Plugins, Widgets and Functionality, Artificial Inteligence etc",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Softwarescares\\Inteli\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "John Irungu",
+            "email": "johnydanxin@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Softwarescares\\Inteli\\InteliServiceProvider"
+            ],
+            "aliases": {
+
+            }
+        }
+    }
+}

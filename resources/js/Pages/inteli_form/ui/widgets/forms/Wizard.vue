@@ -36,7 +36,6 @@
         <component 
           :is="PaneComponentName"
           :Mode="false"
-
           :formDetails="
                 {
                   id: (PaneComponentName == 'FormBuilder')? WizardDetails.id : '',

@@ -13,6 +13,18 @@
                 },
                 {
                   component: 'Link',
+                  icon_classes: 'fas fa-robot',
+                  title: 'Inteli',
+                  link: 'inteli',
+                },
+                {
+                  component: 'Link',
+                  icon_classes: 'fas fa-rocket',
+                  title: 'Installation',
+                  link: 'installer',
+                },
+                {
+                  component: 'Link',
                   icon_classes: 'fas fa-user-plus',
                   title: 'Dashboard',
                   link: 'dashboard',

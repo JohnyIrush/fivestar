@@ -196,6 +196,7 @@
           formFieldClasses: String,
           formFieldContainerClasses: String,
           field: Object,
+          fieldData: Object,
           fieldSettings: {
             type: Boolean,
             default: false

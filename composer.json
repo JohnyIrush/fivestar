@@ -11,6 +11,13 @@
                 "symlink": true
             }
         },
+        "inteli": {
+            "type": "path",
+            "url": "packages/inteli",
+            "options": {
+                "symlink": true
+            }
+        },
         "inteliacademic": {
             "type": "path",
             "url": "packages/inteliacademic",
@@ -182,6 +189,7 @@
         "laravel/socialite": "^5.5",
         "laravel/tinker": "^2.5",
         "pusher/pusher-php-server": "^7.0",
+        "softwarescares/inteli": "@dev",
         "softwarescares/inteliacademic": "@dev",
         "softwarescares/inteliadmission": "@dev",
         "softwarescares/inteliai": "@dev",

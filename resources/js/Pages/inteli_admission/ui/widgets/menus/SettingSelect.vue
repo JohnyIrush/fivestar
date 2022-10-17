@@ -17,6 +17,16 @@
      :field="''"
      :size="'form-select-lg'"
      :datapath="settingOption.datapath"
+     
+     :settingsConfig="
+     {
+      package: settingOption.settings.package,
+      widget: settingOption.settings.widget,
+      component: settingOption.settings.component,
+      value: settingOption.settings.value
+     }
+     "
+     @selectInput="configureSetting"
      >
      </component>
    </div>
@@ -28,6 +38,8 @@
 import { defineComponent } from 'vue'
 
 import {store} from "../../../../../store/store.js"
+
+import SelectInput from "../../../../inteli_academic/ui/components/inputs/SelectInput"
 
 export default defineComponent({
   name:'SettingSelect',
@@ -44,6 +56,9 @@ export default defineComponent({
       default: 'col-12 col-xl-8'
     }
   },
+  components:{
+    SelectInput
+  },
   setup ()
   {
 
@@ -57,6 +72,19 @@ export default defineComponent({
    }
  },
    methods:{
+    toJsObject(data)
+    {
+      var form = {};
+
+      form.title = data.title
+
+      console.log(form)
+    },
+    configureSetting(event)
+    {
+      
+      store.commit('updateSetting', event)
+    },
     getData(url)
     {
       var responseData = [];
@@ -69,20 +97,10 @@ export default defineComponent({
           this.field = response.data.column;
       }) 
     },
-    selectOption()
-    {
-      this.$emit("selectInput",
-        {
-          'option': this.option,
-          'field': this.field,
-          //'variable': this.variable
-        }
-        )
-    }
    },
-   mounted()
+   mounted() 
    {
-
+    console.log("state",store.state.Application)
    }
 });
 </script>

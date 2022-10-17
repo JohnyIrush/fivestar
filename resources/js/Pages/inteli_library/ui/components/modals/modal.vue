@@ -11,7 +11,9 @@
         <div id="modal-body" class="modal-body">
             <component
                       :is="componentName"
+
                       @selectedListItem="selectedListItem"
+                      
                       :SettingOptions="settingSelectOptions"
                        >
             </component>

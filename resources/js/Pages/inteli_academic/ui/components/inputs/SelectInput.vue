@@ -1,23 +1,27 @@
 <template>
-  <!-- start select input-->
+  <!-- start select input                  :value="(valueKey.length != 0)? option[valueKey] :
+                 (value.length != 0)? option[value]:
+                  option"-->
   <div  
      id="select-input-component"  
      :class="inputContainerClasses">
     <label 
          :class="inputLabelClasses"
          :for="(nameKey != '')? nameKey : name">
-          {{(nameKey != '')? nameKey : name}}
+          {{(labelName.length !== 0)? labelName : label}}
     </label>
     <select 
-          :value="option" :name="(nameKey != '')? nameKey : name" 
+          v-model="option" 
           :class="'form-select ' + size" 
           :aria-label="nameKey" 
           @change="selectOption"
           :id="(nameKey != '')? nameKey : name">
           <option  
                  v-for="option in (inputOptions.length != 0)? inputOptions : options" 
-                 :key="option.id" 
-                 :value="(valueKey != '')? option[valueKey] : option[value]" >
+                 :key="option" 
+                 :value="option"
+                  @click="selectOption(option)"
+                  >
                  {{(nameKey != '')? option[nameKey] : option[name] }}
           </option>
     </select>
@@ -36,12 +40,23 @@ export default defineComponent({
   props: {
     inputOptions: Array,
     nameKey: String,
-    valueKey: String,
+    valueKey: {
+      type:String,
+      default: ''
+    },
     variable: String,
     field: String,
     datapath: String,
     size: String,
-    inputLabelClasses: String
+    inputLabelClasses: String,
+    labelName: {
+      type: String,
+      default: ''
+    },
+    settingsConfig: {
+      type: Object,
+      default: false
+    }
   },
   setup ()
   {
@@ -52,7 +67,7 @@ export default defineComponent({
  },
   data (){
     return {
-      option: 1,
+      option: Array,
       optionsdata: [],
       options: Array,
       name: String,
@@ -62,7 +77,8 @@ export default defineComponent({
       inputContainerClasses:{
         type: String,
         default: 'input-group'
-      }
+      },
+      label: '' 
    }
  },
    methods:{
@@ -76,14 +92,24 @@ export default defineComponent({
           this.name = response.data.name; 
           this.value = response.data.value; 
           this.field = response.data.column;
+          this.label = response.data.label;
       }) 
     },
     selectOption()
     {
+      console.log(this.option)
       this.$emit("selectInput",
         {
-          'option': this.option,
-          'field': this.field,
+          option: this.option,
+          field: this.field,
+          //Setting Select
+           settings: this.settingsConfig
+           //{
+           // package: (this.settingsConfig)? this.settingsConfig.package : {} ,
+           // widget: (this.settingsConfig)? this.settingsConfig.widget : {} ,
+           // component: (this.settingsConfig)? this.settingsConfig.component : {} ,
+           // value: (this.settingsConfig)? this.settingsConfig.value : {} 
+           //}
           //'variable': this.variable
         }
         )

@@ -43,7 +43,8 @@ class FormTemplateController extends Controller
         return response()->json(
             [
                 "name" => "title",
-                "value" => "id",
+                "label" => "Form Template",
+                "value" => "",
                 "column" => "",
                 "options" => FormTemplate::all()
             ]
@@ -95,6 +96,7 @@ class FormTemplateController extends Controller
     public function storeForm(StoreFormTemplateRequest $request)
     {  
         //return response()->json($request);
+
 
         $formTemplate = [];
 

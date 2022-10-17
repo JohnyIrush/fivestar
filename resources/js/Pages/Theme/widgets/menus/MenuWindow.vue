@@ -55,7 +55,7 @@
                  :modalSize="'modal-lg'" 
                  :modalWidth="''"  
                  :componentType="''" 
-                 :componentName="'SearchSelectInput'" 
+                 :componentName="'SettingSelect'" 
                  :dataPath="''" 
 
                  :listData="[]"
@@ -154,7 +154,7 @@
       mounted()
       {
         const menuWindowContainer = this.getDomElement('menu-window-' + this.menuTitle);
-        menuWindowContainer.style.backgroundImage = "url(this.menu_window_background_image)"
+        menuWindowContainer.style.backgroundImage = `url(${this.menu_window_background_image})`
       }
     })
 </script>
