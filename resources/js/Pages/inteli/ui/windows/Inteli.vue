@@ -1,38 +1,129 @@
 <template>
-  <Sidebar></Sidebar>
-  <main class="main-content">
-      <NavBar></NavBar>
-      <Body></Body>
-      <settings></settings>
-  </main>
+ <div class="row" >
+  <div 
+     :class="columnSize">
+     <tab-pane
+       :orientation="'vertical'"
+     >
+        <tab title="tabs" 
+             component="TabButton"
+             icon_classes="''">
+             Tabs
+        </tab>
+        <tab title="tables" 
+             component="TabButton"
+             icon_classes="''">
+             Tables
+        </tab>
+        <tab title="forms" 
+             component="TabButton"
+             icon_classes="''">
+             Forms
+        </tab>
+        <tab title="navs" 
+             component="TabButton"
+             icon_classes="''">
+             Navs
+        </tab>
+        <tab title="modals" 
+             component="TabButton"
+             icon_classes="''">
+             Modals
+        </tab>
+     </tab-pane>
+  </div>
+ </div>
 </template>
 
 <script>
-    import { defineComponent } from 'vue';
-    import { Head, Link } from '@inertiajs/inertia-vue3';
-    import NavBar from '../../../Theme/widgets/NavBar.vue'
-    import Body from '../widgets/Body.vue'
-    import Sidebar from '../../../Theme/widgets/Sidebar.vue'
-    import settings from '../../../Theme/plugins/settings.vue'
+    import { defineComponent } from 'vue'
 
+    import TabPane from '../components/tabs/TabPane.vue'
+
+    import Tab from '../components/tabs/Tab.vue'
 
     export default defineComponent({
+        name: "Inteli",
+        props: {
+          columnSize: {
+            type: String, // String, Number, Boolean, Function, Object, Array
+            default: 'col-12'
+          }
+        },
         components: {
-            Link,
-            NavBar,
-            Body,
-            Sidebar,
-            settings
+            TabPane,
+            Tab
+        },
+        data() {
+            return {
+
+            }
+        },
+
+        methods: {
+          launchModal(modal)
+          {
+            var modal = new bootstrap.Modal(document.getElementById(modal))
+            modal.show()
+          },
+        },
+        mounted()
+        {
+
         },
     })
 </script>
 
+
 <style scoped>
 
-main
-{
 
-    background: linear-gradient(purple, pink) !important;
-    background-size: cover !important;
+.glass-container
+{
+   /*
+    position: relative;
+    min-height: calc(100vh - 280);
+    width: calc(100% - 100px);
+    */
+    background: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 15px 35px rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    justify-content: space-between;
 }
+
+
+.glass-content
+{
+    transform: translateX(-100);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-top: 1px solid rgba(255, 255, 255, 0.25);
+    border-left: 1px solid rgba(255, 255, 255, 0.5);
+    padding: 5px;
+}
+
+.card, .card-header, .card-body, .list-group, .list-group-item, .nav
+{
+  background: transparent !important;
+}
+
+.glass-header
+{
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-top: 1px solid rgba(255, 255, 255, 0.25);
+    border-left: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.avatar-size
+{
+    height: 150px !important;
+    width: 150px !important;
+}
+
 </style>

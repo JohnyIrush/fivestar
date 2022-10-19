@@ -15,7 +15,8 @@ class UIController extends Controller
      */
     public function finance()
     {
-        return Inertia::render('inteli_finance/ui/windows/Finance');
+        return Inertia::render("Theme/windows/Dashboard", 
+            ["module" => 'Finance']);
     }
 
 }

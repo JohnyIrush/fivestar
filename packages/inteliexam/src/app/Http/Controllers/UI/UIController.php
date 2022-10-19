@@ -11,6 +11,14 @@ class UIController extends Controller
 {
 	public function exam()
 	{
-		return Inertia::render("inteli_exam/ui/windows/Exam");
+        return Inertia::render("Theme/windows/Dashboard", 
+            [
+                "module" => 'Exam',
+                "display" => [
+                    "navbar" => true,
+                    'sidebar' => true,
+                    'footer' => true
+                ]
+            ]);
 	}
 }

@@ -1,0 +1,29 @@
+{
+    "name": "softwarescares/intelicareer",
+    "description": "Career Module",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Softwarescares\\Intelicareer\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "John Irungu",
+            "email": "johnydanxin@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Softwarescares\\Intelicareer\\InteliCareerServiceProvider"
+            ],
+            "aliases": {
+               
+            }
+        }
+    }
+}

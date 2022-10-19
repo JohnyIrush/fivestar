@@ -19,7 +19,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Softwarescares\\Intelicommunication\\InteliCommunicationServiceProvider"
+                "Softwarescares\\Inteliconfig\\InteliConfigServiceProvider"
             ],
             "aliases": {
 

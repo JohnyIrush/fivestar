@@ -14,7 +14,15 @@ class UIController extends Controller
 {
     public function timetable()
     {
-        return Inertia::render("inteli_timetable/ui/windows/Timetable");
+        return Inertia::render("Theme/windows/Dashboard", 
+            [
+                "module" => 'Timetable',
+                "display" => [
+                    "navbar" => true,
+                    'sidebar' => true,
+                    'footer' => true
+                ]
+            ]);
     }
 
 }

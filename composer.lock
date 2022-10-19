@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a4972403baa20959712e0f9ada0886a7",
+    "content-hash": "9275ceccf3360bfef6aaf6975d83fb23",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -4974,7 +4974,7 @@
         },
         {
             "name": "softwarescares/inteli",
-            "version": "dev-main",
+            "version": "dev-OPERATION-URANUS",
             "dist": {
                 "type": "path",
                 "url": "packages/inteli",
@@ -5011,7 +5011,7 @@
         },
         {
             "name": "softwarescares/inteliacademic",
-            "version": "dev-main",
+            "version": "dev-OPERATION-URANUS",
             "dist": {
                 "type": "path",
                 "url": "packages/inteliacademic",
@@ -5048,7 +5048,7 @@
         },
         {
             "name": "softwarescares/inteliadmission",
-            "version": "dev-main",
+            "version": "dev-OPERATION-URANUS",
             "dist": {
                 "type": "path",
                 "url": "packages/inteliadmission",
@@ -5085,7 +5085,7 @@
         },
         {
             "name": "softwarescares/inteliai",
-            "version": "dev-main",
+            "version": "dev-OPERATION-URANUS",
             "dist": {
                 "type": "path",
                 "url": "packages/inteliai",
@@ -5121,8 +5121,45 @@
             }
         },
         {
+            "name": "softwarescares/intelicareer",
+            "version": "dev-OPERATION-URANUS",
+            "dist": {
+                "type": "path",
+                "url": "packages/intelicareer",
+                "reference": "af4196cc0a189596b7a5f74eb2445d980961a596"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Softwarescares\\Intelicareer\\InteliCareerServiceProvider"
+                    ],
+                    "aliases": []
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Softwarescares\\Intelicareer\\": "src/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "John Irungu",
+                    "email": "johnydanxin@gmail.com"
+                }
+            ],
+            "description": "Career Module",
+            "transport-options": {
+                "symlink": true,
+                "relative": true
+            }
+        },
+        {
             "name": "softwarescares/intelicommunication",
-            "version": "dev-main",
+            "version": "dev-OPERATION-URANUS",
             "dist": {
                 "type": "path",
                 "url": "packages/intelicommunication",
@@ -5159,17 +5196,17 @@
         },
         {
             "name": "softwarescares/inteliconfig",
-            "version": "dev-main",
+            "version": "dev-OPERATION-URANUS",
             "dist": {
                 "type": "path",
                 "url": "packages/inteliconfig",
-                "reference": "03610ea168269594f3a388f786a22aa7b2926e60"
+                "reference": "f99cf2182102cb85e9a287334b2c71d3e43a633c"
             },
             "type": "library",
             "extra": {
                 "laravel": {
                     "providers": [
-                        "Softwarescares\\Intelicommunication\\InteliCommunicationServiceProvider"
+                        "Softwarescares\\Inteliconfig\\InteliConfigServiceProvider"
                     ],
                     "aliases": []
                 }
@@ -5196,7 +5233,7 @@
         },
         {
             "name": "softwarescares/intelielearn",
-            "version": "dev-main",
+            "version": "dev-OPERATION-URANUS",
             "dist": {
                 "type": "path",
                 "url": "packages/intelielearn",
@@ -5233,7 +5270,7 @@
         },
         {
             "name": "softwarescares/inteliexam",
-            "version": "dev-main",
+            "version": "dev-OPERATION-URANUS",
             "dist": {
                 "type": "path",
                 "url": "packages/inteliexam",
@@ -5270,7 +5307,7 @@
         },
         {
             "name": "softwarescares/intelifinance",
-            "version": "dev-main",
+            "version": "dev-OPERATION-URANUS",
             "dist": {
                 "type": "path",
                 "url": "packages/intelifinance",
@@ -5308,7 +5345,7 @@
         },
         {
             "name": "softwarescares/inteliform",
-            "version": "dev-main",
+            "version": "dev-OPERATION-URANUS",
             "dist": {
                 "type": "path",
                 "url": "packages/inteliform",
@@ -5345,7 +5382,7 @@
         },
         {
             "name": "softwarescares/inteligoogle",
-            "version": "dev-main",
+            "version": "dev-OPERATION-URANUS",
             "dist": {
                 "type": "path",
                 "url": "packages/inteligoogle",
@@ -5382,7 +5419,7 @@
         },
         {
             "name": "softwarescares/inteliinstaller",
-            "version": "dev-main",
+            "version": "dev-OPERATION-URANUS",
             "dist": {
                 "type": "path",
                 "url": "packages/inteliinstaller",
@@ -5420,7 +5457,7 @@
         },
         {
             "name": "softwarescares/inteliinventory",
-            "version": "dev-main",
+            "version": "dev-OPERATION-URANUS",
             "dist": {
                 "type": "path",
                 "url": "packages/inteliinventory",
@@ -5457,7 +5494,7 @@
         },
         {
             "name": "softwarescares/intelijenga",
-            "version": "dev-main",
+            "version": "dev-OPERATION-URANUS",
             "dist": {
                 "type": "path",
                 "url": "packages/intelijenga",
@@ -5494,7 +5531,7 @@
         },
         {
             "name": "softwarescares/intelilibrary",
-            "version": "dev-main",
+            "version": "dev-OPERATION-URANUS",
             "dist": {
                 "type": "path",
                 "url": "packages/intelilibrary",
@@ -5531,7 +5568,7 @@
         },
         {
             "name": "softwarescares/intelionlineclass",
-            "version": "dev-main",
+            "version": "dev-OPERATION-URANUS",
             "dist": {
                 "type": "path",
                 "url": "packages/intelionlineclass",
@@ -5568,7 +5605,7 @@
         },
         {
             "name": "softwarescares/intelipaypal",
-            "version": "dev-main",
+            "version": "dev-OPERATION-URANUS",
             "dist": {
                 "type": "path",
                 "url": "packages/intelipaypal",
@@ -5605,7 +5642,7 @@
         },
         {
             "name": "softwarescares/inteliportal",
-            "version": "dev-main",
+            "version": "dev-OPERATION-URANUS",
             "dist": {
                 "type": "path",
                 "url": "packages/inteliportal",
@@ -5642,7 +5679,7 @@
         },
         {
             "name": "softwarescares/inteliresource",
-            "version": "dev-main",
+            "version": "dev-OPERATION-URANUS",
             "dist": {
                 "type": "path",
                 "url": "packages/inteliresource",
@@ -5679,7 +5716,7 @@
         },
         {
             "name": "softwarescares/intelisafaricomdaraja",
-            "version": "dev-main",
+            "version": "dev-OPERATION-URANUS",
             "dist": {
                 "type": "path",
                 "url": "packages/intelisafaricomdaraja",
@@ -5718,7 +5755,7 @@
         },
         {
             "name": "softwarescares/intelisecurity",
-            "version": "dev-main",
+            "version": "dev-OPERATION-URANUS",
             "dist": {
                 "type": "path",
                 "url": "packages/intelisecurity",
@@ -5755,7 +5792,7 @@
         },
         {
             "name": "softwarescares/intelistaff",
-            "version": "dev-main",
+            "version": "dev-OPERATION-URANUS",
             "dist": {
                 "type": "path",
                 "url": "packages/intelistaff",
@@ -5792,7 +5829,7 @@
         },
         {
             "name": "softwarescares/inteliteam",
-            "version": "dev-main",
+            "version": "dev-OPERATION-URANUS",
             "dist": {
                 "type": "path",
                 "url": "packages/inteliteam",
@@ -5829,7 +5866,7 @@
         },
         {
             "name": "softwarescares/intelitimetable",
-            "version": "dev-main",
+            "version": "dev-OPERATION-URANUS",
             "dist": {
                 "type": "path",
                 "url": "packages/intelitimetable",
@@ -11204,6 +11241,7 @@
         "softwarescares/inteliresource": 20,
         "softwarescares/intelisafaricomdaraja": 20,
         "softwarescares/intelisecurity": 20,
+        "softwarescares/intelicareer": 20,
         "softwarescares/intelistaff": 20,
         "softwarescares/inteliteam": 20,
         "softwarescares/intelitimetable": 20

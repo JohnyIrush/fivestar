@@ -15,7 +15,15 @@ class UIController extends Controller
      */
     public function dashboard()
     {
-        return Inertia::render('Theme/windows/Dashboard');
+        return Inertia::render('Theme/windows/Dashboard',
+         [
+            "module" => 'Dash',
+                "display" => [
+                    "navbar" => true,
+                    'sidebar' => true,
+                    'footer' => true
+                ]
+        ]);
     }
 
 

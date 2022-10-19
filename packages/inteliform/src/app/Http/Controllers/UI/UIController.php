@@ -10,6 +10,14 @@ class UIController extends Controller
 {
     public function form()
     {
-        return Inertia::render("inteli_form/ui/windows/Form");
+        return Inertia::render("Theme/windows/Dashboard", 
+            [
+                "module" => 'Form',
+                "display" => [
+                    "navbar" => true,
+                    'sidebar' => true,
+                    'footer' => true
+                ]
+            ]);
     }
 }

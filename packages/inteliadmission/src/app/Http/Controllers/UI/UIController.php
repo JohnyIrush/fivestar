@@ -10,6 +10,14 @@ class UIController extends Controller
 {
     public function admission()
     {
-        return Inertia::render("inteli_admission/ui/windows/Admission");
+        return Inertia::render("Theme/windows/Dashboard", 
+            [
+                "module" => 'Admission',
+                "display" => [
+                    "navbar" => true,
+                    'sidebar' => true,
+                    'footer' => true
+                ]
+            ]);
     }
 }

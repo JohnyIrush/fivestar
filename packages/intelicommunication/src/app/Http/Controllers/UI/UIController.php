@@ -12,9 +12,10 @@ class UIController extends Controller
     /**
      * Staff
      */
-    public function staff()
+    public function communication()
     {
-        return Inertia::render('');
+        return Inertia::render("Theme/windows/Dashboard", 
+            ["module" => 'Communication']);
     }
 
 }

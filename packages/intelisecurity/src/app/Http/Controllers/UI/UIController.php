@@ -1,12 +1,12 @@
 <?php
 
-namespace Softwarescares\Inteliinventory\app\Http\Controllers;
+namespace Softwarescares\intelisecurity\app\Http\Controllers\UI;
 
-use Softwarescares\Inteliinventory\app\Http\Controllers\Controller;
+use Softwarescares\intelisecurity\app\Http\Controllers\Controller;
 
-use Softwarescares\Inteliinventory\app\Models\Inventory;
-use Softwarescares\Inteliinventory\app\Http\Requests\StoreInventoryRequest;
-use Softwarescares\Inteliinventory\app\Http\Requests\UpdateInventoryRequest;
+use Softwarescares\intelisecurity\app\Models\Security;
+use Softwarescares\intelisecurity\app\Http\Requests\StoreSecurityRequest;
+use Softwarescares\intelisecurity\app\Http\Requests\UpdateSecurityRequest;
 
 use Inertia\Inertia;
 
@@ -15,9 +15,17 @@ class StaffController extends Controller
     /**
      * Staff
      */
-    public function staff()
+    public function security()
     {
-        return Inertia::render('');
+        return Inertia::render("Theme/windows/Dashboard", 
+            [
+                "module" => 'Security',
+                "display" => [
+                    "navbar" => true,
+                    'sidebar' => true,
+                    'footer' => true
+                ]
+            ]);
     }
 
 }

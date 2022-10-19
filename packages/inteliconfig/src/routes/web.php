@@ -1,5 +1,7 @@
 <?php
 
-use Illuminate\Foundation\Application;
+use Softwarescares\Inteliconfig\app\Http\Controllers\UI\UIController;
+
 use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
+
+Route::get('config', [UIController::class, 'config'])->name('config');

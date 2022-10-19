@@ -10,6 +10,14 @@ class UIController extends Controller
 {
     public function academic()
     {
-        return Inertia::render('inteli_academic/ui/windows/Academic');
+        return Inertia::render("Theme/windows/Dashboard", 
+            [
+                "module" => 'Academic',
+                "display" => [
+                    "navbar" => true,
+                    'sidebar' => true,
+                    'footer' => true
+                ]
+            ]);
     }
 }

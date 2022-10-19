@@ -10,6 +10,14 @@ class UIController extends Controller
 {
     public function inteli()
     {
-        return Inertia::render('inteli/ui/windows/Inteli');
+        return Inertia::render("Theme/windows/Dashboard", 
+            [
+                "module" => 'Inteli',
+                "display" => [
+                    "navbar" => true,
+                    'sidebar' => true,
+                    'footer' => true
+                ]
+            ]);
     }
 }

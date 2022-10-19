@@ -10,53 +10,11 @@ use Inertia\Inertia;
 
 class UIController extends Controller
 {
-    /**
-     * Render the main dashboard
-     */
-    public function dashboard()
+
+    public function resource()
     {
-        return Inertia::render('inteli_resource/ui/windows/Dashboard');
+        return Inertia::render("Theme/windows/Dashboard", 
+            ["module" => 'MultiMedia']);
     }
-
-
-    /**
-     * Render the main profile
-     */
-    public function profile()
-    {
-        return Inertia::render('inteli_resource/ui/windows/Profile');
-    }
-
-
-    /**
-     * Render the main finance
-     */
-    public function fileManager()
-    {
-        return Inertia::render('inteli_resource/ui/windows/File-Manager');
-    }
-
-
-    /**
-     * Render the main finance
-     */
-    public function gallery()
-    {
-        return Inertia::render('inteli_resource/ui/windows/Gallery');
-    }
-
-    public function screenShot()
-    {
-        return Inertia::render('inteli_resource/ui/windows/ScreenShot');
-    }
-    /**
-     * Render the main finance
-     */
-    public function settings()
-    {
-        return Inertia::render('inteli_resource/ui/windows/Settings');
-    }
-
-
 
 }

@@ -11,25 +11,53 @@ class UIController extends Controller
 {
     public function student()
     {
-
-        return Inertia::render("inteli_portal/ui/windows/Student");
+        return Inertia::render("Theme/windows/Dashboard", 
+            [
+                "module" => 'Student',
+                "display" => [
+                    "navbar" => true,
+                    'sidebar' => true,
+                    'footer' => true
+                ]
+            ]);
     }
 
     public function guardian()
     {
-
-        return Inertia::render("inteli_portal/ui/windows/Guardian");
+        return Inertia::render("Theme/windows/Dashboard", 
+            [
+                "module" => 'Guardian',
+                "display" => [
+                    "navbar" => true,
+                    'sidebar' => true,
+                    'footer' => true
+                ]
+            ]);
     }
 
     public function staff()
     {
-
-        return Inertia::render("inteli_portal/ui/windows/Staff");
+        return Inertia::render("Theme/windows/Dashboard", 
+            [
+                "module" => 'StaffPortal',
+                "display" => [
+                    "navbar" => true,
+                    'sidebar' => true,
+                    'footer' => true
+                ]
+            ]);
     }
 
     public function school()
     {
-
-        return Inertia::render("inteli_portal/ui/windows/School");
+        return Inertia::render("Theme/windows/Dashboard", 
+            [
+                "module" => 'School',
+                "display" => [
+                    "navbar" => true,
+                    'sidebar' => true,
+                    'footer' => true
+                ]
+            ]);
     }
 }

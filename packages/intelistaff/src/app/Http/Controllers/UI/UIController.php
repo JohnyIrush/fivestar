@@ -15,7 +15,15 @@ class UIController extends Controller
      */
     public function staff()
     {
-        return Inertia::render('inteli_staff/ui/windows/Staff');
+        return Inertia::render("Theme/windows/Dashboard", 
+            [
+                "module" => 'Staff',
+                "display" => [
+                    "navbar" => true,
+                    'sidebar' => true,
+                    'footer' => true
+                ]
+            ]);
     }
 
 }

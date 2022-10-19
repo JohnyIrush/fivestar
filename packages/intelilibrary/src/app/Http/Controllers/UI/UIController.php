@@ -13,7 +13,15 @@ class UIController extends Controller
      */
     public function library()
     {
-        return Inertia::render('inteli_library/ui/windows/Library');
+        return Inertia::render("Theme/windows/Dashboard", 
+            [
+                "module" => 'Library',
+                "display" => [
+                    "navbar" => true,
+                    'sidebar' => true,
+                    'footer' => true
+                ]
+            ]);
     }
 
 }

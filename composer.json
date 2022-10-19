@@ -46,6 +46,13 @@
                 "symlink": true
             }
         },
+        "intelicareer": {
+            "type": "path",
+            "url": "packages/intelicareer",
+            "options": {
+                "symlink": true
+            }
+        },
         "inteliteam": {
             "type": "path",
             "url": "packages/inteliteam",
@@ -210,6 +217,7 @@
         "softwarescares/inteliresource": "@dev",
         "softwarescares/intelisafaricomdaraja": "@dev",
         "softwarescares/intelisecurity": "@dev",
+        "softwarescares/intelicareer": "@dev",
         "softwarescares/intelistaff": "@dev",
         "softwarescares/inteliteam": "@dev",
         "softwarescares/intelitimetable": "@dev",

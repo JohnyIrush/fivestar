@@ -17,7 +17,15 @@ class UIController extends Controller
      */
     public function inventory()
     {
-        return Inertia::render('inteli_inventory/ui/windows/Inventory');
+        return Inertia::render("Theme/windows/Dashboard", 
+            [
+                "module" => 'Inventory',
+                "display" => [
+                    "navbar" => true,
+                    'sidebar' => true,
+                    'footer' => true
+                ]
+            ]);
     }
 
 }

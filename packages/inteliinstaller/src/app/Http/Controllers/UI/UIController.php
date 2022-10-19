@@ -13,7 +13,15 @@ class UIController extends Controller
 {
     public function installer()
     {
-        return Inertia::render('inteli_installer/ui/themes/Installer');
+        return Inertia::render("Theme/windows/Dashboard", 
+            [
+                "module" => 'Installer',
+                "display" => [
+                    "navbar" => false,
+                    'sidebar' => false,
+                    'footer' => false
+                ]
+            ]);
 
         $users = User::role('Admin')->get(); // Returns only users with the role 'Admin'
 

@@ -10,6 +10,20 @@ use Inertia\Inertia;
 
 class UIController extends Controller
 {
+
+    public function team()
+    {
+        return Inertia::render("Theme/windows/Dashboard", 
+            [
+                "module" => 'Team',
+                "display" => [
+                    "navbar" => true,
+                    'sidebar' => true,
+                    'footer' => true
+                ]
+            ]);
+    }
+
     public function userManager()
     {
         return Inertia::render('inteli_team/ui/windows/users');
