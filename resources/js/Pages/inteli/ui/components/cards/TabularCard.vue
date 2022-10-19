@@ -1,232 +1,163 @@
 <template>
-  <!-- START DATATABLE NAVBAR  -->
-  <div class="row glass-content mb-2">
-    <!-- START PAGINATION RANGE COMPONENT -->
-    <div class="col-4 align-self-start">
-      <div class="d-flex flex-row">
-          <span class="m-2">Show</span> 
-          <select @change="changePage(currentPage)" v-model="pagination" class="form-control form-control-sm select-sm-size">
-            <option :value="10" selected>10</option>
-            <option :value="showEntry" v-for="showEntry in showEntries" :key="showEntry" >{{showEntry}}</option>
-          </select>
-          <span class="m-2">Entries</span> 
-      </div>
-    </div>
-    <!-- END PAGINATION RANGE COMPONENT -->
-
-    <!--START FILTER COLLAPSE BUTTON-->
-    <div class="col-5">
-      <collapse_button             
-            :collapseId="'table-filter-collapse'"
-            :buttonName="''"
-            :icon_classes="'fa fa-filter'"
-            :button_classes="'btn-light'"
-            :portId="''"
-            :componentId="''"
-            :componentName="''"
-            >
-      </collapse_button>
-    </div>
-    <!--END FILTER COLLAPSE BUTTON-->
-
-    <!-- START SEARCH BAR-->
-    <div class="col-3">
-      <div class="row">
-        <div class="col">
-          <search @searchFilter="searchTable"></search>
-        </div>
-      </div>
-    </div>
-    <!--END SEARCH BAR-->
-  </div>
-  <!-- END DATATABLE NAVBAR  -->
-
-  <!-- START HEADER WIDGET SECTION -->
-  <div class="row mb-2" >
-    <div class="col-3"></div>
-     <div class="col-6">
-       <!-- START TABLE FILTER WIDGET-->
-        <div class="row">
-         <div id="table-filter-collapse"  class="card glass-content collapse">
-           <div class="row">
-             <div class="col-8 d-flex flex-column text-left">
-                <h4 class="mt-1 mb-2">Filter Type</h4>
-                <div class="mt-4" v-if="checkDataType(columnFilter.type) == 'date'">
-                 <date-picker :pickType="'date'" @filterDate="filterDate" :pickField="columnFilter.field" />
-                </div>
-                <div class="mt-4" v-if="checkDataType(columnFilter.type) == 'number'">
-                 <number-filter :minValue="1" :maxValue="entries.length" @filterNumber="filterNumber" :filterField="columnFilter.field" />
-                </div>
-             </div>
-             <div class="col-4 text-left">
-               <h4 class="mt-1 mb-2">Column Filter</h4>
-               <radio-input :inputOptions="columns" :nameKey="'field'" :valueKey="'field'" @radioInput="radioInput" :variable="'columnFilter'"  />
-             </div>
-           </div> 
-           <div class="row">
-             <div class="col-3" v-for="options in filter" :key="option">
-               <select-input :inputOptions="options.options" :nameKey="options.name" :valueKey="options.value" @selectInput="filterByColumns" :variable="'columnFilter'" :field="options.column" />
-             </div>
+   <!--<div class="row align-items-start">
+     <div class="col ms-auto">
+       <div class="row">
+           <div class="col">
+            <div class="d-flex flex-row p-3 bg-light">
+              <div class=" form-check">
+               <input class="form-check-input" type="checkbox" value="" id="">
+              </div>
+              <div class="dropdown">
+                <button class="" type="button" id="" data-bs-toggle="dropdown"><i class="fas fa-caret-down"></i></button>
+                <ul  class="dropdown-menu" >
+                  <li><a class="dropdown-item" href="#">Action</a></li>
+                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+              </div>
+            </div>
            </div>
-         </div>
+           <div class="col">
+            <div class="d-flex flex-row p-3 bg-light">
+              <div class="mr-2">
+                  <span>Show: All</span>
+              </div>
+              <div class="dropdown">
+                <button class="" type="button" id="" data-bs-toggle="dropdown"><i class="fas fa-caret-down"></i></button>
+                <ul  class="dropdown-menu" >
+                  <li><a class="dropdown-item" href="#">All</a></li>
+                  <li><a class="dropdown-item" href="#">Videos</a></li>
+                  <li><a class="dropdown-item" href="#">Audios</a></li>
+                </ul>
+              </div>
+            </div>
+           </div>
+           <div class="col">
+            <div class="d-flex flex-row p-3 bg-light">
+              <div class="mr-2">
+                  <span>Sort: Most Recent</span>
+              </div>
+              <div class="dropdown">
+                <button class="" type="button" id="" data-bs-toggle="dropdown"><i class="fas fa-caret-down"></i></button>
+                <ul  class="dropdown-menu" >
+                  <li><a class="dropdown-item" href="#">Most Recent</a></li>
+                  <li><a class="dropdown-item" href="#">Last Played</a></li>
+                  <li><a class="dropdown-item" href="#">A-Z</a></li>
+                  <li><a class="dropdown-item" href="#">Z-A</a></li>
+                </ul>
+              </div>
+            </div>
+           </div>
+       </div>
+     </div>
+     <div class="col me-auto">
+       <div class="row">
+           <div class="col">
+           </div>
+           <div class="col"></div>
+           <div class="col">
+            <div class="p-3 bg-light">
+              <button class="" type="button" id="" data-bs-toggle="dropdown"><i class="fas fa-plus mr-2"></i> Add</button>
+            </div>
+           </div>
+       </div>
+     </div>
+   </div>-->
+  <div class="vh-50 overflow-scroll">
+   <div class="glass-content mt-1 mb-1 row" v-for="fieldData in entries" :key="fieldData">
+    <div class="col-8">
+     <div class="card">
+       <div class="row">
+           <div class="col ms-auto">
+            <div class="row">
+             <div class="col d-flex flex-row">
+              <div class="">
+               <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="" >
+               </div>
+              </div>
+              <div class="row">
+                <div class="col-4" v-for="column in tableHeader" :key="column.field">
+                 <span v-if="!hasMore(column.field)">
+                    <span v-if="types[column.field] == 'image'">
+                      <img :src="fieldData[column.field]">
+                    </span>
+                 </span>
+                 <span v-if="checkDisplay(column.field) == 'item'">
+                    <span v-if="types[column.field] == 'image'">
+                      <img :src="fieldData[column.field]">
+                    </span>
+                 </span>
+                </div>
+                <div class="col-8">
+                 <div class="row">
+                  <div class="col-6" v-for="column in tableHeader" :key="column.field">
+                   <span v-if="!hasMore(column.field)">
+                      <span class="text-wrap" v-if="!hasType(column.field)">{{fieldData[column.field]}}</span>
+                   </span>
+                   <span v-else-if="checkDisplay(column.field) == 'item'">
+                      <span class="text-wrap"  v-if="!hasType()">
+                      {{fieldData[this.more[column.field]["name"]][this.more[column.field]["value"]]}}
+                      </span>
+                   </span>
+                  </div>
+                 </div>
+                </div>
+              </div>
+             </div>
+            </div>
+           </div>
+           <div class="col me-auto">
+            <div class="row">
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col">
+                 <div class="d-flex flex-row">
+                     <span class="mr-4"><i class="fas fa-share"></i> Share</span>
+                     <span class="mr-4"><i class="fas fa-folder"></i></span>
+                     <span class="mr-4"><i class="fas fa-trash-alt "></i></span>
+                     <button class="mr-4"><i class="fas fa-caret-down" data-bs-toggle="collapse" :data-bs-target="'#' + fieldData.id + '-card-more'" aria-expanded="false" :aria-controls="fieldData.id +'-card-more'"></i></button>
+                 </div>
+                </div>
+            </div>
+           </div>
+       </div>
+     </div>
+    </div>
+    <div class="col-4">
+      <div v-for="formField in formFieldsData" :key="formField">
+        <MainForm :formFields="formField" :showCommunicationMenu="'true'" :dataPath="'communication/method/options/index'"></MainForm>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <div class="collapse multi-collapse" :id="fieldData.id + '-card-more'">
+          <div class="card card-body">
+        Some placeholder content for the second collapse component of this multi-collapse example. This panel is hidden by default but revealed when the user activates the relevant trigger.
+          </div>
+
         </div>
-       <!-- END TABLE FILTER WIDGET-->
-     </div>
-    <div class="col-3"></div>
-  </div>
-  <!-- END HEADER WIDGET SECTION -->
-
-  <!--START TABLE-->
-  <div class="table-responsive">
-   <!--START DATA TABLE-->
-    <table class="table table-bordered">
-     <thead>
-     <tr>
-       <th scope="col"  v-for="th in tableHeader" :key="th" aria-label="Name: activate to sort column ascending" aria-sort="descending"> 
-        <div class="d-flex flex-row">
-         <span >{{th.field}}</span>
-         <span class="ml-10">
-          <i class="fas fa-sort-amount-up-alt" v-if="sortData.column == th.field && sortData.order == 'ascending'"></i>
-          <i :id="th.field+ '-sort-icon'" class="fas fa-sort fa-2x" @click="sortByColumn(th.field, th.type)"></i>
-          <i class="fas fa-sort-amount-down-alt" v-if="sortData.column == th.field && sortData.order == 'descending'"></i>
-         </span>
-        </div>
-       </th>
-       <th scope="col">
-         Options
-       </th>
-     </tr>
-     </thead>
-     <tbody>
-     <tr v-for="td in visibleEntries" :key="td">
-       <td :data-label="column.field" class="text-wrap" style="width: 6rem !important;" v-for="column in tableHeader" :key="column.field">
-       <span v-if="!hasMore(column.field)">
-          <span class="text-wrap" style="width: 4rem !important;" v-if="!hasType(column.field)">{{td[column.field]}}</span>
-          <span v-else-if="types[column.field] == 'image'">
-            <image :info="td"></image> 
-            <img :src="td[column.field]">
-          </span>
-          <span v-else-if="types[column.field] == 'form'">
-            <attendance-form :StudentId="td['id']"></attendance-form>
-          </span>
-       </span>
-       <span v-else-if="checkDisplay(column.field) == 'item'">
-          <span class="text-wrap" style="width: 6rem !important;" v-if="!hasType()">
-          {{td[this.more[column.field]["name"]][this.more[column.field]["value"]]}}
-
-          </span>
-          <span v-else-if="types[column.field] == 'image'">
-            <!--<image :info="td"></image>-->
-            <img :src="td[column.field]">
-            <img :src="td[column.field]">
-          </span>
-       </span>
-       <span v-else-if="checkDisplay(column.field) == 'list'">
-         {{"list"}}
-       </span>
-
-       </td>
-       <td >
-         <table_options @showModal="launchModal('', 'modal-body')" :formData="td" :dataId="td.id" :deletePath="crud.delete" :triggerName="'Options'" :icon_classes="'fas fa-ellipsis-h'" :triggerType="'button'"></table_options>
-       </td>
-     </tr>
-     </tbody>
-     <tfoot>
-      <tr>
-        <th  v-for="th in tableHeader" :key="th">
-         <span>{{th.field}}</span>
-         <span>
-         </span>
-        </th>
-      </tr>
-     </tfoot>
-    </table>
-   <!--END DATA TABLE-->
-   <!--START DATA TABLE RECORDS/PAGES COUNT-->
-   <div class="row">
-     <div class="col-4 align-self-start">
-       <p>Showing {{currentPage}} to {{currentPage + pagination - 1}} of {{entries.length }} Entries</p>
-     </div>
-     <div class="col-8 align-self-end">
-     </div>
+      </div>
+    </div>
    </div>
-   <!--END DATA TABLE RECORDS/PAGES COUNT-->
-   <!--START DATA TABLE PAGINATION COMPONENT-->
-   <div class="row">
-     <div class="col-12">
-      <nav aria-label="Page navigation example">
-       <ul class="pagination justify-content-end">
-         <li v-if="(currentPage - 1) > 0"  class="page-item" @click="changePage(currentPage + 1)">
-           <a role="button"  class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-         </li>
-         <li class="page-item" v-for="page in pages" :key="page" @click="changePage(page)"><a role="button" class="page-link">{{page}}</a></li>
-         <li v-if="(currentPage + 1) < pages" class="page-item" @click="changePage(currentPage + 1)">
-           <a role="button"  class="page-link">Next</a>
-          </li>
-        </ul>
-      </nav>
-     </div>
-   </div>
-   <!--END DATA TABLE PAGINATION COMPONENT-->
   </div>
-  <!-- END TABLE-->
-  <!--<collapse></collapse>-->
 </template>
 
 <script>
 
 import { defineComponent } from 'vue'
 
-import { reactive } from 'vue'
-import { Inertia } from '@inertiajs/inertia'
-
-import { store } from '../../../../../store/store.js'
-
-import list from "../lists/list.vue"
-
-import image from "../images/image.vue"
-
-import table_options from '../../widgets/menus/table-options.vue'
-
 import MainForm from "../forms/MainForm.vue"
 
-import AttendanceForm from '../../../../inteli_academic/ui/components/forms/AttendanceForm.vue'
-
-import DatePicker from '../../../../inteli_academic/ui/widgets/filters/DatePicker.vue'
-
-import Search from "../../../../inteli_academic/ui/widgets/search/Search.vue"
-
-import collapse_button from "../../../../inteli_academic/ui/components/buttons/collapse-button.vue"
-
-import Collapse from "../../../../inteli_academic/ui/components/collapse/Collapse.vue"
-import RadioInput from '../../../../inteli_academic/ui/components/inputs/RadioInput.vue'
-import SelectInput from '../../../../inteli_academic/ui/components/inputs/SelectInput.vue'
-import NumberFilter from '../../../../inteli_academic/ui/widgets/filters/NumberFilter.vue'
-
-
 export default defineComponent({
-  name: "TableData",
-  components:{
-    list,
-    image,
-    table_options,
-    MainForm,
-    AttendanceForm,
-    DatePicker,
-    Search,
-    collapse_button,
-    Collapse,
-    RadioInput,
-    NumberFilter,
-    SelectInput
+  name: "TabularCard",
+  props:{
+    dataPath: String,
   },
-  props: {
-    datapath: String
-  },
-  setup ()
-  {
-  },
-  computed:{
+	components:{
+    MainForm
+	},
+computed:{
     tableHeader()
     {
       return this.columns || []
@@ -245,41 +176,46 @@ export default defineComponent({
     },
     hidden()
     {
-      return store.state.Table.data.hidden
+      return this.dataEntries.hidden
     },
     columns()
     {
-      if(store.state.Table.data.columns)
+      if(this.dataEntries.columns)
       {
-       return  store.state.Table.data.columns.filter((el, index, arr)=>{
+       return  this.dataEntries.columns.filter((el, index, arr)=>{
          return !this.hidden.includes(el.field)
        })
       }
     },
     entries()
     {
-      return store.state.Table.data.entries
+      return this.dataEntries.entries
 
     },
     more()
     {
-      return store.state.Table.data.more
+      return this.dataEntries.more
     },
     types()
     {
-      return store.state.Table.data.types
+      return this.dataEntries.types
     },
     crud()
     {
-      return store.state.Table.data.crud
+      return this.dataEntries.crud
     },
     filter()
     {
-      return store.state.Table.data.filter
+      return this.dataEntries.filter
+    },
+    formFieldsData()
+    {
+      return this.dataEntries.formFields
     }
   },
   data (){
     return {
+      dataEntries: [],
       showEntries: [15,20,25,30,35,40,50,75,100],
       pagination: 10,
       currentPage: 1,
@@ -333,6 +269,18 @@ export default defineComponent({
      }
    },
    methods:{
+    getEntries(url)
+    {
+      axios.get(url)
+      .then((response)=>{
+        this.dataEntries = response.data
+      })
+    },
+    dropdown()
+    {
+      var dropdown = new bootstrap.Dropdown(document.getElementById('dropdown'))
+      dropdown.toggle()
+    },
     /**
      * start data table field functions
      * 
@@ -681,16 +629,27 @@ export default defineComponent({
    },
    mounted()
    {
-
+    this.getEntries(this.dataPath)
    },
    updated()
    {
 
    }
-});
+})
+
 </script>
 
 <style scoped>
+	.img-box-size
+    {
+        height: 100% !important;
+        width: 100px !important;
+    }
+
+.card, .card-header, .card-body, .list-group, .list-group-item, .nav
+{
+  background: transparent !important;
+}
 
 .glass-container
 {
@@ -705,7 +664,6 @@ export default defineComponent({
     justify-content: space-between;
 }
 
-
 .glass-content
 {
     transform: translateX(-100);
@@ -718,36 +676,9 @@ export default defineComponent({
     padding: 5px;
 }
 
-.card, .card-header, .card-body, .list-group, .list-group-item, .nav
+.vh-50
 {
-  background: transparent !important;
-}
-
-.glass-header
-{
-    background: rgba(255, 255, 255, 0.2);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
-    border-radius: 20px;
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    border-top: 1px solid rgba(255, 255, 255, 0.25);
-    border-left: 1px solid rgba(255, 255, 255, 0.5);
-}
-
-.select-sm-size
-{
-  width: 50px !important;
-}
-
-.table-icon-ascending::before
-{
-  /*color: red !important; */
-  border-top: 10px solid black;
-}
-.table-icon-descending::after
-{
-  /*color: blue !important; */
-  border-bottom: 10px solid black;
+  height: 50vh;
 }
 
 </style>

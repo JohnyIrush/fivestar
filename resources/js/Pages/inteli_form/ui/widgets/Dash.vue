@@ -141,32 +141,11 @@
       </div>
     </div>
    </div>
-   <!--<div class="col-12 col-xl-3">
-    <div class="card h-100">
-      <div class="card-header pb-0 p-3">
-        <h6 class="mb-0">More</h6>
-      </div>
-      <div class="card-body p-3">
-        <ul class="list-group">
-          <li class="list-group-item border-0 d-flex align-items-center px-0 mb-2">
-            <div class="avatar me-3">
-               <i class="fa fa-comments text-secondary" aria-hidden="true"></i>
-            </div>
-            <div class="d-flex align-items-start flex-column justify-content-center">
-              <h6 class="mb-0 text-sm">Notifications</h6>
-              <p class="mb-0 text-xs">Important Noifications</p>
-            </div>
-          </li>
-        </ul>
-      </div>
-    </div>
-   </div>-->
   </div>
  <Footer></Footer>
-    <modal 
-         @selectedListItem="selectedListItem"
-   >
-   </modal>
+    <main-modal 
+         @selectedListItem="selectedListItem">
+   </main-modal>
 </template>
 
 <script>
@@ -178,13 +157,13 @@
 
     import FormBuilder from './FormBuilder.vue'
 
-    import modal from '../../../inteli_library/ui/components/modals/modal.vue'
+    import MainModal from '../../../inteli/ui/components/modals/MainModal.vue'
 
     export default defineComponent({
         components: {
           Footer,
           FormBuilder,
-          modal
+          MainModal
         },
         computed:{
 

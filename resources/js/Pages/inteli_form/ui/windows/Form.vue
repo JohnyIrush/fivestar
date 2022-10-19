@@ -1,15 +1,14 @@
 <template>
-  <div class="row" >
-   <div class="col-12">
-    <div class="d-flex align-items-start">
-      <div class="nav glass-content  flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-        <button class="nav-link active" id="v-pills-form-template-tab" data-bs-toggle="pill" data-bs-target="#v-pills-form-template" type="button" role="tab" aria-controls="v-pills-form-template" aria-selected="true"><i class="fas fa-th fa-2x"></i></button>
-        <button class="nav-link mt-6" id="v-pills-form-builder-tab" data-bs-toggle="pill" data-bs-target="#v-pills-form-builder" type="button" role="tab" aria-controls="v-pills-form-builder" aria-selected="true"><i class="fas fa-plus fa-2x"></i></button>
-        <button class="nav-link mt-6" id="v-pills-settings-tab" data-bs-toggle="pill" data-bs-target="#v-pills-settings" type="button" role="tab" aria-controls="v-pills-settings" aria-selected="false"><i class="fas fa-cogs fa-2x"></i></button>
-      </div>
-      <div class="tab-content glass-content" id="v-pills-tabContent">
-        <!--START FORM TEMPLATES PANE-->
-        <div class="tab-pane fade show active" id="v-pills-form-template" role="tabpanel" aria-labelledby="v-pills-form-template-tab">
+  <div class="row">
+    <div class="col-12">
+     <div 
+        :class="columnSize">
+        <tab-pane
+          :orientation="'vertical'">
+           <tab title="Templates" 
+                component="TabButton"
+                icon_classes="fas fa-th fa-2x"
+                tab_button_classes="''">
           <!--START TEMPLATES CONTAINER -->
           <div class="glass-content">
             <!--START TEMPLATES NAVBAR -->
@@ -42,11 +41,11 @@
             <!--END TEMPLATES BODY -->
           </div>
           <!--END TEMPLATES CONTAINER -->
-        </div>
-        <!--END FORM TEMPLATES PANE-->
-
-        <!--START FORM TEMPLATES  PANE-->
-        <div class="tab-pane fade" id="v-pills-form-builder" role="tabpanel" aria-labelledby="v-pills-form-builder-tab">
+           </tab>
+           <tab title="Builder" 
+                component="TabButton"
+                icon_classes="fas fa-plus fa-2x"
+                tab_button_classes="mt-6">
          <div class="row" >
           <div class="col-12 mt-3 mb-3  p-4">
            <div class="d-flex flex-row glass-content">
@@ -73,14 +72,13 @@
                   },
               }"
             :SelectedInputType="selectedListItemData"
-           >
-             
-           </form-builder>
-        </div>
-        <!--END FORM BUILDER PANE-->
-
-        <!--START SETTINGS TAB-->
-        <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+           > 
+          </form-builder>
+           </tab>
+           <tab title="Settings" 
+                component="TabButton"
+                icon_classes="fas fa-cogs fa-2x"
+                tab_button_classes="mt-6">
          <div class="container-fluid py-4">
            <div class="row">
              <div class="col-12 col-xl-9 glass-content">
@@ -136,54 +134,35 @@
              </div>
            </div>
          </div>
-        </div>
-        <!--END SETTINGS TAB-->
-      </div>
+           </tab>
+        </tab-pane>
+     </div>
     </div>
-   </div>
-   <!--<div class="col-12 col-xl-3">
-    <div class="card h-100">
-      <div class="card-header pb-0 p-3">
-        <h6 class="mb-0">More</h6>
-      </div>
-      <div class="card-body p-3">
-        <ul class="list-group">
-          <li class="list-group-item border-0 d-flex align-items-center px-0 mb-2">
-            <div class="avatar me-3">
-               <i class="fa fa-comments text-secondary" aria-hidden="true"></i>
-            </div>
-            <div class="d-flex align-items-start flex-column justify-content-center">
-              <h6 class="mb-0 text-sm">Notifications</h6>
-              <p class="mb-0 text-xs">Important Noifications</p>
-            </div>
-          </li>
-        </ul>
-      </div>
-    </div>
-   </div>-->
   </div>
-    <modal 
-         @selectedListItem="selectedListItem"
-   >
-   </modal>
+    <main-modal 
+         @selectedListItem="selectedListItem">
+   </main-modal>
 </template>
 
 <script>
     import { defineComponent } from 'vue'
 
-    import Footer from '../../../Theme/widgets/Footer.vue'
-
     import {store} from "../../../../store/store.js"
 
     import FormBuilder from '../widgets/FormBuilder.vue'
 
-    import modal from '../../../inteli_library/ui/components/modals/modal.vue'
+    import MainModal from '../../../inteli/ui/components/modals/MainModal.vue'
+
+    import TabPane from '../../../inteli/ui/components/tabs/TabPane.vue'
+
+    import Tab from '../../../inteli/ui/components/tabs/Tab.vue'
 
     export default defineComponent({
         components: {
-          Footer,
           FormBuilder,
-          modal
+          MainModal,
+          TabPane,
+          Tab
         },
         computed:{
 

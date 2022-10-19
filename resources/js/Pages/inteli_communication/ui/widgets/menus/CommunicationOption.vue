@@ -15,7 +15,7 @@
 
     import { Head, Link } from '@inertiajs/inertia-vue3';
 
-    import CheckBox from "../../../../inteli_academic/ui/components/inputs/CheckBox.vue"
+    import CheckBox from "../../../../inteli/ui/widgets/inputs/CheckBox.vue"
 
     export default defineComponent({
       props:{

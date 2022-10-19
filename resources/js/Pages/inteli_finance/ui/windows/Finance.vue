@@ -1,38 +1,24 @@
 <template>
- <!--<div class="container">-->
-  <div class="row" >
-   <div class="col-12 col-lg-9">
-    <div class="d-flex align-items-start">
-      <div class="nav glass-content  flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-
-        <button class="nav-link active " id="v-pills-dashboard-tab" data-bs-toggle="pill" data-bs-target="#v-pills-dashboard" type="button" role="tab" aria-controls="v-pills-dashboard" aria-selected="true"><i class="fas fa-chess-board fa-2x"></i></button>
-
-        <button class="nav-link mt-6" id="v-pills-account-tab" data-bs-toggle="pill" data-bs-target="#v-pills-account" type="button" role="tab" aria-controls="v-pills-account" aria-selected="true"><i class="fas fa-piggy-bank fa-2x"></i></button>
-
-        <button class="nav-link mt-6" id="v-pills-services-tab" data-bs-toggle="pill" data-bs-target="#v-pills-services" type="button" role="tab" aria-controls="v-pills-services" aria-selected="true"><i class="fas fa-briefcase fa-2x"></i></button>
-
-        <button class="nav-link mt-6" id="v-pills-fees-tab" data-bs-toggle="pill" data-bs-target="#v-pills-fees" type="button" role="tab" aria-controls="v-pills-fees" aria-selected="false"><i class="fas fa-money-bill fa-2x"></i></button>
-
-        <button class="nav-link mt-6" id="v-pills-settings-tab" data-bs-toggle="pill" data-bs-target="#v-pills-settings" type="button" role="tab" aria-controls="v-pills-settings" aria-selected="false"><i class="fas fa-cogs fa-2x"></i></button>
-      </div>
-      <div class="tab-content glass-content" id="v-pills-tabContent">
-        <!--START Dashboard PANE-->
-        <div class="tab-pane fade show active" id="v-pills-dashboard" role="tabpanel" aria-labelledby="v-pills-dashboard-tab">
-          <div class="row">
-            <div class="col-12">
-              <statistic-card-data :statistics="statistics" />
+  <div class="row">
+    <div class="col-12">
+     <div 
+        :class="columnSize">
+        <tab-pane
+          :orientation="'vertical'">
+           <tab title="Dashboard" 
+                component="TabButton"
+                icon_classes="fas fa-chess-board fa-2x"
+                tab_button_classes="''">
+            <div class="row">
+              <div class="col-12">
+                <statistic-card-data :statistics="statistics" />
+              </div>
             </div>
-          </div>
-          <div class="row">
-            <div class="col-12 col-xl-4">
-              <detail-card-data  :datapath="'academic/level/detail'" />
-            </div>
-          </div>
-        </div>
-        <!--END Dashboard PANE-->
-
-        <!--START ACCOUNT PANE-->
-        <div class="tab-pane fade" id="v-pills-account" role="tabpanel" aria-labelledby="v-pills-account-tab">
+           </tab>
+           <tab title="Account" 
+                component="TabButton"
+                icon_classes="fas fa-piggy-bank fa-2x"
+                tab_button_classes="mt-6">
           <div class="container-fluid">
             <div class="row">
               <div class="col-lg-8">
@@ -345,11 +331,11 @@
               </div>
             </div>
           </div>
-        </div>
-        <!--END ACCOUNT PANE-->
-
-        <!--START SERVICES PANE-->
-        <div class="tab-pane fade" id="v-pills-services" role="tabpanel" aria-labelledby="v-pills-services-tab">
+           </tab>
+           <tab title="Services" 
+                component="TabButton"
+                icon_classes="fas fa-briefcase fa-2x" 
+                tab_button_classes="mt-6">
            <div class="row">
              <div class="col-xl-4">
                <modal-button @showmodal="launchModal('main-modal')" :name="'Add'" :icon_classes="'fas fa-plus'" :title="'Add New Service'" :modalSize="'modal-lg'" :componentType="'form'" :componentName="'MainForm'" :dataPath="'finance/service/create'"></modal-button>
@@ -362,16 +348,11 @@
            <div class="col-12">
              <statistic-card-data :statistics="statistics" />
            </div>
-           <div class="row">
-            <div class="col">
-              <main_menu></main_menu>
-            </div>
-           </div>
-        </div>
-        <!--END SERVICES  PANE-->
-
-        <!--START FEES PANES-->
-        <div class="tab-pane fade" id="v-pills-fees" role="tabpanel" aria-labelledby="v-pills-fees-tab">
+           </tab>
+           <tab title="Fees" 
+                component="TabButton"
+                icon_classes="fas fa-money-bill fa-2x"
+                tab_button_classes="mt-6">
            <div class="row">
              <div class="col-xl-4">
                <modal-button @showmodal="launchModal('main-modal')" :name="'Add'" :icon_classes="'fas fa-plus'" :title="'Add New FEE'" :modalSize="'modal-lg'" :componentType="'form'" :componentName="'MainForm'" :dataPath="'finance/fee/create'"></modal-button>
@@ -384,16 +365,11 @@
            <div class="col-12">
              <statistic-card-data :statistics="statistics" />
            </div>
-           <div class="row">
-            <div class="col">
-              <main_menu></main_menu>
-            </div>
-           </div>
-        </div>
-        <!--END FEES TAB PANES-->
-
-        <!--START SETTINGS TAB-->
-        <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+           </tab>
+           <tab title="Settings" 
+                component="TabButton"
+                icon_classes="fas fa-cogs fa-2x"
+                tab_button_classes="mt-6">
          <div class="container-fluid py-4">
            <div class="row">
              <div class="col-12 col-xl-9 glass-content">
@@ -449,59 +425,46 @@
              </div>
            </div>
          </div>
-        </div>
-        <!--END SETTINGS TAB-->
-      </div>
+           </tab>
+        </tab-pane>
+     </div>
     </div>
-   </div>
-   <div class="col-12 col-xl-3">
-    <div class="card h-100">
-      <div class="card-header pb-0 p-3">
-        <h6 class="mb-0">More</h6>
-      </div>
-      <div class="card-body p-3">
-        <ul class="list-group">
-          <li class="list-group-item border-0 d-flex align-items-center px-0 mb-2">
-            <div class="avatar me-3">
-               <i class="fa fa-comments text-secondary" aria-hidden="true"></i>
-            </div>
-            <div class="d-flex align-items-start flex-column justify-content-center">
-              <h6 class="mb-0 text-sm">Notifications</h6>
-              <p class="mb-0 text-xs">Important Noifications</p>
-            </div>
-          </li>
-        </ul>
-      </div>
-    </div>
-   </div>
   </div>
- <!--</div>-->
- <main_modal></main_modal>
+ <modal></modal>
 </template>
 
 <script>
 
 import { defineComponent } from 'vue'
 
+import Footer from '../../../Theme/widgets/Footer.vue'
+
 import {store} from "../../../../store/store.js"
-import StatisticCardData from '../../../inteli_academic/ui/components/cards/StatisticCardData.vue';
-import DetailCardData from '../../../inteli_academic/ui/components/cards/DetailCardData.vue';
+import StatisticCardData from '../../../inteli/ui/components/cards/StatisticCardData.vue';
+import DetailCardData from '../../../inteli/ui/components/cards/DetailCardData.vue';
 
-import BarChart from '../../../inteli_academic/ui/components/charts/BarChart.vue'
+import BarChart from '../../../inteli/ui/components/charts/BarChart.vue'
 
-import ModalButton from '../../../inteli_library/ui/components/buttons/ModalButton.vue'
-import main_modal from '../../../inteli_library/ui/components/modals/modal.vue'
+import ModalButton from '../../../inteli/ui/components/buttons/ModalButton.vue'
+import MainModal from '../../../inteli/ui/components/modals/MainModal.vue'
 
 import main_menu from '../../../Theme/widgets/menus/main-menu.vue'
 
+import TabPane from '../../../inteli/ui/components/tabs/TabPane.vue'
+
+import Tab from '../../../inteli/ui/components/tabs/Tab.vue'
+
 export default defineComponent({
         components: {
+            Footer,
             StatisticCardData,
             BarChart,
             DetailCardData,
             ModalButton,
-            main_modal,
-            main_menu
+            MainModal,
+            main_menu,
+            TabPane,
+            Tab
         },
         data() {
             return {
@@ -586,4 +549,8 @@ export default defineComponent({
     width: 150px !important;
 }
 
+
+.tab-content {
+  width: 100% !important; 
+}
 </style>

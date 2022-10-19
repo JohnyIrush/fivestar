@@ -204,6 +204,28 @@
                   component_classes: ''
                 }, 
                 {
+                  component: 'Link',
+                  icon_classes: 'fas fa-shield-alt',
+                  title: 'Security',
+                  link: 'security',
+                  prop_container_classes: 'icon text-white bg-gradient-info shadow border-radius-md text-center d-flex align-items-center justify-content-center',
+                  propVisible: true,
+                  text_classes: 'nav-link-text ms-1',
+                  component_classes: '',
+                  nav_link_classes: ''
+                }, 
+                {
+                  component: 'Link',
+                  icon_classes: 'fas fa-robot',
+                  title: 'Ai',
+                  link: 'ai',
+                  prop_container_classes: 'icon text-white bg-gradient-info shadow border-radius-md text-center d-flex align-items-center justify-content-center',
+                  propVisible: true,
+                  text_classes: 'nav-link-text ms-1',
+                  component_classes: '',
+                  nav_link_classes: ''
+                }, 
+                {
                   component: 'h5',
                   icon_classes: '',
                   title: 'Portal',
@@ -258,28 +280,6 @@
                   component_classes: '',
                   nav_link_classes: ''
                 },
-                {
-                  component: 'Link',
-                  icon_classes: 'fas fa-shield-alt',
-                  title: 'Security',
-                  link: 'security',
-                  prop_container_classes: 'icon text-white bg-gradient-info shadow border-radius-md text-center d-flex align-items-center justify-content-center',
-                  propVisible: true,
-                  text_classes: 'nav-link-text ms-1',
-                  component_classes: '',
-                  nav_link_classes: ''
-                }, 
-                {
-                  component: 'Link',
-                  icon_classes: 'fas fa-robot',
-                  title: 'Ai',
-                  link: 'ai',
-                  prop_container_classes: 'icon text-white bg-gradient-info shadow border-radius-md text-center d-flex align-items-center justify-content-center',
-                  propVisible: true,
-                  text_classes: 'nav-link-text ms-1',
-                  component_classes: '',
-                  nav_link_classes: ''
-                }, 
             ]"
       >
       </navigation-bar>

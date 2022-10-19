@@ -107,7 +107,7 @@ import { defineComponent } from 'vue'
 
 import spinner from "../../components/spinners/spinner.vue"
 
-import SelectInput from "../../../../inteli_academic/ui/components/inputs/SelectInput.vue"
+import SelectInput from "../../../../inteli/ui/widgets/inputs/SelectInput.vue"
 
 export default defineComponent({
   name: "InterviewWizard",

@@ -8,8 +8,10 @@
         role="tab" 
         :aria-controls="label" 
         aria-selected="false">
-        <i :class="icon_classes"></i>
-        {{label}}
+        <span :class="prop_orientation"> 
+         <i :class="icon_classes"></i>
+         {{label}}
+        </span>
  </button>
 </template>
 
@@ -27,6 +29,10 @@
           },
           tab_button_classes: {
             type: String
+          },
+          prop_orientation:{
+            type: String,
+            default: 'd-flex flex-column'
           }
         },
         components: {

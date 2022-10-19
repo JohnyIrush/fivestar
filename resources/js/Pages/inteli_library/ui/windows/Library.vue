@@ -1,22 +1,14 @@
 <template>
- <!--<div class="container">-->
-  <div class="row" >
-   <div class="col-12 col-lg-9">
-    <div class="d-flex align-items-start">
-      <div class="nav glass-content  flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-        <button class="nav-link active" id="v-pills-dashboard-tab" data-bs-toggle="pill" data-bs-target="#v-pills-dashboard" type="button" role="tab" aria-controls="v-pills-dashboard" aria-selected="true"><i class="fas fa-chart-line fa-2x"></i></button>
-        <button class="nav-link mt-6" id="v-pills-librarian-tab" data-bs-toggle="pill" data-bs-target="#v-pills-librarian" type="button" role="tab" aria-controls="v-pills-librarian" aria-selected="true"><i class="fas fa-user-lock fa-2x"></i></button>
-        <button class="nav-link mt-6" id="v-pills-library-tab" data-bs-toggle="pill" data-bs-target="#v-pills-library" type="button" role="tab" aria-controls="v-pills-library" aria-selected="true"><i class="fas fa-book fa-2x"></i></button>
-        <button class="nav-link mt-6" id="v-pills-book-issue-tab" data-bs-toggle="pill" data-bs-target="#v-pills-book-issue" type="button" role="tab" aria-controls="v-pills-book-issue" aria-selected="false"><i class="fas fa-id-card fa-2x"></i></button>
-        <button class="nav-link mt-6" id="v-pills-book-category-tab" data-bs-toggle="pill" data-bs-target="#v-pills-book-category" type="button" role="tab" aria-controls="v-pills-book-category" aria-selected="false"><i class="fas fa-code-branch fa-2x"></i></button>
-        <button class="nav-link mt-6" id="v-pills-author-tab" data-bs-toggle="pill" data-bs-target="#v-pills-author" type="button" role="tab" aria-controls="v-pills-author" aria-selected="false"><i class="fas fa-feather fa-2x"></i></button>
-        <button class="nav-link mt-6" id="v-pills-book-tab" data-bs-toggle="pill" data-bs-target="#v-pills-book" type="button" role="tab" aria-controls="v-pills-book" aria-selected="false"><i class="fas fa-book fa-2x"></i></button>
-        <button class="nav-link mt-6" id="v-pills-publisher-tab" data-bs-toggle="pill" data-bs-target="#v-pills-publisher" type="button" role="tab" aria-controls="v-pills-publisher" aria-selected="false"><i class="fas fa-building fa-2x"></i></button>
-        <button class="nav-link mt-6" id="v-pills-settings-tab" data-bs-toggle="pill" data-bs-target="#v-pills-settings" type="button" role="tab" aria-controls="v-pills-settings" aria-selected="false"><i class="fas fa-cogs fa-2x"></i></button>
-      </div>
-      <div class="tab-content glass-content" id="v-pills-tabContent">
-        <!--START Dashboard PANE-->
-        <div class="tab-pane fade show active" id="v-pills-dashboard" role="tabpanel" aria-labelledby="v-pills-dashboard-tab">
+  <div class="row">
+    <div class="col-12">
+     <div 
+        :class="columnSize">
+        <tab-pane
+          :orientation="'vertical'">
+           <tab title="Dashboard" 
+                component="TabButton"
+                icon_classes="fas fa-chess-board fa-2x"
+                tab_button_classes="''">
            <div class="row mt-4 mb-4">
              <div class="col-xl-4 col-sm-6 mb-4">
                <div class="card glass-content">
@@ -67,11 +59,11 @@
                </div>
              </div>
             </div>
-        </div>
-        <!--END Dashboard PANE-->
-
-        <!--START LIBRARIAN  PANE-->
-        <div class="tab-pane fade" id="v-pills-librarian" role="tabpanel" aria-labelledby="v-pills-librarian-tab">
+           </tab>
+           <tab title="Librarian" 
+                component="TabButton"
+                icon_classes="fas fa-user-lock fa-2x"
+                tab_button_classes="mt-6">
            <div class="row">
              <div class="col-4">
                <modal-button @showmodal="launchModal('main-modal')" :name="'Add'" :icon_classes="'fas fa-plus'" :title="'Add New Librarian'" :modalSize="'modal-lg'" :componentType="'form'" :componentName="'MainForm'" :dataPath="'user/create'"></modal-button>
@@ -135,11 +127,11 @@
              </div>
              <div class="col-3"></div>
            </div>
-        </div>
-        <!--END LIBRARIAN  PANE-->
-
-        <!--START LIBRARY  PANE-->
-        <div class="tab-pane fade" id="v-pills-library" role="tabpanel" aria-labelledby="v-pills-library-tab">
+           </tab>
+           <tab title="library" 
+                component="TabButton"
+                icon_classes="fas fa-book fa-2x"
+                tab_button_classes="mt-6">
            <div class="row">
              <div class="col-4">
                <modal-button @showmodal="launchModal('main-modal')" :name="'Add'" :icon_classes="'fas fa-plus'" :title="'Add New School Library'" :modalSize="'modal-lg'" :componentType="'form'" :componentName="'MainForm'" :dataPath="'library/create'"></modal-button>
@@ -202,12 +194,12 @@
                <modal-button @showmodal="launchModal('main-modal')" :name="'View Library Records'" :icon_classes="'far fa-eye'" :title="'School Library Records'" :modalSize="'modal-xl'" :componentType="'table'" componentName="'TableData'" :dataPath="'libraries'"></modal-button>
              </div>
              <div class="col-3"></div>
-           </div>            
-        </div>
-        <!--END LIBRARY  PANE-->
-
-        <!--START BOOK ISSUE PANES-->
-        <div class="tab-pane fade" id="v-pills-book-issue" role="tabpanel" aria-labelledby="v-pills-book-issue-tab">
+           </div> 
+           </tab>
+           <tab title="Book Issue" 
+                component="TabButton"
+                icon_classes="fas fa-id-card fa-2x"
+                tab_button_classes="mt-6">
            <div class="row">
              <div class="col-4">
                <modal-button @showmodal="launchModal('main-modal')" :name="'Issue'" :icon_classes="'fas fa-plus'" :title="'Issue New Book'" :modalSize="'modal-lg'" :componentType="'form'" :componentName="'MainForm'" :dataPath="'library/book/issue/create'"></modal-button>
@@ -271,11 +263,11 @@
              </div>
              <div class="col-3"></div>
            </div>
-        </div>
-        <!--END BOOK ISSUE TAB PANES-->
-
-        <!--START BOOK CATEGORIES  PANE-->
-        <div class="tab-pane fade" id="v-pills-book-category" role="tabpanel" aria-labelledby="v-pills-book-category-tab">
+           </tab>
+           <tab title="Book Categories" 
+                component="TabButton"
+                icon_classes="fas fa-code-branch fa-2x"
+                tab_button_classes="mt-6">
            <div class="row">
              <div class="col-4">
                <modal-button @showmodal="launchModal('main-modal')" :name="'Add'" :icon_classes="'fas fa-plus'" :title="'Add New Book Category'" :modalSize="'modal-lg'" :componentType="'form'" :componentName="'MainForm'" :dataPath="'library/book/category/create'"></modal-button>
@@ -339,11 +331,11 @@
              </div>
              <div class="col-3"></div>
            </div>
-        </div>
-        <!--END BOOK CATEGORIES  PANE-->
-
-        <!--START AUTHOR  PANE-->
-        <div class="tab-pane fade" id="v-pills-author" role="tabpanel" aria-labelledby="v-pills-author-tab">
+           </tab>
+           <tab title="Authors" 
+                component="TabButton"
+                icon_classes="fas fa-feather fa-2x"
+                tab_button_classes="mt-6">
            <div class="row">
              <div class="col-4">
                <modal-button @showmodal="launchModal('main-modal')" :name="'Add'" :icon_classes="'fas fa-plus'" :title="'Add New Book Author'" :modalSize="'modal-lg'" :componentType="'form'" :componentName="'MainForm'" :dataPath="'library/author/create'"></modal-button>
@@ -407,11 +399,11 @@
              </div>
              <div class="col-3"></div>
            </div>
-        </div>
-        <!--END AUTHOR  PANE-->
-
-        <!--START BOOK PANE-->
-        <div class="tab-pane fade" id="v-pills-book" role="tabpanel" aria-labelledby="v-pills-book-tab">
+           </tab>
+           <tab title="Books" 
+                component="TabButton"
+                icon_classes="fas fa-building fa-2x"
+                tab_button_classes="mt-6">
            <div class="row">
              <div class="col-4">
                <modal-button @showmodal="launchModal('main-modal')" :name="'Add'" :icon_classes="'fas fa-plus'" :title="'Add New Book'" :modalSize="'modal-lg'" :componentType="'form'" :componentName="'MainForm'" :dataPath="'library/book/create'"></modal-button>
@@ -475,11 +467,11 @@
              </div>
              <div class="col-3"></div>
            </div>
-        </div>
-        <!--END BOOK PANE-->
-
-        <!--START PUBLISHER PANE-->
-        <div class="tab-pane fade" id="v-pills-publisher" role="tabpanel" aria-labelledby="v-pills-publisher-tab">
+           </tab>
+           <tab title="Publishers" 
+                component="TabButton"
+                icon_classes="fas fa-building fa-2x"
+                tab_button_classes="mt-6">
            <div class="row">
              <div class="col-4">
                <modal-button @showmodal="launchModal('main-modal')" :name="'Add'" :icon_classes="'fas fa-plus'" :title="'Add New Book Publisher'" :modalSize="'modal-lg'" :componentType="'form'" :componentName="'MainForm'" :dataPath="'library/publisher/create'"></modal-button>
@@ -543,11 +535,11 @@
              </div>
              <div class="col-3"></div>
            </div>
-        </div>
-        <!--END PUBLISHER PANE-->
-
-        <!--START SETTINGS TAB-->
-        <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+           </tab>
+           <tab title="Settings" 
+                component="TabButton"
+                icon_classes="fas fa-cogs fa-2x"
+                tab_button_classes="mt-6">
          <div class="container-fluid py-4">
            <div class="row">
              <div class="col-12 col-xl-9 glass-content">
@@ -603,34 +595,12 @@
              </div>
            </div>
          </div>
-        </div>
-        <!--END SETTINGS TAB-->
-      </div>
+           </tab>
+        </tab-pane>
+     </div>
     </div>
-   </div>
-   <div class="col-12 col-xl-3">
-    <div class="card h-100">
-      <div class="card-header pb-0 p-3">
-        <h6 class="mb-0">More</h6>
-      </div>
-      <div class="card-body p-3">
-        <ul class="list-group">
-          <li class="list-group-item border-0 d-flex align-items-center px-0 mb-2">
-            <div class="avatar me-3">
-               <i class="fa fa-comments text-secondary" aria-hidden="true"></i>
-            </div>
-            <div class="d-flex align-items-start flex-column justify-content-center">
-              <h6 class="mb-0 text-sm">Notifications</h6>
-              <p class="mb-0 text-xs">Important Noifications</p>
-            </div>
-          </li>
-        </ul>
-      </div>
-    </div>
-   </div>
   </div>
- <!--</div>-->
-   <main_modal></main_modal>
+  <main-modal></main-modal>
 </template>
 
 <script>
@@ -638,22 +608,27 @@
 
     import {store} from "../../../../store/store.js"
 
-    import data_card from '../components/cards/data-card.vue'
+    import DataCard from '../../../inteli/ui/components/cards/DataCard.vue'
 
-    import TableData  from "../components/tables/TableData.vue"
+    import DataTable  from "../../../inteli/ui/components/tables/DataTable.vue"
 
-    import ModalButton from '../components/buttons/ModalButton.vue'
-    import main_modal from '../components/modals/modal.vue'
-    import MainForm from '../components/forms/MainForm.vue'
+    import ModalButton from '../../../inteli/ui/components/buttons/ModalButton.vue'
+    import MainModal from '../../../inteli/ui/components/modals/MainModal.vue'
+    import MainForm from '../../../inteli/ui/components/forms/MainForm.vue'
 
+    import TabPane from '../../../inteli/ui/components/tabs/TabPane.vue'
+
+    import Tab from '../../../inteli/ui/components/tabs/Tab.vue'
 
     export default defineComponent({
         components: {
-            data_card,
-            TableData,
-            main_modal,
+            DataCard,
+            DataTable,
+            MainModal,
             ModalButton,
-            MainForm
+            MainForm,
+            TabPane,
+            Tab
         },
         data() {
             return {

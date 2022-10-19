@@ -95,6 +95,7 @@
         </div>
         </span>
       </div>
+      <main-modal></main-modal>
 </template>
 
 <script>
@@ -102,7 +103,9 @@
 
     import { Head, Link } from '@inertiajs/inertia-vue3';
 
-    import ModalButton from '../../../inteli_library/ui/components/buttons/ModalButton.vue'
+    import ModalButton from '../../../inteli/ui/components/buttons/ModalButton.vue'
+
+    import MainModal from '../../../inteli/ui/components/modals/MainModal.vue'
 
     export default defineComponent({
       name: "MenuWindow",
@@ -138,7 +141,8 @@
       },
       components: {
           Link,
-          ModalButton
+          ModalButton,
+          MainModal
       },
       methods: {
         launchModal(modal)

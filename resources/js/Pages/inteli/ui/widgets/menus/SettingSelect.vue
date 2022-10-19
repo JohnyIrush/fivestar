@@ -39,7 +39,7 @@ import { defineComponent } from 'vue'
 
 import {store} from "../../../../../store/store.js"
 
-import SelectInput from "../../../../inteli_academic/ui/components/inputs/SelectInput"
+import SelectInput from "../../../../inteli/ui/widgets/inputs/SelectInput"
 
 export default defineComponent({
   name:'SettingSelect',

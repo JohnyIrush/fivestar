@@ -208,7 +208,7 @@
    </div>
   </div>
  <!--</div>-->
- <main_modal></main_modal>
+ <main-modal></main-modal>
 </template>
 
 <script>
@@ -218,13 +218,14 @@ import { defineComponent } from 'vue'
 import Footer from '../../../Theme/widgets/Footer.vue'
 
 import {store} from "../../../../store/store.js"
-import StatisticCardData from '../../../inteli_academic/ui/components/cards/StatisticCardData.vue';
-import DetailCardData from '../../../inteli_academic/ui/components/cards/DetailCardData.vue';
 
-import BarChart from '../../../inteli_academic/ui/components/charts/BarChart.vue'
+import StatisticCardData from '../../../inteli/ui/components/cards/StatisticCardData.vue';
+import DetailCardData from '../../../inteli/ui/components/cards/DetailCardData.vue';
 
-import ModalButton from '../../../inteli_library/ui/components/buttons/ModalButton.vue'
-import main_modal from '../../../inteli_library/ui/components/modals/modal.vue'
+import BarChart from '../../../inteli/ui/components/charts/BarChart.vue'
+
+import ModalButton from '../../../inteli/ui/components/buttons/ModalButton.vue'
+import MainModal from '../../../inteli/ui/components/modals/MainModal.vue'
 
 import main_menu from '../../../Theme/widgets/menus/main-menu.vue'
 
@@ -235,7 +236,7 @@ export default defineComponent({
             BarChart,
             DetailCardData,
             ModalButton,
-            main_modal,
+            MainModal,
             main_menu
         },
         data() {

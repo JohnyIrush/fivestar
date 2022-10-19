@@ -20,7 +20,7 @@ import { Inertia } from '@inertiajs/inertia'
 import {store} from "../../../../../store/store.js"
 
 export default {
-  name:'tableoptions',
+  name:'TableOptions',
   props: {
     triggerName: String,
     triggerType: String,

@@ -43,7 +43,7 @@
       <div class="col"></div>
       <div class="col">
         <i class="fas fa-ellipsis-v fa-2x"></i>
-             <table_options @showModal="launchModal" :formData="data" :dataId="data.id" :deletePath="crud.delete" :triggerName="''" :icon_classes="'fas fa-ellipsis-v fa-2x'" :triggerType="'icon'"></table_options>
+             <table-options @showModal="launchModal" :formData="data" :dataId="data.id" :deletePath="crud.delete" :triggerName="''" :icon_classes="'fas fa-ellipsis-v fa-2x'" :triggerType="'icon'"></table-options>
       </div>
     </div>
   </div>
@@ -91,13 +91,14 @@ import { defineComponent } from 'vue'
 
 import { store } from '../../../../../store/store.js'
 
-import table_options from '../../widgets/menus/table-options.vue'
+import TableOptions from '../../widgets/menus/TableOptions.vue'
 
 export default defineComponent({
+  name: "DataCard",
   components:{
-    table_options
+    TableOptions
   },
-  name: 'CardData',
+  name: 'DataCard',
   props: {
   },
   setup ()

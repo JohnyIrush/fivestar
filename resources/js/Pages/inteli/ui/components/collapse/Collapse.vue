@@ -12,11 +12,9 @@ import { defineComponent } from 'vue'
 
 import { store } from '../../../../../store/store.js'
 
-import Filter from '../../widgets/filters/Filter.vue';
-
 export default defineComponent({
+        name: "Collapse",
         components: {
-          Filter
         },
         computed:{
           portId()

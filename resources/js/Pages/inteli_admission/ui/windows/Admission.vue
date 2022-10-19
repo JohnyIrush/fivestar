@@ -1,5 +1,4 @@
 <template>
- <!--<div class="container">-->
   <div class="row">
     <div class="col-12">
           <menu-window
@@ -95,63 +94,31 @@
           </menu-window>
     </div>
   </div>
-  <div class="row" >
-   <div class="col-12">
-    <div class="d-flex align-items-start ">
-      <div class="nav glass-content  flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-        <button class="nav-link active icon text-white bg-gradient-info shadow border-radius-md" id="v-pills-dashboard-tab" data-bs-toggle="pill" data-bs-target="#v-pills-dashboard" type="button" role="tab" aria-controls="v-pills-dashboard" aria-selected="true">
-          <i class="fas fa-chess-board" data-bs-toggle="tooltip" data-bs-placement="top" title="dash"></i>
-          <span class="fs-8" data-bs-toggle="tooltip" data-bs-placement="top" title="dash">dash</span>
-        </button>
-
-        <button class="nav-link mt-6 icon text-white bg-gradient-info shadow border-radius-md" id="v-pills-application-tab" data-bs-toggle="pill" data-bs-target="#v-pills-application" type="button" role="tab" aria-controls="v-pills-application" aria-selected="true">
-          <i class="fas fa-mail-bulk" data-bs-toggle="tooltip" data-bs-placement="top" title="application"></i>
-          <span class="fs-8" data-bs-toggle="tooltip" data-bs-placement="top" title="application">application</span>
-        </button>
-
-        <button class="nav-link mt-6 icon text-white bg-gradient-info shadow border-radius-md" id="v-pills-interview-tab" data-bs-toggle="pill" data-bs-target="#v-pills-interview" type="button" role="tab" aria-controls="v-pills-interview" aria-selected="false">
-          <i class="fas fa-sitemap" data-bs-toggle="tooltip" data-bs-placement="top" title="interview"></i>
-          <span class="fs-8" data-bs-toggle="tooltip" data-bs-placement="top" title="interview">interview</span>
-        </button>
-
-        <button class="nav-link mt-6 icon text-white bg-gradient-info shadow border-radius-md" id="v-pills-admission-tab" data-bs-toggle="pill" data-bs-target="#v-pills-admission" type="button" role="tab" aria-controls="v-pills-admission" aria-selected="false">
-          <i class="fas fa-sticky-note" data-bs-toggle="tooltip" data-bs-placement="top" title="admision"></i>
-          <span class="fs-8" data-bs-toggle="tooltip" data-bs-placement="top" title="admision">admission</span>
-        </button>
-
-        <button class="nav-link mt-6 icon text-white bg-gradient-info shadow border-radius-md" id="v-pills-leave-tab" data-bs-toggle="pill" data-bs-target="#v-pills-leave" type="button" role="tab" aria-controls="v-pills-leave" aria-selected="false">
-          <i class="fas fa-house-leave" data-bs-toggle="tooltip" data-bs-placement="top" title="leave"></i>
-          <span class="fs-8" data-bs-toggle="tooltip" data-bs-placement="top" title="leave">leave</span>
-        </button>
-
-        <button class="nav-link mt-6 icon text-white bg-gradient-info shadow border-radius-md" id="v-pills-ban-tab" data-bs-toggle="pill" data-bs-target="#v-pills-ban" type="button" role="tab" aria-controls="v-pills-ban" aria-selected="false">
-          <i class="fas fa-user-slash" data-bs-toggle="tooltip" data-bs-placement="top" title="expell"></i>
-          <span class="fs-8" data-bs-toggle="tooltip" data-bs-placement="top" title="expell">expell</span>
-        </button>
-
-        <button class="nav-link mt-6 icon text-white bg-gradient-info shadow border-radius-md" id="v-pills-ban-tab" data-bs-toggle="pill" data-bs-target="#v-pills-ban" type="button" role="tab" aria-controls="v-pills-ban" aria-selected="false">
-          <i class="fas fa-ban" data-bs-toggle="tooltip" data-bs-placement="top" title="ban"></i>
-          <span class="fs-8" data-bs-toggle="tooltip" data-bs-placement="top" title="ban">ban</span>
-        </button>
-
-        <button class="nav-link mt-6 icon text-white bg-gradient-info shadow border-radius-md" id="v-pills-settings-tab" data-bs-toggle="pill" data-bs-target="#v-pills-settings" type="button" role="tab" aria-controls="v-pills-settings" aria-selected="false">
-          <i class="fas fa-cogs" data-bs-toggle="tooltip" data-bs-placement="top" title="settings"></i>
-          <span class="fs-8" data-bs-toggle="tooltip" data-bs-placement="top" title="settings">settings</span>
-        </button>
-      </div>
-      <div class="tab-content glass-content" id="v-pills-tabContent">
-        <!--START Dashboard PANE-->
-        <div class="tab-pane fade show active" id="v-pills-dashboard" role="tabpanel" aria-labelledby="v-pills-dashboard-tab">
-          <div class="row">
-            <div class="col-12">
-              <statistic-card-data :dataPath="'admission/statistics'" />
-            </div>
-          </div>
-        </div>
-        <!--END Dashboard PANE-->
-
-        <!--START APPLICATION  PANE-->
-        <div class="tab-pane fade " id="v-pills-application" role="tabpanel" aria-labelledby="v-pills-application-tab">
+  <div class="row">
+    <div class="col-12">
+     <div 
+        :class="columnSize">
+        <tab-pane
+          :orientation="'vertical'">
+           <tab title="Dashboard" 
+                component="TabButton"
+                icon_classes="fas fa-chess-board fa-2x"
+                tab_button_classes="''">
+             <div class="row">
+               <div class="col-12">
+                 <statistic-card-data :statistics="statistics" />
+               </div>
+             </div>
+             <div class="row">
+               <div class="col-12 col-xl-4">
+                 <detail-card-data  :datapath="'academic/level/detail'" />
+               </div>
+             </div>
+           </tab>
+           <tab title="Application" 
+                component="TabButton"
+                icon_classes="fas fa-mail-bulk fa-2x"
+                tab_button_classes="mt-6">
           <div class="row" v-if="true">
             <div class="col-12">
               <application_wizard></application_wizard>
@@ -166,11 +133,11 @@
               </tabular-card>-->
             </div>
           </div>
-        </div>
-        <!--END APPLICATION  PANE-->
-
-        <!--START INTERVIEW PANES-->
-        <div class="tab-pane fade" id="v-pills-interview" role="tabpanel" aria-labelledby="v-pills-interview-tab">
+           </tab>
+           <tab title="Interview" 
+                component="TabButton"
+                icon_classes="fas fa-sitemap fa-2x"
+                tab_button_classes="mt-6">
            <div class="row justify-content-center">
             <div class="col-12">
               <interview />
@@ -185,17 +152,11 @@
               </tabular-card>-->
             </div>
            </div>
-        </div>
-        <!--END INTERVIEW TAB PANES-->
-
-        <!--START ADMISSION PANE-->
-        <div class="tab-pane fade" id="v-pills-planner" role="tabpanel" aria-labelledby="v-pills-planner-tab">
-         <!---<admission_wizard></admission_wizard>-->
-        </div>
-        <!--END ADMISSION  PANE-->
-
-        <!--START LEAVE  PANE-->
-        <div class="tab-pane fade" id="v-pills-leave" role="tabpanel" aria-labelledby="v-pills-leave-tab">
+           </tab>
+           <tab title="Admission" 
+                component="TabButton"
+                icon_classes="fas fa-sticky-note fa-2x"
+                tab_button_classes="mt-6">
            <div class="row justify-content-center">
             <div class="col-12">
               <leave />
@@ -210,61 +171,33 @@
               </tabular-card>-->
             </div>
            </div>
-        </div>
-        <!--END  LEAVE PANE-->
-
-        <!--START EXPELL  PANE-->
-        <div class="tab-pane fade" id="v-pills-club" role="tabpanel" aria-labelledby="v-pills-club-tab">
+           </tab>
+           <tab title="Leave" 
+                component="TabButton"
+                icon_classes="fas fa-house-leave fa-2x"
+                tab_button_classes="mt-6">
            <div class="row">
             <div class="col">
               <main_menu></main_menu>
             </div>
            </div>
-        </div>
-        <!--END EXPELL  PANE-->
+           </tab>
+           <tab title="Expell" 
+                component="TabButton"
+                icon_classes="fas fa-user-slash fa-2x"
+                tab_button_classes="mt-6">
 
-        <!--START SPORT  PANE-->
-        <div class="tab-pane fade" id="v-pills-sport" role="tabpanel" aria-labelledby="v-pills-sport-tab">
-           <div class="row">
-            <div class="col">
-              <main_menu></main_menu>
-            </div>
-           </div>
-        </div>
-        <!--END SPORT  PANE-->
+           </tab>
+           <tab title="Ban" 
+                component="TabButton"
+                icon_classes="fas fa-ban fa-2x"
+                tab_button_classes="mt-6">
 
-        <!--START LEVEL PANE-->
-        <div class="tab-pane fade" id="v-pills-level" role="tabpanel" aria-labelledby="v-pills-level-tab">
-           <div class="row">
-            <div class="col">
-              <main_menu></main_menu>
-            </div>
-          </div>
-        </div>
-        <!--END LEVEL PANE-->
-
-        <!--START STREAM PANE-->
-        <div class="tab-pane fade" id="v-pills-stream" role="tabpanel" aria-labelledby="v-pills-stream-tab">
-           <div class="row">
-            <div class="col">
-              <main_menu></main_menu>
-            </div>
-          </div>
-        </div>
-        <!--END STREAM PANE-->
-
-        <!--START SECTION PANE-->
-        <div class="tab-pane fade" id="v-pills-section" role="tabpanel" aria-labelledby="v-pills-section-tab">
-           <div class="row">
-            <div class="col">
-              <main_menu></main_menu>
-            </div>
-          </div>
-        </div>
-        <!--END SECTION PANE-->
-
-        <!--START SETTINGS TAB-->
-        <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+           </tab>
+           <tab title="Settings" 
+                component="TabButton"
+                icon_classes="fas fa-cogs fa-2x"
+                tab_button_classes="mt-6">
          <div class="container-fluid py-4">
            <div class="row">
              <div class="col-12 col-xl-9 glass-content">
@@ -320,14 +253,12 @@
              </div>
            </div>
          </div>
-        </div>
-        <!--END SETTINGS TAB-->
-      </div>
+           </tab>
+        </tab-pane>
+     </div>
     </div>
-   </div>
   </div>
- <!--</div>-->
- <main_modal></main_modal>
+ <modal></modal>
 </template>
 
 <script>
@@ -336,13 +267,13 @@
 
     import {store} from "../../../../store/store.js"
 
-    import StatisticCardData from '../../../inteli_academic/ui/components/cards/StatisticCardData.vue';
-    import DetailCardData from '../../../inteli_academic/ui/components/cards/DetailCardData.vue';
+    import StatisticCardData from '../../../inteli/ui/components/cards/StatisticCardData.vue';
+    import DetailCardData from '../../../inteli/ui/components/cards/DetailCardData.vue';
 
-    import BarChart from '../../../inteli_academic/ui/components/charts/BarChart.vue'
+    import BarChart from '../../../inteli/ui/components/charts/BarChart.vue'
 
-    import ModalButton from '../../../inteli_library/ui/components/buttons/ModalButton.vue'
-    import main_modal from '../../../inteli_library/ui/components/modals/modal.vue'
+    import ModalButton from '../../../inteli/ui/components/buttons/ModalButton.vue'
+    import MainModal from '../../../inteli/ui/components/modals/MainModal.vue'
 
     import main_menu from '../../../Theme/widgets/menus/main-menu.vue'
 
@@ -351,12 +282,16 @@
     import admission_wizard from "../plugins/wizard/admission-wizard.vue";
     import application_wizard from "../plugins/wizard/application-wizard.vue";
 
-    import TabularCard from "../../../inteli_academic/ui/components/cards/TabularCard.vue"
-    import MainForm from '../../../inteli_library/ui/components/forms/MainForm.vue'
+    import TabularCard from "../../../inteli/ui/components/cards/TabularCard.vue"
+    import MainForm from '../../../inteli/ui/components/forms/MainForm.vue'
 
     import Interview from '../widgets/Interview.vue'
 
     import Leave from '../widgets/Leave.vue'
+
+    import TabPane from '../../../inteli/ui/components/tabs/TabPane.vue'
+
+    import Tab from '../../../inteli/ui/components/tabs/Tab.vue'
 
     export default defineComponent({
         components: {
@@ -364,7 +299,7 @@
             BarChart,
             DetailCardData,
             ModalButton,
-            main_modal,
+            MainModal,
             MenuWindow,
             admission_wizard,
             application_wizard,
@@ -372,6 +307,8 @@
             MainForm,
             Interview,
             Leave,
+            TabPane,
+            Tab
         },
         setup(props,context)
         { 

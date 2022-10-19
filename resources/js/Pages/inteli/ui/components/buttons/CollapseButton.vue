@@ -16,6 +16,7 @@ import { defineComponent } from 'vue'
 import { store } from '../../../../../store/store.js'
 
 export default defineComponent({
+        name: "CollapseButton",
         props: {
             collapseId: String,
             buttonName: String,

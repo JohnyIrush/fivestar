@@ -9,7 +9,7 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div id="modal-body" class="modal-body">
-            <component
+          <component
                       :is="componentName"
 
                       @selectedListItem="selectedListItem"
@@ -24,32 +24,32 @@
 </template>
 
 <script>
+
 import { defineComponent } from 'vue'
 
 import { store } from '../../../../../store/store.js'
 
-import data_card from '../cards/data-card.vue'
+import DataCard from '../cards/DataCard.vue'
 
-import TableData from "../tables/TableData.vue"
+import DataTable from "../tables/DataTable.vue"
 
 import MainForm from '../forms/MainForm.vue'
 
-import TabularCard from '../../../../inteli_academic/ui/components/cards/TabularCard.vue'
-import MiniTabularCard from '../../../../inteli_academic/ui/components/cards/MiniTabularCard.vue'
+import TabularCard from '../cards/TabularCard.vue'
+import MiniTabularCard from '../cards/MiniTabularCard.vue'
 
 import DataList from '../../../../inteli_form/ui/components/list/DataList.vue'
-import SearchSelectInput from '../../../../inteli_form/ui/components/inputs/SearchSelectInput.vue'
-import SettingSelect from '../../../../inteli_admission/ui/widgets/menus/SettingSelect.vue'
+import SettingSelect from '../../../../inteli/ui/widgets/menus/SettingSelect.vue'
 
     export default defineComponent({
+        name: "MainModal",
         components: {
-            data_card,
-            TableData,
+            DataCard,
+            DataTable,
             MainForm,
             TabularCard,
             MiniTabularCard,
             DataList,
-            SearchSelectInput,
             SettingSelect
         },
         data() {

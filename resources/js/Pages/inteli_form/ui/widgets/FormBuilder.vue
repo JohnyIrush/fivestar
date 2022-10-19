@@ -806,10 +806,10 @@
 
     import {store} from "../../../../store/store.js"
 
-    import MainForm from '../../../inteli_library/ui/components/forms/MainForm.vue'
+    import MainForm from '../../../inteli/ui/components/forms/MainForm.vue'
 
-    import ModalButton from '../../../inteli_library/ui/components/buttons/ModalButton.vue'
-    import modal from '../../../inteli_library/ui/components/modals/modal.vue'
+    import ModalButton from '../../../inteli/ui/components/buttons/ModalButton.vue'
+    import MainModal from '../../../inteli/ui/components/modals/MainModal.vue'
 
     import TextInput from '../components/inputs/TextInput.vue'
     import TextAreaInput from '../components/inputs/TextAreaInput.vue'
@@ -831,6 +831,9 @@
 
     import VueLodash from 'vue-lodash'
     import lodash from 'lodash'
+
+    import TabPane from '../../../inteli/ui/components/tabs/TabPane.vue'
+    import Tab from '../../../inteli/ui/components/tabs/Tab.vue'
 
     export default defineComponent({
        name: "FormBuilder",
@@ -909,7 +912,7 @@
             Footer,
             MainForm,
             ModalButton,
-            modal,
+            MainModal,
             TextInput,
             TextAreaInput,
             TelInput,
@@ -924,7 +927,9 @@
             RadioInput,
             CheckboxInput,
             FileInput,
-            ColorInput
+            ColorInput,
+            TabPane,
+            Tab
         },
         data() {
             return {
