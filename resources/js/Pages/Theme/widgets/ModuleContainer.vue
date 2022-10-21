@@ -18,6 +18,7 @@
       </tab-pane>
     </div>
   </div>
+  <main-modal></main-modal>
 </template>
 
 <script>
@@ -27,6 +28,38 @@
     import TabPane from '../../inteli/ui/components/tabs/TabPane.vue'
     import Tab from '../../inteli/ui/components/tabs/Tab.vue'
 
+    import MainModal from '../../inteli/ui/components/modals/MainModal.vue'
+
+    //Academic
+    import AcademicDash from '../../inteli_academic/ui/widgets/AcademicDash.vue'
+    import Attendance from '../../inteli_academic/ui/widgets/Attendance.vue'
+    import Assignment from '../../inteli_academic/ui/widgets/Assignment.vue'
+    import Level from '../../inteli_academic/ui/widgets/Level.vue'
+    import Section from '../../inteli_academic/ui/widgets/Section.vue'
+    import Stream from '../../inteli_academic/ui/widgets/Stream.vue'
+    import Sport from '../../inteli_academic/ui/widgets/Sport.vue'
+    import Subject from '../../inteli_academic/ui/widgets/Subject.vue'
+    import LessonPlanner from '../../inteli_academic/ui/widgets/LessonPlanner.vue'
+    import Club from '../../inteli_academic/ui/widgets/Club.vue'
+    import AcademicSetting from '../../inteli_academic/ui/widgets/AcademicSetting.vue'
+
+    //Admission
+    import AdmissionDash from '../../inteli_admission/ui/widgets/AdmissionDash.vue'
+    import Interview from '../../inteli_admission/ui/widgets/Interview.vue'
+    import Application from '../../inteli_admission/ui/widgets/Application.vue'
+    import Admission from '../../inteli_admission/ui/widgets/Admission.vue'
+    import Leave from '../../inteli_admission/ui/widgets/Leave.vue'
+    import Ban from '../../inteli_admission/ui/widgets/Ban.vue'
+    import Expell from '../../inteli_admission/ui/widgets/Expell.vue'
+    import AdmissionSetting from '../../inteli_admission/ui/widgets/AdmissionSetting.vue'
+
+    //Exams
+    import ExamDash from '../../inteli_exam/ui/widgets/ExamDash.vue'
+    import Exam from '../../inteli_exam/ui/widgets/Exam.vue'
+    import Merit from '../../inteli_exam/ui/widgets/Merit.vue'
+    import Grading from '../../inteli_exam/ui/widgets/Grading.vue'
+    import ExamSetting from '../../inteli_exam/ui/widgets/ExamSetting.vue'
+
     //Staff
     import StaffDash from '../../inteli_staff/ui/widgets/StaffDash.vue'
     import Staff from '../../inteli_staff/ui/widgets/Staff.vue'
@@ -35,15 +68,31 @@
     import Occupation from '../../inteli_staff/ui/widgets/Occupation.vue'
     import StaffSetting from '../../inteli_staff/ui/widgets/StaffSetting.vue'
 
+    //Finance
+    import FinanceDash from '../../inteli_finance/ui/widgets/FinanceDash.vue'
+    import Account from '../../inteli_finance/ui/widgets/Account.vue'
+    import Service from '../../inteli_finance/ui/widgets/Service.vue'
+    import Fee from '../../inteli_finance/ui/widgets/Fee.vue'
+    import FinanceSetting from '../../inteli_finance/ui/widgets/FinanceSetting.vue'
+
+
     //Library
     import LibraryDash from '../../inteli_library/ui/widgets/LibraryDash.vue'
     import Book from '../../inteli_library/ui/widgets/Book.vue'
     import Librarian from '../../inteli_library/ui/widgets/Librarian.vue'
+    import Author from '../../inteli_library/ui/widgets/Author.vue'
     import BookIssue from '../../inteli_library/ui/widgets/BookIssue.vue'
     import BookCategory from '../../inteli_library/ui/widgets/BookCategory.vue'
-    import Author from '../../inteli_library/ui/widgets/Author.vue'
     import Publisher from '../../inteli_library/ui/widgets/Publisher.vue'
     import LibrarySetting from '../../inteli_library/ui/widgets/LibrarySetting.vue'
+
+    //Inventory
+    import Inventory from '../../inteli_inventory/ui/widgets/Inventory.vue'
+    import Purchase from '../../inteli_inventory/ui/widgets/Purchase.vue'
+    import Report from '../../inteli_inventory/ui/widgets/Report.vue'
+    import Warehouse from '../../inteli_inventory/ui/widgets/Warehouse.vue'
+    import WarehouseManager from '../../inteli_inventory/ui/widgets/WarehouseManager.vue'
+    import InventorySetting from '../../inteli_inventory/ui/widgets/InventorySetting.vue'
 
     //multimedia
     import MultimediaDash from '../../inteli_resource/ui/widgets/MultimediaDash.vue'
@@ -65,9 +114,30 @@
     import PermissionRole from '../../inteli_team/ui/widgets/PermissionRole.vue'
     import TeamSetting from '../../inteli_team/ui/widgets/TeamSetting.vue'
 
+    //Config
+    import CommunicationDash from '../../inteli_communication/ui/widgets/CommunicationDash.vue'
+    import CommunicationSetting from '../../inteli_communication/ui/widgets/CommunicationSetting.vue'
+
+    //Forms
+    import FormTemplate from '../../inteli_form/ui/widgets/FormTemplate.vue'
+    import BuilderWidget from '../../inteli_form/ui/widgets/BuilderWidget.vue'
+    import FormSetting from '../../inteli_form/ui/widgets/FormSetting.vue'
+
     //Security
     import SecurityDash from '../../inteli_security/ui/widgets/SecurityDash.vue'
     import SecuritySetting from '../../inteli_security/ui/widgets/SecuritySetting.vue'
+
+    //Config
+    import ConfigDash from '../../inteli_config/ui/widgets/ConfigDash.vue'
+    import ConfigSetting from '../../inteli_config/ui/widgets/ConfigSetting.vue'
+
+    //Career
+    import CareerDash from '../../inteli_career/ui/widgets/CareerDash.vue'
+    import CareerSetting from '../../inteli_career/ui/widgets/CareerSetting.vue'
+
+    //Ai
+    import AiDash from '../../inteli_ai/ui/widgets/AiDash.vue'
+    import AiSetting from '../../inteli_ai/ui/widgets/AiSetting.vue'
 
     export default defineComponent({
         props: {
@@ -76,16 +146,54 @@
             }
         },
         components: {
+            MainModal,
             Link,
             TabPane,
             Tab,
+            //Academic widget
+            AcademicDash,
+            Assignment,
+            Application,
+            Attendance,
+            Level,
+            Section,
+            Stream,
+            Level, 
+            Section, 
+            Stream, 
+            Sport, 
+            Subject,
+            LessonPlanner, 
+            Club, 
+            AcademicSetting,
+            //Admission widget
+            AdmissionDash,
+            Admission,
+            Application,
+            Interview,
+            Leave,
+            Ban,
+            Expell,
+            AdmissionSetting,
+            //Exam widget
+            ExamDash,
+            Exam,
+            Merit,
+            Grading,
+            ExamSetting,
             //staff widgets
             StaffDash,
             Staff,
             StaffCategory,
             Occupation,
             StaffSetting,
-            //staff widgets
+            //finance widgets
+            FinanceDash,
+            Account,
+            Service,
+            Fee,
+            FinanceSetting,
+            //library
             LibraryDash,
             Book,
             Librarian,
@@ -94,6 +202,13 @@
             Author,
             Publisher,
             LibrarySetting,
+            //inventory
+            Inventory,
+            Purchase,
+            Report,
+            Warehouse,
+            WarehouseManager,
+            InventorySetting,
             //multimedia
             MultimediaDash,
             FileManager,
@@ -104,16 +219,33 @@
             Day,
             Session,
             Department,
+            Term,
             Venue,
-            TimetableSetting,
+            FormSetting,
             //team widgets
             User,
             Task,
             PermissionRole,
             TeamSetting,
+            //Communication
+            CommunicationDash,
+            CommunicationSetting,
+            //forms
+            FormTemplate,
+            BuilderWidget,
+            TimetableSetting,
             //security
             SecurityDash,
             SecuritySetting,
+            //config
+            ConfigDash,
+            ConfigSetting,
+            //Career
+            CareerDash,
+            CareerSetting,
+            //Ai
+            AiDash,
+            AiSetting,
         },
         setup(props,{emit})
         {   

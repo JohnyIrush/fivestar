@@ -1,35 +1,39 @@
 <template>
-  <module-container
-   :ModuleDetails="[
-     {
-      widget_title: 'Dashboard',
-      widget_tab_icon_classes: 'fas fa-chess-board fa-2x',
-      widget_tab_button_classes: '',
-      widget_component_name: 'AiDash',
-      widget_component_path: '../../inteli_ai/ui/widgets/AiDash.vue'
-     },
-     {
-      widget_title: 'Settings',
-      widget_tab_icon_classes: 'fas fa-cogs fa-2x',
-      widget_tab_button_classes: 'mt-6',
-      widget_component_name: 'AiSetting',
-      widget_component_path: '../../inteli_ai/ui/widgets/AiSetting.vue'
-     },
-   ]">
-  </module-container>
+         <form-builder 
+           :Mode="true"
+           :formDetails="
+                {
+                  id: '',
+                  user_id: '',
+                  title: '',
+                  description: '',
+                  cover: '',
+                  image: '',
+                  sections:{
+
+                  },
+              }"
+            :SelectedInputType="selectedListItemData"
+           > 
+          </form-builder>
+   <main-modal 
+         @selectedListItem="selectedListItem">
+   </main-modal>
 </template>
 
 <script>
     import { defineComponent } from 'vue'
 
-
     import {store} from "../../../../store/store.js"
 
-    import ModuleContainer from '../../../Theme/widgets/ModuleContainer.vue'
+    import FormBuilder from '../widgets/FormBuilder.vue'
+
+    import MainModal from '../../../inteli/ui/components/modals/MainModal.vue'
 
     export default defineComponent({
         components: {
-            ModuleContainer
+          FormBuilder,
+          MainModal,
         },
         computed:{
 
@@ -74,7 +78,7 @@
         },
         mounted()
         {
-          this.getRequest('form/template/index', "formTemplates")
+          
         },
         created()
         {

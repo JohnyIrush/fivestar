@@ -1,38 +1,22 @@
 <template>
- <div class="row" >
-  <div 
-     :class="columnSize">
-     <tab-pane
-       :orientation="'vertical'"
-     >
-        <tab title="tabs" 
-             component="TabButton"
-             icon_classes="''">
-             Tabs
-        </tab>
-        <tab title="tables" 
-             component="TabButton"
-             icon_classes="''">
-             Tables
-        </tab>
-        <tab title="forms" 
-             component="TabButton"
-             icon_classes="''">
-             Forms
-        </tab>
-        <tab title="navs" 
-             component="TabButton"
-             icon_classes="''">
-             Navs
-        </tab>
-        <tab title="modals" 
-             component="TabButton"
-             icon_classes="''">
-             Modals
-        </tab>
-     </tab-pane>
-  </div>
- </div>
+  <module-container
+   :ModuleDetails="[
+     {
+      widget_title: 'Dashboard',
+      widget_tab_icon_classes: 'fas fa-chess-board fa-2x',
+      widget_tab_button_classes: '',
+      widget_component_name: 'CommunicationDash',
+      widget_component_path: '../../inteli_config/ui/widgets/CommunicationDash.vue'
+     },
+     {
+      widget_title: 'Settings',
+      widget_tab_icon_classes: 'fas fa-cogs fa-2x',
+      widget_tab_button_classes: 'mt-6',
+      widget_component_name: 'CommunicationSetting',
+      widget_component_path: '../../inteli_config/ui/widgets/CommunicationSetting.vue'
+     },
+   ]">
+  </module-container>
 </template>
 
 
@@ -40,15 +24,11 @@
     import { defineComponent, computed } from 'vue';
     import { Head, Link, usePage } from '@inertiajs/inertia-vue3';
 
-    import TabPane from '../../../inteli/ui/components/tabs/TabPane.vue'
-
-    import Tab from '../../../inteli/ui/components/tabs/Tab.vue'
+    import ModuleContainer from '../../../Theme/widgets/ModuleContainer.vue'
 
     export default defineComponent({
         components: {
-            Link, 
-            TabPane,
-            Tab
+           ModuleContainer 
         },
         setup(props,context)
         {

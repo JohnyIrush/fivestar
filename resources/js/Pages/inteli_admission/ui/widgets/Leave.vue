@@ -1,20 +1,14 @@
 <template>
- <div class="row">
-  <div class="col-12">
-    <leave-wizard></leave-wizard>
-  </div>
- </div>
+
 </template>
 
 <script>
     import { defineComponent } from 'vue'
 
-    import LeaveWizard from "../plugins/wizard/LeaveWizard.vue"
-
     export default defineComponent({
         name: "Leave",
         components: {
-            LeaveWizard
+
         },
         data() {
             return {

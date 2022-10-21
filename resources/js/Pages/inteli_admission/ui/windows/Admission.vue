@@ -94,171 +94,66 @@
           </menu-window>
     </div>
   </div>
-  <div class="row">
-    <div class="col-12">
-     <div 
-        :class="columnSize">
-        <tab-pane
-          :orientation="'vertical'">
-           <tab title="Dashboard" 
-                component="TabButton"
-                icon_classes="fas fa-chess-board fa-2x"
-                tab_button_classes="''">
-             <div class="row">
-               <div class="col-12">
-                 <statistic-card-data :statistics="statistics" />
-               </div>
-             </div>
-             <div class="row">
-               <div class="col-12 col-xl-4">
-                 <detail-card-data  :datapath="'academic/level/detail'" />
-               </div>
-             </div>
-           </tab>
-           <tab title="Application" 
-                component="TabButton"
-                icon_classes="fas fa-mail-bulk fa-2x"
-                tab_button_classes="mt-6">
-          <div class="row" v-if="true">
-            <div class="col-12">
-              <application_wizard></application_wizard>
-            </div>
-          </div>
-          <div class="row justify-content-center" v-if="false">
-            <div class="col-12">
-               <statistic-card-data :dataPath="'admission/applicant/statistics'" />
-            </div>
-            <div class="col-12">
-              <!--<tabular-card :dataPath="'admission/applicant/index'">
-              </tabular-card>-->
-            </div>
-          </div>
-           </tab>
-           <tab title="Interview" 
-                component="TabButton"
-                icon_classes="fas fa-sitemap fa-2x"
-                tab_button_classes="mt-6">
-           <div class="row justify-content-center">
-            <div class="col-12">
-              <interview />
-            </div>
-           </div>
-          <div class="row justify-content-center">
-             <div class="col-12">
-               <statistic-card-data :dataPath="'admission/interview/statistics'" />
-             </div>
-            <div class="col-12">
-              <!--<tabular-card :dataPath="'admission/interview/index'">
-              </tabular-card>-->
-            </div>
-           </div>
-           </tab>
-           <tab title="Admission" 
-                component="TabButton"
-                icon_classes="fas fa-sticky-note fa-2x"
-                tab_button_classes="mt-6">
-           <div class="row justify-content-center">
-            <div class="col-12">
-              <leave />
-            </div>
-           </div>
-          <div class="row justify-content-center">
-             <div class="col-12">
-               <statistic-card-data :dataPath="'admission/leave/statistics'" />
-             </div>
-            <div class="col-12">
-              <!--<tabular-card :dataPath="'admission/leave/index'">
-              </tabular-card>-->
-            </div>
-           </div>
-           </tab>
-           <tab title="Leave" 
-                component="TabButton"
-                icon_classes="fas fa-house-leave fa-2x"
-                tab_button_classes="mt-6">
-           <div class="row">
-            <div class="col">
-              <main_menu></main_menu>
-            </div>
-           </div>
-           </tab>
-           <tab title="Expell" 
-                component="TabButton"
-                icon_classes="fas fa-user-slash fa-2x"
-                tab_button_classes="mt-6">
-
-           </tab>
-           <tab title="Ban" 
-                component="TabButton"
-                icon_classes="fas fa-ban fa-2x"
-                tab_button_classes="mt-6">
-
-           </tab>
-           <tab title="Settings" 
-                component="TabButton"
-                icon_classes="fas fa-cogs fa-2x"
-                tab_button_classes="mt-6">
-         <div class="container-fluid py-4">
-           <div class="row">
-             <div class="col-12 col-xl-9 glass-content">
-               <div class="card h-100">
-                 <div class="card-header pb-0 p-3">
-                   <h6 class="mb-0">Platform Settings</h6>
-                 </div>
-                 <div class="card-body p-3">
-                   <h6 class="text-uppercase text-body text-xs font-weight-bolder">Account</h6>
-                   <ul class="list-group">
-                     <li class="list-group-item border-0 px-0">
-                       <div class="form-check form-switch ps-0">
-                         <input class="form-check-input ms-auto" type="checkbox" id="flexSwitchCheckDefault" checked>
-                         <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0" for="flexSwitchCheckDefault">Email me when someone follows me</label>
-                       </div>
-                     </li>
-                     <li class="list-group-item border-0 px-0">
-                       <div class="form-check form-switch ps-0">
-                         <input class="form-check-input ms-auto" type="checkbox" id="flexSwitchCheckDefault1">
-                         <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0" for="flexSwitchCheckDefault1">Email me when someone answers on my post</label>
-                       </div>
-                     </li>
-                     <li class="list-group-item border-0 px-0">
-                       <div class="form-check form-switch ps-0">
-                         <input class="form-check-input ms-auto" type="checkbox" id="flexSwitchCheckDefault2" checked>
-                         <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0" for="flexSwitchCheckDefault2">Email me when someone mentions me</label>
-                       </div>
-                     </li>
-                   </ul>
-                   <h6 class="text-uppercase text-body text-xs font-weight-bolder mt-4">Application</h6>
-                   <ul class="list-group">
-                     <li class="list-group-item border-0 px-0">
-                       <div class="form-check form-switch ps-0">
-                         <input class="form-check-input ms-auto" type="checkbox" id="flexSwitchCheckDefault3">
-                         <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0" for="flexSwitchCheckDefault3">New launches and projects</label>
-                       </div>
-                     </li>
-                     <li class="list-group-item border-0 px-0">
-                       <div class="form-check form-switch ps-0">
-                         <input class="form-check-input ms-auto" type="checkbox" id="flexSwitchCheckDefault4" checked>
-                         <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0" for="flexSwitchCheckDefault4">Monthly product updates</label>
-                       </div>
-                     </li>
-                     <li class="list-group-item border-0 px-0 pb-0">
-                       <div class="form-check form-switch ps-0">
-                         <input class="form-check-input ms-auto" type="checkbox" id="flexSwitchCheckDefault5">
-                         <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0" for="flexSwitchCheckDefault5">Subscribe to newsletter</label>
-                       </div>
-                     </li>
-                   </ul>
-                 </div>
-               </div>
-             </div>
-           </div>
-         </div>
-           </tab>
-        </tab-pane>
-     </div>
-    </div>
-  </div>
- <modal></modal>
+  <module-container
+   :ModuleDetails="[
+     {
+      widget_title: 'Dashboard',
+      widget_tab_icon_classes: 'fas fa-chess-board fa-2x',
+      widget_tab_button_classes: '',
+      widget_component_name: 'AdmissionDash',
+      widget_component_path: '../../inteli_admission/ui/widgets/AdmissionDash.vue'
+     },
+     {
+      widget_title: 'Application',
+      widget_tab_icon_classes: 'fas fa-mail-bulk fa-2x',
+      widget_tab_button_classes: 'mt-6',
+      widget_component_name: 'Application',
+      widget_component_path: '../../inteli_admission/ui/widgets/Application.vue'
+     },
+     {
+      widget_title: 'Interview',
+      widget_tab_icon_classes: 'fas fa-sitemap fa-2x',
+      widget_tab_button_classes: 'mt-6',
+      widget_component_name: 'Interview',
+      widget_component_path: '../../inteli_admission/ui/widgets/Interview.vue'
+     },
+     {
+      widget_title: 'Admission',
+      widget_tab_icon_classes: 'fas fa-sticky-note fa-2x',
+      widget_tab_button_classes: 'mt-6',
+      widget_component_name: 'Admission',
+      widget_component_path: '../../inteli_admission/ui/widgets/Admission.vue'
+     },
+     {
+      widget_title: 'Leave',
+      widget_tab_icon_classes: 'fas fa-sign-in-alt fa-2x',
+      widget_tab_button_classes: 'mt-6',
+      widget_component_name: 'Leave',
+      widget_component_path: '../../inteli_admission/ui/widgets/Leave.vue'
+     },
+     {
+      widget_title: 'Expell',
+      widget_tab_icon_classes: 'fas fa-user-times fa-2x',
+      widget_tab_button_classes: 'mt-6',
+      widget_component_name: 'Expell',
+      widget_component_path: '../../inteli_admission/ui/widgets/Expell.vue'
+     },
+     {
+      widget_title: 'Ban',
+      widget_tab_icon_classes: 'fas fa-ban fa-2x',
+      widget_tab_button_classes: 'mt-6',
+      widget_component_name: 'Ban',
+      widget_component_path: '../../inteli_admission/ui/widgets/Ban.vue'
+     },
+     {
+      widget_title: 'Settings',
+      widget_tab_icon_classes: 'fas fa-cogs fa-2x',
+      widget_tab_button_classes: 'mt-6',
+      widget_component_name: 'AdmissionSetting',
+      widget_component_path: '../../inteli_ai/ui/widgets/AdmissionSetting.vue'
+     },
+   ]">
+  </module-container>
 </template>
 
 <script>
@@ -267,48 +162,11 @@
 
     import {store} from "../../../../store/store.js"
 
-    import StatisticCardData from '../../../inteli/ui/components/cards/StatisticCardData.vue';
-    import DetailCardData from '../../../inteli/ui/components/cards/DetailCardData.vue';
-
-    import BarChart from '../../../inteli/ui/components/charts/BarChart.vue'
-
-    import ModalButton from '../../../inteli/ui/components/buttons/ModalButton.vue'
-    import MainModal from '../../../inteli/ui/components/modals/MainModal.vue'
-
-    import main_menu from '../../../Theme/widgets/menus/main-menu.vue'
-
-    import MenuWindow from '../../../Theme/widgets/menus/MenuWindow.vue'
-
-    import admission_wizard from "../plugins/wizard/admission-wizard.vue";
-    import application_wizard from "../plugins/wizard/application-wizard.vue";
-
-    import TabularCard from "../../../inteli/ui/components/cards/TabularCard.vue"
-    import MainForm from '../../../inteli/ui/components/forms/MainForm.vue'
-
-    import Interview from '../widgets/Interview.vue'
-
-    import Leave from '../widgets/Leave.vue'
-
-    import TabPane from '../../../inteli/ui/components/tabs/TabPane.vue'
-
-    import Tab from '../../../inteli/ui/components/tabs/Tab.vue'
+    import ModuleContainer from '../../../Theme/widgets/ModuleContainer.vue'
 
     export default defineComponent({
         components: {
-            StatisticCardData,
-            BarChart,
-            DetailCardData,
-            ModalButton,
-            MainModal,
-            MenuWindow,
-            admission_wizard,
-            application_wizard,
-            TabularCard,
-            MainForm,
-            Interview,
-            Leave,
-            TabPane,
-            Tab
+            ModuleContainer
         },
         setup(props,context)
         { 

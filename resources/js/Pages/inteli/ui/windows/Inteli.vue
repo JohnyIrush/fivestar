@@ -1,46 +1,49 @@
 <template>
- <div class="row" >
-  <div 
-     :class="columnSize">
-     <tab-pane
-       :orientation="'vertical'"
-     >
-        <tab title="tabs" 
-             component="TabButton"
-             icon_classes="''">
-             Tabs
-        </tab>
-        <tab title="tables" 
-             component="TabButton"
-             icon_classes="''">
-             Tables
-        </tab>
-        <tab title="forms" 
-             component="TabButton"
-             icon_classes="''">
-             Forms
-        </tab>
-        <tab title="navs" 
-             component="TabButton"
-             icon_classes="''">
-             Navs
-        </tab>
-        <tab title="modals" 
-             component="TabButton"
-             icon_classes="''">
-             Modals
-        </tab>
-     </tab-pane>
-  </div>
- </div>
+  <module-container
+   :ModuleDetails="[
+     {
+      widget_title: 'Tabs',
+      widget_tab_icon_classes: '',
+      widget_tab_button_classes: '',
+      widget_component_name: '',
+      widget_component_path: '../../inteli/ui/widgets/.vue'
+     },
+     {
+      widget_title: 'Tables',
+      widget_tab_icon_classes: '',
+      widget_tab_button_classes: 'mt-6',
+      widget_component_name: '',
+      widget_component_path: '../../inteli/ui/widgets/vue'
+     },
+     {
+      widget_title: 'Forms',
+      widget_tab_icon_classes: '',
+      widget_tab_button_classes: 'mt-6',
+      widget_component_name: '',
+      widget_component_path: '../../inteli/ui/widgets/.vue'
+     },
+     {
+      widget_title: 'Navs',
+      widget_tab_icon_classes: 'fas fa-sticky-note fa-2x',
+      widget_tab_button_classes: 'mt-6',
+      widget_component_name: '',
+      widget_component_path: '../../inteli/ui/widgets/.vue'
+     },
+     {
+      widget_title: 'Modals',
+      widget_tab_icon_classes: 'as fa-user-friends fa-2x',
+      widget_tab_button_classes: 'mt-6',
+      widget_component_name: '',
+      widget_component_path: '../../inteli/ui/widgets/.vue'
+     },
+   ]">
+  </module-container>
 </template>
 
 <script>
     import { defineComponent } from 'vue'
 
-    import TabPane from '../components/tabs/TabPane.vue'
-
-    import Tab from '../components/tabs/Tab.vue'
+    import ModuleContainer from '../../../Theme/widgets/ModuleContainer.vue'
 
     export default defineComponent({
         name: "Inteli",
@@ -51,8 +54,7 @@
           }
         },
         components: {
-            TabPane,
-            Tab
+            ModuleContainer
         },
         data() {
             return {

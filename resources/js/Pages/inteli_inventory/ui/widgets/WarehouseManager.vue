@@ -1,26 +1,42 @@
 <template>
-    
+  <div class="row">
+    <div class="col-4 mt-3 mb-3"  v-for="manager in managers" :key="manager.id">
+     <!--<p><p>{{manager.firstname}}</p></p>-->
+     <user_card :manager="manager"></user_card>
+    </div>
+  </div>
 </template>
-
 <script>
     import { defineComponent } from 'vue'
 
-    export default defineComponent({
-        name: "Interview",
-        components: {
+    import user_card from '../components/cards/user-card.vue'
 
+    export default defineComponent({
+        name: "WarehouseManager",
+        components: {
+            user_card,
         },
         data() {
             return {
-                
+                managers: []
             }
         },
 
         methods: {
-
+            getManagers()
+            {
+                axios.get('managers')
+                .then((response)=>{
+                    this.managers = response.data
+                })
+            },
+            trim(text, length, comment)
+            {
+                return text.substr(0,length) + comment;
+            },
         },
         mounted(){
-            
+            this.getManagers()
         },
     })
 </script>
@@ -31,9 +47,11 @@
 
 .glass-container
 {
-    /*position: relative;
+   /*
+    position: relative;
     min-height: calc(100vh - 280);
-    width: calc(100% - 100px);*/
+    width: calc(100% - 100px);
+    */
     background: rgba(255, 255, 255, 0.5);
     box-shadow: 0 15px 35px rgba(255, 255, 255, 0.05);
     border-radius: 20px;
@@ -60,14 +78,6 @@
 
 .glass-header
 {
-    /*position: absolute;
-    top: -5px;
-    right: 20px;
-    left: 5px;
-    padding: 20px 50px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;*/
     background: rgba(255, 255, 255, 0.2);
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
     border-radius: 20px;
@@ -76,4 +86,11 @@
     border-top: 1px solid rgba(255, 255, 255, 0.25);
     border-left: 1px solid rgba(255, 255, 255, 0.5);
 }
+
+.avatar-size
+{
+    height: 150px !important;
+    width: 150px !important;
+}
+
 </style>

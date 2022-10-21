@@ -1,35 +1,54 @@
 <template>
-  <module-container
-   :ModuleDetails="[
-     {
-      widget_title: 'Dashboard',
-      widget_tab_icon_classes: 'fas fa-chess-board fa-2x',
-      widget_tab_button_classes: '',
-      widget_component_name: 'AiDash',
-      widget_component_path: '../../inteli_ai/ui/widgets/AiDash.vue'
-     },
-     {
-      widget_title: 'Settings',
-      widget_tab_icon_classes: 'fas fa-cogs fa-2x',
-      widget_tab_button_classes: 'mt-6',
-      widget_component_name: 'AiSetting',
-      widget_component_path: '../../inteli_ai/ui/widgets/AiSetting.vue'
-     },
-   ]">
-  </module-container>
+          <!--START TEMPLATES CONTAINER -->
+          <div class="glass-content">
+            <!--START TEMPLATES NAVBAR -->
+            <div class="row">
+              <div class="col-12">
+                <div class="glass-content mt-3 mb-3  p-4">
+                  <div class="input-group mb-3">
+                    <span class="input-group-text" id="template-search">
+                      <i class="fas fa-search fa-2x"></i>
+                    </span>
+                    <input type="text" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="template-search">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--END TEMPLATES NAVBAR -->
+            <!--START TEMPLATES BODY -->
+            <div class="row">
+              <div class="col-12">
+                <div class="glass-content">
+                  <div class="row">
+                    <div class="col-3" v-for="form in formTemplates" :key="form.id">
+                      <img :src="form.image">
+                      <p>{{form.title}}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--END TEMPLATES BODY -->
+          </div>
+          <!--END TEMPLATES CONTAINER -->
+    <main-modal 
+         @selectedListItem="selectedListItem">
+   </main-modal>
 </template>
 
 <script>
     import { defineComponent } from 'vue'
 
-
     import {store} from "../../../../store/store.js"
 
-    import ModuleContainer from '../../../Theme/widgets/ModuleContainer.vue'
+    import FormBuilder from '../widgets/FormBuilder.vue'
+
+    import MainModal from '../../../inteli/ui/components/modals/MainModal.vue'
 
     export default defineComponent({
         components: {
-            ModuleContainer
+          FormBuilder,
+          MainModal,
         },
         computed:{
 
