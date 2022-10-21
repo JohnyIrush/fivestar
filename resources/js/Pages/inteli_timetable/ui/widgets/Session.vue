@@ -1,51 +1,16 @@
 <template>
-  <module-container
-   :ModuleDetails="[
-     {
-      widget_title: 'Dashboard',
-      widget_tab_icon_classes: 'fas fa-chess-board fa-2x',
-      widget_tab_button_classes: '',
-      widget_component_name: 'TimetableDash',
-      widget_component_path: '../../inteli_timetable/ui/widgets/DashTimetable.vue'
-     },
-     {
-      widget_title: 'Days',
-      widget_tab_icon_classes: 'fas fa-cloud-sun fa-2x',
-      widget_tab_button_classes: 'mt-6',
-      widget_component_name: 'Day',
-      widget_component_path: '../../inteli_timetable/ui/widgets/Day.vue'
-     },
-     {
-      widget_title: 'Sessions',
-      widget_tab_icon_classes: 'fas fa-user-clock fa-2x',
-      widget_tab_button_classes: 'mt-6',
-      widget_component_name: 'Session',
-      widget_component_path: '../../inteli_timetable/ui/widgets/Session.vue'
-     },
-     {
-      widget_title: 'Terms',
-      widget_tab_icon_classes: 'fas fa-calendar fa-2x',
-      widget_tab_button_classes: 'mt-6',
-      widget_component_name: 'Term',
-      widget_component_path: '../../inteli_timetable/ui/widgets/Term.vue'
-     },
-     {
-      widget_title: 'Venues',
-      widget_tab_icon_classes: 'fas fa-school fa-2x',
-      widget_tab_button_classes: 'mt-6',
-      widget_component_name: 'Venue',
-      widget_component_path: '../../inteli_timetable/ui/widgets/Venue.vue'
-     },
-     {
-      widget_title: 'Settings',
-      widget_tab_icon_classes: 'fas fa-cogs fa-2x',
-      widget_tab_button_classes: 'mt-6',
-      widget_component_name: 'TimetableSetting',
-      widget_component_path: '../../inteli_timetable/ui/widgets/TimetableSetting.vue'
-     },
-   ]">
-  </module-container>
- <main-modal></main-modal>
+           <div class="row">
+             <div class="col-xl-4">
+               <modal-button @showmodal="launchModal('main-modal')" :name="'Add'" :icon_classes="'fas fa-plus'" :title="'Add New Day Session'" :modalSize="'modal-lg'" :componentType="'form'" :componentName="'MainForm'" :dataPath="'timetable/day/session/create'"></modal-button>
+             </div>
+             <div class="col-xl-4">
+               <modal-button @showmodal="launchModal('main-modal')" :name="'Day Sessions'" :icon_classes="'far fa-eye'" :title="'Day Sessions'" :modalSize="'modal-xl'" :componentType="'table'" :componentName="'DataTable'" :dataPath="'timetable/day/session/index'"></modal-button>
+             </div>
+             <div class="col-xl-4"></div>
+           </div>
+           <div class="col-12">
+             <statistic-card-data  />
+           </div>
 </template>
 
 <script>
@@ -53,15 +18,23 @@
 import { defineComponent } from 'vue'
 
 import {store} from "../../../../store/store.js"
+import StatisticCardData from '../../../inteli/ui/components/cards/StatisticCardData.vue';
+import DetailCardData from '../../../inteli/ui/components/cards/DetailCardData.vue';
 
+import BarChart from '../../../inteli/ui/components/charts/BarChart.vue'
+
+import ModalButton from '../../../inteli/ui/components/buttons/ModalButton.vue'
 import MainModal from '../../../inteli/ui/components/modals/MainModal.vue'
 
-import ModuleContainer from '../../../Theme/widgets/ModuleContainer.vue'
 
 export default defineComponent({
+        name: "Session",
         components: {
+            StatisticCardData,
+            BarChart,
+            DetailCardData,
+            ModalButton,
             MainModal,
-            ModuleContainer
         },
         data() {
             return {

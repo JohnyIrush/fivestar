@@ -1,66 +1,54 @@
 <template>
-  <module-container
-   :ModuleDetails="[
-     {
-      widget_title: 'Dashboard',
-      widget_tab_icon_classes: 'fas fa-chess-board fa-2x',
-      widget_tab_button_classes: '',
-      widget_component_name: 'LibraryDash',
-      widget_component_path: '../../inteli_library/ui/widgets/LibraryDash.vue'
-     },
-     {
-      widget_title: 'Librarian',
-      widget_tab_icon_classes: 'fas fa-user-lock fa-2x',
-      widget_tab_button_classes: 'mt-6',
-      widget_component_name: 'Librarian',
-      widget_component_path: '../../inteli_library/ui/widgets/Librarian.vue'
-     },
-     {
-      widget_title: 'Book Issue',
-      widget_tab_icon_classes: 'fas fa-id-card fa-2x',
-      widget_tab_button_classes: 'mt-6',
-      widget_component_name: 'BookIssue',
-      widget_component_path: '../../inteli_library/ui/widgets/BookIssue.vue'
-     },
-     {
-      widget_title: 'Book Categories',
-      widget_tab_icon_classes: 'fas fa-code-branch fa-2x',
-      widget_tab_button_classes: 'mt-6',
-      widget_component_name: 'BookCategory',
-      widget_component_path: '../../inteli_library/ui/widgets/BookCategory.vue'
-     },
-     {
-      widget_title: 'Books',
-      widget_tab_icon_classes: 'fas fa-book fa-2x',
-      widget_tab_button_classes: 'mt-6',
-      widget_component_name: 'Book',
-      widget_component_path: '../../inteli_library/ui/widgets/Book.vue'
-     },
-     {
-      widget_title: 'Authors',
-      widget_tab_icon_classes: 'fas fa-feather fa-2x',
-      widget_tab_button_classes: 'mt-6',
-      widget_component_name: 'Author',
-      widget_component_path: '../../inteli_library/ui/widgets/Author.vue'
-     },
-     {
-      widget_title: 'Publishers',
-      widget_tab_icon_classes: 'fas fa-building fa-2x',
-      widget_tab_button_classes: 'mt-6',
-      widget_component_name: 'Publisher',
-      widget_component_path: '../../inteli_library/ui/widgets/Publisher.vue'
-     },
-     {
-      widget_title: 'Settings',
-      widget_tab_icon_classes: 'fas fa-cogs fa-2x',
-      widget_tab_button_classes: 'mt-6',
-      widget_component_name: 'LibrarySetting',
-      widget_component_path: '../../inteli_library/ui/widgets/LibrarySetting.vue'
-     },
-
-   ]">
-  </module-container>
-  <main-modal></main-modal>
+	           <div class="row mt-4 mb-4">
+             <div class="col-xl-4 col-sm-6 mb-4">
+               <div class="card glass-content">
+                  <div class="numbers">
+                   <p class="card-text">{{ analytics.authors }}</p>
+                   <h5 class="card-title mb-0">Authors Listed</h5>
+                  </div>
+               </div>
+             </div>
+             <div class="col-xl-4 col-sm-6 mb-4">
+               <div class="card glass-content">
+                  <div class="numbers">
+                       <p class="card-text">{{ analytics.publishers }}</p>
+                       <h5 class="card-title mb-0">Publishers Listed</h5>
+                  </div>
+               </div>
+             </div>
+             <div class="col-xl-4 col-sm-6 mb-4">
+               <div class="card glass-content">
+                <div class="numbers">
+                     <p class="card-text">{{ analytics.categories }}</p>
+                     <h5 class="card-title mb-0">Categories Listed</h5>
+                </div>
+               </div>
+             </div>
+             <div class="col-xl-4 col-sm-6 mb-4">
+               <div class="card glass-content">
+                <div class="numbers">
+                     <p class="card-text">{{ analytics.books }}</p>
+                     <h5 class="card-title mb-0">Books Listed</h5>
+                </div>
+               </div>
+             </div>
+             <div class="col-xl-4 col-sm-6 mb-4">
+               <div class="card glass-content">
+                  <div class="numbers">
+                       <p class="card-text">{{ analytics.students }}</p>
+                       <h5 class="card-title mb-0">Register Students</h5>
+                  </div>
+               </div>
+             </div>
+             <div class="col-xl-4 col-sm-6 mb-4">
+               <div class="card glass-content">
+                <div class="numbers">
+                     <p class="card-text">{{ analytics.issued_books }}</p>
+                     <h5 class="card-title mb-0">Book Issued</h5>
+                </div>
+               </div>
+             </div>
+            </div>
 </template>
 
 <script>
@@ -76,8 +64,6 @@
     import MainModal from '../../../inteli/ui/components/modals/MainModal.vue'
     import MainForm from '../../../inteli/ui/components/forms/MainForm.vue'
 
-    import ModuleContainer from '../../../Theme/widgets/ModuleContainer.vue'
-
     export default defineComponent({
         components: {
             DataCard,
@@ -85,7 +71,6 @@
             MainModal,
             ModalButton,
             MainForm,
-            ModuleContainer
         },
         data() {
             return {

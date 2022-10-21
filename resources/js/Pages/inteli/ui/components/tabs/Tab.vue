@@ -1,6 +1,6 @@
 <template>
   <div 
-      v-show="title == selectedTab.title">
+      v-if="title == selectedTab.title">
    <slot />
   </div>
 </template>

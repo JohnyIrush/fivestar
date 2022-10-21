@@ -1,16 +1,16 @@
 <?php
 
-namespace Softwarescares\intelisecurity\app\Http\Controllers\UI;
+namespace Softwarescares\Intelisecurity\app\Http\Controllers\UI;
 
-use Softwarescares\intelisecurity\app\Http\Controllers\Controller;
+use Softwarescares\Intelisecurity\app\Http\Controllers\Controller;
 
-use Softwarescares\intelisecurity\app\Models\Security;
-use Softwarescares\intelisecurity\app\Http\Requests\StoreSecurityRequest;
-use Softwarescares\intelisecurity\app\Http\Requests\UpdateSecurityRequest;
+use Softwarescares\Intelisecurity\app\Models\Security;
+use Softwarescares\Intelisecurity\app\Http\Requests\StoreSecurityRequest;
+use Softwarescares\Intelisecurity\app\Http\Requests\UpdateSecurityRequest;
 
 use Inertia\Inertia;
 
-class StaffController extends Controller
+class UIController extends Controller
 {
     /**
      * Staff

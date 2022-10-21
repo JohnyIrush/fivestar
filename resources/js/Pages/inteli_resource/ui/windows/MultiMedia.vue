@@ -1,29 +1,37 @@
 <template>
- <div class="row" >
-  <div 
-     :class="columnSize">
-     <tab-pane
-       :orientation="'vertical'" 
-     >
-        <tab title="dash" 
-             component="TabButton">
-             <dash></dash>
-        </tab>
-        <tab title="files" 
-             component="TabButton">
-             <file-manager></file-manager>
-        </tab>
-        <tab title="gallery" 
-             component="TabButton">
-             <gallery></gallery>
-        </tab>
-        <tab title="setting" 
-             component="TabButton">
-             <setting></setting>
-        </tab>
-     </tab-pane>
-  </div>
- </div>
+  <module-container
+   :ModuleDetails="[
+     {
+      widget_title: 'Dashboard',
+      widget_tab_icon_classes: 'fas fa-chess-board fa-2x',
+      widget_tab_button_classes: '',
+      widget_component_name: 'MultimediaDash',
+      widget_component_path: '../../inteli_resource/ui/widgets/MultimediaDash.vue'
+     },
+     {
+      widget_title: 'File Manager',
+      widget_tab_icon_classes: 'fas fa-file-alt fa-2x',
+      widget_tab_button_classes: 'mt-6',
+      widget_component_name: 'FileManager',
+      widget_component_path: '../../inteli_resource/ui/widgets/FileManager.vue'
+     },
+     {
+      widget_title: 'Gallery',
+      widget_tab_icon_classes: 'fas fa-photo-video fa-2x',
+      widget_tab_button_classes: 'mt-6',
+      widget_component_name: 'MultimediaDash',
+      widget_component_path: '../../inteli_resource/ui/widgets/Gallery.vue'
+     },
+     {
+      widget_title: 'Settings',
+      widget_tab_icon_classes: 'fas fa-cogs fa-2x',
+      widget_tab_button_classes: 'mt-6',
+      widget_component_name: 'TeamSetting',
+      widget_component_path: '../../inteli_resource/ui/widgets/MultimediaSetting.vue'
+     },
+
+   ]">
+  </module-container>
 </template>
 
 <script>
@@ -33,10 +41,7 @@
 
     import Tab from '../../../inteli/ui/components/tabs/Tab.vue'
 
-    import Dash from '../widgets/Dash.vue'
-    import FileManager from '../widgets/FileManager.vue'
-    import Gallery from '../widgets/Gallery.vue'
-    import Setting from '../widgets/Setting.vue'
+    import ModuleContainer from '../../../Theme/widgets/ModuleContainer.vue'
 
     export default defineComponent({
         name: "MultiMedia",
@@ -49,10 +54,7 @@
         components: {
             TabPane,
             Tab,
-            Dash,
-            FileManager,
-            Gallery,
-            Setting
+            ModuleContainer,
         },
         data() {
             return {

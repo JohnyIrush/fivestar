@@ -67,13 +67,16 @@ export default defineComponent({
 
       return false;
     },
-    getData(url)
-    {
-      axios.post(url, {"conditions" : {id: 1}})
-      .then((response)=>{
-      this.details = response.data
-      this.types = response.data.types
-      })
+    getData(url = '')
+    { 
+      if (url.length > 0)
+      {
+       axios.post(url, {"conditions" : {id: 1}})
+       .then((response)=>{
+       this.details = response.data
+       this.types = response.data.types
+       })
+      }
     }
    },
    mounted()

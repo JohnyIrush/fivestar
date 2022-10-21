@@ -52,7 +52,7 @@
 </template>
 
 <script>
-    import { defineComponent, ref, reactive, provide} from 'vue'
+    import { defineComponent, ref, reactive, provide, watch} from 'vue'
 
     import TabButton from "../buttons/TabButton.vue"
 
@@ -67,20 +67,35 @@
         components: {
             TabButton
         },
-        setup(props, {slots})
+        emits: ['changeTab'],
+        setup(props, {slots, emit})
         {
-            const tabDetails = reactive(slots.default().map((tab) => 
+            //console.log("slot props", slots.default())
+
+            var slotData = (slots.default()[0].props != null)? slots.default() : slots.default()[0].children;
+
+            console.log("slot props", slotData)
+
+            const tabDetails = reactive((slotData).map((tab) => 
                 ({
-                 title: tab.props.title, 
-                 component: tab.props.component,
-                 tab_button_classes: tab.props.tab_button_classes,
-                 icon_classes: tab.props.icon_classes
+                 title:  tab.props.title, 
+                 component:  tab.props.component,
+                 tab_button_classes:  tab.props.tab_button_classes,
+                 icon_classes:  tab.props.icon_classes,
+                 widget_component_name: tab.props.key.widget_component_name,
+                 widget_component_path: tab.props.key.widget_component_path
                 })
                  ))
             var selectedTab = ref(tabDetails[0])
             provide('selectedTab', selectedTab)
 
-            console.log("selectedTab", selectedTab)
+            watch(() => selectedTab, function(newValue, oldValue) {
+                emit("changeTab", newValue)
+            },
+            {
+                deep: true
+            })
+
 
             return {
                 selectedTab,

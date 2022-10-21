@@ -1,6 +1,6 @@
 <template>
  <div class="row">
-   <div class="col-12 col-xl-4" v-for="data in statistics" :key="data">
+   <div class="col-12 col-xl-4" v-for="data in statisticsData" :key="data">
     <div class="card glass-content">
       <div class="card-body p-3">
         <div class="row">
@@ -34,7 +34,8 @@ import { store } from '../../../../../store/store.js'
 export default defineComponent({
   name: 'StatisticCardData',
   props: {
-    dataPath:String
+    dataPath:String,
+    statisticsData: Array
   },
   components:{
     
@@ -47,21 +48,24 @@ export default defineComponent({
   },
   data (){
     return {
-      statistics: []
+
    }
  },
    methods:{
-      getStatistics(url)
+      getStatistics(url = '')
       {
+        if (url.length > 0)
+        {
           axios.get(url)
           .then((response)=>{
              this.statistics = response.data
-          })
+          })          
+        }
       },
    },
    mounted()
    {
-    this.getStatistics(this.dataPath)
+    // this.getStatistics(this.dataPath)
    }
 });
 </script>

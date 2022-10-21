@@ -205,7 +205,7 @@ import NumberFilter from '../../widgets/filters/NumberFilter.vue'
 
 
 export default defineComponent({
-  name: "TableData",
+  name: "DataTable",
   components:{
     list,
     image,

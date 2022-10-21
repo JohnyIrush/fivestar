@@ -355,12 +355,16 @@ export default defineComponent({
        }
       }
     },
-    getFormFields(url)
+    getFormFields(url = '')
     {
-      axios.get(url)
-      .then((response)=>{
-        this.formFieldEntries = response.data
-      })
+      if (url.length > 0)
+      {
+       axios.get(url)
+       .then((response)=>{
+         this.formFieldEntries = response.data
+       })        
+      }
+
     }
    },
    created()

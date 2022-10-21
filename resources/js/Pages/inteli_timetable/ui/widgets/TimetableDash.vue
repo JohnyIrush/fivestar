@@ -1,53 +1,38 @@
 <template>
-  <module-container
-   :ModuleDetails="[
-     {
-      widget_title: 'Users',
-      widget_tab_icon_classes: 'fas fa-users fa-2x',
-      widget_tab_button_classes: '',
-      widget_component_name: 'User',
-      widget_component_path: '../../inteli_team/ui/widgets/User.vue'
-     },
-     {
-      widget_title: 'Tasks',
-      widget_tab_icon_classes: 'fas fa-tasks fa-2x',
-      widget_tab_button_classes: 'mt-6',
-      widget_component_name: 'Session',
-      widget_component_path: '../../inteli_team/ui/widgets/Task.vue'
-     },
-     {
-      widget_title: 'Roles',
-      widget_tab_icon_classes: 'fas fa-user-shield fa-2x',
-      widget_tab_button_classes: 'mt-6',
-      widget_component_name: 'PermissionRole',
-      widget_component_path: '../../inteli_team/ui/widgets/PermissionRole.vue'
-     },
-     {
-      widget_title: 'Settings',
-      widget_tab_icon_classes: 'fas fa-cogs fa-2x',
-      widget_tab_button_classes: 'mt-6',
-      widget_component_name: 'TeamSetting',
-      widget_component_path: '../../inteli_team/ui/widgets/TeamSetting.vue'
-     },
-   ]">
-  </module-container>
+  <div class="row">
+    <div class="col-12">
+      <statistic-card-data :datapath="''" />
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 col-xl-4">
+      <detail-card-data  :datapath="'academic/level/detail'" />
+    </div>
+  </div>
 </template>
 
 <script>
-    import { defineComponent } from 'vue'
 
-    import ModuleContainer from '../../../Theme/widgets/ModuleContainer.vue'
+import { defineComponent } from 'vue'
 
-    export default defineComponent({
-        name: "Inteli",
-        props: {
-          columnSize: {
-            type: String, // String, Number, Boolean, Function, Object, Array
-            default: 'col-12'
-          }
-        },
+import {store} from "../../../../store/store.js"
+import StatisticCardData from '../../../inteli/ui/components/cards/StatisticCardData.vue';
+import DetailCardData from '../../../inteli/ui/components/cards/DetailCardData.vue';
+
+import BarChart from '../../../inteli/ui/components/charts/BarChart.vue'
+
+import ModalButton from '../../../inteli/ui/components/buttons/ModalButton.vue'
+import MainModal from '../../../inteli/ui/components/modals/MainModal.vue'
+
+
+export default defineComponent({
+        name: "TimetableDash",
         components: {
-            ModuleContainer
+            StatisticCardData,
+            BarChart,
+            DetailCardData,
+            ModalButton,
+            MainModal,
         },
         data() {
             return {
@@ -61,10 +46,21 @@
             var modal = new bootstrap.Modal(document.getElementById(modal))
             modal.show()
           },
+            trim(text, length, comment)
+            {
+                return text.substr(0,length) + comment;
+            },
+            getStatistics(url)
+            {
+                axios.get(url)
+                .then((response)=>{
+                   this.statistics = response.data
+                })
+            },
         },
         mounted()
         {
-
+            //this.getStatistics("academic/statistics")
         },
     })
 </script>
@@ -121,4 +117,8 @@
     width: 150px !important;
 }
 
+
+.tab-content {
+  width: 100% !important; 
+}
 </style>
