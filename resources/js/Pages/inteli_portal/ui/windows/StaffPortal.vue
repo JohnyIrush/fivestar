@@ -56,18 +56,9 @@
         },
 
         methods: {
-            getProfile()
-            {
-
-                axios.get("/portal/school/details")
-                .then((response)=>{
-                    this.details = response.data
-                    console.log(this.details)
-                })
-            }
+            
         },
         mounted(){
-            this.getProfile()
         },
     })
 </script>
