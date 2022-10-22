@@ -9,7 +9,7 @@ use Softwarescares\Inteliadmission\app\Models\Admission;
 use Softwarescares\Inteliadmission\app\Http\Requests\StoreAdmissionRequest;
 use Softwarescares\Inteliadmission\app\Http\Requests\UpdateAdmissionRequest;
 
-use Softwarescares\Inteliacademic\app\plugins\Model\Statistic;
+use Softwarescares\Inteli\app\Plugins\Model\Statistic;
 
 class AdmissionController extends Controller
 {

@@ -10,15 +10,15 @@ use Softwarescares\Inteliform\app\Models\FormTemplate;
 use Softwarescares\Inteliform\app\Http\Requests\StoreFormTemplateRequest;
 use Softwarescares\Inteliform\app\Http\Requests\UpdateFormTemplateRequest;
 
-use Softwarescares\Intelilibrary\app\Actions\Model\Store;
-use Softwarescares\Intelilibrary\app\Actions\Model\Update;
-use Softwarescares\Intelilibrary\app\Actions\Model\Delete;
+use Softwarescares\Inteli\app\Actions\Model\Store;
+use Softwarescares\Inteli\app\Actions\Model\Update;
+use Softwarescares\Inteli\app\Actions\Model\Delete;
 
-use Softwarescares\Intelilibrary\app\Plugins\Model\Form;
-use Softwarescares\Intelilibrary\app\Plugins\Model\Table;
-use Softwarescares\Intelilibrary\app\Plugins\Model\Card;
+use Softwarescares\Inteli\app\Plugins\Model\Form;
+use Softwarescares\Inteli\app\Plugins\Model\Table;
+use Softwarescares\Inteli\app\Plugins\Model\Card;
 
-use Softwarescares\Inteliform\app\plugins\Model\Record;
+use Softwarescares\Inteli\app\plugins\Model\Record;
 
 use Illuminate\Http\Request;
 

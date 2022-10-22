@@ -10,13 +10,13 @@ use Softwarescares\Inteliadmission\app\Models\Interview;
 use Softwarescares\Inteliadmission\app\Http\Requests\StoreInterviewRequest;
 use Softwarescares\Inteliadmission\app\Http\Requests\UpdateInterviewRequest;
 
-use Softwarescares\Intelilibrary\app\Actions\Model\Store;
-use Softwarescares\Intelilibrary\app\Actions\Model\Update;
-use Softwarescares\Intelilibrary\app\Actions\Model\Delete;
+use Softwarescares\Inteli\app\Actions\Model\Store;
+use Softwarescares\Inteli\app\Actions\Model\Update;
+use Softwarescares\Inteli\app\Actions\Model\Delete;
 
-use Softwarescares\Intelilibrary\app\Plugins\Model\Form;
-use Softwarescares\Intelilibrary\app\Plugins\Model\Table;
-use Softwarescares\Intelilibrary\app\Plugins\Model\Card;
+use Softwarescares\Inteli\app\Plugins\Model\Form;
+use Softwarescares\Inteli\app\Plugins\Model\Table;
+use Softwarescares\Inteli\app\Plugins\Model\Card;
 
 use Illuminate\Http\Request;
 
