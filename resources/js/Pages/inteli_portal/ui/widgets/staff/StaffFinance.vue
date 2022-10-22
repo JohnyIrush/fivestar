@@ -1,0 +1,319 @@
+<template>
+  <div class="main-content position-relative" v-for="detail in details.details" :key="detail.id">
+    <div class="container-fluid">
+      <div class="page-header glass-content min-height-300 border-radius-xl mt-4" style="background-image: url('/theme/assets/img/curved-images/curved0.jpg'); background-position-y: 50%;">
+        <span class="mask bg-gradient-primary opacity-6"></span>
+      </div>
+      <div class="card card-body  mx-4 mt-n6 overflow-hidden">
+        <!-- START USER NAVBAR -->
+        <div class="row gx-4 glass-header">
+          <div class="col-auto">
+            <div class="avatar avatar-xl position-relative">
+              <img :src="detail.user.profile_photo_path" alt="profile_image" class="w-100 border-radius-lg shadow-sm">
+            </div>
+          </div>
+          <div class="col-auto my-auto">
+            <div class="h-100">
+              <h5 class="mb-1">
+                {{detail.firstname }} {{detail.lastname}}
+              </h5>
+              <p class="mb-0 font-weight-bold text-sm">
+                {{detail.role }}
+              </p>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 my-sm-auto ms-sm-auto me-sm-0 mx-auto mt-3">
+            <div class="nav-wrapper position-relative end-0">
+              <!--<ul class="nav nav-pills nav-fill p-1 bg-transparent" role="tablist">
+                <li class="nav-item">
+                  <div class="nav-link mb-0 px-0 py-1 row" >
+                     <div class="col">
+                        AdmNo
+                     </div>
+                     <div class="col">
+                        <span class="ms-1">{{detail.Admno }}</span>
+                     </div>
+                  </div>
+                </li>
+                <li class="nav-item">
+                  <div class="nav-link mb-0 px-0 py-1 row" >
+                     <div class="col">
+                        Level
+                     </div>
+                     <div class="col">
+                        <span class="ms-1">{{detail.level.level }}</span>
+                     </div>
+                  </div>
+                </li>
+                <li class="nav-item">
+                  <div class="nav-link mb-0 px-0 py-1 row" >
+                     <div class="col">
+                        Stream
+                     </div>
+                     <div class="col">
+                        <span class="ms-1">{{detail.stream.stream }}</span>
+                     </div>
+                  </div>
+                </li>
+              </ul>-->
+            </div>
+          </div>
+        </div>
+        <!-- END USER NAVBAR -->
+      </div>
+    </div>
+         <div class="container-fluid py-4" >
+           <div class="row">
+             <div class="col-12 col-xl-9 glass-content">
+               <div class="card mb-4">
+                 <div class="card-header pb-0 p-3">
+                   <h6 class="mb-1">Financial Account Information</h6>
+                 </div>
+                  <!--START FINANCE-->
+                  <div class="row mt-4">
+                    <div class="col-xl-6 col-sm-6 col-6 mb-xl-0 mb-4">
+                      <div class="card glass-content">
+                        <div class="card-body p-3">
+                          <div class="row">
+                            <div class="col-8">
+                              <div class="numbers">
+                                <p class="text-sm mb-0 text-capitalize font-weight-bold">Account Balance</p>
+                                <h5 class="font-weight-bolder mb-0">
+                                  KSHS
+                                </h5>
+                              </div>
+                            </div>
+                            <div class="col-4 text-end">
+                              <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
+                                <i class="ni ni-money-coins text-lg opacity-10" aria-hidden="true"></i>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>-
+                    <div class="col-xl-6 col-sm-6 col-6 mb-xl-0 mb-4">
+                      <div class="card glass-content">
+                        <div class="card-body p-3">
+                          <div class="row">
+                            <div class="col-8">
+                              <div class="numbers">
+                                <p class="text-sm mb-0 text-capitalize font-weight-bold">FEE BALANCE</p>
+                                <h5 class="font-weight-bolder mb-0">
+                                  2,300
+
+                                </h5>
+                              </div>
+                            </div>
+                            <div class="col-4 text-end">
+                              <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
+                                <i class="ni ni-world text-lg opacity-10" aria-hidden="true"></i>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                 <div class="row">
+                   <div class="col-lg-11 col-md-6 mb-md-0 mb-4 mt-4 glass-content">
+                     <div class="card">
+                       <div class="card-header pb-0">
+                         <div class="row">
+                           <div class="col-lg-6 col-7">
+                             <h6>Services</h6>
+                             <p class="text-sm mb-0">
+                               <i class="fa fa-check text-info" aria-hidden="true"></i>
+                               <span class="font-weight-bold ms-1"> done</span> this month
+                             </p>
+                           </div>
+                           <div class="col-lg-6 col-5 my-auto text-end">
+                             <div class="dropdown float-lg-end pe-4">
+                               <a class="cursor-pointer" id="dropdownTable" data-bs-toggle="dropdown" aria-expanded="false">
+                                 <i class="fa fa-ellipsis-v text-secondary"></i>
+                               </a>
+                               <ul class="dropdown-menu px-2 py-3 ms-sm-n4 ms-n5" aria-labelledby="dropdownTable">
+                                 <li><a class="dropdown-item border-radius-md" href="javascript:;">Action</a></li>
+                                 <li><a class="dropdown-item border-radius-md" href="javascript:;">Another action</a></li>
+                                 <li><a class="dropdown-item border-radius-md" href="javascript:;">Something else here</a></li>
+                               </ul>
+                             </div>
+                           </div>
+                         </div>
+                       </div>
+                       <div class="card-body px-0 pb-2">
+                         <div class="table-responsive">
+                           <table class="table align-items-center mb-0">
+                             <thead>
+                               <tr>
+                                 <th class="text-uppercase text-secondary font-weight-bolder opacity-7">Service</th>
+                                 <th class="text-uppercase text-secondary font-weight-bolder opacity-7 ps-2">Amount</th>
+                                 <th class="text-center text-uppercase text-secondary font-weight-bolder opacity-7">Status</th>
+                                 <th class="text-center text-uppercase text-secondary font-weight-bolder opacity-7">Date</th>
+                               </tr>
+                             </thead>
+                             <tbody>
+                               <tr>
+                                 <td>
+                                   <div class="d-flex px-2 py-1">
+                                     <div class="d-flex flex-column justify-content-center">
+                                       <h6 class="mb-0 text-sm">Soft UI XD Version</h6>
+                                     </div>
+                                   </div>
+                                 </td>
+                                 <td>
+                                  <div class="d-flex flex-column justify-content-center">
+                                    <span class="text-xs font-weight-bold"> $14,000 </span>
+                                  </div>
+                                 </td>
+                                 <td class="align-middle text-center text-sm">
+                                   <span class="text-xs font-weight-bold"> $14,000 </span>
+                                 </td>
+                                 <td class="align-middle">
+                                     <span class="text-xs font-weight-bold"> $14,000 </span>
+                                 </td>
+                               </tr>
+                             </tbody>
+                           </table>
+                         </div>
+                       </div>
+                     </div>
+                   </div>
+                 </div>
+                <!--END FINANCE-->
+               </div>
+             </div>
+             <div class="col-12 glass-content col-xl-3">
+               <div class="card h-100">
+                 <div class="card-header pb-0 p-3">
+                   <h6 class="mb-0">More</h6>
+                 </div>
+                 <div class="card-body p-3">
+                   <ul class="list-group">
+                     <li class="list-group-item border-0 d-flex align-items-center px-0 mb-2">
+                       <div class="avatar me-3">
+                        <i class="fa fa-commenting-o" aria-hidden="true"></i>
+                       </div>
+                       <div class="d-flex align-items-start flex-column justify-content-center">
+                         <h6 class="mb-0 text-sm">Notifications</h6>
+                         <p class="mb-0 text-xs">finance notifications</p>
+                       </div>
+                     </li>
+                     <li class="list-group-item border-0 d-flex align-items-center px-0 mb-2">
+                       <div class="avatar me-3">
+                        <i class="fa fa-envelope" aria-hidden="true"></i>
+                       </div>
+                       <div class="d-flex align-items-start flex-column justify-content-center">
+                         <h6 class="mb-0 text-sm">Withdrawals</h6>
+                         <p class="mb-0 text-xs">withdrawals transactions</p>
+                       </div>
+                     </li>
+                     <li class="list-group-item border-0 d-flex align-items-center px-0 mb-2">
+                       <div class="avatar me-3">
+                         <i class="fa fa-credit-card-alt" aria-hidden="true"></i>
+                       </div>
+                       <div class="d-flex align-items-start flex-column justify-content-center">
+                         <h6 class="mb-0 text-sm">Deposits</h6>
+                         <p class="mb-0 text-xs">deposit transactions</p>
+                       </div>
+                     </li>
+                     <li class="list-group-item border-0 d-flex align-items-center px-0 mb-2">
+                       <div class="avatar me-3">
+                         <i class="fa fa-money" aria-hidden="true"></i>
+                       </div>
+                       <div class="d-flex align-items-start flex-column justify-content-center">
+                         <h6 class="mb-0 text-sm">Payment</h6>
+                         <p class="mb-0 text-xs">payment transactions</p>
+                       </div>
+                     </li>
+                   </ul>
+                 </div>
+               </div>
+             </div>
+           </div>
+         </div>
+  </div>
+</template>
+
+<script>
+    import { defineComponent } from 'vue'
+
+    export default defineComponent({
+        name: "StaffFinance",
+        components: {
+        },
+        data() {
+            return {
+                details: []
+            }
+        },
+
+        methods: {
+            getProfile()
+            {
+
+                axios.get("/portal/staff/details")
+                .then((response)=>{
+                    this.details = response.data
+                    console.log(this.details)
+                })
+            }
+        },
+        mounted(){
+            this.getProfile()
+        },
+    })
+</script>
+
+
+<style scoped>
+
+
+.glass-container
+{
+    /*position: relative;
+    min-height: calc(100vh - 280);
+    width: calc(100% - 100px);*/
+    background: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 15px 35px rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    justify-content: space-between;
+}
+
+
+.glass-content
+{
+    transform: translateX(-100);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-top: 1px solid rgba(255, 255, 255, 0.25);
+    border-left: 1px solid rgba(255, 255, 255, 0.5);
+    padding: 5px;
+}
+
+.card, .card-header, .card-body, .list-group, .list-group-item, .nav
+{
+  background: transparent !important;
+}
+
+.glass-header
+{
+    /*position: absolute;
+    top: -5px;
+    right: 20px;
+    left: 5px;
+    padding: 20px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;*/
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-top: 1px solid rgba(255, 255, 255, 0.25);
+    border-left: 1px solid rgba(255, 255, 255, 0.5);
+}
+</style>

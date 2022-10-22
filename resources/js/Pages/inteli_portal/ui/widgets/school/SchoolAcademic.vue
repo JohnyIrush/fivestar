@@ -1,0 +1,241 @@
+<template>
+  <div class="main-content position-relative" v-for="detail in details.details" :key="detail.id">
+    <div class="container-fluid">
+      <div class="page-header glass-content min-height-300 border-radius-xl mt-4" style="background-image: url('/theme/assets/img/curved-images/curved0.jpg'); background-position-y: 50%;">
+        <span class="mask bg-gradient-primary opacity-6"></span>
+      </div>
+      <div class="card card-body  mx-4 mt-n6 overflow-hidden">
+        <!-- START USER NAVBAR -->
+        <div class="row gx-4 glass-header">
+          <div class="col-auto">
+            <div class="avatar avatar-xl position-relative">
+              <img :src="detail.school_logo_path" alt="profile_image" class="w-100 border-radius-lg shadow-sm">
+            </div>
+          </div>
+          <div class="col-auto my-auto">
+            <div class="h-100">
+              <h5 class="mb-1">
+                {{detail.school_name }}
+              </h5>
+              <p class="mb-0 font-weight-bold text-sm" >
+                {{detail.school_level.level }}
+              </p>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 my-sm-auto ms-sm-auto me-sm-0 mx-auto mt-3">
+            <div class="nav-wrapper position-relative end-0">
+              <!--<ul class="nav nav-pills nav-fill p-1 bg-transparent" role="tablist">
+                <li class="nav-item">
+                  <div class="nav-link mb-0 px-0 py-1 row" >
+                     <div class="col">
+                        AdmNo
+                     </div>
+                     <div class="col">
+                        <span class="ms-1">{{detail.Admno }}</span>
+                     </div>
+                  </div>
+                </li>
+                <li class="nav-item">
+                  <div class="nav-link mb-0 px-0 py-1 row" >
+                     <div class="col">
+                        Level
+                     </div>
+                     <div class="col">
+                        <span class="ms-1">{{detail.level.level }}</span>
+                     </div>
+                  </div>
+                </li>
+                <li class="nav-item">
+                  <div class="nav-link mb-0 px-0 py-1 row" >
+                     <div class="col">
+                        Stream
+                     </div>
+                     <div class="col">
+                        <span class="ms-1">{{detail.stream.stream }}</span>
+                     </div>
+                  </div>
+                </li>
+              </ul>-->
+            </div>
+          </div>
+        </div>
+        <!-- END USER NAVBAR -->
+      </div>
+    </div>
+         <div class="container-fluid py-4">
+           <div class="row">
+             <div class="col-12 glass-content col-xl-9">
+               <div class="card h-100">
+                 <div class="card-header pb-0 p-3">
+                   <div class="row">
+                     <div class="col-md-8 d-flex align-items-center">
+                       <h6 class="mb-0">Accademic Information</h6>
+                     </div>
+                     <div class="col-md-4 text-end">
+                       <a href="javascript:;">
+                         <i class="fa fa-graduation-cap text-secondary" aria-hidden="true"></i>
+                       </a>
+                     </div>
+                   </div>
+                 </div>
+                 <div class="card-body p-3">
+                   <p class="text-sm">
+                    {{detail.motto}}
+                   </p>
+                   <hr class="horizontal gray-light my-4">
+                   <div class="row">
+                     <div class="col-6">
+                      <ul class="list-group">
+                        <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark" >School Level:</strong> &nbsp; {{detail.school_level.level }} </li>
+                        <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark" >School Type:</strong> &nbsp; {{detail.school_type.type }} </li>
+                      </ul>
+                     </div>
+                     <div class="col-6">
+                      <ul class="list-group">
+                        <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark" >School Education System:</strong> &nbsp; {{detail.school_education_system.system }} </li>
+                      </ul>
+                     </div>
+                    <div class="col-6" >
+                     <h4>Subjects</h4>
+                     <div class="row" >
+                      <div class="col-6" v-for="subject in detail.subjects" :key="subject.id">
+                         {{subject.subject}}
+                      </div>
+                     </div>
+                    </div>
+                    <div class="col-6" >
+                     <h4>Levels</h4>
+                     <div class="row" >
+                      <div class="col-6" v-for="level in details.levels" :key="level.id">
+                         {{level.level}}
+                      </div>
+                     </div>
+                    </div>
+                   </div>
+                 </div>
+               </div>
+             </div>
+             <div class="col-12 glass-content col-xl-3">
+               <div class="card h-100">
+                 <div class="card-header pb-0 p-3">
+                   <h6 class="mb-0">More</h6>
+                 </div>
+                 <div class="card-body p-3">
+                   <ul class="list-group">
+                     <li class="list-group-item border-0 d-flex align-items-center px-0 mb-2">
+                       <div class="avatar me-3">
+                        <i class="fa fa-bookmark" aria-hidden="true"></i>
+                       </div>
+                       <div class="d-flex align-items-start flex-column justify-content-center">
+                         <h6 class="mb-0 text-sm">Timetable and Schedule</h6>
+                         <p class="mb-0 text-xs">Your work schedules</p>
+                       </div>
+                     </li>
+                     <li class="list-group-item border-0 d-flex align-items-center px-0 mb-2">
+                       <div class="avatar me-3">
+                         <i class="fa fa-table" aria-hidden="true"></i>
+                       </div>
+                       <div class="d-flex align-items-start flex-column justify-content-center">
+                         <h6 class="mb-0 text-sm">Exam Schedules</h6>
+                         <p class="mb-0 text-xs">exams</p>
+                       </div>
+                     </li>
+                     <li class="list-group-item border-0 d-flex align-items-center px-0 mb-2">
+                       <div class="avatar me-3">
+                         <i class="fa fa-line-chart" aria-hidden="true"></i>
+                       </div>
+                       <div class="d-flex align-items-start flex-column justify-content-center">
+                         <h6 class="mb-0 text-sm">Performance</h6>
+                         <p class="mb-0 text-xs">performance analysis</p>
+                       </div>
+                     </li>
+                   </ul>
+                 </div>
+               </div>
+             </div>
+           </div>
+         </div>
+  </div>
+</template>
+
+<script>
+    import { defineComponent } from 'vue'
+
+    export default defineComponent({
+        components: {
+        },
+        data() {
+            return {
+                details: []
+            }
+        },
+
+        methods: {
+            getProfile()
+            {
+
+                axios.get("/portal/school/details")
+                .then((response)=>{
+                    this.details = response.data
+                    console.log(this.details)
+                })
+            }
+        },
+        mounted(){
+            this.getProfile()
+        },
+    })
+</script>
+
+
+<style scoped>
+
+
+.glass-container
+{
+    /*position: relative;
+    min-height: calc(100vh - 280);
+    width: calc(100% - 100px);*/
+    background: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 15px 35px rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    justify-content: space-between;
+}
+
+
+.glass-content
+{
+    transform: translateX(-100);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-top: 1px solid rgba(255, 255, 255, 0.25);
+    border-left: 1px solid rgba(255, 255, 255, 0.5);
+    padding: 5px;
+}
+
+.card, .card-header, .card-body, .list-group, .list-group-item, .nav
+{
+  background: transparent !important;
+}
+
+.glass-header
+{
+    /*position: absolute;
+    top: -5px;
+    right: 20px;
+    left: 5px;
+    padding: 20px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;*/
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-top: 1px solid rgba(255, 255, 255, 0.25);
+    border-left: 1px solid rgba(255, 255, 255, 0.5);
+}
+</style>

@@ -1,7 +1,68 @@
 <template>
-         <div 
-             class="container-fluid py-4" 
-             v-for="detail in details" :key="detail">
+  <div class="main-content position-relative" v-for="detail in details.details" :key="detail.id">
+    <div class="container-fluid">
+      <div class="page-header glass-content min-height-300 border-radius-xl mt-4" style="background-image: url('/theme/assets/img/curved-images/curved0.jpg'); background-position-y: 50%;">
+        <span class="mask bg-gradient-primary opacity-6"></span>
+      </div>
+      <div class="card card-body  mx-4 mt-n6 overflow-hidden">
+        <!-- START USER NAVBAR -->
+        <div class="row gx-4 glass-header">
+          <div class="col-auto">
+            <div class="avatar avatar-xl position-relative">
+              <img :src="detail.user.profile_photo_path" alt="profile_image" class="w-100 border-radius-lg shadow-sm">
+            </div>
+          </div>
+          <div class="col-auto my-auto">
+            <div class="h-100">
+              <h5 class="mb-1">
+                {{detail.firstname }} {{detail.lastname}}
+              </h5>
+              <p class="mb-0 font-weight-bold text-sm">
+                {{detail.role }}
+              </p>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 my-sm-auto ms-sm-auto me-sm-0 mx-auto mt-3">
+            <div class="nav-wrapper position-relative end-0">
+              <ul class="nav nav-pills nav-fill p-1 bg-transparent" role="tablist">
+                <li class="nav-item">
+                  <div class="nav-link mb-0 px-0 py-1 row" >
+                     <div class="col">
+                        AdmNo
+                     </div>
+                     <div class="col">
+                        <span class="ms-1">{{detail.Admno }}</span>
+                     </div>
+                  </div>
+                </li>
+                <li class="nav-item">
+                  <div class="nav-link mb-0 px-0 py-1 row" >
+                     <div class="col">
+                        Level
+                     </div>
+                     <div class="col">
+                        <span class="ms-1">{{detail.level.level }}</span>
+                     </div>
+                  </div>
+                </li>
+                <li class="nav-item">
+                  <div class="nav-link mb-0 px-0 py-1 row" >
+                     <div class="col">
+                        Stream
+                     </div>
+                     <div class="col">
+                        <span class="ms-1">{{detail.stream.stream }}</span>
+                     </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!-- END USER NAVBAR -->
+      </div>
+    </div>
+         <div class="container-fluid py-4">
            <div class="row">
              <div class="col-12 col-xl-9 glass-content">
                <div class="card h-100">
@@ -70,15 +131,17 @@
              </div>
            </div>
          </div>
+  </div>
 </template>
 
 <script>
     import { defineComponent } from 'vue'
 
-    //import credentials from "../../../Profile/Show.vue";
+    import credentials from "../../../../Profile/Show.vue";
+
     export default defineComponent({
         components: {
-           // credentials
+            credentials,
         },
         data() {
             return {
@@ -90,7 +153,7 @@
             getProfile()
             {
 
-                axios.get("/portal/guardian/details")
+                axios.get("/portal/student/details")
                 .then((response)=>{
                     this.details = response.data
                     console.log(this.details)
@@ -98,7 +161,7 @@
             }
         },
         mounted(){
-           this.getProfile()
+            this.getProfile()
         },
     })
 </script>

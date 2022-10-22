@@ -139,6 +139,36 @@
     import AiDash from '../../inteli_ai/ui/widgets/AiDash.vue'
     import AiSetting from '../../inteli_ai/ui/widgets/AiSetting.vue'
 
+    /*Social Portal*/
+    //Guardian
+    import GuardianDetail from '../../inteli_portal/ui/widgets/guardian/GuardianDetail.vue'
+    import GuardianAcademic from '../../inteli_portal/ui/widgets/guardian/GuardianAcademic.vue'
+    import GuardianFinance from '../../inteli_portal/ui/widgets/guardian/GuardianFinance.vue'
+    import GuardianSetting from '../../inteli_portal/ui/widgets/guardian/GuardianSetting.vue'
+
+    //Student
+    import StudentDetail from '../../inteli_portal/ui/widgets/student/StudentDetail.vue'
+    import StudentAcademic from '../../inteli_portal/ui/widgets/student/StudentAcademic.vue'
+    import StudentActivity from '../../inteli_portal/ui/widgets/student/StudentActivity.vue'
+    import StudentFinance from '../../inteli_portal/ui/widgets/student/StudentFinance.vue'
+    import StudentSetting from '../../inteli_portal/ui/widgets/student/StudentSetting.vue'
+
+
+    //Staff
+    import StaffDetail from '../../inteli_portal/ui/widgets/staff/StaffDetail.vue'
+    import StaffAcademic from '../../inteli_portal/ui/widgets/staff/StaffAcademic.vue'
+    import StaffOccupation from '../../inteli_portal/ui/widgets/staff/StaffOccupation.vue'
+    import StaffFinance from '../../inteli_portal/ui/widgets/staff/StaffFinance.vue'
+    import StaffPortalSetting from '../../inteli_portal/ui/widgets/staff/StaffPortalSetting.vue'
+
+
+    //School
+    import SchoolDetail from '../../inteli_portal/ui/widgets/school/SchoolDetail.vue'
+    import SchoolAcademic from '../../inteli_portal/ui/widgets/school/SchoolAcademic.vue'
+    import SchoolOccupation from '../../inteli_portal/ui/widgets/school/SchoolOccupation.vue'
+    import SchoolFinance from '../../inteli_portal/ui/widgets/school/SchoolFinance.vue'
+    import SchoolSetting from '../../inteli_portal/ui/widgets/school/SchoolSetting.vue'
+
     export default defineComponent({
         props: {
             ModuleDetails:{
@@ -246,6 +276,30 @@
             //Ai
             AiDash,
             AiSetting,
+            /*social portal widgets*/
+            //Guardian
+            GuardianDetail,
+            GuardianAcademic,
+            GuardianFinance,
+            GuardianSetting,
+            //Student
+            StudentDetail,
+            StudentActivity,
+            StudentAcademic,
+            StudentFinance,
+            StudentSetting,
+            //Staff
+            StaffDetail,
+            StaffOccupation,
+            StaffAcademic,
+            StaffFinance,
+            StaffPortalSetting,
+            //School
+            SchoolDetail,
+            SchoolOccupation,
+            SchoolAcademic,
+            SchoolFinance,
+            SchoolSetting,
         },
         setup(props,{emit})
         {   

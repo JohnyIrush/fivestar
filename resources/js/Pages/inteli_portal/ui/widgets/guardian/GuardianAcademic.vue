@@ -1,54 +1,46 @@
 <template>
-         <div 
-             class="container-fluid py-4" 
-             v-for="detail in details" :key="detail">
+         <div class="container-fluid py-4">
            <div class="row">
-             <div class="col-12 col-xl-9 glass-content">
+             <div class="col-12 glass-content col-xl-9">
                <div class="card h-100">
                  <div class="card-header pb-0 p-3">
                    <div class="row">
                      <div class="col-md-8 d-flex align-items-center">
-                       <h6 class="mb-0">Profile Information</h6>
+                       <h6 class="mb-0">Student Academic Information</h6>
                      </div>
                      <div class="col-md-4 text-end">
                        <a href="javascript:;">
-                         <i class="fas fa-user-edit text-secondary text-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit Profile"></i>
+                         <i class="fa fa-graduation-cap text-secondary" aria-hidden="true"></i>
                        </a>
                      </div>
                    </div>
                  </div>
                  <div class="card-body p-3">
                    <p class="text-sm">
-                    {{detail.bio}}
+                    School Motto.
                    </p>
                    <hr class="horizontal gray-light my-4">
                    <div class="row">
+                    <div class="col">
+                     <h4>Subjects</h4>
+                     <div class="row">
+                      <div class="col-6" >
+
+                      </div>
+                     </div>
+                    </div>
                      <div class="col">
                       <ul class="list-group">
-                        <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">Full Name:</strong> &nbsp; {{detail.firstname }} {{detail.lastname}}</li>
-                        <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Mobile:</strong> &nbsp;detail.user.phone }}</li>
-                        <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Email:</strong> &nbsp; {{detail.user.email }}</li>
-                        <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Gender:</strong> &nbsp; {{detail.user.email }}</li>
-                        <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Location:</strong> &nbsp; {{detail.address }}</li>
-                        <li class="list-group-item border-0 ps-0 pb-0">
-                          <strong class="text-dark text-sm">Social:</strong> &nbsp;
-                          <a class="btn btn-facebook btn-simple mb-0 ps-1 pe-2 py-0" href="javascript:;">
-                            <i class="fab fa-facebook fa-lg"></i>
-                          </a>
-                          <a class="btn btn-twitter btn-simple mb-0 ps-1 pe-2 py-0" href="javascript:;">
-                            <i class="fab fa-twitter fa-lg"></i>
-                          </a>
-                          <a class="btn btn-instagram btn-simple mb-0 ps-1 pe-2 py-0" href="javascript:;">
-                            <i class="fab fa-instagram fa-lg"></i>
-                          </a>
-                        </li>
+                        <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">Level:</strong> &nbsp; {{ }} </li>
+                        <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Stream:</strong> &nbsp; {{ }}</li>
+                        <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Class Teacher:</strong> &nbsp; {{}}</li>
                       </ul>
                      </div>
                    </div>
                  </div>
                </div>
              </div>
-             <div class="col-12 col-xl-3 glass-content">
+             <div class="col-12 glass-content col-xl-3">
                <div class="card h-100">
                  <div class="card-header pb-0 p-3">
                    <h6 class="mb-0">More</h6>
@@ -57,11 +49,20 @@
                    <ul class="list-group">
                      <li class="list-group-item border-0 d-flex align-items-center px-0 mb-2">
                        <div class="avatar me-3">
-                          <i class="fa fa-comments text-secondary" aria-hidden="true"></i>
+                         <i class="fa fa-table" aria-hidden="true"></i>
                        </div>
                        <div class="d-flex align-items-start flex-column justify-content-center">
-                         <h6 class="mb-0 text-sm">Notifications</h6>
-                         <p class="mb-0 text-xs">Important Noifications</p>
+                         <h6 class="mb-0 text-sm">Exams</h6>
+                         <p class="mb-0 text-xs">past results</p>
+                       </div>
+                     </li>
+                     <li class="list-group-item border-0 d-flex align-items-center px-0 mb-2">
+                       <div class="avatar me-3">
+                         <i class="fa fa-line-chart" aria-hidden="true"></i>
+                       </div>
+                       <div class="d-flex align-items-start flex-column justify-content-center">
+                         <h6 class="mb-0 text-sm">Transcripts</h6>
+                         <p class="mb-0 text-xs">performance analysis</p>
                        </div>
                      </li>
                    </ul>
@@ -75,10 +76,9 @@
 <script>
     import { defineComponent } from 'vue'
 
-    //import credentials from "../../../Profile/Show.vue";
     export default defineComponent({
         components: {
-           // credentials
+          
         },
         data() {
             return {
@@ -90,7 +90,7 @@
             getProfile()
             {
 
-                axios.get("/portal/guardian/details")
+                axios.get("portal/guardian/details")
                 .then((response)=>{
                     this.details = response.data
                     console.log(this.details)
@@ -98,7 +98,7 @@
             }
         },
         mounted(){
-           this.getProfile()
+            //this.getProfile()
         },
     })
 </script>

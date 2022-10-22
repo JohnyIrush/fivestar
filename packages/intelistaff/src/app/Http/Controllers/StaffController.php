@@ -86,7 +86,7 @@ class StaffController extends Controller
 
     public function getDetails()
     {
-        $userid = 22;
+        $userid = 49;
 
         $details = Staff::with("user","occupation","category","gender")->where("user_id", $userid)->get();
 
@@ -95,7 +95,7 @@ class StaffController extends Controller
         $stream =  null;
         $level = null;
 
-        if(User::find(22)->staff->category_id == 1)
+        if(User::find($userid)->staff->category_id == 1)
         {
             $teacherid =  Staff::find(User::find($userid)->staff->id)->teacher->id;
             $teacher = Teacher::with("subjects","department","levels","hostel")->where("id", $teacherid)->get();

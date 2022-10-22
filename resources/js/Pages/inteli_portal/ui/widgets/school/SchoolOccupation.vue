@@ -1,56 +1,13 @@
 <template>
-  <module-container
-   :ModuleDetails="[
-     {
-      widget_title: 'Details',
-      widget_tab_icon_classes: 'fa fa-user fa-2x',
-      widget_tab_button_classes: '',
-      widget_component_name: 'StudentDetail',
-      widget_component_path: '../../inteli_portal/ui/widgets/guardian/StudentDetail.vue'
-     },
-     {
-      widget_title: 'Academics',
-      widget_tab_icon_classes: 'fa fa-graduation-cap fa-2x',
-      widget_tab_button_classes: 'mt-6',
-      widget_component_name: 'StudentAcademic',
-      widget_component_path: '../../inteli_portal/ui/widgets/guardian/StudentAcademic.vue'
-     },
-     {
-      widget_title: 'Activities',
-      widget_tab_icon_classes: 'fas fa-snowboarding fa-2x',
-      widget_tab_button_classes: 'mt-6',
-      widget_component_name: 'StudentAcademic',
-      widget_component_path: '../../inteli_portal/ui/widgets/guardian/StudentActivity.vue'
-     },
-     {
-      widget_title: 'Finance',
-      widget_tab_icon_classes: 'fas fa-coins fa-2x',
-      widget_tab_button_classes: 'mt-6',
-      widget_component_name: 'StudentFinance',
-      widget_component_path: '../../inteli_portal/ui/widgets/guardian/StudentFinance.vue'
-     },
-     {
-      widget_title: 'Settings',
-      widget_tab_icon_classes: 'fas fa-cogs fa-2x',
-      widget_tab_button_classes: 'mt-6',
-      widget_component_name: 'StudentSetting',
-      widget_component_path: '../../inteli_portal/ui/widgets/guardian/StudentSetting.vue'
-     },
-   ]">
-  </module-container>
+
 </template>
 
 <script>
     import { defineComponent } from 'vue'
 
-    import credentials from "../../../Profile/Show.vue";
-
-    import ModuleContainer from '../../../Theme/widgets/ModuleContainer.vue'
-
     export default defineComponent({
         components: {
-            credentials,
-            ModuleContainer
+
         },
         data() {
             return {
@@ -62,7 +19,7 @@
             getProfile()
             {
 
-                axios.get("/portal/student/details")
+                axios.get("/portal/school/details")
                 .then((response)=>{
                     this.details = response.data
                     console.log(this.details)
