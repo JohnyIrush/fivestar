@@ -9,6 +9,13 @@
       widget_component_path: '../../inteli_config/ui/widgets/ConfigDash.vue'
      },
      {
+      widget_title: 'Theme',
+      widget_tab_icon_classes: 'far fa-window-maximize fa-2x',
+      widget_tab_button_classes: 'mt-6',
+      widget_component_name: 'ThemeConfig',
+      widget_component_path: '../../inteli_config/ui/widgets/ThemeConfig.vue'
+     },
+     {
       widget_title: 'Settings',
       widget_tab_icon_classes: 'fas fa-cogs fa-2x',
       widget_tab_button_classes: 'mt-6',

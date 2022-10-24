@@ -17,6 +17,7 @@ class InteliDatabaseSeeder extends Seeder
         $this->call(
             [
                 InteliSeeder::class,
+                ThemeSeeder::class
             ]
         );
 

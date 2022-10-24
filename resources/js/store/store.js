@@ -16,6 +16,10 @@ export const store = createStore({
     state () {
       return {
         Application:{
+            Theme: {
+                name: 'default theme glass',
+                key: 'default-theme'
+            },
             inteliadmission:{
                 application: {
                     form:{

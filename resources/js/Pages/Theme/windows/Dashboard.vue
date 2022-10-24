@@ -9,6 +9,7 @@
 
 <script>
     import { defineComponent, ref, reactive } from 'vue'
+    import {store} from "../../../store/store.js"
     import AppDash from '../widgets/AppDash'
 
     import Dash from '../widgets/Dash'
@@ -76,6 +77,21 @@
               Module, 
               Display 
               }  
+        },
+        computed: {
+           Theme()
+           {
+            return store.state.Application.Theme;
+          }
+        },
+        watch: {
+          Theme: (val, oldVal) => {
+            document.getElementById('app-body').classList.add(val.key + '-glass-gradient');
+          }
+        },
+        mounted()
+        {
+          document.getElementById('app-body').classList.add(this.Theme.key + '-glass-gradient');
         }
     })
 </script>

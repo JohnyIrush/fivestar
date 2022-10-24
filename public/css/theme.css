@@ -1,0 +1,142 @@
+
+/*Start Inteli Default Theme*/
+.default-theme-glass-gradient{
+    background: linear-gradient(to right top, pink, purple) !important;
+}
+
+.default-theme-glass-container
+{
+    background: white;
+    background: linear-gradient(to right bottom, 
+    rgba(255, 255, 255, 0.7), 
+    rgba(255, 255, 255, 0.3)) !important;
+    border-radius: 2rem !important;
+    z-index: 2 !important;
+    backdrop-filter: blur(100rem) !important;
+}
+
+.default-theme-glass-section
+{
+    background: linear-gradient(
+               to left top,
+             rgba(255, 255, 255, 0.8), 
+             rgba(255, 255, 255, 0.5)) !important;
+    border-radius: 1rem !important;
+    margin: 2rem 0rem !important;
+    padding: 2rem !important;
+    box-shadow: 6px 6px 20px rgba(122, 122, 122, 0.2) !important;
+}
+
+.default-theme-glass-card{
+    background: linear-gradient(
+               to left top,
+             rgba(255, 255, 255, 0.8), 
+             rgba(255, 255, 255, 0.5));
+    border-radius: 1rem !important;
+    margin: 2rem 0rem !important;
+    padding: 2rem !important;
+    box-shadow: 6px 6px 20px rgba(122, 122, 122, 0.2) !important;
+}
+
+.default-theme-text-color
+{
+    color: rgb(112, 39, 112) !important;
+}
+
+/*END Inteli Default Theme*/
+
+
+/*Start Inteli Dark Glass Theme*/
+
+.dark-theme-glass-gradient{
+    background: linear-gradient(to right top,  rgb(255, 255, 255), rgb(1, 3, 31)) !important;
+}
+
+.dark-theme-glass-container
+{
+    background: white;
+    background: linear-gradient(to right bottom, 
+    rgba(255, 255, 255, 0.7), 
+    rgba(255, 255, 255, 0.3)) !important;
+    border-radius: 2rem !important;
+    z-index: 2 !important;
+    backdrop-filter: blur(100rem) !important;
+}
+
+.dark-theme-glass-section
+{
+    display: flex;
+    background: linear-gradient(
+               to left top,
+             rgba(255, 255, 255, 0.8), 
+             rgba(255, 255, 255, 0.5));
+    border-radius: 1rem !important;
+    margin: 2rem 0rem !important;
+    padding: 2rem !important;
+    box-shadow: 6px 6px 20px rgba(122, 122, 122, 0.2) !important;
+}
+
+.dark-theme-glass-card{
+    background: linear-gradient(
+               to left top,
+             rgba(255, 255, 255, 0.8), 
+             rgba(255, 255, 255, 0.5)) !important;
+    border-radius: 1rem !important;
+    margin: 2rem 0rem !important;
+    padding: 2rem !important;
+    box-shadow: 6px 6px 20px rgba(122, 122, 122, 0.2) !important;
+}
+
+.dark-theme-text-color
+{
+    color: rgb(12, 2, 48) !important;
+}
+/*End Inteli Dark Glass Theme*/
+
+
+/*Start Inteli .light Glass Theme*/
+
+ .light-theme-glass-gradient{
+    background: linear-gradient(to right top,  rgb(255, 255, 255), rgb(0, 0, 0)) !important;
+}
+
+ .light-theme-glass-container
+{
+    background: white !important;
+    background: linear-gradient(to right bottom, 
+    rgba(255, 255, 255, 0.7), 
+    rgba(255, 255, 255, 0.3)) !important;
+    border-radius: 2rem !important;
+    z-index: 2 !important;
+    backdrop-filter: blur(100rem) !important;
+}
+
+ .light-theme-glass-section
+{
+    display: flex;
+    background: linear-gradient(
+               to left top,
+             rgba(255, 255, 255, 0.8), 
+             rgba(255, 255, 255, 0.5)) !important;
+    border-radius: 1rem !important;
+    margin: 2rem 0rem !important;
+    padding: 2rem !important;
+    box-shadow: 6px 6px 20px rgba(122, 122, 122, 0.2) !important;
+}
+
+.light-theme-glass-card{
+    background: linear-gradient(
+               to left top,
+             rgba(255, 255, 255, 0.8), 
+             rgba(255, 255, 255, 0.5)) !important;
+    border-radius: 1rem !important;
+    margin: 2rem 0rem !important;
+    padding: 2rem !important;
+    box-shadow: 6px 6px 20px rgba(122, 122, 122, 0.2) !important;
+}
+
+ .light-theme-text-color
+{
+    color: black !important;
+}
+/*End Inteli .light Glass Theme*/

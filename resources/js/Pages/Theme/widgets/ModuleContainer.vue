@@ -129,6 +129,7 @@
 
     //Config
     import ConfigDash from '../../inteli_config/ui/widgets/ConfigDash.vue'
+    import ThemeConfig from '../../inteli_config/ui/widgets/ThemeConfig.vue'
     import ConfigSetting from '../../inteli_config/ui/widgets/ConfigSetting.vue'
 
     //Career
@@ -269,6 +270,7 @@
             SecuritySetting,
             //config
             ConfigDash,
+            ThemeConfig,
             ConfigSetting,
             //Career
             CareerDash,

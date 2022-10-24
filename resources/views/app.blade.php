@@ -13,6 +13,7 @@
 
         <!-- Styles -->
         <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+        <link rel="stylesheet" href="/css/theme.css">
         <link rel="stylesheet" href="/theme/ui/icons.css">
 
 
@@ -52,7 +53,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" integrity="sha512-BNaRQnYJYiPSqHHDb58B0yaPfCu+Wgds8Gp/gU33kqBtgNS4tSPHuGibyoeqMV/TJlSKda6FXzoEyYGjTe+vXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     </head>
-    <body class="font-sans antialiased g-sidenav-show  bg-gray-100">
+    <body id="app-body" class="font-sans antialiased g-sidenav-show ">
         @inertia
 
 
