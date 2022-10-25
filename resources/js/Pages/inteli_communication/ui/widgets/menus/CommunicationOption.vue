@@ -6,12 +6,13 @@
       :variable="''"
       :field="''"
       :size="'form-select-lg'"
+      :options_title_classes="Theme.key + '-text-color'"
       :datapath="dataPath"
      ></check-box-input>
 </template>
 
 <script>
-    import { defineComponent } from 'vue'
+    import { defineComponent, inject, ref } from 'vue'
 
     import { Head, Link } from '@inertiajs/inertia-vue3';
 
