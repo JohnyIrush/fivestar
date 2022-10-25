@@ -14,7 +14,7 @@
         :key="option[valueKey]">
      <input 
           class="form-check-input" 
-          type="radio" 
+          type="checkbox" 
           :value="option" 
           id="" @change="selectOption(option)" 
           :name="(nameKey != '')? nameKey : name">
@@ -69,10 +69,6 @@ export default defineComponent({
       },
       options_label_classes:{
         type: String
-      },
-      eventName: {
-        type: String,
-        default: 'radioInput'
       }
 
   },
@@ -115,9 +111,10 @@ export default defineComponent({
     },
     selectOption(option)
     {
-      this.$emit(this.eventName,
+      this.$emit("radioInput",
         {
-          option: option,
+          'option': option,
+          'variable': this.variable
         }
         )
     }

@@ -10,7 +10,7 @@
         aria-selected="false">
         <span :class="prop_orientation"> 
          <i :class="icon_classes"></i>
-         {{label}}
+         <span class="btn-label-text-size">{{label}}</span>
         </span>
  </button>
 </template>
@@ -43,3 +43,10 @@
         },
     })
 </script>
+
+<style scoped>
+  .btn-label-text-size
+  {
+    font-size: 10px !important;
+  }
+</style>

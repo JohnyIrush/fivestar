@@ -3,7 +3,9 @@
     <div class="col-12">
       <tab-pane 
         @changeTab="updateTab"
-        :orientation="'vertical'">
+        :orientation="'vertical'"
+        :tabNavClasses="Theme.key + '-section'"
+        :tabPaneClasses="Theme.key + '-card'">
         <tab 
             v-for="Module in ModuleDetails"
             :key="Module"
@@ -22,7 +24,7 @@
 </template>
 
 <script>
-    import { defineComponent, defineAsyncComponent, createApp, computed} from 'vue';
+    import { defineComponent, defineAsyncComponent, createApp, computed, ref, inject} from 'vue';
     import { Head, Link } from '@inertiajs/inertia-vue3';
 
     import TabPane from '../../inteli/ui/components/tabs/TabPane.vue'
@@ -305,8 +307,12 @@
         },
         setup(props,{emit})
         {   
+          var Theme = ref(inject("Theme"));
+
           const widget = props.ModuleDetails[0];
           window.widget = widget
+
+
           function updateTab(event)
           {
               //widget = event;
@@ -317,6 +323,7 @@
           return { 
             updateTab,
             widget,
+            Theme
           }  
         },
         methods: {

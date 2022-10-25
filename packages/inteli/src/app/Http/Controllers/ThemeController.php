@@ -13,9 +13,17 @@ class ThemeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function themeList()
     {
-        //
+        return response()->json(
+            [
+                "name" => "name",
+                "label" => "Select Theme",
+                "value" => "",
+                "column" => "",
+                "options" => Theme::all()
+            ]
+        );
     }
 
     /**

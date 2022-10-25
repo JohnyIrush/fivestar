@@ -8,7 +8,7 @@
 </template>
 
 <script>
-    import { defineComponent, ref, reactive } from 'vue'
+    import { defineComponent, ref, reactive, provide } from 'vue'
     import {store} from "../../../store/store.js"
     import AppDash from '../widgets/AppDash'
 
@@ -70,6 +70,7 @@
             var Module = ref(context.attrs.module)
             var Display = ref(context.attrs.display)
 
+            provide("Theme", store.state.Application.Theme);
 
             console.log("props",context.attrs)
 
@@ -86,12 +87,12 @@
         },
         watch: {
           Theme: (val, oldVal) => {
-            document.getElementById('app-body').classList.add(val.key + '-glass-gradient');
+            document.getElementById('app-body').classList.add(val.key + '-gradient');
           }
         },
         mounted()
         {
-          document.getElementById('app-body').classList.add(this.Theme.key + '-glass-gradient');
+          document.getElementById('app-body').classList.add(this.Theme.key + '-gradient');
         }
     })
 </script>

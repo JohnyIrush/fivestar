@@ -18,7 +18,9 @@ export const store = createStore({
         Application:{
             Theme: {
                 name: 'default theme glass',
-                key: 'default-theme'
+                key: 'default-theme-glass',
+                image: '',
+                status: ''
             },
             inteliadmission:{
                 application: {
@@ -232,7 +234,7 @@ export const store = createStore({
        getTodoById: (state) => (id) => {
         return state.todos.find(todo => todo.id === id)
       },
-       getSetting: (state) => (path) => {
+       getSetting: (state) => (path, type = 'package') => {
         return state.Application[path.package][path.widget][path.component][path.value]
       }
     },
@@ -255,8 +257,14 @@ export const store = createStore({
         },
         updateSetting: (state, payload) =>
         {
-            console.log("converted",JSON.parse(JSON.stringify(payload.option)), "unconverted",payload.option)
-            state.Application[payload.settings.package][payload.settings.widget][payload.settings.component][payload.settings.value] = JSON.parse(JSON.stringify(payload.option))
+            if (payload.settings.type == 'package')
+            {
+                state.Application[payload.settings.package][payload.settings.widget][payload.settings.component][payload.settings.value] = (payload.option)
+            }
+            else if(payload.settings.type == 'feature')
+            {
+                state.Application[payload.settings.feature] = (payload.option)
+            }
             console.log("state", state, "payload", payload)
         }
     },

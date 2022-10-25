@@ -1,6 +1,6 @@
 <template>
      <Head title="Inteli" />
-    <nav class="navbar glass-header navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur" navbar-scroll="true">
+    <nav :class="'navbar glass-header navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl '+ Theme.key + '-section'" id="navbarBlur" navbar-scroll="true">
       <div class="container-fluid py-1 px-3">
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
@@ -123,7 +123,7 @@
 </template>
 
 <script>
-    import { defineComponent } from 'vue'
+    import { defineComponent, ref, inject } from 'vue'
     import { Head, Link } from '@inertiajs/inertia-vue3';
 
     export default defineComponent({
@@ -136,7 +136,15 @@
             canRegister: Boolean,
             laravelVersion: String,
             phpVersion: String,
-        }
+        },
+        setup(props, context)
+        {
+          var Theme = ref(inject("Theme"));
+
+          return {
+            Theme
+          }
+        },
     })
 </script>
 

@@ -1,5 +1,5 @@
 <template>
-     <check-box
+     <check-box-input
       :inputOptions="''"
       :nameKey="''"
       :valueKeyKey="''"
@@ -7,7 +7,7 @@
       :field="''"
       :size="'form-select-lg'"
       :datapath="dataPath"
-     ></check-box>
+     ></check-box-input>
 </template>
 
 <script>
@@ -15,7 +15,7 @@
 
     import { Head, Link } from '@inertiajs/inertia-vue3';
 
-    import CheckBox from "../../../../inteli/ui/widgets/inputs/CheckBox.vue"
+    import CheckBoxInput from "../../../../inteli/ui/widgets/inputs/CheckBoxInput.vue"
 
     export default defineComponent({
       props:{
@@ -23,7 +23,7 @@
       },
         components: {
             Link,
-            CheckBox
+            CheckBoxInput
         },
     })
 </script>

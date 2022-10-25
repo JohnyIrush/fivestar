@@ -38,7 +38,7 @@
     box-shadow: 6px 6px 20px rgba(122, 122, 122, 0.2) !important;
 }
 
-.default-theme-text-color
+.default-theme-glass-text-color
 {
     color: rgb(112, 39, 112) !important;
 }
@@ -87,7 +87,7 @@
     box-shadow: 6px 6px 20px rgba(122, 122, 122, 0.2) !important;
 }
 
-.dark-theme-text-color
+.dark-theme-glass-text-color
 {
     color: rgb(12, 2, 48) !important;
 }

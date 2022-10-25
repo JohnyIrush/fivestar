@@ -4,35 +4,40 @@
      {
       widget_title: 'Details',
       widget_tab_icon_classes: 'fa fa-user fa-2x',
-      widget_tab_button_classes: '',
+      widget_tab_button_classes: Theme.key + '-gradient' + ' text-white',
+      tab_button_label_classes: Theme.key + ' text-color',
       widget_component_name: 'SchoolDetail',
       widget_component_path: '../../inteli_portal/ui/widgets/guardian/SchoolDetail.vue'
      },
      {
       widget_title: 'Academics',
       widget_tab_icon_classes: 'fa fa-graduation-cap fa-2x',
-      widget_tab_button_classes: 'mt-6',
+      widget_tab_button_classes: Theme.key + '-gradient' + ' mt-6  text-white',
+      tab_button_label_classes: Theme.key + ' text-color',
       widget_component_name: 'SchoolAcademic',
       widget_component_path: '../../inteli_portal/ui/widgets/guardian/SchoolAcademic.vue'
      },
      {
       widget_title: 'Activity',
       widget_tab_icon_classes: 'fas fa-snowboarding fa-2x',
-      widget_tab_button_classes: 'mt-6',
+      widget_tab_button_classes: Theme.key + '-gradient' + ' mt-6  text-white',
+      tab_button_label_classes: Theme.key + ' text-color',
       widget_component_name: 'SchoolActivity',
       widget_component_path: '../../inteli_portal/ui/widgets/guardian/SchoolActivity.vue'
      },
      {
       widget_title: 'Finance',
       widget_tab_icon_classes: 'fas fa-coins fa-2x',
-      widget_tab_button_classes: 'mt-6',
+      widget_tab_button_classes: Theme.key + '-gradient' + ' mt-6  text-white',
+      tab_button_label_classes: Theme.key + ' text-color',
       widget_component_name: 'SchoolFinance',
       widget_component_path: '../../inteli_portal/ui/widgets/guardian/SchoolFinance.vue'
      },
      {
       widget_title: 'Settings',
       widget_tab_icon_classes: 'fas fa-cogs fa-2x',
-      widget_tab_button_classes: 'mt-6',
+      widget_tab_button_classes: Theme.key + '-gradient' + ' mt-6  text-white',
+      tab_button_label_classes: Theme.key + ' text-color',
       widget_component_name: 'SchoolSetting',
       widget_component_path: '../../inteli_portal/ui/widgets/guardian/SchoolSetting.vue'
      },
@@ -41,13 +46,21 @@
 </template>
 
 <script>
-    import { defineComponent } from 'vue'
+    import { defineComponent, ref, inject } from 'vue'
 
     import ModuleContainer from '../../../Theme/widgets/ModuleContainer.vue'
 
     export default defineComponent({
         components: {
           ModuleContainer
+        },
+        setup(props, context)
+        {
+          var Theme = ref(inject("Theme"));
+
+          return {
+            Theme
+          }
         },
         data() {
             return {

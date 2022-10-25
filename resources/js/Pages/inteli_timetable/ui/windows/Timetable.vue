@@ -4,42 +4,48 @@
      {
       widget_title: 'Dashboard',
       widget_tab_icon_classes: 'fas fa-chess-board fa-2x',
-      widget_tab_button_classes: '',
+      widget_tab_button_classes: Theme.key + '-gradient' + ' text-white',
+      tab_button_label_classes: Theme.key + ' text-color',
       widget_component_name: 'TimetableDash',
       widget_component_path: '../../inteli_timetable/ui/widgets/DashTimetable.vue'
      },
      {
       widget_title: 'Days',
       widget_tab_icon_classes: 'fas fa-cloud-sun fa-2x',
-      widget_tab_button_classes: 'mt-6',
+      widget_tab_button_classes: Theme.key + '-gradient' + ' mt-6  text-white',
+      tab_button_label_classes: Theme.key + ' text-color',
       widget_component_name: 'Day',
       widget_component_path: '../../inteli_timetable/ui/widgets/Day.vue'
      },
      {
       widget_title: 'Sessions',
       widget_tab_icon_classes: 'fas fa-user-clock fa-2x',
-      widget_tab_button_classes: 'mt-6',
+      widget_tab_button_classes: Theme.key + '-gradient' + ' mt-6  text-white',
+      tab_button_label_classes: Theme.key + ' text-color',
       widget_component_name: 'Session',
       widget_component_path: '../../inteli_timetable/ui/widgets/Session.vue'
      },
      {
       widget_title: 'Terms',
       widget_tab_icon_classes: 'fas fa-calendar fa-2x',
-      widget_tab_button_classes: 'mt-6',
+      widget_tab_button_classes: Theme.key + '-gradient' + ' mt-6  text-white',
+      tab_button_label_classes: Theme.key + ' text-color',
       widget_component_name: 'Term',
       widget_component_path: '../../inteli_timetable/ui/widgets/Term.vue'
      },
      {
       widget_title: 'Venues',
       widget_tab_icon_classes: 'fas fa-school fa-2x',
-      widget_tab_button_classes: 'mt-6',
+      widget_tab_button_classes: Theme.key + '-gradient' + ' mt-6  text-white',
+      tab_button_label_classes: Theme.key + ' text-color',
       widget_component_name: 'Venue',
       widget_component_path: '../../inteli_timetable/ui/widgets/Venue.vue'
      },
      {
       widget_title: 'Settings',
       widget_tab_icon_classes: 'fas fa-cogs fa-2x',
-      widget_tab_button_classes: 'mt-6',
+      widget_tab_button_classes: Theme.key + '-gradient' + ' mt-6  text-white',
+      tab_button_label_classes: Theme.key + ' text-color',
       widget_component_name: 'TimetableSetting',
       widget_component_path: '../../inteli_timetable/ui/widgets/TimetableSetting.vue'
      },
@@ -50,7 +56,7 @@
 
 <script>
 
-import { defineComponent } from 'vue'
+import { defineComponent, ref, inject } from 'vue'
 
 import {store} from "../../../../store/store.js"
 
@@ -62,6 +68,14 @@ export default defineComponent({
         components: {
             MainModal,
             ModuleContainer
+        },
+        setup(props, context)
+        {
+          var Theme = ref(inject("Theme"));
+
+          return {
+            Theme
+          }
         },
         data() {
             return {

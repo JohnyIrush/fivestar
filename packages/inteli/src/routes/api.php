@@ -3,6 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
+use Softwarescares\Inteli\app\Http\Controllers\ThemeController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +18,4 @@ use Illuminate\Support\Facades\Route;
 */
 
 
+Route::get("theme/list", [ThemeController::class, "themeList"]);

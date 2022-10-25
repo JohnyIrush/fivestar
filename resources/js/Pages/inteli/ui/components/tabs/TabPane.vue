@@ -4,7 +4,7 @@
    <ul 
         v-if="orientation == 'horizontal'"
         id="Tab"
-        class="nav nav-tabs"  
+        :class="'nav nav-tabs ' + tabNavClasses"   
         role="tablist">
         <li
         v-for="(tab, index) in tabDetails"
@@ -20,8 +20,7 @@
         </li> 
    </ul>
    <div       v-if="orientation == 'vertical'"
-              class="nav flex-column 
-                     nav-pills me-3" 
+              :class="'nav flex-column nav-pills me-3 ' + tabNavClasses" 
               id="v-pills-tab" 
               role="tablist" 
               aria-orientation="vertical">
@@ -36,7 +35,7 @@
     </component>
   </div>
      <div 
-         class="tab-content" 
+         :class="'tab-content ' + tabPaneClasses + ' ' + tabPaneHeight" 
          id="tabContent">
        <div
            v-for="(tab, index) in tabDetails"
@@ -62,7 +61,13 @@
         orientation: {
             type: String, // String, Number, Boolean, Function, Object, Array
             default: "horizontal"
-          }
+          },
+         tabNavClasses: String,
+         tabPaneClasses: String,
+         tabPaneHeight: {
+            type: String,
+            default: 'min-vh-100'
+        }
         },
         components: {
             TabButton

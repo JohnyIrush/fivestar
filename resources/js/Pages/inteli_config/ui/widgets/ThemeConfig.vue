@@ -2,53 +2,25 @@
          <div class="container-fluid py-4">
            <div class="row">
              <div class="col-12 col-xl-9 glass-content">
-               <div class="card h-100">
+               <div class="card">
                  <div class="card-header pb-0 p-3">
-                   <h6 class="mb-0">Platform Settings</h6>
+                   <h3 :class="Theme.key + '-text-color'">Theme Settings</h3>
                  </div>
                  <div class="card-body p-3">
-                   <h6 class="text-uppercase text-body text-xs font-weight-bolder">Account</h6>
-                   <ul class="list-group">
-                     <li class="list-group-item border-0 px-0">
-                       <div class="form-check form-switch ps-0">
-                         <input class="form-check-input ms-auto" type="checkbox" id="flexSwitchCheckDefault" checked>
-                         <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0" for="flexSwitchCheckDefault">Email me when someone follows me</label>
-                       </div>
-                     </li>
-                     <li class="list-group-item border-0 px-0">
-                       <div class="form-check form-switch ps-0">
-                         <input class="form-check-input ms-auto" type="checkbox" id="flexSwitchCheckDefault1">
-                         <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0" for="flexSwitchCheckDefault1">Email me when someone answers on my post</label>
-                       </div>
-                     </li>
-                     <li class="list-group-item border-0 px-0">
-                       <div class="form-check form-switch ps-0">
-                         <input class="form-check-input ms-auto" type="checkbox" id="flexSwitchCheckDefault2" checked>
-                         <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0" for="flexSwitchCheckDefault2">Email me when someone mentions me</label>
-                       </div>
-                     </li>
-                   </ul>
-                   <h6 class="text-uppercase text-body text-xs font-weight-bolder mt-4">Application</h6>
-                   <ul class="list-group">
-                     <li class="list-group-item border-0 px-0">
-                       <div class="form-check form-switch ps-0">
-                         <input class="form-check-input ms-auto" type="checkbox" id="flexSwitchCheckDefault3">
-                         <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0" for="flexSwitchCheckDefault3">New launches and projects</label>
-                       </div>
-                     </li>
-                     <li class="list-group-item border-0 px-0">
-                       <div class="form-check form-switch ps-0">
-                         <input class="form-check-input ms-auto" type="checkbox" id="flexSwitchCheckDefault4" checked>
-                         <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0" for="flexSwitchCheckDefault4">Monthly product updates</label>
-                       </div>
-                     </li>
-                     <li class="list-group-item border-0 px-0 pb-0">
-                       <div class="form-check form-switch ps-0">
-                         <input class="form-check-input ms-auto" type="checkbox" id="flexSwitchCheckDefault5">
-                         <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0" for="flexSwitchCheckDefault5">Subscribe to newsletter</label>
-                       </div>
-                     </li>
-                   </ul>
+                  <radio-input
+                   :inputOptions="[]"
+                   :nameKey="''"
+                   :valueKeyKey="''"
+                   :variable="''"
+                   :field="''"
+                   :options_title_classes="Theme.key + '-text-color'"
+                   :options_label_classes="Theme.key + '-text-color m-2'"
+                   :isFormSwitch="true"
+                   :optionTitleComponent="'h4'"
+                   :eventName="'themeConfigSet'"
+                   @themeConfigSet="updateThemeSetting"
+                   :datapath="'theme/list'">
+                  </radio-input>
                  </div>
                </div>
              </div>
@@ -58,12 +30,24 @@
 
 <script>
 
-import { defineComponent } from 'vue'
+import { defineComponent, ref, inject } from 'vue'
+
+import RadioInput from '../../../inteli/ui/widgets/inputs/RadioInput.vue'
+
+import {store} from "../../../../store/store.js"
 
 
 export default defineComponent({
         components: {
-          
+          RadioInput
+        },
+        setup(props, context)
+        {
+          var Theme = ref(inject("Theme"));
+
+          return {
+            Theme
+          }
         },
         data() {
             return {
@@ -72,6 +56,16 @@ export default defineComponent({
         },
 
         methods: {
+          updateThemeSetting(event)
+          {
+           store.commit('updateSetting', {
+             option: event.option,
+             settings:{
+               type: 'feature',
+               feature: 'Theme'
+             }
+           })
+          },
           launchModal(modal)
           {
             var modal = new bootstrap.Modal(document.getElementById(modal))

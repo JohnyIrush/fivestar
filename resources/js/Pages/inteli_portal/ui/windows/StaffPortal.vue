@@ -4,35 +4,40 @@
      {
       widget_title: 'Details',
       widget_tab_icon_classes: 'fa fa-user fa-2x',
-      widget_tab_button_classes: '',
+      widget_tab_button_classes: Theme.key + '-gradient' + ' text-white',
+      tab_button_label_classes: Theme.key + ' text-color',
       widget_component_name: 'StaffDetail',
       widget_component_path: '../../inteli_portal/ui/widgets/guardian/StaffDetail.vue'
      },
      {
       widget_title: 'Academics',
       widget_tab_icon_classes: 'fa fa-graduation-cap fa-2x',
-      widget_tab_button_classes: 'mt-6',
+      widget_tab_button_classes: Theme.key + '-gradient' + ' mt-6  text-white',
+      tab_button_label_classes: Theme.key + ' text-color',
       widget_component_name: 'StaffAcademic',
       widget_component_path: '../../inteli_portal/ui/widgets/guardian/StaffAcademic.vue'
      },
      {
       widget_title: 'Occupation',
       widget_tab_icon_classes: 'fas fa-briefcase fa-2x',
-      widget_tab_button_classes: 'mt-6',
+      widget_tab_button_classes: Theme.key + '-gradient' + ' mt-6  text-white',
+      tab_button_label_classes: Theme.key + ' text-color',
       widget_component_name: 'StaffOccupation',
       widget_component_path: '../../inteli_portal/ui/widgets/guardian/StaffOccupation.vue'
      },
      {
       widget_title: 'Finance',
       widget_tab_icon_classes: 'fas fa-coins fa-2x',
-      widget_tab_button_classes: 'mt-6',
+      widget_tab_button_classes: Theme.key + '-gradient' + ' mt-6  text-white',
+      tab_button_label_classes: Theme.key + ' text-color',
       widget_component_name: 'SchoolFinance',
       widget_component_path: '../../inteli_portal/ui/widgets/guardian/StaffFinance.vue'
      },
      {
       widget_title: 'Settings',
       widget_tab_icon_classes: 'fas fa-cogs fa-2x',
-      widget_tab_button_classes: 'mt-6',
+      widget_tab_button_classes: Theme.key + '-gradient' + ' mt-6  text-white',
+      tab_button_label_classes: Theme.key + ' text-color',
       widget_component_name: 'StaffSetting',
       widget_component_path: '../../inteli_portal/ui/widgets/guardian/StaffSetting.vue'
      },
@@ -41,13 +46,21 @@
 </template>
 
 <script>
-    import { defineComponent } from 'vue'
+    import { defineComponent, ref, inject } from 'vue'
 
     import ModuleContainer from '../../../Theme/widgets/ModuleContainer.vue'
 
     export default defineComponent({
         components: {
           ModuleContainer
+        },
+        setup(props, context)
+        {
+          var Theme = ref(inject("Theme"));
+
+          return {
+            Theme
+          }
         },
         data() {
             return {

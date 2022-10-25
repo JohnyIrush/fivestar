@@ -4,21 +4,24 @@
      {
       widget_title: 'Templates',
       widget_tab_icon_classes: 'fas fa-th fa-2x',
-      widget_tab_button_classes: '',
+      widget_tab_button_classes: Theme.key + '-gradient' + ' text-white',
+      tab_button_label_classes: Theme.key + ' text-color',
       widget_component_name: 'FormTemplate',
       widget_component_path: '../../inteli_inventory/ui/widgets/FormTemplate.vue'
      },
      {
       widget_title: 'Builder Widget',
       widget_tab_icon_classes: 'fas fa-plus fa-2x',
-      widget_tab_button_classes: 'mt-6',
+      widget_tab_button_classes: Theme.key + '-gradient' + ' mt-6  text-white',
+      tab_button_label_classes: Theme.key + ' text-color',
       widget_component_name: 'BuilderWidget',
       widget_component_path: '../../inteli_inventory/ui/widgets/BuilderWidget.vue'
      },
      {
       widget_title: 'Settings',
       widget_tab_icon_classes: 'fas fa-cogs fa-2x',
-      widget_tab_button_classes: 'mt-6',
+      widget_tab_button_classes: Theme.key + '-gradient' + ' mt-6  text-white',
+      tab_button_label_classes: Theme.key + ' text-color',
       widget_component_name: 'FormSetting',
       widget_component_path: '../../inteli_inventory/ui/widgets/FormSetting.vue'
      },
@@ -28,7 +31,7 @@
 </template>
 
 <script>
-    import { defineComponent } from 'vue'
+    import { defineComponent, ref, inject } from 'vue'
 
     import {store} from "../../../../store/store.js"
 
@@ -37,6 +40,14 @@
     export default defineComponent({
         components: {
           ModuleContainer
+        },
+        setup(props, context)
+        {
+          var Theme = ref(inject("Theme"));
+
+          return {
+            Theme
+          }
         },
         computed:{
 

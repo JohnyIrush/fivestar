@@ -52,7 +52,7 @@
     >
      <component
         :is="menuItem.component"
-        :class="'nav-link ' + menuItem.component_classes"
+        :class="'nav-link ' + menuItem.component_classes + ' ' + menuItemContentOrientation"
         :href="route(menuItem.link)">
        <div
            v-if="menuItem.propVisible"
@@ -68,7 +68,7 @@
         v-else>
      <component
         :is="menuItem.component"
-        :class="'nav-link ' + menuItem.component_classes"
+        :class="'nav-link ' + menuItem.component_classes + ' ' + menuItemContentOrientation"
         >
        <div 
           v-if="menuItem.propVisible"
@@ -103,6 +103,10 @@
           vNavClasses:{
             type: String,
             default: 'nav flex-column'
+          },
+          menuItemContentOrientation:{
+            type: String,
+            default: 'd-flex flex-column'
           }
         },
         components: {

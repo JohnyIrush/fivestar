@@ -2,14 +2,14 @@
       <div 
         :id="'menu-window-' + menuTitle" 
         class="page-header min-height-300 
-               border-radius-xl mt-4
+               border-radius-xl mt-4 
                " 
               >
-        <span class="mask bg-gradient-primary opacity-6">
+        <span class="">
         <div class="row justify-content-center">
             <div class="col-3"></div>
             <div class="col-6 text-center">
-                <h1 class="text-white">
+                <h1 :class="menuTitleColor">
                   {{menuTitle}}
                 </h1>
             </div>
@@ -29,11 +29,7 @@
                 >
                  <div 
                     v-if="menuItemPropVisible"
-                    class="icon text-white 
-                        bg-gradient-info shadow 
-                        border-radius-md text-center 
-                        d-flex align-items-center 
-                        justify-content-center">
+                    :class="'icon shadow border-radius-md text-center d-flex align-items-center justify-content-center ' + menuItem.propTextColor + ' ' + menuItem.propBgColor">
                     <i :class="menuItem.icon_classes 
                               + ' ' + 
                               menu_item_icon_size">
@@ -70,11 +66,7 @@
                 >
                  <div 
                     v-if="menuItemPropVisible"
-                    class="icon text-white 
-                        bg-gradient-info shadow 
-                        border-radius-md text-center 
-                        d-flex align-items-center 
-                        justify-content-center">
+                    :class="'icon shadow border-radius-md text-center d-flex align-items-center justify-content-center ' + menuItem.propTextColor + ' ' + menuItem.propBgColor">
                     <i :class="menuItem.icon_classes 
                               + ' ' + 
                               menu_item_icon_size">
@@ -99,7 +91,7 @@
 </template>
 
 <script>
-    import { defineComponent } from 'vue'
+    import { defineComponent, ref, inject } from 'vue'
 
     import { Head, Link } from '@inertiajs/inertia-vue3';
 
@@ -137,13 +129,27 @@
           type: String,
           default: true
         },
-        settingSelectOptions: Array
+        settingSelectOptions: Array,
+        showBgImage: {
+          type: Boolean,
+          default: false
+        },
+        menuTitleColor: String,
+
       },
       components: {
           Link,
           ModalButton,
           MainModal
       },
+        setup(props, context)
+        {
+          var Theme = ref(inject("Theme"));
+
+          return {
+            Theme
+          }
+        },
       methods: {
         launchModal(modal)
         {
@@ -157,8 +163,13 @@
       },
       mounted()
       {
+
         const menuWindowContainer = this.getDomElement('menu-window-' + this.menuTitle);
-        menuWindowContainer.style.backgroundImage = `url(${this.menu_window_background_image})`
+        if (this.showBgImage)
+        {
+          menuWindowContainer.style.backgroundImage = `url(${this.menu_window_background_image})`
+        }
+        
       }
     })
 </script>

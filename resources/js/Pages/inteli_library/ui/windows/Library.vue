@@ -4,56 +4,64 @@
      {
       widget_title: 'Dashboard',
       widget_tab_icon_classes: 'fas fa-chess-board fa-2x',
-      widget_tab_button_classes: '',
+      widget_tab_button_classes: Theme.key + '-gradient' + ' text-white',
+      tab_button_label_classes: Theme.key + ' text-color',
       widget_component_name: 'LibraryDash',
       widget_component_path: '../../inteli_library/ui/widgets/LibraryDash.vue'
      },
      {
       widget_title: 'Librarian',
       widget_tab_icon_classes: 'fas fa-user-lock fa-2x',
-      widget_tab_button_classes: 'mt-6',
+      widget_tab_button_classes: Theme.key + '-gradient' + ' mt-6  text-white',
+      tab_button_label_classes: Theme.key + ' text-color',
       widget_component_name: 'Librarian',
       widget_component_path: '../../inteli_library/ui/widgets/Librarian.vue'
      },
      {
       widget_title: 'Book Issue',
       widget_tab_icon_classes: 'fas fa-id-card fa-2x',
-      widget_tab_button_classes: 'mt-6',
+      widget_tab_button_classes: Theme.key + '-gradient' + ' mt-6  text-white',
+      tab_button_label_classes: Theme.key + ' text-color',
       widget_component_name: 'BookIssue',
       widget_component_path: '../../inteli_library/ui/widgets/BookIssue.vue'
      },
      {
       widget_title: 'Book Categories',
       widget_tab_icon_classes: 'fas fa-code-branch fa-2x',
-      widget_tab_button_classes: 'mt-6',
+      widget_tab_button_classes: Theme.key + '-gradient' + ' mt-6  text-white',
+      tab_button_label_classes: Theme.key + ' text-color',
       widget_component_name: 'BookCategory',
       widget_component_path: '../../inteli_library/ui/widgets/BookCategory.vue'
      },
      {
       widget_title: 'Books',
       widget_tab_icon_classes: 'fas fa-book fa-2x',
-      widget_tab_button_classes: 'mt-6',
+      widget_tab_button_classes: Theme.key + '-gradient' + ' mt-6  text-white',
+      tab_button_label_classes: Theme.key + ' text-color',
       widget_component_name: 'Book',
       widget_component_path: '../../inteli_library/ui/widgets/Book.vue'
      },
      {
       widget_title: 'Authors',
       widget_tab_icon_classes: 'fas fa-feather fa-2x',
-      widget_tab_button_classes: 'mt-6',
+      widget_tab_button_classes: Theme.key + '-gradient' + ' mt-6  text-white',
+      tab_button_label_classes: Theme.key + ' text-color',
       widget_component_name: 'Author',
       widget_component_path: '../../inteli_library/ui/widgets/Author.vue'
      },
      {
       widget_title: 'Publishers',
       widget_tab_icon_classes: 'fas fa-building fa-2x',
-      widget_tab_button_classes: 'mt-6',
+      widget_tab_button_classes: Theme.key + '-gradient' + ' mt-6  text-white',
+      tab_button_label_classes: Theme.key + ' text-color',
       widget_component_name: 'Publisher',
       widget_component_path: '../../inteli_library/ui/widgets/Publisher.vue'
      },
      {
       widget_title: 'Settings',
       widget_tab_icon_classes: 'fas fa-cogs fa-2x',
-      widget_tab_button_classes: 'mt-6',
+      widget_tab_button_classes: Theme.key + '-gradient' + ' mt-6  text-white',
+      tab_button_label_classes: Theme.key + ' text-color',
       widget_component_name: 'LibrarySetting',
       widget_component_path: '../../inteli_library/ui/widgets/LibrarySetting.vue'
      },
@@ -64,7 +72,7 @@
 </template>
 
 <script>
-    import { defineComponent } from 'vue'
+    import { defineComponent, ref, inject } from 'vue'
 
     import {store} from "../../../../store/store.js"
 
@@ -86,6 +94,14 @@
             ModalButton,
             MainForm,
             ModuleContainer
+        },
+        setup(props, context)
+        {
+          var Theme = ref(inject("Theme"));
+
+          return {
+            Theme
+          }
         },
         data() {
             return {

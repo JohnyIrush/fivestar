@@ -99,56 +99,64 @@
      {
       widget_title: 'Dashboard',
       widget_tab_icon_classes: 'fas fa-chess-board fa-2x',
-      widget_tab_button_classes: '',
+      widget_tab_button_classes: Theme.key + '-gradient' + ' text-white',
+      tab_button_label_classes: Theme.key + ' text-color',
       widget_component_name: 'AdmissionDash',
       widget_component_path: '../../inteli_admission/ui/widgets/AdmissionDash.vue'
      },
      {
       widget_title: 'Application',
       widget_tab_icon_classes: 'fas fa-mail-bulk fa-2x',
-      widget_tab_button_classes: 'mt-6',
+      widget_tab_button_classes: Theme.key + '-gradient' + ' mt-6  text-white',
+      tab_button_label_classes: Theme.key + ' text-color',
       widget_component_name: 'Application',
       widget_component_path: '../../inteli_admission/ui/widgets/Application.vue'
      },
      {
       widget_title: 'Interview',
       widget_tab_icon_classes: 'fas fa-sitemap fa-2x',
-      widget_tab_button_classes: 'mt-6',
+      widget_tab_button_classes: Theme.key + '-gradient' + ' mt-6  text-white',
+      tab_button_label_classes: Theme.key + ' text-color',
       widget_component_name: 'Interview',
       widget_component_path: '../../inteli_admission/ui/widgets/Interview.vue'
      },
      {
       widget_title: 'Admission',
       widget_tab_icon_classes: 'fas fa-sticky-note fa-2x',
-      widget_tab_button_classes: 'mt-6',
+      widget_tab_button_classes: Theme.key + '-gradient' + ' mt-6  text-white',
+      tab_button_label_classes: Theme.key + ' text-color',
       widget_component_name: 'Admission',
       widget_component_path: '../../inteli_admission/ui/widgets/Admission.vue'
      },
      {
       widget_title: 'Leave',
       widget_tab_icon_classes: 'fas fa-sign-in-alt fa-2x',
-      widget_tab_button_classes: 'mt-6',
+      widget_tab_button_classes: Theme.key + '-gradient' + ' mt-6  text-white',
+      tab_button_label_classes: Theme.key + ' text-color',
       widget_component_name: 'Leave',
       widget_component_path: '../../inteli_admission/ui/widgets/Leave.vue'
      },
      {
       widget_title: 'Expell',
       widget_tab_icon_classes: 'fas fa-user-times fa-2x',
-      widget_tab_button_classes: 'mt-6',
+      widget_tab_button_classes: Theme.key + '-gradient' + ' mt-6  text-white',
+      tab_button_label_classes: Theme.key + ' text-color',
       widget_component_name: 'Expell',
       widget_component_path: '../../inteli_admission/ui/widgets/Expell.vue'
      },
      {
       widget_title: 'Ban',
       widget_tab_icon_classes: 'fas fa-ban fa-2x',
-      widget_tab_button_classes: 'mt-6',
+      widget_tab_button_classes: Theme.key + '-gradient' + ' mt-6  text-white',
+      tab_button_label_classes: Theme.key + ' text-color',
       widget_component_name: 'Ban',
       widget_component_path: '../../inteli_admission/ui/widgets/Ban.vue'
      },
      {
       widget_title: 'Settings',
       widget_tab_icon_classes: 'fas fa-cogs fa-2x',
-      widget_tab_button_classes: 'mt-6',
+      widget_tab_button_classes: Theme.key + '-gradient' + ' mt-6  text-white',
+      tab_button_label_classes: Theme.key + ' text-color',
       widget_component_name: 'AdmissionSetting',
       widget_component_path: '../../inteli_ai/ui/widgets/AdmissionSetting.vue'
      },
@@ -158,7 +166,7 @@
 
 <script>
 
-    import { defineComponent, ref } from 'vue';
+    import { defineComponent, inject, ref } from 'vue'
 
     import {store} from "../../../../store/store.js"
 
@@ -170,9 +178,10 @@
         },
         setup(props,context)
         { 
+            var Theme = ref(inject("Theme"));
             var Module = ref(context.module) 
 
-            return { Module }  
+            return { Module, Theme }  
         }
     })
 </script>

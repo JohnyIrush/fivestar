@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 
+use Softwarescares\Inteli\database\seeders\InteliDatabaseSeeder;
 use Softwarescares\Inteligoogle\database\seeders\InteliGoogleDatabaseSeeder;
 use Softwarescares\Inteliacademic\database\seeders\InteliAcademicDatabaseSeeder;
 use Softwarescares\Inteliadmission\database\seeders\InteliAdmissionDatabaseSeeder;
@@ -41,6 +42,7 @@ class DatabaseSeeder extends Seeder
         $this->call
         (
             [
+                InteliDatabaseSeeder::class,
                 InteliFormDatabaseSeeder::class,
                 InteliGoogleDatabaseSeeder::class,
                 InteliStaffDatabaseSeeder::class,

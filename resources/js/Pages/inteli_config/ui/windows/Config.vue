@@ -4,22 +4,25 @@
      {
       widget_title: 'Dashboard',
       widget_tab_icon_classes: 'fas fa-chess-board fa-2x',
-      widget_tab_button_classes: '',
+      widget_tab_button_classes: Theme.key + '-gradient text-white',
+      tab_button_label_classes: Theme.key + ' text-color',
       widget_component_name: 'ConfigDash',
       widget_component_path: '../../inteli_config/ui/widgets/ConfigDash.vue'
      },
      {
       widget_title: 'Theme',
       widget_tab_icon_classes: 'far fa-window-maximize fa-2x',
-      widget_tab_button_classes: 'mt-6',
+      widget_tab_button_classes: Theme.key + '-gradient' + ' mt-6  text-white',
+      tab_button_label_classes: Theme.key + ' text-color',
       widget_component_name: 'ThemeConfig',
       widget_component_path: '../../inteli_config/ui/widgets/ThemeConfig.vue'
      },
      {
       widget_title: 'Settings',
       widget_tab_icon_classes: 'fas fa-cogs fa-2x',
-      widget_tab_button_classes: 'mt-6',
-      widget_component_name: 'ExamSetting',
+      widget_tab_button_classes: Theme.key + '-gradient' + ' mt-6  text-white',
+      tab_button_label_classes: Theme.key + ' text-color',
+      widget_component_name: 'ConfigSetting',
       widget_component_path: '../../inteli_config/ui/widgets/ConfigSetting.vue'
      },
    ]">
@@ -28,13 +31,21 @@
 
 <script>
 
-    import { defineComponent } from 'vue'
+    import { defineComponent, inject, ref } from 'vue'
 
     import ModuleContainer from '../../../Theme/widgets/ModuleContainer.vue'
 
     export default defineComponent({
         components: {
           ModuleContainer
+        },
+        setup(props, context)
+        {
+          var Theme = ref(inject("Theme"));
+
+          return {
+            Theme
+          }
         },
         computed:{
 

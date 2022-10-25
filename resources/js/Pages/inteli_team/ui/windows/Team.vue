@@ -4,28 +4,32 @@
      {
       widget_title: 'Users',
       widget_tab_icon_classes: 'fas fa-users fa-2x',
-      widget_tab_button_classes: '',
+      widget_tab_button_classes: Theme.key + '-gradient' + ' text-white',
+      tab_button_label_classes: Theme.key + ' text-color',
       widget_component_name: 'User',
       widget_component_path: '../../inteli_team/ui/widgets/User.vue'
      },
      {
       widget_title: 'Tasks',
       widget_tab_icon_classes: 'fas fa-tasks fa-2x',
-      widget_tab_button_classes: 'mt-6',
+      widget_tab_button_classes: Theme.key + '-gradient' + ' mt-6  text-white',
+      tab_button_label_classes: Theme.key + ' text-color',
       widget_component_name: 'Session',
       widget_component_path: '../../inteli_team/ui/widgets/Task.vue'
      },
      {
       widget_title: 'Roles',
       widget_tab_icon_classes: 'fas fa-user-shield fa-2x',
-      widget_tab_button_classes: 'mt-6',
+      widget_tab_button_classes: Theme.key + '-gradient' + ' mt-6  text-white',
+      tab_button_label_classes: Theme.key + ' text-color',
       widget_component_name: 'PermissionRole',
       widget_component_path: '../../inteli_team/ui/widgets/PermissionRole.vue'
      },
      {
       widget_title: 'Settings',
       widget_tab_icon_classes: 'fas fa-cogs fa-2x',
-      widget_tab_button_classes: 'mt-6',
+      widget_tab_button_classes: Theme.key + '-gradient' + ' mt-6  text-white',
+      tab_button_label_classes: Theme.key + ' text-color',
       widget_component_name: 'TeamSetting',
       widget_component_path: '../../inteli_team/ui/widgets/TeamSetting.vue'
      },
@@ -34,7 +38,7 @@
 </template>
 
 <script>
-    import { defineComponent } from 'vue'
+    import { defineComponent, ref, inject } from 'vue'
 
     import ModuleContainer from '../../../Theme/widgets/ModuleContainer.vue'
 
@@ -48,6 +52,14 @@
         },
         components: {
             ModuleContainer
+        },
+        setup(props, context)
+        {
+          var Theme = ref(inject("Theme"));
+
+          return {
+            Theme
+          }
         },
         data() {
             return {

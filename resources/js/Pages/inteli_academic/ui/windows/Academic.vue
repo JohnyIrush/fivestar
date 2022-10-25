@@ -4,70 +4,80 @@
      {
       widget_title: 'Dashboard',
       widget_tab_icon_classes: 'fas fa-chess-board fa-2x',
-      widget_tab_button_classes: '',
+      widget_tab_button_classes: Theme.key + '-gradient' + ' text-white',
+      tab_button_label_classes: Theme.key + ' text-color',
       widget_component_name: 'AdmissionDash',
       widget_component_path: '../../inteli_academic/ui/widgets/AcademicDash.vue'
      },
      {
       widget_title: 'Attendance',
       widget_tab_icon_classes: 'far fa-list-alt fa-2x',
-      widget_tab_button_classes: 'mt-6',
+            widget_tab_button_classes: Theme.key + '-gradient' + ' mt-6  text-white',
+      tab_button_label_classes: Theme.key + ' text-color',
       widget_component_name: 'Attendance',
       widget_component_path: '../../inteli_academic/ui/widgets/Attendance.vue'
      },
      {
       widget_title: 'Assignment',
       widget_tab_icon_classes: 'fas fa-sticky-note fa-2x',
-      widget_tab_button_classes: 'mt-6',
+            widget_tab_button_classes: Theme.key + '-gradient' + ' mt-6  text-white',
+      tab_button_label_classes: Theme.key + ' text-color',
       widget_component_name: 'Assignment',
       widget_component_path: '../../inteli_academic/ui/widgets/Assignment.vue'
      },
      {
       widget_title: 'Subject',
       widget_tab_icon_classes: 'fas fa-sticky-note fa-2x',
-      widget_tab_button_classes: 'mt-6',
+            widget_tab_button_classes: Theme.key + '-gradient' + ' mt-6  text-white',
+      tab_button_label_classes: Theme.key + ' text-color',
       widget_component_name: 'Subject',
       widget_component_path: '../../inteli_academic/ui/widgets/Subject.vue'
      },
      {
       widget_title: 'Club',
       widget_tab_icon_classes: 'as fa-user-friends fa-2x',
-      widget_tab_button_classes: 'mt-6',
+            widget_tab_button_classes: Theme.key + '-gradient' + ' mt-6  text-white',
+      tab_button_label_classes: Theme.key + ' text-color',
       widget_component_name: 'Club',
       widget_component_path: '../../inteli_academic/ui/widgets/Club.vue'
      },
      {
       widget_title: 'Sport',
       widget_tab_icon_classes: 'fas fa-baseball-ball fa-2x',
-      widget_tab_button_classes: 'mt-6',
+            widget_tab_button_classes: Theme.key + '-gradient' + ' mt-6  text-white',
+      tab_button_label_classes: Theme.key + ' text-color',
       widget_component_name: 'Sport',
       widget_component_path: '../../inteli_academic/ui/widgets/Sport.vue'
      },
      {
       widget_title: 'Level',
       widget_tab_icon_classes: 'fas fa-level-up-alt fa-2x',
-      widget_tab_button_classes: 'mt-6',
+            widget_tab_button_classes: Theme.key + '-gradient' + ' mt-6  text-white',
+      tab_button_label_classes: Theme.key + ' text-color',
       widget_component_name: 'Level',
       widget_component_path: '../../inteli_academic/ui/widgets/Level.vue'
      },
      {
       widget_title: 'Section',
       widget_tab_icon_classes: 'fas fa-stream fa-2x',
-      widget_tab_button_classes: 'mt-6',
+            widget_tab_button_classes: Theme.key + '-gradient' + ' mt-6  text-white',
+      tab_button_label_classes: Theme.key + ' text-color',
       widget_component_name: 'Section',
       widget_component_path: '../../inteli_academic/ui/widgets/Section.vue'
      },
      {
       widget_title: 'Stream',
       widget_tab_icon_classes: 'fas fa-stream fa-2x',
-      widget_tab_button_classes: 'mt-6',
+            widget_tab_button_classes: Theme.key + '-gradient' + ' mt-6  text-white',
+      tab_button_label_classes: Theme.key + ' text-color',
       widget_component_name: 'Stream',
       widget_component_path: '../../inteli_academic/ui/widgets/Stream.vue'
      },
      {
       widget_title: 'Settings',
       widget_tab_icon_classes: 'fas fa-cogs fa-2x',
-      widget_tab_button_classes: 'mt-6',
+            widget_tab_button_classes: Theme.key + '-gradient' + ' mt-6  text-white',
+      tab_button_label_classes: Theme.key + ' text-color',
       widget_component_name: 'AdmissionSetting',
       widget_component_path: '../../inteli_ai/ui/widgets/AcademicSetting.vue'
      },
@@ -77,7 +87,7 @@
 
 <script>
 
-import { defineComponent } from 'vue'
+import { defineComponent, inject, ref } from 'vue'
 
 import {store} from "../../../../store/store.js"
 
@@ -87,6 +97,14 @@ import ModuleContainer from '../../../Theme/widgets/ModuleContainer.vue'
 export default defineComponent({
         components: {
           ModuleContainer
+        },
+        setup(props, context)
+        {
+          var Theme = ref(inject("Theme"));
+
+          return {
+            Theme
+          }
         },
         data() {
             return {

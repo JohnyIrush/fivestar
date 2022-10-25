@@ -1,5 +1,6 @@
 <template>
-  <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 fixed-start  " id="sidenav-main">
+  <aside :class="'sidenav navbar navbar-vertical navbar-expand-xs border-0 fixed-start ' 
+                  + Theme.key + '-section' " id="sidenav-main">
     <div class="sidenav-header glass-header">
       <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
       <a class="navbar-brand m-0" href="https://softwarescares.sparktalks.org" target="_blank">
@@ -31,7 +32,7 @@
 </template>
 
 <script>
-    import { defineComponent } from 'vue'
+    import { defineComponent, ref, inject } from 'vue'
 
     import { Head, Link } from '@inertiajs/inertia-vue3';
 
@@ -42,7 +43,14 @@
           Link,
           school_modules_menu
         },
+        setup(props, context)
+        {
+          var Theme = ref(inject("Theme"));
 
+          return {
+            Theme
+          }
+        },
         mounted()
         {
 
@@ -51,47 +59,5 @@
 </script>
 
 <style scoped>
-aside
-{
 
-    background: linear-gradient(purple, pink);
-    background-size: cover;
-    padding: 15px;
-}
-
-.glass-container
-{
-    /*position: relative;
-    min-height: calc(100vh - 280);
-    width: calc(100% - 100px);*/
-    background: rgba(255, 255, 255, 0.5);
-    box-shadow: 0 15px 35px rgba(255, 255, 255, 0.05);
-    border-radius: 20px;
-    justify-content: space-between;
-}
-
-.glass-header
-{
-    background: rgba(255, 255, 255, 0.2);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
-    border-radius: 20px;
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    border-top: 1px solid rgba(255, 255, 255, 0.25);
-    border-left: 1px solid rgba(255, 255, 255, 0.5);
-}
-
-/*Content*/
-
-.glass-content
-{
-    transform: translateX(-100);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
-    /*border-radius: 20px;*/
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    border-top: 1px solid rgba(255, 255, 255, 0.25);
-    border-left: 1px solid rgba(255, 255, 255, 0.5);
-    padding: 5px;
-}
 </style>

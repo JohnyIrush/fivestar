@@ -1,15 +1,19 @@
 <template>
   <Sidebar v-if="display.sidebar"></Sidebar>
-  <main class="main-content position-relative mt-1 border-radius-lg ">
-      <NavBar v-if="display.navbar"></NavBar>
-      <slot></slot>
-      <Footer v-if="display.footer"></Footer>
+  <main class="main-content position-relative mt-1 border-radius-lg position-relative">
+      <div :class="Theme.key + '-container'">
+         <NavBar v-if="display.navbar"></NavBar>
+         <slot></slot>
+
+         <Footer v-if="display.footer"></Footer>
+      </div>
       <settings ></settings>
   </main>
 </template>
 
+
 <script>
-    import { defineComponent } from 'vue';
+    import { defineComponent, provide, inject, ref, reactive } from 'vue';
     import { Head, Link } from '@inertiajs/inertia-vue3';
     import NavBar from './NavBar.vue'
     import Sidebar from './Sidebar.vue'
@@ -30,14 +34,11 @@
         },
         setup(props,context)
         {    
-            //var Module = ref(context.attrs.module)
-            //var Dislay = ref(context.attrs.display)
+          var Theme = ref(inject("Theme"));
 
-            console.log("App Dash props",context.slots.props)
-
-            return { 
-
-            }  
+          return {
+            Theme
+          }  
         },
         components: {
             Link,
@@ -50,10 +51,4 @@
 </script>
 
 <style scoped>
-main
-{
-
-    background: linear-gradient(purple, pink) !important;
-    background-size: cover !important;
-}
 </style>
