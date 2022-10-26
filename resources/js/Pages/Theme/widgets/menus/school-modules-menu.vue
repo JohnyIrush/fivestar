@@ -24,7 +24,7 @@
                 },
                 {
                   component: 'Link',
-                  icon_classes: 'fa-2x fas fa-user-plus menu-icon',
+                  icon_classes: 'fas fa-tachometer-alt fa-2x menu-icon',
                   title: 'Dashboard',
                   link: 'dashboard',
                   prop_container_classes: ' ',

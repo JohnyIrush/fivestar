@@ -122,11 +122,19 @@
      },
      {
       widget_title: 'Admission',
-      widget_tab_icon_classes: 'fas fa-sticky-note fa-2x',
+      widget_tab_icon_classes: 'fas fa-user-plus fa-2x',
       widget_tab_button_classes: Theme.key + '-gradient' + ' mt-6  text-white',
       tab_button_label_classes: Theme.key + ' text-color',
       widget_component_name: 'Admission',
       widget_component_path: '../../inteli_admission/ui/widgets/Admission.vue'
+     },
+     {
+      widget_title: 'Enrollment',
+      widget_tab_icon_classes: 'fas fa-sticky-note fa-2x',
+      widget_tab_button_classes: Theme.key + '-gradient' + ' mt-6  text-white',
+      tab_button_label_classes: Theme.key + ' text-color',
+      widget_component_name: 'Enrollment',
+      widget_component_path: '../../inteli_admission/ui/widgets/Enrollment.vue'
      },
      {
       widget_title: 'Leave',
@@ -135,6 +143,14 @@
       tab_button_label_classes: Theme.key + ' text-color',
       widget_component_name: 'Leave',
       widget_component_path: '../../inteli_admission/ui/widgets/Leave.vue'
+     },
+     {
+      widget_title: 'Transfer',
+      widget_tab_icon_classes: 'fas fa-exchange-alt fa-2x',
+      widget_tab_button_classes: Theme.key + '-gradient' + ' mt-6  text-white',
+      tab_button_label_classes: Theme.key + ' text-color',
+      widget_component_name: 'Transfer',
+      widget_component_path: '../../inteli_admission/ui/widgets/Transfer.vue'
      },
      {
       widget_title: 'Expell',

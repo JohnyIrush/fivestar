@@ -1,0 +1,19 @@
+{
+    "name": "softwarescares/intelioffice",
+    "description": "inteli system office management module",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Softwarescares\\Intelioffice\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "John Irungu",
+            "email": "johnydanxin@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}

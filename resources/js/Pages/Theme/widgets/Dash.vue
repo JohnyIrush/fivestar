@@ -32,7 +32,7 @@
                 },
                 {
                   component: 'Link',
-                  icon_classes: 'fas fa-user-plus fa-2x',
+                  icon_classes: 'fas fa-tachometer-alt fa-2x',
                   title: 'Dashboard',
                   link: 'dashboard',
                   propBgColor: '',

@@ -32,6 +32,18 @@
 
     import MainModal from '../../inteli/ui/components/modals/MainModal.vue'
 
+    //Admission
+    import AdmissionDash from '../../inteli_admission/ui/widgets/AdmissionDash.vue'
+    import Interview from '../../inteli_admission/ui/widgets/Interview.vue'
+    import Application from '../../inteli_admission/ui/widgets/Application.vue'
+    import Admission from '../../inteli_admission/ui/widgets/Admission.vue'
+    import Enrollment from '../../inteli_admission/ui/widgets/Enrollment.vue'
+    import Leave from '../../inteli_admission/ui/widgets/Leave.vue'
+    import Ban from '../../inteli_admission/ui/widgets/Ban.vue'
+    import Transfer from '../../inteli_admission/ui/widgets/Transfer.vue'
+    import Expell from '../../inteli_admission/ui/widgets/Expell.vue'
+    import AdmissionSetting from '../../inteli_admission/ui/widgets/AdmissionSetting.vue'
+
     //Academic
     import AcademicDash from '../../inteli_academic/ui/widgets/AcademicDash.vue'
     import Attendance from '../../inteli_academic/ui/widgets/Attendance.vue'
@@ -44,16 +56,6 @@
     import LessonPlanner from '../../inteli_academic/ui/widgets/LessonPlanner.vue'
     import Club from '../../inteli_academic/ui/widgets/Club.vue'
     import AcademicSetting from '../../inteli_academic/ui/widgets/AcademicSetting.vue'
-
-    //Admission
-    import AdmissionDash from '../../inteli_admission/ui/widgets/AdmissionDash.vue'
-    import Interview from '../../inteli_admission/ui/widgets/Interview.vue'
-    import Application from '../../inteli_admission/ui/widgets/Application.vue'
-    import Admission from '../../inteli_admission/ui/widgets/Admission.vue'
-    import Leave from '../../inteli_admission/ui/widgets/Leave.vue'
-    import Ban from '../../inteli_admission/ui/widgets/Ban.vue'
-    import Expell from '../../inteli_admission/ui/widgets/Expell.vue'
-    import AdmissionSetting from '../../inteli_admission/ui/widgets/AdmissionSetting.vue'
 
     //Exams
     import ExamDash from '../../inteli_exam/ui/widgets/ExamDash.vue'
@@ -183,6 +185,17 @@
             Link,
             TabPane,
             Tab,
+            //Admission widget
+            AdmissionDash,
+            Application,
+            Admission,
+            Enrollment,
+            Interview,
+            Leave,
+            Ban,
+            Transfer,
+            Expell,
+            AdmissionSetting,
             //Academic widget
             AcademicDash,
             Assignment,
@@ -199,15 +212,6 @@
             LessonPlanner, 
             Club, 
             AcademicSetting,
-            //Admission widget
-            AdmissionDash,
-            Admission,
-            Application,
-            Interview,
-            Leave,
-            Ban,
-            Expell,
-            AdmissionSetting,
             //Exam widget
             ExamDash,
             Exam,
