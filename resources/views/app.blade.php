@@ -7,82 +7,68 @@
 
         <title inertia>{{ config('app.name', 'Laravel') }}</title>
 
-        <!-- Fonts -->
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
 
         <!-- Styles -->
         <link rel="stylesheet" href="{{ mix('css/app.css') }}">
         <link rel="stylesheet" href="/css/theme.css">
         <link rel="stylesheet" href="/theme/ui/icons.css">
 
+        <!-- plugins:css -->
+        <link rel="stylesheet" href="theme/vendors/feather/feather.css">
+        <link rel="stylesheet" href="theme/vendors/mdi/css/materialdesignicons.min.css">
+        <link rel="stylesheet" href="theme/vendors/ti-icons/css/themify-icons.css">
+        <link rel="stylesheet" href="theme/vendors/typicons/typicons.css">
+        <link rel="stylesheet" href="theme/vendors/simple-line-icons/css/simple-line-icons.css">
+        <link rel="stylesheet" href="theme/vendors/css/vendor.bundle.base.css">
+        <!-- endinject -->
+        <!-- Plugin css for this page -->
+        <link rel="stylesheet" href="theme/vendors/datatables.net-bs4/dataTables.bootstrap4.css">
+        <link rel="stylesheet" href="theme/js/select.dataTables.min.css">
+        <!-- End plugin css for this page -->
+        <!-- inject:css -->
+        <link rel="stylesheet" href="theme/css/vertical-layout-light/style.css">
+        <!-- endinject -->
 
-        <!-- Nucleo Icons 
-        <link href="/theme/assets/css/nucleo-icons.css" rel="stylesheet" />
-        <link href="/theme/assets/css/nucleo-svg.css" rel="stylesheet" /> -->
-        <!-- Font Awesome Icons 
-        <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
-        <link href="/theme/assets/css/nucleo-svg.css" rel="stylesheet" /> -->
-        <!-- CSS Files -->
-        <link id="pagestyle" href="/theme/assets/css/soft-ui-dashboard.css?v=1.0.3" rel="stylesheet" />
+        <link href="/theme/fontawesome-free-5.15.4-web/css/all.css" rel="stylesheet" />
+        <link href="/theme/fontawesome-free-5.15.4-web/js/all.js" rel="stylesheet" /> 
+        <link href="/theme/fontawesome-free-5.15.4-web/less/fontawesome.less" rel="stylesheet" />    
+        <link href="/theme/fontawesome-free-5.15.4-web/scss/fontawesome.scss" rel="stylesheet" /> 
+        <link href="/theme/fontawesome-free-5.15.4-web/sprites/solid.svg" rel="stylesheet" /> 
 
-        <!--<link href="/assets/css/icons.css" rel="stylesheet" />-->
-        <!--
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/brands.min.css" integrity="sha512-sVSECYdnRMezwuq5uAjKQJEcu2wybeAPjU4VJQ9pCRcCY4pIpIw4YMHIOQ0CypfwHRvdSPbH++dA3O4Hihm/LQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/fontawesome.min.css" integrity="sha512-P9vJUXK+LyvAzj8otTOKzdfF1F3UYVl13+F8Fof8/2QNb8Twd6Vb+VD52I7+87tex9UXxnzPgWA3rH96RExA7A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/regular.min.css" integrity="sha512-d2x1oQUT6HACW9UlXxWI6XrIBDrEE5z2tit/+kWEdXdVYuift7sm+Q6ucfGWQr1F0+GD9/6eYoYDegw2nm05Vw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/solid.min.css" integrity="sha512-tk4nGrLxft4l30r9ETuejLU0a3d7LwMzj0eXjzc16JQj+5U1IeVoCuGLObRDc3+eQMUcEQY1RIDPGvuA7SNQ2w==" crossorigin="anonymous" referrerpolicy="no-referrer" />-->
-
-        <link href="/theme/assets/fontawesome-free-5.15.4-web/css/all.css" rel="stylesheet" />
-        <link href="/theme/assets/fontawesome-free-5.15.4-web/js/all.js" rel="stylesheet" /> 
-        <link href="/theme/assets/fontawesome-free-5.15.4-web/less/fontawesome.less" rel="stylesheet" />    
-        <link href="/theme/assets/fontawesome-free-5.15.4-web/scss/fontawesome.scss" rel="stylesheet" /> 
-        <link href="/theme/assets/fontawesome-free-5.15.4-web/sprites/solid.svg" rel="stylesheet" /> 
-        <!--<link href="/theme/assets/fontawesome-free-5.15.4-web/svgs/*.svg" rel="stylesheet" /> 
-        <link href="/theme/assets/fontawesome-free-5.15.4-web/webfonts/solid.svg" rel="stylesheet" />-->   
         <!-- Scripts -->
         @routes
         <script src="{{ mix('js/app.js') }}" defer></script>
 
         <!--<script src="/assets/plugins/canvas/html2canvas.js" defer></script>
         <script src="/assets/plugins/canvas/html2canvas.min.js" defer></script>-->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" integrity="sha512-BNaRQnYJYiPSqHHDb58B0yaPfCu+Wgds8Gp/gU33kqBtgNS4tSPHuGibyoeqMV/TJlSKda6FXzoEyYGjTe+vXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
+        <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" integrity="sha512-BNaRQnYJYiPSqHHDb58B0yaPfCu+Wgds8Gp/gU33kqBtgNS4tSPHuGibyoeqMV/TJlSKda6FXzoEyYGjTe+vXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>-->
     </head>
     <body id="app-body" class="font-sans antialiased g-sidenav-show ">
         @inertia
 
 
-     <!--   Core JS Files   -->
-     <script src="/theme/assets/js/core/popper.min.js" defer></script>
-     <script src="/theme/assets/js/core/bootstrap.min.js" defer></script>
-     <script src="/theme/assets/js/plugins/perfect-scrollbar.min.js" defer></script>
-     <script src="/theme/assets/js/plugins/smooth-scrollbar.min.js" defer></script>
+    <!--<script src="https://www.paypal.com/sdk/js?client-id=AUkQg30QDB-YINKU1DaZpVKQrye-fFPOkVldJUAlAiRrH2E77d0uwCxHi2w42Mi6Mrr4cOHWhBY_EBWU&components=buttons"></script>-->
 
-     <!-- Github buttons -->
-     <script async defer src="https://buttons.github.io/buttons.js" defer></script>
-     <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
-     <script src="/theme/assets/js/soft-ui-dashboard.min.js" defer></script>
+  <!-- plugins:js -->
+  <script src="theme/vendors/js/vendor.bundle.base.js"></script>
+  <!-- endinject -->
+  <!-- Plugin js for this page -->
+  <script src="theme/vendors/chart.js/Chart.min.js"></script>
+  <script src="theme/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+  <script src="theme/vendors/progressbar.js/progressbar.min.js"></script>
 
-
-     <!--<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js" defer></script>
-     <script src="/theme/components/charts/google/barchart.js" defer></script>
-     <script src="/theme/components/charts/google/columnchart.js" defer></script>-->
-
-     <script src="https://www.paypal.com/sdk/js?client-id=AUkQg30QDB-YINKU1DaZpVKQrye-fFPOkVldJUAlAiRrH2E77d0uwCxHi2w42Mi6Mrr4cOHWhBY_EBWU&components=buttons"></script>
-
-     <script>
-          var win = navigator.platform.indexOf('Win') > -1;
-          if (win && document.querySelector('#sidenav-scrollbar')) {
-            var options = {
-              damping: '0.5'
-            }
-            Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
-          }
-     </script>
+  <!-- End plugin js for this page -->
+  <!-- inject:js -->
+  <script src="theme/js/off-canvas.js"></script>
+  <script src="theme/js/hoverable-collapse.js"></script>
+  <script src="theme/js/template.js"></script>
+  <script src="theme/js/settings.js"></script>
+  <script src="theme/js/todolist.js"></script>
+  <!-- endinject -->
+  <!-- Custom js for this page-->
+  <script src="theme/js/jquery.cookie.js" type="text/javascript"></script>
+  <script src="theme/js/dashboard.js"></script>
+  <script src="theme/js/Chart.roundedBarCharts.js"></script>
+  <!-- End custom js for this page-->
     </body>
 </html>

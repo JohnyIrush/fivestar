@@ -29,7 +29,7 @@
                 >
                  <div 
                     v-if="menuItemPropVisible"
-                    :class="'icon shadow border-radius-md text-center d-flex align-items-center justify-content-center ' + menuItem.propTextColor + ' ' + menuItem.propBgColor">
+                    :class="' ' + menuItem.propTextColor + ' ' + menuItem.propBgColor">
                     <i :class="menuItem.icon_classes 
                               + ' ' + 
                               menu_item_icon_size">

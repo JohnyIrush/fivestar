@@ -106,7 +106,7 @@
           },
           menuItemContentOrientation:{
             type: String,
-            default: 'd-flex flex-column'
+            default: ''
           }
         },
         components: {

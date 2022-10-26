@@ -1,14 +1,17 @@
 <template>
-  <Sidebar v-if="display.sidebar"></Sidebar>
-  <main class="main-content position-relative mt-1 border-radius-lg position-relative">
-      <div :class="Theme.key + '-container'">
-         <NavBar v-if="display.navbar"></NavBar>
-         <slot></slot>
-
-         <Footer v-if="display.footer"></Footer>
-      </div>
+ <div class="container-scroller">  
+  <NavBar v-if="display.navbar"></NavBar>
+  <div :class="'container-fluid page-body-wrapper '">
+     <Sidebar v-if="display.sidebar"></Sidebar>
       <settings ></settings>
-  </main>
+      <div class="main-panel">
+        <div :class="'content-wrapper ' + Theme.key + '-container '">
+         <slot></slot>
+       </div>
+       <Footer v-if="display.footer"></Footer>
+      </div>
+  </div>
+</div>
 </template>
 
 

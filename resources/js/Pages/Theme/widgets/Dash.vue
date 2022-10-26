@@ -8,179 +8,179 @@
             :menuDetails="[
                 {
                   component: 'Link',
-                  icon_classes: 'fas fa-rocket',
+                  icon_classes: 'fas fa-rocket fa-2x',
                   title: 'Installation',
                   link: 'installer',
-                  propBgColor: Theme.key + '-gradient',
-                  propTextColor: 'text-white'
+                  propBgColor: '',
+                  propTextColor: Theme.key + '-text-color'
                 },
                 {
                   component: 'Link',
-                  icon_classes: 'fas fa-robot',
+                  icon_classes: 'fas fa-robot fa-2x',
                   title: 'Inteli',
                   link: 'inteli',
-                  propBgColor: Theme.key + '-gradient',
-                  propTextColor: 'text-white'
+                  propBgColor: '',
+                  propTextColor: Theme.key + '-text-color'
                 },
                 {
                   component: 'Link',
-                  icon_classes: 'fas fa-rocket',
+                  icon_classes: 'fas fa-rocket fa-2x',
                   title: 'Installation',
                   link: 'installer',
-                  propBgColor: Theme.key + '-gradient',
-                  propTextColor: 'text-white'
+                  propBgColor: '',
+                  propTextColor: Theme.key + '-text-color'
                 },
                 {
                   component: 'Link',
-                  icon_classes: 'fas fa-user-plus',
+                  icon_classes: 'fas fa-user-plus fa-2x',
                   title: 'Dashboard',
                   link: 'dashboard',
-                  propBgColor: Theme.key + '-gradient',
-                  propTextColor: 'text-white'
+                  propBgColor: '',
+                  propTextColor: Theme.key + '-text-color'
                 },
                 {
                   component: 'Link',
-                  icon_classes: 'fas fa-user-plus',
+                  icon_classes: 'fas fa-user-plus fa-2x',
                   title: 'Admission',
                   link: 'admission',
-                  propBgColor: Theme.key + '-gradient',
-                  propTextColor: 'text-white'
+                  propBgColor: '',
+                  propTextColor: Theme.key + '-text-color'
                 },
                 {
                   component: 'Link',
-                  icon_classes: 'fas fa-graduation-cap',
+                  icon_classes: 'fas fa-graduation-cap fa-2x',
                   title: 'Academics',
                   link: 'academic',
-                  propBgColor: Theme.key + '-gradient',
-                  propTextColor: 'text-white'
+                  propBgColor: '',
+                  propTextColor: Theme.key + '-text-color'
                 },
                 {
                   component: 'Link',
-                  icon_classes: 'fas fa-clock',
+                  icon_classes: 'fas fa-clock fa-2x',
                   title: 'Timetable',
                   link: 'timetable',
-                  propBgColor: Theme.key + '-gradient',
-                  propTextColor: 'text-white'
+                  propBgColor: '',
+                  propTextColor: Theme.key + '-text-color'
                 },
                 {
                   component: 'Link',
-                  icon_classes: 'fas fa-pencil-alt',
+                  icon_classes: 'fas fa-pencil-alt fa-2x',
                   title: 'Exams',
                   link: 'exam',
-                  propBgColor: Theme.key + '-gradient',
-                  propTextColor: 'text-white'
+                  propBgColor: '',
+                  propTextColor: Theme.key + '-text-color'
                 },
                 {
                   component: 'Link',
-                  icon_classes: 'fas fa-chalkboard-teacher',
+                  icon_classes: 'fas fa-chalkboard-teacher fa-2x',
                   title: 'Staff',
                   link: 'staff',
-                  propBgColor: Theme.key + '-gradient',
-                  propTextColor: 'text-white'
+                  propBgColor: '',
+                  propTextColor: Theme.key + '-text-color'
                 },
                 {
                   component: 'Link',
-                  icon_classes: 'fas fa-book-open',
+                  icon_classes: 'fas fa-book-open fa-2x',
                   title: 'Library',
                   link: 'library',
-                  propBgColor: Theme.key + '-gradient',
-                  propTextColor: 'text-white'
+                  propBgColor: '',
+                  propTextColor: Theme.key + '-text-color'
                 },
                 {
                   component: 'Link',
-                  icon_classes: 'fas fa-globe',
+                  icon_classes: 'fas fa-globe fa-2x',
                   title: 'Online Classes',
                   link: 'virtual-reality',
-                  propBgColor: Theme.key + '-gradient',
-                  propTextColor: 'text-white'
+                  propBgColor: '',
+                  propTextColor: Theme.key + '-text-color'
                 },
                 {
                   component: 'Link',
-                  icon_classes: 'fas fa-file-powerpoint',
+                  icon_classes: 'fas fa-file-powerpoint fa-2x',
                   title: 'E-Learning',
                   link: 'virtual-reality',
-                  propBgColor: Theme.key + '-gradient',
-                  propTextColor: 'text-white'
+                  propBgColor: '',
+                  propTextColor: Theme.key + '-text-color'
                 },
                 {
                   component: 'Link',
-                  icon_classes: 'fas fa-microscope',
+                  icon_classes: 'fas fa-microscope fa-2x',
                   title: 'Research Center',
                   link: 'virtual-reality',
-                  propBgColor: Theme.key + '-gradient',
-                  propTextColor: 'text-white'
+                  propBgColor: '',
+                  propTextColor: Theme.key + '-text-color'
                 },
                 {
                   component: 'Link',
-                  icon_classes: 'fas fa-warehouse', 
+                  icon_classes: 'fas fa-warehouse fa-2x', 
                   title: 'Inventory',
                   link: 'inventory',
-                  propBgColor: Theme.key + '-gradient',
-                  propTextColor: 'text-white'
+                  propBgColor: '',
+                  propTextColor: Theme.key + '-text-color'
                 },
                 {
                   component: 'Link',
-                  icon_classes: 'fas fa-coins',
+                  icon_classes: 'fas fa-coins fa-2x',
                   title: 'Finance',
                   link: 'finance',
-                  propBgColor: Theme.key + '-gradient',
-                  propTextColor: 'text-white'
+                  propBgColor: '',
+                  propTextColor: Theme.key + '-text-color'
                 },
                 {
                   component: 'Link',
-                  icon_classes: 'fas fa-user-graduate',
+                  icon_classes: 'fas fa-user-graduate fa-2x',
                   title: 'Careers',
                   link: 'career',
-                  propBgColor: Theme.key + '-gradient',
-                  propTextColor: 'text-white'
+                  propBgColor: '',
+                  propTextColor: Theme.key + '-text-color'
                 },
                 {
                   component: 'Link',
-                  icon_classes: 'fas fa-users',
+                  icon_classes: 'fas fa-users fa-2x',
                   title: 'Teams',
                   link: 'finance',
-                  propBgColor: Theme.key + '-gradient',
-                  propTextColor: 'text-white'
+                  propBgColor: '',
+                  propTextColor: Theme.key + '-text-color'
                 },
                 {
                   component: 'Link',
-                  icon_classes: 'fas fa-rss',
+                  icon_classes: 'fas fa-rss fa-2x',
                   title: 'Communication',
                   link: 'communication',
-                  propBgColor: Theme.key + '-gradient',
-                  propTextColor: 'text-white'
+                  propBgColor: '',
+                  propTextColor: Theme.key + '-text-color'
                 },
                 {
                   component: 'Link',
-                  icon_classes: 'fas fa-table',
+                  icon_classes: 'fas fa-table fa-2x',
                   title: 'Form',
                   link: 'form',
-                  propBgColor: Theme.key + '-gradient',
-                  propTextColor: 'text-white'
+                  propBgColor: '',
+                  propTextColor: Theme.key + '-text-color'
                 },
                 {
                   component: 'Link',
-                  icon_classes: 'fas fa-photo-video',
+                  icon_classes: 'fas fa-photo-video fa-2x',
                   title: 'Multimedia',
                   link: 'resource',
-                  propBgColor: Theme.key + '-gradient',
-                  propTextColor: 'text-white'
+                  propBgColor: '',
+                  propTextColor: Theme.key + '-text-color'
                 },
                 {
                   component: 'Link',
-                  icon_classes: 'fas fa-tools',
+                  icon_classes: 'fas fa-tools fa-2x',
                   title: 'Config',
                   link: 'config',
-                  propBgColor: Theme.key + '-gradient',
-                  propTextColor: 'text-white'
+                  propBgColor: '',
+                  propTextColor: Theme.key + '-text-color'
                 },
                 {
                   component: 'Link',
-                  icon_classes: 'fas fa-shield-alt',
+                  icon_classes: 'fas fa-shield-alt fa-2x',
                   title: 'Security',
                   link: 'security',
-                  propBgColor: Theme.key + '-gradient',
-                  propTextColor: 'text-white'
+                  propBgColor: '',
+                  propTextColor: Theme.key + '-text-color'
                 }, 
             ]"
             :menu_item_size="'col-2'"
