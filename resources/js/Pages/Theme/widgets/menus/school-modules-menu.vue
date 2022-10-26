@@ -4,7 +4,7 @@
             :menuItems="[
                 {
                   component: 'Link',
-                  icon_classes: 'fas fa-rocket menu-icon',      
+                  icon_classes: 'fa-2x fas fa-rocket menu-icon',      
                   title: 'Installation',
                   link: 'installer',
                   prop_container_classes: ' ',
@@ -14,7 +14,7 @@
                 },
                 {
                   component: 'Link',
-                  icon_classes: 'fas fa-brain menu-icon',
+                  icon_classes: 'fa-2x fas fa-brain menu-icon',
                   title: 'Inteli',
                   link: 'inteli',
                   prop_container_classes: ' ',
@@ -24,7 +24,7 @@
                 },
                 {
                   component: 'Link',
-                  icon_classes: 'fas fa-user-plus menu-icon',
+                  icon_classes: 'fa-2x fas fa-user-plus menu-icon',
                   title: 'Dashboard',
                   link: 'dashboard',
                   prop_container_classes: ' ',
@@ -34,7 +34,7 @@
                 },
                 {
                   component: 'Link',
-                  icon_classes: 'fas fa-user-plus menu-icon',
+                  icon_classes: 'fa-2x fas fa-user-plus menu-icon',
                   title: 'Admission',
                   link: 'admission',
                   prop_container_classes: ' ',
@@ -44,7 +44,7 @@
                 },
                 {
                   component: 'Link',
-                  icon_classes: 'fas fa-graduation-cap menu-icon',
+                  icon_classes: 'fa-2x fas fa-graduation-cap menu-icon',
                   title: 'Academics',
                   link: 'academic',
                   prop_container_classes: ' ',
@@ -54,7 +54,7 @@
                 },
                 {
                   component: 'Link',
-                  icon_classes: 'fas fa-clock menu-icon',
+                  icon_classes: 'fa-2x fas fa-clock menu-icon',
                   title: 'Timetable',
                   link: 'timetable',
                   prop_container_classes: ' ',
@@ -64,7 +64,7 @@
                 },
                 {
                   component: 'Link',
-                  icon_classes: 'fas fa-pencil-alt menu-icon',
+                  icon_classes: 'fa-2x fas fa-pencil-alt menu-icon',
                   title: 'Exams',
                   link: 'exam',
                   prop_container_classes: ' ',
@@ -74,7 +74,7 @@
                 },
                 {
                   component: 'Link',
-                  icon_classes: 'fas fa-chalkboard-teacher menu-icon',
+                  icon_classes: 'fa-2x fas fa-chalkboard-teacher menu-icon',
                   title: 'Staff',
                   link: 'staff',
                   prop_container_classes: ' ',
@@ -84,7 +84,7 @@
                 },
                 {
                   component: 'Link',
-                  icon_classes: 'fas fa-book-open menu-icon',
+                  icon_classes: 'fa-2x fas fa-book-open menu-icon',
                   title: 'Library',
                   link: 'library',
                   prop_container_classes: ' ',
@@ -94,7 +94,7 @@
                 },
                 {
                   component: 'Link',
-                  icon_classes: 'fas fa-globe menu-icon',
+                  icon_classes: 'fa-2x fas fa-globe menu-icon',
                   title: 'Online Classes',
                   link: 'virtual-reality',
                   prop_container_classes: ' ',
@@ -104,7 +104,7 @@
                 },
                 {
                   component: 'Link',
-                  icon_classes: 'fas fa-file-powerpoint menu-icon',
+                  icon_classes: 'fa-2x fas fa-file-powerpoint menu-icon',
                   title: 'E-Learning',
                   link: 'virtual-reality',
                   prop_container_classes: ' ',
@@ -114,7 +114,7 @@
                 },
                 {
                   component: 'Link',
-                  icon_classes: 'fas fa-microscope menu-icon',
+                  icon_classes: 'fa-2x fas fa-microscope menu-icon',
                   title: 'Research Center',
                   link: 'virtual-reality',
                   prop_container_classes: ' ',
@@ -124,7 +124,7 @@
                 },
                 {
                   component: 'Link',
-                  icon_classes: 'fas fa-warehouse menu-icon',
+                  icon_classes: 'fa-2x fas fa-warehouse menu-icon',
                   title: 'Inventory',
                   link: 'inventory',
                   prop_container_classes: ' ',
@@ -134,7 +134,7 @@
                 },
                 {
                   component: 'Link',
-                  icon_classes: 'fas fa-coins menu-icon',
+                  icon_classes: 'fa-2x fas fa-coins menu-icon',
                   title: 'Finance',
                   link: 'finance',
                   prop_container_classes: ' ',
@@ -144,7 +144,7 @@
                 },
                 {
                   component: 'Link',
-                  icon_classes: 'fas fa-user-graduate menu-icon',
+                  icon_classes: 'fa-2x fas fa-user-graduate menu-icon',
                   title: 'Careers',
                   link: 'career',
                   prop_container_classes: ' ',
@@ -154,7 +154,7 @@
                 },
                 {
                   component: 'Link',
-                  icon_classes: 'fas fa-users menu-icon',
+                  icon_classes: 'fa-2x fas fa-users menu-icon',
                   title: 'Teams',
                   link: 'team',
                   prop_container_classes: ' ',
@@ -164,7 +164,7 @@
                 },
                 {
                   component: 'Link',
-                  icon_classes: 'fas fa-rss menu-icon',
+                  icon_classes: 'fa-2x fas fa-rss menu-icon',
                   title: 'Communication',
                   link: 'communication',
                   prop_container_classes: ' ',
@@ -174,7 +174,7 @@
                 },
                 {
                   component: 'Link',
-                  icon_classes: 'fas fa-table menu-icon',
+                  icon_classes: 'fa-2x fas fa-table menu-icon',
                   title: 'Form',
                   link: 'form',
                   prop_container_classes: ' ',
@@ -184,7 +184,7 @@
                 },
                 {
                   component: 'Link',
-                  icon_classes: 'fas fa-photo-video menu-icon',
+                  icon_classes: 'fa-2x fas fa-photo-video menu-icon',
                   title: 'Multimedia',
                   link: 'resource',
                   prop_container_classes: ' ',
@@ -194,7 +194,7 @@
                 },
                 {
                   component: 'Link',
-                  icon_classes: 'fas fa-tools menu-icon',
+                  icon_classes: 'fa-2x fas fa-tools menu-icon',
                   title: 'Config',
                   link: 'config',
                   prop_container_classes: ' ',
@@ -204,7 +204,7 @@
                 }, 
                 {
                   component: 'Link',
-                  icon_classes: 'fas fa-shield-alt menu-icon',
+                  icon_classes: 'fa-2x fas fa-shield-alt menu-icon',
                   title: 'Security',
                   link: 'security',
                   prop_container_classes: ' ',
@@ -215,7 +215,7 @@
                 }, 
                 {
                   component: 'Link',
-                  icon_classes: 'fas fa-robot menu-icon',
+                  icon_classes: 'fa-2x fas fa-robot menu-icon',
                   title: 'Ai',
                   link: 'ai',
                   prop_container_classes: ' ',
@@ -237,7 +237,7 @@
                 },
                 {
                   component: 'Link',
-                  icon_classes: 'fas fa-user-shield menu-icon',
+                  icon_classes: 'fa-2x fas fa-user-shield menu-icon',
                   title: 'Staff',
                   link: 'portal-staff',
                   prop_container_classes: ' ',
@@ -248,7 +248,7 @@
                 },
                 {
                   component: 'Link',
-                  icon_classes: 'fas fa-user-graduate menu-icon',
+                  icon_classes: 'fa-2x fas fa-user-graduate menu-icon',
                   title: 'Student',
                   link: 'portal-student',
                   prop_container_classes: ' ',
@@ -259,7 +259,7 @@
                 },
                 {
                   component: 'Link',
-                  icon_classes: 'fas fa-user menu-icon',
+                  icon_classes: 'fa-2x fas fa-user menu-icon',
                   title: 'Guardian',
                   link: 'portal-guardian',
                   prop_container_classes: ' ',
@@ -270,7 +270,7 @@
                 },
                 {
                   component: 'Link',
-                  icon_classes: 'fas fa-school menu-icon',
+                  icon_classes: 'fa-2x fas fa-school menu-icon',
                   title: 'School',
                   link: 'portal-school',
                   prop_container_classes: ' ',

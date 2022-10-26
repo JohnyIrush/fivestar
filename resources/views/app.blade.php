@@ -30,10 +30,9 @@
         <!-- endinject -->
 
         <link href="/theme/fontawesome-free-5.15.4-web/css/all.css" rel="stylesheet" />
-        <link href="/theme/fontawesome-free-5.15.4-web/js/all.js" rel="stylesheet" /> 
-        <link href="/theme/fontawesome-free-5.15.4-web/less/fontawesome.less" rel="stylesheet" />    
-        <link href="/theme/fontawesome-free-5.15.4-web/scss/fontawesome.scss" rel="stylesheet" /> 
-        <link href="/theme/fontawesome-free-5.15.4-web/sprites/solid.svg" rel="stylesheet" /> 
+        <link href="/theme/fontawesome-free-5.15.4-web/less/fontawesome.less" />    
+        <link href="/theme/fontawesome-free-5.15.4-web/scss/fontawesome.scss" /> 
+        <link href="/theme/fontawesome-free-5.15.4-web/sprites/solid.svg"  /> 
 
         <!-- Scripts -->
         @routes
@@ -49,6 +48,7 @@
 
     <!--<script src="https://www.paypal.com/sdk/js?client-id=AUkQg30QDB-YINKU1DaZpVKQrye-fFPOkVldJUAlAiRrH2E77d0uwCxHi2w42Mi6Mrr4cOHWhBY_EBWU&components=buttons"></script>-->
 
+  <script src="/theme/fontawesome-free-5.15.4-web/js/all.js" type="text/javascript"></script>
   <!-- plugins:js -->
   <script src="theme/vendors/js/vendor.bundle.base.js"></script>
   <!-- endinject -->
