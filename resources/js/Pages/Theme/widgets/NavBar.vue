@@ -1,6 +1,6 @@
 <template>
     <!-- partial:partials/_navbar.html -->
-    <nav :class="'navbar col-lg-12 col-12 p-0 fixed-top d-flex align-items-top flex-row  mb-2 ' + Theme.key + '-section'">
+    <nav :class="'navbar col-lg-12 col-12 p-0 fixed-top d-flex align-items-top flex-row  mb-2 ' + Theme.key + '-section ' + Theme.key + '-text-color'">
       <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-start">
         <div class="me-3">
           <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-bs-toggle="minimize">
@@ -19,7 +19,7 @@
       <div class="navbar-menu-wrapper d-flex align-items-top"> 
         <ul class="navbar-nav">
           <li class="nav-item font-weight-semibold d-none d-lg-block ms-0">
-            <h1 class="welcome-text">Good Morning, <span class="text-black fw-bold">John Doe</span></h1>
+            <h1 class="welcome-text">Good Morning, <span class=" fw-bold">John Doe</span></h1>
             <h3 class="welcome-sub-text">Your performance summary this week </h3>
           </li>
         </ul>
@@ -33,25 +33,25 @@
               <div class="dropdown-divider"></div>
               <a class="dropdown-item preview-item">
                 <div class="preview-item-content flex-grow py-2">
-                  <p class="preview-subject ellipsis font-weight-medium text-dark">Bootstrap Bundle </p>
+                  <p class="preview-subject ellipsis font-weight-medium ">Bootstrap Bundle </p>
                   <p class="fw-light small-text mb-0">This is a Bundle featuring 16 unique dashboards</p>
                 </div>
               </a>
               <a class="dropdown-item preview-item">
                 <div class="preview-item-content flex-grow py-2">
-                  <p class="preview-subject ellipsis font-weight-medium text-dark">Angular Bundle</p>
+                  <p class="preview-subject ellipsis font-weight-medium ">Angular Bundle</p>
                   <p class="fw-light small-text mb-0">Everything you’ll ever need for your Angular projects</p>
                 </div>
               </a>
               <a class="dropdown-item preview-item">
                 <div class="preview-item-content flex-grow py-2">
-                  <p class="preview-subject ellipsis font-weight-medium text-dark">VUE Bundle</p>
+                  <p class="preview-subject ellipsis font-weight-medium ">VUE Bundle</p>
                   <p class="fw-light small-text mb-0">Bundle of 6 Premium Vue Admin Dashboard</p>
                 </div>
               </a>
               <a class="dropdown-item preview-item">
                 <div class="preview-item-content flex-grow py-2">
-                  <p class="preview-subject ellipsis font-weight-medium text-dark">React Bundle</p>
+                  <p class="preview-subject ellipsis font-weight-medium ">React Bundle</p>
                   <p class="fw-light small-text mb-0">Bundle of 8 Premium React Admin Dashboard</p>
                 </div>
               </a>
@@ -85,7 +85,7 @@
                   <i class="mdi mdi-alert m-auto text-primary"></i>
                 </div>
                 <div class="preview-item-content">
-                  <h6 class="preview-subject fw-normal text-dark mb-1">Application Error</h6>
+                  <h6 class="preview-subject fw-normal  mb-1">Application Error</h6>
                   <p class="fw-light small-text mb-0"> Just now </p>
                 </div>
               </a>
@@ -94,7 +94,7 @@
                   <i class="mdi mdi-settings m-auto text-primary"></i>
                 </div>
                 <div class="preview-item-content">
-                  <h6 class="preview-subject fw-normal text-dark mb-1">Settings</h6>
+                  <h6 class="preview-subject fw-normal  mb-1">Settings</h6>
                   <p class="fw-light small-text mb-0"> Private message </p>
                 </div>
               </a>
@@ -103,7 +103,7 @@
                   <i class="mdi mdi-airballoon m-auto text-primary"></i>
                 </div>
                 <div class="preview-item-content">
-                  <h6 class="preview-subject fw-normal text-dark mb-1">New user registration</h6>
+                  <h6 class="preview-subject fw-normal  mb-1">New user registration</h6>
                   <p class="fw-light small-text mb-0"> 2 days ago </p>
                 </div>
               </a>
@@ -125,7 +125,7 @@
                   <img src="theme/images/faces/face10.jpg" alt="image" class="img-sm profile-pic">
                 </div>
                 <div class="preview-item-content flex-grow py-2">
-                  <p class="preview-subject ellipsis font-weight-medium text-dark">Marian Garner </p>
+                  <p class="preview-subject ellipsis font-weight-medium ">Marian Garner </p>
                   <p class="fw-light small-text mb-0"> The meeting is cancelled </p>
                 </div>
               </a>
@@ -134,7 +134,7 @@
                   <img src="theme/images/faces/face12.jpg" alt="image" class="img-sm profile-pic">
                 </div>
                 <div class="preview-item-content flex-grow py-2">
-                  <p class="preview-subject ellipsis font-weight-medium text-dark">David Grey </p>
+                  <p class="preview-subject ellipsis font-weight-medium ">David Grey </p>
                   <p class="fw-light small-text mb-0"> The meeting is cancelled </p>
                 </div>
               </a>
@@ -143,7 +143,7 @@
                   <img src="theme/images/faces/face1.jpg" alt="image" class="img-sm profile-pic">
                 </div>
                 <div class="preview-item-content flex-grow py-2">
-                  <p class="preview-subject ellipsis font-weight-medium text-dark">Travis Jenkins </p>
+                  <p class="preview-subject ellipsis font-weight-medium ">Travis Jenkins </p>
                   <p class="fw-light small-text mb-0"> The meeting is cancelled </p>
                 </div>
               </a>
