@@ -1,6 +1,6 @@
 <template>
     <!-- partial:partials/_navbar.html -->
-    <nav :class="'navbar col-lg-12 col-12 p-0 fixed-top d-flex align-items-top flex-row  mb-2 ' + Theme.key + '-section '">
+    <nav :class="'navbar col-lg-12 col-12 p-0 fixed-top d-flex align-items-top flex-row  mb-2 ' + Theme.key + '-section mt-2 mb-2'">
       <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-start">
         <div class="me-3">
           <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-bs-toggle="minimize">
@@ -9,10 +9,10 @@
         </div>
         <div>
           <Link class="navbar-brand brand-logo" :href="route('dashboard')">
-            <img src="images/inteli.png" alt="logo" />
+            <img src="/images/inteli.png" alt="logo" />
           </Link>
           <Link class="navbar-brand brand-logo-mini" :href="route('dashboard')">
-            <img src="images/inteli.png" alt="logo" />
+            <img src="/images/inteli.png" alt="logo" />
           </Link>
         </div>
       </div>
@@ -131,7 +131,7 @@
               </a>
               <a class="dropdown-item preview-item">
                 <div class="preview-thumbnail">
-                  <img src="theme/images/faces/face12.jpg" alt="image" class="img-sm profile-pic">
+                  <img src="/theme/images/faces/face12.jpg" alt="image" class="img-sm profile-pic">
                 </div>
                 <div class="preview-item-content flex-grow py-2">
                   <p :class="'preview-subject ellipsis font-weight-medium ' + Theme.key + '-text-color'">David Grey </p>
@@ -140,7 +140,7 @@
               </a>
               <a class="dropdown-item preview-item">
                 <div class="preview-thumbnail">
-                  <img src="theme/images/faces/face1.jpg" alt="image" class="img-sm profile-pic">
+                  <img src="/theme/images/faces/face1.jpg" alt="image" class="img-sm profile-pic">
                 </div>
                 <div class="preview-item-content flex-grow py-2">
                   <p :class="'preview-subject ellipsis font-weight-medium ' + Theme.key + '-text-color'">Travis Jenkins </p>
@@ -151,7 +151,7 @@
           </li>
           <li class="nav-item dropdown d-none d-lg-block user-dropdown">
             <a class="nav-link" id="UserDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
-              <img class="img-xs rounded-circle" src="theme/images/faces/face8.jpg" alt="Profile image"> </a>
+              <img class="img-xs rounded-circle" src="/theme/images/faces/face8.jpg" alt="Profile image"> </a>
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
               <div class="dropdown-header text-center">
                 <img class="img-md rounded-circle" src="theme/images/faces/face8.jpg" alt="Profile image">

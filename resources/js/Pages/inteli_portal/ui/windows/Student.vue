@@ -34,6 +34,14 @@
       widget_component_path: '../../inteli_portal/ui/widgets/guardian/StudentFinance.vue'
      },
      {
+      widget_title: 'Account',
+      widget_tab_icon_classes: 'fas fa-user-circle fa-2x',
+      widget_tab_button_classes: Theme.key + '-gradient' + ' mt-6  text-white',
+      tab_button_label_classes: Theme.key + ' text-color',
+      widget_component_name: 'Show',
+      widget_component_path: '../../Profile/Show.vue'
+     },
+     {
       widget_title: 'Settings',
       widget_tab_icon_classes: 'fas fa-cogs fa-2x',
       widget_tab_button_classes: Theme.key + '-gradient' + ' mt-6  text-white',

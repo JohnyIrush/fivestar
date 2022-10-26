@@ -145,6 +145,7 @@
     import AiSetting from '../../inteli_ai/ui/widgets/AiSetting.vue'
 
     /*Social Portal*/
+    import Show from '../../Profile/Show.vue'
     //Guardian
     import GuardianDetail from '../../inteli_portal/ui/widgets/guardian/GuardianDetail.vue'
     import GuardianAcademic from '../../inteli_portal/ui/widgets/guardian/GuardianAcademic.vue'
@@ -285,6 +286,7 @@
             AiDash,
             AiSetting,
             /*social portal widgets*/
+            Show,
             //Guardian
             GuardianDetail,
             GuardianAcademic,

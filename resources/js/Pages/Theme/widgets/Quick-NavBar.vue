@@ -1,12 +1,12 @@
 <template>
-    <div class="container position-sticky z-index-sticky top-0">
+    <div :class="'container position-sticky top-0 ' + Theme.key + '-section '">
     <div class="row">
       <div class="col-12 ">
         <!-- Navbar -->
-        <nav class="navbar glass-header navbar-expand-lg top-0 z-index-3 shadow position-absolute my-3 py-2 start-0 end-0 mx-4">
+        <nav :class="'navbar navbar-expand-lg top-0 shadow position-absolute my-3 py-2 start-0 end-0 mx-4 ' + Theme.key + '-card'">
           <div class="container-fluid">
-            <Link class="navbar-brand font-weight-bolder ms-lg-0 ms-3 " :href="route('dashboard')">
-              Inteli System
+            <Link :class="'navbar-brand font-weight-bolder ms-lg-0 ms-3 ' + Theme.key + '-text-color'" :href="route('dashboard')">
+              Inteli System 
             </Link>
             <button class="navbar-toggler shadow-none ms-2" type="button" data-bs-toggle="collapse" data-bs-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon mt-2">
@@ -18,33 +18,33 @@
             <div class="collapse navbar-collapse" id="navigation">
               <ul class="navbar-nav mx-auto">
                 <li class="nav-item">
-                  <Link class="nav-link d-flex align-items-center me-2 active" aria-current="page" :href="route('dashboard')">
-                    <i class="fa fa-chart-pie opacity-6 text-dark me-1"></i>
+                  <Link :class="'nav-link d-flex align-items-center me-2 active ' + Theme.key + '-text-color'" aria-current="page" :href="route('dashboard')">
+                    <i class="fa fa-chart-pie opacity-6  me-1"></i>
                     Dashboard
                   </Link>
                 </li>
                 <li class="nav-item">
-                  <Link class="nav-link me-2" :href="route('user-profile')">
-                    <i class="fa fa-user opacity-6 text-dark me-1"></i>
+                  <Link :class="'nav-link me-2 ' + Theme.key + '-text-color'" :href="route('user-profile')">
+                    <i class="fa fa-user opacity-6  me-1"></i>
                     Profile
                   </Link>
                 </li>
                 <li class="nav-item">
-                  <Link class="nav-link me-2" :href="route('register')">
-                    <i class="fas fa-user-circle opacity-6 text-dark me-1"></i>
+                  <Link :class="'nav-link me-2 ' + Theme.key + '-text-color'" :href="route('register')">
+                    <i class="fas fa-user-circle opacity-6  me-1 "></i>
                     Sign Up
                   </Link>
                 </li>
-                <li class="nav-item">
-                  <Link class="nav-link me-2" :href="route('login')">
-                    <i class="fas fa-key opacity-6 text-dark me-1"></i>
+                <li :class="'nav-item '">
+                  <Link :class="'nav-link me-2 ' + Theme.key + '-text-color'" :href="route('login')">
+                    <i class="fas fa-key opacity-6  me-1 "></i>
                     Sign In
                   </Link>
                 </li>
               </ul>
               <ul class="navbar-nav d-lg-block d-none">
-                <li class="nav-item">
-                  <a href="https://softwarescares.sparktalks.org" class="btn btn-sm btn-round mb-0 me-1 bg-gradient-dark">SoftwaresCares</a>
+                <li class="nav-item text-white">
+                  <a href="https://softwarescares.co.ke" :class="'btn btn-sm btn-round mb-0 me-1 text-white '+ Theme.key + '-gradient'">SoftwaresCares</a>
                 </li>
               </ul>
             </div>
@@ -57,7 +57,7 @@
 </template>
 
 <script>
-    import { defineComponent } from 'vue'
+    import { defineComponent, ref, reactive, inject } from 'vue'
 
     import { Head, Link } from '@inertiajs/inertia-vue3';
 
@@ -65,26 +65,17 @@
         components: {
           Link
         },
+        setup(props, context)
+        {
+          var Theme = ref(inject("Theme"));
+
+          return {
+            Theme
+          }
+        },
     })
 </script>
 
 <style scoped>
-.glass-header
-{
-    position: absolute !important;
-    top: -5px !important;
-    right: 20px !important;
-    left: 5px !important;
-    padding: 20px 50px !important;
-    /*display: flex;
-    justify-content: space-between;
-    align-items: center;*/
-    background: rgba(255, 255, 255, 0.2) !important;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05) !important;
-    border-radius: 20px !important;
-    backdrop-filter: blur(10px) !important;
-    border: 1px solid rgba(255, 255, 255, 0.5) !important;
-    border-top: 1px solid rgba(255, 255, 255, 0.25) !important;
-    border-left: 1px solid rgba(255, 255, 255, 0.5) !important;
-}
+
 </style>

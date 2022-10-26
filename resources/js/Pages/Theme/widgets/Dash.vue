@@ -16,6 +16,7 @@
                 },
                 {
                   component: 'Link',
+                  text_classes: '',
                   icon_classes: 'fas fa-robot fa-2x',
                   title: 'Inteli',
                   link: 'inteli',
