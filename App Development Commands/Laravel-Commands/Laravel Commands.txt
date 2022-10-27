@@ -235,3 +235,7 @@ npm run hot
 php artisan key:generate
 
 npm i flatpickr --save
+
+composer require laravel/jetstream
+composer remove laravel/jetstream
+php artisan jetstream:install inertia --teams
