@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "fc435a55e0c966d307ae03a3a04dbeb3",
+    "content-hash": "e8be46ada75ddc05cf099831e4e323c2",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -11398,6 +11398,7 @@
         "softwarescares/inteliacademic": 20,
         "softwarescares/inteliadmission": 20,
         "softwarescares/inteliai": 20,
+        "softwarescares/intelicareer": 20,
         "softwarescares/intelicommunication": 20,
         "softwarescares/inteliconfig": 20,
         "softwarescares/intelielearn": 20,
@@ -11415,7 +11416,6 @@
         "softwarescares/inteliresource": 20,
         "softwarescares/intelisafaricomdaraja": 20,
         "softwarescares/intelisecurity": 20,
-        "softwarescares/intelicareer": 20,
         "softwarescares/intelistaff": 20,
         "softwarescares/inteliteam": 20,
         "softwarescares/intelitimetable": 20
