@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2973757fb25359425a49b269e32e4e7a",
+    "content-hash": "9275ceccf3360bfef6aaf6975d83fb23",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -441,23 +441,23 @@
         },
         {
             "name": "doctrine/inflector",
-            "version": "2.0.6",
+            "version": "2.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/inflector.git",
-                "reference": "d9d313a36c872fd6ee06d9a6cbcf713eaa40f024"
+                "reference": "ade2b3bbfb776f27f0558e26eed43b5d9fe1b392"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/inflector/zipball/d9d313a36c872fd6ee06d9a6cbcf713eaa40f024",
-                "reference": "d9d313a36c872fd6ee06d9a6cbcf713eaa40f024",
+                "url": "https://api.github.com/repos/doctrine/inflector/zipball/ade2b3bbfb776f27f0558e26eed43b5d9fe1b392",
+                "reference": "ade2b3bbfb776f27f0558e26eed43b5d9fe1b392",
                 "shasum": ""
             },
             "require": {
                 "php": "^7.2 || ^8.0"
             },
             "require-dev": {
-                "doctrine/coding-standard": "^10",
+                "doctrine/coding-standard": "^9",
                 "phpstan/phpstan": "^1.8",
                 "phpstan/phpstan-phpunit": "^1.1",
                 "phpstan/phpstan-strict-rules": "^1.3",
@@ -512,7 +512,7 @@
             ],
             "support": {
                 "issues": "https://github.com/doctrine/inflector/issues",
-                "source": "https://github.com/doctrine/inflector/tree/2.0.6"
+                "source": "https://github.com/doctrine/inflector/tree/2.0.5"
             },
             "funding": [
                 {
@@ -528,7 +528,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-10-20T09:10:12+00:00"
+            "time": "2022-09-07T09:01:28+00:00"
         },
         {
             "name": "doctrine/lexer",
@@ -1569,16 +1569,16 @@
         },
         {
             "name": "laravel/fortify",
-            "version": "v1.13.5",
+            "version": "v1.13.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/fortify.git",
-                "reference": "c3c42f1263c657c2a385c85007944b450d437cf6"
+                "reference": "9a68cf2deb37d1796b6e2fd97d3c61f086868914"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/fortify/zipball/c3c42f1263c657c2a385c85007944b450d437cf6",
-                "reference": "c3c42f1263c657c2a385c85007944b450d437cf6",
+                "url": "https://api.github.com/repos/laravel/fortify/zipball/9a68cf2deb37d1796b6e2fd97d3c61f086868914",
+                "reference": "9a68cf2deb37d1796b6e2fd97d3c61f086868914",
                 "shasum": ""
             },
             "require": {
@@ -1628,7 +1628,7 @@
                 "issues": "https://github.com/laravel/fortify/issues",
                 "source": "https://github.com/laravel/fortify"
             },
-            "time": "2022-10-21T10:14:28+00:00"
+            "time": "2022-09-30T13:20:14+00:00"
         },
         {
             "name": "laravel/framework",
@@ -4974,11 +4974,11 @@
         },
         {
             "name": "softwarescares/inteli",
-            "version": "dev-Authentication-&-Authorization",
+            "version": "dev-OPERATION-URANUS",
             "dist": {
                 "type": "path",
                 "url": "packages/inteli",
-                "reference": "f27f9c4383f948f9dfe422c403125b05d58eebaf"
+                "reference": "534dc8e885328354cef58471919d501c543195bd"
             },
             "type": "library",
             "extra": {
@@ -5011,7 +5011,7 @@
         },
         {
             "name": "softwarescares/inteliacademic",
-            "version": "dev-Authentication-&-Authorization",
+            "version": "dev-OPERATION-URANUS",
             "dist": {
                 "type": "path",
                 "url": "packages/inteliacademic",
@@ -5048,7 +5048,7 @@
         },
         {
             "name": "softwarescares/inteliadmission",
-            "version": "dev-Authentication-&-Authorization",
+            "version": "dev-OPERATION-URANUS",
             "dist": {
                 "type": "path",
                 "url": "packages/inteliadmission",
@@ -5085,7 +5085,7 @@
         },
         {
             "name": "softwarescares/inteliai",
-            "version": "dev-Authentication-&-Authorization",
+            "version": "dev-OPERATION-URANUS",
             "dist": {
                 "type": "path",
                 "url": "packages/inteliai",
@@ -5122,11 +5122,11 @@
         },
         {
             "name": "softwarescares/intelicareer",
-            "version": "dev-Authentication-&-Authorization",
+            "version": "dev-OPERATION-URANUS",
             "dist": {
                 "type": "path",
                 "url": "packages/intelicareer",
-                "reference": "b0d7c91685580b364c5a76beaf4da771f585ee0f"
+                "reference": "af4196cc0a189596b7a5f74eb2445d980961a596"
             },
             "type": "library",
             "extra": {
@@ -5159,7 +5159,7 @@
         },
         {
             "name": "softwarescares/intelicommunication",
-            "version": "dev-Authentication-&-Authorization",
+            "version": "dev-OPERATION-URANUS",
             "dist": {
                 "type": "path",
                 "url": "packages/intelicommunication",
@@ -5196,7 +5196,7 @@
         },
         {
             "name": "softwarescares/inteliconfig",
-            "version": "dev-Authentication-&-Authorization",
+            "version": "dev-OPERATION-URANUS",
             "dist": {
                 "type": "path",
                 "url": "packages/inteliconfig",
@@ -5233,7 +5233,7 @@
         },
         {
             "name": "softwarescares/intelielearn",
-            "version": "dev-Authentication-&-Authorization",
+            "version": "dev-OPERATION-URANUS",
             "dist": {
                 "type": "path",
                 "url": "packages/intelielearn",
@@ -5270,7 +5270,7 @@
         },
         {
             "name": "softwarescares/inteliexam",
-            "version": "dev-Authentication-&-Authorization",
+            "version": "dev-OPERATION-URANUS",
             "dist": {
                 "type": "path",
                 "url": "packages/inteliexam",
@@ -5307,7 +5307,7 @@
         },
         {
             "name": "softwarescares/intelifinance",
-            "version": "dev-Authentication-&-Authorization",
+            "version": "dev-OPERATION-URANUS",
             "dist": {
                 "type": "path",
                 "url": "packages/intelifinance",
@@ -5345,11 +5345,11 @@
         },
         {
             "name": "softwarescares/inteliform",
-            "version": "dev-Authentication-&-Authorization",
+            "version": "dev-OPERATION-URANUS",
             "dist": {
                 "type": "path",
                 "url": "packages/inteliform",
-                "reference": "9ea1264acdd822e1003cadb00a52adcb4ac47168"
+                "reference": "41aab888297a652cf6be6706d9f0be0fde1b7fdc"
             },
             "type": "library",
             "extra": {
@@ -5382,11 +5382,11 @@
         },
         {
             "name": "softwarescares/inteligoogle",
-            "version": "dev-Authentication-&-Authorization",
+            "version": "dev-OPERATION-URANUS",
             "dist": {
                 "type": "path",
                 "url": "packages/inteligoogle",
-                "reference": "cc8ccfd12c3b18c7df44c7decb8bf08c618f2f77"
+                "reference": "ed0446024be9cbd99b76c689bdbc92585ce700fd"
             },
             "type": "library",
             "extra": {
@@ -5419,7 +5419,7 @@
         },
         {
             "name": "softwarescares/inteliinstaller",
-            "version": "dev-Authentication-&-Authorization",
+            "version": "dev-OPERATION-URANUS",
             "dist": {
                 "type": "path",
                 "url": "packages/inteliinstaller",
@@ -5457,7 +5457,7 @@
         },
         {
             "name": "softwarescares/inteliinventory",
-            "version": "dev-Authentication-&-Authorization",
+            "version": "dev-OPERATION-URANUS",
             "dist": {
                 "type": "path",
                 "url": "packages/inteliinventory",
@@ -5494,7 +5494,7 @@
         },
         {
             "name": "softwarescares/intelijenga",
-            "version": "dev-Authentication-&-Authorization",
+            "version": "dev-OPERATION-URANUS",
             "dist": {
                 "type": "path",
                 "url": "packages/intelijenga",
@@ -5531,7 +5531,7 @@
         },
         {
             "name": "softwarescares/intelilibrary",
-            "version": "dev-Authentication-&-Authorization",
+            "version": "dev-OPERATION-URANUS",
             "dist": {
                 "type": "path",
                 "url": "packages/intelilibrary",
@@ -5568,7 +5568,7 @@
         },
         {
             "name": "softwarescares/intelionlineclass",
-            "version": "dev-Authentication-&-Authorization",
+            "version": "dev-OPERATION-URANUS",
             "dist": {
                 "type": "path",
                 "url": "packages/intelionlineclass",
@@ -5605,7 +5605,7 @@
         },
         {
             "name": "softwarescares/intelipaypal",
-            "version": "dev-Authentication-&-Authorization",
+            "version": "dev-OPERATION-URANUS",
             "dist": {
                 "type": "path",
                 "url": "packages/intelipaypal",
@@ -5642,7 +5642,7 @@
         },
         {
             "name": "softwarescares/inteliportal",
-            "version": "dev-Authentication-&-Authorization",
+            "version": "dev-OPERATION-URANUS",
             "dist": {
                 "type": "path",
                 "url": "packages/inteliportal",
@@ -5679,7 +5679,7 @@
         },
         {
             "name": "softwarescares/inteliresource",
-            "version": "dev-Authentication-&-Authorization",
+            "version": "dev-OPERATION-URANUS",
             "dist": {
                 "type": "path",
                 "url": "packages/inteliresource",
@@ -5716,7 +5716,7 @@
         },
         {
             "name": "softwarescares/intelisafaricomdaraja",
-            "version": "dev-Authentication-&-Authorization",
+            "version": "dev-OPERATION-URANUS",
             "dist": {
                 "type": "path",
                 "url": "packages/intelisafaricomdaraja",
@@ -5755,7 +5755,7 @@
         },
         {
             "name": "softwarescares/intelisecurity",
-            "version": "dev-Authentication-&-Authorization",
+            "version": "dev-OPERATION-URANUS",
             "dist": {
                 "type": "path",
                 "url": "packages/intelisecurity",
@@ -5792,7 +5792,7 @@
         },
         {
             "name": "softwarescares/intelistaff",
-            "version": "dev-Authentication-&-Authorization",
+            "version": "dev-OPERATION-URANUS",
             "dist": {
                 "type": "path",
                 "url": "packages/intelistaff",
@@ -5829,7 +5829,7 @@
         },
         {
             "name": "softwarescares/inteliteam",
-            "version": "dev-Authentication-&-Authorization",
+            "version": "dev-OPERATION-URANUS",
             "dist": {
                 "type": "path",
                 "url": "packages/inteliteam",
@@ -5866,7 +5866,7 @@
         },
         {
             "name": "softwarescares/intelitimetable",
-            "version": "dev-Authentication-&-Authorization",
+            "version": "dev-OPERATION-URANUS",
             "dist": {
                 "type": "path",
                 "url": "packages/intelitimetable",
@@ -11224,7 +11224,6 @@
         "softwarescares/inteliacademic": 20,
         "softwarescares/inteliadmission": 20,
         "softwarescares/inteliai": 20,
-        "softwarescares/intelicareer": 20,
         "softwarescares/intelicommunication": 20,
         "softwarescares/inteliconfig": 20,
         "softwarescares/intelielearn": 20,
@@ -11242,6 +11241,7 @@
         "softwarescares/inteliresource": 20,
         "softwarescares/intelisafaricomdaraja": 20,
         "softwarescares/intelisecurity": 20,
+        "softwarescares/intelicareer": 20,
         "softwarescares/intelistaff": 20,
         "softwarescares/inteliteam": 20,
         "softwarescares/intelitimetable": 20
