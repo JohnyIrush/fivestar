@@ -1,4 +1,5 @@
 <template>
+  Module cont
   <module-container
    :ModuleDetails="[
      {

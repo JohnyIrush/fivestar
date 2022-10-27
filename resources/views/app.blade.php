@@ -3,15 +3,14 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
 
         <title inertia>{{ config('app.name', 'Laravel') }}</title>
 
+        <!-- Fonts -->
+        <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
 
         <!-- Styles -->
-        <link rel="stylesheet" href="{{ mix('css/app.css') }}">
         <link rel="stylesheet" href="/css/theme.css">
-        <link rel="stylesheet" href="/theme/ui/icons.css">
 
         <!-- plugins:css -->
         <link rel="stylesheet" href="/theme/vendors/feather/feather.css">
@@ -22,7 +21,6 @@
         <link rel="stylesheet" href="/theme/vendors/css/vendor.bundle.base.css">
         <!-- endinject -->
         <!-- Plugin css for this page -->
-        <link rel="stylesheet" href="/theme/vendors/datatables.net-bs4/dataTables.bootstrap4.css">
         <link rel="stylesheet" href="/theme/js/select.dataTables.min.css">
         <!-- End plugin css for this page -->
         <!-- inject:css -->
@@ -36,17 +34,11 @@
 
         <!-- Scripts -->
         @routes
-        <script src="{{ mix('js/app.js') }}" defer></script>
-
-        <!--<script src="/assets/plugins/canvas/html2canvas.js" defer></script>
-        <script src="/assets/plugins/canvas/html2canvas.min.js" defer></script>-->
-        <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" integrity="sha512-BNaRQnYJYiPSqHHDb58B0yaPfCu+Wgds8Gp/gU33kqBtgNS4tSPHuGibyoeqMV/TJlSKda6FXzoEyYGjTe+vXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>-->
+        @vite(['resources/js/app.js', "resources/js/Pages/{$page['component']}.vue"])
+        @inertiaHead
     </head>
-    <body id="app-body" class="font-sans antialiased g-sidenav-show ">
+    <body id="app-body" class="font-sans antialiased">
         @inertia
-
-
-    <!--<script src="https://www.paypal.com/sdk/js?client-id=AUkQg30QDB-YINKU1DaZpVKQrye-fFPOkVldJUAlAiRrH2E77d0uwCxHi2w42Mi6Mrr4cOHWhBY_EBWU&components=buttons"></script>-->
 
   <script src="/theme/fontawesome-free-5.15.4-web/js/all.js" type="text/javascript"></script>
   <!-- plugins:js -->

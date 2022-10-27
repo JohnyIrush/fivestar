@@ -91,7 +91,7 @@
                   component: 'Link',
                   icon_classes: 'fas fa-globe fa-2x',
                   title: 'Online Classes',
-                  link: 'virtual-reality',
+                  link: 'dashboard',
                   propBgColor: '',
                   propTextColor: Theme.key + '-text-color'
                 },
@@ -99,7 +99,7 @@
                   component: 'Link',
                   icon_classes: 'fas fa-file-powerpoint fa-2x',
                   title: 'E-Learning',
-                  link: 'virtual-reality',
+                  link: 'dashboard',
                   propBgColor: '',
                   propTextColor: Theme.key + '-text-color'
                 },
@@ -107,7 +107,7 @@
                   component: 'Link',
                   icon_classes: 'fas fa-microscope fa-2x',
                   title: 'Research Center',
-                  link: 'virtual-reality',
+                  link: 'dashboard',
                   propBgColor: '',
                   propTextColor: Theme.key + '-text-color'
                 },

@@ -1,5 +1,5 @@
 <template>
-   <wizard></wizard> 
+ Wizard
 </template>
 
 <style scoped>
@@ -10,13 +10,12 @@
 
 import { defineComponent } from 'vue'
 
-import wizard from '../plugins/wizard'
 
 export default defineComponent({
     name: "Installer",
     components:
     {
-        wizard
+        
     }
 });
 </script>

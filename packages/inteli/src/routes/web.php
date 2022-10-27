@@ -17,5 +17,5 @@ use Softwarescares\Inteli\app\Http\Controllers\UI\UIController;
 |
 */
 
-Route::get('inteli',[UIController::class, 'inteli'])->name('inteli');
+Route::get('/inteli',[UIController::class, 'inteli'])->name('inteli');
 

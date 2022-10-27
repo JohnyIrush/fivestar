@@ -103,17 +103,17 @@
 </template>
 
 <script>
-import installation_progress_bar from "../components/progress/installation-progress-bar";
-import loading_text_animation from "../components/animation/loading-text-animation.vue";
-import glowing_loader_ring_animation from "../components/animation/Glowing-Loader-Ring-animation.vue";
-import cog_settings from "../components/animation/cog-settings.vue";
-import files_install from "../components/animation/files-install-progress.vue";
-import packages_install from "../components/animation/new/packages-install-progress.vue";
-import loading_dots_animation from "../components/animation/loading-dots-animation.vue";
-import loading_dotted_colors from '../components/animation/loading-dotted-colors-animation.vue'
+//import installation_progress_bar from "../components/progress/installation-progress-bar.vue";
+//import loading_text_animation from "../components/animation/loading-text-animation.vue";
+//import glowing_loader_ring_animation from "../components/animation/Glowing-Loader-Ring-animation.vue";
+//import cog_settings from "../components/animation/cog-settings.vue";
+//import files_install from "../components/animation/files-install-progress.vue";
+//import packages_install from "../components/animation/new/packages-install-progress.vue";
+//import loading_dots_animation from "../components/animation/loading-dots-animation.vue";
+//import loading_dotted_colors from '../components/animation/loading-dotted-colors-animation.vue'
 
 /*Toast messages*/
-import {Toaster,ToasterPosition,ToasterTimer,ToasterType,} from "bs-toaster";
+//import {Toaster,ToasterPosition,ToasterTimer,ToasterType,} from "bs-toaster";
 
 
 import { Head, Link } from '@inertiajs/inertia-vue3';
@@ -125,14 +125,14 @@ export default
     },
     components:
     {
-        installation_progress_bar,
-        loading_text_animation,
-        glowing_loader_ring_animation,
-        cog_settings,
-        files_install,
-        packages_install,
-        loading_dots_animation,
-        loading_dotted_colors,
+        //installation_progress_bar,
+        //loading_text_animation,
+        //glowing_loader_ring_animation,
+        //cog_settings,
+        //files_install,
+        //packages_install,
+        //loading_dots_animation,
+        //loading_dotted_colors,
         Head,
         Link
     },
@@ -191,6 +191,7 @@ export default
     },
     mounted()
     {
+      /*
         var toastMsg = new Toaster();
 
         Echo.channel('system-database-created')
@@ -276,6 +277,7 @@ export default
               // defaultIconMarkup: '<i class="fa fa-user-secret" aria-hidden="true"></i>',
               // position: ToasterPosition.TOP
             })
+            8/
 
             this.storageStepNext()
 

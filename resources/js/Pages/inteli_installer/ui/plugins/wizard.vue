@@ -3,7 +3,7 @@
    <div class="glass-container">
              <div class="container glass-content screen-height">
                  <!--PROGRESS BAR START-->
-                 <progress_bar></progress_bar>
+                <!--<progress_bar></progress_bar>->
                  <!--PROGRESS BAR END-->
 
                  <!--WIZARD START-->
@@ -36,7 +36,7 @@
                              <div class="row justify-content-center">
                                  <div class="col-1"></div>
                                  <div class="col-10 glass-content">
-                                  <welcome_slider></welcome_slider>
+                                  <!--<welcome_slider></welcome_slider>-->
                                  </div>
                                  <div class="col-1"></div>
                              </div>
@@ -297,7 +297,7 @@
 
                                 </div>
                                 <div class="col-10 glass-content">
-                                  <installation></installation>
+                                  <!--<installation></installation>-->
                                 </div>
                                 <div class="col-1">
 
@@ -328,34 +328,39 @@
 
 <script>
 
-import installation from './Installation.vue'
-import progress_bar from "../components/progress/progress-bar.vue";
-import get_started from "../components/buttons/get-started.vue"
-import welcome_slider from "../components/Sliders/Welcome-Slider.vue"
-import payment_methods from "../components/cards/payment-methods"
-import school_details_confirmation from '../components/modals/school_details_confirmation.vue'
-import inteli_code_verify from '../components/modals/inteli-code-verify.vue'
-import register from '../components/forms/register/Register.vue'
-import products from "../components/cards/products.vue";
-
-/*Vuex Store*/
 import { store } from '../../../../store/store.js'
 
 /*Toast messages*/
-import {Toaster,ToasterPosition,ToasterTimer,ToasterType,} from "bs-toaster";
+//import {Toaster,ToasterPosition,ToasterTimer,ToasterType,} from "bs-toaster";
+
+//import Installation from './Installation.vue'
+//import ProgressBar from "../components/progress/ProgressBar.vue";
+//import get_started from "../components/buttons/get-started.vue"
+//import welcome_slider from "../components/Sliders/Welcome-Slider.vue"
+//import payment_methods from "../components/cards/payment-methods.vue"
+//import school_details_confirmation from '../components/modals/school_details_confirmation.vue'
+//import inteli_code_verify from '../components/modals/inteli-code-verify.vue'
+//import register from '../components/forms/register/Register.vue'
+//import products from "../components/cards/products.vue";
+
+/*Vuex Store*/
+
+
+/*Toast messages*/
+//import {Toaster,ToasterPosition,ToasterTimer,ToasterType,} from "bs-toaster";
 
 export default {
     components:
         {
-            installation,
-            progress_bar,
-            get_started,
-            welcome_slider,
-            payment_methods,
-            school_details_confirmation,
-            inteli_code_verify,
-            register,
-            products
+            //Installation,
+            //ProgressBar,
+            //get_started,
+            //welcome_slider,
+            //payment_methods,
+            //school_details_confirmation,
+            //inteli_code_verify,
+            //register,
+            //products
         },
     data() {
         return {
@@ -612,7 +617,7 @@ export default {
         this.getSchoolEducationSystems()
         this.getSchoolGender()
 
-
+       /*
         var toastMsg = new Toaster();
 
         Echo.channel('registration')
@@ -758,6 +763,7 @@ export default {
 
          this.paymentStepNext();
          this.createSystemDatabase()
+         */
 
         });
 
