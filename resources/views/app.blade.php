@@ -31,6 +31,7 @@
         <link href="/theme/fontawesome-free-5.15.4-web/less/fontawesome.less" />    
         <link href="/theme/fontawesome-free-5.15.4-web/scss/fontawesome.scss" /> 
         <link href="/theme/fontawesome-free-5.15.4-web/sprites/solid.svg"  /> 
+        
 
         <!-- Scripts -->
         @routes

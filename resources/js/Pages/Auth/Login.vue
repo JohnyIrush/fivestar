@@ -1,4 +1,4 @@
-<script setup>
+<!--<script setup>
 import { Head, Link, useForm } from '@inertiajs/inertia-vue3';
 import AuthenticationCard from '@/Components/AuthenticationCard.vue';
 import AuthenticationCardLogo from '@/Components/AuthenticationCardLogo.vue';
@@ -27,6 +27,98 @@ const submit = () => {
         onFinish: () => form.reset('password'),
     });
 };
+</script>-->
+
+
+<script>
+    import { defineComponent, inject, ref, provide } from 'vue'
+    import { Head, Link, useForm } from '@inertiajs/inertia-vue3';
+    import AuthenticationCard from '@/Components/AuthenticationCard.vue';
+    import AuthenticationCardLogo from '@/Components/AuthenticationCardLogo.vue';
+    import Checkbox from '@/Components/Checkbox.vue';
+    import InputError from '@/Components/InputError.vue';
+    import InputLabel from '@/Components/InputLabel.vue';
+    import PrimaryButton from '@/Components/PrimaryButton.vue';
+    import TextInput from '@/Components/TextInput.vue';
+
+    import {store} from '../../store/store.js'
+
+    export default defineComponent({
+        components: {
+            Head, 
+            Link, 
+            useForm,
+            AuthenticationCard,
+            Checkbox,
+            InputError,
+            InputLabel,
+            PrimaryButton,
+            TextInput
+        },
+
+        props: {
+            canResetPassword: Boolean,
+            status: String
+        },
+        setup(props,context)
+        {    
+            var Module = ref(context.attrs.module)
+            var Display = ref(context.attrs.display)
+            var loginGuard = context.attrs.guard
+            
+            provide("Theme", store.state.Application.Theme);
+
+            const form = useForm({
+                email: '',
+                password: '',
+                remember: false,
+            });
+
+            var loginRoute = (loginGuard != undefined)? loginGuard + '.login' : 'login';
+
+            const submit = () => {
+                form.transform(data => ({
+                    ...data,
+                    remember: form.remember ? 'on' : '',
+                })).post(route(loginRoute), {
+                    onFinish: () => form.reset('password'),
+                });
+            };
+
+            return { 
+              Module, 
+              Display,
+              form,
+              submit 
+              }  
+        },
+        computed:{
+            Theme()
+            {
+                return store.state.Application.Theme
+            }
+        },
+        data() {
+
+        },
+        methods: {
+        },
+        watch: {
+          Theme: (val, oldVal) => {
+            document.getElementById('app-body').classList.add(val.key + '-gradient');
+          }
+        },
+        mounted()
+        {
+          document.getElementById('app-body').classList.add(this.Theme.key + '-gradient');
+
+        if (false)
+        {
+          const menuWindowContainer = document.getElementById('login-sidebar');
+          menuWindowContainer.style.background= `url(/assets/images/themes/${this.Theme.key + '-image.jpg'})` + ' ' + 'repeat 0 0'
+        }
+        }
+    })
 </script>
 
 <template>

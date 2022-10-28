@@ -8,7 +8,7 @@ use Illuminate\Routing\Controller;
 use Illuminate\Routing\Pipeline;
 use Laravel\Fortify\Actions\EnsureLoginIsNotThrottled;
 use Laravel\Fortify\Actions\PrepareAuthenticatedSession;
-use Laravel\Fortify\Contracts\LoginResponse;
+
 use Laravel\Fortify\Contracts\LoginViewResponse;
 use Laravel\Fortify\Contracts\LogoutResponse;
 use Laravel\Fortify\Features;
@@ -17,6 +17,9 @@ use Laravel\Fortify\Http\Requests\LoginRequest;
 
 use App\Actions\Fortify\AttemptToAuthenticate;
 use App\Actions\Fortify\RedirectIfTwoFactorAuthenticatable;
+use App\Http\Responses\LoginResponse;
+
+use Inertia\Inertia;
 
 class AdminController extends Controller
 {
@@ -38,6 +41,11 @@ class AdminController extends Controller
         $this->guard = $guard;
     }
 
+    public function loginForm()
+    {
+        return Inertia::render('Auth/Login', ['guard' => 'admin']);
+    }
+
     /**
      * Show the login view.
      *
@@ -45,7 +53,7 @@ class AdminController extends Controller
      * @return \Laravel\Fortify\Contracts\LoginViewResponse
      */
     public function create(Request $request): LoginViewResponse
-    {
+    { 
         return app(LoginViewResponse::class);
     }
 

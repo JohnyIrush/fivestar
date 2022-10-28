@@ -4,6 +4,8 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
+use App\Http\Controllers\AdminController;
+
 use App\Http\Controllers\UI\UIController;
 
 use App\Http\Controllers\SocialiteController;
@@ -26,6 +28,20 @@ Route::get('/', function () {
         'laravelVersion' => Application::VERSION,
         'phpVersion' => PHP_VERSION,
     ]);
+});
+
+Route::middleware('admin:admin')->group(function()
+{
+    Route::get('admin/login', [AdminController::class, 'loginForm']);
+    Route::post('admin/login', [AdminController::class, 'store'])->name("admin.login");
+});
+
+Route::middleware([
+    'auth:sanctum, admin',
+    config('jetstream.auth_session'),
+    'verified',
+])->group(function () {
+    Route::get('admin/dashboard', [UIController::class, 'dashboard'])->name('dashboard')->middleware('auth:admin');
 });
 
 Route::middleware([

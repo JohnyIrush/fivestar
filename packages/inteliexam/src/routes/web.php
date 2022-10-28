@@ -7,4 +7,18 @@ use Inertia\Inertia;
 use Softwarescares\Inteliexam\app\Http\Controllers\UI\UIController;
 
 
-Route::get("exam", [UIController::class, "exam"])->name("exam");
+
+Route::group(['middleware' => config('jetstream.middleware', ['web'])], function () {
+
+    $authMiddleware = config('jetstream.guard')
+            ? 'auth:'.config('jetstream.guard')
+            : 'auth';
+
+    $authSessionMiddleware = config('jetstream.auth_session', false)
+            ? config('jetstream.auth_session')
+            : null;
+
+    Route::group(['middleware' => array_values(array_filter([$authMiddleware, $authSessionMiddleware]))], function () {
+        Route::get("exam", [UIController::class, "exam"])->name("exam");
+});
+});

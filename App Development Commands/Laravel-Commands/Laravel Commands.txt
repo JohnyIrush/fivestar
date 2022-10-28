@@ -75,6 +75,7 @@ Storage/Files
 <-->CACHE, CONFIG, OPTIMIZE<-->
 
  php artisan optimize:clear
+ php artisan cache:clear
  
  php artisan config:clear
 
@@ -239,3 +240,6 @@ npm i flatpickr --save
 composer require laravel/jetstream
 composer remove laravel/jetstream
 php artisan jetstream:install inertia --teams
+
+//middleware
+php artisan make:middleware AdminRedirectIfAuthenticated
