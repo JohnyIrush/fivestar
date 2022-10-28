@@ -20,6 +20,13 @@ class GuardianController extends Controller
         return response()->json(Guardian::with("user")->get());
     }
 
+    public function signupForm()
+    {
+        return Inertia::render('Auth/Register', 
+            ['type' => 'guardian']);
+    }
+
+
     public function getDetails()
     {
         $id = 4;

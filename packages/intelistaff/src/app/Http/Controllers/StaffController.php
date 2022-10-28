@@ -84,6 +84,13 @@ class StaffController extends Controller
         );
     }
 
+    public function signupForm()
+    {
+        return Inertia::render('Auth/Register', 
+            ['type' => 'staff']);
+    }
+
+
     public function getDetails()
     {
         $userid = 49;

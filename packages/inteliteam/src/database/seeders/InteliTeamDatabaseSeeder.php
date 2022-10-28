@@ -22,7 +22,6 @@ class InteliTeamDatabaseSeeder extends Seeder
                 SettingsSeeder::class,
                 TaskSeeder::class,
                 UserManagerSeeder::class,
-                UserSeeder::class
             ]
         );
 

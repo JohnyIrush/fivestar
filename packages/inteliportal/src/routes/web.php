@@ -4,6 +4,8 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use Softwarescares\Inteliportal\app\Http\Controllers\UI\UIController;
+use Softwarescares\Inteliportal\app\Http\Controllers\Students\StudentController;
+use Softwarescares\Inteliportal\app\Http\Controllers\Guardian\GuardianController;
 
 
 Route::group(['middleware' => config('jetstream.middleware', ['web'])], function () {
@@ -23,3 +25,7 @@ Route::group(['middleware' => config('jetstream.middleware', ['web'])], function
         Route::get("portal/school", [UIController::class, "school"])->name("portal-school");
 });
 });
+
+
+Route::get('student/register', [StudentController::class, 'signUpForm']);
+Route::get('guardian/register', [GuardianController::class, 'signUpForm']);

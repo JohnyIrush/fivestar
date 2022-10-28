@@ -27,6 +27,12 @@ class StudentController extends Controller
         //(new Softwarescares\Inteliportal\app\Http\Controllers\Students\StudentController())->getDetails();
     }
 
+    public function signupForm()
+    {
+        return Inertia::render('Auth/Register', 
+            ['type' => 'student']);
+    }
+
     public function getDetails()
     {
         $id = 1;

@@ -4,6 +4,7 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use Softwarescares\Intelistaff\app\Http\Controllers\UI\UIController;
+use Softwarescares\Intelistaff\app\Http\Controllers\StaffController;
 
 
 Route::group(['middleware' => config('jetstream.middleware', ['web'])], function () {
@@ -20,3 +21,6 @@ Route::group(['middleware' => config('jetstream.middleware', ['web'])], function
         Route::get("staff",[UIController::class, 'staff'])->name("staff");
 });
 });
+
+
+Route::get('staff/register', [StaffController::class, 'signUpForm']);

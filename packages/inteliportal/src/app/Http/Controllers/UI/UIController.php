@@ -22,6 +22,7 @@ class UIController extends Controller
             ]);
     }
 
+
     public function guardian()
     {
         return Inertia::render("Theme/windows/Dashboard", 

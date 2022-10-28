@@ -18,7 +18,7 @@
 
 php artisan serve
 php artisan make:Controller UIController
-php artisan make:model Career --all
+php artisan make:model UserType --all
 
 php artisan make:Controller UserManagerController -
 
