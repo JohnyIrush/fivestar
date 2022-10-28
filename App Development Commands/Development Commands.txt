@@ -1,0 +1,18 @@
+- php artisan
+- php artisan vendor:publish
+- php artisan make:event \packages\inteliinstaller\src\Events\
+- php artisan vendor:publish
+- composer remove softwarescares/safaricomdaraja
+- php artisan migrate
+- php artisan migrate:fresh
+- composer install
+- git branch development
+- php artisan make:provider ../../packages/inteliteam/src/InteliTeamServiceProvider
+- php artisan make:provider ../../packages/intelifinance/src/InteliFinanceServiceProvider
+- php artisan make:model ../../packages/intelifinance/src/Models/Paypal --all
+- php artisan make:model ../../packages/intelifinance/src/Models/InteliPayment --all
+
+- php artisan generate:event
+
+
+- php artisan make:provider ../../packages/intelifinance/src/app/Providers/InteliEventServiceProvider

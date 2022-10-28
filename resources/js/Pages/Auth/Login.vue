@@ -1,4 +1,12 @@
-<script>
+<script setup>
+import { Head, Link, useForm } from '@inertiajs/inertia-vue3';
+import AuthenticationCard from '@/Components/AuthenticationCard.vue';
+import AuthenticationCardLogo from '@/Components/AuthenticationCardLogo.vue';
+import Checkbox from '@/Components/Checkbox.vue';
+import InputError from '@/Components/InputError.vue';
+import InputLabel from '@/Components/InputLabel.vue';
+import PrimaryButton from '@/Components/PrimaryButton.vue';
+import TextInput from '@/Components/TextInput.vue';
 
 defineProps({
     canResetPassword: Boolean,
@@ -20,105 +28,6 @@ const submit = () => {
     });
 };
 </script>
-
-<script>
-    import { defineComponent, inject, ref, provide } from 'vue'
-    import { Head, Link, useForm } from '@inertiajs/inertia-vue3';
-    import AuthenticationCard from '@/Components/AuthenticationCard.vue';
-    import AuthenticationCardLogo from '@/Components/AuthenticationCardLogo.vue';
-    import Checkbox from '@/Components/Checkbox.vue';
-    import InputError from '@/Components/InputError.vue';
-    import InputLabel from '@/Components/InputLabel.vue';
-    import PrimaryButton from '@/Components/PrimaryButton.vue';
-    import TextInput from '@/Components/TextInput.vue';
-
-    import QuickFooter from '../Theme/widgets/Quick-Footer.vue'
-    import Quick_NavBar from '../Theme/widgets/Quick-NavBar.vue'
-
-    import {store} from '../../store/store.js'
-
-    export default defineComponent({
-        props: {
-          canResetPassword: Boolean,
-          status: String,
-        },
-        components: {
-            Head,
-            JetAuthenticationCard,
-            JetAuthenticationCardLogo,
-            JetButton,
-            JetInput,
-            JetCheckbox,
-            JetLabel,
-            JetValidationErrors,
-            Link,
-            QuickFooter,
-            Quick_NavBar
-        },
-
-        props: {
-            canResetPassword: Boolean,
-            status: String
-        },
-        setup(props,context)
-        {    
-            var Module = ref(context.attrs.module)
-            var Display = ref(context.attrs.display)
-
-            provide("Theme", store.state.Application.Theme);
-
-            console.log("props",context.attrs)
-
-            return { 
-              Module, 
-              Display 
-              }  
-        },
-        computed:{
-            Theme()
-            {
-                return store.state.Application.Theme
-            }
-        },
-        data() {
-            return {
-                form: this.$inertia.form({
-                    email: '',
-                    password: '',
-                    remember: false
-                })
-            }
-        },
-        methods: {
-            submit() {
-                this.form
-                    .transform(data => ({
-                        ... data,
-                        remember: this.form.remember ? 'on' : ''
-                    }))
-                    .post(this.route('login'), {
-                        onFinish: () => this.form.reset('password'),
-                    })
-            }
-        },
-        watch: {
-          Theme: (val, oldVal) => {
-            document.getElementById('app-body').classList.add(val.key + '-gradient');
-          }
-        },
-        mounted()
-        {
-          document.getElementById('app-body').classList.add(this.Theme.key + '-gradient');
-
-        const menuWindowContainer = document.getElementById('login-sidebar');
-        if (true)
-        {
-          menuWindowContainer.style.background= `url(/assets/images/themes/${this.Theme.key + '-image.jpg'})` + ' ' + 'repeat 0 0'
-        }
-        }
-    })
-</script>
-
 
 <template>
     <Head title="Log in" />

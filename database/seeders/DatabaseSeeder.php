@@ -42,6 +42,7 @@ class DatabaseSeeder extends Seeder
         $this->call
         (
             [
+                AdminSeeder::class,
                 InteliDatabaseSeeder::class,
                 InteliFormDatabaseSeeder::class,
                 InteliGoogleDatabaseSeeder::class,

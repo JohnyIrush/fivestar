@@ -2,85 +2,108 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Admin;
-use App\Http\Requests\StoreAdminRequest;
-use App\Http\Requests\UpdateAdminRequest;
+use Illuminate\Contracts\Auth\StatefulGuard;
+use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
+use Illuminate\Routing\Pipeline;
+use Laravel\Fortify\Actions\EnsureLoginIsNotThrottled;
+use Laravel\Fortify\Actions\PrepareAuthenticatedSession;
+use Laravel\Fortify\Contracts\LoginResponse;
+use Laravel\Fortify\Contracts\LoginViewResponse;
+use Laravel\Fortify\Contracts\LogoutResponse;
+use Laravel\Fortify\Features;
+use Laravel\Fortify\Fortify;
+use Laravel\Fortify\Http\Requests\LoginRequest;
+
+use App\Actions\Fortify\AttemptToAuthenticate;
+use App\Actions\Fortify\RedirectIfTwoFactorAuthenticatable;
 
 class AdminController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * The guard implementation.
      *
-     * @return \Illuminate\Http\Response
+     * @var \Illuminate\Contracts\Auth\StatefulGuard
      */
-    public function index()
+    protected $guard;
+
+    /**
+     * Create a new controller instance.
+     *
+     * @param  \Illuminate\Contracts\Auth\StatefulGuard  $guard
+     * @return void
+     */
+    public function __construct(StatefulGuard $guard)
     {
-        //
+        $this->guard = $guard;
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Show the login view.
      *
-     * @return \Illuminate\Http\Response
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Laravel\Fortify\Contracts\LoginViewResponse
      */
-    public function create()
+    public function create(Request $request): LoginViewResponse
     {
-        //
+        return app(LoginViewResponse::class);
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Attempt to authenticate a new session.
      *
-     * @param  \App\Http\Requests\StoreAdminRequest  $request
-     * @return \Illuminate\Http\Response
+     * @param  \Laravel\Fortify\Http\Requests\LoginRequest  $request
+     * @return mixed
      */
-    public function store(StoreAdminRequest $request)
+    public function store(LoginRequest $request)
     {
-        //
+        return $this->loginPipeline($request)->then(function ($request) {
+            return app(LoginResponse::class);
+        });
     }
 
     /**
-     * Display the specified resource.
+     * Get the authentication pipeline instance.
      *
-     * @param  \App\Models\Admin  $admin
-     * @return \Illuminate\Http\Response
+     * @param  \Laravel\Fortify\Http\Requests\LoginRequest  $request
+     * @return \Illuminate\Pipeline\Pipeline
      */
-    public function show(Admin $admin)
+    protected function loginPipeline(LoginRequest $request)
     {
-        //
+        if (Fortify::$authenticateThroughCallback) {
+            return (new Pipeline(app()))->send($request)->through(array_filter(
+                call_user_func(Fortify::$authenticateThroughCallback, $request)
+            ));
+        }
+
+        if (is_array(config('fortify.pipelines.login'))) {
+            return (new Pipeline(app()))->send($request)->through(array_filter(
+                config('fortify.pipelines.login')
+            ));
+        }
+
+        return (new Pipeline(app()))->send($request)->through(array_filter([
+            config('fortify.limiters.login') ? null : EnsureLoginIsNotThrottled::class,
+            Features::enabled(Features::twoFactorAuthentication()) ? RedirectIfTwoFactorAuthenticatable::class : null,
+            AttemptToAuthenticate::class,
+            PrepareAuthenticatedSession::class,
+        ]));
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Destroy an authenticated session.
      *
-     * @param  \App\Models\Admin  $admin
-     * @return \Illuminate\Http\Response
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Laravel\Fortify\Contracts\LogoutResponse
      */
-    public function edit(Admin $admin)
+    public function destroy(Request $request): LogoutResponse
     {
-        //
-    }
+        $this->guard->logout();
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \App\Http\Requests\UpdateAdminRequest  $request
-     * @param  \App\Models\Admin  $admin
-     * @return \Illuminate\Http\Response
-     */
-    public function update(UpdateAdminRequest $request, Admin $admin)
-    {
-        //
-    }
+        $request->session()->invalidate();
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Admin  $admin
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Admin $admin)
-    {
-        //
+        $request->session()->regenerateToken();
+
+        return app(LogoutResponse::class);
     }
 }
