@@ -1,26 +1,93 @@
-<script setup>
-import { Head, Link, useForm } from '@inertiajs/inertia-vue3';
-import AuthenticationCard from '@/Components/AuthenticationCard.vue';
-import AuthenticationCardLogo from '@/Components/AuthenticationCardLogo.vue';
-import Checkbox from '@/Components/Checkbox.vue';
-import InputError from '@/Components/InputError.vue';
-import InputLabel from '@/Components/InputLabel.vue';
-import PrimaryButton from '@/Components/PrimaryButton.vue';
-import TextInput from '@/Components/TextInput.vue';
+<script>
+    import { defineComponent, inject, ref, provide } from 'vue'
+    import { Head, Link, useForm } from '@inertiajs/inertia-vue3';
+    import AuthenticationCard from '@/Components/AuthenticationCard.vue';
+    import AuthenticationCardLogo from '@/Components/AuthenticationCardLogo.vue';
+    import Checkbox from '@/Components/Checkbox.vue';
+    import InputError from '@/Components/InputError.vue';
+    import InputLabel from '@/Components/InputLabel.vue';
+    import PrimaryButton from '@/Components/PrimaryButton.vue';
+    import TextInput from '@/Components/TextInput.vue';
 
-const form = useForm({
-    name: '',
-    email: '',
-    password: '',
-    password_confirmation: '',
-    terms: false,
-});
+    import RadioInput from '../inteli/ui/widgets/inputs/RadioInput.vue'
 
-const submit = () => {
-    form.post(route('register'), {
-        onFinish: () => form.reset('password', 'password_confirmation'),
-    });
-};
+    import {store} from '../../store/store.js'
+
+    export default defineComponent({
+        components: {
+            Head, 
+            Link, 
+            useForm,
+            AuthenticationCard,
+            AuthenticationCardLogo,
+            Checkbox,
+            InputError,
+            InputLabel,
+            PrimaryButton,
+            TextInput,
+            RadioInput
+        },
+
+        props: {
+            canResetPassword: Boolean,
+            status: String
+        },
+        setup(props,context)
+        {    
+            
+            provide("Theme", store.state.Application.Theme);
+
+            var userTypeId = (context.attrs.type != undefined)? context.attrs.type_id : 5;
+
+            const form = useForm({
+                name: '',
+                email: '',
+                user_type_id: userTypeId,
+                password: '',
+                password_confirmation: '',
+                terms: false,
+            });
+
+            const submit = () => {
+                form.post(route('register'), {
+                    onFinish: () => form.reset('password', 'password_confirmation'),
+            });
+
+
+            return { 
+              form,
+              submit, 
+              userTypeId
+              }  
+          }
+        },
+        computed:{
+            Theme()
+            {
+                return store.state.Application.Theme
+            }
+        },
+        data() {
+
+        },
+        methods: {
+        },
+        watch: {
+          Theme: (val, oldVal) => {
+            document.getElementById('app-body').classList.add(val.key + '-gradient');
+          }
+        },
+        mounted()
+        {
+          document.getElementById('app-body').classList.add(this.Theme.key + '-gradient');
+
+        if (false)
+        {
+          const menuWindowContainer = document.getElementById('login-sidebar');
+          menuWindowContainer.style.background= `url(/assets/images/themes/${this.Theme.key + '-image.jpg'})` + ' ' + 'repeat 0 0'
+        }
+        }
+    })
 </script>
 
 <template>
@@ -30,6 +97,21 @@ const submit = () => {
         <template #logo>
             <AuthenticationCardLogo />
         </template>
+
+        <radio-input
+         :inputOptions="[]"
+         :nameKey="''"
+         :valueKeyKey="''"
+         :variable="''"
+         :field="''"
+         :options_title_classes="Theme.key + '-text-color'"
+         :options_label_classes="Theme.key + '-text-color m-2'"
+         :isFormSwitch="false"
+         :optionTitleComponent="'h4'"
+         :eventName="'themeConfigSet'"
+         @radioInput="userTypeId = $event.id"
+         :datapath="'user/type/list'">
+        </radio-input>
 
         <form @submit.prevent="submit">
             <div>

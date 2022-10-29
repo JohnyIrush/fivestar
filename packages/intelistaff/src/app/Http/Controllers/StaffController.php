@@ -87,7 +87,7 @@ class StaffController extends Controller
     public function signupForm()
     {
         return Inertia::render('Auth/Register', 
-            ['type' => 'staff']);
+            ['type' => 'staff', 'type_id' => 2]);
     }
 
 

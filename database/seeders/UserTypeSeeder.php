@@ -30,6 +30,10 @@ class UserTypeSeeder extends Seeder
         ]);
 
         UserType::create([
+            'type' => 'Guardian'
+        ]);
+
+        UserType::create([
             'type' => 'User'
         ]);
     }

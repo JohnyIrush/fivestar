@@ -23,7 +23,7 @@ class GuardianController extends Controller
     public function signupForm()
     {
         return Inertia::render('Auth/Register', 
-            ['type' => 'guardian']);
+            ['type' => 'guardian', 'type_id' => 4]]);
     }
 
 

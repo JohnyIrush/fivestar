@@ -41,6 +41,12 @@ class AdminController extends Controller
         $this->guard = $guard;
     }
 
+    public function signupForm()
+    {
+        return Inertia::render('Auth/Register', 
+            ['type' => 'student', 'type_id' => 1]);
+    }
+
     /**
      * Show the login view.
      *

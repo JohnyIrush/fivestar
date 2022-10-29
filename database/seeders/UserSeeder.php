@@ -1,6 +1,6 @@
 <?php
 
-namespace Softwarescares\Inteliteam\database\seeders;
+namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 
@@ -21,6 +21,6 @@ class UserSeeder extends Seeder
     {
         User::truncate();
 
-        User::factory()->create(120);
+        User::factory()->count(120)->create();
     }
 }

@@ -18,6 +18,19 @@ class UserTypeController extends Controller
         //
     }
 
+    public function userTypeList()
+    {
+        return response()->json(
+            [
+                "name" => "type",
+                "label" => "Select User Type",
+                "value" => "",
+                "column" => "",
+                "options" => UserType::all()
+            ]
+        );
+    }
+
     /**
      * Show the form for creating a new resource.
      *

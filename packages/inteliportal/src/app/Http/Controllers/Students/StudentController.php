@@ -30,7 +30,7 @@ class StudentController extends Controller
     public function signupForm()
     {
         return Inertia::render('Auth/Register', 
-            ['type' => 'student']);
+            ['type' => 'student', 'type_id' => 3]);
     }
 
     public function getDetails()
