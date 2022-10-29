@@ -33,9 +33,9 @@
     import MainModal from '../../inteli/ui/components/modals/MainModal.vue'
 
     //Inteli
-    //import InteliDash from '../../inteli/ui/widgets/InteliDash.vue'
-    //import Tables from '../../inteli/ui/widgets/Tables.vue'
-    //import InteliSetting from '../../inteli/ui/widgets/InteliSetting.vue'
+    import InteliDash from '../../inteli/ui/widgets/InteliDash.vue'
+    import Tables from '../../inteli/ui/widgets/Tables.vue'
+    import InteliSetting from '../../inteli/ui/widgets/InteliSetting.vue'
 
     //Admission
     import AdmissionDash from '../../inteli_admission/ui/widgets/AdmissionDash.vue'
@@ -192,9 +192,9 @@
             TabPane,
             Tab,
             //Inteli
-            //InteliDash,
-            //Tables,
-            //InteliSetting,
+            InteliDash,
+            Tables,
+            InteliSetting,
             //Admission widget
             AdmissionDash,
             Application,
