@@ -194,7 +194,7 @@
             //Inteli
             InteliDash,
             Tables,
-            InteliDash,
+            InteliSetting,
             //Admission widget
             AdmissionDash,
             Application,
