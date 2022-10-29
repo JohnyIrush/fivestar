@@ -1,93 +1,51 @@
-<script>
-    import { defineComponent, inject, ref, provide } from 'vue'
-    import { Head, Link, useForm } from '@inertiajs/inertia-vue3';
-    import AuthenticationCard from '@/Components/AuthenticationCard.vue';
-    import AuthenticationCardLogo from '@/Components/AuthenticationCardLogo.vue';
-    import Checkbox from '@/Components/Checkbox.vue';
-    import InputError from '@/Components/InputError.vue';
-    import InputLabel from '@/Components/InputLabel.vue';
-    import PrimaryButton from '@/Components/PrimaryButton.vue';
-    import TextInput from '@/Components/TextInput.vue';
+<script setup>
+import { Head, Link, useForm } from '@inertiajs/inertia-vue3';
+import AuthenticationCard from '@/Components/AuthenticationCard.vue';
+import AuthenticationCardLogo from '@/Components/AuthenticationCardLogo.vue';
+import Checkbox from '@/Components/Checkbox.vue';
+import InputError from '@/Components/InputError.vue';
+import InputLabel from '@/Components/InputLabel.vue';
+import PrimaryButton from '@/Components/PrimaryButton.vue';
+import TextInput from '@/Components/TextInput.vue';
+import { useSlots, useAttrs, computed, ref, provide, watch } from 'vue'
+import SelectInput from '../inteli/ui/widgets/inputs/SelectInput.vue'
+import {store} from '../../store/store.js'
 
-    import RadioInput from '../inteli/ui/widgets/inputs/RadioInput.vue'
+const slots = useSlots()
+const attrs = useAttrs()
 
-    import {store} from '../../store/store.js'
+const Theme = computed(function() {
+     return store.state.Application.Theme
+})
 
-    export default defineComponent({
-        components: {
-            Head, 
-            Link, 
-            useForm,
-            AuthenticationCard,
-            AuthenticationCardLogo,
-            Checkbox,
-            InputError,
-            InputLabel,
-            PrimaryButton,
-            TextInput,
-            RadioInput
-        },
+provide("Theme", Theme);
 
-        props: {
-            canResetPassword: Boolean,
-            status: String
-        },
-        setup(props,context)
-        {    
-            
-            provide("Theme", store.state.Application.Theme);
+var userTypeId = ref((attrs.type != undefined)? attrs.type_id : 5);
 
-            var userTypeId = (context.attrs.type != undefined)? context.attrs.type_id : 5;
-
-            const form = useForm({
-                name: '',
-                email: '',
-                user_type_id: userTypeId,
-                password: '',
-                password_confirmation: '',
-                terms: false,
-            });
-
-            const submit = () => {
-                form.post(route('register'), {
-                    onFinish: () => form.reset('password', 'password_confirmation'),
-            });
+const form = useForm({
+    name: '',
+    email: '',
+    user_type_id: userTypeId,
+    password: '',
+    password_confirmation: '',
+    terms: false,
+});
 
 
-            return { 
-              form,
-              submit, 
-              userTypeId
-              }  
-          }
-        },
-        computed:{
-            Theme()
-            {
-                return store.state.Application.Theme
-            }
-        },
-        data() {
+       watch(() => userTypeId, function(newValue, oldValue) {
+            form.user_type_id = newValue.value
+       },
+       {
+           deep: true
+       })
 
-        },
-        methods: {
-        },
-        watch: {
-          Theme: (val, oldVal) => {
-            document.getElementById('app-body').classList.add(val.key + '-gradient');
-          }
-        },
-        mounted()
-        {
-          document.getElementById('app-body').classList.add(this.Theme.key + '-gradient');
+const submit = () => {
+    alert(form.user_type_id)
+    form.post(route('register'), {
+        onFinish: () => form.reset('password', 'password_confirmation'),
+    });
 
-        if (false)
-        {
-          const menuWindowContainer = document.getElementById('login-sidebar');
-          menuWindowContainer.style.background= `url(/assets/images/themes/${this.Theme.key + '-image.jpg'})` + ' ' + 'repeat 0 0'
-        }
-        }
-    })
+};
 </script>
 
 <template>
@@ -98,23 +56,29 @@
             <AuthenticationCardLogo />
         </template>
 
-        <radio-input
-         :inputOptions="[]"
-         :nameKey="''"
-         :valueKeyKey="''"
-         :variable="''"
-         :field="''"
-         :options_title_classes="Theme.key + '-text-color'"
-         :options_label_classes="Theme.key + '-text-color m-2'"
-         :isFormSwitch="false"
-         :optionTitleComponent="'h4'"
-         :eventName="'themeConfigSet'"
-         @radioInput="userTypeId = $event.id"
-         :datapath="'user/type/list'">
-        </radio-input>
-
         <form @submit.prevent="submit">
             <div>
+             <SelectInput
+              :inputOptions="[]"
+              :nameKey="''"
+              :valueKeyKey="''"
+              :variable="''"
+              :field="''"
+              :options_title_classes="Theme.key + '-text-color'"
+              :options_label_classes="Theme.key + '-text-color'"
+              :isFormSwitch="false"
+              :optionTitleComponent="'h4'"
+              @selectInputEvent="userTypeId = $event.option.id"
+              :input_wrapper_container_classes="''"
+              :orientation="'d-flex flex-column'"
+              :datapath="'api/user/type/list'"
+              :labelName="'Register as'"
+              :inputRequired="true"
+              >
+             </SelectInput>
+             <InputError class="mt-2" :message="form.errors.user_type_id" />
+            </div>
+            <div class="mt-4">
                 <InputLabel for="name" value="Name" />
                 <TextInput
                     id="name"

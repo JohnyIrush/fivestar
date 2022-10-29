@@ -7,9 +7,9 @@
   </component>
   <div  
       id="radio-input-component"  
-      :class="inputContainerClasses + ' ' + orientation">
+      :class="inputContainerClasses + '  ' + orientation">
     <div 
-        :class="'form-check '  + ((isFormSwitch)? 'form-switch' : '')" 
+        :class="'form-check '  + ((isFormSwitch)? 'form-switch ' : ' ') + input_wrapper_container_classes" 
         v-for="option in (inputOptions.length != 0)? inputOptions : options" 
         :key="option[valueKey]">
      <input 
@@ -73,7 +73,8 @@ export default defineComponent({
       eventName: {
         type: String,
         default: 'radioInput'
-      }
+      },
+      input_wrapper_container_classes: String
 
   },
   setup ()

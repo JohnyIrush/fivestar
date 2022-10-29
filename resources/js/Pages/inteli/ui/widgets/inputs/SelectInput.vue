@@ -15,7 +15,7 @@
           :class="'form-select ' + size" 
           :aria-label="nameKey" 
           @change="selectOption"
-          :id="(nameKey != '')? nameKey : name">
+          :id="'select-input'">
           <option  
                  v-for="option in (inputOptions.length != 0)? inputOptions : options" 
                  :key="option" 
@@ -47,7 +47,10 @@ export default defineComponent({
     variable: String,
     field: String,
     datapath: String,
-    size: String,
+    size: {
+      type: String,
+      default: ''
+    },
     inputLabelClasses: String,
     labelName: {
       type: String,
@@ -55,6 +58,14 @@ export default defineComponent({
     },
     settingsConfig: {
       type: Object,
+      default: false
+    },
+    eventName: {
+      type: String,
+      default: 'selectInputEvent'
+    },
+    inputRequired: {
+      type: Boolean,
       default: false
     }
   },
@@ -98,7 +109,7 @@ export default defineComponent({
     selectOption()
     {
       console.log(this.option)
-      this.$emit("selectInput",
+      this.$emit(this.eventName,
         {
           option: this.option,
           field: this.field,
@@ -118,6 +129,12 @@ export default defineComponent({
    mounted()
    {
     this.getData(this.datapath)
+
+    if (this.inputRequired)
+    {
+      document.getElementById(`select-input`).setAttribute('required', 'required')
+
+    }
    }
 });
 </script>
